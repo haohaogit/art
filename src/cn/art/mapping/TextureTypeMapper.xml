@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.art.dao.TextureTypeMapper" >
+  <resultMap id="BaseResultMap" type="cn.art.model.TextureType" >
+    <id column="TTID" property="ttid" jdbcType="INTEGER" />
+    <result column="TID" property="tid" jdbcType="INTEGER" />
+    <result column="TName" property="tname" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    TTID, TID, TName
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from texturetype_
+    where TTID = #{ttid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from texturetype_
+    where TTID = #{ttid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.art.model.TextureType" >
+    insert into texturetype_ (TTID, TID, TName
+      )
+    values (#{ttid,jdbcType=INTEGER}, #{tid,jdbcType=INTEGER}, #{tname,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.art.model.TextureType" >
+    insert into texturetype_
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="ttid != null" >
+        TTID,
+      </if>
+      <if test="tid != null" >
+        TID,
+      </if>
+      <if test="tname != null" >
+        TName,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="ttid != null" >
+        #{ttid,jdbcType=INTEGER},
+      </if>
+      <if test="tid != null" >
+        #{tid,jdbcType=INTEGER},
+      </if>
+      <if test="tname != null" >
+        #{tname,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.art.model.TextureType" >
+    update texturetype_
+    <set >
+      <if test="tid != null" >
+        TID = #{tid,jdbcType=INTEGER},
+      </if>
+      <if test="tname != null" >
+        TName = #{tname,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where TTID = #{ttid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.art.model.TextureType" >
+    update texturetype_
+    set TID = #{tid,jdbcType=INTEGER},
+      TName = #{tname,jdbcType=VARCHAR}
+    where TTID = #{ttid,jdbcType=INTEGER}
+  </update>
+</mapper>

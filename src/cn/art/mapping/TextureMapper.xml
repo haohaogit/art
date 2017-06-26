@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.art.dao.TextureMapper" >
+  <resultMap id="BaseResultMap" type="cn.art.model.Texture" >
+    <id column="TextureID" property="textureid" jdbcType="INTEGER" />
+    <result column="TDescription" property="tdescription" jdbcType="VARCHAR" />
+    <result column="TImg" property="timg" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    TextureID, TDescription, TImg
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from texture_
+    where TextureID = #{textureid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from texture_
+    where TextureID = #{textureid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.art.model.Texture" >
+    insert into texture_ (TextureID, TDescription, TImg
+      )
+    values (#{textureid,jdbcType=INTEGER}, #{tdescription,jdbcType=VARCHAR}, #{timg,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.art.model.Texture" >
+    insert into texture_
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="textureid != null" >
+        TextureID,
+      </if>
+      <if test="tdescription != null" >
+        TDescription,
+      </if>
+      <if test="timg != null" >
+        TImg,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="textureid != null" >
+        #{textureid,jdbcType=INTEGER},
+      </if>
+      <if test="tdescription != null" >
+        #{tdescription,jdbcType=VARCHAR},
+      </if>
+      <if test="timg != null" >
+        #{timg,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.art.model.Texture" >
+    update texture_
+    <set >
+      <if test="tdescription != null" >
+        TDescription = #{tdescription,jdbcType=VARCHAR},
+      </if>
+      <if test="timg != null" >
+        TImg = #{timg,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where TextureID = #{textureid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.art.model.Texture" >
+    update texture_
+    set TDescription = #{tdescription,jdbcType=VARCHAR},
+      TImg = #{timg,jdbcType=VARCHAR}
+    where TextureID = #{textureid,jdbcType=INTEGER}
+  </update>
+</mapper>

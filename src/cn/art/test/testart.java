@@ -1,11 +1,17 @@
 package cn.art.test;
 
+import java.io.UnsupportedEncodingException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.List;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import sun.misc.BASE64Encoder;
 import cn.art.model.User;
 import cn.art.service.UserService;
 
@@ -24,9 +30,27 @@ public class testart {
 	}
 	@Test
 	public void testUser(){
-		User user = userService.selectUserById(2);
-		System.out.println(user.getUname());
+		//User user = userService.selectUserById(2);
+		List<User> user = userService.selectUserByName("222");
+		for (User user2 : user) {
+			System.out.println(user2.getUname()+"  "+user2.getUpassword());
+		}
+	}
+	public String testmd5(String str) throws NoSuchAlgorithmException, UnsupportedEncodingException{
+		//确定计算方法
+		MessageDigest mDigest = MessageDigest.getInstance("MD5");
+		BASE64Encoder base64 = new BASE64Encoder();
 		
+		//加密后的字符串
+		return base64.encode(mDigest.digest(str.getBytes("utf-8")));
+		//System.out.println(string);
+	}
+	@Test
+	public void testupdate() throws NoSuchAlgorithmException, UnsupportedEncodingException{
+		User user = userService.selectUserById(2);
+		user.setUpassword(testmd5(user.getUpassword()));
+		userService.updateByPrimaryKeySelective(user);
+		System.out.println(userService.selectUserById(1).getUpassword());
 	}
 
 }

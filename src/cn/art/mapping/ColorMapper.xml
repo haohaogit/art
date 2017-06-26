@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.art.dao.ColorMapper" >
+  <resultMap id="BaseResultMap" type="cn.art.model.Color" >
+    <id column="CID" property="cid" jdbcType="INTEGER" />
+    <result column="CBID" property="cbid" jdbcType="INTEGER" />
+    <result column="CDescription" property="cdescription" jdbcType="VARCHAR" />
+    <result column="CRGB" property="crgb" jdbcType="VARCHAR" />
+    <result column="CNum" property="cnum" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    CID, CBID, CDescription, CRGB, CNum
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from color_
+    where CID = #{cid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from color_
+    where CID = #{cid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.art.model.Color" >
+    insert into color_ (CID, CBID, CDescription, 
+      CRGB, CNum)
+    values (#{cid,jdbcType=INTEGER}, #{cbid,jdbcType=INTEGER}, #{cdescription,jdbcType=VARCHAR}, 
+      #{crgb,jdbcType=VARCHAR}, #{cnum,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.art.model.Color" >
+    insert into color_
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="cid != null" >
+        CID,
+      </if>
+      <if test="cbid != null" >
+        CBID,
+      </if>
+      <if test="cdescription != null" >
+        CDescription,
+      </if>
+      <if test="crgb != null" >
+        CRGB,
+      </if>
+      <if test="cnum != null" >
+        CNum,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="cid != null" >
+        #{cid,jdbcType=INTEGER},
+      </if>
+      <if test="cbid != null" >
+        #{cbid,jdbcType=INTEGER},
+      </if>
+      <if test="cdescription != null" >
+        #{cdescription,jdbcType=VARCHAR},
+      </if>
+      <if test="crgb != null" >
+        #{crgb,jdbcType=VARCHAR},
+      </if>
+      <if test="cnum != null" >
+        #{cnum,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.art.model.Color" >
+    update color_
+    <set >
+      <if test="cbid != null" >
+        CBID = #{cbid,jdbcType=INTEGER},
+      </if>
+      <if test="cdescription != null" >
+        CDescription = #{cdescription,jdbcType=VARCHAR},
+      </if>
+      <if test="crgb != null" >
+        CRGB = #{crgb,jdbcType=VARCHAR},
+      </if>
+      <if test="cnum != null" >
+        CNum = #{cnum,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where CID = #{cid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.art.model.Color" >
+    update color_
+    set CBID = #{cbid,jdbcType=INTEGER},
+      CDescription = #{cdescription,jdbcType=VARCHAR},
+      CRGB = #{crgb,jdbcType=VARCHAR},
+      CNum = #{cnum,jdbcType=VARCHAR}
+    where CID = #{cid,jdbcType=INTEGER}
+  </update>
+</mapper>

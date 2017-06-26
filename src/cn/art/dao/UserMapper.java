@@ -1,5 +1,7 @@
 package cn.art.dao;
 
+import java.util.List;
+
 import cn.art.model.User;
 
 public interface UserMapper {
@@ -10,6 +12,7 @@ public interface UserMapper {
     int insertSelective(User record);
 
     User selectByPrimaryKey(Integer uid);
+    List<User> selectByName(String uname);
 
     int updateByPrimaryKeySelective(User record);
 

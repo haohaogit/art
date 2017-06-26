@@ -13,8 +13,10 @@ public class loginController {
 	
 	@RequestMapping("customerLogin")
 	public String comtomlogin(HttpServletRequest request){
-		String account = (String) request.getAttribute("account");
-		String password = (String) request.getAttribute("password");
+		//request.get
+		String account = request.getParameter("account");
+		String password = request.getParameter("password");
+		
 		System.out.println(account+"  "+password);
 		if("111".equals(account)&&"222".equals(password)){
 			return "redirect:/html/corpus.do";

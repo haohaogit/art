@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.art.dao.CodeCaseMapper" >
+  <resultMap id="BaseResultMap" type="cn.art.model.CodeCase" >
+    <id column="CodeCaseID" property="codecaseid" jdbcType="INTEGER" />
+    <result column="CodeCaseName" property="codecasename" jdbcType="VARCHAR" />
+    <result column="CodeCaseType" property="codecasetype" jdbcType="INTEGER" />
+    <result column="CodeCaseData" property="codecasedata" jdbcType="VARCHAR" />
+    <result column="CodeCaseImg" property="codecaseimg" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    CodeCaseID, CodeCaseName, CodeCaseType, CodeCaseData, CodeCaseImg
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from codecase_
+    where CodeCaseID = #{codecaseid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from codecase_
+    where CodeCaseID = #{codecaseid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.art.model.CodeCase" >
+    insert into codecase_ (CodeCaseID, CodeCaseName, CodeCaseType, 
+      CodeCaseData, CodeCaseImg)
+    values (#{codecaseid,jdbcType=INTEGER}, #{codecasename,jdbcType=VARCHAR}, #{codecasetype,jdbcType=INTEGER}, 
+      #{codecasedata,jdbcType=VARCHAR}, #{codecaseimg,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.art.model.CodeCase" >
+    insert into codecase_
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="codecaseid != null" >
+        CodeCaseID,
+      </if>
+      <if test="codecasename != null" >
+        CodeCaseName,
+      </if>
+      <if test="codecasetype != null" >
+        CodeCaseType,
+      </if>
+      <if test="codecasedata != null" >
+        CodeCaseData,
+      </if>
+      <if test="codecaseimg != null" >
+        CodeCaseImg,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="codecaseid != null" >
+        #{codecaseid,jdbcType=INTEGER},
+      </if>
+      <if test="codecasename != null" >
+        #{codecasename,jdbcType=VARCHAR},
+      </if>
+      <if test="codecasetype != null" >
+        #{codecasetype,jdbcType=INTEGER},
+      </if>
+      <if test="codecasedata != null" >
+        #{codecasedata,jdbcType=VARCHAR},
+      </if>
+      <if test="codecaseimg != null" >
+        #{codecaseimg,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.art.model.CodeCase" >
+    update codecase_
+    <set >
+      <if test="codecasename != null" >
+        CodeCaseName = #{codecasename,jdbcType=VARCHAR},
+      </if>
+      <if test="codecasetype != null" >
+        CodeCaseType = #{codecasetype,jdbcType=INTEGER},
+      </if>
+      <if test="codecasedata != null" >
+        CodeCaseData = #{codecasedata,jdbcType=VARCHAR},
+      </if>
+      <if test="codecaseimg != null" >
+        CodeCaseImg = #{codecaseimg,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where CodeCaseID = #{codecaseid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.art.model.CodeCase" >
+    update codecase_
+    set CodeCaseName = #{codecasename,jdbcType=VARCHAR},
+      CodeCaseType = #{codecasetype,jdbcType=INTEGER},
+      CodeCaseData = #{codecasedata,jdbcType=VARCHAR},
+      CodeCaseImg = #{codecaseimg,jdbcType=VARCHAR}
+    where CodeCaseID = #{codecaseid,jdbcType=INTEGER}
+  </update>
+</mapper>

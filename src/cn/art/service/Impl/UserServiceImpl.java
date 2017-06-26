@@ -1,5 +1,7 @@
 package cn.art.service.Impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +25,21 @@ public class UserServiceImpl implements UserService {
 	public User selectUserById(int uid) {
 		// TODO Auto-generated method stub
 		return userMapper.selectByPrimaryKey(uid);
+	}
+	@Override
+	public List<User> selectUserByName(String uname) {
+		// TODO Auto-generated method stub
+		return userMapper.selectByName(uname);
+	}
+	@Override
+	public int updateByPrimaryKey(User record) {
+		// TODO Auto-generated method stub
+		return userMapper.updateByPrimaryKey(record);
+	}
+	@Override
+	public int updateByPrimaryKeySelective(User record) {
+		// TODO Auto-generated method stub
+		return userMapper.updateByPrimaryKeySelective(record);
 	}
 
 }
