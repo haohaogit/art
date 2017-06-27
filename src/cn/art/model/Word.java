@@ -15,6 +15,8 @@ public class Word {
 
     private Integer wcolorwarm;
 
+    private String wfirstchar;
+
     public Integer getWid() {
         return wid;
     }
@@ -69,5 +71,13 @@ public class Word {
 
     public void setWcolorwarm(Integer wcolorwarm) {
         this.wcolorwarm = wcolorwarm;
+    }
+
+    public String getWfirstchar() {
+        return wfirstchar;
+    }
+
+    public void setWfirstchar(String wfirstchar) {
+        this.wfirstchar = wfirstchar == null ? null : wfirstchar.trim();
     }
 }

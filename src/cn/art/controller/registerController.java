@@ -45,6 +45,7 @@ public class registerController {
 			e.printStackTrace();
 		}
 		int i = userService.insertSelective(user);
+		
 		System.out.println(i);
 		//HTML之间怎么传值
 		HttpSession session = request.getSession();
