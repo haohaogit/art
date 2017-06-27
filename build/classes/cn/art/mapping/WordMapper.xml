@@ -14,12 +14,22 @@
   <sql id="Base_Column_List" >
     WID, WWord, WBasic, WDetail, WSimilar, WOposite, WColorWarm, WFirstChar
   </sql>
+  
+  
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from word_
     where WID = #{wid,jdbcType=INTEGER}
   </select>
+  
+  <select id="selectByWFirstChar" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from word_
+    where WFirstChar = #{wfirstchar,jdbcType=VARCHAR}
+  </select>
+  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from word_
     where WID = #{wid,jdbcType=INTEGER}

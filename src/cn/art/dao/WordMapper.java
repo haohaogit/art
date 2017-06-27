@@ -1,5 +1,7 @@
 package cn.art.dao;
 
+import java.util.List;
+
 import cn.art.model.Word;
 
 public interface WordMapper {
@@ -10,6 +12,7 @@ public interface WordMapper {
     int insertSelective(Word record);
 
     Word selectByPrimaryKey(Integer wid);
+    List<Word> selectByWFirstChar(String wfirstchar);
 
     int updateByPrimaryKeySelective(Word record);
 
