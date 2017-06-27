@@ -47,10 +47,16 @@ public class testart {
 	}
 	@Test
 	public void testupdate() throws NoSuchAlgorithmException, UnsupportedEncodingException{
-		User user = userService.selectUserById(2);
+		User user = userService.selectUserById(3);
 		user.setUpassword(testmd5(user.getUpassword()));
 		userService.updateByPrimaryKeySelective(user);
 		System.out.println(userService.selectUserById(1).getUpassword());
+	}
+	@Test
+	public void testdelete() throws NoSuchAlgorithmException, UnsupportedEncodingException{
+		
+		userService.deleteByPrimaryKey(4);
+		System.out.println("删除成功");
 	}
 
 }

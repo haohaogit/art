@@ -11,5 +11,9 @@ public interface UserService {
 	public int updateByPrimaryKey(User record);
 	public int updateByPrimaryKeySelective(User record);
 	
+	public int insert(User record);
+	public int insertSelective(User record);
+	
+	public int deleteByPrimaryKey(Integer uid);
 
 }

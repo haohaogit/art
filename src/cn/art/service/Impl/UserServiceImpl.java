@@ -41,5 +41,20 @@ public class UserServiceImpl implements UserService {
 		// TODO Auto-generated method stub
 		return userMapper.updateByPrimaryKeySelective(record);
 	}
+	@Override
+	public int insert(User record) {
+		// TODO Auto-generated method stub
+		return userMapper.insert(record);
+	}
+	@Override
+	public int insertSelective(User record) {
+		// TODO Auto-generated method stub
+		return userMapper.insertSelective(record);
+	}
+	@Override
+	public int deleteByPrimaryKey(Integer uid) {
+		// TODO Auto-generated method stub
+		return userMapper.deleteByPrimaryKey(uid);
+	}
 
 }
