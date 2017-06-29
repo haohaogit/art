@@ -17,6 +17,8 @@ public class Word {
 
     private String wfirstchar;
 
+    private String wvocatype;
+
     public Integer getWid() {
         return wid;
     }
@@ -79,5 +81,13 @@ public class Word {
 
     public void setWfirstchar(String wfirstchar) {
         this.wfirstchar = wfirstchar == null ? null : wfirstchar.trim();
+    }
+
+    public String getWvocatype() {
+        return wvocatype;
+    }
+
+    public void setWvocatype(String wvocatype) {
+        this.wvocatype = wvocatype == null ? null : wvocatype.trim();
     }
 }

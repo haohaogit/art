@@ -47,10 +47,12 @@ public class loginController {
 				isRegister = true;
 			}
 		}
+		
 		if(isRegister){
 			
 			//HTML之间怎么传值
 			HttpSession session = request.getSession();
+			session.setAttribute("status", "200");
 			session.setAttribute("name", account);
 			return "redirect:/html/corpus.do";
 		}else{

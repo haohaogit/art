@@ -35,7 +35,10 @@
 	$("#theYacht2").fadeOut(0);
 	$("#theHanky2").fadeOut(0);
 	$("#theRange2").fadeOut(0);
-
+	
+	
+	$("#register").fadeOut(0);
+	
 	var now = "theInitial";
 	var nowLeft = "byInitial";
 	$("#byInitial").css("color", "blue");
@@ -162,6 +165,9 @@
 	}
 </script>
 <script type="text/javascript">
+
+
+
 	$(function($) {
 		//弹出登录
 		$("#loginBtn").hover(function() {
@@ -286,6 +292,14 @@
 					<a href="javascript:void(0)" id="loginBtn"><img
 						src="../images/vocabularys/generate/login.png"></a>${name}
 				</div>
+				
+				
+				<div id="username">
+					欢迎您，  ${account }
+				</div>
+				
+				
+				
 				<div id="register">
 					<a href="javascript:void(0)" id="registerBtn"><img
 						src="../images/vocabularys/generate/register.png"></a>

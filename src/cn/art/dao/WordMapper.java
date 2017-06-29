@@ -13,7 +13,8 @@ public interface WordMapper {
 
     Word selectByPrimaryKey(Integer wid);
     List<Word> selectByWFirstChar(String wfirstchar);
-
+    List<Word> selectByWVocaType(String wvocatype);
+    
     int updateByPrimaryKeySelective(Word record);
 
     int updateByPrimaryKey(Word record);

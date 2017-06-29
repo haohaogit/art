@@ -10,12 +10,11 @@
     <result column="WOposite" property="woposite" jdbcType="VARCHAR" />
     <result column="WColorWarm" property="wcolorwarm" jdbcType="INTEGER" />
     <result column="WFirstChar" property="wfirstchar" jdbcType="VARCHAR" />
+    <result column="WVocaType" property="wvocatype" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    WID, WWord, WBasic, WDetail, WSimilar, WOposite, WColorWarm, WFirstChar
+    WID, WWord, WBasic, WDetail, WSimilar, WOposite, WColorWarm, WFirstChar, WVocaType
   </sql>
-  
-  
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
@@ -30,6 +29,13 @@
     where WFirstChar = #{wfirstchar,jdbcType=VARCHAR}
   </select>
   
+  <select id="selectByWVocaType" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from word_
+    where WVocaType = #{wvocatype,jdbcType=VARCHAR}
+  </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from word_
     where WID = #{wid,jdbcType=INTEGER}
@@ -37,10 +43,12 @@
   <insert id="insert" parameterType="cn.art.model.Word" >
     insert into word_ (WID, WWord, WBasic, 
       WDetail, WSimilar, WOposite, 
-      WColorWarm, WFirstChar)
+      WColorWarm, WFirstChar, WVocaType
+      )
     values (#{wid,jdbcType=INTEGER}, #{wword,jdbcType=VARCHAR}, #{wbasic,jdbcType=VARCHAR}, 
       #{wdetail,jdbcType=VARCHAR}, #{wsimilar,jdbcType=VARCHAR}, #{woposite,jdbcType=VARCHAR}, 
-      #{wcolorwarm,jdbcType=INTEGER}, #{wfirstchar,jdbcType=VARCHAR})
+      #{wcolorwarm,jdbcType=INTEGER}, #{wfirstchar,jdbcType=VARCHAR}, #{wvocatype,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="cn.art.model.Word" >
     insert into word_
@@ -69,6 +77,9 @@
       <if test="wfirstchar != null" >
         WFirstChar,
       </if>
+      <if test="wvocatype != null" >
+        WVocaType,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="wid != null" >
@@ -94,6 +105,9 @@
       </if>
       <if test="wfirstchar != null" >
         #{wfirstchar,jdbcType=VARCHAR},
+      </if>
+      <if test="wvocatype != null" >
+        #{wvocatype,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -121,6 +135,9 @@
       <if test="wfirstchar != null" >
         WFirstChar = #{wfirstchar,jdbcType=VARCHAR},
       </if>
+      <if test="wvocatype != null" >
+        WVocaType = #{wvocatype,jdbcType=VARCHAR},
+      </if>
     </set>
     where WID = #{wid,jdbcType=INTEGER}
   </update>
@@ -132,7 +149,8 @@
       WSimilar = #{wsimilar,jdbcType=VARCHAR},
       WOposite = #{woposite,jdbcType=VARCHAR},
       WColorWarm = #{wcolorwarm,jdbcType=INTEGER},
-      WFirstChar = #{wfirstchar,jdbcType=VARCHAR}
+      WFirstChar = #{wfirstchar,jdbcType=VARCHAR},
+      WVocaType = #{wvocatype,jdbcType=VARCHAR}
     where WID = #{wid,jdbcType=INTEGER}
   </update>
 </mapper>

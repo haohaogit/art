@@ -13,7 +13,8 @@ public interface WordService {
 
     public Word selectByPrimaryKey(Integer wid);
     public List<Word> selectByWFirstChar(String wfirstchar);
-
+    public List<Word> selectByWVocaType(String wvocatype);
+    
     public int updateByPrimaryKeySelective(Word record);
 
     public int updateByPrimaryKey(Word record);

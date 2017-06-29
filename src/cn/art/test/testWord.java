@@ -1,5 +1,7 @@
 package cn.art.test;
 
+import java.util.List;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,8 +27,10 @@ public class testWord {
 	
 	@Test
 	public void testselect(){
-		Word word = wordService.selectByPrimaryKey(1);
-		System.out.println(word.getWbasic()+" "+word.getWdetail()+"  "+word.getWsimilar());
+		List<Word> words =  wordService.selectByWVocaType("优雅");
+		for(Word word:words){
+			System.out.println(word.getWbasic()+" "+word.getWfirstchar()+"  "+word.getWvocatype());
+		}
 	}
 
 }

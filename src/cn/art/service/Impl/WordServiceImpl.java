@@ -48,7 +48,7 @@ public class WordServiceImpl implements WordService {
 	@Override
 	public List<Word> selectByWFirstChar(String wfirstchar) {
 		// TODO Auto-generated method stub
-		return null;
+		return wordMapper.selectByWFirstChar(wfirstchar);
 	}
 
 	@Override
@@ -61,6 +61,11 @@ public class WordServiceImpl implements WordService {
 	public int updateByPrimaryKey(Word record) {
 		// TODO Auto-generated method stub
 		return wordMapper.updateByPrimaryKey(record);
+	}
+	@Override
+	public List<Word> selectByWVocaType(String wvocatype) {
+		// TODO Auto-generated method stub
+		return wordMapper.selectByWVocaType(wvocatype);
 	}
 
 }
