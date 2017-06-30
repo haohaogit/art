@@ -163,6 +163,7 @@
 	</script>
 </head>
 <body>
+aaaaaaaaaaaaaa
 	<div id="header">
 		<div id="logo">
 			<img src="images/first/homeLogo.png" />
@@ -170,7 +171,7 @@
 		<div id="navigation">
 			<ul>
 				<li><a><img src="images/first/navigationHome.png"></a></li>
-				<li><a href="html/corpus.html"><img
+				<li><a href="html/corpus.jsp"><img
 						src="images/first/navigationCorpus.png"></a></li>
 				<li><a href="html/facade.html"><img
 						src="images/first/navigationFacade.png"></a></li>
@@ -260,7 +261,7 @@
 			RESERVED</div>
 	</div>
 	<div id="LoginBox">
-		<form action="customerLogin.do" method="post"
+		<form action="customerLogin" method="post"
 			onSubmit="return loginCheck()">
 			<div class="rowTitle">
 				意象造型映射<a href="javascript:void(0)" title="关闭窗口" class="close_btn"

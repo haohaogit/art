@@ -17,7 +17,7 @@ import cn.art.util.MD5;
 
 
 @Controller
-@RequestMapping("/html")
+@RequestMapping("")
 public class loginController {
 	private UserService userService;
 	
@@ -30,7 +30,7 @@ public class loginController {
 	}
 	
 	
-	@RequestMapping("customerLogin")
+	@RequestMapping("html/customerLogin")
 	public String costomlogin(HttpServletRequest request) throws NoSuchAlgorithmException, UnsupportedEncodingException{
 		//request.get
 		boolean isRegister = false;
@@ -54,19 +54,19 @@ public class loginController {
 			HttpSession session = request.getSession();
 			session.setAttribute("status", "200");
 			session.setAttribute("name", account);
-			return "redirect:/html/corpus.do";
+			return "redirect:/user/corpus";
 		}else{
 			return "customerLogin";
 		}
 	}
-	@RequestMapping("corpus")
-	public String costomcorpus(HttpServletRequest request){
+	@RequestMapping("user/corpus")
+	public void costomcorpus(HttpServletRequest request){
 		//String name = "wangzhe";
     	//request.setAttribute("name",name);
     	HttpSession session = request.getSession();
     	String account = (String) session.getAttribute("name");
     	System.out.println(account);
-		return "corpus";
+		//return "corpus";
 	}
 
 }
