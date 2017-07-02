@@ -27,10 +27,17 @@ public class testWord {
 	
 	@Test
 	public void testselect(){
-		List<Word> words =  wordService.selectByWVocaType("优雅");
+		List<Word> words =  wordService.selectByWFirstChar("A");
 		for(Word word:words){
 			System.out.println(word.getWbasic()+" "+word.getWfirstchar()+"  "+word.getWvocatype());
 		}
+	}
+	@Test
+	public void testselect1(){
+		Word word =  wordService.selectByPrimaryKey(1);
+		
+	    System.out.println(word.getWbasic()+" "+word.getWfirstchar()+"  "+word.getWvocatype());
+		
 	}
 
 }
