@@ -5,11 +5,15 @@ public class Color {
 
     private Integer cbid;
 
+    private Integer tid;
+
     private String cdescription;
 
     private String crgb;
 
     private String cnum;
+
+    private String cfile;
 
     public Integer getCid() {
         return cid;
@@ -25,6 +29,14 @@ public class Color {
 
     public void setCbid(Integer cbid) {
         this.cbid = cbid;
+    }
+
+    public Integer getTid() {
+        return tid;
+    }
+
+    public void setTid(Integer tid) {
+        this.tid = tid;
     }
 
     public String getCdescription() {
@@ -49,5 +61,13 @@ public class Color {
 
     public void setCnum(String cnum) {
         this.cnum = cnum == null ? null : cnum.trim();
+    }
+
+    public String getCfile() {
+        return cfile;
+    }
+
+    public void setCfile(String cfile) {
+        this.cfile = cfile == null ? null : cfile.trim();
     }
 }

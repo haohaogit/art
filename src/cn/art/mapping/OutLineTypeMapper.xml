@@ -3,11 +3,11 @@
 <mapper namespace="cn.art.dao.OutLineTypeMapper" >
   <resultMap id="BaseResultMap" type="cn.art.model.OutLineType" >
     <id column="OTID" property="otid" jdbcType="INTEGER" />
-    <result column="OName" property="oname" jdbcType="VARCHAR" />
     <result column="TID" property="tid" jdbcType="INTEGER" />
+    <result column="OName" property="oname" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    OTID, OName, TID
+    OTID, TID, OName
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -20,9 +20,9 @@
     where OTID = #{otid,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="cn.art.model.OutLineType" >
-    insert into outlinetype_ (OTID, OName, TID
+    insert into outlinetype_ (OTID, TID, OName
       )
-    values (#{otid,jdbcType=INTEGER}, #{oname,jdbcType=VARCHAR}, #{tid,jdbcType=INTEGER}
+    values (#{otid,jdbcType=INTEGER}, #{tid,jdbcType=INTEGER}, #{oname,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="cn.art.model.OutLineType" >
@@ -31,41 +31,41 @@
       <if test="otid != null" >
         OTID,
       </if>
-      <if test="oname != null" >
-        OName,
-      </if>
       <if test="tid != null" >
         TID,
+      </if>
+      <if test="oname != null" >
+        OName,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="otid != null" >
         #{otid,jdbcType=INTEGER},
       </if>
-      <if test="oname != null" >
-        #{oname,jdbcType=VARCHAR},
-      </if>
       <if test="tid != null" >
         #{tid,jdbcType=INTEGER},
+      </if>
+      <if test="oname != null" >
+        #{oname,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="cn.art.model.OutLineType" >
     update outlinetype_
     <set >
-      <if test="oname != null" >
-        OName = #{oname,jdbcType=VARCHAR},
-      </if>
       <if test="tid != null" >
         TID = #{tid,jdbcType=INTEGER},
+      </if>
+      <if test="oname != null" >
+        OName = #{oname,jdbcType=VARCHAR},
       </if>
     </set>
     where OTID = #{otid,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="cn.art.model.OutLineType" >
     update outlinetype_
-    set OName = #{oname,jdbcType=VARCHAR},
-      TID = #{tid,jdbcType=INTEGER}
+    set TID = #{tid,jdbcType=INTEGER},
+      OName = #{oname,jdbcType=VARCHAR}
     where OTID = #{otid,jdbcType=INTEGER}
   </update>
 </mapper>

@@ -5,7 +5,7 @@ public class TextureType {
 
     private Integer tid;
 
-    private String tname;
+    private String ttname;
 
     public Integer getTtid() {
         return ttid;
@@ -23,11 +23,11 @@ public class TextureType {
         this.tid = tid;
     }
 
-    public String getTname() {
-        return tname;
+    public String getTtname() {
+        return ttname;
     }
 
-    public void setTname(String tname) {
-        this.tname = tname == null ? null : tname.trim();
+    public void setTtname(String ttname) {
+        this.ttname = ttname == null ? null : ttname.trim();
     }
 }

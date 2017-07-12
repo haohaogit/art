@@ -3,13 +3,14 @@
 <mapper namespace="cn.art.dao.ShapeMapper" >
   <resultMap id="BaseResultMap" type="cn.art.model.Shape" >
     <id column="ShapeID" property="shapeid" jdbcType="INTEGER" />
+    <result column="STID" property="stid" jdbcType="INTEGER" />
+    <result column="ShapeDescription" property="shapedescription" jdbcType="VARCHAR" />
     <result column="ShapeImg" property="shapeimg" jdbcType="VARCHAR" />
     <result column="ShapeFile" property="shapefile" jdbcType="VARCHAR" />
-    <result column="ShapeDescription" property="shapedescription" jdbcType="VARCHAR" />
     <result column="ShapeData" property="shapedata" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    ShapeID, ShapeImg, ShapeFile, ShapeDescription, ShapeData
+    ShapeID, STID, ShapeDescription, ShapeImg, ShapeFile, ShapeData
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -22,10 +23,12 @@
     where ShapeID = #{shapeid,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="cn.art.model.Shape" >
-    insert into shape_ (ShapeID, ShapeImg, ShapeFile, 
-      ShapeDescription, ShapeData)
-    values (#{shapeid,jdbcType=INTEGER}, #{shapeimg,jdbcType=VARCHAR}, #{shapefile,jdbcType=VARCHAR}, 
-      #{shapedescription,jdbcType=VARCHAR}, #{shapedata,jdbcType=VARCHAR})
+    insert into shape_ (ShapeID, STID, ShapeDescription, 
+      ShapeImg, ShapeFile, ShapeData
+      )
+    values (#{shapeid,jdbcType=INTEGER}, #{stid,jdbcType=INTEGER}, #{shapedescription,jdbcType=VARCHAR}, 
+      #{shapeimg,jdbcType=VARCHAR}, #{shapefile,jdbcType=VARCHAR}, #{shapedata,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="cn.art.model.Shape" >
     insert into shape_
@@ -33,14 +36,17 @@
       <if test="shapeid != null" >
         ShapeID,
       </if>
+      <if test="stid != null" >
+        STID,
+      </if>
+      <if test="shapedescription != null" >
+        ShapeDescription,
+      </if>
       <if test="shapeimg != null" >
         ShapeImg,
       </if>
       <if test="shapefile != null" >
         ShapeFile,
-      </if>
-      <if test="shapedescription != null" >
-        ShapeDescription,
       </if>
       <if test="shapedata != null" >
         ShapeData,
@@ -50,14 +56,17 @@
       <if test="shapeid != null" >
         #{shapeid,jdbcType=INTEGER},
       </if>
+      <if test="stid != null" >
+        #{stid,jdbcType=INTEGER},
+      </if>
+      <if test="shapedescription != null" >
+        #{shapedescription,jdbcType=VARCHAR},
+      </if>
       <if test="shapeimg != null" >
         #{shapeimg,jdbcType=VARCHAR},
       </if>
       <if test="shapefile != null" >
         #{shapefile,jdbcType=VARCHAR},
-      </if>
-      <if test="shapedescription != null" >
-        #{shapedescription,jdbcType=VARCHAR},
       </if>
       <if test="shapedata != null" >
         #{shapedata,jdbcType=VARCHAR},
@@ -67,14 +76,17 @@
   <update id="updateByPrimaryKeySelective" parameterType="cn.art.model.Shape" >
     update shape_
     <set >
+      <if test="stid != null" >
+        STID = #{stid,jdbcType=INTEGER},
+      </if>
+      <if test="shapedescription != null" >
+        ShapeDescription = #{shapedescription,jdbcType=VARCHAR},
+      </if>
       <if test="shapeimg != null" >
         ShapeImg = #{shapeimg,jdbcType=VARCHAR},
       </if>
       <if test="shapefile != null" >
         ShapeFile = #{shapefile,jdbcType=VARCHAR},
-      </if>
-      <if test="shapedescription != null" >
-        ShapeDescription = #{shapedescription,jdbcType=VARCHAR},
       </if>
       <if test="shapedata != null" >
         ShapeData = #{shapedata,jdbcType=VARCHAR},
@@ -84,9 +96,10 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="cn.art.model.Shape" >
     update shape_
-    set ShapeImg = #{shapeimg,jdbcType=VARCHAR},
-      ShapeFile = #{shapefile,jdbcType=VARCHAR},
+    set STID = #{stid,jdbcType=INTEGER},
       ShapeDescription = #{shapedescription,jdbcType=VARCHAR},
+      ShapeImg = #{shapeimg,jdbcType=VARCHAR},
+      ShapeFile = #{shapefile,jdbcType=VARCHAR},
       ShapeData = #{shapedata,jdbcType=VARCHAR}
     where ShapeID = #{shapeid,jdbcType=INTEGER}
   </update>

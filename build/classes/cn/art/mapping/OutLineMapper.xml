@@ -3,14 +3,19 @@
 <mapper namespace="cn.art.dao.OutLineMapper" >
   <resultMap id="BaseResultMap" type="cn.art.model.OutLine" >
     <id column="OID" property="oid" jdbcType="INTEGER" />
-    <result column="OImg" property="oimg" jdbcType="VARCHAR" />
-    <result column="OFile" property="ofile" jdbcType="VARCHAR" />
+    <result column="OTID" property="otid" jdbcType="INTEGER" />
+    <result column="TID" property="tid" jdbcType="INTEGER" />
     <result column="ODescription" property="odescription" jdbcType="VARCHAR" />
     <result column="OData" property="odata" jdbcType="VARCHAR" />
-    <result column="OType" property="otype" jdbcType="INTEGER" />
+    <result column="OFile" property="ofile" jdbcType="VARCHAR" />
+    <result column="OImg" property="oimg" jdbcType="VARCHAR" />
+    <result column="OImg1" property="oimg1" jdbcType="VARCHAR" />
+    <result column="OImg2" property="oimg2" jdbcType="VARCHAR" />
+    <result column="OImg3" property="oimg3" jdbcType="VARCHAR" />
+    <result column="OImg4" property="oimg4" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    OID, OImg, OFile, ODescription, OData, OType
+    OID, OTID, TID, ODescription, OData, OFile, OImg, OImg1, OImg2, OImg3, OImg4
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -23,12 +28,14 @@
     where OID = #{oid,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="cn.art.model.OutLine" >
-    insert into outline_ (OID, OImg, OFile, 
-      ODescription, OData, OType
-      )
-    values (#{oid,jdbcType=INTEGER}, #{oimg,jdbcType=VARCHAR}, #{ofile,jdbcType=VARCHAR}, 
-      #{odescription,jdbcType=VARCHAR}, #{odata,jdbcType=VARCHAR}, #{otype,jdbcType=INTEGER}
-      )
+    insert into outline_ (OID, OTID, TID, 
+      ODescription, OData, OFile, 
+      OImg, OImg1, OImg2, 
+      OImg3, OImg4)
+    values (#{oid,jdbcType=INTEGER}, #{otid,jdbcType=INTEGER}, #{tid,jdbcType=INTEGER}, 
+      #{odescription,jdbcType=VARCHAR}, #{odata,jdbcType=VARCHAR}, #{ofile,jdbcType=VARCHAR}, 
+      #{oimg,jdbcType=VARCHAR}, #{oimg1,jdbcType=VARCHAR}, #{oimg2,jdbcType=VARCHAR}, 
+      #{oimg3,jdbcType=VARCHAR}, #{oimg4,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="cn.art.model.OutLine" >
     insert into outline_
@@ -36,11 +43,11 @@
       <if test="oid != null" >
         OID,
       </if>
-      <if test="oimg != null" >
-        OImg,
+      <if test="otid != null" >
+        OTID,
       </if>
-      <if test="ofile != null" >
-        OFile,
+      <if test="tid != null" >
+        TID,
       </if>
       <if test="odescription != null" >
         ODescription,
@@ -48,19 +55,34 @@
       <if test="odata != null" >
         OData,
       </if>
-      <if test="otype != null" >
-        OType,
+      <if test="ofile != null" >
+        OFile,
+      </if>
+      <if test="oimg != null" >
+        OImg,
+      </if>
+      <if test="oimg1 != null" >
+        OImg1,
+      </if>
+      <if test="oimg2 != null" >
+        OImg2,
+      </if>
+      <if test="oimg3 != null" >
+        OImg3,
+      </if>
+      <if test="oimg4 != null" >
+        OImg4,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="oid != null" >
         #{oid,jdbcType=INTEGER},
       </if>
-      <if test="oimg != null" >
-        #{oimg,jdbcType=VARCHAR},
+      <if test="otid != null" >
+        #{otid,jdbcType=INTEGER},
       </if>
-      <if test="ofile != null" >
-        #{ofile,jdbcType=VARCHAR},
+      <if test="tid != null" >
+        #{tid,jdbcType=INTEGER},
       </if>
       <if test="odescription != null" >
         #{odescription,jdbcType=VARCHAR},
@@ -68,19 +90,34 @@
       <if test="odata != null" >
         #{odata,jdbcType=VARCHAR},
       </if>
-      <if test="otype != null" >
-        #{otype,jdbcType=INTEGER},
+      <if test="ofile != null" >
+        #{ofile,jdbcType=VARCHAR},
+      </if>
+      <if test="oimg != null" >
+        #{oimg,jdbcType=VARCHAR},
+      </if>
+      <if test="oimg1 != null" >
+        #{oimg1,jdbcType=VARCHAR},
+      </if>
+      <if test="oimg2 != null" >
+        #{oimg2,jdbcType=VARCHAR},
+      </if>
+      <if test="oimg3 != null" >
+        #{oimg3,jdbcType=VARCHAR},
+      </if>
+      <if test="oimg4 != null" >
+        #{oimg4,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="cn.art.model.OutLine" >
     update outline_
     <set >
-      <if test="oimg != null" >
-        OImg = #{oimg,jdbcType=VARCHAR},
+      <if test="otid != null" >
+        OTID = #{otid,jdbcType=INTEGER},
       </if>
-      <if test="ofile != null" >
-        OFile = #{ofile,jdbcType=VARCHAR},
+      <if test="tid != null" >
+        TID = #{tid,jdbcType=INTEGER},
       </if>
       <if test="odescription != null" >
         ODescription = #{odescription,jdbcType=VARCHAR},
@@ -88,19 +125,39 @@
       <if test="odata != null" >
         OData = #{odata,jdbcType=VARCHAR},
       </if>
-      <if test="otype != null" >
-        OType = #{otype,jdbcType=INTEGER},
+      <if test="ofile != null" >
+        OFile = #{ofile,jdbcType=VARCHAR},
+      </if>
+      <if test="oimg != null" >
+        OImg = #{oimg,jdbcType=VARCHAR},
+      </if>
+      <if test="oimg1 != null" >
+        OImg1 = #{oimg1,jdbcType=VARCHAR},
+      </if>
+      <if test="oimg2 != null" >
+        OImg2 = #{oimg2,jdbcType=VARCHAR},
+      </if>
+      <if test="oimg3 != null" >
+        OImg3 = #{oimg3,jdbcType=VARCHAR},
+      </if>
+      <if test="oimg4 != null" >
+        OImg4 = #{oimg4,jdbcType=VARCHAR},
       </if>
     </set>
     where OID = #{oid,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="cn.art.model.OutLine" >
     update outline_
-    set OImg = #{oimg,jdbcType=VARCHAR},
-      OFile = #{ofile,jdbcType=VARCHAR},
+    set OTID = #{otid,jdbcType=INTEGER},
+      TID = #{tid,jdbcType=INTEGER},
       ODescription = #{odescription,jdbcType=VARCHAR},
       OData = #{odata,jdbcType=VARCHAR},
-      OType = #{otype,jdbcType=INTEGER}
+      OFile = #{ofile,jdbcType=VARCHAR},
+      OImg = #{oimg,jdbcType=VARCHAR},
+      OImg1 = #{oimg1,jdbcType=VARCHAR},
+      OImg2 = #{oimg2,jdbcType=VARCHAR},
+      OImg3 = #{oimg3,jdbcType=VARCHAR},
+      OImg4 = #{oimg4,jdbcType=VARCHAR}
     where OID = #{oid,jdbcType=INTEGER}
   </update>
 </mapper>

@@ -3,11 +3,11 @@
 <mapper namespace="cn.art.dao.ShapeTypeMapper" >
   <resultMap id="BaseResultMap" type="cn.art.model.ShapeType" >
     <id column="STID" property="stid" jdbcType="INTEGER" />
-    <result column="STName" property="stname" jdbcType="VARCHAR" />
     <result column="TID" property="tid" jdbcType="INTEGER" />
+    <result column="STName" property="stname" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    STID, STName, TID
+    STID, TID, STName
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -20,9 +20,9 @@
     where STID = #{stid,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="cn.art.model.ShapeType" >
-    insert into shapetype_ (STID, STName, TID
+    insert into shapetype_ (STID, TID, STName
       )
-    values (#{stid,jdbcType=INTEGER}, #{stname,jdbcType=VARCHAR}, #{tid,jdbcType=INTEGER}
+    values (#{stid,jdbcType=INTEGER}, #{tid,jdbcType=INTEGER}, #{stname,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="cn.art.model.ShapeType" >
@@ -31,41 +31,41 @@
       <if test="stid != null" >
         STID,
       </if>
-      <if test="stname != null" >
-        STName,
-      </if>
       <if test="tid != null" >
         TID,
+      </if>
+      <if test="stname != null" >
+        STName,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="stid != null" >
         #{stid,jdbcType=INTEGER},
       </if>
-      <if test="stname != null" >
-        #{stname,jdbcType=VARCHAR},
-      </if>
       <if test="tid != null" >
         #{tid,jdbcType=INTEGER},
+      </if>
+      <if test="stname != null" >
+        #{stname,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="cn.art.model.ShapeType" >
     update shapetype_
     <set >
-      <if test="stname != null" >
-        STName = #{stname,jdbcType=VARCHAR},
-      </if>
       <if test="tid != null" >
         TID = #{tid,jdbcType=INTEGER},
+      </if>
+      <if test="stname != null" >
+        STName = #{stname,jdbcType=VARCHAR},
       </if>
     </set>
     where STID = #{stid,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="cn.art.model.ShapeType" >
     update shapetype_
-    set STName = #{stname,jdbcType=VARCHAR},
-      TID = #{tid,jdbcType=INTEGER}
+    set TID = #{tid,jdbcType=INTEGER},
+      STName = #{stname,jdbcType=VARCHAR}
     where STID = #{stid,jdbcType=INTEGER}
   </update>
 </mapper>

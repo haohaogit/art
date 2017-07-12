@@ -3,15 +3,25 @@ package cn.art.model;
 public class OutLine {
     private Integer oid;
 
-    private String oimg;
+    private Integer otid;
 
-    private String ofile;
+    private Integer tid;
 
     private String odescription;
 
     private String odata;
 
-    private Integer otype;
+    private String ofile;
+
+    private String oimg;
+
+    private String oimg1;
+
+    private String oimg2;
+
+    private String oimg3;
+
+    private String oimg4;
 
     public Integer getOid() {
         return oid;
@@ -21,20 +31,20 @@ public class OutLine {
         this.oid = oid;
     }
 
-    public String getOimg() {
-        return oimg;
+    public Integer getOtid() {
+        return otid;
     }
 
-    public void setOimg(String oimg) {
-        this.oimg = oimg == null ? null : oimg.trim();
+    public void setOtid(Integer otid) {
+        this.otid = otid;
     }
 
-    public String getOfile() {
-        return ofile;
+    public Integer getTid() {
+        return tid;
     }
 
-    public void setOfile(String ofile) {
-        this.ofile = ofile == null ? null : ofile.trim();
+    public void setTid(Integer tid) {
+        this.tid = tid;
     }
 
     public String getOdescription() {
@@ -53,11 +63,51 @@ public class OutLine {
         this.odata = odata == null ? null : odata.trim();
     }
 
-    public Integer getOtype() {
-        return otype;
+    public String getOfile() {
+        return ofile;
     }
 
-    public void setOtype(Integer otype) {
-        this.otype = otype;
+    public void setOfile(String ofile) {
+        this.ofile = ofile == null ? null : ofile.trim();
+    }
+
+    public String getOimg() {
+        return oimg;
+    }
+
+    public void setOimg(String oimg) {
+        this.oimg = oimg == null ? null : oimg.trim();
+    }
+
+    public String getOimg1() {
+        return oimg1;
+    }
+
+    public void setOimg1(String oimg1) {
+        this.oimg1 = oimg1 == null ? null : oimg1.trim();
+    }
+
+    public String getOimg2() {
+        return oimg2;
+    }
+
+    public void setOimg2(String oimg2) {
+        this.oimg2 = oimg2 == null ? null : oimg2.trim();
+    }
+
+    public String getOimg3() {
+        return oimg3;
+    }
+
+    public void setOimg3(String oimg3) {
+        this.oimg3 = oimg3 == null ? null : oimg3.trim();
+    }
+
+    public String getOimg4() {
+        return oimg4;
+    }
+
+    public void setOimg4(String oimg4) {
+        this.oimg4 = oimg4 == null ? null : oimg4.trim();
     }
 }

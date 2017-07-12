@@ -12,6 +12,7 @@ public interface WordMapper {
     int insertSelective(Word record);
 
     Word selectByPrimaryKey(Integer wid);
+    
     List<Word> selectByWFirstChar(String wfirstchar);
     List<Word> selectByWVocaType(String wvocatype);
     

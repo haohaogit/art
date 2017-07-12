@@ -4,12 +4,14 @@
   <resultMap id="BaseResultMap" type="cn.art.model.Color" >
     <id column="CID" property="cid" jdbcType="INTEGER" />
     <result column="CBID" property="cbid" jdbcType="INTEGER" />
+    <result column="TID" property="tid" jdbcType="INTEGER" />
     <result column="CDescription" property="cdescription" jdbcType="VARCHAR" />
     <result column="CRGB" property="crgb" jdbcType="VARCHAR" />
     <result column="CNum" property="cnum" jdbcType="VARCHAR" />
+    <result column="CFile" property="cfile" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    CID, CBID, CDescription, CRGB, CNum
+    CID, CBID, TID, CDescription, CRGB, CNum, CFile
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -22,10 +24,12 @@
     where CID = #{cid,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="cn.art.model.Color" >
-    insert into color_ (CID, CBID, CDescription, 
-      CRGB, CNum)
-    values (#{cid,jdbcType=INTEGER}, #{cbid,jdbcType=INTEGER}, #{cdescription,jdbcType=VARCHAR}, 
-      #{crgb,jdbcType=VARCHAR}, #{cnum,jdbcType=VARCHAR})
+    insert into color_ (CID, CBID, TID, 
+      CDescription, CRGB, CNum, 
+      CFile)
+    values (#{cid,jdbcType=INTEGER}, #{cbid,jdbcType=INTEGER}, #{tid,jdbcType=INTEGER}, 
+      #{cdescription,jdbcType=VARCHAR}, #{crgb,jdbcType=VARCHAR}, #{cnum,jdbcType=VARCHAR}, 
+      #{cfile,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="cn.art.model.Color" >
     insert into color_
@@ -36,6 +40,9 @@
       <if test="cbid != null" >
         CBID,
       </if>
+      <if test="tid != null" >
+        TID,
+      </if>
       <if test="cdescription != null" >
         CDescription,
       </if>
@@ -45,6 +52,9 @@
       <if test="cnum != null" >
         CNum,
       </if>
+      <if test="cfile != null" >
+        CFile,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="cid != null" >
@@ -52,6 +62,9 @@
       </if>
       <if test="cbid != null" >
         #{cbid,jdbcType=INTEGER},
+      </if>
+      <if test="tid != null" >
+        #{tid,jdbcType=INTEGER},
       </if>
       <if test="cdescription != null" >
         #{cdescription,jdbcType=VARCHAR},
@@ -62,6 +75,9 @@
       <if test="cnum != null" >
         #{cnum,jdbcType=VARCHAR},
       </if>
+      <if test="cfile != null" >
+        #{cfile,jdbcType=VARCHAR},
+      </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="cn.art.model.Color" >
@@ -69,6 +85,9 @@
     <set >
       <if test="cbid != null" >
         CBID = #{cbid,jdbcType=INTEGER},
+      </if>
+      <if test="tid != null" >
+        TID = #{tid,jdbcType=INTEGER},
       </if>
       <if test="cdescription != null" >
         CDescription = #{cdescription,jdbcType=VARCHAR},
@@ -79,15 +98,20 @@
       <if test="cnum != null" >
         CNum = #{cnum,jdbcType=VARCHAR},
       </if>
+      <if test="cfile != null" >
+        CFile = #{cfile,jdbcType=VARCHAR},
+      </if>
     </set>
     where CID = #{cid,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="cn.art.model.Color" >
     update color_
     set CBID = #{cbid,jdbcType=INTEGER},
+      TID = #{tid,jdbcType=INTEGER},
       CDescription = #{cdescription,jdbcType=VARCHAR},
       CRGB = #{crgb,jdbcType=VARCHAR},
-      CNum = #{cnum,jdbcType=VARCHAR}
+      CNum = #{cnum,jdbcType=VARCHAR},
+      CFile = #{cfile,jdbcType=VARCHAR}
     where CID = #{cid,jdbcType=INTEGER}
   </update>
 </mapper>

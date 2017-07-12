@@ -3,9 +3,9 @@ package cn.art.model;
 public class ShapeType {
     private Integer stid;
 
-    private String stname;
-
     private Integer tid;
+
+    private String stname;
 
     public Integer getStid() {
         return stid;
@@ -15,19 +15,19 @@ public class ShapeType {
         this.stid = stid;
     }
 
-    public String getStname() {
-        return stname;
-    }
-
-    public void setStname(String stname) {
-        this.stname = stname == null ? null : stname.trim();
-    }
-
     public Integer getTid() {
         return tid;
     }
 
     public void setTid(Integer tid) {
         this.tid = tid;
+    }
+
+    public String getStname() {
+        return stname;
+    }
+
+    public void setStname(String stname) {
+        this.stname = stname == null ? null : stname.trim();
     }
 }

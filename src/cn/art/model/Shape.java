@@ -3,11 +3,13 @@ package cn.art.model;
 public class Shape {
     private Integer shapeid;
 
+    private Integer stid;
+
+    private String shapedescription;
+
     private String shapeimg;
 
     private String shapefile;
-
-    private String shapedescription;
 
     private String shapedata;
 
@@ -17,6 +19,22 @@ public class Shape {
 
     public void setShapeid(Integer shapeid) {
         this.shapeid = shapeid;
+    }
+
+    public Integer getStid() {
+        return stid;
+    }
+
+    public void setStid(Integer stid) {
+        this.stid = stid;
+    }
+
+    public String getShapedescription() {
+        return shapedescription;
+    }
+
+    public void setShapedescription(String shapedescription) {
+        this.shapedescription = shapedescription == null ? null : shapedescription.trim();
     }
 
     public String getShapeimg() {
@@ -33,14 +51,6 @@ public class Shape {
 
     public void setShapefile(String shapefile) {
         this.shapefile = shapefile == null ? null : shapefile.trim();
-    }
-
-    public String getShapedescription() {
-        return shapedescription;
-    }
-
-    public void setShapedescription(String shapedescription) {
-        this.shapedescription = shapedescription == null ? null : shapedescription.trim();
     }
 
     public String getShapedata() {

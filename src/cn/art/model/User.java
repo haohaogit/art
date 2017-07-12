@@ -9,6 +9,8 @@ public class User {
 
     private Byte uprivilege;
 
+    private String uemail;
+
     public Integer getUid() {
         return uid;
     }
@@ -39,5 +41,13 @@ public class User {
 
     public void setUprivilege(Byte uprivilege) {
         this.uprivilege = uprivilege;
+    }
+
+    public String getUemail() {
+        return uemail;
+    }
+
+    public void setUemail(String uemail) {
+        this.uemail = uemail == null ? null : uemail.trim();
     }
 }

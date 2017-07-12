@@ -1,28 +1,48 @@
 package cn.art.model;
 
 public class BottomCase {
-    private Integer caseid;
+    private Integer bcid;
+
+    private Integer bctid;
+
+    private String tid;
 
     private String casename;
 
     private String casebrand;
 
-    private Integer stid;
-
-    private Integer pbid;
-
-    private Integer cbid;
-
-    private Integer textureid;
-
     private String caseimg;
 
-    public Integer getCaseid() {
-        return caseid;
+    private String caseimg1;
+
+    private String caseimg2;
+
+    private String caseimg3;
+
+    private String caseimg4;
+
+    public Integer getBcid() {
+        return bcid;
     }
 
-    public void setCaseid(Integer caseid) {
-        this.caseid = caseid;
+    public void setBcid(Integer bcid) {
+        this.bcid = bcid;
+    }
+
+    public Integer getBctid() {
+        return bctid;
+    }
+
+    public void setBctid(Integer bctid) {
+        this.bctid = bctid;
+    }
+
+    public String getTid() {
+        return tid;
+    }
+
+    public void setTid(String tid) {
+        this.tid = tid == null ? null : tid.trim();
     }
 
     public String getCasename() {
@@ -41,43 +61,43 @@ public class BottomCase {
         this.casebrand = casebrand == null ? null : casebrand.trim();
     }
 
-    public Integer getStid() {
-        return stid;
-    }
-
-    public void setStid(Integer stid) {
-        this.stid = stid;
-    }
-
-    public Integer getPbid() {
-        return pbid;
-    }
-
-    public void setPbid(Integer pbid) {
-        this.pbid = pbid;
-    }
-
-    public Integer getCbid() {
-        return cbid;
-    }
-
-    public void setCbid(Integer cbid) {
-        this.cbid = cbid;
-    }
-
-    public Integer getTextureid() {
-        return textureid;
-    }
-
-    public void setTextureid(Integer textureid) {
-        this.textureid = textureid;
-    }
-
     public String getCaseimg() {
         return caseimg;
     }
 
     public void setCaseimg(String caseimg) {
         this.caseimg = caseimg == null ? null : caseimg.trim();
+    }
+
+    public String getCaseimg1() {
+        return caseimg1;
+    }
+
+    public void setCaseimg1(String caseimg1) {
+        this.caseimg1 = caseimg1 == null ? null : caseimg1.trim();
+    }
+
+    public String getCaseimg2() {
+        return caseimg2;
+    }
+
+    public void setCaseimg2(String caseimg2) {
+        this.caseimg2 = caseimg2 == null ? null : caseimg2.trim();
+    }
+
+    public String getCaseimg3() {
+        return caseimg3;
+    }
+
+    public void setCaseimg3(String caseimg3) {
+        this.caseimg3 = caseimg3 == null ? null : caseimg3.trim();
+    }
+
+    public String getCaseimg4() {
+        return caseimg4;
+    }
+
+    public void setCaseimg4(String caseimg4) {
+        this.caseimg4 = caseimg4 == null ? null : caseimg4.trim();
     }
 }
