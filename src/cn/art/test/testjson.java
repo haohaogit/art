@@ -7,11 +7,9 @@ import java.util.Map;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.object.UpdatableSqlQuery;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import cn.art.model.User;
 import cn.art.model.Word;
 import cn.art.service.UserService;
 import cn.art.service.WordService;
@@ -39,11 +37,11 @@ public class testjson {
 	}
 	@Test
 	public void bean2json() {
-		//Word word = wordservice.selectByPrimaryKey(1);
-		User user = userService.selectUserById(1);
+		Word word = wordservice.selectByPrimaryKey(1);
+		//User user = userService.selectUserById(1);
 		JsonConvert jsonConvert = new JsonConvert();
 		//System.out.println(word.getWbasic());
-		System.out.println(jsonConvert.Bean2Json(user));
+		System.out.println(jsonConvert.Bean2Json(word));
 	}
 	@Test
 	public void json2bean() {

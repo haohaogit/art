@@ -36,6 +36,16 @@ public class testart {
 			System.out.println(user2.getUname()+"  "+user2.getUpassword());
 		}
 	}
+	
+	@Test
+	public void testManager(){
+		//User user = userService.selectUserById(2);
+		List<User> user = userService.selectManagerByName("222");
+		for (User user2 : user) {
+			System.out.println(user2.getUname()+"  "+user2.getUpassword());
+		}
+	}
+	
 	public String testmd5(String str) throws NoSuchAlgorithmException, UnsupportedEncodingException{
 		//确定计算方法
 		MessageDigest mDigest = MessageDigest.getInstance("MD5");

@@ -295,7 +295,7 @@
 				
 				
 				<div id="username">
-					欢迎您，  ${account }
+					欢迎您，  ${account }${status }
 				</div>
 				
 				

@@ -56,5 +56,10 @@ public class UserServiceImpl implements UserService {
 		// TODO Auto-generated method stub
 		return userMapper.deleteByPrimaryKey(uid);
 	}
+	@Override
+	public List<User> selectManagerByName(String uname) {
+		// TODO Auto-generated method stub
+		return userMapper.selectByName1(uname);
+	}
 
 }
