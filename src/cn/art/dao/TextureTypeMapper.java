@@ -1,5 +1,7 @@
 package cn.art.dao;
 
+import java.util.List;
+
 import cn.art.model.TextureType;
 
 public interface TextureTypeMapper {
@@ -10,6 +12,7 @@ public interface TextureTypeMapper {
     int insertSelective(TextureType record);
 
     TextureType selectByPrimaryKey(Integer ttid);
+    List<TextureType> selectByTID(Integer tid);
 
     int updateByPrimaryKeySelective(TextureType record);
 

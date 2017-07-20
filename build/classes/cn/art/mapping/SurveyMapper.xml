@@ -22,6 +22,14 @@
     from survey_
     where SID = #{sid,jdbcType=INTEGER}
   </select>
+  
+  <select id="selectByTID" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from survey_
+    where TID = #{tid,jdbcType=INTEGER}
+  </select>
+  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from survey_
     where SID = #{sid,jdbcType=INTEGER}
@@ -139,4 +147,12 @@
       Ratio = #{ratio,jdbcType=VARCHAR}
     where SID = #{sid,jdbcType=INTEGER}
   </update>
+  
+  <update id="updateOnlyCA" parameterType="cn.art.util.pojo.surveyCA" >
+    update survey_
+    set ChooseSurvey = #{choosesurvey,jdbcType=VARCHAR},
+      Algorithms = #{algorithms,jdbcType=VARCHAR},
+    where TID = #{tid,jdbcType=INTEGER}
+  </update>
+  
 </mapper>

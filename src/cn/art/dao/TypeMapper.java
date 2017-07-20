@@ -1,6 +1,9 @@
 package cn.art.dao;
 
+import java.util.List;
+
 import cn.art.model.Type;
+import cn.art.util.pojo.typeIdName;
 
 public interface TypeMapper {
     int deleteByPrimaryKey(Integer tid);
@@ -10,7 +13,10 @@ public interface TypeMapper {
     int insertSelective(Type record);
 
     Type selectByPrimaryKey(Integer tid);
-
+    List<Type> selectAll();
+    
+    List<typeIdName> selectAllOnlyIdandName();
+    
     int updateByPrimaryKeySelective(Type record);
 
     int updateByPrimaryKey(Type record);

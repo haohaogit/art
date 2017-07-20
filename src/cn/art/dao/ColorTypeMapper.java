@@ -1,5 +1,7 @@
 package cn.art.dao;
 
+import java.util.List;
+
 import cn.art.model.ColorType;
 
 public interface ColorTypeMapper {
@@ -10,6 +12,8 @@ public interface ColorTypeMapper {
     int insertSelective(ColorType record);
 
     ColorType selectByPrimaryKey(Integer cbid);
+    List<ColorType> selectByTID(Integer tid);
+    
 
     int updateByPrimaryKeySelective(ColorType record);
 

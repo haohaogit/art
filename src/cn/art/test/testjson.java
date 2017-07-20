@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import cn.art.model.User;
 import cn.art.model.Word;
 import cn.art.service.UserService;
 import cn.art.service.WordService;
@@ -55,8 +56,9 @@ public class testjson {
 	@Test
 	public void list2json() {
 		JsonConvert jsonConvert = new JsonConvert();
-		List<Word> lists = wordservice.selectByWFirstChar("A");
-		System.out.println(jsonConvert.list2json(lists));
+		//List<Word> lists = wordservice.selectByWFirstChar("A");
+		List<User> lists1 = userService.selectUserByName("222");
+		System.out.println(jsonConvert.list2json(lists1));
 	}
 	@Test
 	public void json2list() {

@@ -1,6 +1,9 @@
 package cn.art.dao;
 
+import java.util.List;
+
 import cn.art.model.Survey;
+import cn.art.util.pojo.surveyCA;
 
 public interface SurveyMapper {
     int deleteByPrimaryKey(Integer sid);
@@ -10,8 +13,11 @@ public interface SurveyMapper {
     int insertSelective(Survey record);
 
     Survey selectByPrimaryKey(Integer sid);
+    List<Survey> selectByTID(Integer tid);
 
     int updateByPrimaryKeySelective(Survey record);
 
     int updateByPrimaryKey(Survey record);
+    
+    int updateOnlyCA(surveyCA record);
 }

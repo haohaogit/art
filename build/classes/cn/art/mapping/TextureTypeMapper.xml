@@ -15,6 +15,14 @@
     from texturetype_
     where TTID = #{ttid,jdbcType=INTEGER}
   </select>
+  
+  <select id="selectByTID" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from texturetype_
+    where TID = #{tid,jdbcType=INTEGER}
+  </select>
+  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from texturetype_
     where TTID = #{ttid,jdbcType=INTEGER}
