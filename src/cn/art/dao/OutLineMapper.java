@@ -1,5 +1,7 @@
 package cn.art.dao;
 
+import java.util.List;
+
 import cn.art.model.OutLine;
 
 public interface OutLineMapper {
@@ -10,6 +12,7 @@ public interface OutLineMapper {
     int insertSelective(OutLine record);
 
     OutLine selectByPrimaryKey(Integer oid);
+    List<OutLine> selectByTIDandOTID(Integer oid,Integer otid);
 
     int updateByPrimaryKeySelective(OutLine record);
 

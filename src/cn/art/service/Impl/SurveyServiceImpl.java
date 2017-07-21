@@ -62,7 +62,12 @@ public class SurveyServiceImpl implements SurveyService {
 		return surveyMapper.updateByPrimaryKey(record);
 	}
 	@Override
-	public int updateOnlyCA(surveyCA record) {
+	public int updateOnlyCA1(surveyCA record) {
+		// TODO Auto-generated method stub
+		return surveyMapper.updateOnlyCA1(record);
+	}
+	@Override
+	public int updateOnlyCA(Survey record) {
 		// TODO Auto-generated method stub
 		return surveyMapper.updateOnlyCA(record);
 	}

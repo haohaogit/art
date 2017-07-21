@@ -18,6 +18,8 @@ public interface SurveyService {
     int updateByPrimaryKeySelective(Survey record);
 
     int updateByPrimaryKey(Survey record);
-    int updateOnlyCA(surveyCA record);
+    int updateOnlyCA(Survey record);
+    int updateOnlyCA1(surveyCA record);
+    
 
 }

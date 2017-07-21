@@ -43,6 +43,13 @@
     from type_
   </select>
   
+  <select id="selectAllByName" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from type_
+    where TName = #{tname,jdbcType=VARCHAR}
+  </select>
+  
   <select id="selectAllOnlyIdandName" resultMap="BaseResultMapOnlyIdandName">
     select 
     <include refid="Base_Column_List1" />

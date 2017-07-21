@@ -41,5 +41,12 @@ public class testType {
 			System.out.println(type.getTid()+" "+type.getTname());
 		}
 	}
+	@Test
+	public void typeupdateByselective(){
+		Type type = new Type();
+		type.setTid(2);
+		type.setTtiaozheng("9579");
+		int isok = typeMapper.updateByPrimaryKeySelective(type);
+	}
 
 }

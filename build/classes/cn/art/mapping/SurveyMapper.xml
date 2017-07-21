@@ -148,10 +148,17 @@
     where SID = #{sid,jdbcType=INTEGER}
   </update>
   
-  <update id="updateOnlyCA" parameterType="cn.art.util.pojo.surveyCA" >
+  <update id="updateOnlyCA" parameterType="cn.art.model.Survey" >
     update survey_
     set ChooseSurvey = #{choosesurvey,jdbcType=VARCHAR},
-      Algorithms = #{algorithms,jdbcType=VARCHAR},
+      Algorithms = #{algorithms,jdbcType=VARCHAR}
+    where TID = #{tid,jdbcType=INTEGER}
+  </update>
+  
+  <update id="updateOnlyCA1" parameterType="cn.art.util.pojo.surveyCA" >
+    update survey_
+    set ChooseSurvey = #{choosesurvey,jdbcType=VARCHAR},
+      Algorithms = #{algorithms,jdbcType=VARCHAR}
     where TID = #{tid,jdbcType=INTEGER}
   </update>
   

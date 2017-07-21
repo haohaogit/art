@@ -19,5 +19,6 @@ public interface SurveyMapper {
 
     int updateByPrimaryKey(Survey record);
     
-    int updateOnlyCA(surveyCA record);
+    int updateOnlyCA1(surveyCA record);
+    int updateOnlyCA(Survey record);
 }

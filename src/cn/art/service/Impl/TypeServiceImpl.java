@@ -59,5 +59,10 @@ public class TypeServiceImpl implements TypeService {
 		// TODO Auto-generated method stub
 		return typeMapper.selectAll();
 	}
+	@Override
+	public Type selectAllByName(String tname) {
+		// TODO Auto-generated method stub
+		return typeMapper.selectAllByName(tname);
+	}
 
 }
