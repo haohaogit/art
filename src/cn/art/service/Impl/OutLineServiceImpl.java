@@ -1,6 +1,7 @@
 package cn.art.service.Impl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -43,11 +44,7 @@ public class OutLineServiceImpl implements OutLineService {
 		return outLineMapper.selectByPrimaryKey(oid);
 	}
 
-	@Override
-	public List<OutLine> selectByTIDandOTID(Integer oid, Integer otid) {
-		// TODO Auto-generated method stub
-		return outLineMapper.selectByTIDandOTID(oid, otid);
-	}
+	
 
 	@Override
 	public int updateByPrimaryKeySelective(OutLine record) {
@@ -59,6 +56,11 @@ public class OutLineServiceImpl implements OutLineService {
 	public int updateByPrimaryKey(OutLine record) {
 		// TODO Auto-generated method stub
 		return outLineMapper.updateByPrimaryKey(record);
+	}
+	@Override
+	public List<OutLine> selectByTIDandOTID(Map<String, Integer> map) {
+		// TODO Auto-generated method stub
+		return outLineMapper.selectByTIDandOTID(map);
 	}
 
 }
