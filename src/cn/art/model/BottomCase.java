@@ -5,7 +5,7 @@ public class BottomCase {
 
     private Integer bctid;
 
-    private String tid;
+    private Integer tid;
 
     private String casename;
 
@@ -37,12 +37,12 @@ public class BottomCase {
         this.bctid = bctid;
     }
 
-    public String getTid() {
+    public Integer getTid() {
         return tid;
     }
 
-    public void setTid(String tid) {
-        this.tid = tid == null ? null : tid.trim();
+    public void setTid(Integer tid) {
+        this.tid = tid;
     }
 
     public String getCasename() {

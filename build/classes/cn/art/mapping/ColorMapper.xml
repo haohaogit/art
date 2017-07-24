@@ -27,6 +27,13 @@
     where TID = #{tid,jdbcType=INTEGER}
   </select>
   
+   <select id="selectByTIDandCBID" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    select 
+    <include refid="Base_Column_List" />
+    from color_
+    where TID = #{tid,jdbcType=INTEGER} and  CBID = #{cbid,jdbcType=INTEGER}
+  </select>
+  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from color_
     where CID = #{cid,jdbcType=INTEGER}

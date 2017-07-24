@@ -46,7 +46,7 @@ public class testjson {
 	}
 	@Test
 	public void json2bean() {
-		String jsonstr = "{\"wsimilar\":\"悠闲 安定 安适 安好 安详 清静 安逸 稳重 安详 平和 和缓 安闲 平宁 平安 宁静 安全 安静 安清 镇静 幽静 静谧 稳定 清闲 平静 承平 安乐 安谧 从容 自在 舒适 太平 寂静 冷静 和平 安稳 安然\",\"wid\":1,\"wvocatype\":\"大气\",\"wbasic\":\"1.秩序正常，没有骚扰；2.心情安定、平静。\",\"wcolorwarm\":1,\"wword\":\"安宁\",\"wdetail\":\"1.安定，太平。\",\"wfirstchar\":\"A\",\"woposite\":\"混乱 纷乱 烦躁 烦恼 动乱 骚扰 烦扰 动荡 烦闷 纷扰\"}";
+		String jsonstr = "{\"wsimilar\":\"悠闲 安定 安适 安好 安详 清静 安逸 稳重 安详 平和 和缓 安闲 平宁 平安 宁静 安全 安静 安清 镇静 幽静 静谧 稳定 清闲 平静 承平 安乐 安谧 从容 自在 舒适 太平 寂静 冷静 和平 安稳 安然\",\"wid\":5,\"wvocatype\":\"大气\",\"wbasic\":\"1.秩序正常，没有骚扰；2.心情安定、平静。\",\"wcolorwarm\":1,\"wword\":\"安宁\",\"wdetail\":\"1.安定，太平。\",\"wfirstchar\":\"A\",\"woposite\":\"混乱 纷乱 烦躁 烦恼 动乱 骚扰 烦扰 动荡 烦闷 纷扰\"}";
 		JsonConvert jsonConvert = new JsonConvert();
 		Word word = jsonConvert.Json2Bean(jsonstr);
 		//System.out.println(word.getWbasic());
@@ -62,7 +62,7 @@ public class testjson {
 	}
 	@Test
 	public void json2list() {
-		String  jsonstr= "[{\"wsimilar\":\"悠闲 安定 安适 安好 安详 清静 安逸 稳重 安详 平和 和缓 安闲 平宁 平安 宁静 安全 安静 安清 镇静 幽静 静谧 稳定 清闲 平静 承平 安乐 安谧 从容 自在 舒适 太平 寂静 冷静 和平 安稳 安然\",\"wid\":1,\"wvocatype\":\"大气\",\"wbasic\":\"1.秩序正常，没有骚扰；2.心情安定、平静。\",\"wcolorwarm\":1,\"wword\":\"安宁\",\"wdetail\":\"1.安定，太平。\",\"wfirstchar\":\"A\",\"woposite\":\"混乱 纷乱 烦躁 烦恼 动乱 骚扰 烦扰 动荡 烦闷 纷扰\"},{\"wsimilar\":\"安定 稳定\",\"wid\":2,\"wvocatype\":\"欧亚\",\"wbasic\":\"1.秩序正常，没有骚扰\",\"wcolorwarm\":1,\"wword\":\"安稳\",\"wdetail\":\"1.安定，太平。\",\"wfirstchar\":\"A\",\"woposite\":\"晃动 动荡\"},{\"wsimilar\":\"清净 安定\",\"wid\":3,\"wvocatype\":\"优雅\",\"wbasic\":\"1.秩序正常，没有骚扰\",\"wcolorwarm\":1,\"wword\":\"安静\",\"wdetail\":\"1.安定，太平。\",\"wfirstchar\":\"A\",\"woposite\":\"喧哗 烦躁\"}]";
+		String  jsonstr= "[{\"wsimilar\":\"悠闲 安定 安适 安好 安详 清静 安逸 稳重 安详 平和 和缓 安闲 平宁 平安 宁静 安全 安静 安清 镇静 幽静 静谧 稳定 清闲 平静 承平 安乐 安谧 从容 自在 舒适 太平 寂静 冷静 和平 安稳 安然\",\"wid\":1,\"wvocatype\":\"大气\",\"wbasic\":\"1.秩序正常，没有骚扰；2.心情安定、平静。\",\"wcolorwarm\":1,\"wword\":\"安宁\",\"wdetail\":\"1.安定，太平。\",\"wfirstchar\":\"A\",\"woposite\":\"混乱 纷乱 烦躁 烦恼 动乱 骚扰 烦扰 动荡 烦闷 纷扰\"},{\"wsimilar\":\"安定 稳定\",\"wid\":2,\"wvocatype\":\"欧亚\",\"wbasic\":\"1.秩序正常，没有骚扰\",\"wcolorwarm\":1,\"wword\":\"安稳\",\"wdetail\":\"1.安定，太平。\",\"wfirstchar\":\"A\",\"woposite\":\"晃动 动荡\"},{\"wsimilar\":\"清净 安定\",\"wid\":5,\"wvocatype\":\"优雅\",\"wbasic\":\"1.秩序正常，没有骚扰\",\"wcolorwarm\":1,\"wword\":\"安静\",\"wdetail\":\"1.安定，太平。\",\"wfirstchar\":\"A\",\"woposite\":\"喧哗 烦躁\"}]";
 		JsonConvert jsonConvert = new JsonConvert();
 		List<Word> words = jsonConvert.json2list(jsonstr);
 		for(Word word:words) {

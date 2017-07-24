@@ -1,12 +1,12 @@
-package cn.art.dao;
+package cn.art.service;
 
 import java.util.List;
 import java.util.Map;
 
 import cn.art.model.Texture;
 
-public interface TextureMapper {
-    int deleteByPrimaryKey(Integer textureid);
+public interface TextureService {
+	int deleteByPrimaryKey(Integer textureid);
 
     int insert(Texture record);
 
@@ -18,4 +18,5 @@ public interface TextureMapper {
     int updateByPrimaryKeySelective(Texture record);
 
     int updateByPrimaryKey(Texture record);
+
 }

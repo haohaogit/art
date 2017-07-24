@@ -16,7 +16,7 @@ alert(demo); */
 </head>
 <body>
  ${TAnli}</br> ${bottomcasetypes}</br>${outlinetypes}</br> ${colortypes}</br>
- ${texturetypes}</br> ${parttypes}</br> ${TBianma }</br>
+ ${texturetypes}</br> ${parttypes}</br> ${TBianma }</br>${outlinetypes }</br>qqqqq${codecases}</br>${texture }</br>
  ${types }
 </body>
 </html>

@@ -4,7 +4,7 @@
   <resultMap id="BaseResultMap" type="cn.art.model.BottomCase" >
     <id column="BCID" property="bcid" jdbcType="INTEGER" />
     <result column="BCTID" property="bctid" jdbcType="INTEGER" />
-    <result column="TID" property="tid" jdbcType="VARCHAR" />
+    <result column="TID" property="tid" jdbcType="INTEGER" />
     <result column="CaseName" property="casename" jdbcType="VARCHAR" />
     <result column="CaseBrand" property="casebrand" jdbcType="VARCHAR" />
     <result column="CaseImg" property="caseimg" jdbcType="VARCHAR" />
@@ -22,6 +22,14 @@
     from bottomcase_
     where BCID = #{bcid,jdbcType=INTEGER}
   </select>
+  
+  <select id="selectByTIDandBCTID" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    select 
+    <include refid="Base_Column_List" />
+    from bottomcase_
+    where TID = #{tid,jdbcType=INTEGER} and BCTID = #{bctid,jdbcType=INTEGER}
+  </select>
+  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from bottomcase_
     where BCID = #{bcid,jdbcType=INTEGER}
@@ -31,7 +39,7 @@
       CaseName, CaseBrand, CaseImg, 
       CaseImg1, CaseImg2, CaseImg3, 
       CaseImg4)
-    values (#{bcid,jdbcType=INTEGER}, #{bctid,jdbcType=INTEGER}, #{tid,jdbcType=VARCHAR}, 
+    values (#{bcid,jdbcType=INTEGER}, #{bctid,jdbcType=INTEGER}, #{tid,jdbcType=INTEGER}, 
       #{casename,jdbcType=VARCHAR}, #{casebrand,jdbcType=VARCHAR}, #{caseimg,jdbcType=VARCHAR}, 
       #{caseimg1,jdbcType=VARCHAR}, #{caseimg2,jdbcType=VARCHAR}, #{caseimg3,jdbcType=VARCHAR}, 
       #{caseimg4,jdbcType=VARCHAR})
@@ -78,7 +86,7 @@
         #{bctid,jdbcType=INTEGER},
       </if>
       <if test="tid != null" >
-        #{tid,jdbcType=VARCHAR},
+        #{tid,jdbcType=INTEGER},
       </if>
       <if test="casename != null" >
         #{casename,jdbcType=VARCHAR},
@@ -110,7 +118,7 @@
         BCTID = #{bctid,jdbcType=INTEGER},
       </if>
       <if test="tid != null" >
-        TID = #{tid,jdbcType=VARCHAR},
+        TID = #{tid,jdbcType=INTEGER},
       </if>
       <if test="casename != null" >
         CaseName = #{casename,jdbcType=VARCHAR},
@@ -139,7 +147,7 @@
   <update id="updateByPrimaryKey" parameterType="cn.art.model.BottomCase" >
     update bottomcase_
     set BCTID = #{bctid,jdbcType=INTEGER},
-      TID = #{tid,jdbcType=VARCHAR},
+      TID = #{tid,jdbcType=INTEGER},
       CaseName = #{casename,jdbcType=VARCHAR},
       CaseBrand = #{casebrand,jdbcType=VARCHAR},
       CaseImg = #{caseimg,jdbcType=VARCHAR},

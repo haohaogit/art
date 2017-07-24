@@ -1,3 +1,4 @@
+<%@page import="cn.art.util.pojo.codecase"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -5,10 +6,15 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>yuyi</title>
+<script type="text/javascript">
+ 
+alert(1);
+
+</script>
 </head>
 <body>
-${tid }
-<form action="productMaintenance/edit/${tid}/yuyi/confirm" method="post">
+${codecase }
+<form action="${codecase}/confirm" method="post">
 
 产品名称：<input type="text" class="txt" id="TName" name="TName"
 						placeholder="产品名称" /></br>

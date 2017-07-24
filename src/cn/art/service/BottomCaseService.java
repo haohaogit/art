@@ -1,12 +1,12 @@
-package cn.art.dao;
+package cn.art.service;
 
 import java.util.List;
 import java.util.Map;
 
 import cn.art.model.BottomCase;
 
-public interface BottomCaseMapper {
-    int deleteByPrimaryKey(Integer bcid);
+public interface BottomCaseService {
+	int deleteByPrimaryKey(Integer bcid);
 
     int insert(BottomCase record);
 
@@ -18,4 +18,5 @@ public interface BottomCaseMapper {
     int updateByPrimaryKeySelective(BottomCase record);
 
     int updateByPrimaryKey(BottomCase record);
+
 }

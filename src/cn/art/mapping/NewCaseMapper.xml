@@ -33,6 +33,14 @@
     from newcase_
     where NewCaseID = #{newcaseid,jdbcType=INTEGER}
   </select>
+  
+  <select id="selectByTID" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from newcase_
+    where TID = #{tid,jdbcType=INTEGER}
+  </select>
+  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from newcase_
     where NewCaseID = #{newcaseid,jdbcType=INTEGER}

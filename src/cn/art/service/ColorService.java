@@ -1,12 +1,12 @@
-package cn.art.dao;
+package cn.art.service;
 
 import java.util.List;
 import java.util.Map;
 
 import cn.art.model.Color;
 
-public interface ColorMapper {
-    int deleteByPrimaryKey(Integer cid);
+public interface ColorService {
+	int deleteByPrimaryKey(Integer cid);
 
     int insert(Color record);
 
@@ -19,4 +19,5 @@ public interface ColorMapper {
     int updateByPrimaryKeySelective(Color record);
 
     int updateByPrimaryKey(Color record);
+
 }

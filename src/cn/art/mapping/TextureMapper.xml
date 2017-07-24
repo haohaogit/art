@@ -22,6 +22,14 @@
     from texture_
     where TextureID = #{textureid,jdbcType=INTEGER}
   </select>
+  
+  <select id="selectByTIDandTTID" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    select 
+    <include refid="Base_Column_List" />
+    from texture_
+    where TID = #{tid,jdbcType=INTEGER} and  TTID = #{ttid,jdbcType=INTEGER}
+  </select>
+  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from texture_
     where TextureID = #{textureid,jdbcType=INTEGER}

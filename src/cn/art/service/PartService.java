@@ -1,12 +1,12 @@
-package cn.art.dao;
+package cn.art.service;
 
 import java.util.List;
 import java.util.Map;
 
 import cn.art.model.Part;
 
-public interface PartMapper {
-    int deleteByPrimaryKey(Integer pid);
+public interface PartService {
+	int deleteByPrimaryKey(Integer pid);
 
     int insert(Part record);
 
@@ -18,4 +18,5 @@ public interface PartMapper {
     int updateByPrimaryKeySelective(Part record);
 
     int updateByPrimaryKey(Part record);
+
 }

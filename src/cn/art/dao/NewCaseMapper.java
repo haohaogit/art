@@ -1,5 +1,7 @@
 package cn.art.dao;
 
+import java.util.List;
+
 import cn.art.model.NewCase;
 
 public interface NewCaseMapper {
@@ -10,6 +12,7 @@ public interface NewCaseMapper {
     int insertSelective(NewCase record);
 
     NewCase selectByPrimaryKey(Integer newcaseid);
+    List<NewCase> selectByTID(Integer tid);
 
     int updateByPrimaryKeySelective(NewCase record);
 

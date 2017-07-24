@@ -22,6 +22,14 @@
     from part_
     where PID = #{pid,jdbcType=INTEGER}
   </select>
+  
+  <select id="selectByTIDandPBID" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    select 
+    <include refid="Base_Column_List" />
+    from part_
+    where TID = #{tid,jdbcType=INTEGER} and  PBID = #{pbid,jdbcType=INTEGER}
+  </select>
+  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from part_
     where PID = #{pid,jdbcType=INTEGER}
