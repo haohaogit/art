@@ -4,11 +4,13 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import cn.art.dao.PartMapper;
 import cn.art.model.Part;
 import cn.art.service.PartService;
 
+@Service("PartService")
 public class PartServiceImpl implements PartService {
 	private PartMapper partMapper;
 

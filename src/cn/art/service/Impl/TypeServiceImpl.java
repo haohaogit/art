@@ -3,11 +3,15 @@ package cn.art.service.Impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import cn.art.dao.TypeMapper;
 import cn.art.model.Type;
 import cn.art.service.TypeService;
+import cn.art.util.pojo.typeIdName;
 
+
+@Service("TypeService")
 public class TypeServiceImpl implements TypeService {
 	private TypeMapper typeMapper;
 
@@ -63,6 +67,16 @@ public class TypeServiceImpl implements TypeService {
 	public Type selectAllByName(String tname) {
 		// TODO Auto-generated method stub
 		return typeMapper.selectAllByName(tname);
+	}
+	@Override
+	public List<typeIdName> selectAllOnlyIdandName() {
+		// TODO Auto-generated method stub
+		return typeMapper.selectAllOnlyIdandName();
+	}
+	@Override
+	public List<typeIdName> selectAllByWordType(Integer twordtype) {
+		// TODO Auto-generated method stub
+		return typeMapper.selectAllByWordType(twordtype);
 	}
 
 }

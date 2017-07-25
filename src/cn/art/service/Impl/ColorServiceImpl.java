@@ -4,11 +4,12 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import cn.art.dao.ColorMapper;
 import cn.art.model.Color;
 import cn.art.service.ColorService;
-
+@Service("ColorService")
 public class ColorServiceImpl implements ColorService {
 	private ColorMapper colorMapper;
 

@@ -43,11 +43,18 @@
     from type_
   </select>
   
-  <select id="selectAllByName" resultMap="BaseResultMap">
+  <select id="selectAllByName" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
     from type_
     where TName = #{tname,jdbcType=VARCHAR}
+  </select>
+  
+  <select id="selectAllByWordType" resultMap="BaseResultMapOnlyIdandName" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List1" />
+    from type_
+    where TWordType = #{twordtype,jdbcType=INTEGER}
   </select>
   
   <select id="selectAllOnlyIdandName" resultMap="BaseResultMapOnlyIdandName">

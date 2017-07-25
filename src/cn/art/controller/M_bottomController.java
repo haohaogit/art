@@ -12,11 +12,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import cn.art.dao.BottomCaseMapper;
-import cn.art.dao.BottomCaseTypeMapper;
-import cn.art.dao.TypeMapper;
 import cn.art.model.BottomCase;
 import cn.art.model.BottomCaseType;
+import cn.art.service.BottomCaseService;
+import cn.art.service.BottomCaseTypeService;
+import cn.art.service.TypeService;
 import cn.art.util.JsonConvert;
 import cn.art.util.pojo.codecase;
 import cn.art.util.pojo.typeIdName;
@@ -25,42 +25,46 @@ import cn.art.util.pojo.typeIdName;
 @Controller
 @RequestMapping("manager/bottom")
 public class M_bottomController {
-	private BottomCaseTypeMapper bottomCaseTypeMapper;
-	private BottomCaseMapper bottomCaseMapper;
-	private TypeMapper typeMapper;
+	
+	private TypeService typeService;
+	private BottomCaseService bottomCaseService;
+	private BottomCaseTypeService bottomCaseTypeService;
 	
 	private JsonConvert jsonConvert ;
 	public M_bottomController(){
 		jsonConvert = new JsonConvert();
 	}
 	
-	public TypeMapper getTypeMapper() {
-		return typeMapper;
+	public BottomCaseService getBottomCaseService() {
+		return bottomCaseService;
 	}
 	@Autowired
-	public void setTypeMapper(TypeMapper typeMapper) {
-		this.typeMapper = typeMapper;
+	public void setBottomCaseService(BottomCaseService bottomCaseService) {
+		this.bottomCaseService = bottomCaseService;
 	}
 
-	public BottomCaseTypeMapper getBottomCaseTypeMapper() {
-		return bottomCaseTypeMapper;
+	public BottomCaseTypeService getBottomCaseTypeService() {
+		return bottomCaseTypeService;
 	}
 	@Autowired
-	public void setBottomCaseTypeMapper(BottomCaseTypeMapper bottomCaseTypeMapper) {
-		this.bottomCaseTypeMapper = bottomCaseTypeMapper;
+	public void setBottomCaseTypeService(BottomCaseTypeService bottomCaseTypeService) {
+		this.bottomCaseTypeService = bottomCaseTypeService;
 	}
-	public BottomCaseMapper getBottomCaseMapper() {
-		return bottomCaseMapper;
+
+	public TypeService getTypeService() {
+		return typeService;
 	}
 	@Autowired
-	public void setBottomCaseMapper(BottomCaseMapper bottomCaseMapper) {
-		this.bottomCaseMapper = bottomCaseMapper;
+	public void setTypeService(TypeService typeService) {
+		this.typeService = typeService;
 	}
+
 	
 	//底层案例库 (外观库默认接口  )
 	@RequestMapping("")
 	public String facadeBottom(HttpServletRequest request){
-		List<typeIdName> type1 = typeMapper.selectAllOnlyIdandName();
+		List<typeIdName> type1 = typeService.selectAllOnlyIdandName();
+		System.out.println("haohaode");
 		request.setAttribute("types", jsonConvert.list2json(type1));
 		
 		//确认默认的产品类型ID
@@ -70,7 +74,7 @@ public class M_bottomController {
 			break;
 		}
 		
-		List<BottomCaseType> bottomCaseTypes = bottomCaseTypeMapper.selectByTID(tid);
+		List<BottomCaseType> bottomCaseTypes = bottomCaseTypeService.selectByTID(tid);
 		request.setAttribute("bottomtypes", jsonConvert.list2json(bottomCaseTypes));
 		//确认默认的底层类型ID
 		int bctid = 1;
@@ -83,7 +87,7 @@ public class M_bottomController {
 		map.put("tid", tid);
 		map.put("bctid", bctid);
 		
-		List<BottomCase> bottomCases = bottomCaseMapper.selectByTIDandBCTID(map);
+		List<BottomCase> bottomCases = bottomCaseService.selectByTIDandBCTID(map);
 		
 		codecase code;
 		List<codecase> codes = new LinkedList<>();
@@ -107,7 +111,7 @@ public class M_bottomController {
 		Map<String, Integer> map = new HashMap<String, Integer>();
 		map.put("tid", tid);
 		map.put("bctid", bctid);
-		List<BottomCase> bottomCases = bottomCaseMapper.selectByTIDandBCTID(map);
+		List<BottomCase> bottomCases = bottomCaseService.selectByTIDandBCTID(map);
 		
 		codecase code = new codecase();
 		List<codecase> codecases = new LinkedList<>();
@@ -127,7 +131,7 @@ public class M_bottomController {
 	//底层案例库 编辑接口
 	@RequestMapping("edit/{bcid}")
 	public String facadeBottomEdit(@PathVariable int bcid,HttpServletRequest request){
-		BottomCase bottomCase = bottomCaseMapper.selectByPrimaryKey(bcid);
+		BottomCase bottomCase = bottomCaseService.selectByPrimaryKey(bcid);
 		request.setAttribute("bottomcase", bottomCase);
 		
 		
@@ -159,7 +163,7 @@ public class M_bottomController {
 	//底层案例库 删除接口 
 	@RequestMapping("delete/{BCID}")
 	public String facadeBottomDelete(@PathVariable int bcid,HttpServletRequest request){
-		int isDelete = bottomCaseMapper.deleteByPrimaryKey(bcid);
+		int isDelete = bottomCaseService.deleteByPrimaryKey(bcid);
 		if(isDelete==1){
 			request.setAttribute("status", 200);
 		}else{
@@ -185,7 +189,7 @@ public class M_bottomController {
 		//底层案例库 编辑接口
 		@RequestMapping("edit/{bcid}")
 		public String facadeBottomEdit2(@PathVariable int bcid,HttpServletRequest request){
-			BottomCase bottomCase = bottomCaseMapper.selectByPrimaryKey(bcid);
+			BottomCase bottomCase = bottomCaseService.selectByPrimaryKey(bcid);
 			request.setAttribute("bottomcase", bottomCase);
 			
 			

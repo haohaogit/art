@@ -15,6 +15,7 @@ public interface WordMapper {
     
     List<Word> selectByWFirstChar(String wfirstchar);
     List<Word> selectByWVocaType(String wvocatype);
+    List<Word> selectAll();
     
     int updateByPrimaryKeySelective(Word record);
 

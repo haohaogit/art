@@ -35,7 +35,13 @@
     from word_
     where WVocaType = #{wvocatype,jdbcType=VARCHAR}
   </select>
-
+  
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from word_
+  </select>
+  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from word_
     where WID = #{wid,jdbcType=INTEGER}

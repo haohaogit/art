@@ -3,11 +3,14 @@ package cn.art.service.Impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import cn.art.dao.NewCaseMapper;
 import cn.art.model.NewCase;
 import cn.art.service.NewCaseService;
 
+
+@Service("NewCaseService")
 public class NewCaseServiceImpl implements NewCaseService {
 	private NewCaseMapper newCaseMapper;
 

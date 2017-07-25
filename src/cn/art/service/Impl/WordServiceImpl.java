@@ -67,5 +67,10 @@ public class WordServiceImpl implements WordService {
 		// TODO Auto-generated method stub
 		return wordMapper.selectByWVocaType(wvocatype);
 	}
+	@Override
+	public List<Word> selectAll() {
+		// TODO Auto-generated method stub
+		return wordMapper.selectAll();
+	}
 
 }

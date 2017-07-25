@@ -14,6 +14,7 @@ public interface WordService {
     public Word selectByPrimaryKey(Integer wid);
     public List<Word> selectByWFirstChar(String wfirstchar);
     public List<Word> selectByWVocaType(String wvocatype);
+    public List<Word> selectAll();
     
     public int updateByPrimaryKeySelective(Word record);
 

@@ -3,11 +3,12 @@ package cn.art.service.Impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import cn.art.dao.BottomCaseTypeMapper;
 import cn.art.model.BottomCaseType;
 import cn.art.service.BottomCaseTypeService;
-
+@Service("BottomCaseTypeService")
 public class BottomCaseTypeServiceImpl implements BottomCaseTypeService {
 	private BottomCaseTypeMapper bottomCaseTypeMapper;
 

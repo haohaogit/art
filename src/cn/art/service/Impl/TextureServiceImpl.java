@@ -4,11 +4,13 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import cn.art.dao.TextureMapper;
 import cn.art.model.Texture;
 import cn.art.service.TextureService;
 
+@Service("TextureService")
 public class TextureServiceImpl implements TextureService {
 	private TextureMapper textureMapper;
 

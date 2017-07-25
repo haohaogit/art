@@ -3,6 +3,7 @@ package cn.art.service;
 import java.util.List;
 
 import cn.art.model.Type;
+import cn.art.util.pojo.typeIdName;
 
 public interface TypeService {
 	
@@ -15,6 +16,8 @@ public interface TypeService {
     public Type selectByPrimaryKey(Integer tid);
     public List<Type> selectAll();
     public Type selectAllByName(String tname);
+    public List<typeIdName> selectAllByWordType(Integer twordtype);
+    public List<typeIdName> selectAllOnlyIdandName();
 
     public int updateByPrimaryKeySelective(Type record);
 

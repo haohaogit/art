@@ -1,7 +1,7 @@
 package cn.art.model;
 
 public class NewCase {
-    private Integer newcaseid;
+    private Integer nid;
 
     private Integer tid;
 
@@ -37,12 +37,12 @@ public class NewCase {
 
     private String newcaseatextureid;
 
-    public Integer getNewcaseid() {
-        return newcaseid;
+    public Integer getNid() {
+        return nid;
     }
 
-    public void setNewcaseid(Integer newcaseid) {
-        this.newcaseid = newcaseid;
+    public void setNid(Integer nid) {
+        this.nid = nid;
     }
 
     public Integer getTid() {

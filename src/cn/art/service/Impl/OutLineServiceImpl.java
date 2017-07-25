@@ -4,11 +4,13 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import cn.art.dao.OutLineMapper;
 import cn.art.model.OutLine;
 import cn.art.service.OutLineService;
 
+@Service("OutLineService")
 public class OutLineServiceImpl implements OutLineService {
 	private OutLineMapper outLineMapper;
 

@@ -3,11 +3,13 @@ package cn.art.service.Impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import cn.art.dao.ColorTypeMapper;
 import cn.art.model.ColorType;
 import cn.art.service.ColorTypeService;
 
+@Service("ColorTypeService")
 public class ColorTypeServiceImpl implements ColorTypeService {
 	private ColorTypeMapper colorTypeMapper;
 

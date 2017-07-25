@@ -16,6 +16,7 @@ public interface TypeMapper {
     List<Type> selectAll();
     Type selectAllByName(String tname);
     
+    List<typeIdName> selectAllByWordType(Integer twordtype);
     List<typeIdName> selectAllOnlyIdandName();
     
     int updateByPrimaryKeySelective(Type record);

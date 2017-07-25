@@ -4,11 +4,12 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import cn.art.dao.BottomCaseMapper;
 import cn.art.model.BottomCase;
 import cn.art.service.BottomCaseService;
-
+@Service("BottomCaseService")
 public class BottomCaseServiceImpl implements BottomCaseService {
 	private BottomCaseMapper bottomCaseMapper;
 

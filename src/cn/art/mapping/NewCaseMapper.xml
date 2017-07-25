@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="cn.art.dao.NewCaseMapper" >
   <resultMap id="BaseResultMap" type="cn.art.model.NewCase" >
-    <id column="NewCaseID" property="newcaseid" jdbcType="INTEGER" />
+    <id column="NID" property="nid" jdbcType="INTEGER" />
     <result column="TID" property="tid" jdbcType="INTEGER" />
     <result column="NewCaseName" property="newcasename" jdbcType="VARCHAR" />
     <result column="NewCaseImg" property="newcaseimg" jdbcType="VARCHAR" />
@@ -22,38 +22,37 @@
     <result column="NewCaseATextureID" property="newcaseatextureid" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    NewCaseID, TID, NewCaseName, NewCaseImg, NewCaseArg, NewCaseData, NewCaseRTotal, 
-    NewCaseROutline, NewCaseRColor, NewCaseRColorID, NewCaseRTexture, NewCaseRTextureID, 
-    NewCaseATotal, NewCaseAOutline, NewCaseAColor, NewCaseAColorID, NewCaseATexture, 
-    NewCaseATextureID
+    NID, TID, NewCaseName, NewCaseImg, NewCaseArg, NewCaseData, NewCaseRTotal, NewCaseROutline, 
+    NewCaseRColor, NewCaseRColorID, NewCaseRTexture, NewCaseRTextureID, NewCaseATotal, 
+    NewCaseAOutline, NewCaseAColor, NewCaseAColorID, NewCaseATexture, NewCaseATextureID
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from newcase_
-    where NewCaseID = #{newcaseid,jdbcType=INTEGER}
+    where NID = #{nid,jdbcType=INTEGER}
   </select>
   
   <select id="selectByTID" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
-    from newcase_
-    where TID = #{tid,jdbcType=INTEGER}
+  select 
+  <include refid="Base_Column_List" />
+  from newcase_
+  where TID = #{tid,jdbcType=INTEGER}
   </select>
   
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from newcase_
-    where NewCaseID = #{newcaseid,jdbcType=INTEGER}
+    where NID = #{nid,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="cn.art.model.NewCase" >
-    insert into newcase_ (NewCaseID, TID, NewCaseName, 
+    insert into newcase_ (NID, TID, NewCaseName, 
       NewCaseImg, NewCaseArg, NewCaseData, 
       NewCaseRTotal, NewCaseROutline, NewCaseRColor, 
       NewCaseRColorID, NewCaseRTexture, NewCaseRTextureID, 
       NewCaseATotal, NewCaseAOutline, NewCaseAColor, 
       NewCaseAColorID, NewCaseATexture, NewCaseATextureID
       )
-    values (#{newcaseid,jdbcType=INTEGER}, #{tid,jdbcType=INTEGER}, #{newcasename,jdbcType=VARCHAR}, 
+    values (#{nid,jdbcType=INTEGER}, #{tid,jdbcType=INTEGER}, #{newcasename,jdbcType=VARCHAR}, 
       #{newcaseimg,jdbcType=VARCHAR}, #{newcasearg,jdbcType=VARCHAR}, #{newcasedata,jdbcType=VARCHAR}, 
       #{newcasertotal,jdbcType=VARCHAR}, #{newcaseroutline,jdbcType=VARCHAR}, #{newcasercolor,jdbcType=VARCHAR}, 
       #{newcasercolorid,jdbcType=VARCHAR}, #{newcasertexture,jdbcType=VARCHAR}, #{newcasertextureid,jdbcType=VARCHAR}, 
@@ -64,8 +63,8 @@
   <insert id="insertSelective" parameterType="cn.art.model.NewCase" >
     insert into newcase_
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="newcaseid != null" >
-        NewCaseID,
+      <if test="nid != null" >
+        NID,
       </if>
       <if test="tid != null" >
         TID,
@@ -120,8 +119,8 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="newcaseid != null" >
-        #{newcaseid,jdbcType=INTEGER},
+      <if test="nid != null" >
+        #{nid,jdbcType=INTEGER},
       </if>
       <if test="tid != null" >
         #{tid,jdbcType=INTEGER},
@@ -231,7 +230,7 @@
         NewCaseATextureID = #{newcaseatextureid,jdbcType=VARCHAR},
       </if>
     </set>
-    where NewCaseID = #{newcaseid,jdbcType=INTEGER}
+    where NID = #{nid,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="cn.art.model.NewCase" >
     update newcase_
@@ -252,6 +251,6 @@
       NewCaseAColorID = #{newcaseacolorid,jdbcType=VARCHAR},
       NewCaseATexture = #{newcaseatexture,jdbcType=VARCHAR},
       NewCaseATextureID = #{newcaseatextureid,jdbcType=VARCHAR}
-    where NewCaseID = #{newcaseid,jdbcType=INTEGER}
+    where NID = #{nid,jdbcType=INTEGER}
   </update>
 </mapper>

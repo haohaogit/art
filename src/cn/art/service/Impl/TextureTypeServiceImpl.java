@@ -3,11 +3,13 @@ package cn.art.service.Impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import cn.art.dao.TextureTypeMapper;
 import cn.art.model.TextureType;
 import cn.art.service.TextureTypeService;
 
+@Service("TextureTypeService")
 public class TextureTypeServiceImpl implements TextureTypeService {
 	private TextureTypeMapper textureTypeMapper;
 

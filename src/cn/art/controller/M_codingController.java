@@ -12,22 +12,22 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import cn.art.dao.ColorMapper;
-import cn.art.dao.ColorTypeMapper;
-import cn.art.dao.OutLineMapper;
-import cn.art.dao.OutLineTypeMapper;
-import cn.art.dao.PartMapper;
-import cn.art.dao.PartTypeMapper;
-import cn.art.dao.TextureMapper;
-import cn.art.dao.TextureTypeMapper;
-import cn.art.dao.TypeMapper;
-import cn.art.dao.WordMapper;
 import cn.art.model.Color;
 import cn.art.model.OutLine;
 import cn.art.model.OutLineType;
 import cn.art.model.Part;
 import cn.art.model.Texture;
 import cn.art.model.Word;
+import cn.art.service.ColorService;
+import cn.art.service.ColorTypeService;
+import cn.art.service.OutLineService;
+import cn.art.service.OutLineTypeService;
+import cn.art.service.PartService;
+import cn.art.service.PartTypeService;
+import cn.art.service.TextureService;
+import cn.art.service.TextureTypeService;
+import cn.art.service.TypeService;
+import cn.art.service.WordService;
 import cn.art.util.JsonConvert;
 import cn.art.util.pojo.codecase;
 import cn.art.util.pojo.typeIdName;
@@ -36,24 +36,17 @@ import cn.art.util.pojo.typeIdName;
 @Controller
 @RequestMapping("manager/code")
 public class M_codingController {
-	private TypeMapper typeMapper;
-	private OutLineTypeMapper outLineTypeMapper;
-	private OutLineMapper outLineMapper;
-	private ColorTypeMapper colorTypeMapper;
-	private ColorMapper colorMapper;
-	private PartTypeMapper partTypeMapper;
-	private PartMapper partMapper;
-	private TextureTypeMapper textureTypeMapper;
-	private TextureMapper textureMapper;
-	private WordMapper wordMapper;
 	
-	public WordMapper getWordMapper() {
-		return wordMapper;
-	}
-	@Autowired
-	public void setWordMapper(WordMapper wordMapper) {
-		this.wordMapper = wordMapper;
-	}
+	private TypeService typeService;
+	private OutLineTypeService outLineTypeService;
+	private OutLineService outLineService;
+	private ColorTypeService colorTypeService;
+	private ColorService colorService;
+	private PartTypeService partTypeService;
+	private PartService partService;
+	private TextureTypeService textureTypeService;
+	private TextureService textureService;
+	private WordService wordService;
 
 	private JsonConvert jsonConvert;
 	
@@ -61,82 +54,83 @@ public class M_codingController {
 		jsonConvert = new JsonConvert();
 	}
 	
-	public OutLineMapper getOutLineMapper() {
-		return outLineMapper;
+	public TypeService getTypeService() {
+		return typeService;
 	}
 	@Autowired
-	public void setOutLineMapper(OutLineMapper outLineMapper) {
-		this.outLineMapper = outLineMapper;
+	public void setTypeService(TypeService typeService) {
+		this.typeService = typeService;
+	}
+	public OutLineTypeService getOutLineTypeService() {
+		return outLineTypeService;
+	}
+	@Autowired
+	public void setOutLineTypeService(OutLineTypeService outLineTypeService) {
+		this.outLineTypeService = outLineTypeService;
+	}
+	public OutLineService getOutLineService() {
+		return outLineService;
+	}
+	@Autowired
+	public void setOutLineService(OutLineService outLineService) {
+		this.outLineService = outLineService;
+	}
+	public ColorTypeService getColorTypeService() {
+		return colorTypeService;
+	}
+	@Autowired
+	public void setColorTypeService(ColorTypeService colorTypeService) {
+		this.colorTypeService = colorTypeService;
+	}
+	public ColorService getColorService() {
+		return colorService;
+	}
+	@Autowired
+	public void setColorService(ColorService colorService) {
+		this.colorService = colorService;
+	}
+	public PartTypeService getPartTypeService() {
+		return partTypeService;
+	}
+	@Autowired
+	public void setPartTypeService(PartTypeService partTypeService) {
+		this.partTypeService = partTypeService;
+	}
+	public PartService getPartService() {
+		return partService;
+	}
+	@Autowired
+	public void setPartService(PartService partService) {
+		this.partService = partService;
+	}
+	public TextureTypeService getTextureTypeService() {
+		return textureTypeService;
+	}
+	@Autowired
+	public void setTextureTypeService(TextureTypeService textureTypeService) {
+		this.textureTypeService = textureTypeService;
+	}
+	public TextureService getTextureService() {
+		return textureService;
+	}
+	@Autowired
+	public void setTextureService(TextureService textureService) {
+		this.textureService = textureService;
+	}
+	public WordService getWordService() {
+		return wordService;
+	}
+	@Autowired
+	public void setWordService(WordService wordService) {
+		this.wordService = wordService;
 	}
 	
-	public ColorMapper getColorMapper() {
-		return colorMapper;
-	}
-	@Autowired
-	public void setColorMapper(ColorMapper colorMapper) {
-		this.colorMapper = colorMapper;
-	}
-
-	public PartMapper getPartMapper() {
-		return partMapper;
-	}
-	@Autowired
-	public void setPartMapper(PartMapper partMapper) {
-		this.partMapper = partMapper;
-	}
-
-	public TextureMapper getTextureMapper() {
-		return textureMapper;
-	}
-	@Autowired
-	public void setTextureMapper(TextureMapper textureMapper) {
-		this.textureMapper = textureMapper;
-	}
-
-	public TypeMapper getTypeMapper() {
-		return typeMapper;
-	}
-	@Autowired
-	public void setTypeMapper(TypeMapper typeMapper) {
-		this.typeMapper = typeMapper;
-	}
-
-	public OutLineTypeMapper getOutLineTypeMapper() {
-		return outLineTypeMapper;
-	}
-	@Autowired
-	public void setOutLineTypeMapper(OutLineTypeMapper outLineTypeMapper) {
-		this.outLineTypeMapper = outLineTypeMapper;
-	}
-
-	public ColorTypeMapper getColorTypeMapper() {
-		return colorTypeMapper;
-	}
-	@Autowired
-	public void setColorTypeMapper(ColorTypeMapper colorTypeMapper) {
-		this.colorTypeMapper = colorTypeMapper;
-	}
-
-	public PartTypeMapper getPartTypeMapper() {
-		return partTypeMapper;
-	}
-	@Autowired
-	public void setPartTypeMapper(PartTypeMapper partTypeMapper) {
-		this.partTypeMapper = partTypeMapper;
-	}
-
-	public TextureTypeMapper getTextureTypeMapper() {
-		return textureTypeMapper;
-	}
-	@Autowired
-	public void setTextureTypeMapper(TextureTypeMapper textureTypeMapper) {
-		this.textureTypeMapper = textureTypeMapper;
-	}
+	
 	
 	//编码案例库（默认接口(xx/轮廓编码/xx型)）
 	@RequestMapping("")
 	public String facadeCoding(HttpServletRequest request){
-		List<typeIdName> type1 = typeMapper.selectAllOnlyIdandName();
+		List<typeIdName> type1 = typeService.selectAllOnlyIdandName();
 		request.setAttribute("types", jsonConvert.list2json(type1));
 		
 		//确认默认的产品类型ID
@@ -146,7 +140,7 @@ public class M_codingController {
 			break;
 		}
 		
-		List<OutLineType> outLineTypes = outLineTypeMapper.selectByTID(tid);
+		List<OutLineType> outLineTypes = outLineTypeService.selectByTID(tid);
 		request.setAttribute("outlinetypes", jsonConvert.list2json(outLineTypes));
 		
 		//确认默认的轮廓类型ID
@@ -159,7 +153,7 @@ public class M_codingController {
 		Map<String, Integer> map = new HashMap<>();
 		map.put("tid", tid);
 		map.put("otid", otid);
-		List<OutLine> outLines = outLineMapper.selectByTIDandOTID(map);
+		List<OutLine> outLines = outLineService.selectByTIDandOTID(map);
 		
 		codecase code;
 		List<codecase> codes = new LinkedList<>();
@@ -184,7 +178,7 @@ public class M_codingController {
 			Map<String, Integer> map = new HashMap<>();
 			map.put("tid", tid);
 			map.put("otid", xid);
-			List<OutLine> outLines = outLineMapper.selectByTIDandOTID(map);
+			List<OutLine> outLines = outLineService.selectByTIDandOTID(map);
 			
 			
 			List<codecase> codes = new LinkedList<>();
@@ -202,7 +196,7 @@ public class M_codingController {
 			Map<String, Integer> map = new HashMap<>();
 			map.put("tid", tid);
 			map.put("pbid", xid);
-			List<Part> parts = partMapper.selectByTIDandPBID(map);
+			List<Part> parts = partService.selectByTIDandPBID(map);
 			
 			List<codecase> codes = new LinkedList<>();
 			for(Part part:parts){
@@ -220,7 +214,7 @@ public class M_codingController {
 			Map<String, Integer> map = new HashMap<>();
 			map.put("tid", tid);
 			map.put("cbid", xid);
-			List<Color> colors = colorMapper.selectByTIDandCBID(map);
+			List<Color> colors = colorService.selectByTIDandCBID(map);
 			
 			List<codecase> codes = new LinkedList<>();
 			for(Color color:colors){
@@ -238,7 +232,7 @@ public class M_codingController {
 			Map<String, Integer> map = new HashMap<>();
 			map.put("tid", tid);
 			map.put("ttid", xid);
-			List<Texture>  textures = textureMapper.selectByTIDandTTID(map);
+			List<Texture>  textures = textureService.selectByTIDandTTID(map);
 
 			List<codecase> codes = new LinkedList<>();
 			for(Texture texture:textures){
@@ -259,19 +253,19 @@ public class M_codingController {
 	@RequestMapping("edit/{codeType}/{id}")
 	public String facadeCodingEdit(@PathVariable String codeType,@PathVariable int id,HttpServletRequest request){
 		if("outline".equals(codeType)){
-			OutLine outLine = outLineMapper.selectByPrimaryKey(id);
+			OutLine outLine = outLineService.selectByPrimaryKey(id);
 			request.setAttribute("outline", jsonConvert.Bean2Json(outLine));
 			
 		}else if("part".equals(codeType)){
-			Part part = partMapper.selectByPrimaryKey(id);
+			Part part = partService.selectByPrimaryKey(id);
 			request.setAttribute("part", jsonConvert.Bean2Json(part));
 			
 		}else if("color".equals(codeType)){
-			Color color = colorMapper.selectByPrimaryKey(id);
+			Color color = colorService.selectByPrimaryKey(id);
 			request.setAttribute("color", jsonConvert.Bean2Json(color));
 			
 		}else if("texture".equals(codeType)){
-			Texture texture = textureMapper.selectByPrimaryKey(id);
+			Texture texture = textureService.selectByPrimaryKey(id);
 			request.setAttribute("texture", jsonConvert.Bean2Json(texture));
 		}
 		
@@ -284,7 +278,7 @@ public class M_codingController {
 	@RequestMapping("edit/{codecase}/confirm")
 	public String facadeCodingEditSave(@PathVariable String codecase,HttpServletRequest request){
 		Word word = jsonConvert.Json2Bean(codecase);
-		int isok = wordMapper.insert(word);
+		int isok = wordService.insert(word);
 		System.out.println("isok  :"+isok);
 		return "manager/testlogin";
 	}
@@ -317,7 +311,7 @@ public class M_codingController {
 	@RequestMapping("delete/{codeType}/{id}")
 	public String facadeCodingEditDelete(@PathVariable String codeType,@PathVariable int id,HttpServletRequest request){
 		if("outline".equals(codeType)){
-			int isDelete = outLineMapper.deleteByPrimaryKey(id);
+			int isDelete = outLineService.deleteByPrimaryKey(id);
 			if(isDelete==1){
 				request.setAttribute("status", 200);
 			}else{
@@ -327,7 +321,7 @@ public class M_codingController {
 			
 			
 		}else if("part".equals(codeType)){
-			int isDelete = partMapper.deleteByPrimaryKey(id);
+			int isDelete = partService.deleteByPrimaryKey(id);
 			if(isDelete==1){
 				request.setAttribute("status", 200);
 			}else{
@@ -336,7 +330,7 @@ public class M_codingController {
 			}
 			
 		}else if("color".equals(codeType)){
-			int isDelete = colorMapper.deleteByPrimaryKey(id);
+			int isDelete = colorService.deleteByPrimaryKey(id);
 			if(isDelete==1){
 				request.setAttribute("status", 200);
 			}else{
@@ -345,7 +339,7 @@ public class M_codingController {
 			}
 			
 		}else if("texture".equals(codeType)){
-			int isDelete = textureMapper.deleteByPrimaryKey(id);
+			int isDelete = textureService.deleteByPrimaryKey(id);
 			if(isDelete==1){
 				request.setAttribute("status", 200);
 			}else{

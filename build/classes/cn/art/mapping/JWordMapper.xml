@@ -16,6 +16,14 @@
     from jword_
     where JWID = #{jwid,jdbcType=INTEGER}
   </select>
+  
+   <select id="selectByTID" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from jword_
+    where TID = #{tid,jdbcType=INTEGER}
+  </select>
+  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from jword_
     where JWID = #{jwid,jdbcType=INTEGER}

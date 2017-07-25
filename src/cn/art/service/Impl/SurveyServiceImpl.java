@@ -3,12 +3,14 @@ package cn.art.service.Impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import cn.art.dao.SurveyMapper;
 import cn.art.model.Survey;
 import cn.art.service.SurveyService;
 import cn.art.util.pojo.surveyCA;
 
+@Service("SurveyService")
 public class SurveyServiceImpl implements SurveyService {
 	private SurveyMapper surveyMapper;
 
