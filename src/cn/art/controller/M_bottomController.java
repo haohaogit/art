@@ -141,17 +141,36 @@ public class M_bottomController {
 	
     //                       编辑保存 新增案例保存接口   目前存在一些 问题   接口状态待定。。。。。。。。。。。。。。。。
 	//底层案例库 编辑保存接口 
-	@RequestMapping("edit/{bcid}")
+	@RequestMapping("edit/{bcid}/confirm")
 	public String facadeBottomEditSave(@PathVariable int bcid,HttpServletRequest request){
-		
-		
+		String casename = request .getParameter("CaseName");
+		String casebrand = request.getParameter("CaseBrand");
+		String bctname = request.getParameter("BCTName");
+		String caseimg = request.getParameter("CaseImg");
+		String caseimg1 = request.getParameter("CaseImg1");
+		String caseimg2 = request.getParameter("CaseImg2");
+		String caseimg3 = request.getParameter("CaseImg3");
+		int isok = bottomCaseService.update(bcid, casename.trim(), casebrand.trim(), bctname.trim(), caseimg, caseimg1, caseimg2, caseimg3);
+		if(isok==1){
+			request.setAttribute("status", 200);
+		}else{
+			request.setAttribute("status", 100);
+			request.setAttribute("erroeMessage", "底层案例库编辑保存失败");
+		}
 		return "manager/testlogin";
 	}
 	
 	//底层案例库 添加新案例接口
-	@RequestMapping("addCase/{bottomcase}")
-	public String facadeBottomAddCase(@PathVariable int bcid,HttpServletRequest request){
-		
+	@RequestMapping("addCase/{tid}")
+	public String facadeBottomAddCase(@PathVariable int tid,HttpServletRequest request){
+		String casename = request .getParameter("CaseName");
+		String casebrand = request.getParameter("CaseBrand");
+		String bctname = request.getParameter("BCTName");
+		String caseimg = request.getParameter("CaseImg");
+		String caseimg1 = request.getParameter("CaseImg1");
+		String caseimg2 = request.getParameter("CaseImg2");
+		String caseimg3 = request.getParameter("CaseImg3");
+		bottomCaseService.insertselect(tid, casename.trim(), casebrand.trim(), bctname.trim(), caseimg, caseimg1, caseimg2, caseimg3);
 		
 		return "manager/testlogin";
 	}

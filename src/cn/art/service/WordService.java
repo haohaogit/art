@@ -19,5 +19,6 @@ public interface WordService {
     public int updateByPrimaryKeySelective(Word record);
 
     public int updateByPrimaryKey(Word record);
+    public String getwordFp();
 
 }

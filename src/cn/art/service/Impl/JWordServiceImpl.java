@@ -14,6 +14,7 @@ import cn.art.service.JWordService;
 import cn.art.util.JsonConvert;
 import cn.art.util.pojo.typeIdName;
 import cn.art.util.pojo.wordp1;
+import cn.art.util.pojo.wordp2;
 
 
 @Service("JWordService")
@@ -106,6 +107,7 @@ public class JWordServiceImpl implements JWordService {
 				wordp1 = new wordp1();
 				wordp1.setTid(jWord.getTid());
 				wordp1.setWid(jWord.getWid());
+				wordp1.setJwid(jWord.getJwid());
 				wordp1.setWword(wordMapper.selectByPrimaryKey(jWord.getWid()).getWword());
 				wordp1s.add(wordp1);
 			}
@@ -120,24 +122,45 @@ public class JWordServiceImpl implements JWordService {
 		// TODO Auto-generated method stub
 		//获取所有的 WordType 为词汇的产品类型   1 代表词汇 2 代表词对
 		List<typeIdName> type1s = typeMapper.selectAllByWordType(2);
-		List<wordp1> wordp1s = new LinkedList<wordp1>();
-		wordp1 wordp1;
+		List<wordp2> wordp2s = new LinkedList<wordp2>();
+		wordp2 wordp2;
 		
 		for(typeIdName t1: type1s) {
 			int tid = t1.getTid();
 			List<JWord> jWords = jWordMapper.selectByTID(tid);
 			
 			for(JWord jWord : jWords){
-				wordp1 = new wordp1();
-				wordp1.setTid(jWord.getTid());
-				wordp1.setWid(jWord.getWid());
-				wordp1.setWword(wordMapper.selectByPrimaryKey(jWord.getWid()).getWword());
-				wordp1s.add(wordp1);
+				wordp2 = new wordp2();
+				wordp2.setJwid(jWord.getJwid());
+				wordp2.setTid(jWord.getTid());
+				wordp2.setWid(jWord.getWid());
+				wordp2.setWword1(wordMapper.selectByPrimaryKey(jWord.getWid()).getWword());
+				wordp2.setCouplewid(jWord.getCouplewid());
+				wordp2.setWword2(wordMapper.selectByPrimaryKey(jWord.getCouplewid()).getWword());
+				wordp2s.add(wordp2);
 			}
-			
 		}
 		
-		return jsonConvert.list2json(wordp1s);
+		return jsonConvert.list2json(wordp2s);
+	}
+
+	@Override
+	public int insertVoca(Integer wid, Integer tid) {
+		// TODO Auto-generated method stub
+		JWord jWord = new JWord();
+		jWord.setWid(wid);
+		jWord.setTid(tid);
+		return jWordMapper.insertSelective(jWord);
+	}
+
+	@Override
+	public int insertCidui(Integer wid1, Integer wid2, Integer tid) {
+		// TODO Auto-generated method stub
+		JWord jWord = new JWord();
+		jWord.setTid(tid);
+		jWord.setWid(wid1);
+		jWord.setCouplewid(wid2);
+		return jWordMapper.insertSelective(jWord);
 	}
 
 }

@@ -1,23 +1,14 @@
 package cn.art.util.pojo;
 
-public class wordp1 {
-	private Integer jwid;
+public class wordFp {
 	private Integer wid;
 
 	private String wword;
 
-	private Integer tid;
+	private String wfirstchar;
 
 	public Integer getWid() {
 		return wid;
-	}
-	
-	public Integer getJwid() {
-		return jwid;
-	}
-
-	public void setJwid(Integer jwid) {
-		this.jwid = jwid;
 	}
 
 	public void setWid(Integer wid) {
@@ -32,12 +23,12 @@ public class wordp1 {
 		this.wword = wword;
 	}
 
-	public Integer getTid() {
-		return tid;
+	public String getWfirstchar() {
+		return wfirstchar;
 	}
 
-	public void setTid(Integer tid) {
-		this.tid = tid;
+	public void setWfirstchar(String wfirstchar) {
+		this.wfirstchar = wfirstchar;
 	}
 
 }

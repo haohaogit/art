@@ -21,5 +21,26 @@ public interface SurveyService {
     int updateOnlyCA(Survey record);
     int updateOnlyCA1(surveyCA record);
     
+    String getWordSurvey(Integer tid);
+    int saveWordSurvey(Integer tid,String wordsurvey);
+    
+    String getWordResult(Integer tid);
+    int saveWordResult(Integer tid,String wordresult);
+    
+    String getConnectSurvey(Integer tid);
+    int saveConnectSurvey(Integer tid,String connectSurvey);
+    
+    String getConnectResult(Integer tid);
+    int saveConnectResult(Integer tid,String connectResult);
+    
+    String getAlgorithms(Integer tid);
+    int saveAlgorithms(Integer tid,String algorithms);
+    
+    String getRatio(Integer tid);
+    int saveRatio(Integer tid,String ratio);
+    
+   
+    
+    
 
 }

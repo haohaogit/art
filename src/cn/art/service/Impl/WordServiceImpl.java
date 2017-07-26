@@ -1,5 +1,6 @@
 package cn.art.service.Impl;
 
+import java.util.LinkedList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,10 +9,17 @@ import org.springframework.stereotype.Service;
 import cn.art.dao.WordMapper;
 import cn.art.model.Word;
 import cn.art.service.WordService;
+import cn.art.util.JsonConvert;
+import cn.art.util.pojo.wordFp;
 
 @Service("WordService")
 public class WordServiceImpl implements WordService {
 	private WordMapper wordMapper;
+	private JsonConvert jsonConvert;
+	
+	public WordServiceImpl(){
+		jsonConvert = new JsonConvert();
+	}
 
 	public WordMapper getWordMapper() {
 		return wordMapper;
@@ -71,6 +79,21 @@ public class WordServiceImpl implements WordService {
 	public List<Word> selectAll() {
 		// TODO Auto-generated method stub
 		return wordMapper.selectAll();
+	}
+	@Override
+	public String getwordFp() {
+		// TODO Auto-generated method stub
+		wordFp wordFp;
+		List<Word> words = wordMapper.selectAll();
+		List<wordFp> wordFps = new LinkedList<wordFp>();
+		for(Word word: words){
+			wordFp = new wordFp();
+			wordFp.setWfirstchar(word.getWfirstchar());
+			wordFp.setWid(wordFp.getWid());
+			wordFp.setWword(word.getWword());
+			wordFps.add(wordFp);
+		}
+		return jsonConvert.list2json(wordFps);
 	}
 
 }

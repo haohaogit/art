@@ -8,13 +8,18 @@ import org.springframework.stereotype.Service;
 import cn.art.dao.TypeMapper;
 import cn.art.model.Type;
 import cn.art.service.TypeService;
+import cn.art.util.JsonConvert;
 import cn.art.util.pojo.typeIdName;
 
 
 @Service("TypeService")
 public class TypeServiceImpl implements TypeService {
 	private TypeMapper typeMapper;
-
+	
+	private JsonConvert jsonConvert;
+	public TypeServiceImpl(){
+		jsonConvert = new JsonConvert();
+	}
 	public TypeMapper getTypeMapper() {
 		return typeMapper;
 	}
@@ -77,6 +82,12 @@ public class TypeServiceImpl implements TypeService {
 	public List<typeIdName> selectAllByWordType(Integer twordtype) {
 		// TODO Auto-generated method stub
 		return typeMapper.selectAllByWordType(twordtype);
+	}
+	@Override
+	public String getOnlyIdandName() {
+		// TODO Auto-generated method stub
+		List<typeIdName> typeIdNames = typeMapper.selectAllOnlyIdandName();
+		return jsonConvert.list2json(typeIdNames);
 	}
 
 }

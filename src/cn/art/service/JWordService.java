@@ -20,5 +20,7 @@ public interface JWordService {
     
     String getVoca();
     String getcidui();
+    int insertVoca(Integer wid,Integer tid);
+    int insertCidui(Integer wid1,Integer wid2,Integer tid);
 
 }

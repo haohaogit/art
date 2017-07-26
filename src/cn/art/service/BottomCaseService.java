@@ -18,5 +18,7 @@ public interface BottomCaseService {
     int updateByPrimaryKeySelective(BottomCase record);
 
     int updateByPrimaryKey(BottomCase record);
-
+    int update(Integer bcid,String casename,String casebrand,String bctname,String caseimg,String caseimg1,String caseimg2,String caseimg3);
+    int insertselect(Integer tid,String casename,String casebrand,String bctname,String caseimg,String caseimg1,String caseimg2,String caseimg3);
+    
 }
