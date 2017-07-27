@@ -9,9 +9,14 @@
     <result column="CRGB" property="crgb" jdbcType="VARCHAR" />
     <result column="CNum" property="cnum" jdbcType="VARCHAR" />
     <result column="CFile" property="cfile" jdbcType="VARCHAR" />
+    <result column="CImg" property="cimg" jdbcType="VARCHAR" />
+    <result column="CImg1" property="cimg1" jdbcType="VARCHAR" />
+    <result column="CImg2" property="cimg2" jdbcType="VARCHAR" />
+    <result column="CImg3" property="cimg3" jdbcType="VARCHAR" />
+    <result column="CImg4" property="cimg4" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    CID, CBID, TID, CDescription, CRGB, CNum, CFile
+    CID, CBID, TID, CDescription, CRGB, CNum, CFile, CImg, CImg1, CImg2, CImg3, CImg4
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -20,7 +25,7 @@
     where CID = #{cid,jdbcType=INTEGER}
   </select>
   
-  <select id="selectByTID" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+   <select id="selectByTID" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from color_
@@ -41,10 +46,14 @@
   <insert id="insert" parameterType="cn.art.model.Color" >
     insert into color_ (CID, CBID, TID, 
       CDescription, CRGB, CNum, 
-      CFile)
+      CFile, CImg, CImg1, 
+      CImg2, CImg3, CImg4
+      )
     values (#{cid,jdbcType=INTEGER}, #{cbid,jdbcType=INTEGER}, #{tid,jdbcType=INTEGER}, 
       #{cdescription,jdbcType=VARCHAR}, #{crgb,jdbcType=VARCHAR}, #{cnum,jdbcType=VARCHAR}, 
-      #{cfile,jdbcType=VARCHAR})
+      #{cfile,jdbcType=VARCHAR}, #{cimg,jdbcType=VARCHAR}, #{cimg1,jdbcType=VARCHAR}, 
+      #{cimg2,jdbcType=VARCHAR}, #{cimg3,jdbcType=VARCHAR}, #{cimg4,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="cn.art.model.Color" >
     insert into color_
@@ -70,6 +79,21 @@
       <if test="cfile != null" >
         CFile,
       </if>
+      <if test="cimg != null" >
+        CImg,
+      </if>
+      <if test="cimg1 != null" >
+        CImg1,
+      </if>
+      <if test="cimg2 != null" >
+        CImg2,
+      </if>
+      <if test="cimg3 != null" >
+        CImg3,
+      </if>
+      <if test="cimg4 != null" >
+        CImg4,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="cid != null" >
@@ -92,6 +116,21 @@
       </if>
       <if test="cfile != null" >
         #{cfile,jdbcType=VARCHAR},
+      </if>
+      <if test="cimg != null" >
+        #{cimg,jdbcType=VARCHAR},
+      </if>
+      <if test="cimg1 != null" >
+        #{cimg1,jdbcType=VARCHAR},
+      </if>
+      <if test="cimg2 != null" >
+        #{cimg2,jdbcType=VARCHAR},
+      </if>
+      <if test="cimg3 != null" >
+        #{cimg3,jdbcType=VARCHAR},
+      </if>
+      <if test="cimg4 != null" >
+        #{cimg4,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -116,6 +155,21 @@
       <if test="cfile != null" >
         CFile = #{cfile,jdbcType=VARCHAR},
       </if>
+      <if test="cimg != null" >
+        CImg = #{cimg,jdbcType=VARCHAR},
+      </if>
+      <if test="cimg1 != null" >
+        CImg1 = #{cimg1,jdbcType=VARCHAR},
+      </if>
+      <if test="cimg2 != null" >
+        CImg2 = #{cimg2,jdbcType=VARCHAR},
+      </if>
+      <if test="cimg3 != null" >
+        CImg3 = #{cimg3,jdbcType=VARCHAR},
+      </if>
+      <if test="cimg4 != null" >
+        CImg4 = #{cimg4,jdbcType=VARCHAR},
+      </if>
     </set>
     where CID = #{cid,jdbcType=INTEGER}
   </update>
@@ -126,7 +180,12 @@
       CDescription = #{cdescription,jdbcType=VARCHAR},
       CRGB = #{crgb,jdbcType=VARCHAR},
       CNum = #{cnum,jdbcType=VARCHAR},
-      CFile = #{cfile,jdbcType=VARCHAR}
+      CFile = #{cfile,jdbcType=VARCHAR},
+      CImg = #{cimg,jdbcType=VARCHAR},
+      CImg1 = #{cimg1,jdbcType=VARCHAR},
+      CImg2 = #{cimg2,jdbcType=VARCHAR},
+      CImg3 = #{cimg3,jdbcType=VARCHAR},
+      CImg4 = #{cimg4,jdbcType=VARCHAR}
     where CID = #{cid,jdbcType=INTEGER}
   </update>
 </mapper>

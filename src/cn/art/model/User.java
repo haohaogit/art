@@ -7,7 +7,7 @@ public class User {
 
     private String upassword;
 
-    private Byte uprivilege;
+    private Integer uprivilege;
 
     private String uemail;
 
@@ -35,11 +35,11 @@ public class User {
         this.upassword = upassword == null ? null : upassword.trim();
     }
 
-    public Byte getUprivilege() {
+    public Integer getUprivilege() {
         return uprivilege;
     }
 
-    public void setUprivilege(Byte uprivilege) {
+    public void setUprivilege(Integer uprivilege) {
         this.uprivilege = uprivilege;
     }
 

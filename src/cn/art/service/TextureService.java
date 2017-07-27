@@ -18,5 +18,11 @@ public interface TextureService {
     int updateByPrimaryKeySelective(Texture record);
 
     int updateByPrimaryKey(Texture record);
+    
+    String selectTextureD(Integer textureid);
+    int update(Integer textureid,String tdescription,String ttname,
+    		String timg,String timg1,String timg2,String timg3,String timg4);
+    int insertSelect(Integer tid,String tdescription,String ttname,
+    		String timg,String timg1,String timg2,String timg3,String timg4);
 
 }

@@ -32,8 +32,8 @@ public class wordController {
 	
 	@RequestMapping("corpus/basic/word/{WID}")
 	public String getWordByID(@PathVariable String WID , HttpServletRequest request ){
-		Word word = wordService.selectByPrimaryKey(Integer.parseInt(WID));
-		request.setAttribute("Word", word);
+		//Word word = wordService.selectByPrimaryKey(Integer.parseInt(WID));
+		//request.setAttribute("Word", word);
 		return "user/word";
 	}
 	

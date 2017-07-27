@@ -17,7 +17,6 @@ import cn.art.model.OutLine;
 import cn.art.model.OutLineType;
 import cn.art.model.Part;
 import cn.art.model.Texture;
-import cn.art.model.Word;
 import cn.art.service.ColorService;
 import cn.art.service.ColorTypeService;
 import cn.art.service.OutLineService;
@@ -253,20 +252,20 @@ public class M_codingController {
 	@RequestMapping("edit/{codeType}/{id}")
 	public String facadeCodingEdit(@PathVariable String codeType,@PathVariable int id,HttpServletRequest request){
 		if("outline".equals(codeType)){
-			OutLine outLine = outLineService.selectByPrimaryKey(id);
-			request.setAttribute("outline", jsonConvert.Bean2Json(outLine));
+			String outLine = outLineService.selectD(id);
+			request.setAttribute("outline", outLine);
 			
 		}else if("part".equals(codeType)){
-			Part part = partService.selectByPrimaryKey(id);
-			request.setAttribute("part", jsonConvert.Bean2Json(part));
+			String part = partService.selectPartD(id);
+			request.setAttribute("part", part);
 			
 		}else if("color".equals(codeType)){
-			Color color = colorService.selectByPrimaryKey(id);
-			request.setAttribute("color", jsonConvert.Bean2Json(color));
+			String  color = colorService.selectColorD(id);
+			request.setAttribute("color", color);
 			
 		}else if("texture".equals(codeType)){
-			Texture texture = textureService.selectByPrimaryKey(id);
-			request.setAttribute("texture", jsonConvert.Bean2Json(texture));
+			String  texture = textureService.selectTextureD(id);
+			request.setAttribute("texture", texture);
 		}
 		
 		return "manager/testlogin";
@@ -275,27 +274,103 @@ public class M_codingController {
 	
 	//                        编辑保存 新增案例保存接口   目前存在一些 问题   接口状态待定。。。。。。。。。。。。。。。。
 	//编码案例库 编辑保存接口
-	@RequestMapping("edit/{codecase}/confirm")
-	public String facadeCodingEditSave(@PathVariable String codecase,HttpServletRequest request){
-		Word word = jsonConvert.Json2Bean(codecase);
-		int isok = wordService.insert(word);
-		System.out.println("isok  :"+isok);
+	@RequestMapping("edit/{codeType}/{id}/confirm")
+	public String facadeCodingEditSave(@PathVariable String codeType,@PathVariable Integer id,HttpServletRequest request){
+		String cname = request.getParameter("cname");
+		String ctypename = request.getParameter("ctypename");
+		String cdate = request.getParameter("cdate");
+		String cimg = request.getParameter("cimg");
+		String cimg1 = request.getParameter("cimg1");
+		String cimg2 = request.getParameter("cimg2");
+		String cimg3 = request.getParameter("cimg3");
+		String cimg4 = request.getParameter("cimg4");
+		
+		if("outline".equals(codeType)){
+			int isok = outLineService.update(id, cname.trim(), ctypename, cdate.trim(), cimg1, cimg2, cimg3, cimg4);
+			if(isok==1){
+				request.setAttribute("outline_status", 200);
+			}else{
+				request.setAttribute("outline_status", 100);
+				request.setAttribute("outline_erroeMesage", cname+"编辑保存失败");
+			}
+		}else if("part".equals(codeType)){
+			int isok = partService.update(id, cname.trim(), ctypename, cimg, cimg1, cimg2, cimg3, cimg4);
+			if(isok==1){
+				request.setAttribute("part_status", 200);
+			}else{
+				request.setAttribute("part_status", 100);
+				request.setAttribute("part_erroeMesage", cname+"编辑保存失败");
+			}
+			
+		}else if("color".equals(codeType)){
+			int isok = colorService.update(id, cname.trim(), ctypename, cdate.trim(), cimg1, cimg2, cimg3, cimg4);
+			if(isok==1){
+				request.setAttribute("color_status", 200);
+			}else{
+				request.setAttribute("color_status", 100);
+				request.setAttribute("color_erroeMesage", cname+"编辑保存失败");
+			}
+			
+		}else if("texture".equals(codeType)){
+			int isok = textureService.update(id, cname.trim(), ctypename, cimg, cimg1, cimg2, cimg3, cimg4);
+			if(isok==1){
+				request.setAttribute("texture_status", 200);
+			}else{
+				request.setAttribute("texture_status", 100);
+				request.setAttribute("texture_erroeMesage", cname+"编辑保存失败");
+			}
+		}
+		
 		return "manager/testlogin";
 	}
 	
 	//编码案例库 添加新案例接口
-	@RequestMapping("{tid}/{codeType}/addCase/{codecase}")
+	@RequestMapping("addCase/{tid}/{codeType}")
 	public String facadeCodingAddCase(@PathVariable int tid,@PathVariable String codeType,@PathVariable String codecase,HttpServletRequest request){
+		String cname = request.getParameter("cname");
+		String ctypename = request.getParameter("ctypename");
+		String cdate = request.getParameter("cdate");
+		String cimg = request.getParameter("cimg");
+		String cimg1 = request.getParameter("cimg1");
+		String cimg2 = request.getParameter("cimg2");
+		String cimg3 = request.getParameter("cimg3");
+		String cimg4 = request.getParameter("cimg4");
+		
 		if("outline".equals(codeType)){
-			
+			int isok = outLineService.insertSelect(tid, cname, ctypename, cdate, cimg1, cimg2, cimg3, cimg4);
+			if(isok==1){
+				request.setAttribute("outline_status", 200);
+			}else{
+				request.setAttribute("outline_status", 100);
+				request.setAttribute("outline_erroeMesage", cname+"新案例添加失败");
+			}
 			
 		}else if("part".equals(codeType)){
-			
+			int isok = partService.insertSelect(tid, cname, ctypename, cimg, cimg1, cimg2, cimg3, cimg4);
+			if(isok==1){
+				request.setAttribute("part_status", 200);
+			}else{
+				request.setAttribute("part_status", 100);
+				request.setAttribute("part_erroeMesage", cname+"新案例添加失败");
+			}
 			
 		}else if("color".equals(codeType)){
-			
+			int isok = colorService.insertSelect(tid, cname, ctypename, cdate, cimg1, cimg2, cimg3, cimg4);
+			if(isok==1){
+				request.setAttribute("color_status", 200);
+			}else{
+				request.setAttribute("color_status", 100);
+				request.setAttribute("color_erroeMesage", cname+"新案例添加失败");
+			}
 			
 		}else if("texture".equals(codeType)){
+			int isok = textureService.insertSelect(tid, cname, ctypename, cimg, cimg1, cimg2, cimg3, cimg4);
+			if(isok==1){
+				request.setAttribute("texture_status", 200);
+			}else{
+				request.setAttribute("texture_status", 100);
+				request.setAttribute("texture_erroeMesage", cname+"新案例添加失败");
+			}
 			
 		}
 		
@@ -353,28 +428,4 @@ public class M_codingController {
 	*/
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	//编码案例库 编辑保存接口
-	@RequestMapping("edit/confirm")
-	public String facadeCodingEditSave1(HttpServletRequest request){
-		//String word  = "word";
-		String word  = "{\"wsimilar\":\"悠闲 安定 安适 安好 安详 清静 安逸 稳重 安详 平和 和缓 安闲 平宁 平安 宁静 安全 安静 安清 镇静 幽静 静谧 稳定 清闲 平静 承平 安乐 安谧 从容 自在 舒适 太平 寂静 冷静 和平 安稳 安然\",\"wid\":7,\"wvocatype\":\"大气\",\"wbasic\":\"1.秩序正常，没有骚扰；2.心情安定、平静。\",\"wcolorwarm\":1,\"wword\":\"安宁\",\"wdetail\":\"1.安定，太平。\",\"wfirstchar\":\"A\",\"woposite\":\"混乱 纷乱 烦躁 烦恼 动乱 骚扰 烦扰 动荡 烦闷 纷扰\"}";
-		request.setAttribute("codecase", word);
-		int isok = 1111;
-		System.out.println("isok123  :"+isok);
-		return "manager/testform";
-	}
-
 }

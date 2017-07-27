@@ -89,5 +89,22 @@ public class TypeServiceImpl implements TypeService {
 		List<typeIdName> typeIdNames = typeMapper.selectAllOnlyIdandName();
 		return jsonConvert.list2json(typeIdNames);
 	}
+	@Override
+	public String selectAllOnlyIDName() {
+		// TODO Auto-generated method stub
+		List<typeIdName> typeIdNames = typeMapper.selectAllOnlyIdandName();
+		return jsonConvert.list2json(typeIdNames);
+	}
+	@Override
+	public int getFirstTid() {
+		// TODO Auto-generated method stub
+		List<typeIdName> typeIdNames = typeMapper.selectAllOnlyIdandName();
+		int tid = 1;
+		for (typeIdName typeIdName : typeIdNames) {
+			tid = typeIdName.getTid();
+			break;
+		}
+		return tid;
+	}
 
 }

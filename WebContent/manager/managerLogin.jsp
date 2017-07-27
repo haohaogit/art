@@ -7,7 +7,7 @@
 <title>haohao111</title>
 
 <script type="text/javascript">
-    function loginCheck(){
+   /* function loginCheck(){
         var account = document.getElementById("account");
         var password = document.getElementById("password");
         if(account.value==""){
@@ -17,14 +17,14 @@
             alert("请输入密码");
             return false;
         }
-    }
+    }*/
 </script>
 
 </head>
 <body>
 ${status }${errorMessage }
-<form action="manager/managerLogin" method="post"
-			onSubmit="return loginCheck()">
+<form action="managerLogin" method="post"
+			>
 
 账号：<input type="text" class="txt" id="account" name="account"
 						placeholder="账号" />

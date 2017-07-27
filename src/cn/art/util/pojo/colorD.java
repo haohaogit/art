@@ -1,9 +1,10 @@
-package cn.art.model;
+package cn.art.util.pojo;
 
-public class Color {
+public class colorD {
 	private Integer cid;
 
     private Integer cbid;
+    private String cbname;
 
     private Integer tid;
 
@@ -14,7 +15,6 @@ public class Color {
     private String cnum;
 
     private String cfile;
-
     private String cimg;
 
     private String cimg1;
@@ -25,7 +25,15 @@ public class Color {
 
     private String cimg4;
 
-    public Integer getCid() {
+    public String getCbname() {
+		return cbname;
+	}
+
+	public void setCbname(String cbname) {
+		this.cbname = cbname;
+	}
+
+	public Integer getCid() {
         return cid;
     }
 
@@ -80,7 +88,6 @@ public class Color {
     public void setCfile(String cfile) {
         this.cfile = cfile == null ? null : cfile.trim();
     }
-
     public String getCimg() {
         return cimg;
     }
@@ -120,4 +127,5 @@ public class Color {
     public void setCimg4(String cimg4) {
         this.cimg4 = cimg4 == null ? null : cimg4.trim();
     }
+
 }

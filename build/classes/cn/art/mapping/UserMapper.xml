@@ -5,13 +5,12 @@
     <id column="UID" property="uid" jdbcType="INTEGER" />
     <result column="UName" property="uname" jdbcType="VARCHAR" />
     <result column="UPassword" property="upassword" jdbcType="VARCHAR" />
-    <result column="UPrivilege" property="uprivilege" jdbcType="TINYINT" />
+    <result column="UPrivilege" property="uprivilege" jdbcType="INTEGER" />
+    <result column="UEmail" property="uemail" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    UID, UName, UPassword, UPrivilege
+    UID, UName, UPassword, UPrivilege, UEmail
   </sql>
-  
-  
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
@@ -19,15 +18,14 @@
     where UID = #{uid,jdbcType=INTEGER}
   </select>
   
-  
-  <select id="selectByName" resultMap="BaseResultMap" parameterType="java.lang.String" >
+  <select id="selectUserByName" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
     from user_
     where UName = #{uname,jdbcType=VARCHAR} and UPrivilege = 0
   </select>
   
-  <select id="selectByName1" resultMap="BaseResultMap" parameterType="java.lang.String" >
+  <select id="selectManagerByName" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
     from user_
@@ -40,9 +38,9 @@
   </delete>
   <insert id="insert" parameterType="cn.art.model.User" >
     insert into user_ (UID, UName, UPassword, 
-      UPrivilege)
+      UPrivilege, UEmail)
     values (#{uid,jdbcType=INTEGER}, #{uname,jdbcType=VARCHAR}, #{upassword,jdbcType=VARCHAR}, 
-      #{uprivilege,jdbcType=TINYINT})
+      #{uprivilege,jdbcType=INTEGER}, #{uemail,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="cn.art.model.User" >
     insert into user_
@@ -59,6 +57,9 @@
       <if test="uprivilege != null" >
         UPrivilege,
       </if>
+      <if test="uemail != null" >
+        UEmail,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="uid != null" >
@@ -71,7 +72,10 @@
         #{upassword,jdbcType=VARCHAR},
       </if>
       <if test="uprivilege != null" >
-        #{uprivilege,jdbcType=TINYINT},
+        #{uprivilege,jdbcType=INTEGER},
+      </if>
+      <if test="uemail != null" >
+        #{uemail,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -85,7 +89,10 @@
         UPassword = #{upassword,jdbcType=VARCHAR},
       </if>
       <if test="uprivilege != null" >
-        UPrivilege = #{uprivilege,jdbcType=TINYINT},
+        UPrivilege = #{uprivilege,jdbcType=INTEGER},
+      </if>
+      <if test="uemail != null" >
+        UEmail = #{uemail,jdbcType=VARCHAR},
       </if>
     </set>
     where UID = #{uid,jdbcType=INTEGER}
@@ -94,7 +101,8 @@
     update user_
     set UName = #{uname,jdbcType=VARCHAR},
       UPassword = #{upassword,jdbcType=VARCHAR},
-      UPrivilege = #{uprivilege,jdbcType=TINYINT}
+      UPrivilege = #{uprivilege,jdbcType=INTEGER},
+      UEmail = #{uemail,jdbcType=VARCHAR}
     where UID = #{uid,jdbcType=INTEGER}
   </update>
 </mapper>

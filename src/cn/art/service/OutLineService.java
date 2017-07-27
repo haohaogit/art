@@ -18,5 +18,12 @@ public interface OutLineService {
     int updateByPrimaryKeySelective(OutLine record);
 
     int updateByPrimaryKey(OutLine record);
+    
+    String selectD(Integer oid);
+    int update(Integer oid,String odescription,String oname,String odata,
+    		String oimg1,String oimg2,String oimg3,String oimg4);
+    int insertSelect(Integer tid,String odescription,String oname,String odata,
+    		String oimg1,String oimg2,String oimg3,String oimg4);
+    
 
 }

@@ -7,13 +7,31 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import cn.art.dao.OutLineMapper;
+import cn.art.dao.OutLineTypeMapper;
 import cn.art.model.OutLine;
+import cn.art.model.OutLineType;
 import cn.art.service.OutLineService;
+import cn.art.util.JsonConvert;
+import cn.art.util.pojo.outlineD;
 
 @Service("OutLineService")
 public class OutLineServiceImpl implements OutLineService {
 	private OutLineMapper outLineMapper;
+	private OutLineTypeMapper outLineTypeMapper;
+	
+	private JsonConvert jsonConvert;
+	
+	public OutLineServiceImpl(){
+		jsonConvert = new JsonConvert();
+	}
 
+	public OutLineTypeMapper getOutLineTypeMapper() {
+		return outLineTypeMapper;
+	}
+	@Autowired
+	public void setOutLineTypeMapper(OutLineTypeMapper outLineTypeMapper) {
+		this.outLineTypeMapper = outLineTypeMapper;
+	}
 	public OutLineMapper getOutLineMapper() {
 		return outLineMapper;
 	}
@@ -63,6 +81,70 @@ public class OutLineServiceImpl implements OutLineService {
 	public List<OutLine> selectByTIDandOTID(Map<String, Integer> map) {
 		// TODO Auto-generated method stub
 		return outLineMapper.selectByTIDandOTID(map);
+	}
+	@Override
+	public String selectD(Integer oid) {
+		// TODO Auto-generated method stub
+		OutLine  outline = outLineMapper.selectByPrimaryKey(oid);
+		outlineD outlineD = new outlineD();
+		outlineD.setOdata(outline.getOdata());
+		outlineD.setOdescription(outline.getOdescription());
+		outlineD.setOfile(outline.getOfile());
+		outlineD.setOid(outline.getOid());
+		outlineD.setOimg(outline.getOimg());
+		outlineD.setOimg1(outline.getOimg1());
+		outlineD.setOimg2(outline.getOimg2());
+		outlineD.setOimg3(outline.getOimg3());
+		outlineD.setOimg4(outline.getOimg4());
+		outlineD.setOname(outLineTypeMapper.selectByPrimaryKey(outline.getOtid()).getOname());
+		
+		return jsonConvert.Bean2Json(outlineD);
+	}
+
+	@Override
+	public int update(Integer oid, String odescription, String oname,
+			String odata, String oimg1, String oimg2, String oimg3, String oimg4) {
+		// TODO Auto-generated method stub
+		int otid = outLineMapper.selectByPrimaryKey(oid).getOtid();
+		OutLineType outlinetype = outLineTypeMapper.selectByPrimaryKey(otid);
+		outlinetype.setOname(oname);
+		int isok = outLineTypeMapper.updateByPrimaryKeySelective(outlinetype);
+		
+		OutLine outline = outLineMapper.selectByPrimaryKey(oid);
+		outline.setOdescription(odescription);
+		outline.setOdata(odata);
+		outline.setOimg1(oimg1);
+		outline.setOimg2(oimg2);
+		outline.setOimg3(oimg3);
+		outline.setOimg4(oimg4);
+		
+		return outLineMapper.updateByPrimaryKeySelective(outline);
+	}
+
+	@Override
+	public int insertSelect(Integer tid, String odescription, String oname,
+			String odata, String oimg1, String oimg2, String oimg3, String oimg4) {
+		// TODO Auto-generated method stub
+		List<OutLineType>  outLineTypes = outLineTypeMapper.selectByTID(tid);
+		int otid = 1;
+		for (OutLineType outLineType : outLineTypes) {
+			if(oname.equals(outLineType.getOname())){
+				otid = outLineType.getOtid();
+				break;
+			}
+		}
+		
+		OutLine outLine = new OutLine();
+		outLine.setTid(tid);
+		outLine.setOtid(otid);
+		outLine.setOdata(odata);
+		outLine.setOdescription(odescription);
+		outLine.setOimg1(oimg1);
+		outLine.setOimg2(oimg2);
+		outLine.setOimg3(oimg3);
+		outLine.setOimg4(oimg4);
+		
+		return outLineMapper.insertSelective(outLine);
 	}
 
 }

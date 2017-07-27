@@ -7,11 +7,30 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import cn.art.dao.ColorMapper;
+import cn.art.dao.ColorTypeMapper;
 import cn.art.model.Color;
+import cn.art.model.ColorType;
 import cn.art.service.ColorService;
+import cn.art.util.JsonConvert;
+import cn.art.util.pojo.colorD;
 @Service("ColorService")
 public class ColorServiceImpl implements ColorService {
 	private ColorMapper colorMapper;
+	private ColorTypeMapper colorTypeMapper;
+	
+	private JsonConvert jsonConvert ;
+	
+	public ColorServiceImpl(){
+		jsonConvert = new JsonConvert();
+	}
+	
+	public ColorTypeMapper getColorTypeMapper() {
+		return colorTypeMapper;
+	}
+	@Autowired
+	public void setColorTypeMapper(ColorTypeMapper colorTypeMapper) {
+		this.colorTypeMapper = colorTypeMapper;
+	}
 
 	public ColorMapper getColorMapper() {
 		return colorMapper;
@@ -67,6 +86,72 @@ public class ColorServiceImpl implements ColorService {
 	public int updateByPrimaryKey(Color record) {
 		// TODO Auto-generated method stub
 		return colorMapper.updateByPrimaryKey(record);
+	}
+	@Override
+	public String selectColorD(Integer cid) {
+		// TODO Auto-generated method stub
+		Color color = colorMapper.selectByPrimaryKey(cid);
+		colorD colorD = new colorD();
+		colorD.setCbid(color.getCbid());
+		colorD.setCbname(colorTypeMapper.selectByPrimaryKey(color.getCbid()).getCbname());
+		colorD.setCdescription(color.getCdescription());
+		colorD.setCfile(color.getCfile());
+		colorD.setCid(color.getCid());
+		colorD.setCnum(color.getCnum());
+		colorD.setCrgb(color.getCrgb());
+		colorD.setTid(color.getTid());
+		colorD.setCimg(color.getCimg());
+		colorD.setCimg1(color.getCimg1());
+		colorD.setCimg2(color.getCimg2());
+		colorD.setCimg3(color.getCimg3());
+		colorD.setCimg4(color.getCimg4());
+		
+		return jsonConvert.Bean2Json(colorD);
+	}
+
+	@Override
+	public int update(Integer cid, String cdescription, String cbname,
+			String crgb, String cimg1, String cimg2, String cimg3, String cimg4) {
+		// TODO Auto-generated method stub
+		int cbid = colorMapper.selectByPrimaryKey(cid).getCbid();
+		ColorType colortype = colorTypeMapper.selectByPrimaryKey(cbid);
+		colortype.setCbname(cbname);
+		int isok = colorTypeMapper.updateByPrimaryKeySelective(colortype);
+		
+		Color color = colorMapper.selectByPrimaryKey(cid);
+		color.setCdescription(cdescription);
+		color.setCrgb(crgb);
+		color.setCimg1(cimg1);
+		color.setCimg2(cimg2);
+		color.setCimg3(cimg3);
+		color.setCimg4(cimg4);
+		
+		return colorMapper.updateByPrimaryKeySelective(color);
+	}
+
+	@Override
+	public int insertSelect(Integer tid, String cdescription, String cbname,
+			String crgb, String cimg1, String cimg2, String cimg3, String cimg4) {
+		// TODO Auto-generated method stub
+		List<ColorType> colorTypes = colorTypeMapper.selectByTID(tid);
+		int cbid = 1;
+		for (ColorType colorType : colorTypes) {
+			if(cbname.equals(colorType.getCbname())){
+				cbid = colorType.getCbid();
+				break;
+			}
+		}
+		Color color = new Color();
+		color.setCbid(cbid);
+		color.setCdescription(cdescription);
+		color.setTid(tid);
+		color.setCrgb(crgb);
+		color.setCimg1(cimg1);
+		color.setCimg2(cimg2);
+		color.setCimg3(cimg3);
+		color.setCimg4(cimg4);
+		
+		return colorMapper.insertSelective(color);
 	}
 
 }

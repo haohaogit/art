@@ -38,11 +38,11 @@ public class testjson {
 	}
 	@Test
 	public void bean2json() {
-		Word word = wordservice.selectByPrimaryKey(1);
+		//Word word = wordservice.selectByPrimaryKey(1);
 		//User user = userService.selectUserById(1);
 		JsonConvert jsonConvert = new JsonConvert();
 		//System.out.println(word.getWbasic());
-		System.out.println(jsonConvert.Bean2Json(word));
+		//System.out.println(jsonConvert.Bean2Json(word));
 	}
 	@Test
 	public void json2bean() {
@@ -80,10 +80,10 @@ public class testjson {
 	}
 	@Test
 	public void mapobject2json() {
-		Word word = wordservice.selectByPrimaryKey(1);
+		//Word word = wordservice.selectByPrimaryKey(1);
 		JsonConvert jsonConvert = new JsonConvert();
 		Map<String, Word> map = new HashMap<String, Word>();
-		map.put("first", word);
+		//map.put("first", word);
 		System.out.println(jsonConvert.mapobject2json(map));
 	}
 	@Test

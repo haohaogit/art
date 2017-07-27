@@ -11,7 +11,7 @@ public interface WordService {
 
     public int insertSelective(Word record);
 
-    public Word selectByPrimaryKey(Integer wid);
+    public String selectByPrimaryKey(Integer wid);
     public List<Word> selectByWFirstChar(String wfirstchar);
     public List<Word> selectByWVocaType(String wvocatype);
     public List<Word> selectAll();
@@ -20,5 +20,8 @@ public interface WordService {
 
     public int updateByPrimaryKey(Word record);
     public String getwordFp();
+    
+    public String getWordFV();
+   
 
 }

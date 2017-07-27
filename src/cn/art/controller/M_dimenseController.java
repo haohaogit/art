@@ -127,12 +127,5 @@ public class M_dimenseController {
 		return "manager/testlogin";
 	}
 	
-	
-	//降维词汇库 (默认接口)
-	@RequestMapping("")
-	public String semanticDimense1(HttpServletRequest request){
-		
-		return "manager/testlogin";
-	}
 
 }

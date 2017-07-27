@@ -34,9 +34,9 @@ public class testWord {
 	}
 	@Test
 	public void testselect1(){
-		Word word =  wordService.selectByPrimaryKey(1);
+		//Word word =  wordService.selectByPrimaryKey(1);
 		
-	    System.out.println(word.getWbasic()+" "+word.getWfirstchar()+"  "+word.getWvocatype());
+	    //System.out.println(word.getWbasic()+" "+word.getWfirstchar()+"  "+word.getWvocatype());
 		
 	}
 

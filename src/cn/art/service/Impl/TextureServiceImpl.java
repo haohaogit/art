@@ -7,13 +7,31 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import cn.art.dao.TextureMapper;
+import cn.art.dao.TextureTypeMapper;
 import cn.art.model.Texture;
+import cn.art.model.TextureType;
 import cn.art.service.TextureService;
+import cn.art.util.JsonConvert;
+import cn.art.util.pojo.textureD;
 
 @Service("TextureService")
 public class TextureServiceImpl implements TextureService {
 	private TextureMapper textureMapper;
+	private TextureTypeMapper textureTypeMapper;
+	
+	private JsonConvert jsonConvert ;
+	
+	public TextureServiceImpl(){
+		jsonConvert = new JsonConvert();
+	}
 
+	public TextureTypeMapper getTextureTypeMapper() {
+		return textureTypeMapper;
+	}
+	@Autowired
+	public void setTextureTypeMapper(TextureTypeMapper textureTypeMapper) {
+		this.textureTypeMapper = textureTypeMapper;
+	}
 	public TextureMapper getTextureMapper() {
 		return textureMapper;
 	}
@@ -62,6 +80,71 @@ public class TextureServiceImpl implements TextureService {
 	public int updateByPrimaryKey(Texture record) {
 		// TODO Auto-generated method stub
 		return textureMapper.updateByPrimaryKey(record);
+	}
+
+	@Override
+	public String selectTextureD(Integer textureid) {
+		// TODO Auto-generated method stub
+		Texture texture = textureMapper.selectByPrimaryKey(textureid);
+		textureD textureD = new textureD();
+		textureD.setTdescription(texture.getTdescription());
+		textureD.setTextureid(textureid);
+		textureD.setTid(texture.getTid());
+		textureD.setTfile(texture.getTfile());
+		textureD.setTtname(textureTypeMapper.selectByPrimaryKey(texture.getTtid()).getTtname());
+		textureD.setTimg(texture.getTimg());
+		textureD.setTimg1(texture.getTimg1());
+		textureD.setTimg2(texture.getTimg2());
+		textureD.setTimg3(texture.getTimg3());
+		textureD.setTimg4(texture.getTimg4());
+		
+		return jsonConvert.Bean2Json(textureD);
+	}
+
+	@Override
+	public int update(Integer textureid, String tdescription, String ttname,
+			String timg, String timg1, String timg2, String timg3, String timg4) {
+		// TODO Auto-generated method stub
+		int ttid = textureMapper.selectByPrimaryKey(textureid).getTtid();
+		TextureType texturetype = textureTypeMapper.selectByPrimaryKey(ttid);
+		texturetype.setTtname(ttname);
+		int isok = textureTypeMapper.updateByPrimaryKeySelective(texturetype);
+		
+		Texture texture = textureMapper.selectByPrimaryKey(textureid);
+		texture.setTdescription(tdescription);
+		texture.setTimg(timg);
+		texture.setTimg1(timg1);
+		texture.setTimg2(timg2);
+		texture.setTimg3(timg3);
+		texture.setTimg4(timg4);
+		
+		return textureMapper.updateByPrimaryKeySelective(texture);
+	}
+
+	@Override
+	public int insertSelect(Integer tid, String tdescription, String ttname,
+			String timg, String timg1, String timg2, String timg3, String timg4) {
+		// TODO Auto-generated method stub
+		List<TextureType> textureTypes = textureTypeMapper.selectByTID(tid);
+		int ttid = 1;
+		for (TextureType textureType : textureTypes) {
+			if(ttname.equals(textureType.getTtname())){
+				ttid = textureType.getTtid();
+				break;
+			}
+		}
+		
+		Texture texture = new Texture();
+		texture.setTid(tid);
+		texture.setTtid(ttid);
+		texture.setTdescription(tdescription);
+		texture.setTimg(timg);
+		texture.setTimg1(timg1);
+		texture.setTimg2(timg2);
+		texture.setTimg3(timg3);
+		texture.setTimg4(timg4);
+		
+		return textureMapper.insertSelective(texture);
 	}
 
 }

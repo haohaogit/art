@@ -29,7 +29,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public List<User> selectUserByName(String uname) {
 		// TODO Auto-generated method stub
-		return userMapper.selectByName(uname);
+		return userMapper.selectUserByName(uname);
 	}
 	@Override
 	public int updateByPrimaryKey(User record) {
@@ -59,7 +59,18 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public List<User> selectManagerByName(String uname) {
 		// TODO Auto-generated method stub
-		return userMapper.selectByName1(uname);
+		return userMapper.selectManagerByName(uname);
+	}
+	@Override
+	public int insertSelect(String uname, String upassword, String uemail) {
+		// TODO Auto-generated method stub
+		User user = new User();
+		user.setUemail(uemail);
+		user.setUname(uname);
+		user.setUpassword(upassword);
+		user.setUprivilege(0);
+		
+		return userMapper.insertSelective(user);
 	}
 
 }

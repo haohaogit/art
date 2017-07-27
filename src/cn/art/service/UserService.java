@@ -16,5 +16,7 @@ public interface UserService {
 	public int insertSelective(User record);
 	
 	public int deleteByPrimaryKey(Integer uid);
+	
+	int insertSelect(String uname,String upassword,String uemail);
 
 }

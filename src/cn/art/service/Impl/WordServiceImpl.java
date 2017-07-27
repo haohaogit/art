@@ -10,6 +10,7 @@ import cn.art.dao.WordMapper;
 import cn.art.model.Word;
 import cn.art.service.WordService;
 import cn.art.util.JsonConvert;
+import cn.art.util.pojo.wordFV;
 import cn.art.util.pojo.wordFp;
 
 @Service("WordService")
@@ -48,9 +49,9 @@ public class WordServiceImpl implements WordService {
 	}
 
 	@Override
-	public Word selectByPrimaryKey(Integer wid) {
+	public String selectByPrimaryKey(Integer wid) {
 		// TODO Auto-generated method stub
-		return wordMapper.selectByPrimaryKey(wid);
+		return jsonConvert.Bean2Json(wordMapper.selectByPrimaryKey(wid));
 	}
 
 	@Override
@@ -89,11 +90,33 @@ public class WordServiceImpl implements WordService {
 		for(Word word: words){
 			wordFp = new wordFp();
 			wordFp.setWfirstchar(word.getWfirstchar());
-			wordFp.setWid(wordFp.getWid());
+			wordFp.setWid(word.getWid());
 			wordFp.setWword(word.getWword());
 			wordFps.add(wordFp);
 		}
 		return jsonConvert.list2json(wordFps);
 	}
+
+	@Override
+	public String getWordFV() {
+		// TODO Auto-generated method stub
+		wordFV wordFV;
+		List<Word> words = wordMapper.selectAll();
+		List<wordFV> wordFVs = new LinkedList<wordFV>();
+		for(Word word: words){
+			wordFV = new wordFV();
+			wordFV.setWfirstchar(word.getWfirstchar());
+			wordFV.setWid(word.getWid());
+			wordFV.setWword(word.getWword());
+			wordFV.setWoposite(word.getWoposite());
+			wordFV.setWsimilar(word.getWsimilar());
+			wordFV.setWfirstchar(word.getWfirstchar());
+			wordFV.setWvocatype(word.getWvocatype());
+			wordFVs.add(wordFV);
+		}
+		return jsonConvert.list2json(wordFVs);
+
+	}
+
 
 }

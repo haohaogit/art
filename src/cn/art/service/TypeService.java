@@ -22,6 +22,8 @@ public interface TypeService {
     public int updateByPrimaryKeySelective(Type record);
 
     public int updateByPrimaryKey(Type record);
-    String getOnlyIdandName();
+    public String getOnlyIdandName();
+    public String selectAllOnlyIDName();
+    public int getFirstTid();
 
 }

@@ -22,11 +22,6 @@ public class NewCaseServiceImpl implements NewCaseService {
 		this.newCaseMapper = newCaseMapper;
 	}
 
-	@Override
-	public int deleteByPrimaryKey(Integer newcaseid) {
-		// TODO Auto-generated method stub
-		return newCaseMapper.deleteByPrimaryKey(newcaseid);
-	}
 
 	@Override
 	public int insert(NewCase record) {
@@ -38,12 +33,6 @@ public class NewCaseServiceImpl implements NewCaseService {
 	public int insertSelective(NewCase record) {
 		// TODO Auto-generated method stub
 		return newCaseMapper.insertSelective(record);
-	}
-
-	@Override
-	public NewCase selectByPrimaryKey(Integer newcaseid) {
-		// TODO Auto-generated method stub
-		return newCaseMapper.selectByPrimaryKey(newcaseid);
 	}
 
 	@Override
@@ -62,6 +51,59 @@ public class NewCaseServiceImpl implements NewCaseService {
 	public int updateByPrimaryKey(NewCase record) {
 		// TODO Auto-generated method stub
 		return newCaseMapper.updateByPrimaryKey(record);
+	}
+	@Override
+	public int deleteByPrimaryKey(Integer nid) {
+		// TODO Auto-generated method stub
+		return newCaseMapper.deleteByPrimaryKey(nid);
+	}
+	@Override
+	public NewCase selectByPrimaryKey(Integer nid) {
+		// TODO Auto-generated method stub
+		return newCaseMapper.selectByPrimaryKey(nid);
+	}
+	@Override
+	public int update(Integer nid, String newcasename, String newcaseRtotal,
+			String newcaseRoutline, String newcaseRcolor,
+			String newcaseRtexture, String newcaseAtotal,
+			String newcaseAoutline, String newcaseAcolor, String newcaseAtexture) {
+		// TODO Auto-generated method stub
+		NewCase newCase = new NewCase();
+		newCase.setNid(nid);
+		newCase.setNewcasename(newcasename);
+		newCase.setNewcasertotal(newcaseRtotal);
+		newCase.setNewcaseroutline(newcaseRoutline);
+		newCase.setNewcasercolor(newcaseRcolor);
+		newCase.setNewcasertexture(newcaseRtexture);
+		
+		newCase.setNewcaseatotal(newcaseAtotal);
+		newCase.setNewcaseaoutline(newcaseAoutline);
+		newCase.setNewcaseacolor(newcaseAcolor);
+		newCase.setNewcaseatexture(newcaseAtexture);
+		
+		return newCaseMapper.updateByPrimaryKeySelective(newCase);
+	}
+	@Override
+	public int insertSelect(Integer tid, Integer nid, String newcasename,
+			String newcaseRtotal, String newcaseRoutline, String newcaseRcolor,
+			String newcaseRtexture, String newcaseAtotal,
+			String newcaseAoutline, String newcaseAcolor, String newcaseAtexture) {
+		// TODO Auto-generated method stub
+		NewCase newCase = new NewCase();
+		newCase.setNid(nid);
+		newCase.setTid(tid);
+		newCase.setNewcasename(newcasename);
+		newCase.setNewcasertotal(newcaseRtotal);
+		newCase.setNewcaseroutline(newcaseRoutline);
+		newCase.setNewcasercolor(newcaseRcolor);
+		newCase.setNewcasertexture(newcaseRtexture);
+		
+		newCase.setNewcaseatotal(newcaseAtotal);
+		newCase.setNewcaseaoutline(newcaseAoutline);
+		newCase.setNewcaseacolor(newcaseAcolor);
+		newCase.setNewcaseatexture(newcaseAtexture);
+		
+		return newCaseMapper.insertSelective(newCase);
 	}
 
 }

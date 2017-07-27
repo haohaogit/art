@@ -58,7 +58,7 @@ public class M_basicSemanticController {
 	//基础语义库 编辑接口
 	@RequestMapping("edit/{id}")
 	public String semanticBasicEdit(@PathVariable Integer id,HttpServletRequest request){
-		Word word = wordService.selectByPrimaryKey(id);
+		String word = wordService.selectByPrimaryKey(id);
 		request.setAttribute("word", word);
 		
 		
