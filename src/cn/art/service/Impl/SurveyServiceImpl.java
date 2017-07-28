@@ -8,11 +8,17 @@ import org.springframework.stereotype.Service;
 import cn.art.dao.SurveyMapper;
 import cn.art.model.Survey;
 import cn.art.service.SurveyService;
+import cn.art.util.JsonConvert;
 import cn.art.util.pojo.surveyCA;
 
 @Service("SurveyService")
 public class SurveyServiceImpl implements SurveyService {
 	private SurveyMapper surveyMapper;
+	private JsonConvert jsonConvert ;
+	
+	public SurveyServiceImpl(){
+		jsonConvert = new JsonConvert();
+	}
 
 	public SurveyMapper getSurveyMapper() {
 		return surveyMapper;
@@ -310,6 +316,24 @@ public class SurveyServiceImpl implements SurveyService {
 			return surveyMapper.insertSelective(survey);
 		}
 		return 0;
+	}
+	@Override
+	public String selectSurveysByTID(Integer tid) {
+		// TODO Auto-generated method stub
+		List<Survey> surveys = surveyMapper.selectByTID(tid);
+		return jsonConvert.list2json(surveys);
+	}
+
+	@Override
+	public String getChooseSurvey(Integer tid) {
+		// TODO Auto-generated method stub
+		List<Survey> surveys = surveyMapper.selectByTID(tid);
+		String choosesurvey = "";
+		for (Survey survey : surveys) {
+			choosesurvey = survey.getChoosesurvey();
+			break;
+		}
+		return choosesurvey;
 	}
 	
 

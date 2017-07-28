@@ -184,5 +184,7 @@ public class JWordServiceImpl implements JWordService {
 		}
 		return jsonConvert.list2json(words);
 	}
+		
+
 
 }

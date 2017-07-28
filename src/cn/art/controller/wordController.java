@@ -1,8 +1,5 @@
 package cn.art.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,11 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import cn.art.model.Word;
 import cn.art.service.WordService;
-import cn.art.util.word2X;
-import cn.art.util.pojo.wordF;
-import cn.art.util.pojo.wordV;
 
 
 @Controller
@@ -37,7 +30,7 @@ public class wordController {
 		return "user/word";
 	}
 	
-	
+	/*
 	@RequestMapping("corpus/basic/{basicSubInfo}")
 	public String VocabularyService(@PathVariable String basicSubInfo , HttpServletRequest request){
 		word2X word2X = new word2X();
@@ -59,6 +52,7 @@ public class wordController {
 		}
 		return "user/word1";
 	}
+	*/
 	
 	
 

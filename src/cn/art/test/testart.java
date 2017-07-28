@@ -12,6 +12,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import sun.misc.BASE64Encoder;
+import cn.art.dao.NewCaseMapper;
+import cn.art.dao.SurveyMapper;
 import cn.art.model.User;
 import cn.art.service.UserService;
 
@@ -20,7 +22,24 @@ import cn.art.service.UserService;
 @ContextConfiguration(locations={"classpath:spring.xml","classpath:spring-mybatis.xml"})
 public class testart {
 	private UserService userService;
+	private SurveyMapper surveyMapper;
+	private NewCaseMapper newCaseMapper;
 	
+	
+	public NewCaseMapper getNewCaseMapper() {
+		return newCaseMapper;
+	}
+	@Autowired
+	public void setNewCaseMapper(NewCaseMapper newCaseMapper) {
+		this.newCaseMapper = newCaseMapper;
+	}
+	public SurveyMapper getSurveyMapper() {
+		return surveyMapper;
+	}
+	@Autowired
+	public void setSurveyMapper(SurveyMapper surveyMapper) {
+		this.surveyMapper = surveyMapper;
+	}
 	public UserService getUserService() {
 		return userService;
 	}
@@ -68,5 +87,7 @@ public class testart {
 		userService.deleteByPrimaryKey(4);
 		System.out.println("删除成功");
 	}
+	
+	
 
 }

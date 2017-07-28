@@ -63,7 +63,7 @@ public class M_dimenseController {
 		return "manager/testlogin";
 	}
 	
-	//降维词汇库 "词汇"点击接口
+	//降维词汇库 "词汇,词对"点击接口
 	@RequestMapping("{wordType}")
 	public String semanticDimenseWordType(@PathVariable String wordType,HttpServletRequest request){
 		if("voca".equals(wordType)){

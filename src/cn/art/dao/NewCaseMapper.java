@@ -17,4 +17,5 @@ public interface NewCaseMapper {
     int updateByPrimaryKeySelective(NewCase record);
 
     int updateByPrimaryKey(NewCase record);
+
 }

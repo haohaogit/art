@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import cn.art.service.JWordService;
+import cn.art.service.SurveyService;
 import cn.art.service.TypeService;
 import cn.art.service.WordService;
 
@@ -18,7 +19,15 @@ public class U_corpusController {
 	private WordService wordService;
 	private TypeService typeService;
 	private JWordService jWordService;
+	private SurveyService seurveyService;
 	
+	public SurveyService getSeurveyService() {
+		return seurveyService;
+	}
+	@Autowired
+	public void setSeurveyService(SurveyService seurveyService) {
+		this.seurveyService = seurveyService;
+	}
 	public JWordService getjWordService() {
 		return jWordService;
 	}
@@ -60,7 +69,7 @@ public class U_corpusController {
 	//基础意象语义库 详细词汇接口(比如"安宁")
 	@RequestMapping("basic/word/{wid}")
 	public String corpusBasicWordDetail(@PathVariable Integer wid,HttpServletRequest request){
-		String word = wordService.selectByPrimaryKey(wid);
+		String word = wordService.selectWordByPrimaryKey(wid);
 		request.setAttribute("word", word);
 		
 		return "manager/testlogin";
@@ -90,24 +99,38 @@ public class U_corpusController {
 		return "manager/testlogin";
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	//基础意象语义库 详细词汇接口(比如"安宁")
-	@RequestMapping("basic/word/{wid}")
-	public String corpusBasicWordDetail1(@PathVariable Integer wid,HttpServletRequest request){
-		String word = wordService.selectByPrimaryKey(wid);
+	//降维词汇库  详细词汇接口(比如"朝气")
+	@RequestMapping("dimense/word/{wid}")
+	public String corpusDimenseWordDetail1(@PathVariable Integer wid,HttpServletRequest request){
+		String word = wordService.selectWordByPrimaryKey(wid);
 		request.setAttribute("word", word);
 		
 		return "manager/testlogin";
 	}
+	
+	//问卷调查与检验 物件类型默认接口
+	@RequestMapping("question")
+	public String corpusQuestion(HttpServletRequest request){
+		String types = typeService.selectAllOnlyIDName();
+		request.setAttribute("types", types);
+		
+		int tid = typeService.getFirstTid();
+		String surveys = seurveyService.selectSurveysByTID(tid);
+		request.setAttribute("surveys", surveys);
+		
+		return "manager/testlogin";
+	}
+	
+	//问卷调查与检验   xx物件类型调查接口
+	@RequestMapping("question/{tid}")
+	public String corpusQuestionClassify(@PathVariable Integer tid,HttpServletRequest request){
+		
+		String surveys = seurveyService.selectSurveysByTID(tid);
+		request.setAttribute("surveys", surveys);
+		
+		return "manager/testlogin";
+	}
+	
+	
 
 }

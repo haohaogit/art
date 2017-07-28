@@ -49,7 +49,7 @@ public class WordServiceImpl implements WordService {
 	}
 
 	@Override
-	public String selectByPrimaryKey(Integer wid) {
+	public String selectWordByPrimaryKey(Integer wid) {
 		// TODO Auto-generated method stub
 		return jsonConvert.Bean2Json(wordMapper.selectByPrimaryKey(wid));
 	}
@@ -116,6 +116,12 @@ public class WordServiceImpl implements WordService {
 		}
 		return jsonConvert.list2json(wordFVs);
 
+	}
+
+	@Override
+	public Word selectByPrimaryKey(Integer wid) {
+		// TODO Auto-generated method stub
+		return wordMapper.selectByPrimaryKey(wid);
 	}
 
 

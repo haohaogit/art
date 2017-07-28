@@ -14,6 +14,7 @@ public interface SurveyService {
 
     Survey selectByPrimaryKey(Integer sid);
     List<Survey> selectByTID(Integer tid);
+    String selectSurveysByTID(Integer tid);
 
     int updateByPrimaryKeySelective(Survey record);
 
@@ -39,6 +40,8 @@ public interface SurveyService {
     String getRatio(Integer tid);
     int saveRatio(Integer tid,String ratio);
     
+    String getChooseSurvey(Integer tid);
+   
    
     
     

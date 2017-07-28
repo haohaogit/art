@@ -84,13 +84,13 @@ public class NewCaseServiceImpl implements NewCaseService {
 		return newCaseMapper.updateByPrimaryKeySelective(newCase);
 	}
 	@Override
-	public int insertSelect(Integer tid, Integer nid, String newcasename,
+	public int insertSelect(Integer tid, String newcasename,
 			String newcaseRtotal, String newcaseRoutline, String newcaseRcolor,
 			String newcaseRtexture, String newcaseAtotal,
 			String newcaseAoutline, String newcaseAcolor, String newcaseAtexture) {
 		// TODO Auto-generated method stub
 		NewCase newCase = new NewCase();
-		newCase.setNid(nid);
+		
 		newCase.setTid(tid);
 		newCase.setNewcasename(newcasename);
 		newCase.setNewcasertotal(newcaseRtotal);
@@ -105,5 +105,20 @@ public class NewCaseServiceImpl implements NewCaseService {
 		
 		return newCaseMapper.insertSelective(newCase);
 	}
+	@Override
+	public int SaveRecommend(Integer nid, Integer tid, String newcaseimg,
+			String newcasercolor, String newcasertexture) {
+		// TODO Auto-generated method stub
+		NewCase newCase = new NewCase();
+		newCase.setNid(nid);
+		newCase.setTid(tid);
+		newCase.setNewcaseimg(newcaseimg);
+		newCase.setNewcasercolor(newcasercolor);
+		newCase.setNewcasertexture(newcasertexture);
+		
+		return newCaseMapper.insertSelective(newCase);
+	}
+	
+	
 
 }

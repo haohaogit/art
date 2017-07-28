@@ -134,8 +134,8 @@ public class M_newcaseController {
 	}
 	
 	//底层案例库 添加新案例接口
-	@RequestMapping("addCase/{nid}/{tid}")
-	public String facadeNewCaseAddCase(@PathVariable int nid,@PathVariable int tid,HttpServletRequest request){
+	@RequestMapping("addCase/{tid}")
+	public String facadeNewCaseAddCase(@PathVariable int tid,HttpServletRequest request){
 		String newcasename = request.getParameter("newcasename");
 		String newcaseRtotal = request.getParameter("newcaseRtotal");
 		String newcaseRoutline = request.getParameter("newcaseRoutline");
@@ -146,7 +146,7 @@ public class M_newcaseController {
 		String newcaseAcolor = request.getParameter("newcaseAcolor");
 		String newcaseAtexture = request.getParameter("newcaseAtexture");
 		
-		int isok = newCaseService.insertSelect(tid, nid, newcasename, newcaseRtotal, newcaseRoutline, newcaseRcolor, newcaseRtexture, newcaseAtotal, newcaseAoutline, newcaseAcolor, newcaseAtexture);
+		int isok = newCaseService.insertSelect(tid, newcasename, newcaseRtotal, newcaseRoutline, newcaseRcolor, newcaseRtexture, newcaseAtotal, newcaseAoutline, newcaseAcolor, newcaseAtexture);
 		if(isok==1){
 			request.setAttribute("status", 200);
 		}else{

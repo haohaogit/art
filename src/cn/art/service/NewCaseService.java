@@ -19,7 +19,9 @@ public interface NewCaseService {
 	    int updateByPrimaryKey(NewCase record);
 	    int update(Integer nid,String newcasename,String newcaseRtotal,String newcaseRoutline,String newcaseRcolor,String newcaseRtexture
 	    		,String newcaseAtotal,String newcaseAoutline,String newcaseAcolor,String newcaseAtexture);
-	    int insertSelect(Integer tid,Integer nid,String newcasename,String newcaseRtotal,String newcaseRoutline,String newcaseRcolor,String newcaseRtexture
+	    int insertSelect(Integer tid,String newcasename,String newcaseRtotal,String newcaseRoutline,String newcaseRcolor,String newcaseRtexture
 	    		,String newcaseAtotal,String newcaseAoutline,String newcaseAcolor,String newcaseAtexture);
+	    
+	    int SaveRecommend(Integer nid,Integer tid,String newcaseimg,String newcasercolor,String newcasertexture);
 
 }

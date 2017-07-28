@@ -24,5 +24,5 @@ public interface JWordService {
     int insertCidui(Integer wid1,Integer wid2,Integer tid);
     
     String getAllJwordByTID(Integer tid);
-
+  
 }
