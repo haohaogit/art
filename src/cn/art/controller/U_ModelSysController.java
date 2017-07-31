@@ -114,7 +114,7 @@ public class U_ModelSysController {
 		String recommendcolor = request.getParameter("recommendcolor");
 		String recommendtextureImg = request.getParameter("recommendtextureImg");
 		
-		//id生成器
+		//id生成器   UUID id生成器产生的是 string 类型的ID
 		UUID uuid = UUID.randomUUID();
 		
 		int nid = 0;

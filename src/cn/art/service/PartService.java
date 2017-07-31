@@ -14,6 +14,9 @@ public interface PartService {
 
     Part selectByPrimaryKey(Integer pid);
     List<Part> selectByTIDandPBID(Map map);
+    
+    String selectByName(String pdescription);
+    int CountNumByName(String pdescription);
 
     int updateByPrimaryKeySelective(Part record);
 

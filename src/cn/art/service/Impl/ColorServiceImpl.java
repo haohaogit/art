@@ -154,4 +154,17 @@ public class ColorServiceImpl implements ColorService {
 		return colorMapper.insertSelective(color);
 	}
 
+	@Override
+	public String selectByName(String cdescription) {
+		// TODO Auto-generated method stub
+		List<Color> colors = colorMapper.selectByName(cdescription);
+		return jsonConvert.list2json(colors);
+	}
+
+	@Override
+	public int CountNumByName(String cdescription) {
+		// TODO Auto-generated method stub
+		return colorMapper.CountNumByName(cdescription);
+	}
+
 }

@@ -8,11 +8,17 @@ import org.springframework.stereotype.Service;
 import cn.art.dao.NewCaseMapper;
 import cn.art.model.NewCase;
 import cn.art.service.NewCaseService;
+import cn.art.util.JsonConvert;
 
 
 @Service("NewCaseService")
 public class NewCaseServiceImpl implements NewCaseService {
 	private NewCaseMapper newCaseMapper;
+	private JsonConvert jsonConvert;
+	
+	public NewCaseServiceImpl(){
+		jsonConvert = new JsonConvert();
+	}
 
 	public NewCaseMapper getNewCaseMapper() {
 		return newCaseMapper;
@@ -117,6 +123,19 @@ public class NewCaseServiceImpl implements NewCaseService {
 		newCase.setNewcasertexture(newcasertexture);
 		
 		return newCaseMapper.insertSelective(newCase);
+	}
+
+	@Override
+	public String selectByName(String newcasename) {
+		// TODO Auto-generated method stub
+		List<NewCase> newCases = newCaseMapper.selectByName(newcasename);
+		return jsonConvert.list2json(newCases);
+	}
+
+	@Override
+	public int CountNumByName(String newcasename) {
+		// TODO Auto-generated method stub
+		return newCaseMapper.CountNumByName(newcasename);
 	}
 	
 	

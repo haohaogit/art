@@ -14,7 +14,10 @@ public interface PartMapper {
 
     Part selectByPrimaryKey(Integer pid);
     List<Part> selectByTIDandPBID(Map map);
-
+    
+    List<Part> selectByName(String pdescription);
+    
+    int CountNumByName(String pdescription);
     int updateByPrimaryKeySelective(Part record);
 
     int updateByPrimaryKey(Part record);

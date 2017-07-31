@@ -14,6 +14,9 @@ public interface BottomCaseService {
 
     BottomCase selectByPrimaryKey(Integer bcid);
     List<BottomCase> selectByTIDandBCTID(Map map);
+    
+    String selectByName(String  casename);
+    int CountNumByName(String  casename);
 
     int updateByPrimaryKeySelective(BottomCase record);
 

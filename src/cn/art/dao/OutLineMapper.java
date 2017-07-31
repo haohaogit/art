@@ -14,6 +14,9 @@ public interface OutLineMapper {
 
     OutLine selectByPrimaryKey(Integer oid);
     List<OutLine> selectByTIDandOTID(Map map);
+    
+    List<OutLine> selectByName(String odescription);
+    int CountNumByName(String odescription);
 
     int updateByPrimaryKeySelective(OutLine record);
 

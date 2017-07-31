@@ -147,4 +147,17 @@ public class OutLineServiceImpl implements OutLineService {
 		return outLineMapper.insertSelective(outLine);
 	}
 
+	@Override
+	public String selectByName(String odescription) {
+		// TODO Auto-generated method stub
+		List<OutLine> outLines = outLineMapper.selectByName(odescription);
+		return jsonConvert.list2json(outLines);
+	}
+
+	@Override
+	public int CountNumByName(String odescription) {
+		// TODO Auto-generated method stub
+		return outLineMapper.CountNumByName(odescription);
+	}
+
 }

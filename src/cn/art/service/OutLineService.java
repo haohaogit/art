@@ -14,6 +14,9 @@ public interface OutLineService {
 
     OutLine selectByPrimaryKey(Integer oid);
     List<OutLine> selectByTIDandOTID(Map<String, Integer> map);
+    
+    String selectByName(String odescription);
+    int CountNumByName(String odescription);
 
     int updateByPrimaryKeySelective(OutLine record);
 

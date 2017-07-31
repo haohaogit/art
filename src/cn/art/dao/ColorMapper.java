@@ -15,6 +15,10 @@ public interface ColorMapper {
     Color selectByPrimaryKey(Integer cid);
     List<Color> selectByTID(Integer tid);
     List<Color> selectByTIDandCBID(Map map);
+    
+    List<Color> selectByName(String cdescription);
+    int CountNumByName(String cdescription);
+    
     int updateByPrimaryKeySelective(Color record);
 
     int updateByPrimaryKey(Color record);

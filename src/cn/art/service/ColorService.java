@@ -14,6 +14,9 @@ public interface ColorService {
     Color selectByPrimaryKey(Integer cid);
     List<Color> selectByTID(Integer tid);
     List<Color> selectByTIDandCBID(Map map);
+    
+    String selectByName(String cdescription);
+    int CountNumByName(String cdescription);
 
     int updateByPrimaryKeySelective(Color record);
 

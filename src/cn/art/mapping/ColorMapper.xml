@@ -32,6 +32,18 @@
     where TID = #{tid,jdbcType=INTEGER}
   </select>
   
+  <select id="selectByName" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from color_
+    where CDescription = #{cdescription,jdbcType=VARCHAR}
+  </select>
+  
+  <select id="CountNumByName" resultType="java.lang.Integer" parameterType="java.lang.String" >
+    select count(*) from color_
+    where CDescription = #{cdescription,jdbcType=VARCHAR}
+  </select>
+  
    <select id="selectByTIDandCBID" resultMap="BaseResultMap" parameterType="java.util.Map" >
     select 
     <include refid="Base_Column_List" />

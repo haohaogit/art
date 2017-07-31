@@ -124,5 +124,34 @@ public class WordServiceImpl implements WordService {
 		return wordMapper.selectByPrimaryKey(wid);
 	}
 
+	@Override
+	public int update(Integer wid, String wword, String wbasic,
+			String wdetail, String wsimilar, String wopposite, Integer wcolorwarm) {
+		// TODO Auto-generated method stub
+		Word word = wordMapper.selectByPrimaryKey(wid);
+		word.setWword(wword);
+		word.setWbasic(wbasic);
+		word.setWdetail(wdetail);
+		word.setWsimilar(wsimilar);
+		word.setWoposite(wopposite);
+		word.setWcolorwarm(wcolorwarm);
+		
+		return wordMapper.updateByPrimaryKeySelective(word);
+	}
+
+	@Override
+	public int insertSelect(String wword, String wbasic,
+			String wdetail, String wsimilar, String wopposite) {
+		// TODO Auto-generated method stub
+		Word word = new Word();
+		word.setWword(wword);
+		word.setWbasic(wbasic);
+		word.setWdetail(wdetail);
+		word.setWsimilar(wsimilar);
+		word.setWoposite(wopposite);
+		
+		return wordMapper.insertSelective(word);
+	}
+
 
 }

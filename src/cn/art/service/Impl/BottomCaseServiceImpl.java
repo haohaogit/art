@@ -11,10 +11,16 @@ import cn.art.dao.BottomCaseTypeMapper;
 import cn.art.model.BottomCase;
 import cn.art.model.BottomCaseType;
 import cn.art.service.BottomCaseService;
+import cn.art.util.JsonConvert;
 @Service("BottomCaseService")
 public class BottomCaseServiceImpl implements BottomCaseService {
 	private BottomCaseMapper bottomCaseMapper;
 	private BottomCaseTypeMapper bottomCaseTypeMapper;
+	private JsonConvert jsonConvert;
+	
+	public BottomCaseServiceImpl(){
+		jsonConvert = new JsonConvert();
+	}
 
 	public BottomCaseTypeMapper getBottomCaseTypeMapper() {
 		return bottomCaseTypeMapper;
@@ -122,6 +128,17 @@ public class BottomCaseServiceImpl implements BottomCaseService {
 		bottomCase.setCasename(casename);
 		return bottomCaseMapper.insertSelective(bottomCase);
 		
+	}
+	@Override
+	public String selectByName(String casename) {
+		// TODO Auto-generated method stub
+		List<BottomCase> bottomCases = bottomCaseMapper.selectByName(casename);
+		return jsonConvert.list2json(bottomCases);
+	}
+	@Override
+	public int CountNumByName(String casename) {
+		// TODO Auto-generated method stub
+		return bottomCaseMapper.CountNumByName(casename);
 	}
 	
 

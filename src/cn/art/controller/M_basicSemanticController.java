@@ -68,17 +68,43 @@ public class M_basicSemanticController {
 	
 	//                        编辑保存 新增词汇保存接口   目前存在一些 问题   接口状态待定。。。。。。。。。。。。。。。。
 	//基础意象语义库 编辑保存接口
-	@RequestMapping("edit/{word}/confirm")
-	public String semanticBasicEditSave(@PathVariable Integer id,HttpServletRequest request){
+	@RequestMapping("edit/{wid}/confirm")
+	public String semanticBasicEditSave(@PathVariable Integer wid,HttpServletRequest request){
+		String WWord = request.getParameter("WWord");
+		String WBasic = request.getParameter("WBasic");
+		String WDetail = request.getParameter("WDetail");
+		String WSimilar = request.getParameter("WSimilar");
+		String WOpposite = request.getParameter("WOpposite");
+		String WColorWarm = request.getParameter("WColorWarm");
+		
+		int isok = wordService.update(wid, WWord, WBasic, WDetail, WSimilar, WOpposite, Integer.parseInt(WColorWarm));
+		if(isok==1){
+			request.setAttribute("status", 200);
+		}else{
+			request.setAttribute("status", 100);
+			request.setAttribute("errorMessage", "基础意象语义库编辑保存失败");
+		}
 		
 		
 		return "manager/testlogin";
 	}
 	
 	//基础意象语义库 添加新词汇接口
-	@RequestMapping("addword/{word}")
-	public String semanticBasicAddWord(@PathVariable Integer id,HttpServletRequest request){
+	@RequestMapping("addword")
+	public String semanticBasicAddWord(HttpServletRequest request){
+		String WWord = request.getParameter("WWord");
+		String WBasic = request.getParameter("WBasic");
+		String WDetail = request.getParameter("WDetail");
+		String WSimilar = request.getParameter("WSimilar");
+		String WOpposite = request.getParameter("WOpposite");
 		
+		int isok = wordService.insertSelect(WWord, WBasic, WDetail, WSimilar, WOpposite);
+		if(isok==1){
+			request.setAttribute("status", 200);
+		}else{
+			request.setAttribute("status", 100);
+			request.setAttribute("errorMessage", "基础意象语义库编辑保存失败");
+		}
 		
 		return "manager/testlogin";
 	}	
@@ -100,20 +126,5 @@ public class M_basicSemanticController {
 	}	
 	*/		
 			
-			
-			
-			
-			
-			
-			
-			
-	
-	
-	//基础意象语义库 (默认接口)
-		@RequestMapping("")
-		public String semanticBasic1(HttpServletRequest request){
-			
-			return "manager/testlogin";
-		}
 
 }

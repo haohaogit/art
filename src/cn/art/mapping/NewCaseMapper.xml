@@ -40,6 +40,18 @@
   where TID = #{tid,jdbcType=INTEGER}
   </select>
   
+  <select id="selectByName" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from newcase_
+    where NewCaseName = #{newcasename,jdbcType=VARCHAR}
+  </select>
+  
+  <select id="CountNumByName" resultType="java.lang.Integer" parameterType="java.lang.String" >
+    select count(*) from newcase_
+    where NewCaseName = #{newcasename,jdbcType=VARCHAR}
+  </select>
+  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from newcase_
     where NID = #{nid,jdbcType=INTEGER}

@@ -147,4 +147,17 @@ public class TextureServiceImpl implements TextureService {
 		return textureMapper.insertSelective(texture);
 	}
 
+	@Override
+	public String selectByName(String tdescription) {
+		// TODO Auto-generated method stub
+		 List<Texture> textures = textureMapper.selectByName(tdescription);
+		return jsonConvert.list2json(textures);
+	}
+
+	@Override
+	public int CountNumByName(String tdescription) {
+		// TODO Auto-generated method stub
+		return textureMapper.CountNumByName(tdescription);
+	}
+
 }

@@ -14,6 +14,9 @@ public interface TextureService {
 
     Texture selectByPrimaryKey(Integer textureid);
     List<Texture> selectByTIDandTTID(Map map);
+    
+    String selectByName(String tdescription);
+    int CountNumByName(String tdescription);
 
     int updateByPrimaryKeySelective(Texture record);
 

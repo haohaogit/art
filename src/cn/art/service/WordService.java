@@ -22,6 +22,11 @@ public interface WordService {
     public String getwordFp();
     
     public String getWordFV();
+    
+    public int update(Integer wid,String wword,String wbasic,String wdetail,String wsimilar,
+    		String wopposite,Integer wcolorwarm);
+    public int insertSelect(String wword,String wbasic,String wdetail,String wsimilar,
+    		String wopposite);
    
 
 }

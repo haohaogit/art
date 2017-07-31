@@ -13,6 +13,9 @@ public interface BottomCaseMapper {
     int insertSelective(BottomCase record);
 
     BottomCase selectByPrimaryKey(Integer bcid);
+    List<BottomCase> selectByName(String  casename);
+    int CountNumByName(String  casename);
+    
     List<BottomCase> selectByTIDandBCTID(Map map);
 
     int updateByPrimaryKeySelective(BottomCase record);

@@ -148,4 +148,17 @@ public class PartServiceImpl implements PartService {
 		return partMapper.insertSelective(part);
 	}
 
+	@Override
+	public String selectByName(String pdescription) {
+		// TODO Auto-generated method stub
+		 List<Part> parts = partMapper.selectByName(pdescription);
+		return jsonConvert.list2json(parts);
+	}
+
+	@Override
+	public int CountNumByName(String pdescription) {
+		// TODO Auto-generated method stub
+		return partMapper.CountNumByName(pdescription);
+	}
+
 }
