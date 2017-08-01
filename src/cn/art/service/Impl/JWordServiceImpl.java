@@ -13,9 +13,7 @@ import cn.art.model.JWord;
 import cn.art.model.Word;
 import cn.art.service.JWordService;
 import cn.art.util.JsonConvert;
-import cn.art.util.word2X;
 import cn.art.util.pojo.typeIdName;
-import cn.art.util.pojo.wordFV;
 import cn.art.util.pojo.wordp1;
 import cn.art.util.pojo.wordp2;
 
@@ -170,17 +168,25 @@ public class JWordServiceImpl implements JWordService {
 	public String getAllJwordByTID(Integer tid) {
 		// TODO Auto-generated method stub
 		List<JWord> jWords = jWordMapper.selectByTID(tid);
-		word2X word2x = new word2X();
+		
 		Word word = new Word();
-		List<wordFV> words = new LinkedList<>();
+		wordp2 wordp2;
+		List<wordp2> words = new LinkedList<>();
 		for (JWord jWord : jWords) {
+			wordp2 = new wordp2();
 			word = wordMapper.selectByPrimaryKey(jWord.getWid());
-			words.add(word2x.word2wordFV(word));
+			wordp2.setJwid(jWord.getJwid());
+			wordp2.setTid(jWord.getTid());
+			wordp2.setWid(word.getWid());
+			wordp2.setWword1(word.getWword());
 			
-			if(jWord.getCouplewid()!=0){
+			
+			if(jWord.getCouplewid()!=null&&jWord.getCouplewid()!=0){
 				word = wordMapper.selectByPrimaryKey(jWord.getCouplewid());
-				words.add(word2x.word2wordFV(word));
+				wordp2.setCouplewid(jWord.getCouplewid());
+				wordp2.setWword2(word.getWword());
 			}
+			words.add(wordp2);
 		}
 		return jsonConvert.list2json(words);
 	}

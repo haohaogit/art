@@ -14,6 +14,7 @@ public interface TextureMapper {
 
     Texture selectByPrimaryKey(Integer textureid);
     List<Texture> selectByTIDandTTID(Map map);
+    List<Texture> selectByTID(Integer tid);
     
     List<Texture> selectByName(String tdescription);
     int CountNumByName(String tdescription);

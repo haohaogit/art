@@ -1,5 +1,6 @@
 package cn.art.service.Impl;
 
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -12,6 +13,7 @@ import cn.art.model.Texture;
 import cn.art.model.TextureType;
 import cn.art.service.TextureService;
 import cn.art.util.JsonConvert;
+import cn.art.util.pojo.textureB;
 import cn.art.util.pojo.textureD;
 
 @Service("TextureService")
@@ -158,6 +160,25 @@ public class TextureServiceImpl implements TextureService {
 	public int CountNumByName(String tdescription) {
 		// TODO Auto-generated method stub
 		return textureMapper.CountNumByName(tdescription);
+	}
+
+	@Override
+	public String getTextureBasic(Integer tid) {
+		// TODO Auto-generated method stub
+		List<textureB> textureBs = new LinkedList<textureB>();
+		textureB textureB;
+		List<Texture> textures = textureMapper.selectByTID(tid);
+		for (Texture texture : textures) {
+			textureB = new textureB();
+			textureB.setTid(texture.getTid());
+			textureB.setTextureid(texture.getTextureid());
+			textureB.setTtname(textureTypeMapper.selectByPrimaryKey(texture.getTtid()).getTtname());
+			textureB.setTdescription(texture.getTdescription());
+			textureB.setTimg(texture.getTimg());
+			
+			textureBs.add(textureB);
+		}
+		return jsonConvert.list2json(textureBs);
 	}
 
 }

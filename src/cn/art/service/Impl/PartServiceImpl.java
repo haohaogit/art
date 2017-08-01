@@ -1,5 +1,6 @@
 package cn.art.service.Impl;
 
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -12,6 +13,7 @@ import cn.art.model.Part;
 import cn.art.model.PartType;
 import cn.art.service.PartService;
 import cn.art.util.JsonConvert;
+import cn.art.util.pojo.partB;
 import cn.art.util.pojo.partD;
 
 @Service("PartService")
@@ -159,6 +161,25 @@ public class PartServiceImpl implements PartService {
 	public int CountNumByName(String pdescription) {
 		// TODO Auto-generated method stub
 		return partMapper.CountNumByName(pdescription);
+	}
+
+	@Override
+	public String getPartBasic(Integer tid) {
+		// TODO Auto-generated method stub
+		List<Part> parts = partMapper.selectByTID(tid);
+		List<partB> partBs = new LinkedList<partB>();
+		partB partB;
+		for (Part part : parts) {
+			partB = new partB();
+			partB.setPid(part.getPid());
+			partB.setTid(part.getTid());
+			partB.setPbname(partTypeMapper.selectByPrimaryKey(part.getPbid()).getPbname());
+			partB.setPdescription(part.getPdescription());
+			partB.setPimg(part.getPimg());
+			
+			partBs.add(partB);
+		}
+		return jsonConvert.list2json(partBs);
 	}
 
 }

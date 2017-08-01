@@ -27,5 +27,7 @@ public interface TextureService {
     		String timg,String timg1,String timg2,String timg3,String timg4);
     int insertSelect(Integer tid,String tdescription,String ttname,
     		String timg,String timg1,String timg2,String timg3,String timg4);
+    
+    String getTextureBasic(Integer tid);
 
 }

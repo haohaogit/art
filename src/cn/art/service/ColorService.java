@@ -27,5 +27,7 @@ public interface ColorService {
     		String cimg1,String cimg2,String cimg3,String cimg4);
     int insertSelect(Integer tid,String cdescription,String cbname,String crgb,
     		String cimg1,String cimg2,String cimg3,String cimg4);
+    
+    String getColorBasic(Integer tid);
 
 }

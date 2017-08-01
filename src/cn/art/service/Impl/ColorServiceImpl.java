@@ -1,5 +1,6 @@
 package cn.art.service.Impl;
 
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -12,6 +13,7 @@ import cn.art.model.Color;
 import cn.art.model.ColorType;
 import cn.art.service.ColorService;
 import cn.art.util.JsonConvert;
+import cn.art.util.pojo.colorB;
 import cn.art.util.pojo.colorD;
 @Service("ColorService")
 public class ColorServiceImpl implements ColorService {
@@ -165,6 +167,25 @@ public class ColorServiceImpl implements ColorService {
 	public int CountNumByName(String cdescription) {
 		// TODO Auto-generated method stub
 		return colorMapper.CountNumByName(cdescription);
+	}
+
+	@Override
+	public String getColorBasic(Integer tid) {
+		// TODO Auto-generated method stub
+		List<Color> colors = colorMapper.selectByTID(tid);
+		List<colorB> colorBs = new LinkedList<colorB>();
+		colorB colorB;
+		for (Color color : colors) {
+			colorB = new colorB();
+			colorB.setCid(color.getCid());
+			colorB.setTid(color.getTid());
+			colorB.setCbname(colorTypeMapper.selectByPrimaryKey(color.getCbid()).getCbname());
+			colorB.setCdescription(color.getCdescription());
+			colorB.setCimg(color.getCimg());
+			
+			colorBs.add(colorB);
+		}
+		return jsonConvert.list2json(colorBs);
 	}
 
 }
