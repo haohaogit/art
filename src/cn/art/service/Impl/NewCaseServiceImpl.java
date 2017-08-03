@@ -5,7 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import cn.art.dao.ColorMapper;
 import cn.art.dao.NewCaseMapper;
+import cn.art.dao.TextureMapper;
 import cn.art.model.NewCase;
 import cn.art.service.NewCaseService;
 import cn.art.util.JsonConvert;
@@ -14,12 +16,30 @@ import cn.art.util.JsonConvert;
 @Service("NewCaseService")
 public class NewCaseServiceImpl implements NewCaseService {
 	private NewCaseMapper newCaseMapper;
+	private ColorMapper colorMapper;
+	private TextureMapper textureMapper;
+
 	private JsonConvert jsonConvert;
 	
 	public NewCaseServiceImpl(){
 		jsonConvert = new JsonConvert();
 	}
+	
+	public TextureMapper getTextureMapper() {
+		return textureMapper;
+	}
 
+	public void setTextureMapper(TextureMapper textureMapper) {
+		this.textureMapper = textureMapper;
+	}
+	@Autowired
+	public ColorMapper getColorMapper() {
+		return colorMapper;
+	}
+	@Autowired
+	public void setColorMapper(ColorMapper colorMapper) {
+		this.colorMapper = colorMapper;
+	}
 	public NewCaseMapper getNewCaseMapper() {
 		return newCaseMapper;
 	}
@@ -136,6 +156,48 @@ public class NewCaseServiceImpl implements NewCaseService {
 	public int CountNumByName(String newcasename) {
 		// TODO Auto-generated method stub
 		return newCaseMapper.CountNumByName(newcasename);
+	}
+
+	@Override
+	public int InsertRecommendAdjust(Integer tid, String NewCaseArg,
+			String recommendRtotal, String recommendRoutline,
+			Integer recommendRcolorID, Integer recommendRtextureID,
+			String recommendAtotal, String recommendAoutline,
+			Integer recommendAcolorID, Integer recommendAtextureID) {
+		// TODO Auto-generated method stub
+		NewCase newCase = new NewCase();
+		newCase.setTid(tid);
+		newCase.setNewcasearg(NewCaseArg);
+		
+		newCase.setNewcaseroutline(recommendRoutline);
+		newCase.setNewcasertotal(recommendRtotal);
+		newCase.setNewcasercolorid(recommendRcolorID);
+		newCase.setNewcasercolor(colorMapper.selectByPrimaryKey(recommendRcolorID).getCimg());
+		newCase.setNewcasertextureid(recommendRtextureID);
+		newCase.setNewcasertexture(textureMapper.selectByPrimaryKey(recommendRtextureID).getTimg());
+		
+		newCase.setNewcaseatotal(recommendAtotal);
+		newCase.setNewcaseaoutline(recommendAoutline);
+		newCase.setNewcaseacolorid(recommendAcolorID);
+		newCase.setNewcaseacolor(colorMapper.selectByPrimaryKey(recommendAcolorID).getCimg());
+		newCase.setNewcaseatextureid(recommendAtextureID);
+		newCase.setNewcaseatexture(textureMapper.selectByPrimaryKey(recommendAtextureID).getTimg());
+		
+		return newCaseMapper.insertSelective(newCase);
+	}
+
+	@Override
+	public String selectNewcaseByTID(Integer tid) {
+		// TODO Auto-generated method stub
+		List<NewCase> newCases = newCaseMapper.selectByTID(tid);
+		return jsonConvert.list2json(newCases);
+	}
+
+	@Override
+	public String getNewCaseByPrimaryKey(Integer nid) {
+		// TODO Auto-generated method stub
+		NewCase newCase = newCaseMapper.selectByPrimaryKey(nid);
+		return jsonConvert.Bean2Json(newCase);
 	}
 	
 	

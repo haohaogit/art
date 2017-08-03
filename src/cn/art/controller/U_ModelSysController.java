@@ -1,6 +1,7 @@
 package cn.art.controller;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import cn.art.service.ColorService;
 import cn.art.service.JWordService;
 import cn.art.service.NewCaseService;
+import cn.art.service.OutLineService;
 import cn.art.service.PartService;
 import cn.art.service.SurveyService;
 import cn.art.service.TextureService;
@@ -22,11 +24,19 @@ public class U_ModelSysController {
 	private JWordService jWordService;
 	private TypeService typeService;
 	private SurveyService surveyService;
+	private OutLineService outLineService;
 	private PartService partService;
 	private ColorService colorService;
 	private TextureService textureService;
 	private NewCaseService newCaseService;
 	
+	public OutLineService getOutLineService() {
+		return outLineService;
+	}
+	@Autowired
+	public void setOutLineService(OutLineService outLineService) {
+		this.outLineService = outLineService;
+	}
 	public NewCaseService getNewCaseService() {
 		return newCaseService;
 	}
@@ -107,6 +117,46 @@ public class U_ModelSysController {
 	public String modelSetparaBytid(@PathVariable Integer tid,HttpServletRequest request){
 		request.setAttribute("tid", tid);
 		
+		//若该tid对应的物件类型是织物类型，则是另一个操作流程(相对于高脚杯、燃气灶等)
+		String tname = typeService.selectByPrimaryKey(tid).getTname();
+		if("织物".equals(tname)){
+			String outlinetypes = outLineService.selectOutlinetypeD(tid);
+			request.setAttribute("outlinetypes", outlinetypes);
+			
+			return "redirect:/model/setparameter/"+tid+"/fabricSave";
+			
+		}else{
+
+			//获取词汇类型    1 表示词汇 2 表示词对
+			int TWordType = typeService.selectByPrimaryKey(tid).getTwordtype();
+			//获取系统造型介绍
+			String TZaoxing = typeService.selectByPrimaryKey(tid).getTzaoxing();
+			//获取造型图标
+			String TIcon = typeService.selectByPrimaryKey(tid).getTicon();
+			
+			String Words = jWordService.getAllJwordByTID(tid);
+			
+			String ChooseSurvey = surveyService.getChooseSurvey(tid);
+			String Algorithms = surveyService.getAlgorithms(tid);
+		}
+		
+		return "manager/testlogin";
+	}
+	
+	@RequestMapping("setparameter/{tid}/fabricSave")
+	public String modelfabricOutlineselect(@PathVariable Integer tid,HttpServletRequest request){
+		String oidstring = request.getParameter("oid");
+		int oid = Integer.parseInt(oidstring);
+		
+		return "redirect:/model/"+tid+"/fabricSetpara/"+oid;
+	}
+	
+	@RequestMapping("{tid}/fabricSetpara/{oid}")
+	public String modelfabricParaselect(@PathVariable Integer tid,@PathVariable Integer oid,HttpServletRequest request){
+		//获取用户所选择的织物轮廓图案
+		String outlineImg = outLineService.selectByPrimaryKey(oid).getOimg();
+		request.setAttribute("outlineImg", outlineImg);
+		
 		//获取词汇类型    1 表示词汇 2 表示词对
 		int TWordType = typeService.selectByPrimaryKey(tid).getTwordtype();
 		//获取系统造型介绍
@@ -116,12 +166,12 @@ public class U_ModelSysController {
 		
 		String Words = jWordService.getAllJwordByTID(tid);
 		
-		
 		String ChooseSurvey = surveyService.getChooseSurvey(tid);
 		String Algorithms = surveyService.getAlgorithms(tid);
 		
 		return "manager/testlogin";
 	}
+	
 	
 	//                                    暂未实现该接口
 	//参数设置 保存接口(也是造型生成 入口)
@@ -153,38 +203,39 @@ public class U_ModelSysController {
 	@RequestMapping("generete/{tid}/Confirm")
 	public String modelGenerateSave(@PathVariable Integer tid,HttpServletRequest request){
 		 //上一步中利用高脚杯的位置数据产生的推荐图示 或燃气灶等的推荐图片
-		String recommendRtotal  = request.getParameter("recommendImg");      
+		//String recommendRtotal  = request.getParameter("recommendImg");      
+		//String recommendRoutline = request.getParameter("recommendRoutline");
 		
-		String recommendRoutline = request.getParameter("recommendRoutline");
 		
-		//String recommendRcolor = (String) request.getAttribute("recommendRcolor");
-		//int recommendRcolorID = request.getParameter("recommendRcolorID");
-		//String recommendRtexture = request.getParameter("recommendRtexture");
-		// recommendRtextureID = request.getParameter("recommendRtextureID");
 		
 		//id生成器   UUID id生成器产生的是 string 类型的ID
 		//UUID uuid = UUID.randomUUID();
-		request.setAttribute("recommendRtotal", recommendRtotal);
-		//request.setAttribute("recommendcolorImg", recommendcolorImg);
-		//request.setAttribute("recommendtextureImg", recommendtextureImg);
+		//request.setAttribute("recommendRtotal", recommendRtotal);
+		//request.setAttribute("recommendRoutline", recommendRoutline);
+		
+		HttpSession session = request.getSession();
+		session.setAttribute("generatetid", "generatetid111111111111111111111222");
+		//request.setAttribute("generatetid", "generatetid111111111111111111111");
 		
 		
 		//System.out.println("myname is llllllllllll");
+		//return "manager/testlogin";
 		return "redirect:/model/"+tid+"/partAdd";
 	}
 	
 	//部件添加 接口
 	@RequestMapping("{tid}/partAdd")
-	public void modelPartAdjust(@PathVariable Integer tid,HttpServletRequest request){
+	public String modelPartAdjust(@PathVariable Integer tid,HttpServletRequest request){
 		
-		//String recommendImg  = (String)request.getAttribute("recommendRtotal");
+		String generatetid  = (String)request.getAttribute("generatetid");
 		String parts = partService.getPartBasic(tid);
 		
 		//request.setAttribute("recommendImg", recommendImg);
 		request.setAttribute("parts", parts);
 		
-		//System.out.println("myname is 33333333333333333333");
-		//return "manager/testlogin";
+		System.out.println("myname is 33333333333333333333");
+		System.out.println(generatetid);
+		return "manager/testlogin";
 	}
 	
 	//部件添加 保存接口 (也是调转到造型调整的 色彩调整接口)
@@ -242,27 +293,31 @@ public class U_ModelSysController {
 		String recommendRtotal = (String) request.getAttribute("recommendRtotal");
 		String recommendRoutline = (String) request.getAttribute("recommendRoutline");
 		
-		String recommendRcolor= (String) request.getAttribute("recommendRcolor");
+		//String recommendRcolor= (String) request.getAttribute("recommendRcolor");
 		int recommendRcolorID = (int) request.getAttribute("recommendRcolorID");
-		String recommendRtexture= (String) request.getAttribute("recommendRtexture");
+		//String recommendRtexture= (String) request.getAttribute("recommendRtexture");
 		int recommendRtextureID = (int) request.getAttribute("recommendRtextureID");
 		
 		///////////////////////来源？？？？？？？？
 		String recommendAtotal = (String) request.getAttribute("recommendImg3");//用于记录经过材质调整后的整体推荐图片
 		String recommendAoutline = (String) request.getAttribute("recommendAoutline");
 		
-		String recommendAcolor= (String) request.getAttribute("recommendAcolor");
+		//String recommendAcolor= (String) request.getAttribute("recommendAcolor");
 		int recommendAcolorID = (int) request.getAttribute("recommendAcolorID");
-		String recommendAtexture= (String) request.getAttribute("recommendAtexture");
-		int recommendAtextureID = textureid;
+		//String recommendAtexture= (String) request.getAttribute("recommendAtexture");   //知道调整后的textureid后
+		int recommendAtextureID = textureid;                         //就知道了调整后的材质(recommendAtexture)
 		
 		//newCaseService.insertSelect(tid, newcasename, newcaseRtotal, newcaseRoutline, newcaseRcolor, newcaseRtexture, newcaseAtotal, newcaseAoutline, newcaseAcolor, newcaseAtexture)
 		//String recommendImg3 = request.getParameter("recommendImg3"); 
 		//request.setAttribute("recommendImg1", recommendImg1);  //把 经过材质调整后的整体图片先存到浏览器的request/response域中
 		
-		
-		
-		
+		int isok = newCaseService.InsertRecommendAdjust(tid, NewCaseArg, recommendRtotal, recommendRoutline, recommendRcolorID, recommendRtextureID, recommendAtotal, recommendAoutline, recommendAcolorID, recommendAtextureID);
+		if(isok==1){
+			request.setAttribute("status",200);
+		}else{
+			request.setAttribute("status", 100);
+			request.setAttribute("errorMessage", "新造型库推荐调整保存失败");
+		}
 		
 		return "";
 	}

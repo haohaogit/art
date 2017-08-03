@@ -11,15 +11,15 @@
     <result column="NewCaseRTotal" property="newcasertotal" jdbcType="VARCHAR" />
     <result column="NewCaseROutline" property="newcaseroutline" jdbcType="VARCHAR" />
     <result column="NewCaseRColor" property="newcasercolor" jdbcType="VARCHAR" />
-    <result column="NewCaseRColorID" property="newcasercolorid" jdbcType="VARCHAR" />
+    <result column="NewCaseRColorID" property="newcasercolorid" jdbcType="INTEGER" />
     <result column="NewCaseRTexture" property="newcasertexture" jdbcType="VARCHAR" />
-    <result column="NewCaseRTextureID" property="newcasertextureid" jdbcType="VARCHAR" />
+    <result column="NewCaseRTextureID" property="newcasertextureid" jdbcType="INTEGER" />
     <result column="NewCaseATotal" property="newcaseatotal" jdbcType="VARCHAR" />
     <result column="NewCaseAOutline" property="newcaseaoutline" jdbcType="VARCHAR" />
     <result column="NewCaseAColor" property="newcaseacolor" jdbcType="VARCHAR" />
-    <result column="NewCaseAColorID" property="newcaseacolorid" jdbcType="VARCHAR" />
+    <result column="NewCaseAColorID" property="newcaseacolorid" jdbcType="INTEGER" />
     <result column="NewCaseATexture" property="newcaseatexture" jdbcType="VARCHAR" />
-    <result column="NewCaseATextureID" property="newcaseatextureid" jdbcType="VARCHAR" />
+    <result column="NewCaseATextureID" property="newcaseatextureid" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Base_Column_List" >
     NID, TID, NewCaseName, NewCaseImg, NewCaseArg, NewCaseData, NewCaseRTotal, NewCaseROutline, 
@@ -67,9 +67,9 @@
     values (#{nid,jdbcType=INTEGER}, #{tid,jdbcType=INTEGER}, #{newcasename,jdbcType=VARCHAR}, 
       #{newcaseimg,jdbcType=VARCHAR}, #{newcasearg,jdbcType=VARCHAR}, #{newcasedata,jdbcType=VARCHAR}, 
       #{newcasertotal,jdbcType=VARCHAR}, #{newcaseroutline,jdbcType=VARCHAR}, #{newcasercolor,jdbcType=VARCHAR}, 
-      #{newcasercolorid,jdbcType=VARCHAR}, #{newcasertexture,jdbcType=VARCHAR}, #{newcasertextureid,jdbcType=VARCHAR}, 
+      #{newcasercolorid,jdbcType=INTEGER}, #{newcasertexture,jdbcType=VARCHAR}, #{newcasertextureid,jdbcType=INTEGER}, 
       #{newcaseatotal,jdbcType=VARCHAR}, #{newcaseaoutline,jdbcType=VARCHAR}, #{newcaseacolor,jdbcType=VARCHAR}, 
-      #{newcaseacolorid,jdbcType=VARCHAR}, #{newcaseatexture,jdbcType=VARCHAR}, #{newcaseatextureid,jdbcType=VARCHAR}
+      #{newcaseacolorid,jdbcType=INTEGER}, #{newcaseatexture,jdbcType=VARCHAR}, #{newcaseatextureid,jdbcType=INTEGER}
       )
   </insert>
   <insert id="insertSelective" parameterType="cn.art.model.NewCase" >
@@ -159,13 +159,13 @@
         #{newcasercolor,jdbcType=VARCHAR},
       </if>
       <if test="newcasercolorid != null" >
-        #{newcasercolorid,jdbcType=VARCHAR},
+        #{newcasercolorid,jdbcType=INTEGER},
       </if>
       <if test="newcasertexture != null" >
         #{newcasertexture,jdbcType=VARCHAR},
       </if>
       <if test="newcasertextureid != null" >
-        #{newcasertextureid,jdbcType=VARCHAR},
+        #{newcasertextureid,jdbcType=INTEGER},
       </if>
       <if test="newcaseatotal != null" >
         #{newcaseatotal,jdbcType=VARCHAR},
@@ -177,13 +177,13 @@
         #{newcaseacolor,jdbcType=VARCHAR},
       </if>
       <if test="newcaseacolorid != null" >
-        #{newcaseacolorid,jdbcType=VARCHAR},
+        #{newcaseacolorid,jdbcType=INTEGER},
       </if>
       <if test="newcaseatexture != null" >
         #{newcaseatexture,jdbcType=VARCHAR},
       </if>
       <if test="newcaseatextureid != null" >
-        #{newcaseatextureid,jdbcType=VARCHAR},
+        #{newcaseatextureid,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -215,13 +215,13 @@
         NewCaseRColor = #{newcasercolor,jdbcType=VARCHAR},
       </if>
       <if test="newcasercolorid != null" >
-        NewCaseRColorID = #{newcasercolorid,jdbcType=VARCHAR},
+        NewCaseRColorID = #{newcasercolorid,jdbcType=INTEGER},
       </if>
       <if test="newcasertexture != null" >
         NewCaseRTexture = #{newcasertexture,jdbcType=VARCHAR},
       </if>
       <if test="newcasertextureid != null" >
-        NewCaseRTextureID = #{newcasertextureid,jdbcType=VARCHAR},
+        NewCaseRTextureID = #{newcasertextureid,jdbcType=INTEGER},
       </if>
       <if test="newcaseatotal != null" >
         NewCaseATotal = #{newcaseatotal,jdbcType=VARCHAR},
@@ -233,13 +233,13 @@
         NewCaseAColor = #{newcaseacolor,jdbcType=VARCHAR},
       </if>
       <if test="newcaseacolorid != null" >
-        NewCaseAColorID = #{newcaseacolorid,jdbcType=VARCHAR},
+        NewCaseAColorID = #{newcaseacolorid,jdbcType=INTEGER},
       </if>
       <if test="newcaseatexture != null" >
         NewCaseATexture = #{newcaseatexture,jdbcType=VARCHAR},
       </if>
       <if test="newcaseatextureid != null" >
-        NewCaseATextureID = #{newcaseatextureid,jdbcType=VARCHAR},
+        NewCaseATextureID = #{newcaseatextureid,jdbcType=INTEGER},
       </if>
     </set>
     where NID = #{nid,jdbcType=INTEGER}
@@ -254,15 +254,15 @@
       NewCaseRTotal = #{newcasertotal,jdbcType=VARCHAR},
       NewCaseROutline = #{newcaseroutline,jdbcType=VARCHAR},
       NewCaseRColor = #{newcasercolor,jdbcType=VARCHAR},
-      NewCaseRColorID = #{newcasercolorid,jdbcType=VARCHAR},
+      NewCaseRColorID = #{newcasercolorid,jdbcType=INTEGER},
       NewCaseRTexture = #{newcasertexture,jdbcType=VARCHAR},
-      NewCaseRTextureID = #{newcasertextureid,jdbcType=VARCHAR},
+      NewCaseRTextureID = #{newcasertextureid,jdbcType=INTEGER},
       NewCaseATotal = #{newcaseatotal,jdbcType=VARCHAR},
       NewCaseAOutline = #{newcaseaoutline,jdbcType=VARCHAR},
       NewCaseAColor = #{newcaseacolor,jdbcType=VARCHAR},
-      NewCaseAColorID = #{newcaseacolorid,jdbcType=VARCHAR},
+      NewCaseAColorID = #{newcaseacolorid,jdbcType=INTEGER},
       NewCaseATexture = #{newcaseatexture,jdbcType=VARCHAR},
-      NewCaseATextureID = #{newcaseatextureid,jdbcType=VARCHAR}
+      NewCaseATextureID = #{newcaseatextureid,jdbcType=INTEGER}
     where NID = #{nid,jdbcType=INTEGER}
   </update>
 </mapper>

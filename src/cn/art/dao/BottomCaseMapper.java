@@ -13,6 +13,7 @@ public interface BottomCaseMapper {
     int insertSelective(BottomCase record);
 
     BottomCase selectByPrimaryKey(Integer bcid);
+    List<BottomCase> selectByTID(Integer tid);
     List<BottomCase> selectByName(String  casename);
     int CountNumByName(String  casename);
     

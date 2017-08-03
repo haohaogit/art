@@ -1,5 +1,6 @@
 package cn.art.service.Impl;
 
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -12,6 +13,8 @@ import cn.art.model.BottomCase;
 import cn.art.model.BottomCaseType;
 import cn.art.service.BottomCaseService;
 import cn.art.util.JsonConvert;
+import cn.art.util.pojo.bottomCaseB;
+import cn.art.util.pojo.bottomCaseD;
 @Service("BottomCaseService")
 public class BottomCaseServiceImpl implements BottomCaseService {
 	private BottomCaseMapper bottomCaseMapper;
@@ -139,6 +142,45 @@ public class BottomCaseServiceImpl implements BottomCaseService {
 	public int CountNumByName(String casename) {
 		// TODO Auto-generated method stub
 		return bottomCaseMapper.CountNumByName(casename);
+	}
+
+	@Override
+	public String selectBottomcaseBByTID(Integer tid) {
+		// TODO Auto-generated method stub
+		 List<BottomCase> bottomCases = bottomCaseMapper.selectByTID(tid);
+		 List<bottomCaseB> bottomCaseBs = new LinkedList<bottomCaseB>();
+		 bottomCaseB bottomCaseB;
+		 for (BottomCase bottomCase : bottomCases) {
+			bottomCaseB = new bottomCaseB();
+			bottomCaseB.setBcid(bottomCase.getBcid());
+			bottomCaseB.setTid(bottomCase.getTid());
+			bottomCaseB.setBctname(bottomCaseTypeMapper.selectByPrimaryKey(bottomCase.getBctid()).getBctname());
+			bottomCaseB.setCasename(bottomCase.getCasename());
+			bottomCaseB.setCaseimg(bottomCase.getCaseimg());
+			
+			bottomCaseBs.add(bottomCaseB);
+		}
+		return jsonConvert.list2json(bottomCaseBs);
+	}
+
+	@Override
+	public String selectBottomcaseDByBCTID(Integer bcid) {
+		// TODO Auto-generated method stub
+		 BottomCase bottomCase = bottomCaseMapper.selectByPrimaryKey(bcid);
+		 bottomCaseD bottomCaseD= new bottomCaseD();
+		 
+		 bottomCaseD.setBcid(bottomCase.getBcid());
+		 bottomCaseD.setTid(bottomCase.getTid());
+		 bottomCaseD.setCasename(bottomCase.getCasename());
+		 bottomCaseD.setBctname(bottomCaseTypeMapper.selectByPrimaryKey(bottomCase.getBctid()).getBctname());
+		 bottomCaseD.setCasebrand(bottomCase.getCasebrand());
+		 bottomCaseD.setCaseimg(bottomCase.getCaseimg());
+		 bottomCaseD.setCaseimg1(bottomCase.getCaseimg1());
+		 bottomCaseD.setCaseimg2(bottomCase.getCaseimg2());
+		 bottomCaseD.setCaseimg3(bottomCase.getCaseimg3());
+		 bottomCaseD.setCaseimg4(bottomCase.getCaseimg4());
+		 
+		return jsonConvert.Bean2Json(bottomCaseD);
 	}
 	
 

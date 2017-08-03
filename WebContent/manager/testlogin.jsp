@@ -20,6 +20,6 @@ alert(demo); */
  ${TAnli}</br> ${bottomcasetypes}</br>${outlinetypes}</br> ${colortypes}</br>
  ${texturetypes}</br> ${parttypes}</br> ${TBianma }</br>${outlinetypes }</br>qqqqq${outline}</br>${codecases}</br>${texture }</br>
  ${types }</br>newcases ${newcases}</br>vocas ${words}</br>cidui ${cidui}</br>wordsurveyaa ${wordsurveys}</br>
- surveys ${surveys}</br>partsBasic ${partsBasic}</br>
+ surveys ${surveys}</br>partsBasic ${partsBasic}</br>generatetid ${generatetid}</br>bottomcases ${bottomcases}</br>
 </body>
 </html>

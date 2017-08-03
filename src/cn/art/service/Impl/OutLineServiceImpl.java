@@ -1,5 +1,6 @@
 package cn.art.service.Impl;
 
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -13,6 +14,7 @@ import cn.art.model.OutLineType;
 import cn.art.service.OutLineService;
 import cn.art.util.JsonConvert;
 import cn.art.util.pojo.outlineD;
+import cn.art.util.pojo.outlinetypeD;
 
 @Service("OutLineService")
 public class OutLineServiceImpl implements OutLineService {
@@ -158,6 +160,25 @@ public class OutLineServiceImpl implements OutLineService {
 	public int CountNumByName(String odescription) {
 		// TODO Auto-generated method stub
 		return outLineMapper.CountNumByName(odescription);
+	}
+
+	@Override
+	public String selectOutlinetypeD(Integer tid) {
+		// TODO Auto-generated method stub
+		List<OutLine> outLines = outLineMapper.selectByTID(tid);
+		List<outlinetypeD> outlinetypeDs = new LinkedList<outlinetypeD>();
+		outlinetypeD outlinetypeD;
+		for (OutLine outLine : outLines) {
+			outlinetypeD = new outlinetypeD();
+			OutLineType outLineType = outLineTypeMapper.selectByPrimaryKey(outLine.getOtid());
+			outlinetypeD.setOid(outLine.getOid());
+			outlinetypeD.setTid(outLine.getTid());
+			outlinetypeD.setOimg(outLine.getOimg());
+			outlinetypeD.setOname(outLineType.getOname());
+			
+			outlinetypeDs.add(outlinetypeD);
+		}
+		return jsonConvert.list2json(outlinetypeDs);
 	}
 
 }

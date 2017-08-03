@@ -24,6 +24,13 @@
     where OID = #{oid,jdbcType=INTEGER}
   </select>
   
+  <select id="selectByTID" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from outline_
+    where TID = #{tid,jdbcType=INTEGER}
+  </select>
+  
   <select id="selectByTIDandOTID" resultMap="BaseResultMap" parameterType="java.util.Map" >
     select 
     <include refid="Base_Column_List" />

@@ -19,11 +19,11 @@ public class NewCase {
 
     private String newcasercolor;
 
-    private String newcasercolorid;
+    private Integer newcasercolorid;
 
     private String newcasertexture;
 
-    private String newcasertextureid;
+    private Integer newcasertextureid;
 
     private String newcaseatotal;
 
@@ -31,11 +31,11 @@ public class NewCase {
 
     private String newcaseacolor;
 
-    private String newcaseacolorid;
+    private Integer newcaseacolorid;
 
     private String newcaseatexture;
 
-    private String newcaseatextureid;
+    private Integer newcaseatextureid;
 
     public Integer getNid() {
         return nid;
@@ -109,12 +109,12 @@ public class NewCase {
         this.newcasercolor = newcasercolor == null ? null : newcasercolor.trim();
     }
 
-    public String getNewcasercolorid() {
+    public Integer getNewcasercolorid() {
         return newcasercolorid;
     }
 
-    public void setNewcasercolorid(String newcasercolorid) {
-        this.newcasercolorid = newcasercolorid == null ? null : newcasercolorid.trim();
+    public void setNewcasercolorid(Integer newcasercolorid) {
+        this.newcasercolorid = newcasercolorid;
     }
 
     public String getNewcasertexture() {
@@ -125,12 +125,12 @@ public class NewCase {
         this.newcasertexture = newcasertexture == null ? null : newcasertexture.trim();
     }
 
-    public String getNewcasertextureid() {
+    public Integer getNewcasertextureid() {
         return newcasertextureid;
     }
 
-    public void setNewcasertextureid(String newcasertextureid) {
-        this.newcasertextureid = newcasertextureid == null ? null : newcasertextureid.trim();
+    public void setNewcasertextureid(Integer newcasertextureid) {
+        this.newcasertextureid = newcasertextureid;
     }
 
     public String getNewcaseatotal() {
@@ -157,12 +157,12 @@ public class NewCase {
         this.newcaseacolor = newcaseacolor == null ? null : newcaseacolor.trim();
     }
 
-    public String getNewcaseacolorid() {
+    public Integer getNewcaseacolorid() {
         return newcaseacolorid;
     }
 
-    public void setNewcaseacolorid(String newcaseacolorid) {
-        this.newcaseacolorid = newcaseacolorid == null ? null : newcaseacolorid.trim();
+    public void setNewcaseacolorid(Integer newcaseacolorid) {
+        this.newcaseacolorid = newcaseacolorid;
     }
 
     public String getNewcaseatexture() {
@@ -173,11 +173,11 @@ public class NewCase {
         this.newcaseatexture = newcaseatexture == null ? null : newcaseatexture.trim();
     }
 
-    public String getNewcaseatextureid() {
+    public Integer getNewcaseatextureid() {
         return newcaseatextureid;
     }
 
-    public void setNewcaseatextureid(String newcaseatextureid) {
-        this.newcaseatextureid = newcaseatextureid == null ? null : newcaseatextureid.trim();
+    public void setNewcaseatextureid(Integer newcaseatextureid) {
+        this.newcaseatextureid = newcaseatextureid;
     }
 }

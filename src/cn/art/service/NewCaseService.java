@@ -12,8 +12,10 @@ public interface NewCaseService {
 	    int insertSelective(NewCase record);
 
 	    NewCase selectByPrimaryKey(Integer nid);
+	    String getNewCaseByPrimaryKey(Integer nid);
 	    List<NewCase> selectByTID(Integer tid);
 	    
+	    String selectNewcaseByTID(Integer tid);
 	    String selectByName(String newcasename);
 	    int CountNumByName(String newcasename);
 
@@ -26,5 +28,7 @@ public interface NewCaseService {
 	    		,String newcaseAtotal,String newcaseAoutline,String newcaseAcolor,String newcaseAtexture);
 	    
 	    int SaveRecommend(Integer nid,Integer tid,String newcaseimg,String newcasercolor,String newcasertexture);
+	    int InsertRecommendAdjust(Integer tid,String NewCaseArg,String recommendRtotal,String recommendRoutline,Integer recommendRcolorID,
+	    		Integer recommendRtextureID,String recommendAtotal,String recommendAoutline,Integer recommendAcolorID,Integer recommendAtextureID);
 
 }
