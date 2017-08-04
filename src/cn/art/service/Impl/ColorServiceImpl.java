@@ -94,6 +94,7 @@ public class ColorServiceImpl implements ColorService {
 		// TODO Auto-generated method stub
 		Color color = colorMapper.selectByPrimaryKey(cid);
 		colorD colorD = new colorD();
+		
 		colorD.setCbid(color.getCbid());
 		colorD.setCbname(colorTypeMapper.selectByPrimaryKey(color.getCbid()).getCbname());
 		colorD.setCdescription(color.getCdescription());
@@ -184,6 +185,28 @@ public class ColorServiceImpl implements ColorService {
 			colorB.setCimg(color.getCimg());
 			
 			colorBs.add(colorB);
+		}
+		return jsonConvert.list2json(colorBs);
+	}
+
+	@Override
+	public String getColorBasic4(Integer tid) {
+		// TODO Auto-generated method stub
+		List<Color> colors = colorMapper.selectByTID(tid);
+		List<colorB> colorBs = new LinkedList<colorB>();
+		colorB colorB;
+		int i = 0;
+		for (Color color : colors) {
+			if(i>=4) break;
+			colorB = new colorB();
+			colorB.setCid(color.getCid());
+			colorB.setTid(color.getTid());
+			colorB.setCbname(colorTypeMapper.selectByPrimaryKey(color.getCbid()).getCbname());
+			colorB.setCdescription(color.getCdescription());
+			colorB.setCimg(color.getCimg());
+			
+			colorBs.add(colorB);
+			i++;
 		}
 		return jsonConvert.list2json(colorBs);
 	}

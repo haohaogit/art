@@ -29,5 +29,6 @@ public interface PartService {
     		String pimg,String pimg1,String pimg2,String pimg3,String pimg4);
     
     String getPartBasic(Integer tid);
+    String getPartBasic4(Integer tid);
 
 }

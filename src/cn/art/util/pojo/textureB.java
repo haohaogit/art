@@ -2,12 +2,9 @@ package cn.art.util.pojo;
 
 public class textureB {
 	private Integer textureid;
-
     private Integer tid;
     private String ttname;
-
     private String tdescription;
-
     private String timg;
 
 	public Integer getTextureid() {

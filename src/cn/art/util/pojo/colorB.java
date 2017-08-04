@@ -2,11 +2,8 @@ package cn.art.util.pojo;
 
 public class colorB {
 	private Integer cid;
-
     private String cbname;
-
     private Integer tid;
-
     private String cdescription;
     private String cimg;
 	public Integer getCid() {

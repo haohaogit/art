@@ -89,6 +89,7 @@ public class PartServiceImpl implements PartService {
 		// TODO Auto-generated method stub
 		Part part = partMapper.selectByPrimaryKey(pid);
 		partD partD = new partD();
+		
 		partD.setPbid(part.getPbid());
 		partD.setPbname(partTypeMapper.selectByPrimaryKey(part.getPbid()).getPbname());
 		partD.setPdescription(part.getPdescription());
@@ -178,6 +179,28 @@ public class PartServiceImpl implements PartService {
 			partB.setPimg(part.getPimg());
 			
 			partBs.add(partB);
+		}
+		return jsonConvert.list2json(partBs);
+	}
+
+	@Override
+	public String getPartBasic4(Integer tid) {
+		// TODO Auto-generated method stub
+		List<Part> parts = partMapper.selectByTID(tid);
+		List<partB> partBs = new LinkedList<partB>();
+		partB partB;
+		int i = 0;
+		for (Part part : parts) {
+			if(i>=4) break;
+			partB = new partB();
+			partB.setPid(part.getPid());
+			partB.setTid(part.getTid());
+			partB.setPbname(partTypeMapper.selectByPrimaryKey(part.getPbid()).getPbname());
+			partB.setPdescription(part.getPdescription());
+			partB.setPimg(part.getPimg());
+			
+			partBs.add(partB);
+			i++;
 		}
 		return jsonConvert.list2json(partBs);
 	}

@@ -12,14 +12,22 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import cn.art.dao.OutLineMapper;
 import cn.art.model.OutLine;
+import cn.art.service.PartService;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations={"classpath:spring.xml","classpath:spring-mybatis.xml"})
 public class testoutline {
 	private OutLineMapper outLineMapper;
+	private PartService partService;
 	
-	
+	public PartService getPartService() {
+		return partService;
+	}
+	@Autowired
+	public void setPartService(PartService partService) {
+		this.partService = partService;
+	}
 	public OutLineMapper getOutLineMapper() {
 		return outLineMapper;
 	}
@@ -40,6 +48,13 @@ public class testoutline {
 			System.out.println(outLine.getOdescription());
 		}
 		//System.out.println(word.getWbasic());
+		//System.out.println(word.getWbasic()+" "+word.getWdetail());
+	}
+	@Test
+	public void testPartGetpartB4() {
+		
+		String part4 = partService.getPartBasic4(1);
+		System.out.println("part4 "+part4);
 		//System.out.println(word.getWbasic()+" "+word.getWdetail());
 	}
 

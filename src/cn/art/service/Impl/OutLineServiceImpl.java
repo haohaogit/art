@@ -13,6 +13,7 @@ import cn.art.model.OutLine;
 import cn.art.model.OutLineType;
 import cn.art.service.OutLineService;
 import cn.art.util.JsonConvert;
+import cn.art.util.pojo.outlineB;
 import cn.art.util.pojo.outlineD;
 import cn.art.util.pojo.outlinetypeD;
 
@@ -89,7 +90,10 @@ public class OutLineServiceImpl implements OutLineService {
 		// TODO Auto-generated method stub
 		OutLine  outline = outLineMapper.selectByPrimaryKey(oid);
 		outlineD outlineD = new outlineD();
+		
 		outlineD.setOdata(outline.getOdata());
+		outlineD.setTid(outline.getTid());
+		outlineD.setOtid(outline.getOtid());
 		outlineD.setOdescription(outline.getOdescription());
 		outlineD.setOfile(outline.getOfile());
 		outlineD.setOid(outline.getOid());
@@ -179,6 +183,52 @@ public class OutLineServiceImpl implements OutLineService {
 			outlinetypeDs.add(outlinetypeD);
 		}
 		return jsonConvert.list2json(outlinetypeDs);
+	}
+
+	@Override
+	public String selectOutlineB4(Integer tid) {
+		// TODO Auto-generated method stub
+		List<OutLine> outLines = outLineMapper.selectByTID(tid);
+		List<outlineB> outlineBs = new LinkedList<outlineB>();
+		outlineB outlineB;
+		int i = 0;
+		for (OutLine outLine : outLines) {
+			if(i>=4) break;
+			
+			outlineB = new outlineB();
+			OutLineType outLineType = outLineTypeMapper.selectByPrimaryKey(outLine.getOtid());
+			outlineB.setOdescription(outLine.getOdescription());
+			outlineB.setOid(outLine.getOid());
+			outlineB.setTid(outLine.getTid());
+			outlineB.setOimg(outLine.getOimg());
+			outlineB.setOname(outLineType.getOname());
+
+			outlineBs.add(outlineB);
+			i++;
+		}
+		return jsonConvert.list2json(outlineBs);
+		
+	}
+
+	@Override
+	public String getOutlineB(Integer tid) {
+		// TODO Auto-generated method stub
+		List<OutLine> outLines = outLineMapper.selectByTID(tid);
+		List<outlineB> outlineBs = new LinkedList<outlineB>();
+		outlineB outlineB;
+		for (OutLine outLine : outLines) {
+			
+			outlineB = new outlineB();
+			OutLineType outLineType = outLineTypeMapper.selectByPrimaryKey(outLine.getOtid());
+			outlineB.setOdescription(outLine.getOdescription());
+			outlineB.setOid(outLine.getOid());
+			outlineB.setTid(outLine.getTid());
+			outlineB.setOimg(outLine.getOimg());
+			outlineB.setOname(outLineType.getOname());
+
+			outlineBs.add(outlineB);
+		}
+		return jsonConvert.list2json(outlineBs);
 	}
 
 }

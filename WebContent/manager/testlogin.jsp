@@ -21,5 +21,6 @@ alert(demo); */
  ${texturetypes}</br> ${parttypes}</br> ${TBianma }</br>${outlinetypes }</br>qqqqq${outline}</br>${codecases}</br>${texture }</br>
  ${types }</br>newcases ${newcases}</br>vocas ${words}</br>cidui ${cidui}</br>wordsurveyaa ${wordsurveys}</br>
  surveys ${surveys}</br>partsBasic ${partsBasic}</br>generatetid ${generatetid}</br>bottomcases ${bottomcases}</br>
+ outline ${outline}</br> part ${part}</br> color ${color}</br> texture ${texture}</br>
 </body>
 </html>

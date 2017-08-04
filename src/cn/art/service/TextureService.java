@@ -29,5 +29,6 @@ public interface TextureService {
     		String timg,String timg1,String timg2,String timg3,String timg4);
     
     String getTextureBasic(Integer tid);
+    String getTextureBasic4(Integer tid);
 
 }

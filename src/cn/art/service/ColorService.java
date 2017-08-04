@@ -29,5 +29,6 @@ public interface ColorService {
     		String cimg1,String cimg2,String cimg3,String cimg4);
     
     String getColorBasic(Integer tid);
+    String getColorBasic4(Integer tid);
 
 }

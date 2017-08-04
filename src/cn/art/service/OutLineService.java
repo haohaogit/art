@@ -29,5 +29,7 @@ public interface OutLineService {
     		String oimg1,String oimg2,String oimg3,String oimg4);
     
     String selectOutlinetypeD(Integer tid);
+    String getOutlineB(Integer tid);
+    String selectOutlineB4(Integer tid);
 
 }

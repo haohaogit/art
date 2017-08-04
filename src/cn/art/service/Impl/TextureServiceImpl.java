@@ -89,9 +89,11 @@ public class TextureServiceImpl implements TextureService {
 		// TODO Auto-generated method stub
 		Texture texture = textureMapper.selectByPrimaryKey(textureid);
 		textureD textureD = new textureD();
+		
 		textureD.setTdescription(texture.getTdescription());
 		textureD.setTextureid(textureid);
 		textureD.setTid(texture.getTid());
+		textureD.setTtid(texture.getTtid());
 		textureD.setTfile(texture.getTfile());
 		textureD.setTtname(textureTypeMapper.selectByPrimaryKey(texture.getTtid()).getTtname());
 		textureD.setTimg(texture.getTimg());
@@ -177,6 +179,28 @@ public class TextureServiceImpl implements TextureService {
 			textureB.setTimg(texture.getTimg());
 			
 			textureBs.add(textureB);
+		}
+		return jsonConvert.list2json(textureBs);
+	}
+
+	@Override
+	public String getTextureBasic4(Integer tid) {
+		// TODO Auto-generated method stub
+		List<textureB> textureBs = new LinkedList<textureB>();
+		textureB textureB;
+		int i = 0;
+		List<Texture> textures = textureMapper.selectByTID(tid);
+		for (Texture texture : textures) {
+			if(i>=4) break;
+			textureB = new textureB();
+			textureB.setTid(texture.getTid());
+			textureB.setTextureid(texture.getTextureid());
+			textureB.setTtname(textureTypeMapper.selectByPrimaryKey(texture.getTtid()).getTtname());
+			textureB.setTdescription(texture.getTdescription());
+			textureB.setTimg(texture.getTimg());
+			
+			textureBs.add(textureB);
+			i++;
 		}
 		return jsonConvert.list2json(textureBs);
 	}
