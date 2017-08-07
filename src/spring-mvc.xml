@@ -8,7 +8,11 @@ http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
 
 	<!-- 自动扫描controller包下的所有类，使其认为spring mvc的控制器 -->
 	<context:component-scan base-package="cn.art.controller" />
+	<!-- 设置配置方案 -->
+	<mvc:annotation-driven/>
 
+	<mvc:default-servlet-handler/>
+	
 	<!-- 避免IE执行AJAX时,返回JSON出现下载文件 -->
 	<bean id="mappingJacksonHttpMessageConverter" class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter">
 		<property name="supportedMediaTypes">

@@ -195,29 +195,4 @@ public class M_bottomController {
 	*/
 		
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		//底层案例库 编辑接口
-		@RequestMapping("edit/{bcid}")
-		public String facadeBottomEdit2(@PathVariable int bcid,HttpServletRequest request){
-			BottomCase bottomCase = bottomCaseService.selectByPrimaryKey(bcid);
-			request.setAttribute("bottomcase", bottomCase);
-			
-			
-			return "manager/testlogin";
-		}
-
-		
-		
-		
-		
-
 }

@@ -10,6 +10,8 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import cn.art.model.User;
 import cn.art.service.UserService;
@@ -29,13 +31,36 @@ public class loginController {
 		this.userService = userService;
 	}
 	
+	//             验证  注解 @requestparam() 
 	
-	@RequestMapping("html/customerLogin")
-	public String costomlogin(HttpServletRequest request) throws NoSuchAlgorithmException, UnsupportedEncodingException{
+	@RequestMapping(value="manager/register",method=RequestMethod.GET)
+	public String registerForm(){
+		System.out.println("1111111111111111111222");
+		return "manager/registerForm";
+	}
+	@RequestMapping(value="manager/register",method=RequestMethod.POST)
+	public String register(
+			@RequestParam("loginname") String loginname,
+			@RequestParam("password") String password,
+			@RequestParam("username") String username
+			){
+		System.out.println("loginname "+loginname+" password "+password+" username "+username);
+		
+		return "manager/loginForm";
+	}
+	
+	
+	
+	
+	
+	//用户登录
+	@RequestMapping("user/customerLogin")
+	public String costomlogin(HttpServletRequest request,
+			@RequestParam("account") String account,
+			@RequestParam("password") String password
+			) throws NoSuchAlgorithmException, UnsupportedEncodingException{
 		//request.get
 		boolean isRegister = false;
-		String account = request.getParameter("account");
-		String password = request.getParameter("password");
 		
 		System.out.println(account+"  "+password);
 		MD5 md = new MD5();
@@ -62,21 +87,22 @@ public class loginController {
 		}
 	}
 	
-	//用户登录
-	@RequestMapping("user/customerRegister")
-	public String costomuserRegister(HttpServletRequest request) throws NoSuchAlgorithmException, UnsupportedEncodingException{
+	//用户注册
+	@RequestMapping(value="user/customerRegister",method=RequestMethod.POST)
+	public String costomuserRegister(HttpServletRequest request,
+			@RequestParam("newAccount") String newAccount,
+			@RequestParam("newPassword") String newPassword,
+			@RequestParam("confirmPassword") String confirmPassword,
+			@RequestParam("newEmail") String newEmail
+			) throws NoSuchAlgorithmException, UnsupportedEncodingException{
 		//request.get
 		boolean isRegister = false;
-		String account = request.getParameter("newAccount");
-		String password = request.getParameter("newPassword");
-		String password1 = request.getParameter("confirmPassword");
-		String email = request.getParameter("newEmail");
 		
 		//判断用户注册时两次输入密码是否一致
-		if(password.trim()!=password1.trim()){
+		if(newPassword.trim()!=confirmPassword.trim()){
 			request.setAttribute("errorMessage", "两次输入的密码不一致");
 		}else{
-			int isok = userService.insertSelect(account.trim(), password.trim(), email.trim());
+			int isok = userService.insertSelect(newAccount.trim(), newPassword.trim(), newEmail.trim());
 			if(isok==1){
 				//插入成功
 				request.setAttribute("status", 200);
@@ -91,12 +117,12 @@ public class loginController {
 	
 	//管理员登录
 	@RequestMapping("manager/managerLogin")
-	public String costommanagerlogin(HttpServletRequest request) throws NoSuchAlgorithmException, UnsupportedEncodingException{
+	public String costommanagerlogin(HttpServletRequest request,
+			@RequestParam("account") String account,
+			@RequestParam("password") String password
+			) throws NoSuchAlgorithmException, UnsupportedEncodingException{
 		//request.get
 		boolean isRegister = false;
-		String account = request.getParameter("account");
-		String password = request.getParameter("password");
-		System.out.println("1111111111111111111111111111111111111111111111111111111111");
 		System.out.println(account+"22"+password+"33");
 		MD5 md = new MD5();
 		List<User> users = userService.selectManagerByName(account.trim());

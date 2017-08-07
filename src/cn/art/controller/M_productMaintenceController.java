@@ -467,7 +467,7 @@ public class M_productMaintenceController {
 	
 	//造型调整 接口
 	@RequestMapping("productMaintenance/edit/{id}/styleadjust")
-	public String producrMaintenceStyleadjust(@PathVariable int id,HttpServletRequest request){
+	public String producrMaintenceStyleadjust(@PathVariable Integer id,HttpServletRequest request){
 		Type type = typeService.selectByPrimaryKey(id);
 		String TTiaozheng = type.getTtiaozheng();
 		request.setAttribute("TTiaozheng", TTiaozheng);
@@ -494,16 +494,16 @@ public class M_productMaintenceController {
 	}
 	
 	
-	
+	/*
 	//产品类型维护 删除接口
 	@RequestMapping("productMaintenance/edit/{id}/styleadjust")
-	public String producrMaintenceDelete(@PathVariable int id,HttpServletRequest request){
+	public String producrMaintenceDelete(@PathVariable Integer id,HttpServletRequest request){
 		
 		request.setAttribute("status", "该接口有风险，暂未实现");
 		
 		
 		return "manager/testlogin";
-	}
+	}*/
 	
 	
 	
