@@ -18,6 +18,12 @@
     where UID = #{uid,jdbcType=INTEGER}
   </select>
   
+   <select id="selectall" resultMap="BaseResultMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from user_
+  </select>
+  
   <select id="selectUserByName" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />

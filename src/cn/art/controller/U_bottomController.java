@@ -1,8 +1,10 @@
 package cn.art.controller;
 
+import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -70,7 +72,7 @@ public class U_bottomController {
 		request.setAttribute("bottomcases", bottomcases);
 		return "manager/testlogin";
 	}
-	
+	/*
 	//底层案列 详细信息接口(比如"21070411a")
 	@RequestMapping("bottomcase/{bcid}")
 	public void bottomCasedetail(@PathVariable Integer bcid,HttpServletRequest request){
@@ -79,5 +81,16 @@ public class U_bottomController {
 		request.setAttribute("bottomcase", bottomcase);
 		//return "";
 	}
+	*/
+	//底层案列 详细信息接口(比如"21070411a")
+		@RequestMapping("bottomcase/{bcid}")
+		public void bottomCasedetail(@PathVariable Integer bcid,
+				HttpServletResponse response) throws IOException{
+			
+			String bottomcase = bottomCaseService.selectBottomcaseDByBCTID(bcid);
+			response.getWriter().println(bottomcase);
+			//request.setAttribute("bottomcase", bottomcase);
+			//return "";
+		}
 
 }

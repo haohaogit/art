@@ -8,6 +8,7 @@ public interface UserService {
 	public User selectUserById(int uid);
 	public List<User> selectUserByName(String uname);
 	public List<User> selectManagerByName(String uname);
+	public List<User> selectall();
 	
 	public int updateByPrimaryKey(User record);
 	public int updateByPrimaryKeySelective(User record);

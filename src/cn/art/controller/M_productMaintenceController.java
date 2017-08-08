@@ -106,9 +106,20 @@ public class M_productMaintenceController {
 	public void setBottomCaseTypeService(BottomCaseTypeService bottomCaseTypeService) {
 		this.bottomCaseTypeService = bottomCaseTypeService;
 	}
-
-
-
+	
+	/*
+	@RequestMapping("productMaintenance")
+	public void producemaintence(HttpServletResponse response) throws IOException{
+		List<typeIdName> types1 = typeService.selectAllOnlyIdandName();
+		String  types = jsonConvert.list2json(types1);
+		
+		response.setContentType("text/html;Charset=UTF-8");
+		response.getWriter().println(JSONObject.toJSONString(types1));
+		
+		
+	}
+	*/
+	
 	@RequestMapping("productMaintenance")
 	public String producemaintence(HttpServletRequest request){
 		List<typeIdName> types1 = typeService.selectAllOnlyIdandName();

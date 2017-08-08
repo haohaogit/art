@@ -72,5 +72,10 @@ public class UserServiceImpl implements UserService {
 		
 		return userMapper.insertSelective(user);
 	}
+	@Override
+	public List<User> selectall() {
+		// TODO Auto-generated method stub
+		return userMapper.selectall();
+	}
 
 }
