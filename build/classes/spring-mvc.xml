@@ -46,5 +46,16 @@ http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
 			<value>4096</value>
 		</property>
 	</bean>
+	
+	
+	<!-- Spring MVC 拦截器定义 -->
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<!-- 拦截所有的请求 -->
+			<mvc:mapping path="/**"/>
+			<!-- 使用bean定义一个Interceptor -->
+			<bean class="cn.art.interceptor.AuthorizationInterceptor"></bean>
+		</mvc:interceptor>
+	</mvc:interceptors>
 
 </beans>
