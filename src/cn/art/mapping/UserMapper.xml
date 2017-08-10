@@ -48,6 +48,7 @@
     values (#{uid,jdbcType=INTEGER}, #{uname,jdbcType=VARCHAR}, #{upassword,jdbcType=VARCHAR}, 
       #{uprivilege,jdbcType=INTEGER}, #{uemail,jdbcType=VARCHAR})
   </insert>
+  
   <insert id="insertSelective" parameterType="cn.art.model.User" >
     insert into user_
     <trim prefix="(" suffix=")" suffixOverrides="," >
@@ -85,6 +86,48 @@
       </if>
     </trim>
   </insert>
+  
+  <insert id="insertSelectiveAndGetID" parameterType="cn.art.model.User" useGeneratedKeys="true" keyProperty="id" >
+    insert into user_
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="uid != null" >
+        UID,
+      </if>
+      <if test="uname != null" >
+        UName,
+      </if>
+      <if test="upassword != null" >
+        UPassword,
+      </if>
+      <if test="uprivilege != null" >
+        UPrivilege,
+      </if>
+      <if test="uemail != null" >
+        UEmail,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="uid != null" >
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="uname != null" >
+        #{uname,jdbcType=VARCHAR},
+      </if>
+      <if test="upassword != null" >
+        #{upassword,jdbcType=VARCHAR},
+      </if>
+      <if test="uprivilege != null" >
+        #{uprivilege,jdbcType=INTEGER},
+      </if>
+      <if test="uemail != null" >
+        #{uemail,jdbcType=VARCHAR},
+      </if>
+    </trim>
+    <selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="uid">
+	SELECT LAST_INSERT_ID()
+	</selectKey> 
+  </insert>
+  
   <update id="updateByPrimaryKeySelective" parameterType="cn.art.model.User" >
     update user_
     <set >
@@ -110,5 +153,6 @@
       UPrivilege = #{uprivilege,jdbcType=INTEGER},
       UEmail = #{uemail,jdbcType=VARCHAR}
     where UID = #{uid,jdbcType=INTEGER}
+    
   </update>
 </mapper>

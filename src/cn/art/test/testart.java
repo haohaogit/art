@@ -14,6 +14,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import sun.misc.BASE64Encoder;
 import cn.art.dao.NewCaseMapper;
 import cn.art.dao.SurveyMapper;
+import cn.art.dao.UserMapper;
 import cn.art.model.User;
 import cn.art.service.UserService;
 
@@ -22,10 +23,17 @@ import cn.art.service.UserService;
 @ContextConfiguration(locations={"classpath:spring.xml","classpath:spring-mybatis.xml"})
 public class testart {
 	private UserService userService;
+	private UserMapper userMapper;
 	private SurveyMapper surveyMapper;
 	private NewCaseMapper newCaseMapper;
 	
-	
+	public UserMapper getUserMapper() {
+		return userMapper;
+	}
+	@Autowired
+	public void setUserMapper(UserMapper userMapper) {
+		this.userMapper = userMapper;
+	}
 	public NewCaseMapper getNewCaseMapper() {
 		return newCaseMapper;
 	}
@@ -86,6 +94,20 @@ public class testart {
 		
 		userService.deleteByPrimaryKey(4);
 		System.out.println("删除成功");
+	}
+	
+	@Test
+	public void testUserinsertSelectiveAndGetID(){
+		//User user = userService.selectUserById(2);
+		User user = new User();
+		user.setUemail("www.neteast.163");
+		user.setUname("haohao1");
+		user.setUpassword("111");
+		user.setUprivilege(0);
+		int getid = userMapper.insertSelectiveAndGetID(user);
+		
+		System.out.println(" generate id  "+getid);
+		System.out.println(" generate id  "+user.getUid());		
 	}
 	
 	
