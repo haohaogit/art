@@ -9,161 +9,13 @@
 <script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
 <title>意象映射1111</title>
 
-<script>
-	var isround = "";
-	var scrollmove = "";
-	var masktime = 10;
-	var focus_cur = 1;
-	var p = document.getElementById("pic").getElementsByTagName("li");
-	var h = document.getElementById("tip").getElementsByTagName("li");
-	function change(id) {
-		clearTimeout(isround);
-		clearInterval(scrollmove);
-		for (var i = 1; i <= h.length; i++) {
-			if (i == id) {
-				document.getElementById("smallimg_" + i).className = "current";
-			} else {
-				document.getElementById("smallimg_" + i).className = "";
-			}
-		}
-		if ((next = id + 1) > h.length) {
-			next = 1;
-		}
-		isround = setTimeout("change(" + next + ")", 8000);
-		scrollmove = setInterval("scrollMove(" + id + ")", masktime);
-		focus_cur = id;
-	}
-	function scrollMove(m) {
-		var srl = document.getElementById("pic").scrollLeft;
-		var dsrl = Math.floor((p[0].clientWidth * (m - 1) - srl) / 5);
-		var xsrl = Math.ceil((p[0].clientWidth * (m - 1) - srl) / 5);
-		if (srl > p[0].clientWidth * (m - 1)) {
-			document.getElementById("pic").scrollLeft = srl + dsrl;
-		} else if (srl < p[0].clientWidth * (m - 1)) {
-			document.getElementById("pic").scrollLeft = srl + xsrl;
-		} else {
-			clearInterval(scrollmove);
-		}
-	}
-	isround = setTimeout("change(2)", 8000);
-</script>
-<script type="text/javascript">
-    function loginCheck(){
-        var account = document.getElementById("account");
-        var password = document.getElementById("password");
-        if(account.value==""){
-            alert("请输入账号");
-            return false;
-        }else if(password.value==""){
-            alert("请输入密码");
-            return false;
-        }
-    }
-</script>
-<script type="text/javascript">
-		$(function($) {
-			//弹出登录
-			$("#loginBtn").hover(function() {
-				$(this).stop().animate({
-					opacity : '1'
-				}, 600);
-			}, function() {
-				$(this).stop().animate({
-					opacity : '0.6'
-				}, 1000);
-			}).on('click', function() {
-				$("body").append("<div id='mask'></div>");
-				$("#mask").addClass("mask").fadeIn("slow");
-				$("#LoginBox").fadeIn("slow");
-			});
-			//
-			//按钮的透明度
-			$("#loginbtn").hover(function() {
-				$(this).stop().animate({
-					opacity : '1'
-				}, 600);
-			}, function() {
-				$(this).stop().animate({
-					opacity : '0.8'
-				}, 1000);
-			});
-			//关闭
-			$(".close_btn").hover(function() {
-				$(this).css({
-					color : 'black'
-				})
-			}, function() {
-				$(this).css({
-					color : '#51A3BB'
-				})
-			}).on('click', function() {
-				$("#LoginBox").fadeOut("fast");
-				$("#mask").css({
-					display : 'none'
-				});
-			});
-		});
-	</script>
-	<script type="text/javascript">
-		function registerCheck() {
-			var newAccount = document.getElementById("newAccount");
-			var newPassword = document.getElementById("newPassword");
-			if (newAccount.value == "") {
-				alert("请输入账号");
-				return false;
-			} else if (newPassword.value == "") {
-				alert("请输入密码");
-				return false;
-			}
-		}
-	</script>
-	<script type="text/javascript">
-		$(function($) {
-			//弹出注册
-			$("#registerBtn").hover(function() {
-				$(this).stop().animate({
-					opacity : '1'
-				}, 600);
-			}, function() {
-				$(this).stop().animate({
-					opacity : '0.6'
-				}, 1000);
-			}).on('click', function() {
-				$("body").append("<div id='mask'></div>");
-				$("#mask").addClass("mask").fadeIn("slow");
-				$("#RegisterBox").fadeIn("slow");
-			});
-			//
-			//按钮的透明度
-			$("#registerbtn").hover(function() {
-				$(this).stop().animate({
-					opacity : '1'
-				}, 600);
-			}, function() {
-				$(this).stop().animate({
-					opacity : '0.8'
-				}, 1000);
-			});
-			//关闭
-			$(".close_btn").hover(function() {
-				$(this).css({
-					color : 'black'
-				})
-			}, function() {
-				$(this).css({
-					color : '#51A3BB'
-				})
-			}).on('click', function() {
-				$("#RegisterBox").fadeOut("fast");
-				$("#mask").css({
-					display : 'none'
-				});
-			});
-		});
-	</script>
+
+	
+	
+	
+	
 </head>
 <body>
-aaaaaaaaaaaaaajjjjjjjjjj
 	<div id="header">
 		<div id="logo">
 			<img src="images/first/homeLogo.png" />
@@ -190,9 +42,20 @@ aaaaaaaaaaaaaajjjjjjjjjj
 						src="images/first/register.png"></a>
 				</div>
 			</div>
+			
+			
+			
 			<div id="search">
-				<img src="images/first/search.png">
-			</div>
+            <!--<img src="images/首页/search.png">-->
+            <input id="input" type="text" style="height: 28px;width: 217px" name="search" value="search">
+            	<div id="search_icon">
+               		<img id="Isearch" src="images/first/search_icon.png">
+            	</div>
+        	</div>
+        	
+        	
+        	
+			
 		</div>
 	</div>
 	<div id="content">
@@ -330,5 +193,211 @@ aaaaaaaaaaaaaajjjjjjjjjj
 			})
 		</script>
 	</div>
+	<script>
+	var isround = "";
+	var scrollmove = "";
+	var masktime = 10;
+	var focus_cur = 1;
+	var p = document.getElementById("pic").getElementsByTagName("li");
+	var h = document.getElementById("tip").getElementsByTagName("li");
+	function change(id) {
+		clearTimeout(isround);
+		clearInterval(scrollmove);
+		for (var i = 1; i <= h.length; i++) {
+			if (i == id) {
+				document.getElementById("smallimg_" + i).className = "current";
+			} else {
+				document.getElementById("smallimg_" + i).className = "";
+			}
+		}
+		if ((next = id + 1) > h.length) {
+			next = 1;
+		}
+		isround = setTimeout("change(" + next + ")", 8000);
+		scrollmove = setInterval("scrollMove(" + id + ")", masktime);
+		focus_cur = id;
+	}
+	function scrollMove(m) {
+		var srl = document.getElementById("pic").scrollLeft;
+		var dsrl = Math.floor((p[0].clientWidth * (m - 1) - srl) / 5);
+		var xsrl = Math.ceil((p[0].clientWidth * (m - 1) - srl) / 5);
+		if (srl > p[0].clientWidth * (m - 1)) {
+			document.getElementById("pic").scrollLeft = srl + dsrl;
+		} else if (srl < p[0].clientWidth * (m - 1)) {
+			document.getElementById("pic").scrollLeft = srl + xsrl;
+		} else {
+			clearInterval(scrollmove);
+		}
+	}
+	isround = setTimeout("change(2)", 8000);
+	
+	
+</script>
+<script type="text/javascript">
+    function loginCheck(){
+        var account = document.getElementById("account");
+        var password = document.getElementById("password");
+        if(account.value==""){
+            alert("请输入账号");
+            return false;
+        }else if(password.value==""){
+            alert("请输入密码");
+            return false;
+        }
+    }
+</script>
+<script type="text/javascript">
+		$(function($) {
+			//弹出登录
+			$("#loginBtn").hover(function() {
+				$(this).stop().animate({
+					opacity : '1'
+				}, 600);
+			}, function() {
+				$(this).stop().animate({
+					opacity : '0.6'
+				}, 1000);
+			}).on('click', function() {
+				$("body").append("<div id='mask'></div>");
+				$("#mask").addClass("mask").fadeIn("slow");
+				$("#LoginBox").fadeIn("slow");
+			});
+			//
+			//按钮的透明度
+			$("#loginbtn").hover(function() {
+				$(this).stop().animate({
+					opacity : '1'
+				}, 600);
+			}, function() {
+				$(this).stop().animate({
+					opacity : '0.8'
+				}, 1000);
+			});
+			//关闭
+			$(".close_btn").hover(function() {
+				$(this).css({
+					color : 'black'
+				})
+			}, function() {
+				$(this).css({
+					color : '#51A3BB'
+				})
+			}).on('click', function() {
+				$("#LoginBox").fadeOut("fast");
+				$("#mask").css({
+					display : 'none'
+				});
+			});
+		});
+	</script>
+	<script type="text/javascript">
+		function registerCheck() {
+			var newAccount = document.getElementById("newAccount");
+			var newPassword = document.getElementById("newPassword");
+			if (newAccount.value == "") {
+				alert("请输入账号");
+				return false;
+			} else if (newPassword.value == "") {
+				alert("请输入密码");
+				return false;
+			}
+		}
+	</script>
+	<script type="text/javascript">
+		$(function($) {
+			//弹出注册
+			$("#registerBtn").hover(function() {
+				$(this).stop().animate({
+					opacity : '1'
+				}, 600);
+			}, function() {
+				$(this).stop().animate({
+					opacity : '0.6'
+				}, 1000);
+			}).on('click', function() {
+				$("body").append("<div id='mask'></div>");
+				$("#mask").addClass("mask").fadeIn("slow");
+				$("#RegisterBox").fadeIn("slow");
+			});
+			//
+			//按钮的透明度
+			$("#registerbtn").hover(function() {
+				$(this).stop().animate({
+					opacity : '1'
+				}, 600);
+			}, function() {
+				$(this).stop().animate({
+					opacity : '0.8'
+				}, 1000);
+			});
+			//关闭
+			$(".close_btn").hover(function() {
+				$(this).css({
+					color : 'black'
+				})
+			}, function() {
+				$(this).css({
+					color : '#51A3BB'
+				})
+			}).on('click', function() {
+				$("#RegisterBox").fadeOut("fast");
+				$("#mask").css({
+					display : 'none'
+				});
+			});
+		});
+		function testSearchAjax(){
+			alert(111);
+			/**
+			
+			$.ajax("${pageContext.request.contextPath}/search/facade",
+			// 发送请求的URL字符串
+				{
+					dataType : "json", //
+					type: "post",      //
+					contentType: "application/json",  //
+					data: JSON.stringify({uid:9,uname:"好好",upassword:"12356"}),
+					async:true,  //
+					success: function(data){
+						$("#uid").html(data.uid);
+						$("#uname").html(data.uname);
+						$("#upassword").html(data.upassword);
+						$("#uemail").html(data.uemail);
+					},
+					error: function(){
+						alert("数据发送失败");
+					}
+				});*/
+		}
+		
+	</script>
+	
+	
+	
+	
+	<script>
+	$('#Isearch').on('click',function(){
+		sendSearchContent($('#input').val());
+	})
+	function sendSearchContent(message){
+		//alert(111);
+		$.ajax("${pageContext.request.contextPath}/search/facade",
+			// 发送请求的URL字符串
+			{
+				dataType : "json", //
+				type: "post",      //
+				contentType: "application/json",  //
+				data: JSON.stringify({search:message}),
+				async:true,  //
+				success: function(data){
+					//$("#input").html(data.uid);
+					alert("数据发送成功");
+				},
+				error: function(){
+					alert("数据发送失败");
+				}
+			});
+	}
+	</script>
 </body>
 </html>

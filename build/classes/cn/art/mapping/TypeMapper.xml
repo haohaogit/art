@@ -79,7 +79,7 @@
       #{tshengcheng,jdbcType=VARCHAR}, #{ttiaozheng,jdbcType=VARCHAR}, #{ticon,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="cn.art.model.Type" >
+  <insert id="insertSelective" parameterType="cn.art.model.Type" useGeneratedKeys="true" keyProperty="tid">
     insert into type_
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="tid != null" >

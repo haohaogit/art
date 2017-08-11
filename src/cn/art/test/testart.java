@@ -101,10 +101,10 @@ public class testart {
 		//User user = userService.selectUserById(2);
 		User user = new User();
 		user.setUemail("www.neteast.163");
-		user.setUname("haohao1");
+		user.setUname("haohao12");
 		user.setUpassword("111");
 		user.setUprivilege(0);
-		int getid = userMapper.insertSelectiveAndGetID(user);
+		int getid = userMapper.insert(user);
 		
 		System.out.println(" generate id  "+getid);
 		System.out.println(" generate id  "+user.getUid());		

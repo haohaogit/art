@@ -46,7 +46,20 @@ public class testType {
 		Type type = new Type();
 		type.setTid(2);
 		type.setTtiaozheng("9579");
+		
 		int isok = typeMapper.updateByPrimaryKeySelective(type);
+	}
+	
+	@Test
+	public void typeInsertSelectGetTid(){
+		Type type = new Type();
+		type.setTname("haohao");
+		type.setTalgorithm(1);
+		type.setTtiaozheng("9579");
+		type.setTanli("11111111111");
+		type.setTicon("2222222222");
+		int isok = typeMapper.insertSelective(type);
+		System.out.println(" new insert tid is "+type.getTid());
 	}
 
 }

@@ -547,7 +547,7 @@ public class M_productMaintenceController {
 			
 			HttpSession session = request.getSession();
 			session.setAttribute("isNewaddType", "true");
-			session.setAttribute("tid", typeService.selectAllByName(tname).getTid());
+			session.setAttribute("tid", type.getTid());
 			
 		}
 		

@@ -33,8 +33,13 @@
 	float:left;
 }
 #search{
-	text-align: center;
+	margin-left:7%;
 }
+#search_icon{
+	margin-top:-12.8%;
+	margin-left:76%;
+}
+input[type=text],textarea{border-radius:5px;}
 
 #footer{
 	background-color: #51A3BB;

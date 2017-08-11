@@ -9,8 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
-import cn.art.model.User;
-
 /**
  * 
  * 拦截器必须实现HandlerInterceptor接口
@@ -59,7 +57,9 @@ public class AuthorizationInterceptor implements HandlerInterceptor {
 			Object handler) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		System.out.println("AuthorizationInterceptor preHandler   -->");
-		 
+		/**
+		 * 
+		
 		//flag 变量用户判断管理员是否登录，默认为false
 		boolean flag = false;
 		//获取请求路径进行判断
@@ -91,6 +91,8 @@ public class AuthorizationInterceptor implements HandlerInterceptor {
 			}
 		}
 		return flag;
+		 */
+		return true;
 	}
 
 }

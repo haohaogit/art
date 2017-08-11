@@ -42,7 +42,7 @@
     delete from user_
     where UID = #{uid,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="cn.art.model.User" >
+  <insert id="insert" parameterType="cn.art.model.User" useGeneratedKeys="true" keyProperty="uid">
     insert into user_ (UID, UName, UPassword, 
       UPrivilege, UEmail)
     values (#{uid,jdbcType=INTEGER}, #{uname,jdbcType=VARCHAR}, #{upassword,jdbcType=VARCHAR}, 
@@ -87,7 +87,7 @@
     </trim>
   </insert>
   
-  <insert id="insertSelectiveAndGetID" parameterType="cn.art.model.User" useGeneratedKeys="true" keyProperty="id" >
+  <insert id="insertSelectiveAndGetID" parameterType="cn.art.model.User" useGeneratedKeys="true" keyProperty="uid" >
     insert into user_
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="uid != null" >
@@ -123,9 +123,7 @@
         #{uemail,jdbcType=VARCHAR},
       </if>
     </trim>
-    <selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="uid">
-	SELECT LAST_INSERT_ID()
-	</selectKey> 
+   
   </insert>
   
   <update id="updateByPrimaryKeySelective" parameterType="cn.art.model.User" >
