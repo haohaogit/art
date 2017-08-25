@@ -1,19 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
 <link href="css/home.css" rel="stylesheet" type="text/css" />
 <link href="css/loginDialog.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
-<title>意象映射1111</title>
-
-
-	
-	
-	
-	
+<title>意象映射</title>
 </head>
 <body>
 	<div id="header">
@@ -23,7 +15,7 @@
 		<div id="navigation">
 			<ul>
 				<li><a><img src="images/first/navigationHome.png"></a></li>
-				<li><a href="html/corpus.jsp"><img
+				<li><a href="html/corpus.html"><img
 						src="images/first/navigationCorpus.png"></a></li>
 				<li><a href="html/facade.html"><img
 						src="images/first/navigationFacade.png"></a></li>
@@ -33,29 +25,25 @@
 		</div>
 		<div id="rightHead">
 			<div id="operator">
+				<div id="username">
+					<span id="p1"></span>
+				</div>
 				<div id="login">
 					<a href="javascript:void(0)" id="loginBtn"><img
-						src="images/first/login.png"></a>${name}
+						src="images/first/login.png"></a>
 				</div>
 				<div id="register">
 					<a href="javascript:void(0)" id="registerBtn"><img
 						src="images/first/register.png"></a>
 				</div>
 			</div>
-			
-			
-			
-			<div id="search">
+			 <div id="search_C">
             <!--<img src="images/首页/search.png">-->
-            <input id="input" type="text" style="height: 28px;width: 217px" name="search" value="search">
+            <input id="input" type="text" style="height: 28px;width: 217px" name="search" value="外观库搜索">
             	<div id="search_icon">
                		<img id="Isearch" src="images/first/search_icon.png">
             	</div>
         	</div>
-        	
-        	
-        	
-			
 		</div>
 	</div>
 	<div id="content">
@@ -88,6 +76,46 @@
 			</ul>
 		</div>
 	</div>
+
+	<script>
+		var isround = "";
+		var scrollmove = "";
+		var masktime = 10;
+		var focus_cur = 1;
+		var p = document.getElementById("pic").getElementsByTagName("li");
+		var h = document.getElementById("tip").getElementsByTagName("li");
+		function change(id) {
+			clearTimeout(isround);
+			clearInterval(scrollmove);
+			for (var i = 1; i <= h.length; i++) {
+				if (i == id) {
+					document.getElementById("smallimg_" + i).className = "current";
+				} else {
+					document.getElementById("smallimg_" + i).className = "";
+				}
+			}
+			if ((next = id + 1) > h.length) {
+				next = 1;
+			}
+			isround = setTimeout("change(" + next + ")", 8000);
+			scrollmove = setInterval("scrollMove(" + id + ")", masktime);
+			focus_cur = id;
+		}
+		function scrollMove(m) {
+			var srl = document.getElementById("pic").scrollLeft;
+			var dsrl = Math.floor((p[0].clientWidth * (m - 1) - srl) / 5);
+			var xsrl = Math.ceil((p[0].clientWidth * (m - 1) - srl) / 5);
+			if (srl > p[0].clientWidth * (m - 1)) {
+				document.getElementById("pic").scrollLeft = srl + dsrl;
+			} else if (srl < p[0].clientWidth * (m - 1)) {
+				document.getElementById("pic").scrollLeft = srl + xsrl;
+			} else {
+				clearInterval(scrollmove);
+			}
+		}
+		isround = setTimeout("change(2)", 8000);
+	</script>
+
 	<div id="footer">
 		<div id="upFooter">
 			<div id="concernUs">
@@ -123,9 +151,23 @@
 		<div id="downFooter">COPYRIGHT 2016 YIXIANGYINGSHE ALL RIGHTS
 			RESERVED</div>
 	</div>
+	<script type="text/javascript">
+		function loginCheck() {
+			var account = document.getElementById("account");
+			var password = document.getElementById("password");
+			if (account.value == "") {
+				alert("请输入账号");
+				return false;
+			} else if (password.value == "") {
+				alert("请输入密码");
+				return false;
+			}
+		}
+	</script>
 	<div id="LoginBox">
-		<form action="customerLogin" method="post"
-			onSubmit="return loginCheck()">
+<!-- 		<form action="customerLogin" method="post" -->
+<!-- 			onSubmit="return loginCheck()"> -->
+			
 			<div class="rowTitle">
 				意象造型映射<a href="javascript:void(0)" title="关闭窗口" class="close_btn"
 					id="closeBtn">×</a>
@@ -147,7 +189,8 @@
 			<div class="row">
 				<button type="submit" id="loginbtn">登录</button>
 			</div>
-		</form>
+			
+<!-- 		</form> -->
 		<div id="loginHint">
 			还没有账号？<a href="javascript:void(0)" id="turnToRegister">注册</a>
 		</div>
@@ -158,95 +201,7 @@
 			})
 		</script>
 	</div>
-	<div id="RegisterBox">
-		<form action="customerRegister.do" method="post"
-			onSubmit="return registerCheck()">
-			<div class="rowTitle">
-				意象造型映射<a href="javascript:void(0)" title="关闭窗口" class="close_btn"
-					id="closeBtn">×</a>
-			</div>
-			<div class="row">
-				<span>账号</span> <br>
-				<div class="inputBox">
-					<input type="text" class="txt" id="newAccount" name="newAccount"
-						placeholder="账号" />
-				</div>
-			</div>
-			<div class="row">
-				<span>密码</span><br>
-				<div class="inputBox">
-					<input type="password" class="txt" id="newPassword"
-						name="newPassword" placeholder="密码" />
-				</div>
-			</div>
-			<div class="row">
-				<button type="submit" id="registerbtn">注册</button>
-			</div>
-		</form>
-		<div id="registerHint">
-			注册成功，请<a href="javascript:void(0)" id="turnToLogin">登录</a>
-		</div>
-		<script type="text/javascript">
-			$("#turnToLogin").on('click', function() {
-				$("#RegisterBox").fadeOut(0);
-				$("#LoginBox").fadeIn(0);
-			})
-		</script>
-	</div>
-	<script>
-	var isround = "";
-	var scrollmove = "";
-	var masktime = 10;
-	var focus_cur = 1;
-	var p = document.getElementById("pic").getElementsByTagName("li");
-	var h = document.getElementById("tip").getElementsByTagName("li");
-	function change(id) {
-		clearTimeout(isround);
-		clearInterval(scrollmove);
-		for (var i = 1; i <= h.length; i++) {
-			if (i == id) {
-				document.getElementById("smallimg_" + i).className = "current";
-			} else {
-				document.getElementById("smallimg_" + i).className = "";
-			}
-		}
-		if ((next = id + 1) > h.length) {
-			next = 1;
-		}
-		isround = setTimeout("change(" + next + ")", 8000);
-		scrollmove = setInterval("scrollMove(" + id + ")", masktime);
-		focus_cur = id;
-	}
-	function scrollMove(m) {
-		var srl = document.getElementById("pic").scrollLeft;
-		var dsrl = Math.floor((p[0].clientWidth * (m - 1) - srl) / 5);
-		var xsrl = Math.ceil((p[0].clientWidth * (m - 1) - srl) / 5);
-		if (srl > p[0].clientWidth * (m - 1)) {
-			document.getElementById("pic").scrollLeft = srl + dsrl;
-		} else if (srl < p[0].clientWidth * (m - 1)) {
-			document.getElementById("pic").scrollLeft = srl + xsrl;
-		} else {
-			clearInterval(scrollmove);
-		}
-	}
-	isround = setTimeout("change(2)", 8000);
-	
-	
-</script>
-<script type="text/javascript">
-    function loginCheck(){
-        var account = document.getElementById("account");
-        var password = document.getElementById("password");
-        if(account.value==""){
-            alert("请输入账号");
-            return false;
-        }else if(password.value==""){
-            alert("请输入密码");
-            return false;
-        }
-    }
-</script>
-<script type="text/javascript">
+	<script type="text/javascript">
 		$(function($) {
 			//弹出登录
 			$("#loginBtn").hover(function() {
@@ -289,6 +244,40 @@
 				});
 			});
 		});
+		
+		$("#loginbtn").on('click',function(){
+			
+			sendLoginContent($("#account").val(),$("#password").val());
+		})
+		function sendLoginContent(name,password){
+			alert(name+password);
+// 			$.ajax("${pageContext.request.contextPath}/search/facade",
+			$.ajax("customerLogin",
+				// 发送请求的URL字符串
+				{
+					dataType : "json", //
+					type: "post",      //
+					contentType: "application/json",  //
+					data: JSON.stringify({uname:name,upassword:password}),
+					async:true,  //
+					success: function(data){
+						$("#p1").html(data.uname);
+						$("#login").fadeOut("fast");
+						$("#register").fadeOut("fast");
+						$("#LoginBox").fadeOut("fast");
+						
+						$("#mask").css({
+							display : 'none'
+						});
+						alert("数据发送成功denglu");
+					},
+					error: function(){
+						alert("数据发送失败denglu");
+					}
+				});
+		}
+		
+		
 	</script>
 	<script type="text/javascript">
 		function registerCheck() {
@@ -303,6 +292,55 @@
 			}
 		}
 	</script>
+	<div id="RegisterBox">
+<!-- 		<form action="customerRegister.do" method="post" -->
+<!-- 			onSubmit="return registerCheck()"> -->
+			<div class="rowTitle">
+				意象造型映射<a href="javascript:void(0)" title="关闭窗口" class="close_btn"
+					id="closeBtn">×</a>
+			</div>
+			<div class="row">
+				用户号:
+				<div class="inputBox">
+					<input type="text" class="txt" id="newAccount" name="newAccount"
+						placeholder="用户名不超过16位字符" />
+				</div>
+			</div>
+			<div class="row">
+				<span>邮箱:</span>
+				<div class="inputBox">
+					<input type="text" class="txt" id="newEmail"
+						name="newEmail" placeholder="输入邮箱" />
+				</div>
+			</div>
+			<div class="row">
+				<span>密码:</span>
+				<div class="inputBox">
+					<input type="password" class="txt" id="newPassword"
+						name="newPassword" placeholder="密码" />
+				</div>
+			</div>
+			<div class="row">
+				<span>确认密码:</span>
+				<div class="inputBox">
+					<input type="password" class="txt" id="ConfPassword"
+						name="ConfPassword" placeholder="确认密码" />
+				</div>
+			</div>
+			<div class="row">
+				<button type="submit" id="registerbtn">注册</button>
+			</div>
+<!-- 		</form> -->
+		<div id="registerHint">
+			注册成功，请<a href="javascript:void(0)" id="turnToLogin">登录</a>
+		</div>
+		<script type="text/javascript">
+			$("#turnToLogin").on('click', function() {
+				$("#RegisterBox").fadeOut(0);
+				$("#LoginBox").fadeIn(0);
+			})
+		</script>
+	</div>
 	<script type="text/javascript">
 		$(function($) {
 			//弹出注册
@@ -346,59 +384,38 @@
 				});
 			});
 		});
-		function testSearchAjax(){
-			alert(111);
-			/**
+		
+		$("#registerbtn").on('click',function(){
 			
-			$.ajax("${pageContext.request.contextPath}/search/facade",
-			// 发送请求的URL字符串
+			sendregisterContent($("#newAccount").val(),$("#newEmail").val(),$("#newPassword").val(),$("#ConfPassword").val());
+		})
+		function sendregisterContent(name,email,password,cpassword){
+			alert(name+password);
+// 			$.ajax("${pageContext.request.contextPath}/search/facade",
+			$.ajax("customerRegister",
+				// 发送请求的URL字符串
 				{
 					dataType : "json", //
 					type: "post",      //
 					contentType: "application/json",  //
-					data: JSON.stringify({uid:9,uname:"好好",upassword:"12356"}),
+					data: JSON.stringify({uname:name,uemail:email,upassword:password,cpassword:cpassword}),
 					async:true,  //
 					success: function(data){
-						$("#uid").html(data.uid);
-						$("#uname").html(data.uname);
-						$("#upassword").html(data.upassword);
-						$("#uemail").html(data.uemail);
+						$("#p1").html(data.uname);
+						$("#login").fadeOut("fast");
+						$("#register").fadeOut("fast");
+						$("#RegisterBox").fadeOut("fast");
+						
+						$("#mask").css({
+							display : 'none'
+						});
+						alert("数据发送成功denglu");
 					},
 					error: function(){
-						alert("数据发送失败");
+						alert("数据发送失败denglu");
 					}
-				});*/
+				});
 		}
-		
-	</script>
-	
-	
-	
-	
-	<script>
-	$('#Isearch').on('click',function(){
-		sendSearchContent($('#input').val());
-	})
-	function sendSearchContent(message){
-		//alert(111);
-		$.ajax("${pageContext.request.contextPath}/search/facade",
-			// 发送请求的URL字符串
-			{
-				dataType : "json", //
-				type: "post",      //
-				contentType: "application/json",  //
-				data:  JSON.stringify({search:message}),
-				//data:  {search:message},
-				async:true,  //
-				success: function(data){
-					//$("#input").html(data.uid);
-					alert("数据发送成功");
-				},
-				error: function(){
-					alert("数据发送失败");
-				}
-			});
-	}
 	</script>
 </body>
 </html>

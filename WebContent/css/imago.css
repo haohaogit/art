@@ -36,10 +36,49 @@
 	text-align: center;
 }
 
-#footer{
-	background-color: #51A3BB;
-	color:white;
+#content{
+	margin: 10px 100px 50px 100px;
+	overflow:hidden;
 }
+
+#leftBody{
+	float:left;
+	width:18%;
+	text-align:left;
+	background-color: white;
+	padding: 10px 10px 10px 10px;
+}
+#leftBody div{
+	margin: 5px 5px 5px 5px;
+	background-image: url("../images/vocabularys/YixiangVocabulary-basicinfo/title.png");
+	font-size:20px;
+}
+#leftBody div a{
+	text-decoration:none;
+	padding: 13px 10px 13px 10px;
+	display:block;
+	color: white;
+}
+#leftBody div a:hover {color: #FF5500}
+#leftBody div a:active {color: #0099FF}
+
+#leftBody ul{
+	background-color: white;
+	margin: 0px;
+	padding-left: 30px;
+}
+#leftBody ul li{
+	list-style-type: none;
+	font-size:20px;
+	text-align:left;
+	padding: 3px 0px 3px 0px;
+}
+#leftBody ul li a{
+	display:block;
+	color: black;
+}
+
+
 #upFooter{
 	overflow: hidden;
 }
@@ -52,18 +91,8 @@
 	font-size:18px;
 	margin-left: 30px;	
 }
-#concernUs ul{
-	font-size:13px;
-	list-style-type: none;	
-}
-#concernUs ul li{
-	padding: 3px 0px 3px 0px;
-}
-#concernUs ul li a{
-	text-decoration:none;
-	display: block;
-	color: white;
-}
+
+
 #tuochUs{
 	width:30%;
 	float: left;

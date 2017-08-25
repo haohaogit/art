@@ -32,11 +32,19 @@
 #register{
 	float:left;
 }
+#username{
+	text-align: center;
+	margin-top:4%;
+	margin-bottom:5%;
+}
 #search{
-	margin-left:7%;
+	text-align: center;
+}
+#search_C{
+	margin-left:6%;
 }
 #search_icon{
-	margin-top:-12.8%;
+	margin-top:-12.6%;
 	margin-left:76%;
 }
 input[type=text],textarea{border-radius:5px;}

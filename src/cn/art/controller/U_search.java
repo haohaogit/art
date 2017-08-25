@@ -2,6 +2,7 @@ package cn.art.controller;
 
 import java.io.IOException;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,7 @@ import cn.art.service.OutLineService;
 import cn.art.service.PartService;
 import cn.art.service.TextureService;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 
 @Controller
@@ -77,7 +79,8 @@ public class U_search {
 
 	@RequestMapping("facade")
 	public void UserSearch(HttpServletResponse response,
-			@RequestBody String search) throws IOException{
+			@RequestBody String search,
+			HttpServletRequest request) throws IOException{
 		/*
 		String Xname = request.getParameter("Xname");
 		int bottomcasesNum = bottomCaseService.CountNumByName(Xname);
@@ -110,8 +113,12 @@ public class U_search {
 		request.setAttribute("newcasesNum", newcasesNum);
 		request.setAttribute("newcases", newcases);
 		*/
+		//String search1 = request.getParameter("search");
 		System.out.println("999999999999999999999999999");
-		System.out.println("search "+search);
+		JSONObject myJson = JSON.parseObject(search);
+		System.out.println("search1 "+ myJson.toString());
+		//System.out.println("search1 "+ search1);
+		//System.out.println("search2 "+ myJson.getString("search"));
 		response.getWriter().println(JSONObject.toJSONString(search));
 		//return "manager/testlogin";
 	}

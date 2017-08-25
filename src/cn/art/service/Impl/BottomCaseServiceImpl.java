@@ -15,7 +15,7 @@ import cn.art.service.BottomCaseService;
 import cn.art.util.JsonConvert;
 import cn.art.util.pojo.bottomCaseB;
 import cn.art.util.pojo.bottomCaseD;
-@Service("BottomCaseService")
+@Service("BottomCaseService")   //@Service是一个注解啊，告诉spring创建一个实现类的实例啊。。。
 public class BottomCaseServiceImpl implements BottomCaseService {
 	private BottomCaseMapper bottomCaseMapper;
 	private BottomCaseTypeMapper bottomCaseTypeMapper;
