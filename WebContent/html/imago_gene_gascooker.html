@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link href="../css/imago.css" rel="stylesheet" type="text/css"/>
+<link href="../css/loginDialog.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../js/jquery-1.8.2.min.js"></script>
+<title>意象映射-意象映射系统</title>
+</head>
+<body>
+<script type="text/javascript">
+        $(document).ready(function () {
+//  			alert(11);
+            $('.configHead').load('conheader_yixiang.html');
+            $('.configFoot').load('confooter.html');
+        });
+</script>
+	<!-- 	头部 -->
+	<div class="configHead"></div>
+	
+	<div id="content">
+
+		<div id="leftBody">
+			<div id="setParam">
+				<a href="javascript:void(0)" id="paramToggle">
+					<div id="paraIcon"> <img src="../images/genestyle/setparam.png"></div>
+					<div id="paraWord">1.参数设置</div>
+				</a>
+				<ul id="paramContent">
+					<li><a href="javascript:void(0)" id="paragoblet">高脚杯</a></li>
+					<li><a href="javascript:void(0)" id="parayacht">游艇</a></li>
+					<li><a href="javascript:void(0)" id="parahanky">织物</a></li>
+					<li><a href="javascript:void(0)" id="pararange">燃气灶</a></li>
+				</ul>
+			</div>
+			<div id="geneStyle">
+				<a href="javascript:void(0)" id="geneToggle">
+					<div id="paraIcon"> <img src="../images/genestyle/genestyle.png"></div>
+					<div id="paraWord">2.造型生成</div>
+					
+				</a>
+				<ul id="geneContent">
+					<li><a href="javascript:void(0)" id="genegoblet" class="errorOperate">高脚杯</a></li>
+					<li><a href="javascript:void(0)" id="geneyacht" class="errorOperate">游艇</a></li>
+					<li><a href="javascript:void(0)" id="genehanky" class="errorOperate">织物</a></li>
+					<li><a href="javascript:void(0)" id="generange">燃气灶</a></li>
+				</ul>
+			</div>
+			<div id="adjustStyle">
+				<a href="javascript:void(0)" id="adjustToggle">
+					<div id="paraIcon"> <img src="../images/genestyle/adjuststyle.png"></div>
+					<div id="paraWord">3.造型调整</div>
+				</a>
+				<ul id="adjustContent">
+					<li><a href="javascript:void(0)" id="partAdd" class="errorOperate" class="errorOperate">部件添加</a></li>
+					<img src="../images/genestyle/navigatebar.png" class="pimg">
+					<li><a href="javascript:void(0)" id="colorAdjust" class="errorOperate" class="errorOperate">色彩调整</a></li>
+					<img src="../images/genestyle/navigatebar.png" class="pimg">
+					<li><a href="javascript:void(0)" id="textureAdjust" class="errorOperate" class="errorOperate">材质调整</a></li>
+				</ul>
+			</div>
+			<div id="bottomcolor"></div>
+		</div>
+		<div id="rightBody">
+			<div id="iconAndcorpus">
+				<div id="introicon"><img src="../images/genestyle/gascooker.png" style="margin-top: 19px;" /></div>
+				<div id="introduce">
+					<p id="corpus">底层啊啥的交换机啊啥的卡斯柯卡号的看见好多看哈的华盛asd请问萨达vvghgfhdg阿尔法啊啥的范围飞啊飞玩手动阀发阿斯蒂芬万二分阿斯蒂芬阿斯蒂芬顿奥德赛华盛顿看哈是读好书看哈的华盛顿很快的</p>
+				</div>
+			</div>
+
+			<div id="inputcorpus">
+				<div class="corpusword" style="padding-top: 5.5px;">推荐方案</div>
+			</div>
+
+			<div id="picGene">
+				<img src="../images/genestyle/gascooker.jpg" style="margin-left: 125px;" />
+				
+			</div>
+
+			<div id="showCommander">
+				<div id="pic1" style="float: left;">
+					<img src="../images/genestyle/Ccolor.png" style=" width: 130px;"/>
+					<p class="p1">色彩推荐</p>
+				</div>
+           		<div id="pic3" style="float: left;">
+           			<img src="../images/genestyle/Ctexture1.png" style=" width: 130px;"/>
+           			<p class="p1">材质推荐</p>
+           		</div>
+           		
+			</div>
+
+			<div id="geneBottomBtn"  style="margin-top: 227px;">
+				<button type="submit" id="save" onclick="saveGene()">确定</button>
+				<button type="submit" class="cancel">取消</button>
+				<button type="submit" class="cancel" onclick="returned()">返回上一步</button>
+			</div>
+		</div>
+	</div>
+
+	<!-- 	底部 -->
+	<div class="configFoot"></div>
+	<script type="text/javascript">
+		function returned(){
+  			window.history.back(-1);
+  		}
+  		
+		function saveGene(){
+			alert("燃气灶推荐方案保存，然后调整部件");
+			window.location.href="imago_adjust_part_gascooker.html";
+		}
+
+		window.onload = function(){
+			var c=document.getElementById("myCanvas");
+			var cxt=c.getContext("2d");
+			var img=new Image();
+			img.src="../images/2.jpg";
+			img.onload = function(){
+				cxt.drawImage(img,10,10);
+			}
+		}
+	</script>
+	
+
+	<script type="text/javascript">
+		$("#paramContent").fadeOut(0);
+		$("#adjustContent").fadeOut(0);
+		$("#bottomcolor").fadeOut(0);
+		$("#generange").css({color:'#00A5BD'});
+
+		$("#paramToggle").click(function(){
+   			$("#paramContent").fadeToggle(0);
+  		});
+		$("#geneToggle").click(function(){
+  			$("#geneContent").fadeToggle(0);
+  		});
+		$("#adjustToggle").click(function(){
+    		$("#adjustContent").fadeToggle(0);
+    		$("#bottomcolor").fadeToggle(0);
+  		});
+
+
+  		$("#paragoblet").click(function(){
+    		// $("#paramSet").html("111111111111111111");
+    		window.location.href="imago.html?txt=paragoblet";
+  		});
+  		$("#parayacht").click(function(){
+    		// $("#paramSet").html("222222222222222222");
+    		window.location.href="imago.html?txt=parayacht";
+  		});
+  		$("#parahanky").click(function(){
+    		// $("#paramSet").html("333333333333333333");
+    		window.location.href="imago.html?txt=parahanky";
+  		});
+  		$("#pararange").click(function(){
+    		// $("#paramSet").html("444444444444444444");
+    		window.location.href="imago.html?txt=pararange";
+  		});
+
+
+
+
+  		$('.errorOperate').click(function(){
+  			alert("请您先确认是否保存语义参数，然后按照顺序操作！");
+  		});
+  		
+	</script>
+</body>
+</html>

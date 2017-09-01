@@ -28,8 +28,7 @@ public class registerController {
 		this.userService = userService;
 	}
 	
-	
-	@RequestMapping("customerRegister")
+	@RequestMapping("customerRegister11111")
 	public String costomRegisterService(HttpServletRequest request) {
 		String uname = request.getParameter("newAccount");
 		String upassword = request.getParameter("newPassword");

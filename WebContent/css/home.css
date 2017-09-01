@@ -1,7 +1,7 @@
 @CHARSET "UTF-8";
 
 #header{
-	margin: 0px 100px 60px 100px;
+	margin: 0px 100px 30px 100px;
 	overflow: hidden;
 }
 #logo{
@@ -20,7 +20,7 @@
 }
 #rightHead{
 	background-image:url("../images/first/navigationBackground.gif");
-	height:92px;
+	height:96px;
 	float:left;
 }
 #operator{
@@ -36,6 +36,10 @@
 	text-align: center;
 	margin-top:4%;
 	margin-bottom:5%;
+	display: none;
+}
+.loginSucc{
+	display: block;
 }
 #search{
 	text-align: center;
@@ -44,8 +48,8 @@
 	margin-left:6%;
 }
 #search_icon{
-	margin-top:-12.6%;
-	margin-left:76%;
+	margin-top:-11.8%;
+	margin-left:71.5%;
 }
 input[type=text],textarea{border-radius:5px;}
 

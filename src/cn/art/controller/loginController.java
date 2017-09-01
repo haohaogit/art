@@ -94,7 +94,7 @@ public class loginController {
 	}
 	
 	//用户登录
-		@RequestMapping(value ="customerLogin",method=RequestMethod.POST)
+		@RequestMapping(value ="html/customerLogin",method=RequestMethod.POST)
 		public void costomlogin(HttpServletRequest request,
 				@RequestBody User user,
 				HttpServletResponse response
@@ -103,6 +103,8 @@ public class loginController {
 			boolean isRegister = false;
 			System.out.println("22222222222222222");
 			System.out.println(user.getUname()+" 123 "+user.getUpassword());
+			HttpSession session = request.getSession();
+			session.setAttribute("username", user.getUname());
 			/**
 			 * 
 			
@@ -162,7 +164,7 @@ public class loginController {
 	}
 	
 	//用户注册
-	@RequestMapping(value="customerRegister",method=RequestMethod.POST)
+	@RequestMapping(value="html/customerRegister",method=RequestMethod.POST)
 	public void costomuserRegister(HttpServletRequest request,
 			@RequestBody rUser ruser,
 			HttpServletResponse response

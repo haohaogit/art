@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .description {
+            margin-bottom: 38px;
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: space-between;
+        }
+
+        .pingfen {
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        .get-score {
+            display: flex;
+        }
+
+        .jindu1 {
+            margin: 0 10px;
+            width: 540px;
+            height: 9px;
+            background: #c0c0c0;
+            border-radius: 8px;
+        }
+        .jindu2 {
+            margin: 0 10px;
+            width: 540px;
+            height: 9px;
+            background: #c0c0c0;
+            border-radius: 8px;
+        }
+        .jindu3 {
+            margin: 0 10px;
+            width: 540px;
+            height: 9px;
+            background: #c0c0c0;
+            border-radius: 8px;
+        }
+        .jindu4 {
+            margin: 0 10px;
+            width: 540px;
+            height: 9px;
+            background: #c0c0c0;
+            border-radius: 8px;
+        }
+        .jindu5 {
+            margin: 0 10px;
+            width: 540px;
+            height: 9px;
+            background: #c0c0c0;
+            border-radius: 8px;
+        }
+        .jindu6 {
+            margin: 0 10px;
+            width: 540px;
+            height: 9px;
+            background: #c0c0c0;
+            border-radius: 8px;
+        }
+
+        .point {
+            margin: -2px 0 0 -10px;
+            width: 10px;
+            height: 10px;
+            border: 1px solid #00A5BD;
+            border-radius: 10px;
+            background: #fff;
+        }
+
+        .score1 {
+            width: 50%;
+            height: 9px;
+            border-radius: 8px;
+            background: #00A5BD;
+        }
+        .score2 {
+            width: 50%;
+            height: 9px;
+            border-radius: 8px;
+            background: #00A5BD;
+        }
+        .score3 {
+            width: 50%;
+            height: 9px;
+            border-radius: 8px;
+            background: #00A5BD;
+        }
+        .score4 {
+            width: 50%;
+            height: 9px;
+            border-radius: 8px;
+            background: #00A5BD;
+        }
+        .score5 {
+            width: 50%;
+            height: 9px;
+            border-radius: 8px;
+            background: #00A5BD;
+        }
+        .score6 {
+            width: 50%;
+            height: 9px;
+            border-radius: 8px;
+            background: #00A5BD;
+        }
+
+        .shuzi {
+            font-size: 12px;
+            margin-top: 4px;
+            width: 100%;
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: space-between;
+        }
+        .des_font{
+            font-size: 13px;
+        }
+    </style>
+    <script src="https://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <div>
+        <div class="description">
+            <div class="description1">1.温和</div>
+            <div class="pingfen">
+                <span class="des_font">符合</span>
+                <div class="jindu1">
+                    <div class="get-score">
+                        <div class="score1"></div>
+                        <div class="point"></div>
+                    </div>
+                    <div class="shuzi">
+                        <span>1</span>
+                        <span>2</span>
+                        <span>3</span>
+                        <span>4</span>
+                        <span>5</span>
+                        <span>6</span>
+                        <span>7</span>
+                    </div>
+                </div>
+            <span class="des_font">非常符合</span>
+            </div>
+        </div>
+
+        <div class="description">
+            <div class="description2">2.严谨</div>
+            <div class="pingfen">
+                <span class="des_font">符合</span>
+                <div class="jindu2">
+                    <div class="get-score">
+                        <div class="score2"></div>
+                        <div class="point"></div>
+                    </div>
+                    <div class="shuzi">
+                        <span>1</span>
+                        <span>2</span>
+                        <span>3</span>
+                        <span>4</span>
+                        <span>5</span>
+                        <span>6</span>
+                        <span>7</span>
+                     </div>
+                </div>
+
+                <span class="des_font">非常符合</span>
+            </div>
+        </div>
+
+        <div class="description">
+            <div class="description3">3.雅致</div>
+            <div class="pingfen">
+                <span class="des_font">符合</span>
+                <div class="jindu3">
+                    <div class="get-score">
+                        <div class="score3"></div>
+                        <div class="point"></div>
+                    </div>
+                    <div class="shuzi">
+                        <span>1</span>
+                        <span>2</span>
+                        <span>3</span>
+                        <span>4</span>
+                        <span>5</span>
+                        <span>6</span>
+                        <span>7</span>
+                    </div>
+                </div>
+                <span class="des_font">非常符合</span>
+            </div>   
+        </div>
+
+        <div class="description">
+            <div class="description4">4.简朴</div>
+            <div class="pingfen">
+                <span class="des_font">符合</span>
+                <div class="jindu4">
+                    <div class="get-score">
+                        <div class="score4"></div>
+                        <div class="point"></div>
+                    </div>
+                    <div class="shuzi">
+                        <span>1</span>
+                        <span>2</span>
+                        <span>3</span>
+                        <span>4</span>
+                        <span>5</span>
+                        <span>6</span>
+                        <span>7</span>
+                    </div>
+                </div>
+                <span class="des_font">非常符合</span>
+            </div>   
+        </div>
+
+        <div class="description">
+            <div class="description5">5.娇美</div>
+            <div class="pingfen">
+                <span class="des_font">符合</span>
+                <div class="jindu5">
+                    <div class="get-score">
+                        <div class="score5"></div>
+                        <div class="point"></div>
+                    </div>
+                    <div class="shuzi">
+                        <span>1</span>
+                        <span>2</span>
+                        <span>3</span>
+                        <span>4</span>
+                        <span>5</span>
+                        <span>6</span>
+                        <span>7</span>
+                    </div>
+                </div>
+                <span class="des_font">非常符合</span>
+            </div>   
+        </div>
+
+        <div class="description">
+            <div class="description6">6.古典</div>
+            <div class="pingfen">
+                <span class="des_font">符合</span>
+                <div class="jindu6">
+                    <div class="get-score">
+                        <div class="score6"></div>
+                        <div class="point"></div>
+                    </div>
+                    <div class="shuzi">
+                        <span>1</span>
+                        <span>2</span>
+                        <span>3</span>
+                        <span>4</span>
+                        <span>5</span>
+                        <span>6</span>
+                        <span>7</span>
+                    </div>
+                </div>
+                <span class="des_font">非常符合</span>
+            </div>   
+        </div>
+
+
+        <button onclick="getScore()">!!获取评分数!!</button>
+    </div>
+   <script>
+        var averageWidth;
+        ! function() {
+            var count = 6; //评分等级数
+            var totalWidth = $('.jindu1').width(); //总长度
+
+            averageWidth = totalWidth / count; //平均长度
+            $('.jindu1').click(function(e) {
+                $(this).find('.score1').width(Math.round(e.offsetX / 90) * averageWidth);
+            })
+
+          
+            $('.jindu2').click(function(e) {
+                $(this).find('.score2').width(Math.round(e.offsetX / 90) * averageWidth);
+            })
+
+           
+            $('.jindu3').click(function(e) {
+                $(this).find('.score3').width(Math.round(e.offsetX / 90) * averageWidth);
+            })
+
+            $('.jindu4').click(function(e) {
+                $(this).find('.score4').width(Math.round(e.offsetX / 90) * averageWidth);
+            })
+
+            $('.jindu5').click(function(e) {
+                $(this).find('.score5').width(Math.round(e.offsetX / 90) * averageWidth);
+            })
+
+            $('.jindu6').click(function(e) {
+                $(this).find('.score6').width(Math.round(e.offsetX / 90) * averageWidth);
+            })
+        }();
+
+        function getScore() {
+            var sc1 = Math.round($('.score1').width() / averageWidth) + 1;
+            var sc2 = Math.round($('.score2').width() / averageWidth) + 1;
+            var sc3 = Math.round($('.score3').width() / averageWidth) + 1;
+            var sc4 = Math.round($('.score4').width() / averageWidth) + 1;
+            var sc5 = Math.round($('.score5').width() / averageWidth) + 1;
+            var sc6 = Math.round($('.score6').width() / averageWidth) + 1;
+            alert("sc1="+sc1+" sc2="+sc2+" sc3="+sc3+" sc4="+sc4+" sc5="+sc5+" sc6="+sc6);
+        }
+    </script>
+</body>
+
+</html>

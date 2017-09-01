@@ -70,7 +70,7 @@
          <url-pattern>*.js</url-pattern>  
      </servlet-mapping>  
 	<welcome-file-list>
-		<welcome-file>/indexx.jsp</welcome-file>
+		<welcome-file>/html/artIndex.html</welcome-file>
 	</welcome-file-list>
 	<!-- 配置session超时时间，单位分钟 -->
 	<session-config>

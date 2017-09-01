@@ -20,7 +20,7 @@
 }
 #rightHead{
 	background-image:url("../images/appearance/generate/navigationBackground.png");
-	height:92px;
+	height:96px;
 	float:left;
 }
 #operator{
@@ -32,6 +32,18 @@
 #register{
 	float:left;
 }
+
+
+#introduce{
+	padding: 0 16px;
+	width: 688px;
+	display: inline-block;
+    vertical-align: top;
+}
+#introicon{
+	float: left;
+}
+
 #search{
 	text-align: center;
 }
@@ -42,10 +54,10 @@
 
 #leftBody{
 	float:left;
-	width:18%;
+	width:17%;
 	text-align:left;
 	background-color: white;
-	padding: 10px 10px 10px 10px;
+	padding: 10px 6px 10px 6px;
 }
 #leftBody div{
 	margin: 5px 5px 5px 5px;
@@ -58,6 +70,14 @@
 	display:block;
 	color: white;
 }
+#rightBody{
+	float: left;
+	width: 63.7%;
+	text-align: left;
+	background-color: white;
+
+}
+
 #leftBody div a:hover {color: #FF5500}
 #leftBody div a:active {color: #0099FF}
 

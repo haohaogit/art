@@ -10,8 +10,56 @@
 <body>
 <script type="text/javascript">
         $(document).ready(function () {
+
+        	var loc = location.href;
+		  	var n1 = loc.length;//地址的总长度
+		  	var n2 = loc.indexOf("=");//取得=号的位置
+		  	var txt = decodeURI(loc.substr(n2+1, n1-n2));//从=号后面的内容
+		  	var uri;
+		  	var flag = "base";
+		  	//alert(txt);
+
+		  	$(".param").css({color:'black'});
+		  	$("#"+txt).css("color","#00a5bd");
+
+		  	if("paragoblet"==txt){
+		  		uri="cihuidui/Cglobet.html";
+		  		alert("paragoblet1111");
+		  	} 
+		  	if("parayacht"==txt){
+		  		
+		  		uri="cihuidui/Chouseboat.html";
+		  	}
+		  	if("parahanky"==txt){
+		  		
+		  		uri="cihuidui/imago_fabric_first.html";
+		  	} 
+		  	if("pararange"==txt){
+		  		uri="cihuidui/Cgascooker.html";
+		  	}
+		  	$.ajax({
+			        url: uri,
+			        global: false,
+			        type: "POST",
+			        // data: ({
+			        //     id: this.getAttribute('globet')
+			        // }),
+			        dataType: "html",
+			        async: false,
+			        success: function(msg) {
+			        	alert("测试成功");
+			        	
+		        		$("#geneContent").fadeOut(0);
+						$("#adjustContent").fadeOut(0);
+			        	
+			            $("#paramSet").html(msg);
+			        }
+		   		})
+
+
+
 //  			alert(11);
-            $('.configHead').load('conheader.html');
+            $('.configHead').load('conheader_yixiang.html');
             $('.configFoot').load('confooter.html');
         });
 </script>
@@ -19,42 +67,211 @@
 	<div class="configHead"></div>
 	
 	<div id="content">
+
 		<div id="leftBody">
 			<div id="setParam">
-				<a href="javascript:void(0)" id="paramToggle">1.参数设置</a>
+				<a href="javascript:void(0)" id="paramToggle">
+					<div id="paraIcon"> <img src="../images/genestyle/setparam.png"></div>
+					<div id="paraWord">1.参数设置</div>
+				</a>
 				<ul id="paramContent">
-					<li><a href="javascript:void(0)" id="goblet">高脚杯</a></li>
-					<li><a href="javascript:void(0)" id="yacht">游艇</a></li>
-					<li><a href="javascript:void(0)" id="hanky">织物</a></li>
-					<li><a href="javascript:void(0)" id="range">燃气灶</a></li>
+					<li><a href="javascript:void(0)" id="paragoblet" class="param">高脚杯</a></li>
+					<li><a href="javascript:void(0)" id="parayacht" class="param">游艇</a></li>
+					<li><a href="javascript:void(0)" id="parahanky" class="param">织物</a></li>
+					<li><a href="javascript:void(0)" id="pararange" class="param">燃气灶</a></li>
 				</ul>
 			</div>
 			<div id="geneStyle">
-				<a href="javascript:void(0)" id="geneToggle">2.造型生成</a>
+				<a href="javascript:void(0)" id="geneToggle">
+					<div id="paraIcon"> <img src="../images/genestyle/genestyle.png"></div>
+					<div id="paraWord">2.造型生成</div>
+					
+				</a>
 				<ul id="geneContent">
-					<li><a href="javascript:void(0)" id="goblet">高脚杯</a></li>
-					<li><a href="javascript:void(0)" id="yacht">游艇</a></li>
-					<li><a href="javascript:void(0)" id="hanky">织物</a></li>
-					<li><a href="javascript:void(0)" id="range">燃气灶</a></li>
+					<li><a href="javascript:void(0)" id="genegoblet" class="errorOperate">高脚杯</a></li>
+					<li><a href="javascript:void(0)" id="geneyacht" class="errorOperate">游艇</a></li>
+					<li><a href="javascript:void(0)" id="genehanky" class="errorOperate">织物</a></li>
+					<li><a href="javascript:void(0)" id="generange" class="errorOperate">燃气灶</a></li>
 				</ul>
 			</div>
 			<div id="adjustStyle">
-				<a href="javascript:void(0)" id="adjustToggle">3.造型调整</a>
+				<a href="javascript:void(0)" id="adjustToggle">
+					<div id="paraIcon"> <img src="../images/genestyle/adjuststyle.png"></div>
+					<div id="paraWord">3.造型调整</div>
+				</a>
 				<ul id="adjustContent">
-					<li><a href="javascript:void(0)" id="partAdd">部件添加</a></li>
-					<li><a href="javascript:void(0)" id="colorAdjust">色彩调整</a></li>
-					<li><a href="javascript:void(0)" id="textureAdjust">材质调整</a></li>
+					<li><a href="javascript:void(0)" id="partAdd" class="errorOperate">部件添加</a></li>
+					<img src="../images/genestyle/navigatebar.png" class="pimg">
+					<li><a href="javascript:void(0)" id="colorAdjust" class="errorOperate">色彩调整</a></li>
+					<img src="../images/genestyle/navigatebar.png" class="pimg">
+					<li><a href="javascript:void(0)" id="textureAdjust" class="errorOperate">材质调整</a></li>
 				</ul>
 			</div>
+			<div id="bottomcolor"></div>
 		</div>
 		<div id="rightBody">
-			<div id="theBaseGoblet">底层高脚杯</div>
-			<div id="theBaseYacht">底层游艇</div>
-			<div id="theBaseHanky">底层织物</div>
-			<div id="theBaseRange">底层煤气灶</div>
+			<div id="iconAndcorpus">
+				<div id="introicon"><img class="imgicon" src="../images/genestyle/golbet.png"/></div>
+				<div id="introduce">
+					<p id="corpus">底层啊啥的交换机啊啥的卡斯柯卡号的看见好多看哈的华盛asd请问萨达vvghgfhdg阿尔法啊啥的范围飞啊飞玩手动阀发阿斯蒂芬万二分阿斯蒂芬阿斯蒂芬顿奥德赛华盛顿看哈是读好书看哈的华盛顿很快的</p>
+				</div>
+			</div>
+
+			<!-- <div id="inputcorpus">
+				<div id="corpusword" style="padding-top: 5.5px;">输入语义</div>
+			</div> -->
+
+			<div id="paramSet">
+
+				1234567
+
+			</div>
+
+			<!-- <div id="showicon">
+           		<img id="pic1" src="../images/vocabularys/semantic-dimension-survey/j1.png" />
+           		<img id="pic2" src="../images/vocabularys/semantic-dimension-survey/j2.png" />
+			</div> -->
+			<!-- <div id="geneBottomBtn">
+				<button type="submit" id="save" onclick="getScore()">保存</button>
+				<button type="submit" id="cancel">取消</button>
+			</div> -->
 		</div>
 	</div>
+	
+
 	<!-- 	底部 -->
 	<div class="configFoot"></div>
+
+	<script type="text/javascript">
+		$("#geneContent").fadeOut(0);
+		$("#adjustContent").fadeOut(0);
+		$("#bottomcolor").fadeOut(0);
+
+		$("#paramToggle").click(function(){
+   			$("#paramContent").fadeToggle(0);
+  		});
+		$("#geneToggle").click(function(){
+  			$("#geneContent").fadeToggle(0);
+  		});
+		$("#adjustToggle").click(function(){
+    		$("#adjustContent").fadeToggle(0);
+    		$("#bottomcolor").fadeToggle(0);
+  		});
+  		$("#paragoblet").click(function(){
+  			$(".param").css({color:'black'});
+  			$(this).css({color:'#00A5BD'});
+  			// document.getElementById("pararange").style.color="black";
+  			// document.getElementById("parahanky").style.color="black";
+  			// document.getElementById("parayacht").style.color="black";
+  			// document.getElementById("paragoblet").style.color="#00A5BD";
+  			$(".imgicon").attr('src',"../images/genestyle/golbet.png");
+  			
+  			// $("#inputcorpus").fadeIn(0);
+  			
+    		$.ajax({
+		        url: "cihuidui/Cglobet.html",
+		        global: false,
+		        type: "POST",
+		        data: ({
+		            id: this.getAttribute('globet')
+		        }),
+		        dataType: "html",
+		        async: false,
+		        success: function(msg) {
+		            $("#paramSet").html(msg);
+
+		        }
+	   		})
+  		});
+  		$("#parayacht").click(function(){
+  			$(".param").css({color:'black'});
+  			$(this).css({color:'#00A5BD'});
+  			// document.getElementById("pararange").style.color="black";
+  			// document.getElementById("parahanky").style.color="black";
+  			// document.getElementById("parayacht").style.color="#00A5BD";
+  			// document.getElementById("paragoblet").style.color="black";
+  			$(".imgicon").attr('src',"../images/genestyle/houseboat.png");
+  			
+  			// $("#inputcorpus").fadeIn(0);
+  			
+    		$.ajax({
+		        url: "cihuidui/Chouseboat.html",
+		        global: false,
+		        type: "POST",
+		        data: ({
+		            id: this.getAttribute('houseboat')
+		        }),
+		        dataType: "html",
+		        async: false,
+		        success: function(msg) {
+		            $("#paramSet").html(msg);
+
+		        }
+	   		})
+  		});
+  		$("#parahanky").click(function(){
+  			$(".param").css({color:'black'});
+  			$(this).css({color:'#00A5BD'});
+  			// document.getElementById("pararange").style.color="black";
+  			// document.getElementById("parahanky").style.color="#00A5BD";
+  			// document.getElementById("parayacht").style.color="black";
+  			// document.getElementById("paragoblet").style.color="black";
+  			$(".imgicon").attr('src',"../images/genestyle/fabric.png");
+  			
+  			// $("#inputcorpus").fadeOut(0);
+  			
+    		$.ajax({
+		        url: "cihuidui/imago_fabric_first.html",
+		        // url: "cihuidui/Cfabric.html",
+		        global: false,
+		        type: "POST",
+		        data: ({
+		            id: this.getAttribute('fabric')
+		        }),
+		        dataType: "html",
+		        async: false,
+		        success: function(msg) {
+		            $("#paramSet").html(msg);
+
+		        }
+	   		})
+  		});
+  		$("#pararange").click(function(){
+  			$(".param").css({color:'black'});
+  			$(this).css({color:'#00A5BD'});
+  			// document.getElementById("pararange").style.color="#00A5BD";
+  			// document.getElementById("parahanky").style.color="black";
+  			// document.getElementById("parayacht").style.color="black";
+  			// document.getElementById("paragoblet").style.color="black";
+  			$(".imgicon").attr('src',"../images/genestyle/gascooker.png");
+  			
+  			// $("#inputcorpus").fadeIn(0);
+  			
+    		$.ajax({
+		        url: "cihuidui/Cgascooker.html",
+		        global: false,
+		        type: "POST",
+		        data: ({
+		            id: this.getAttribute('gascooker')
+		        }),
+		        dataType: "html",
+		        async: false,
+		        success: function(msg) {
+		            $("#paramSet").html(msg);
+
+		        }
+	   		})
+  		});
+
+  		$('.errorOperate').click(function(){
+  			alert("请您先确认是否保存语义参数，然后按照顺序操作！");
+  		});
+
+  		function savalunkuo(){
+				alert(imglunkuo);
+				window.location.href="imago-fabric.html";
+			}
+  		
+	</script>
 </body>
 </html>
