@@ -75,33 +75,28 @@
 				        <span class="thick ">产品降维词汇</span>
 				        <p class=" blank-left">
 				          	<label>词汇组织方式 </label>
-				          	<span  >
-				          		<button type="button" class="btn btn-default "  id="cihui" data="1">词汇</button>
-				          		<button type="button" class="btn btn-default"  id="cidui" data="2">词对</button>
+				          	<span  id="wordtype">
+				          		<button type="button" class="btn btn-default twordtypebtn"   data="1">词汇</button>
+				          		<button type="button" class="btn btn-default twordtypebtn"   data="2">词对</button>
 				          		<form:input path="twordtype"   class="form-control " size="10"  type="hidden"/>
 				          	</span>
 				        </p>
 				        <p>
 					        <label class="thick">算法选择</label>
 					        	<span >
-				          		<button type="button" class="btn btn-default "  id="gaojiaobei" data="111">高脚杯算法</button>
-				          		<button type="button" class="btn btn-default"  id="youting"   data="444">游艇算法</button>
-				          		<button type="button" class="btn btn-default "  id="zhiwu"  data="333">织物算法</button>
-				          		<button type="button" class="btn btn-default"  id="meiqizao"   data="222">煤气灶算法</button>
+				          		<button type="button" class="btn btn-default talgorithmbtn"  id="gaojiaobei" data="111">高脚杯算法</button>
+				          		<button type="button" class="btn btn-default talgorithmbtn"  id="youting"   data="222">游艇算法</button>
+				          		<button type="button" class="btn btn-default talgorithmbtn"  id="zhiwu"  data="333">织物算法</button>
+				          		<button type="button" class="btn btn-default talgorithmbtn"  id="meiqizao"   data="444">煤气灶算法</button>
 				          		<form:input path="talgorithm"   class="form-control " size="10" type="hidden"/>
 				          	</span>
 					     </p>
 				        <br><br>
 				       <div class=" text-center">
-							<button type="submit" class="btn btn-primary savebtn" id="submit0">保存</button>
+							<button type="button" class="btn btn-primary savebtn" id="submit0">保存</button>
 							<button type="reset" class="btn btn-primary cancelbtn">取消</button>
 						</div>
 						<br>
-							<script type="text/javascript">
-// 							var item=${item};
-//  										var twordtype=${item.twordtype };
-//  										var talgorithm=${item.talgorithm };
-						</script> 
 				      </form:form>
 				
 				</div>
@@ -129,39 +124,23 @@
 							  </div>
 						</div> 
 						  <br>
-						  
-				        <div id="addtype">
-						  <div class="input-title-position">
-								  <label for="product_name"><span class="thick label-name">类型1</span></label>
-								  <div class="my-no-br-right" >
-<%-- 								  		<form:input path="type1"   class="form-control " size="10"/> --%>
+				        <div id="bottomCaseTypeList"  data="${bottomCaseTypeList }">
+<!-- 						  <div class="input-title-position"> -->
+<!-- 								  <label for="product_name"><span class="thick label-name">类型1</span></label> -->
+<!-- 								  <div class="my-no-br-right" > -->
 <!-- 								  		<input type="text" class="form-control " id="type1"   value="阔口型" size="10"/> -->
-								  </div>
-						</div> 
-						  <div class="input-title-position">
-								  <label for="product_name"><span class="thick label-name">类型2</span></label>
-								  <div class="my-no-br-right" >
-<%-- 								  		<form:input path="type2"   class="form-control " size="10"/> --%>
-<!-- 								  		<input type="text" class="form-control " id="type2"   value="收口型" size="10"/> -->
-								  </div>
-						</div> 
-						  <div class="input-title-position">
-								  <label for="product_name"><span class="thick label-name">类型3</span></label>
-								  <div class="my-no-br-right" >
-<%-- 								  		<form:input path="type3"   class="form-control " size="10"/> --%>
-<!-- 								  		<input type="text" class="form-control " id="type3"  size="10"/> -->
-								  </div>
-						</div> 
-					        <p>
-						        <span class="thick">
-						        <a href="javascript:void(0)" class="blue" id="add" >+添加新类型
-						        </a> 
-						        </span>
-					        </p>
+<!-- 								  </div> -->
+<!-- 							</div>  -->
+					      
 				        </div>
+				         <div class="input-title-position">
+								 <button type="button" myid="" class="btn btn-link  addnewtypebtn">+添加新类型</button>  
+						</div> 
+<!-- 						        <a href="javascript:void(0)" class="blue" id="add" >+添加新类型   </a>  -->
+					
 				       <br><br>
 						<div class=" text-center">
-							<button type="submit" class="btn btn-primary savebtn"  id="submit1">保存</button>
+							<button type="button" class="btn btn-primary savebtn"  id="submit1">保存</button>
 							<button type="reset" class="btn btn-primary cancelbtn">取消</button>
 						</div>
 						<br>
@@ -177,7 +156,7 @@
 						<form:hidden path="twordtype" />
 						<form:hidden path="tyuyi" />
 						<form:hidden path="tanli" />
-						<form:hidden path="tbianma" />
+<%-- 						<form:hidden path="tbianma" /> --%>
 						<form:hidden path="tzaoxing" />
 						<form:hidden path="tcanshu" />
 						<form:hidden path="tshengcheng" />
@@ -232,7 +211,7 @@
 				        
 				        <br><br>
 						<div class=" text-center">
-							<button type="submit" class="btn btn-primary savebtn"  id="submit2">保存</button>
+							<button type="button" class="btn btn-primary savebtn"  id="submit2">保存</button>
 							<button type="reset" class="btn btn-primary cancelbtn">取消</button>
 						</div>
 						<br>
@@ -249,7 +228,7 @@
 						<form:hidden path="tyuyi" />
 						<form:hidden path="tanli" />
 						<form:hidden path="tbianma" />
-						<form:hidden path="tzaoxing" />
+<%-- 						<form:hidden path="tzaoxing" /> --%>
 						<form:hidden path="tcanshu" />
 						<form:hidden path="tshengcheng" />
 						<form:hidden path="ttiaozheng" />
@@ -263,7 +242,7 @@
 							</div> 	
 				       	 <br><br>
 						 <div class=" text-center">
-							<button type="submit" class="btn btn-primary savebtn"  id="submit3">保存</button>
+							<button type="button" class="btn btn-primary savebtn"  id="submit3">保存</button>
 							<button type="reset" class="btn btn-primary cancelbtn">取消</button>
 						 </div>
 						 <br>
@@ -283,7 +262,7 @@
 						<form:hidden path="tanli" />
 						<form:hidden path="tbianma" />
 						<form:hidden path="tzaoxing" />
-						<form:hidden path="tcanshu" />
+<%-- 						<form:hidden path="tcanshu" /> --%>
 						<form:hidden path="tshengcheng" />
 						<form:hidden path="ttiaozheng" />
 						<form:hidden path="ticon" />
@@ -296,19 +275,19 @@
 				        <br>
 				        <div>
 							<label for="questionarylink"><span class="thick">用户选择调查说明链接</span></label>
-							<div class="my-no-br-right"  style="padding-right: 690px;">
-<%-- 								<form:input path="choosesurvey"   class="form-control " size="10"/> --%>
+							<div class="my-no-br-right" >
+								<input id="choosesurvey"   class="form-control " size="20"/>
 							</div>
 						</div> 
 				        <div>
 							<label for="suanfa_link"><span class="thick">算法说明链接</span></label>
-							<div class="my-no-br-right" style="padding-right: 690px;">
-<%-- 								<form:input path="algorithm"   class="form-control " size="10"/> --%>
+							<div class="my-no-br-right" >
+								<input id="algorithm"   class="form-control " size="20"/>
 							</div>
 						</div> 
 						<br><br>
 						<div class=" text-center">
-							<button type="submit" class="btn btn-primary savebtn"  id="submit4">保存</button>
+							<button type="button" class="btn btn-primary savebtn"  id="submit4">保存</button>
 							<button type="reset" class="btn btn-primary cancelbtn">取消</button>
 						</div>
 						<br>
@@ -327,7 +306,7 @@
 						<form:hidden path="tbianma" />
 						<form:hidden path="tzaoxing" />
 						<form:hidden path="tcanshu" />
-						<form:hidden path="tshengcheng" />
+<%-- 						<form:hidden path="tshengcheng" /> --%>
 						<form:hidden path="ttiaozheng" />
 						<form:hidden path="ticon" />
 					        <br>
@@ -339,7 +318,7 @@
 							</div> 	
 				       	 <br><br>
 						 <div class=" text-center">
-							<button type="submit" class="btn btn-primary savebtn"  id="submit5">保存</button>
+							<button type="button" class="btn btn-primary savebtn"  id="submit5">保存</button>
 							<button type="reset" class="btn btn-primary cancelbtn">取消</button>
 						 </div>
 						 <br>
@@ -359,7 +338,7 @@
 									<form:hidden path="tzaoxing" />
 									<form:hidden path="tcanshu" />
 									<form:hidden path="tshengcheng" />
-									<form:hidden path="ttiaozheng" />
+<%-- 									<form:hidden path="ttiaozheng" /> --%>
 									<form:hidden path="ticon" />
 							        <br>
 									<div class="input-title-position">
@@ -370,7 +349,7 @@
 									</div> 	
 						       	 <br><br>
 								 <div class=" text-center">
-									<button type="submit" class="btn btn-primary savebtn"  id="submit6">保存</button>
+									<button type="button" class="btn btn-primary savebtn"  id="submit6">保存</button>
 									<button type="reset" class="btn btn-primary cancelbtn">取消</button>
 								 </div>
 								 <br>
@@ -382,6 +361,10 @@
 	</div>
 
 </div>
+<script type="text/javascript">
+	var contextPath='${contextPath}';
+	var bottomCaseTypeList="${bottomCaseTypeList }";
+</script>
 <script type="text/javascript" src="${contextPath}/js/manager/productMaintenance/edit.js"></script>
 </body>
 </html>

@@ -1,5 +1,6 @@
 package cn.art.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -132,7 +133,7 @@ public class M_productMaintenceController {
 
 	@RequestMapping("list")
 	public String list(Model model) {
-		List<typeIdName> typesList = typeService.selectAllOnlyIdandName();
+		// List<typeIdName> typesList = typeService.selectAllOnlyIdandName();
 		// Type aa = typeService.selectByPrimaryKey(1);
 		// String types = jsonConvert.list2json(typesList);
 		// 第一种 request传值
@@ -143,8 +144,25 @@ public class M_productMaintenceController {
 		// session.setAttribute("isNewaddType", "false");
 		// 第二种 request传值
 		// request.setAttribute("types", types);
-		model.addAttribute("typesList", typesList);
+		// model.addAttribute("typesList", typesList);
 		return "manager/productMaintenance/list";
+	}
+
+	@RequestMapping("load/type")
+	@ResponseBody
+	public List<typeIdName> type(Model model) {
+		List<typeIdName> typesList = typeService.selectAllOnlyIdandName();
+		return typesList;
+	}
+
+	@RequestMapping("load/bottomcasetype")
+	@ResponseBody
+	public List<BottomCaseType> bottomCaseType(Integer tid) {
+		List<BottomCaseType> bottomCaseTypeList = new ArrayList<BottomCaseType>();
+		if (tid != null) {
+			bottomCaseTypeList = bottomCaseTypeService.selectByTID(tid);
+		}
+		return bottomCaseTypeList;
 	}
 
 	/**
@@ -157,12 +175,26 @@ public class M_productMaintenceController {
 	@SuppressWarnings("unchecked")
 	@RequestMapping(value = "/edit")
 	public String edit(Type item, Model model, @RequestParam(value = "id", defaultValue = "") Integer id) {
-		// Map<String, String> TypeMap = new HashMap<String, String>();
-		// List<Type> searchs = new ArrayList<Type>();
+		// List<BottomCaseType> TypeList = new ArrayList<BottomCaseType>();
+		// Map<String, String> bottomCaseTypeJo = new HashMap<String, String>();
+		// JSONObject bottomCaseTypeJo = new JSONObject();
+		// JSONArray bottomCaseTypeList = new JSONArray();
+		// List<Map<String, String>> bottomCaseTypeList = new ArrayList<Map<String,
 		if (id != null) {
 			item = typeService.selectByPrimaryKey(id);
+			// TypeList = bottomCaseTypeService.selectByTID(id);
+			// for (BottomCaseType bottomcasetype : TypeList) {
+			// Integer bctid = bottomcasetype.getBctid();
+			// String bctname = bottomcasetype.getBctname();
+			// bottomCaseTypeJo.put("bctid", bctid.toString());
+			// bottomCaseTypeJo.put("bctname", bctname);
+			// bottomCaseTypeList.add(bottomCaseTypeJo);
+			// }
+
 		}
+
 		model.addAttribute("item", item);
+		// model.addAttribute("bottomCaseTypeList", bottomCaseTypeList);
 		return "manager/productMaintenance/edit";
 	}
 
@@ -172,23 +204,15 @@ public class M_productMaintenceController {
 	 * @param model
 	 * @return
 	 */
-	@RequestMapping("/load/save")
+	@RequestMapping("load/save")
 	@ResponseBody
-	public int save(Type item) {
-		// Type itemtemp = typeService.selectByPrimaryKey(item.getTid());
-		List<typeIdName> typesList = typeService.selectAllOnlyIdandName();
-		int message = 0;// 插入新类型成功
+	public String save(Type item) {
+		String message = "0";// 插入新类型成功
 		if (item.getTid() != null) {
-			for (typeIdName typeIdName : typesList) {
-				if (typeIdName.getTid().toString().equals(item.getTid().toString())) {
-					typeService.updateByPrimaryKey(item);
-					message = 1;// 更新类型成功
-					// continue;
-					return message;
-				}
-			}
+			typeService.updateByPrimaryKey(item);
+			message = "1";// 更新类型成功
+			return message;
 		}
-
 		typeService.insert(item);
 		return message;
 	}

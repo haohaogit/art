@@ -6,16 +6,17 @@
 <title>问卷调查与检验</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <style type="text/css">
+.input-length{
+    width: 250px!important;
+}
 </style>
 
 </head>
 
 <body>
 	<div class="main-body-position">
-	<form:form id="editForm"  method="post"  action="${contextPath}/manager/question/load/eidt"
-					commandName="survey" methodParam="post">
-<%-- 					<form:hidden path="tid" /> --%>
-<%-- 					<form:hidden path="sid" /> --%>
+	<form:form id="editForm"  method="post"  action="${contextPath}/manager/question/load/edit"
+					commandName="survey" methodParam="post"> 
 		<div class="position-for-head2 thick ">语义库管理>问卷调查与检验</div>
 		<div class="container-position">
 				<div class="mydiv gray-background" >问卷调查与检验</div> 
@@ -25,23 +26,52 @@
 						</c:forEach>
 				</div>
 				<div class="mydiv"  id="SurveyType">调查类型
-						<button type="button" class="btn btn-link orange choosebtn" myname="意象词汇降维调查" >意象词汇降维调查</button>  
-						<button type="button" class="btn btn-link choosebtn" myname="词汇降维调查结果" >词汇降维调查结果</button>  
-						<button type="button" class="btn btn-link choosebtn" myname="意象造型关联" >意象造型关联</button>  
-						<button type="button" class="btn btn-link  choosebtn" myname="造型关联调查结果" >造型关联调查结果</button>  
-						<button type="button" class="btn btn-link choosebtn" myname="意象造型关联算法" >意象造型关联算法</button>  
-						<button type="button" class="btn btn-link choosebtn" myname="检查匹配率" >检查匹配率</button>  
+						<button type="button" class="btn btn-link orange choosebtn" surveytypename="wordsurvey" myname="意象词汇降维调查" >意象词汇降维调查</button>  
+						<button type="button" class="btn btn-link choosebtn" surveytypename="wordresult" myname="词汇降维调查结果" >词汇降维调查结果</button>  
+						<button type="button" class="btn btn-link choosebtn" surveytypename="connectsurvey" myname="意象造型关联" >意象造型关联</button>  
+						<button type="button" class="btn btn-link  choosebtn" surveytypename="connectresult" myname="造型关联调查结果" >造型关联调查结果</button>  
+						<button type="button" class="btn btn-link choosebtn" surveytypename="algorithms" myname="意象造型关联算法" >意象造型关联算法</button>  
+						<button type="button" class="btn btn-link choosebtn" surveytypename="ratio" myname="检查匹配率" >检查匹配率</button>  
 				</div>
 				<br>
 				<div class="mydiv gray-background"  id="questionTitle">意象词汇降维调查	</div> 
 				<div class="mydiv"  id="SurveyDetial" style=" width: initial;height: initial;" >
 						<br>
-						<form:input path="tid"   class="form-control " />
-						<form:input path="sid"   class="form-control " />
-<%-- 						<form:input path="type3"   class="form-control " size="10"/> --%>
+						<form:hidden path="tid"   class="form-control " />
+						<form:hidden path="sid"   class="form-control " />
+						<form:hidden path="wordsurvey"   class="form-control " />
+						<form:hidden path="wordresult"   class="form-control " />
+						<form:hidden path="connectsurvey"   class="form-control " />
+						<form:hidden path="connectresult"   class="form-control " />
+						<form:hidden path="algorithms"   class="form-control " />
+						<form:hidden path="ratio"   class="form-control " />
+						
+<!-- 							<div class="input-group"> -->
+<%-- 							<img src="${contextPath}/manager/yuyi/basicSemantic/delete.png" class="deleteimg" style="width: 9px;" /> --%>
+<!-- 							<input id="wordsurvey0"   class="form-control " style=" width: 250px; margin-bottom: 20px;"/> -->
+<!-- 							</div> -->
+<!-- 							<div class="input-group"> -->
+<%-- 							<img src="${contextPath}/manager/yuyi/basicSemantic/delete.png" class="deleteimg" style="width: 9px;" /> --%>
+<!-- 							<input id="wordsurvey1"   class="form-control " style=" width: 250px; margin-bottom: 20px;"/> -->
+<!-- 							</div> -->
+<!-- 							<div class="input-group"> -->
+<%-- 							<img src="${contextPath}/manager/yuyi/basicSemantic/delete.png" class="deleteimg" style="width: 9px;" /> --%>
+<!-- 							<input id="wordsurvey2"   class="form-control " style=" width: 250px; margin-bottom: 20px;"/> -->
+<!-- 							</div> -->
+							
+						<div id="addinput">
+<!-- 							<input id="wordsurvey3"   class="form-control "  style=" width: 250px; margin-bottom: 20px;"/> -->
+<!-- 							<input id="wordsurvey4"   class="form-control "  style=" width: 250px; margin-bottom: 20px;"/> -->
+<!-- 							<input id="wordsurvey5"   class="form-control "  style=" width: 250px; margin-bottom: 20px;"/> -->
+<!-- 							<input id="wordsurvey6"   class="form-control "  style=" width: 250px; margin-bottom: 20px;"/> -->
+<!-- 							<input id="wordsurvey7"   class="form-control "  style=" width: 250px; margin-bottom: 20px;"/> -->
+<!-- 							<input id="wordsurvey8"   class="form-control "  style=" width: 250px; margin-bottom: 20px;"/> -->
+        				</div>
+						<button type="button" class="btn btn-link addinputbtn">+添加新链接</button>
+<!-- 						<a href="javascript:void(0)" class="blue" id="addNewLink" >+添加新链接  </a>  -->
 						<br>
 						<div class=" text-center">
-									<button type="submit" class="btn btn-primary savebtn">添加</button>
+									<button type="button" class="btn btn-primary savebtn">添加</button>
 									<button type="reset" class="btn btn-primary cancelbtn">取消</button>
 						</div>	
 				</div>
@@ -51,8 +81,6 @@
 		<script type="text/javascript">
 		debugger
 			var contextPath='${contextPath}';
-			var tid='${tid}';
-			var sid='${sid}';
 		</script>
 		</form:form>
 	</div>

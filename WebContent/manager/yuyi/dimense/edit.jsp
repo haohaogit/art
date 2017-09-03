@@ -27,7 +27,7 @@
 					<thead>
 						<tr>
 								<th  style="width: 80px;">
-									<span class="my-no-br-right" style="display: inline-block; padding-bottom: 7px; "> 
+									<span class="my-no-br-right" > 
 											首字母
 									</span>
 								</th>

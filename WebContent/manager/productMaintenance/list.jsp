@@ -16,20 +16,17 @@
 		<div class="position-for-head2 thick ">产品类型维护</div>
 		<div class="container-position">
 				<div class="mydiv gray-background" >产品类型
-				<button type="button" class="btn btn-link pull-right addbtn">+添加新类型</button> 
+				<button type="button" myid="" class="btn btn-link pull-right addbtn">+添加新类型</button> 
 				</div> 
-				<c:forEach var="types" items="${typesList}" varStatus="status">
-				<div class="mydiv"  myid="${types.tid }">${types.tname }
-						<button type="button" myid="${types.tid }" class="btn btn-link pull-right deletebtn" data-toggle="modal" data-target="#myModal">删除</button> 
-						<button type="button" myid="${types.tid }" class="btn btn-link pull-right addbtn">编辑</button> 
-				</div>
-				  </c:forEach>
-				<script type="text/javascript">
-// 				$(".addbtn").click(function(){
-// 					var a="123";
-// 					console.log("123");
-// 				});
-				</script>
+				<div id="typesList">
+<!-- 					这里是列表 -->
+					</div>
+<%-- 				<c:forEach var="types" items="${typesList}" varStatus="status"> --%>
+<%-- 				<div class="mydiv"  myid="${types.tid }">${types.tname } --%>
+<%-- 						<button type="button" myid="${types.tid }" class="btn btn-link pull-right deletebtn" data-toggle="modal" data-target="#myModal">删除</button>  --%>
+<%-- 						<button type="button" myid="${types.tid }" class="btn btn-link pull-right addbtn">编辑</button>  --%>
+<!-- 				</div> -->
+<%-- 				  </c:forEach> --%>
 				<br>
 		</div>
 <!-- 		</form> -->
@@ -51,6 +48,9 @@
 				</div>
 				</div>
 			</div>
+<script type="text/javascript">
+	var contextPath='${contextPath}';
+</script>
 <script type="text/javascript" src="${contextPath}/js/manager/productMaintenance/list.js"></script>
 </body>
 

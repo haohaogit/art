@@ -51,15 +51,41 @@ public class M_questionController {
 		return "manager/yuyi/question/list";
 	}
 
-	@RequestMapping("/load/edit")
+	@RequestMapping("load/survey")
 	@ResponseBody
-	public String edit(Model model, Integer tid) {
+	public Survey survey(Model model, Integer tid) {
 		Survey survey = new Survey();
+		// List<String> wordsurveyList = new ArrayList<String>();
 		if (tid != null) {
 			survey = surveyService.selectByTID(tid);
+			// String wordsurvey = survey.getWordsurvey();
+			// String[] a = wordsurvey.split("，");
+			// for (String b : a) {
+			// wordsurveyList.add(b);
+			// }
 		}
 		model.addAttribute("survey", survey);
-		return "0";
+		// model.addAttribute("wordsurveyList", wordsurveyList);
+		return survey;
+	}
+
+	/**
+	 * 保存
+	 * 
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping("load/edit")
+	@ResponseBody
+	public String save(Survey survey) {
+		String message = "0";// 插入新类型成功
+		if (survey.getSid() != null) {
+			surveyService.updateByPrimaryKey(survey);
+			message = "1";// 更新类型成功
+			return message;
+		}
+		surveyService.insert(survey);
+		return message;
 	}
 
 	// 语义库管理 问卷调查与检验 (默认接口)
