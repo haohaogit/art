@@ -19,16 +19,26 @@ import org.springframework.web.bind.annotation.RequestParam;
 import cn.art.model.User;
 import cn.art.service.UserService;
 import cn.art.util.MD5;
+import cn.art.util.pojo.checkLogin;
 import cn.art.util.pojo.rUser;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 
 @Controller
 @RequestMapping("")
 public class loginController {
-	private UserService userService;
 	
+	private UserService userService;
+	public checkLogin checkLogin;
+	
+	public loginController(){
+		
+		
+		checkLogin = new checkLogin();
+		checkLogin.setLogin(false);
+	}
 	public UserService getUserService() {
 		return userService;
 	}
@@ -104,7 +114,11 @@ public class loginController {
 			System.out.println("22222222222222222");
 			System.out.println(user.getUname()+" 123 "+user.getUpassword());
 			HttpSession session = request.getSession();
-			session.setAttribute("username", user.getUname());
+			//checkLogin.setLogin(true);
+			//uname = user.getUname();
+			checkLogin.setUsername(user.getUname());
+			session.setAttribute("username1", user.getUname());
+			//session.setMaxInactiveInterval(60);
 			/**
 			 * 
 			
@@ -240,15 +254,26 @@ public class loginController {
 	}
 	
 	
-	
-	@RequestMapping("user/corpus")
-	public void costomcorpus(HttpServletRequest request){
-		//String name = "wangzhe";
-    	//request.setAttribute("name",name);
-    	HttpSession session = request.getSession();
-    	String account = (String) session.getAttribute("name");
-    	System.out.println(account);
-		//return "corpus";
+	//检查是否登录
+	@RequestMapping(value="html/checkLogin",method=RequestMethod.POST)
+	public void costomuserCheckLogin(HttpServletRequest request,
+			HttpServletResponse response
+			) throws JsonProcessingException, IOException{
+		String isExistLogin = (String) request.getSession().getAttribute("username1");
+		if(isExistLogin!=null){
+			checkLogin.setLogin(true);
+			//System.out.println("session域中有用户名"+isExistLogin);
+			checkLogin.setUsername(isExistLogin);
+			
+		}else{
+			checkLogin.setUsername("");
+			checkLogin.setLogin(false);
+			//System.out.println("session域中没有用户名");
+		}
+		ObjectMapper mapper = new ObjectMapper();
+		response.setContentType("text/html;charset=UTF-8");
+		response.getWriter().println(mapper.writeValueAsString(checkLogin));
+		
 	}
 
 }

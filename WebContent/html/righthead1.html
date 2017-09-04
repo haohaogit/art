@@ -10,9 +10,37 @@
 <body>
 	<script type="text/javascript">
 	        $(document).ready(function () {
-	        	alert("99990");
-	        	/* var username ="<%=session.getAttribute("username")%>"; 
-	 			alert(username); */
+	        	//alert("99990");
+	        	$.ajax("checkLogin",
+	    				// 发送请求的URL字符串
+	    				{
+	    					dataType : "json", //
+	    					type: "post",      //
+	    					contentType: "application/json",  //
+	    					//data: JSON.stringify({uname:name,upassword:password}),
+	    					async:true,  //
+	    					success: function(data){
+	    						if(data.isLogin){
+	    							$("#username").css({display:'block'});
+		    						$(".loginSucc").css({display:'none'});
+		    						$("#p1").html(data.username);
+		    						//$("#LoginBox").fadeOut("fast");
+		    						
+		    						/* $("#mask").css({
+		    							display : 'none'
+		    						});  */
+	    						}else{
+	    							alert("notlogin");
+	    						}
+	    						//alert("数据发送成功denglu");
+	    					},
+	    					error: function(){
+	    						alert("数据发送失败denglu");
+	    					}
+	    				});
+	        	
+	        	//var username ="<%=session.getAttribute("username")%>"; 
+	 			//alert(username);
 	            
 	        });
 	</script>
