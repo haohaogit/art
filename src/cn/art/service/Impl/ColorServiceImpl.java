@@ -211,4 +211,10 @@ public class ColorServiceImpl implements ColorService {
 		return jsonConvert.list2json(colorBs);
 	}
 
+	@Override
+	public List<Color> selectByName1(String cdescription) {
+		// TODO Auto-generated method stub
+		return colorMapper.selectByName(cdescription);
+	}
+
 }

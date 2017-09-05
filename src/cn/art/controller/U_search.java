@@ -1,27 +1,30 @@
 package cn.art.controller;
 
-import java.io.IOException;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import cn.art.model.BottomCase;
+import cn.art.model.Color;
+import cn.art.model.NewCase;
+import cn.art.model.OutLine;
+import cn.art.model.Part;
+import cn.art.model.Texture;
 import cn.art.service.BottomCaseService;
 import cn.art.service.ColorService;
 import cn.art.service.NewCaseService;
 import cn.art.service.OutLineService;
 import cn.art.service.PartService;
 import cn.art.service.TextureService;
-
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
+import cn.art.util.pojo.codingCase;
 
 @Controller
-@RequestMapping("search")
+@RequestMapping("html/search")
 public class U_search {
 	private BottomCaseService bottomCaseService ;
 	private PartService partService;
@@ -76,52 +79,74 @@ public class U_search {
 		this.newCaseService = newCaseService;
 	}
 
-
-	@RequestMapping("facade")
-	public void UserSearch(HttpServletResponse response,
-			@RequestBody String search,
-			HttpServletRequest request) throws IOException{
-		/*
-		String Xname = request.getParameter("Xname");
-		int bottomcasesNum = bottomCaseService.CountNumByName(Xname);
-		String  bottomcases = bottomCaseService.selectByName(Xname);
-		request.setAttribute("bottomcasesNum", bottomcasesNum);
-		request.setAttribute("bottomcases", bottomcases);
-		
-		int partsNum = partService.CountNumByName(Xname);
-		String parts = partService.selectByName(Xname);
-		request.setAttribute("partsNum", partsNum);
-		request.setAttribute("parts", parts);
-		
-		int colorsNum = colorService.CountNumByName(Xname);
-		String colors = colorService.selectByName(Xname);
-		request.setAttribute("colorsNum", colorsNum);
-		request.setAttribute("colors", colors);
-		
-		int outlinesNum = outLineService.CountNumByName(Xname);
-		String outlines = outLineService.selectByName(Xname);
-		request.setAttribute("outlinesNum", outlinesNum);
-		request.setAttribute("outlines", outlines);
-		
-		int texturesNum = textureService.CountNumByName(Xname);
-		String textures = textureService.selectByName(Xname);
-		request.setAttribute("texturesNum", texturesNum);
-		request.setAttribute("textures", textures);
-		
-		int newcasesNum = newCaseService.CountNumByName(Xname);
-		String newcases = newCaseService.selectByName(Xname);
-		request.setAttribute("newcasesNum", newcasesNum);
-		request.setAttribute("newcases", newcases);
-		*/
-		//String search1 = request.getParameter("search");
-		System.out.println("999999999999999999999999999");
-		JSONObject myJson = JSON.parseObject(search);
-		System.out.println("search1 "+ myJson.toString());
-		//System.out.println("search1 "+ search1);
-		//System.out.println("search2 "+ myJson.getString("search"));
-		response.getWriter().println(JSONObject.toJSONString(search));
-		//return "manager/testlogin";
+	@RequestMapping("facade/bottom")
+	@ResponseBody
+	public List<BottomCase> bottomCaseType(Model model, String searchContent) {
+		//System.out.println("888888888888888888888888");
+		List<BottomCase> bottomCaseList = new ArrayList<BottomCase>();
+		if (searchContent != null) {
+			bottomCaseList = bottomCaseService.selectByName1(searchContent);
+		}
+		return bottomCaseList;
 	}
+	
+	@RequestMapping("facade/code")
+	@ResponseBody
+	public List<codingCase> part(Model model, String searchContent) {
+		//System.out.println("777777777777777777777777777");
+		List<Part> partList = new ArrayList<Part>();
+		List<Color> colorList = new ArrayList<Color>();
+		List<OutLine> outlineList = new ArrayList<OutLine>();
+		List<Texture> textureList = new ArrayList<Texture>();
+		List<codingCase> codingList = new ArrayList<codingCase>();
+		codingCase coding;
+		if (searchContent != null) {
+			partList = partService.selectByName1(searchContent);
+			for(Part part :partList){
+				coding = new codingCase();
+				coding.setCimg(part.getPimg());
+				coding.setDescri(part.getPdescription());
+				codingList.add(coding);
+			}
+			
+			colorList = colorService.selectByName1(searchContent);
+			for (Color color : colorList) {
+				coding = new codingCase();
+				coding.setCimg(color.getCimg());
+				coding.setDescri(color.getCdescription());
+				codingList.add(coding);
+			}
+			outlineList = outLineService.selectByName1(searchContent);
+			for(OutLine outLine:outlineList){
+				coding = new codingCase();
+				coding.setCimg(outLine.getOimg());
+				coding.setDescri(outLine.getOdescription());
+				codingList.add(coding);
+			}
+			textureList = textureService.selectByName1(searchContent);
+			for (Texture texture : textureList) {
+				coding = new codingCase();
+				coding.setCimg(texture.getTimg());
+				coding.setDescri(texture.getTdescription());
+				codingList.add(coding);
+			}
+		}
+		return codingList;
+	}
+	
+	
+	@RequestMapping("facade/newcase")
+	@ResponseBody
+	public List<NewCase> newstyle(Model model, String searchContent) {
+		//System.out.println("4444444444444444444444444");
+		List<NewCase> newcaseList = new ArrayList<NewCase>();
+		if (searchContent != null) {
+			newcaseList = newCaseService.selectByName1(searchContent);
+		}
+		return newcaseList;
+	}
+	
+	
 	
 
 }

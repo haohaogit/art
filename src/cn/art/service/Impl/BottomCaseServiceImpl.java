@@ -182,6 +182,13 @@ public class BottomCaseServiceImpl implements BottomCaseService {
 		 
 		return jsonConvert.Bean2Json(bottomCaseD);
 	}
+
+	@Override
+	public List<BottomCase> selectByName1(String casename) {
+		// TODO Auto-generated method stub
+		
+		return bottomCaseMapper.selectByName(casename);
+	}
 	
 
 }

@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<link href="../css/facade.css" rel="stylesheet" type="text/css"/>
+	<link href="../css/loginDialog.css" rel="stylesheet" type="text/css"/>
+	<script type="text/javascript" src="../js/jquery-1.8.2.min.js"></script>
+	<title>意象映射-appearance</title>
+	<style>
+		.imgfabric{
+            width: 198px;
+            box-shadow: none;
+        }
+        .isLoadMore{
+        	display: none;
+        }
+        .isLoadMore1{
+        	display: none;
+        }
+        #inputcorpus {
+            background-color: #00A5BD;
+            font-size: 20px;
+            color: white;
+            padding-left: 18px;
+            height: 35px;
+            width: auto;
+            margin-bottom: 16px;
+        }
+        .descri1{
+			padding-top: 4.5px;
+			/*padding-left: 12px;*/
+			display: flex;
+			justify-content: center;
+
+		}
+		.lunkuo1{
+			background-color: #bbc3c4;
+			width: 198px;
+			height: 30px;
+			margin-top: -13px;
+			margin-bottom: 23px;
+		}
+		.loadMore{
+			height: 35px;
+			width: 840px;
+		}
+		.macro{
+			display: flex;
+			flex-wrap: wrap;
+		}
+		.hengStep{
+			margin-right: 11px;
+		}
+		.detail{
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100%;
+
+		}
+		.pic{
+			height: 190px;
+		}
+		.pic1{
+			height: 45px;
+		}
+		.rightinfo{
+			margin-left: 11px;
+			display: flex;
+			flex-flow: column;
+			justify-content: space-around;
+			
+			height: 211px;
+		}
+		.otherpicinfo{
+			width: 140px;
+		}
+		.font{
+			font-size: 12px;
+			color: white;
+		}
+		.imgicon{
+			width: 83px; 
+			margin-top: 16px;
+		}
+		#leftBody1{
+			float: left;
+			width: 15%;
+			text-align: left;
+			background-color: #00a5bd;
+			padding: 10px 6px 10px 6px;
+			margin-right: 28px;
+		}
+		#base1{
+			margin: 5px 5px 5px 5px;
+			font-size: 20px;
+			color: white;
+		}
+	</style>
+</head>
+<body>
+	<script type="text/javascript">
+	        $(document).ready(function () {
+
+	         	var loc = location.href;
+			  	var n1 = loc.length;//地址的总长度
+			    var n2 = loc.indexOf("=");//取得=号的位置
+			  	var txt = decodeURI(loc.substr(n2+1, n1-n2));//从=号后面的内容
+			  	var totalnum = 0;
+			  	
+			  	$(".lable1").html(txt);
+			  	
+			  	
+			  	$.ajax("search/facade/bottom?searchContent="+txt,
+		                // 发送请求的URL字符串
+		                {
+		                    type: "get",      //
+		                    
+		                    async:true,  //
+		                    success: function(data){
+		                        //alert(data);
+								totalnum=totalnum+data.length;
+								$(".lable3").html(data.length);
+		                        var listHtml="";
+		                        for(var i=0;i<data.length;i++){
+		                        	listHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='"+data[i].caseimg+"' /></div><div class='lunkuo1'><div class='descri1' >"+data[i].bcid+"</div></div></div>";
+		                        }
+		                        $(".bottom").html(listHtml);
+		                       // alert("数据发送成功shouzuo");
+		                    },
+		                    error: function(){
+		                        alert("数据发送失败denglu");
+		                    }
+		                });
+			  	//alert("totalnum "+totalnum);
+			  	
+			  	$.ajax("search/facade/code?searchContent="+txt,
+		                // 发送请求的URL字符串
+		                {
+		                    type: "get",      //
+		                    async:true,  //
+		                    success: function(data){
+		                        //alert(data);
+		                        $(".lable4").html(data.length);
+		                        totalnum=totalnum+data.length;
+		                        //alert("codenum part "+codenum);
+								
+		                        var listHtml="";
+		                        for(var i=0;i<data.length;i++){
+		                        	listHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='"+data[i].cimg+"' /></div><div class='lunkuo1'><div class='descri1' >"+data[i].descri+"</div></div></div>";
+		                        }
+		                        $(".code").html(listHtml);
+		                       
+		                       // alert("数据发送成功shouzuo");
+		                    },
+		                    error: function(){
+		                        alert("数据发送失败denglu");
+		                    }
+		                });
+			  	
+			  	
+			  	//alert("1");
+			 	$.ajax("search/facade/newcase?searchContent="+txt,
+		                // 发送请求的URL字符串
+		                {
+		                    type: "get",      //
+		                    async:true,  //
+		                    success: function(data){
+		                        //alert(data);
+		                        $(".lable5").html(data.length);
+		                        totalnum=totalnum+data.length;
+		                        //alert("codenum part "+codenum);
+								
+		                        var listHtml="";
+		                        for(var i=0;i<data.length;i++){
+		                        	listHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='"+data[i].newcaseimg+"' /></div><div class='lunkuo1'><div class='descri1' >"+data[i].newcasename+"</div></div></div>";
+		                        }
+		                        $(".newcase").html(listHtml);
+		                       
+		                       // alert("数据发送成功shouzuo");
+		                    },
+		                    error: function(){
+		                        alert("数据发送失败denglu");
+		                    }
+		                });
+			  	
+			  	//alert("totalnum "+totalnum);
+			  	
+			  	$(".lable2").html(totalnum);
+
+	//  			alert(11);
+	            $('.configHead').load('conheader_waiguan.html');
+	            $('.configFoot').load('confooter.html');
+	        });
+	</script>
+
+	<!-- 	头部 -->
+	<div class="configHead"></div>
+
+	<div id="content">
+		<div id="leftBody1">
+			<div id="base1">
+				搜索结果
+			</div>
+			
+			
+		</div>
+		<div id="rightBody" style="width: 65.9%;">
+			
+
+			<div id="facadeContent">
+				<div >
+					<div>
+			            <div id="inputcorpus" id="style1" style="padding-top: 5.5px;">
+			            	<lable class="lable1">优雅</lable>相关案例共<lable class="lable2">17</lable>项
+			            </div>
+			        </div>
+			        
+			       
+
+					<div>
+			            <div id="inputcorpus" id="style1" style="padding-top: 5.5px;">
+			            	底层案例库 相关<lable class="lable3">6</lable>项
+			            </div>
+			        </div>
+
+			        <div class="bottom macro">
+						<div class="hengStep isclick">
+							<div><img class="imgfabric" src="../images/appearance/fabric (1).jpg" /></div>
+							<div class="lunkuo1">
+								<div class="descri1" >底层案例库</div>
+							</div>
+						</div>
+						
+						
+					</div>
+					<!-- <div><img class="loadMore" src="../images/appearance/waiguan (18).png" onclick="loadmore()" /></div> -->
+					
+					
+					
+					<div>
+			            <div id="inputcorpus" id="style1" style="padding-top: 5.5px;">
+			            	编码案例库 相关<lable class="lable4">6</lable>项
+			            </div>
+			        </div>
+
+			        <div class=" code macro">
+						<div class="hengStep isclick">
+							<div><img class="imgfabric" src="../images/appearance/fabric (1).jpg" /></div>
+							<div class="lunkuo1">
+								<div class="descri1" >编码案例库</div>
+							</div>
+						</div>
+
+					</div>
+					<!-- <div><img class="loadMore" src="../images/appearance/waiguan (18).png" onclick="loadmore()" /></div> -->
+					<div>
+			            <div id="inputcorpus" id="style1" style="padding-top: 5.5px;">
+			            	新造型案例库 相关<lable class="lable5">5</lable>项
+			            </div>
+			        </div>
+
+			        <div class=" newcase macro">
+						<div class="hengStep isclick">
+							<div><img class="imgfabric" src="../images/appearance/fabric (1).jpg" /></div>
+							<div class="lunkuo1">
+								<div class="descri1" >新造型案例库</div>
+							</div>
+						</div>
+
+					</div>
+					<!-- <div><img class="loadMore" src="../images/appearance/waiguan (18).png" onclick="loadmore()" /></div> -->
+
+
+					
+				</div>
+			</div>
+			
+		</div>
+	</div>
+
+	<!-- 	底部 -->
+	<div class="configFoot"></div>
+
+	<script type="text/javascript">
+	$("#codeContent").fadeOut(0);
+	$("#baseContent").fadeOut(0);
+
+	$("#baseToggle").click(function(){
+	    $("#baseContent").fadeToggle(0);
+	  });
+	$("#codeToggle").click(function(){
+	    $("#codeContent").fadeToggle(0);
+	  });
+	$("#newToggle").click(function(){
+	    $("#newContent").fadeToggle(0);
+	  });
+
+
+
+
+
+
+
+		$("#baseGoblet").click(function(){
+	  		window.location.href="facade.html?txt=baseGoblet";
+	  	});
+	  	$("#baseYacht").click(function(){
+		    // alert("codeYacht");
+		    window.location.href="facade.html?txt=baseYacht";
+		});
+		$("#baseHanky").click(function(){
+		    // alert("codeHanky");
+		    window.location.href="facade.html?txt=baseHanky";
+		});
+		$("#baseRange").click(function(){
+		    // alert("codeRange");
+		    window.location.href="facade.html?txt=baseRange";
+		});
+
+
+
+	  	$("#codeGoblet").click(function(){
+			window.location.href="facade.html?txt=codeGoblet";
+	  	});
+
+		$("#codeYacht").click(function(){
+		    // alert("codeYacht");
+		    window.location.href="facade.html?txt=codeYacht";
+		});
+		$("#codeHanky").click(function(){
+		    // alert("codeHanky");
+		    window.location.href="facade.html?txt=codeHanky";
+		});
+		$("#codeRange").click(function(){
+		    // alert("codeRange");
+		    window.location.href="facade.html?txt=codeRange";
+		});
+
+
+
+
+		$("#newGoblet").click(function(){
+			window.location.href="facade_new_golbet.html";
+		});
+		// 游艇
+		$("#newYacht").click(function(){     
+			window.location.href="facade_new_houseboat.html";
+		});
+		// 织物
+		$("#newHanky").click(function(){
+			window.location.href="facade_new_fabric.html";
+		});
+		// 燃气灶
+		$("#newRange").click(function(){
+			window.location.href="facade_new_gascooker.html";
+		});
+
+
+
+
+
+
+
+
+	</script>
+	<script type="text/javascript">
+
+		// var now = "theBaseGoblet";
+		// var nowLeft = "baseGoblet";
+		$("#newHanky").css("color","#00a5bd");
+
+
+		
+		$(".facade1").on("click",function(){
+			$(".facade1").css({color:'black'});
+		   	$(this).css({color:'#00A5BD'});
+		});
+
+		$(".isclick").on("click",function(){
+			
+			//alert($(this).html());
+			var ht=$(this).html();
+			alert($(ht).find('img').attr('src'));
+			window.location.href="facade_new_comfabric.html?img="+$(ht).find('img').attr('src');
+
+			//var img=$(this).attr("src");
+			// getDetailInfo($(ht).find('img').attr('src'));
+			// $("#detailBox").css({display:'none'});
+			// var a = document.getElementById("detailBox");//获取div块对象
+		});
+		
+	</script>
+
+
+
+
+
+
+
+</body>
+</html>

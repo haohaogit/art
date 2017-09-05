@@ -15,6 +15,7 @@ public interface ColorService {
     List<Color> selectByTID(Integer tid);
     List<Color> selectByTIDandCBID(Map map);
     
+    List<Color> selectByName1(String cdescription);
     String selectByName(String cdescription);
     int CountNumByName(String cdescription);
 

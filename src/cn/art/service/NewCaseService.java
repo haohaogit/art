@@ -15,6 +15,7 @@ public interface NewCaseService {
 	    String getNewCaseByPrimaryKey(Integer nid);
 	    List<NewCase> selectByTID(Integer tid);
 	    
+	    List<NewCase> selectByName1(String newcasename);
 	    String selectNewcaseByTID(Integer tid);
 	    String selectByName(String newcasename);
 	    int CountNumByName(String newcasename);

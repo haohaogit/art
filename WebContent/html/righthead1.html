@@ -350,6 +350,12 @@
                 return false;
             }
         }
+        $("#search_icon").on('click',function(){
+            alert($("#input").val());
+            
+            window.location.href="main-search.html?txt="+$("#input").val();
+            //sendLoginContent($("#account").val(),$("#password").val());
+        })
     </script>
 
 </body>

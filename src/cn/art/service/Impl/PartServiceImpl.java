@@ -205,4 +205,10 @@ public class PartServiceImpl implements PartService {
 		return jsonConvert.list2json(partBs);
 	}
 
+	@Override
+	public List<Part> selectByName1(String pdescription) {
+		// TODO Auto-generated method stub
+		return partMapper.selectByName(pdescription);
+	}
+
 }

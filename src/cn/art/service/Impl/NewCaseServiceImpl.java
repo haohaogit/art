@@ -199,6 +199,12 @@ public class NewCaseServiceImpl implements NewCaseService {
 		NewCase newCase = newCaseMapper.selectByPrimaryKey(nid);
 		return jsonConvert.Bean2Json(newCase);
 	}
+
+	@Override
+	public List<NewCase> selectByName1(String newcasename) {
+		// TODO Auto-generated method stub
+		return newCaseMapper.selectByName(newcasename);
+	}
 	
 	
 

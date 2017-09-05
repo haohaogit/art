@@ -205,4 +205,10 @@ public class TextureServiceImpl implements TextureService {
 		return jsonConvert.list2json(textureBs);
 	}
 
+	@Override
+	public List<Texture> selectByName1(String tdescription) {
+		// TODO Auto-generated method stub
+		return textureMapper.selectByName(tdescription);
+	}
+
 }

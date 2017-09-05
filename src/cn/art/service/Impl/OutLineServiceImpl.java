@@ -231,4 +231,10 @@ public class OutLineServiceImpl implements OutLineService {
 		return jsonConvert.list2json(outlineBs);
 	}
 
+	@Override
+	public List<OutLine> selectByName1(String odescription) {
+		// TODO Auto-generated method stub
+		return outLineMapper.selectByName(odescription);
+	}
+
 }
