@@ -42,10 +42,10 @@ var talgorithm=$("#talgorithm").attr("value");
 //默认显示三个输入框
  for(var i=0;i<3;i++){
 	 addbottomCaseType(i);
-//	 addInput(outLineType);
-//	 addInput(colorType);
-//	 addInput(partType);
-//	 addInput(textureType);
+	 addInput(i,outLineType);
+	 addInput(i,colorType);
+	 addInput(i,partType);
+	 addInput(i,textureType);
  }
 //增加输入框
  function addbottomCaseType(number){
@@ -113,55 +113,35 @@ var talgorithm=$("#talgorithm").attr("value");
  $(document).on("click",".addcodetypebtn",function(){
 		debugger
 		var myname =$(this).attr("myname");
-//		var number=$("#"+myname+"List").find("input").length;
-		addInput(myname);
+		var number=$("#"+myname+"List").find("input").length;
+		addInput(number,myname);
 	});
  
 //增加输入框2
  var addInputHtml="";
- function addInput(typeName){
+ function addInput(number,typeName){
 	 addInputHtml=$("#"+typeName+"List").html();
-	 var number=$("#"+typeName+"List").find("input").length+1;
 	 addInputHtml+='<div class="my-no-br-right"  >'+
-		'<input type="text" class="form-control " id="'+number+'"  value="" size="2"/></div>';
+		'<input type="text" class="form-control " id="'+typeName+number+'"  value="" size="2"/></div>';
  	$("#"+typeName+"List").html(addInputHtml);
  }
  
- function typeNameList(typeName){
-	 var typeNameInput=$("#"+typeName+"List").find("input");
-	 var  typeNameList =new Array();
-	 $.each(typeNameInput,function(){
-		 typeNameList.push(  $(this).attr("value"));
-	 })
-	 return typeNameList;
- }
+ 
  
 $(".savebtn").click(function(){
 	debugger
 	var wordList =new Array();
-	var outLineTypeList =typeNameList(outLineType);
-	var colorTypeList =typeNameList(colorType);
-	var partTypeList =typeNameList(partType);
-	var textureTypeList =typeNameList(textureType);
 	   for(var i=0;i<count;i++){
 		   var bottomCaseType= $("#type"+i).val();
 		   if(bottomCaseType!=null||bottomCaseType!=undefined)
 		   wordList.push(bottomCaseType);
 	       }
-	   
 	 var bottomCaseTypes=wordList.join(",");
-	 var outLineTypes=outLineTypeList.join(",");
-	 var colorTypes=colorTypeList.join(",");
-	 var partTypes=partTypeList.join(",");
-	 var textureTypes=textureTypeList.join(",");
+	  
 	var form =$(this).parents(".editForm");
 	debugger
 	 var params = form.serialize();
-	 params+="&bottomCaseTypes="+bottomCaseTypes+
-	 "&outLineTypes="+outLineTypes+
-	 "&colorTypes="+colorTypes+
-	 "&partTypes="+partTypes+
-	 "&textureTypes="+textureTypes;
+	 params+="&bottomCaseTypes="+bottomCaseTypes;
      var action = form.attr("action");
      //如果验证通过
 		$.post(action, params,	function(data) {

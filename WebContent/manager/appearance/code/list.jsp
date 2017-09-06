@@ -19,14 +19,21 @@
 				<div class="mydiv gray-background" >编码案例库</div> 
 				<div class="mydiv"   id="producttype">产品类型
 					<c:forEach var="type" items="${typesList}" varStatus="status">
-						<button type="button"  class="btn btn-link temp" myid="${type.tid }">${type.tname }</button> 
+						<button type="button"  class="btn btn-link chooseTypebtn" myid="${type.tid }">${type.tname }</button> 
 					</c:forEach>
 				</div>
 <!-- 				<div> -->
 					<div class="mydiv" >编码类型
-					<span  id="newcaseCaseTypeList">
-<!-- 							<button type="button" myid="" class="btn btn-link choosebtn" >扩口型</button>  -->
-	<!-- 						<button type="button" myid="" class="btn btn-link choosebtn" >收口型</button>  -->
+					<span  id="codeCaseTypeList">
+							<button type="button" myname="outLineType" class="btn btn-link choosebtn" >轮廓编码</button> 
+							<button type="button" myname="partType" class="btn btn-link choosebtn" >部件编码</button> 
+							<button type="button" myname="colorType" class="btn btn-link choosebtn" >色彩编码</button> 
+							<button type="button" myname="textureType" class="btn btn-link choosebtn" >材质编码</button> 
+					</span>
+					</div>
+					<div class="mydiv" >
+					<span  id="codeTypeList" style="  margin-left: 60px;">
+<!-- 					这里是编码选择列表 -->
 					</span>
 					</div>
 				<br>
@@ -36,7 +43,7 @@
 <%-- 					<form:hidden path="bcid"   class="form-control " /> --%>
 <%-- 					<form:hidden path="tid"   class="form-control " /> --%>
 <%-- 					<form:hidden path="bctid"   class="form-control " /> --%>
-					<div id="newcaseCaselist">
+					<div id="codeCaselist">
 <!-- 					这里是列表 -->
 					</div>
 					
@@ -66,7 +73,7 @@
 	var contextPath='${contextPath}';
 	
 </script>
-<script type="text/javascript" src="${contextPath}/js/manager/appearance/newcase/list.js"></script>
+<script type="text/javascript" src="${contextPath}/js/manager/appearance/code/list.js"></script>
 
 </body>
 

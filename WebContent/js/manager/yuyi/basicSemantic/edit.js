@@ -1,22 +1,24 @@
-
-var listUrl = "list";
-var toEditUrl ="edit";
-$(".cancelbtn").click(function(){
+var listUrl =contextPath + "/manager/basicSemantic/list";
+//var listUrl = "list";
+$(document).on("click",".cancelbtn",function(){
+//$(".cancelbtn").click(function(){
 		debugger
 		 window.location.href= listUrl;
 	});
-$("#editForm").submit(function() { 
-    $(this).ajaxSubmit(function() {   
-    		}); 
-       return false; //阻止表单默认提交
-});
-	$(".savebtn").click(function(){
+//$("#editForm").submit(function() { 
+//    $(this).ajaxSubmit(function() {   
+//    		}); 
+//       return false; //阻止表单默认提交
+//});
+$(document).on("click",".savebtn",function(){
+//	$(".savebtn").click(function(){
 		debugger
-		 window.location.href= listUrl;
-//		 $(this).parents(".editForm").submit(function() { 
-//		        $(this).ajaxSubmit(function() {   
-//		        		}); 
-//		           return false; //阻止表单默认提交
-//			});
-//		 location.reload([true]);
+		var form =$("#editForm");
+		var params = form.serialize();
+	    var action = form.attr("action");
+	     //如果验证通过
+			$.post(action, params,	function(data) {
+				alert("保存成功！");
+			});
+			 window.location.href= listUrl;
 	});

@@ -1,5 +1,6 @@
 package cn.art.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -12,12 +13,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import cn.art.model.Color;
+import cn.art.model.ColorType;
 import cn.art.model.OutLine;
 import cn.art.model.OutLineType;
 import cn.art.model.Part;
+import cn.art.model.PartType;
 import cn.art.model.Texture;
+import cn.art.model.TextureType;
 import cn.art.service.ColorService;
 import cn.art.service.ColorTypeService;
 import cn.art.service.OutLineService;
@@ -151,49 +156,329 @@ public class M_codingController {
 		return "manager/appearance/code/list";
 	}
 
-	// @RequestMapping("load/codecase")
-	// @ResponseBody
-	// public List<codecase> codecase(Model model, Integer tid, Integer bctid) {
-	// List<codecase> codeCaseList = new ArrayList<codecase>();
-	// Map<String, Integer> map = new HashMap<String, Integer>();
-	// map.put("tid", tid);
-	// map.put("bctid", bctid);
-	// if (tid != null && bctid != null) {
-	// codeCaseList = codeCaseService.selectByTIDandBCTID(map);
-	// }
-	// return codeCaseList;
-	// }
-	//
-	// /**
-	// * 加载需要修改的信息
-	// *
-	// * @param model
-	// * @param id
-	// * @return
-	// */
-	// @SuppressWarnings("unchecked")
-	// @RequestMapping(value = "/edit")
-	// public String edit(codecase codecase, Model model, Integer id) {
-	// if (id != null) {
-	// codecase = codeCaseService.selectByPrimaryKey(id);
-	// }
-	// model.addAttribute("codecase", codecase);
-	// return "manager/appearance/code/edit";
-	// }
-	//
-	// /**
-	// * 删除
-	// *
-	// * @param model
-	// * @param session
-	// * @return
-	// */
-	// @RequestMapping("/load/delete")
-	// @ResponseBody
-	// public int delete(Integer id) {
-	// int delete = codeCaseService.deleteByPrimaryKey(id);
-	// return delete;
-	// }
+	@RequestMapping("load/outLineType")
+	@ResponseBody
+	public List<Map<String, String>> codeType(Integer tid) {
+		List<OutLineType> outLineTypeList = new ArrayList<OutLineType>();
+		List<Map<String, String>> codeTypeList = new ArrayList<Map<String, String>>(outLineTypeList.size());
+		if (tid != null) {
+			outLineTypeList = outLineTypeService.selectByTID(tid);
+			for (OutLineType OutLineType : outLineTypeList) {
+				Map<String, String> codeTypeMap = new HashMap<String, String>();
+				codeTypeMap.put("id", OutLineType.getOtid().toString());
+				codeTypeMap.put("tid", OutLineType.getTid().toString());
+				codeTypeMap.put("name", OutLineType.getOname());
+				codeTypeList.add(codeTypeMap);
+			}
+		}
+		return codeTypeList;
+	}
+
+	@RequestMapping("codecase/outLineType")
+	@ResponseBody
+	public List<Map<String, String>> codecaseOutLine(Integer tid, Integer codeTypeId) {
+		List<OutLine> outLineTypeList = new ArrayList<OutLine>();
+		List<Map<String, String>> codeTypeList = new ArrayList<Map<String, String>>();
+		Map<String, Integer> TIDandOTIDMap = new HashMap<String, Integer>();
+		TIDandOTIDMap.put("tid", tid);
+		TIDandOTIDMap.put("otid", codeTypeId);
+		if (tid != null) {
+			outLineTypeList = outLineService.selectByTIDandOTID(TIDandOTIDMap);
+			for (OutLine OutLine : outLineTypeList) {
+				Map<String, String> codeTypeMap = new HashMap<String, String>();
+				codeTypeMap.put("id", OutLine.getOid().toString());
+				// codeTypeMap.put("tid", OutLine.getTid().toString());
+				codeTypeMap.put("name", OutLine.getOdescription());
+				codeTypeList.add(codeTypeMap);
+			}
+		}
+		return codeTypeList;
+	}
+
+	@RequestMapping("load/textureType")
+	@ResponseBody
+	public List<Map<String, String>> TextureType(Integer tid) {
+		List<TextureType> textureTypeList = new ArrayList<TextureType>();
+		List<Map<String, String>> codeTypeList = new ArrayList<Map<String, String>>();
+		if (tid != null) {
+			textureTypeList = textureTypeService.selectByTID(tid);
+			for (TextureType TextureType : textureTypeList) {
+				Map<String, String> codeTypeMap = new HashMap<String, String>();
+				codeTypeMap.put("id", TextureType.getTtid().toString());
+				codeTypeMap.put("tid", TextureType.getTid().toString());
+				codeTypeMap.put("name", TextureType.getTtname());
+				codeTypeList.add(codeTypeMap);
+			}
+		}
+		return codeTypeList;
+	}
+
+	@RequestMapping("codecase/textureType")
+	@ResponseBody
+	public List<Map<String, String>> codecaseTexture(Integer tid, Integer codeTypeId) {
+		List<Texture> textureList = new ArrayList<Texture>();
+		List<Map<String, String>> codeTypeList = new ArrayList<Map<String, String>>();
+		Map<String, Integer> TIDandOTIDMap = new HashMap<String, Integer>();
+		TIDandOTIDMap.put("tid", tid);
+		TIDandOTIDMap.put("ttid", codeTypeId);
+		if (tid != null) {
+			textureList = textureService.selectByTIDandTTID(TIDandOTIDMap);
+			for (Texture Texture : textureList) {
+				Map<String, String> codeTypeMap = new HashMap<String, String>();
+				codeTypeMap.put("id", Texture.getTextureid().toString());
+				// codeTypeMap.put("tid", Texture.getTid().toString());
+				codeTypeMap.put("name", Texture.getTdescription());
+				codeTypeList.add(codeTypeMap);
+			}
+		}
+		return codeTypeList;
+	}
+
+	@RequestMapping("load/partType")
+	@ResponseBody
+	public List<Map<String, String>> PartType(Integer tid) {
+		List<PartType> partTypeList = new ArrayList<PartType>();
+		List<Map<String, String>> codeTypeList = new ArrayList<Map<String, String>>();
+		if (tid != null) {
+			partTypeList = partTypeService.selectByTID(tid);
+			for (PartType PartType : partTypeList) {
+				Map<String, String> codeTypeMap = new HashMap<String, String>();
+				codeTypeMap.put("id", PartType.getPbid().toString());
+				codeTypeMap.put("tid", PartType.getTid().toString());
+				codeTypeMap.put("name", PartType.getPbname());
+				codeTypeList.add(codeTypeMap);
+			}
+		}
+		return codeTypeList;
+	}
+
+	@RequestMapping("codecase/partType")
+	@ResponseBody
+	public List<Map<String, String>> codecasePart(Integer tid, Integer codeTypeId) {
+		List<Part> partList = new ArrayList<Part>();
+		List<Map<String, String>> codeTypeList = new ArrayList<Map<String, String>>();
+		Map<String, String> codeTypeMap = new HashMap<String, String>();
+		Map<String, Integer> TIDandOTIDMap = new HashMap<String, Integer>();
+		TIDandOTIDMap.put("tid", tid);
+		TIDandOTIDMap.put("pbid", codeTypeId);
+		if (tid != null) {
+			partList = partService.selectByTIDandPBID(TIDandOTIDMap);
+			for (Part Part : partList) {
+				codeTypeMap.put("id", Part.getPid().toString());
+				// codeTypeMap.put("tid", Part.getTid().toString());
+				codeTypeMap.put("name", Part.getPdescription());
+				codeTypeList.add(codeTypeMap);
+			}
+		}
+		return codeTypeList;
+	}
+
+	@RequestMapping("load/colorType")
+	@ResponseBody
+	public List<Map<String, String>> ColorType(Integer tid) {
+		List<ColorType> colorTypeList = new ArrayList<ColorType>();
+		List<Map<String, String>> codeTypeList = new ArrayList<Map<String, String>>();
+		Map<String, String> codeTypeMap = new HashMap<String, String>();
+		if (tid != null) {
+			colorTypeList = colorTypeService.selectByTID(tid);
+			for (ColorType ColorType : colorTypeList) {
+				codeTypeMap.put("id", ColorType.getCbid().toString());
+				codeTypeMap.put("tid", ColorType.getTid().toString());
+				codeTypeMap.put("name", ColorType.getCbname());
+				codeTypeList.add(codeTypeMap);
+			}
+		}
+		return codeTypeList;
+	}
+
+	@RequestMapping("codecase/colorType")
+	@ResponseBody
+	public List<Map<String, String>> codecaseColor(Integer tid, Integer codeTypeId) {
+		List<Color> colorList = new ArrayList<Color>();
+		List<Map<String, String>> codeTypeList = new ArrayList<Map<String, String>>();
+		Map<String, String> codeTypeMap = new HashMap<String, String>();
+		Map<String, Integer> TIDandOTIDMap = new HashMap<String, Integer>();
+		TIDandOTIDMap.put("tid", tid);
+		TIDandOTIDMap.put("cbid", codeTypeId);
+		if (tid != null) {
+			colorList = colorService.selectByTIDandCBID(TIDandOTIDMap);
+			for (Color Color : colorList) {
+				codeTypeMap.put("id", Color.getCid().toString());
+				// codeTypeMap.put("tid", Color.getTid().toString());
+				codeTypeMap.put("name", Color.getCdescription());
+				codeTypeList.add(codeTypeMap);
+			}
+		}
+		return codeTypeList;
+	}
+
+	/**
+	 * 加载需要修改的信息
+	 *
+	 * @param model
+	 * @param id
+	 * @return
+	 */
+	@SuppressWarnings("unchecked")
+	@RequestMapping(value = "/editcolorType")
+	public String edit(Color item, Model model, Integer id, Integer tid, Integer codeTypeId) {
+		if (id != null) {
+			item = colorService.selectByPrimaryKey(id);
+		} else {
+			item.setCbid(codeTypeId);
+			item.setTid(tid);
+		}
+		List<ColorType> typesList = colorTypeService.selectByTID(item.getTid());
+		model.addAttribute("typesList", typesList);
+		model.addAttribute("item", item);
+		return "manager/appearance/code/editcolorType";
+	}
+
+	@SuppressWarnings("unchecked")
+	@RequestMapping(value = "/editpartType")
+	public String edit(Part item, Model model, Integer id, Integer tid, Integer codeTypeId) {
+		if (id != null) {
+			item = partService.selectByPrimaryKey(id);
+		} else {
+			item.setPbid(codeTypeId);
+			item.setTid(tid);
+		}
+		List<PartType> typesList = partTypeService.selectByTID(item.getTid());
+		model.addAttribute("typesList", typesList);
+		model.addAttribute("item", item);
+		return "manager/appearance/code/editpartType";
+	}
+
+	@SuppressWarnings("unchecked")
+	@RequestMapping(value = "/edittextureType")
+	public String edit(Texture item, Model model, Integer id, Integer tid, Integer codeTypeId) {
+		if (id != null) {
+			item = textureService.selectByPrimaryKey(id);
+		} else {
+			item.setTtid(codeTypeId);
+			item.setTid(tid);
+		}
+		List<TextureType> typesList = textureTypeService.selectByTID(item.getTid());
+		model.addAttribute("typesList", typesList);
+		model.addAttribute("item", item);
+		return "manager/appearance/code/edittextureType";
+	}
+
+	@SuppressWarnings("unchecked")
+	@RequestMapping(value = "/editoutLineType")
+	public String edit(OutLine item, Model model, Integer id, Integer tid, Integer codeTypeId) {
+		if (id != null) {
+			item = outLineService.selectByPrimaryKey(id);
+		} else {
+			item.setOtid(codeTypeId);
+			item.setTid(tid);
+		}
+		List<OutLineType> typesList = outLineTypeService.selectByTID(item.getTid());
+		model.addAttribute("typesList", typesList);
+		model.addAttribute("item", item);
+		return "manager/appearance/code/editoutLineType";
+	}
+
+	/**
+	 * 保存
+	 * 
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping("load/savetextureType")
+	@ResponseBody
+	public String save(Texture item) {
+		String message = "0";// 插入新类型成功
+		if (item.getTextureid() != null) {
+			textureService.updateByPrimaryKey(item);
+			message = "1";// 更新类型成功
+			return message;
+		}
+		// texture.setBctid(1);
+		// texture.setTid(2);
+		textureService.insert(item);
+		return message;
+	}
+
+	@RequestMapping("load/savepartType")
+	@ResponseBody
+	public String save(Part item) {
+		String message = "0";// 插入新类型成功
+		if (item.getPid() != null) {
+			partService.updateByPrimaryKey(item);
+			message = "1";// 更新类型成功
+			return message;
+		}
+		// part.setBctid(1);
+		// part.setTid(2);
+		partService.insert(item);
+		return message;
+	}
+
+	@RequestMapping("load/savecolorType")
+	@ResponseBody
+	public String save(Color item) {
+		String message = "0";// 插入新类型成功
+		if (item.getCid() != null) {
+			colorService.updateByPrimaryKey(item);
+			message = "1";// 更新类型成功
+			return message;
+		}
+		// color.setBctid(1);
+		// color.setTid(2);
+		colorService.insert(item);
+		return message;
+	}
+
+	@RequestMapping("load/saveoutLineType")
+	@ResponseBody
+	public String save(OutLine item) {
+		String message = "0";// 插入新类型成功
+		if (item.getOid() != null) {
+			outLineService.updateByPrimaryKey(item);
+			message = "1";// 更新类型成功
+			return message;
+		}
+		// outLine.setBctid(1);
+		// outLine.setTid(2);
+		outLineService.insert(item);
+		return message;
+	}
+
+	/**
+	 * 删除
+	 *
+	 * @param model
+	 * @param session
+	 * @return
+	 */
+	@RequestMapping("/load/deletecolorType")
+	@ResponseBody
+	public int deletecolor(Integer id) {
+		int delete = colorService.deleteByPrimaryKey(id);
+		return delete;
+	}
+
+	@RequestMapping("/load/deletepartType")
+	@ResponseBody
+	public int deletepart(Integer id) {
+		int delete = partService.deleteByPrimaryKey(id);
+		return delete;
+	}
+
+	@RequestMapping("/load/deletetextureType")
+	@ResponseBody
+	public int deletetexture(Integer id) {
+		int delete = textureService.deleteByPrimaryKey(id);
+		return delete;
+	}
+
+	@RequestMapping("/load/deleteoutLineType")
+	@ResponseBody
+	public int delete(Integer id) {
+		int delete = outLineService.deleteByPrimaryKey(id);
+		return delete;
+	}
 	//
 	// /**
 	// * 保存

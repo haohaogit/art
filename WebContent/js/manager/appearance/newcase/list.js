@@ -13,7 +13,7 @@ tid=$("#producttype button").first().attr("myid");
 $(document).on("click",".addbtn",function(){
 		debugger
 		var id= $(this).attr("myid");
-		 var url = toEditUrl + "?tt=" + Math.random(0, 100);
+		 var url = toEditUrl + "?tt=" + Math.random(0, 100)+"&tid=" + tid;
 	       debugger;
 	       if(id != null||id != ""){
 	       	 url += "&id=" + id;

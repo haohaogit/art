@@ -71,7 +71,7 @@ public class M_basicSemanticController {
 	@RequestMapping("/load/save")
 	@ResponseBody
 	public int save(Word item) {
-		List<Word> typesList = wordService.selectAll();
+		// List<Word> typesList = wordService.selectAll();
 		String Wword = item.getWword();
 		String[] pinyinArray = PinyinHelper.toHanyuPinyinStringArray(Wword.charAt(0));
 		if (pinyinArray != null) {
@@ -81,17 +81,16 @@ public class M_basicSemanticController {
 
 		int message = 0;// 插入新类型成功
 		if (item.getWid() != null) {
-			for (Word typeIdName : typesList) {
-				if (typeIdName.getWid().toString().equals(item.getWid().toString())) {
-
-					wordService.updateByPrimaryKey(item);
-					message = 1;// 更新类型成功
-					return message;
-				}
-			}
+			// for (Word typeIdName : typesList) {
+			// if (typeIdName.getWid().toString().equals(item.getWid().toString())) {
+			wordService.updateByPrimaryKey(item);
+			message = 1;// 更新类型成功
+			return message;
+			// }
+			// }
+		} else {
+			wordService.insert(item);
 		}
-
-		wordService.insert(item);
 		return message;
 	}
 

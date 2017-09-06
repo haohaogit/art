@@ -133,18 +133,6 @@ public class M_productMaintenceController {
 
 	@RequestMapping("list")
 	public String list(Model model) {
-		// List<typeIdName> typesList = typeService.selectAllOnlyIdandName();
-		// Type aa = typeService.selectByPrimaryKey(1);
-		// String types = jsonConvert.list2json(typesList);
-		// 第一种 request传值
-		// HTML之间怎么传值
-		// HttpSession session = request.getSession();
-		// List<typeIdName> list= null;
-		// session.setAttribute("typesList", typesList);
-		// session.setAttribute("isNewaddType", "false");
-		// 第二种 request传值
-		// request.setAttribute("types", types);
-		// model.addAttribute("typesList", typesList);
 		return "manager/productMaintenance/list";
 	}
 
@@ -175,26 +163,18 @@ public class M_productMaintenceController {
 	@SuppressWarnings("unchecked")
 	@RequestMapping(value = "/edit")
 	public String edit(Type item, Model model, @RequestParam(value = "id", defaultValue = "") Integer id) {
-		// List<BottomCaseType> TypeList = new ArrayList<BottomCaseType>();
-		// Map<String, String> bottomCaseTypeJo = new HashMap<String, String>();
-		// JSONObject bottomCaseTypeJo = new JSONObject();
-		// JSONArray bottomCaseTypeList = new JSONArray();
-		// List<Map<String, String>> bottomCaseTypeList = new ArrayList<Map<String,
 		if (id != null) {
 			item = typeService.selectByPrimaryKey(id);
-			// TypeList = bottomCaseTypeService.selectByTID(id);
-			// for (BottomCaseType bottomcasetype : TypeList) {
-			// Integer bctid = bottomcasetype.getBctid();
-			// String bctname = bottomcasetype.getBctname();
-			// bottomCaseTypeJo.put("bctid", bctid.toString());
-			// bottomCaseTypeJo.put("bctname", bctname);
-			// bottomCaseTypeList.add(bottomCaseTypeJo);
-			// }
-
 		}
-
 		model.addAttribute("item", item);
-		// model.addAttribute("bottomCaseTypeList", bottomCaseTypeList);
+		List<OutLineType> outLineTypeList = outLineTypeService.selectByTID(id);
+		List<TextureType> textureTypeList = textureTypeService.selectByTID(id);
+		List<PartType> partTypeList = partTypeService.selectByTID(id);
+		List<ColorType> colorTypeList = colorTypeService.selectByTID(id);
+		model.addAttribute("outLineTypeList", outLineTypeList);
+		model.addAttribute("textureTypeList", textureTypeList);
+		model.addAttribute("partTypeList", partTypeList);
+		model.addAttribute("colorTypeList", colorTypeList);
 		return "manager/productMaintenance/edit";
 	}
 
@@ -206,9 +186,80 @@ public class M_productMaintenceController {
 	 */
 	@RequestMapping("load/save")
 	@ResponseBody
-	public String save(Type item) {
+	public String save(Type item, String bottomCaseTypes, String outLineTypes, String colorTypes, String partTypes,
+			String textureTypes) {
 		String message = "0";// 插入新类型成功
-		if (item.getTid() != null) {
+
+		List<Survey> surveys = new ArrayList<Survey>();
+		Integer tid = item.getTid();
+		if (tid != null) {
+			List<BottomCaseType> bottomCaseTypeList = bottomCaseTypeService.selectByTID(tid);
+			for (BottomCaseType BottomCaseType : bottomCaseTypeList) {
+				bottomCaseTypeService.deleteByPrimaryKey(BottomCaseType.getBctid());
+			}
+			List<OutLineType> outLineTypeList = outLineTypeService.selectByTID(tid);
+			for (OutLineType OutLineType : outLineTypeList) {
+				outLineTypeService.deleteByPrimaryKey(OutLineType.getOtid());
+			}
+			List<ColorType> colorTypeList = colorTypeService.selectByTID(tid);
+			for (ColorType ColorType : colorTypeList) {
+				colorTypeService.deleteByPrimaryKey(ColorType.getCbid());
+			}
+			List<PartType> partTypeList = partTypeService.selectByTID(tid);
+			for (PartType PartType : partTypeList) {
+				partTypeService.deleteByPrimaryKey(PartType.getPbid());
+			}
+			List<TextureType> textureTypeList = textureTypeService.selectByTID(tid);
+			for (TextureType TextureType : textureTypeList) {
+				textureTypeService.deleteByPrimaryKey(TextureType.getTtid());
+			}
+			// 现有tid才能存类型！
+			if (bottomCaseTypes != null) {
+				String[] bottomCaseTypeArray = bottomCaseTypes.split(",");
+				for (String Type : bottomCaseTypeArray) {
+					BottomCaseType bottomCaseType = new BottomCaseType();
+					bottomCaseType.setTid(tid);
+					bottomCaseType.setBctname(Type);
+					bottomCaseTypeService.insert(bottomCaseType);
+				}
+			}
+			if (outLineTypes != null) {
+				String[] outLineTypeArray = outLineTypes.split(",");
+				for (String Type : outLineTypeArray) {
+					OutLineType outLineType = new OutLineType();
+					outLineType.setTid(tid);
+					outLineType.setOname(Type);
+					outLineTypeService.insert(outLineType);
+				}
+			}
+			if (colorTypes != null) {
+				String[] colorTypeArray = colorTypes.split(",");
+				for (String Type : colorTypeArray) {
+					ColorType colorType = new ColorType();
+					colorType.setTid(tid);
+					colorType.setCbname(Type);
+					colorTypeService.insert(colorType);
+				}
+			}
+			if (partTypes != null) {
+				String[] partTypeArray = partTypes.split(",");
+				for (String Type : partTypeArray) {
+					PartType partType = new PartType();
+					partType.setTid(tid);
+					partType.setPbname(Type);
+					partTypeService.insert(partType);
+				}
+			}
+
+			if (textureTypes != null) {
+				String[] textureTypeArray = textureTypes.split(",");
+				for (String Type : textureTypeArray) {
+					TextureType textureType = new TextureType();
+					textureType.setTid(tid);
+					textureType.setTtname(Type);
+					textureTypeService.insert(textureType);
+				}
+			}
 			typeService.updateByPrimaryKey(item);
 			message = "1";// 更新类型成功
 			return message;

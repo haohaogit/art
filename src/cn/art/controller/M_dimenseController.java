@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import cn.art.model.JWord;
 import cn.art.model.Word;
@@ -93,6 +94,19 @@ public class M_dimenseController {
 		model.addAttribute("wordList", wordList);
 		model.addAttribute("item", item);
 		return "manager/yuyi/dimense/edit";
+	}
+
+	@RequestMapping("load/save")
+	@ResponseBody
+	public String save(JWord item) {
+		String message = "0";// 插入新类型成功
+		if (item.getJwid() != null) {
+			jWordService.updateByPrimaryKey(item);
+			message = "1";// 更新类型成功
+			return message;
+		}
+		jWordService.insert(item);
+		return message;
 	}
 
 	// 降维词汇库 (默认接口)

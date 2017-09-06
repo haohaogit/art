@@ -113,7 +113,7 @@ public class M_bottomController {
 			bottomcase = bottomCaseService.selectByPrimaryKey(id);
 		} else {
 			if (tid != null && bctid != null) {
-				bottomcase.setBctid(tid);
+				bottomcase.setTid(tid);
 				bottomcase.setBctid(bctid);
 			}
 		}

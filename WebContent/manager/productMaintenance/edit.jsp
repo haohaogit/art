@@ -124,7 +124,8 @@
 							  </div>
 						</div> 
 						  <br>
-				        <div id="bottomCaseTypeList"  data="${bottomCaseTypeList }">
+				        <div id="bottomCaseTypeList"  >
+<!-- 				        <input type="text" class="form-control " id="bottomCaseType"   type="hidden" /> -->
 <!-- 						  <div class="input-title-position"> -->
 <!-- 								  <label for="product_name"><span class="thick label-name">类型1</span></label> -->
 <!-- 								  <div class="my-no-br-right" > -->
@@ -136,7 +137,6 @@
 				         <div class="input-title-position">
 								 <button type="button" myid="" class="btn btn-link  addnewtypebtn">+添加新类型</button>  
 						</div> 
-<!-- 						        <a href="javascript:void(0)" class="blue" id="add" >+添加新类型   </a>  -->
 					
 				       <br><br>
 						<div class=" text-center">
@@ -169,45 +169,66 @@
 							  		<form:textarea  class="form-control textarea-size" path="tbianma"  />
 							  </div>
 						</div> 	
-				        <p>&nbsp;</p>
-				        <p class="thick">轮廓编码</p>
-				        <table width="85%" border="0">
-				          <tr>
-				            <td width="20%">收口形轮廓编码</td>
-				            <td width="20%">外扩型轮廓编码</td>
-				            <td width="20%" class="juzhong_for_new">&nbsp;</td>
-				            <td width="20%">&nbsp;</td>
-				            <td>&nbsp;</td>
-				          </tr>
-				        </table>
-				        <p class="blue">+添加新类型</p>
-				        <p>&nbsp;</p>
-				        <p class="thick">部件编码</p>
-				        <table width="85%" border="0">
-				          <tr>
-				            <td width="20%" height="45">杯柄部件编码</td>
-				            <td width="20%">杯肚部件编码</td>
-				            <td width="20%">&nbsp;</td>
-				            <td width="20%">&nbsp;</td>
-				            <td width="20%">&nbsp;</td>
-				          </tr>
-				        </table>
-				        <p><span class="blue">+添加新类型</span></p>
-				        <p>&nbsp;</p>
-				        <p class="thick">色彩编码</p>
-				        <table width="85%" border="0">
-				          <tr>
-				            <td width="20%">暖色系编码</td>
-				            <td width="20%">冷色系编码</td>
-				            <td width="20%">&nbsp;</td>
-				            <td width="20%">&nbsp;</td>
-				            <td width="20%">&nbsp;</td>
-				          </tr>
-				        </table>
-				        <p><span class="blue">+添加新类型</span></p>
-				        <p>&nbsp;</p>
-				        <p class="thick">材质编码</p>
-				        <p><span class="blue">+添加新类型</span></p>
+				        <br>
+				         <div class="input-title-position">
+								  <label for="product_name"><span class="thick label-name">轮廓编码</span></label>
+						</div> 
+						<div class="input-title-position" id="outLineTypeList"  >
+						<c:forEach var="outLineType" items="${outLineTypeList}" varStatus="status">
+						  <div class="my-no-br-right"  >
+								  		<input type="text" class="form-control "  id="${status.count}"  myid="${outLineType.otid }"  value="${outLineType.oname}" size="2"/>
+						</div>
+						</c:forEach>
+						</div> 
+				         <div class="input-title-position">
+								 <button type="button" myname="outLineType" class="btn btn-link  addcodetypebtn">+添加新类型</button>  
+						</div> 
+						
+						<div class="input-title-position">
+								  <label for="product_name"><span class="thick label-name">部件编码</span></label>
+						</div> 
+						<div class="input-title-position" id="partTypeList"  >
+<!-- 								  <div class="my-no-br-right"  > -->
+<!-- 								  		<input type="text" class="form-control " id="textureType1"   value="" size="2"/> -->
+<!-- 								  </div> -->
+						<c:forEach var="partType" items="${partTypeList}" varStatus="status">
+						 <div class="my-no-br-right"  >
+								  		<input type="text" class="form-control "  id="${status.count}"  myid="${partType.pbid }"  value="${partType.pbname}" size="2"/>
+						</div>
+						</c:forEach>
+						</div> 
+				         <div class="input-title-position">
+								 <button type="button" myname="partType" class="btn btn-link  addcodetypebtn">+添加新类型</button>  
+						</div> 
+						
+						<div class="input-title-position">
+								  <label for="product_name"><span class="thick label-name">色彩编码</span></label>
+						</div> 
+						<div class="input-title-position" id="colorTypeList"  >
+						<c:forEach var="colorType" items="${colorTypeList}" varStatus="status">
+						  <div class="my-no-br-right"  >
+								  		<input type="text" class="form-control "  id="${status.count}"  myid="${colorType.cbid }"  value="${colorType.cbname}" size="2"/>
+						</div>
+						</c:forEach>
+						</div> 
+				         <div class="input-title-position">
+								 <button type="button" myname="colorType" class="btn btn-link  addcodetypebtn">+添加新类型</button>  
+						</div> 
+						
+						<div class="input-title-position">
+								  <label for="product_name"><span class="thick label-name">材质编码</span></label>
+						</div> 
+						
+						<div class="input-title-position" id="textureTypeList"  >
+						<c:forEach var="textureType" items="${textureTypeList}" varStatus="status">
+						  <div class="my-no-br-right"  >
+								  		<input type="text" class="form-control "  id="${status.count}"  myid="${textureType.ttid }"  value="${textureType.ttname}" size="2"/>
+						</div>
+						</c:forEach>
+						</div> 
+				         <div class="input-title-position">
+								 <button type="button" myname="textureType" class="btn btn-link  addcodetypebtn">+添加新类型</button>  
+						</div> 
 				        
 				        <br><br>
 						<div class=" text-center">
@@ -363,7 +384,8 @@
 </div>
 <script type="text/javascript">
 	var contextPath='${contextPath}';
-	var bottomCaseTypeList="${bottomCaseTypeList }";
+// 	var bottomCaseTypeList="${bottomCaseTypeList }";
+// 	var outLineTypeJa="${outLineTypeJa }";
 </script>
 <script type="text/javascript" src="${contextPath}/js/manager/productMaintenance/edit.js"></script>
 </body>

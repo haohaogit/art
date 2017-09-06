@@ -12,7 +12,6 @@
 
 <body>
 	<div class="main-body-position">
-	
 		<div class="position-for-head2 thick ">语义库管理>基础意象语义库>首字母分类>
 			<span>
 	        	<c:if test="${empty item.wid}">
@@ -34,7 +33,7 @@
 		        	</c:if>
 		           </span>
 				</div> 
-				<form:form id="editForm"  class="editForm" method="post"  action="${contextPath}/manager/basicSemantic/load/save"
+		<form:form id="editForm"  class="editForm" method="post"  action="${contextPath}/manager/basicSemantic/load/save"
 					commandName="item"  methodParam="post">
 					<form:hidden path="wid" />
 				<div class="mydiv " style=" width: initial;height: initial;" >
@@ -60,16 +59,19 @@
 						</div> 	
 				       <br><br>
 				       <div class=" text-center">
-							<button type="submit" class="btn btn-primary savebtn" id="submit0">保存</button>
+							<button type="button" class="btn btn-primary savebtn">保存</button>
 							<button type="reset" class="btn btn-primary cancelbtn">取消</button>
 						</div>
 						<br>
 				</div>
 				</form:form>  
 				</div>
-				
 		</div>
-
+		<script type="text/javascript">
+	var contextPath='${contextPath}';
+// 	var bottomCaseTypeList="${bottomCaseTypeList }";
+// 	var outLineTypeJa="${outLineTypeJa }";
+</script>
+<script type="text/javascript" src="${contextPath}/js/manager/yuyi/basicSemantic/edit.js"></script>
 </body>
-<script type="text/javascript" src="${contextPath}/js/manager/basicSemantic/edit.js"></script>
 </html>
