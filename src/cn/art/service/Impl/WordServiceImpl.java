@@ -98,7 +98,7 @@ public class WordServiceImpl implements WordService {
 	}
 
 	@Override
-	public String getWordFV() {
+	public List<wordFV> getWordFV() {
 		// TODO Auto-generated method stub
 		wordFV wordFV;
 		List<Word> words = wordMapper.selectAll();
@@ -114,7 +114,7 @@ public class WordServiceImpl implements WordService {
 			wordFV.setWvocatype(word.getWvocatype());
 			wordFVs.add(wordFV);
 		}
-		return jsonConvert.list2json(wordFVs);
+		return wordFVs;
 
 	}
 

@@ -24,11 +24,6 @@
 	    							$("#username").css({display:'block'});
 		    						$(".loginSucc").css({display:'none'});
 		    						$("#p1").html(data.username);
-		    						//$("#LoginBox").fadeOut("fast");
-		    						
-		    						/* $("#mask").css({
-		    							display : 'none'
-		    						});  */
 	    						}else{
 	    							alert("notlogin");
 	    						}
@@ -38,10 +33,6 @@
 	    						alert("数据发送失败denglu");
 	    					}
 	    				});
-	        	
-	        	//var username ="<%=session.getAttribute("username")%>"; 
-	 			//alert(username);
-	            
 	        });
 	</script>
 	
@@ -61,7 +52,7 @@
         </div>
         <div id="search_C" style="width: 260px;">
             <!--<img src="images/首页/search.png">-->
-            <input id="input" type="text" style="height: 28px;width: 217px" name="search" value="外观库搜索">
+            <input id="input" type="text" style="height: 28px;width: 217px" name="search" placeholder="外观库搜索11" />
             <div id="search_icon">
                 <img id="Isearch" src="../images/first/search_icon.png">
             </div>
@@ -356,6 +347,18 @@
             window.location.href="main-search.html?txt="+$("#input").val();
             //sendLoginContent($("#account").val(),$("#password").val());
         })
+        
+       	$("#input").bind("keydown",function(e){
+        	var theEvent = e || window.event;    
+        	var code = theEvent.keyCode || theEvent.which || theEvent.charCode;
+        	 if (code == 13) {    
+   	       		 //回车执行查询
+        		 if(this.value != ''){
+ 					//alert("foxfire");
+ 					window.location.href="main-search.html?txt="+$("#input").val();
+ 				}
+   	        }    
+		})
     </script>
 
 </body>

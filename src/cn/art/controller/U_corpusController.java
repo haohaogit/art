@@ -1,20 +1,26 @@
 package cn.art.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import cn.art.service.JWordService;
 import cn.art.service.SurveyService;
 import cn.art.service.TypeService;
 import cn.art.service.WordService;
+import cn.art.util.pojo.wordFV;
 
 
 @Controller
-@RequestMapping("corpus")
+@RequestMapping("html/corpus")
 public class U_corpusController {
 	private WordService wordService;
 	private TypeService typeService;
@@ -51,19 +57,25 @@ public class U_corpusController {
 	}
 
 	//基础意象词汇库  详细分类接口
-	@RequestMapping("basic/{basicSubInfo}")
-	public String corpusBasic(@PathVariable String basicSubInfo,HttpServletRequest request){
-		if("firstChar".equals(basicSubInfo)){
-			String words = wordService.getWordFV();
-			request.setAttribute("words", words);
-		}else if("vocabularyType".equals(basicSubInfo)){
-			String words = wordService.getWordFV();
-			request.setAttribute("words", words);
-		}else{
-			request.setAttribute("errorMessage","请求词汇分类错误");
-		}
+	@RequestMapping("basic/firstChar")
+	@ResponseBody
+	public List<wordFV> corpusBasic(Model model,HttpServletRequest request){
+		List<wordFV> words = new ArrayList<wordFV>();
+		words = wordService.getWordFV();
+		System.out.println("1111111111111111111111111111111111");
+		//request.setAttribute("words", words);
 		
-		return "manager/testlogin";
+		return words;
+	}
+	
+	@RequestMapping("basic/vocabularyType")
+	@ResponseBody
+	public List<wordFV> corpusBasic1(Model model,HttpServletRequest request){
+		List<wordFV> words = new ArrayList<wordFV>();
+		words = wordService.getWordFV();
+		System.out.println("0000000000000000000000000000000000");
+		//request.setAttribute("words", words);
+		return words;
 	}
 	
 	//基础意象语义库 详细词汇接口(比如"安宁")

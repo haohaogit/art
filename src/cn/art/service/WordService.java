@@ -3,6 +3,7 @@ package cn.art.service;
 import java.util.List;
 
 import cn.art.model.Word;
+import cn.art.util.pojo.wordFV;
 
 public interface WordService {
 	public int deleteByPrimaryKey(Integer wid);
@@ -21,7 +22,7 @@ public interface WordService {
     public int updateByPrimaryKey(Word record);
     public String getwordFp();
     
-    public String getWordFV();
+    public List<wordFV> getWordFV();
     
     public int update(Integer wid,String wword,String wbasic,String wdetail,String wsimilar,
     		String wopposite,Integer wcolorwarm);

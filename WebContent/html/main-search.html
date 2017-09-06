@@ -89,7 +89,8 @@
 			text-align: left;
 			background-color: #00a5bd;
 			padding: 10px 6px 10px 6px;
-			margin-right: 28px;
+			margin-right: 14px;
+			margin-left: 15px;
 		}
 		#base1{
 			margin: 5px 5px 5px 5px;
@@ -110,15 +111,12 @@
 			  	
 			  	$(".lable1").html(txt);
 			  	
-			  	
 			  	$.ajax("search/facade/bottom?searchContent="+txt,
 		                // 发送请求的URL字符串
 		                {
 		                    type: "get",      //
-		                    
 		                    async:true,  //
 		                    success: function(data){
-		                        //alert(data);
 								totalnum=totalnum+data.length;
 								$(".lable3").html(data.length);
 		                        var listHtml="";
@@ -126,7 +124,7 @@
 		                        	listHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='"+data[i].caseimg+"' /></div><div class='lunkuo1'><div class='descri1' >"+data[i].bcid+"</div></div></div>";
 		                        }
 		                        $(".bottom").html(listHtml);
-		                       // alert("数据发送成功shouzuo");
+		                        $(".lable2").html(totalnum);
 		                    },
 		                    error: function(){
 		                        alert("数据发送失败denglu");
@@ -140,18 +138,16 @@
 		                    type: "get",      //
 		                    async:true,  //
 		                    success: function(data){
-		                        //alert(data);
 		                        $(".lable4").html(data.length);
 		                        totalnum=totalnum+data.length;
-		                        //alert("codenum part "+codenum);
 								
 		                        var listHtml="";
 		                        for(var i=0;i<data.length;i++){
 		                        	listHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='"+data[i].cimg+"' /></div><div class='lunkuo1'><div class='descri1' >"+data[i].descri+"</div></div></div>";
 		                        }
 		                        $(".code").html(listHtml);
+		                        $(".lable2").html(totalnum);
 		                       
-		                       // alert("数据发送成功shouzuo");
 		                    },
 		                    error: function(){
 		                        alert("数据发送失败denglu");
@@ -166,29 +162,24 @@
 		                    type: "get",      //
 		                    async:true,  //
 		                    success: function(data){
-		                        //alert(data);
 		                        $(".lable5").html(data.length);
 		                        totalnum=totalnum+data.length;
-		                        //alert("codenum part "+codenum);
 								
 		                        var listHtml="";
 		                        for(var i=0;i<data.length;i++){
 		                        	listHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='"+data[i].newcaseimg+"' /></div><div class='lunkuo1'><div class='descri1' >"+data[i].newcasename+"</div></div></div>";
 		                        }
 		                        $(".newcase").html(listHtml);
+		                        $(".lable2").html(totalnum);
 		                       
-		                       // alert("数据发送成功shouzuo");
 		                    },
 		                    error: function(){
 		                        alert("数据发送失败denglu");
 		                    }
 		                });
 			  	
-			  	//alert("totalnum "+totalnum);
-			  	
 			  	$(".lable2").html(totalnum);
 
-	//  			alert(11);
 	            $('.configHead').load('conheader_waiguan.html');
 	            $('.configFoot').load('confooter.html');
 	        });
@@ -205,7 +196,7 @@
 			
 			
 		</div>
-		<div id="rightBody" style="width: 65.9%;">
+		<div id="rightBody" style="width: 65.6%;">
 			
 
 			<div id="facadeContent">
