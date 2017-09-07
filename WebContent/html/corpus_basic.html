@@ -123,10 +123,16 @@
 	</style>
 </head>
 <body>
+	<script type="text/javascript" src="../js/corpus.js"></script>
 	<script type="text/javascript">
 			
 		
 	        $(document).ready(function () {
+	        	//  			alert(11);
+	            $('.configHead').load('conheader_yuyi.html');
+	            $('.configFoot').load('confooter.html');
+	            
+	            
 	        	var loc = location.href;
 			  	var n1 = loc.length;//地址的总长度
 			  	var n2 = loc.indexOf("=");//取得=号的位置
@@ -182,26 +188,21 @@
                     type: "get",      //
                     async:true,  //
                     success: function(data){
-						
-                    	getHtmlfirstchar(data);
-                    	
-                       /*  for(var i=0;i<data.length;i++){
-                        	listHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='"+data[i].caseimg+"' /></div><div class='lunkuo1'><div class='descri1' >"+data[i].bcid+"</div></div></div>";
-                        } */
-                       
+						if("firstChar"==txt){
+							getHtmlfirstchar(data);
+						}
+						if("vocubulary"==txt){	
+							getHtmlvocabularyType(data);
+					  	}
                     },
                     error: function(){
                         alert("数据发送失败denglu");
                     }
                 });
 			  	
-			  	
-	//  			alert(11);
-	            $('.configHead').load('conheader_yuyi.html');
-	            $('.configFoot').load('confooter.html');
 	        });
 	</script>
-	<script type="text/javascript" src="../js/corpus.js"></script>
+	
 	<!-- 	头部 -->
 	<div class="configHead"></div>
 
@@ -309,7 +310,7 @@
 
 
 	$("#firstChar").click(function(){
-	    alert("firstchar");
+	    //alert("firstchar");
 	    $.ajax("corpus/basic/firstChar",
                 // 发送请求的URL字符串
                 {
@@ -324,15 +325,15 @@
                 });
 	});
 	$("#vocubulary").click(function(){
-	    alert("vocubulary");
+	    //alert("vocubulary");
 	    $.ajax("corpus/basic/vocabularyType",
                 // 发送请求的URL字符串
                 {
                     type: "get",      //
                     async:true,  //
                     success: function(data){
-                    	alert("haohao");
-                    	//getHtmlvocabularyType(data);
+                    	//alert("haohao");
+                    	getHtmlvocabularyType(data);
                     },
                     error: function(){
                         alert("数据发送失败denglu");
@@ -381,22 +382,35 @@
 	</script>
 	<script type="text/javascript">
 		// $("#firstChar").css("color","#00a5bd");
+		var txt="firstChar";   
 		$(".facade1").on("click",function(){
 			$(".facade1").css({color:'black'});
 		   	$(this).css({color:'#00A5BD'});
+		   	
+		   	if("词汇类型分类"==$(this).html()){
+		   		txt="vocubulary";
+		   	}
+		   	if("首字母分类"==$(this).html()){
+		   		txt="firstChar";
+		   	}
+		   	
+		   	//alert("txt="+txt);
+		   	
 		});
 
 		$(".wordType").on("click",".isclick",function(){
 			
-			alert($(this).html());
+			//alert($(this).html());
 			var ht=$(this).html();
+			/* var id = $(ht).attr('id');
+			alert("id "+id); */
 			
-			var loc = location.href;
+			/* var loc = location.href;
 		  	var n1 = loc.length;//地址的总长度
 		  	var n2 = loc.indexOf("=");//取得=号的位置
-		  	var txt = decodeURI(loc.substr(n2+1, n1-n2));//从=号后面的内容
-			//alert($(ht).find('img').attr('src'));
-			window.location.href="corpus_detail.html?txt="+txt;
+		  	var txt = decodeURI(loc.substr(n2+1, n1-n2));//从=号后面的内容 */
+			
+			window.location.href="corpus_detail.html?wid="+$(ht).attr('id')+"&txt="+txt;
 
 			//var img=$(this).attr("src");
 			// getDetailInfo($(ht).find('img').attr('src'));

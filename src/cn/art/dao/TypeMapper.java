@@ -14,7 +14,7 @@ public interface TypeMapper {
 
     Type selectByPrimaryKey(Integer tid);
     List<Type> selectAll();
-    Type selectAllByName(String tname);
+    List<typeIdName> selectAllByName(String tname);
     
     List<typeIdName> selectAllByWordType(Integer twordtype);
     List<typeIdName> selectAllOnlyIdandName();

@@ -3,6 +3,7 @@ package cn.art.service;
 import java.util.List;
 
 import cn.art.model.JWord;
+import cn.art.util.pojo.wordFV;
 
 public interface JWordService {
 	int deleteByPrimaryKey(Integer jwid);
@@ -24,5 +25,7 @@ public interface JWordService {
     int insertCidui(Integer wid1,Integer wid2,Integer tid);
     
     String getAllJwordByTID(Integer tid);
+    List<wordFV> getAllJwordByTID1(Integer tid);
+    List<wordFV> getAllJwordByTName(String tname);
   
 }

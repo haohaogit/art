@@ -1,5 +1,6 @@
 package cn.art.service.Impl;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -12,8 +13,10 @@ import cn.art.dao.WordMapper;
 import cn.art.model.JWord;
 import cn.art.model.Word;
 import cn.art.service.JWordService;
+import cn.art.service.TypeService;
 import cn.art.util.JsonConvert;
 import cn.art.util.pojo.typeIdName;
+import cn.art.util.pojo.wordFV;
 import cn.art.util.pojo.wordp1;
 import cn.art.util.pojo.wordp2;
 
@@ -23,10 +26,19 @@ public class JWordServiceImpl implements JWordService {
 	private JWordMapper jWordMapper;
 	private TypeMapper typeMapper;
 	private WordMapper wordMapper;
+	private TypeService typeService;
 	
 	private JsonConvert jsonConvert;
 	public JWordServiceImpl(){
 		jsonConvert = new JsonConvert();
+	}
+	
+	public TypeService getTypeService() {
+		return typeService;
+	}
+	@Autowired
+	public void setTypeService(TypeService typeService) {
+		this.typeService = typeService;
 	}
 
 	public WordMapper getWordMapper() {
@@ -189,6 +201,79 @@ public class JWordServiceImpl implements JWordService {
 			words.add(wordp2);
 		}
 		return jsonConvert.list2json(words);
+	}
+
+	@Override
+	public List<wordFV> getAllJwordByTID1(Integer tid) {
+		// TODO Auto-generated method stub
+		List<JWord> jWords = jWordMapper.selectByTID(tid);
+		
+		Word word = new Word();
+		wordFV wordFV;
+		List<wordFV> words = new ArrayList<wordFV>();
+		for (JWord jWord : jWords) {
+			wordFV = new wordFV();
+			word = wordMapper.selectByPrimaryKey(jWord.getWid());
+			wordFV.setWid(word.getWid());
+			wordFV.setWword(word.getWword());
+			wordFV.setWsimilar(word.getWsimilar());
+			wordFV.setWoposite(word.getWoposite());
+			wordFV.setWfirstchar(word.getWfirstchar());
+			wordFV.setWvocatype(word.getWvocatype());
+			words.add(wordFV);
+			
+			if(jWord.getCouplewid()!=null&&jWord.getCouplewid()!=0){
+				wordFV = new wordFV();
+				word = wordMapper.selectByPrimaryKey(jWord.getCouplewid());
+				wordFV.setWid(word.getWid());
+				wordFV.setWword(word.getWword());
+				wordFV.setWsimilar(word.getWsimilar());
+				wordFV.setWoposite(word.getWoposite());
+				wordFV.setWfirstchar(word.getWfirstchar());
+				wordFV.setWvocatype(word.getWvocatype());
+				words.add(wordFV);
+			}
+		}
+		return words;
+	}
+
+	@Override
+	public List<wordFV> getAllJwordByTName(String tname) {
+		// TODO Auto-generated method stub
+		int tid = typeService.getTidByTName(tname);
+		System.out.println("tid="+tid);
+		List<JWord> jWords = jWordMapper.selectByTID(tid);
+		
+		Word word = new Word();
+		wordFV wordFV;
+		List<wordFV> words = new ArrayList<wordFV>();
+		for (JWord jWord : jWords) {
+			wordFV = new wordFV();
+			word = wordMapper.selectByPrimaryKey(jWord.getWid());
+			wordFV.setWid(word.getWid());
+			wordFV.setWword(word.getWword());
+			wordFV.setWsimilar(word.getWsimilar());
+			wordFV.setWoposite(word.getWoposite());
+			wordFV.setWfirstchar(word.getWfirstchar());
+			wordFV.setWvocatype(word.getWvocatype());
+			words.add(wordFV);
+			
+			if(jWord.getCouplewid()!=null&&jWord.getCouplewid()!=0){
+				wordFV = new wordFV();
+				word = wordMapper.selectByPrimaryKey(jWord.getCouplewid());
+				wordFV.setWid(word.getWid());
+				wordFV.setWword(word.getWword());
+				wordFV.setWsimilar(word.getWsimilar());
+				wordFV.setWoposite(word.getWoposite());
+				wordFV.setWfirstchar(word.getWfirstchar());
+				wordFV.setWvocatype(word.getWvocatype());
+				words.add(wordFV);
+			}
+		}
+		for(wordFV wordFV2: words){
+			System.out.println("wword="+wordFV2.getWword());
+		}
+		return words;
 	}
 		
 

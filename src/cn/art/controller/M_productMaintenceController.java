@@ -526,9 +526,14 @@ public class M_productMaintenceController {
 		
 		String tname = request.getParameter("TName");
 		int isok = 0;
-		Type type = new Type();
+		/*List<typeIdName> type = new List<typeIdName>();
 		type = typeService.selectAllByName(tname);
-		if(tname.equals(type.getTname())){
+		String tname1="";
+		for(typeIdName typeIdName:type){
+			tname1 = typeIdName.getTname();
+			break;
+		}
+		if(tname.equals(tname1)){
 			request.setAttribute("tnameIsExist", tname+"已存在");
 		}else{
 			type.setTname(tname);
@@ -549,7 +554,7 @@ public class M_productMaintenceController {
 			session.setAttribute("isNewaddType", "true");
 			session.setAttribute("tid", type.getTid());
 			
-		}
+		}*/
 		
 	
 		return "manager/testlogin";

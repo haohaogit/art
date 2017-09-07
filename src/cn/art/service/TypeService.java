@@ -15,7 +15,7 @@ public interface TypeService {
 
     public Type selectByPrimaryKey(Integer tid);
     public List<Type> selectAll();
-    public Type selectAllByName(String tname);
+    public List<typeIdName> selectAllByName(String tname);
     
     public List<typeIdName> selectAllByWordType(Integer twordtype);
    
@@ -27,6 +27,8 @@ public interface TypeService {
     public int updateByPrimaryKey(Type record);
     public String getOnlyIdandName();
     public String selectAllOnlyIDName();
+    public List<typeIdName> selectAllOnlyIDName1();
+    public int getTidByTName(String tname);
     public int getFirstTid();
 
 }

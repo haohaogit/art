@@ -12,10 +12,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import cn.art.model.Word;
 import cn.art.service.JWordService;
 import cn.art.service.SurveyService;
 import cn.art.service.TypeService;
 import cn.art.service.WordService;
+import cn.art.util.pojo.typeIdName;
 import cn.art.util.pojo.wordFV;
 
 
@@ -62,8 +64,6 @@ public class U_corpusController {
 	public List<wordFV> corpusBasic(Model model,HttpServletRequest request){
 		List<wordFV> words = new ArrayList<wordFV>();
 		words = wordService.getWordFV();
-		System.out.println("1111111111111111111111111111111111");
-		//request.setAttribute("words", words);
 		
 		return words;
 	}
@@ -73,52 +73,43 @@ public class U_corpusController {
 	public List<wordFV> corpusBasic1(Model model,HttpServletRequest request){
 		List<wordFV> words = new ArrayList<wordFV>();
 		words = wordService.getWordFV();
-		System.out.println("0000000000000000000000000000000000");
-		//request.setAttribute("words", words);
+		
 		return words;
 	}
 	
 	//基础意象语义库 详细词汇接口(比如"安宁")
-	@RequestMapping("basic/word/{wid}")
-	public String corpusBasicWordDetail(@PathVariable Integer wid,HttpServletRequest request){
-		String word = wordService.selectWordByPrimaryKey(wid);
-		request.setAttribute("word", word);
-		
-		return "manager/testlogin";
+	@RequestMapping("basic/word")
+	@ResponseBody
+	public Word corpusBasicWordDetail(Model model,Integer wid,HttpServletRequest request){
+		Word word = new Word();
+		word = wordService.selectByPrimaryKey(wid);
+		System.out.println("word success       11111111111111111111111");
+		return word;
 	}
 	
 	//降维词汇库 物件类型默认接口
-	@RequestMapping("dimense")
-	public String corpusDimense(HttpServletRequest request){
-		String types = typeService.selectAllOnlyIDName();
-		request.setAttribute("types", types);
+	@RequestMapping("dimense/type")
+	@ResponseBody
+	public List<typeIdName> corpusDimensetype(Model model){
+		List<typeIdName> typelist = new ArrayList<typeIdName>();
+		typelist = typeService.selectAllOnlyIDName1();
 		
-		int tid = typeService.getFirstTid();
-		String words = jWordService.getAllJwordByTID(tid);
-		request.setAttribute("words", words);
-		
-		//request.setAttribute("word", word);
-		
-		return "manager/testlogin";
-	}
-	
-	//基础意象语义库 详细词汇接口(比如"安宁")
-	@RequestMapping("dimense/{tid}")
-	public String corpusDimenseDetail(@PathVariable Integer tid,HttpServletRequest request){
-		String words = jWordService.getAllJwordByTID(tid);
-		request.setAttribute("words", words);
-		
-		return "manager/testlogin";
+		return typelist;
 	}
 	
 	//降维词汇库  详细词汇接口(比如"朝气")
-	@RequestMapping("dimense/word/{wid}")
-	public String corpusDimenseWordDetail1(@PathVariable Integer wid,HttpServletRequest request){
-		String word = wordService.selectWordByPrimaryKey(wid);
-		request.setAttribute("word", word);
+	@RequestMapping("dimense/words")
+	@ResponseBody
+	public List<wordFV> corpusDimense(Model model,String tname){
+		List<wordFV> words = new ArrayList<wordFV>();
 		
-		return "manager/testlogin";
+		words = jWordService.getAllJwordByTName(tname);
+		System.out.println("111  jWordService.getAllJwordByTName(tname);   11111111111111");
+		return words;
 	}
+	
+	
+	
 	
 	//问卷调查与检验 物件类型默认接口
 	@RequestMapping("question")

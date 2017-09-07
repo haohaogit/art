@@ -69,7 +69,7 @@ public class TypeServiceImpl implements TypeService {
 		return typeMapper.selectAll();
 	}
 	@Override
-	public Type selectAllByName(String tname) {
+	public List<typeIdName> selectAllByName(String tname) {
 		// TODO Auto-generated method stub
 		return typeMapper.selectAllByName(tname);
 	}
@@ -96,11 +96,28 @@ public class TypeServiceImpl implements TypeService {
 		return jsonConvert.list2json(typeIdNames);
 	}
 	@Override
+	public List<typeIdName> selectAllOnlyIDName1() {
+		// TODO Auto-generated method stub
+		List<typeIdName> typeIdNames = typeMapper.selectAllOnlyIdandName();
+		return typeIdNames;
+	}
+	@Override
 	public int getFirstTid() {
 		// TODO Auto-generated method stub
 		List<typeIdName> typeIdNames = typeMapper.selectAllOnlyIdandName();
 		int tid = 1;
 		for (typeIdName typeIdName : typeIdNames) {
+			tid = typeIdName.getTid();
+			break;
+		}
+		return tid;
+	}
+	@Override
+	public int getTidByTName(String tname) {
+		// TODO Auto-generated method stub
+		List<typeIdName> types = typeMapper.selectAllByName(tname);
+		int tid = 0;
+		for (typeIdName typeIdName : types) {
 			tid = typeIdName.getTid();
 			break;
 		}
