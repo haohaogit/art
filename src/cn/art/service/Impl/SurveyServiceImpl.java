@@ -8,16 +8,26 @@ import org.springframework.stereotype.Service;
 import cn.art.dao.SurveyMapper;
 import cn.art.model.Survey;
 import cn.art.service.SurveyService;
+import cn.art.service.TypeService;
 import cn.art.util.JsonConvert;
 import cn.art.util.pojo.surveyCA;
 
 @Service("SurveyService")
 public class SurveyServiceImpl implements SurveyService {
 	private SurveyMapper surveyMapper;
+	private TypeService typeService;
 	private JsonConvert jsonConvert ;
 	
 	public SurveyServiceImpl(){
 		jsonConvert = new JsonConvert();
+	}
+
+	public TypeService getTypeService() {
+		return typeService;
+	}
+	@Autowired
+	public void setTypeService(TypeService typeService) {
+		this.typeService = typeService;
 	}
 
 	public SurveyMapper getSurveyMapper() {
@@ -334,6 +344,19 @@ public class SurveyServiceImpl implements SurveyService {
 			break;
 		}
 		return choosesurvey;
+	}
+
+	@Override
+	public Survey selectByTname(String tname) {
+		// TODO Auto-generated method stub
+		int tid = typeService.getTidByTName(tname);
+		Survey survey1 = new Survey();
+		List<Survey> surveys = surveyMapper.selectByTID(tid);
+		for (Survey survey : surveys) {
+			survey1 = survey;
+			break;
+		}
+		return survey1;
 	}
 	
 

@@ -1,6 +1,7 @@
 package cn.art.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -8,16 +9,18 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import cn.art.service.BottomCaseService;
 import cn.art.service.TypeService;
-import cn.art.util.pojo.typeIdName;
+import cn.art.util.pojo.bottomCaseB;
+import cn.art.util.pojo.bottomCaseD;
 
 
 @Controller
-@RequestMapping("facade/infrastructure")
+@RequestMapping("html/facade")
 public class U_bottomController {
 	private BottomCaseService bottomCaseService;
 	private TypeService typeService;
@@ -37,41 +40,21 @@ public class U_bottomController {
 		this.bottomCaseService = bottomCaseService;
 	}
 	
-	//底层案列库  默认接口
-	@RequestMapping("")
-	public String bottomdefault(HttpServletRequest request){
-		String types = typeService.getOnlyIdandName();
-		request.setAttribute("types", types);
+	//底层案列库  
+	@RequestMapping("bottom")
+	@ResponseBody
+	public List<bottomCaseB> bottomdefault(Model model ,String tname,HttpServletRequest request){
 		
-		List<typeIdName> typeIdNames = typeService.selectAllOnlyIdandName();
+		List<bottomCaseB> bottomCaseBs = new ArrayList<bottomCaseB>();
 		
-		//取出默认第一个物件类型的tid
-		int tid = typeService.getFirstTid();
-		
-		String ticon = typeService.selectByPrimaryKey(tid).getTicon();
-		String TAnli = typeService.selectByPrimaryKey(tid).getTanli();
-		request.setAttribute("ticon", ticon);
-		request.setAttribute("TAnli", TAnli);
-		
-		String bottomcases = bottomCaseService.selectBottomcaseBByTID(tid);
-		request.setAttribute("bottomcases", bottomcases);
-		
-		return "manager/testlogin";
+		bottomCaseBs = bottomCaseService.selectBottomcaseBByTID1(tname);
+		for (bottomCaseB bottomCaseB : bottomCaseBs) {
+			System.out.println("Bctname="+bottomCaseB.getBctname());
+		}
+		return bottomCaseBs;
 	}
 	
-	//底层案列库 类型分类接口
-	@RequestMapping("{tid}")
-	public String bottomTypedetail(@PathVariable Integer tid,HttpServletRequest request){
-		
-		String ticon = typeService.selectByPrimaryKey(tid).getTicon();
-		String TAnli = typeService.selectByPrimaryKey(tid).getTanli();
-		request.setAttribute("ticon", ticon);
-		request.setAttribute("TAnli", TAnli);
-		
-		String bottomcases = bottomCaseService.selectBottomcaseBByTID(tid);
-		request.setAttribute("bottomcases", bottomcases);
-		return "manager/testlogin";
-	}
+	
 	/*
 	//底层案列 详细信息接口(比如"21070411a")
 	@RequestMapping("bottomcase/{bcid}")
@@ -83,14 +66,15 @@ public class U_bottomController {
 	}
 	*/
 	//底层案列 详细信息接口(比如"21070411a")
-		@RequestMapping("bottomcase/{bcid}")
-		public void bottomCasedetail(@PathVariable Integer bcid,
+		@RequestMapping("bottomcase/detail")
+		@ResponseBody
+		public bottomCaseD bottomCasedetail(Model model, Integer bcid,
 				HttpServletResponse response) throws IOException{
-			
-			String bottomcase = bottomCaseService.selectBottomcaseDByBCTID(bcid);
-			response.getWriter().println(bottomcase);
+			bottomCaseD bottomCaseD = new bottomCaseD();
+			bottomCaseD = bottomCaseService.selectBottomcaseDByBCID(bcid);
+			//response.getWriter().println(bottomcase);
 			//request.setAttribute("bottomcase", bottomcase);
-			//return "";
+			return bottomCaseD;
 		}
 
 }

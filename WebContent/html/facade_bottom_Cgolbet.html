@@ -96,6 +96,7 @@
 		}
 		.pic1{
 			height: 45px;
+			width:38.1px;
 		}
 		.rightinfo{
 			margin-left: 11px;
@@ -115,11 +116,33 @@
 	</style>
 </head>
 <body>
+	<script type="text/javascript" src="../js/facade.js"></script>
+	<script type="text/javascript">
+	        $(document).ready(function () {
+	        	
+			  //请求物件类型
+			  	$.ajax("facade/bottom?tname=高脚杯",
+		                // 发送请求的URL字符串
+		                {
+		                    type: "get",      //
+		                    async:true,  //
+		                    success: function(data){
+								//alert("facade bottom goblet test length="+data.length);
+								fillBottomGoblet(data);
+								
+		                    },
+		                    error: function(){
+		                        alert("数据发送失败denglu");
+		                    }
+		                });
+
+	        });
+	</script>
 	
 
 	
 
-	<div >
+	<div class="bottomContent">
 		<div>
             <div id="inputcorpus" id="style1" style="padding-top: 5.5px;">扩口型</div>
         </div>
@@ -266,7 +289,7 @@
 
 			<div style="margin-left: 11px;" class="rightinfo font">
 				<div class="contentinfo" >
-					<div><label id="p1">虎纹织物</label></div>
+					<div><label id="p1">小仙女高脚杯</label></div>
 					<div>产品品牌： <label id="p2">莱恩</label></div>
 					<div>产品外观类型： <label id="p3">兽纹图案类型</label></div>
 				</div>
@@ -274,11 +297,11 @@
 				<div class="otherpicinfo">
 					<label>案例图片:</label>
 					<div style="margin-top: 6px;">
-						<img class="pic1" src="../images/appearance/waiguan (22).png"/>
-						<img class="pic1" src="../images/appearance/waiguan (22).png"/>
-						<img class="pic1" src="../images/appearance/waiguan (22).png"/>
-						<img class="pic1" src="../images/appearance/waiguan (22).png"/>
-						<img class="pic1" src="../images/appearance/waiguan (22).png"/>
+						<img class="pic1 m1" src="../images/appearance/waiguan (22).png"/>
+						<img class="pic1 m2" src="../images/appearance/waiguan (22).png"/>
+						<img class="pic1 m3" src="../images/appearance/waiguan (22).png"/>
+						<img class="pic1 m4" src="../images/appearance/waiguan (22).png"/>
+						<img class="pic1 m5" src="../images/appearance/waiguan (22).png"/>
 						
 					</div>
 					
@@ -341,13 +364,14 @@
 			// var a = document.getElementById("detailBox");//获取div块对象
 		});
 
-		$(".isclick").on("click",function(){
+		$(".bottomContent").on("click",".isclick",function(){
 			$("#detailBox").css({display:'block'});
 			//alert($(this).html());
 			var ht=$(this).html();
-			alert($(ht).find('img').attr('src'));
+			//alert($(ht).find('img').attr('src'));
+			alert("id="+$(ht).find('img').attr('data-bcid'));
 			//var img=$(this).attr("src");
-			getDetailInfo($(ht).find('img').attr('src'));
+			getDetailInfo($(ht).find('img').attr('data-bcid'));
 			// $("#detailBox").css({display:'none'});
 			// var a = document.getElementById("detailBox");//获取div块对象
 		});
@@ -362,7 +386,23 @@
 	        var Sgao2= (Width - gao2)/2+"px";
 	        a.style.top=Sgao1;
 	        a.style.left=Sgao2;
-	        $("#mainpic").attr("src",msg);
+	        
+	      //请求物件类型
+		  	$.ajax("facade/bottomcase/detail?bcid="+msg,
+	                // 发送请求的URL字符串
+	                {
+	                    type: "get",      //
+	                    async:true,  //
+	                    success: function(data){
+							//alert("facade bottom goblet test length="+data.length);
+							fillBottomDetailInfo(data);
+							
+	                    },
+	                    error: function(){
+	                        alert("数据发送失败denglu");
+	                    }
+	                });
+	        
 
 		}
 

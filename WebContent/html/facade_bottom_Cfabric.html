@@ -101,8 +101,8 @@
 			height: 190px;
 		}
 		.pic1{
-			/*height: 45px;*/
-			width: 44px;
+			height: 45px;
+			width: 38.1px;
 		}
 		.rightinfo{
 			margin-left: 11px;
@@ -122,11 +122,29 @@
 	</style>
 </head>
 <body>
-	
+	<script type="text/javascript">
+	        $(document).ready(function () {
+	        	
+			  //请求物件类型
+			  	$.ajax("facade/bottom?tname=织物",
+		                // 发送请求的URL字符串
+		                {
+		                    type: "get",      //
+		                    async:true,  //
+		                    success: function(data){
+								alert("facade bottom goblet test length="+data.length);
+								fillBottomfabric(data);
+								
+		                    },
+		                    error: function(){
+		                        alert("数据发送失败denglu");
+		                    }
+		                });
 
-	
+	        });
+	</script>
 
-	<div style="width: 101%;">
+	<div class="bottomFabric" style="width: 100%;">
 		<div>
             <div id="inputcorpus" id="style1" style="padding-top: 5.5px;">兽纹图案型</div>
         </div>
@@ -355,7 +373,7 @@
 
 			<div style="margin-left: 11px;" class="rightinfo font">
 				<div class="contentinfo" >
-					<div><label id="p1">克里斯汀游艇</label></div>
+					<div><label id="p1">虎皮织物</label></div>
 					<div>产品品牌： <label id="p2">浩浩</label></div>
 					<div>产品外观类型： <label id="p3">端庄</label></div>
 				</div>
@@ -452,16 +470,15 @@
 			// var a = document.getElementById("detailBox");//获取div块对象
 		});
 
-		$(".isclick").on("click",function(){
+		
+		$(".bottomFabric").on("click",".isclick",function(){
 			$("#detailBox").css({display:'block'});
-			//alert($(this).html());
+			
 			var ht=$(this).html();
-			alert($(ht).find('img').attr('src'));
-			//alert($(ht).find('.descri1').html());
+			
+			alert($(ht).find('img').attr('data-bcid'));
 
-
-			//var img=$(this).attr("src");
-			getDetailInfo($(ht).find('img').attr('src'),$(ht).find('.descri1').html());
+			getDetailInfo($(ht).find('img').attr('data-bcid'));
 			// $("#detailBox").css({display:'none'});
 			// var a = document.getElementById("detailBox");//获取div块对象
 		});
@@ -476,8 +493,24 @@
 	        var Sgao2= (Width - gao2)/2+"px";
 	        a.style.top=Sgao1;
 	        a.style.left=Sgao2;
-	        $("#mainpic").attr("src",msg);
-	        $("#p3").html(content);
+	        
+	        //请求物件类型
+		  	$.ajax("facade/bottomcase/detail?bcid="+msg,
+	                // 发送请求的URL字符串
+	                {
+	                    type: "get",      //
+	                    async:true,  //
+	                    success: function(data){
+							//alert("facade bottom goblet test length="+data.length);
+							fillBottomDetailInfo(data);
+							
+	                    },
+	                    error: function(){
+	                        alert("数据发送失败denglu");
+	                    }
+	                });
+	        
+	      
 
 		}
 

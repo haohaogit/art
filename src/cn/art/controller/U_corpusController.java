@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import cn.art.model.Survey;
 import cn.art.model.Word;
 import cn.art.service.JWordService;
 import cn.art.service.SurveyService;
@@ -104,7 +105,7 @@ public class U_corpusController {
 		List<wordFV> words = new ArrayList<wordFV>();
 		
 		words = jWordService.getAllJwordByTName(tname);
-		System.out.println("111  jWordService.getAllJwordByTName(tname);   11111111111111");
+		//System.out.println("111  jWordService.getAllJwordByTName(tname);   11111111111111");
 		return words;
 	}
 	
@@ -113,15 +114,14 @@ public class U_corpusController {
 	
 	//问卷调查与检验 物件类型默认接口
 	@RequestMapping("question")
-	public String corpusQuestion(HttpServletRequest request){
-		String types = typeService.selectAllOnlyIDName();
-		request.setAttribute("types", types);
+	@ResponseBody
+	public Survey corpusQuestion(Model model,String tname,HttpServletRequest request){
+		Survey survey = new Survey();
 		
-		int tid = typeService.getFirstTid();
-		String surveys = seurveyService.selectSurveysByTID(tid);
-		request.setAttribute("surveys", surveys);
-		
-		return "manager/testlogin";
+		survey = seurveyService.selectByTname(tname);
+		/*System.out.println("survey.getWordsurvey "+survey.getWordsurvey());
+		System.out.println("survey 11111111111111  000000000000");*/
+		return survey;
 	}
 	
 	//问卷调查与检验   xx物件类型调查接口

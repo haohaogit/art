@@ -499,4 +499,29 @@ function filldimensionContent(data){
 	}
 	$(".macro").html(html);
 }
+function fillquestionHref(data){
+	
+	
+	/*$('.hengStep1').forEach(function(value, index){
+		value.click(function(){
+			window.open(hrafList[index]);
+		});
+		// value[0].href = hrafList[index];
+	})*/
+	
+	$('.hengStep1').eq(0).attr('data-url',data.wordsurvey);
+	$('.hengStep1').eq(1).attr('data-url',data.wordresult);
+	$('.hengStep1').eq(2).attr('data-url',data.connectsurvey);
+	$('.hengStep1').eq(3).attr('data-url',data.connectresult);
+	$('.hengStep1').eq(4).attr('data-url',data.algorithms);
+	$('.hengStep1').eq(5).attr('data-url',data.ratio);
+	
+	/*
+	$('.hengStep1').eq(2).click(function(){
+		alert("data.connectsurvey");
+		window.open(data.connectsurvey);
+	});*/
+	
+	
+}
 

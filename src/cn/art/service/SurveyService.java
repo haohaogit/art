@@ -13,6 +13,7 @@ public interface SurveyService {
     int insertSelective(Survey record);
 
     Survey selectByPrimaryKey(Integer sid);
+    Survey selectByTname(String tname);
     List<Survey> selectByTID(Integer tid);
     String selectSurveysByTID(Integer tid);
 

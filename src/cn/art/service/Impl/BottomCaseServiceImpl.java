@@ -12,17 +12,28 @@ import cn.art.dao.BottomCaseTypeMapper;
 import cn.art.model.BottomCase;
 import cn.art.model.BottomCaseType;
 import cn.art.service.BottomCaseService;
+import cn.art.service.TypeService;
 import cn.art.util.JsonConvert;
 import cn.art.util.pojo.bottomCaseB;
 import cn.art.util.pojo.bottomCaseD;
+import cn.art.util.pojo.typeIdName;
 @Service("BottomCaseService")   //@Service是一个注解啊，告诉spring创建一个实现类的实例啊。。。
 public class BottomCaseServiceImpl implements BottomCaseService {
 	private BottomCaseMapper bottomCaseMapper;
 	private BottomCaseTypeMapper bottomCaseTypeMapper;
+	private TypeService typeService;
 	private JsonConvert jsonConvert;
 	
 	public BottomCaseServiceImpl(){
 		jsonConvert = new JsonConvert();
+	}
+
+	public TypeService getTypeService() {
+		return typeService;
+	}
+	@Autowired
+	public void setTypeService(TypeService typeService) {
+		this.typeService = typeService;
 	}
 
 	public BottomCaseTypeMapper getBottomCaseTypeMapper() {
@@ -188,6 +199,54 @@ public class BottomCaseServiceImpl implements BottomCaseService {
 		// TODO Auto-generated method stub
 		
 		return bottomCaseMapper.selectByName(casename);
+	}
+
+	@Override
+	public List<bottomCaseB> selectBottomcaseBByTID1(String tname) {
+		// TODO Auto-generated method stub
+		
+		List<typeIdName> typeIdNames = typeService.selectAllByName(tname);
+		int tid = 0;
+		for (typeIdName typeIdName : typeIdNames) {
+			tid = typeIdName.getTid();
+			break;
+		}
+		List<BottomCase> bottomCases = bottomCaseMapper.selectByTID(tid);
+		List<bottomCaseB> bottomCaseBs = new LinkedList<bottomCaseB>();
+		bottomCaseB bottomCaseB;
+		for (BottomCase bottomCase : bottomCases) {
+			bottomCaseB = new bottomCaseB();
+			bottomCaseB.setBcid(bottomCase.getBcid());
+			bottomCaseB.setTid(bottomCase.getTid());
+			bottomCaseB.setBctname(bottomCaseTypeMapper.selectByPrimaryKey(bottomCase.getBctid()).getBctname());
+			bottomCaseB.setCasename(bottomCase.getCasename());
+			bottomCaseB.setCaseimg(bottomCase.getCaseimg());
+			
+			bottomCaseBs.add(bottomCaseB);
+		}
+		return bottomCaseBs;
+		
+	}
+
+	@Override
+	public bottomCaseD selectBottomcaseDByBCID(Integer bcid) {
+		// TODO Auto-generated method stub
+		 BottomCase bottomCase = bottomCaseMapper.selectByPrimaryKey(bcid);
+		 bottomCaseD bottomCaseD= new bottomCaseD();
+		 
+		 bottomCaseD.setBcid(bottomCase.getBcid());
+		 bottomCaseD.setTid(bottomCase.getTid());
+		 bottomCaseD.setCasename(bottomCase.getCasename());
+		 bottomCaseD.setBctname(bottomCaseTypeMapper.selectByPrimaryKey(bottomCase.getBctid()).getBctname());
+		 bottomCaseD.setCasebrand(bottomCase.getCasebrand());
+		 bottomCaseD.setCaseimg(bottomCase.getCaseimg());
+		 bottomCaseD.setCaseimg1(bottomCase.getCaseimg1());
+		 bottomCaseD.setCaseimg2(bottomCase.getCaseimg2());
+		 bottomCaseD.setCaseimg3(bottomCase.getCaseimg3());
+		 bottomCaseD.setCaseimg4(bottomCase.getCaseimg4());
+		 
+		return bottomCaseD;
+		
 	}
 	
 

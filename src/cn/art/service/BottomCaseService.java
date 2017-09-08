@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Map;
 
 import cn.art.model.BottomCase;
+import cn.art.util.pojo.bottomCaseB;
+import cn.art.util.pojo.bottomCaseD;
 
 public interface BottomCaseService {
 	int deleteByPrimaryKey(Integer bcid);
@@ -15,8 +17,12 @@ public interface BottomCaseService {
     BottomCase selectByPrimaryKey(Integer bcid);
     List<BottomCase> selectByTIDandBCTID(Map map);
     
+    List<bottomCaseB> selectBottomcaseBByTID1(String tname);
     String selectBottomcaseBByTID(Integer tid);
+    
+    bottomCaseD selectBottomcaseDByBCID(Integer bcid);
     String selectBottomcaseDByBCTID(Integer bcid);
+    
     List<BottomCase> selectByName1(String  casename);
     String selectByName(String  casename);
     int CountNumByName(String  casename);
