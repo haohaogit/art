@@ -211,4 +211,10 @@ public class TextureServiceImpl implements TextureService {
 		return textureMapper.selectByName(tdescription);
 	}
 
+	@Override
+	public List<Texture> selectByTID(Integer tid) {
+		// TODO Auto-generated method stub
+		return textureMapper.selectByTID(tid);
+	}
+
 }

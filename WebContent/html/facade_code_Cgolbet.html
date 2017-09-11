@@ -31,7 +31,6 @@
 			/*padding-left: 12px;*/
 			display: flex;
 			justify-content: center;
-
 		}
 		.lunkuo1{
 			background-color: #bbc3c4;
@@ -59,7 +58,6 @@
 	        border: 3px solid #444;
 	        display: block;
 	        border-radius: 7px;
-
 			/*position: absolute;
 			left: 460px;
 			top: 100px;
@@ -86,7 +84,6 @@
 			justify-content: center;
 			align-items: center;
 			height: 100%;
-
 		}
 		.pic{
 			height: 190px;
@@ -112,11 +109,30 @@
 	</style>
 </head>
 <body>
-	
+	<script type="text/javascript" src="../js/facade.js"></script>
+	<script type="text/javascript">
+	        $(document).ready(function () {
+	        	
+			  //请求物件类型
+			  	$.ajax("facade/code?tname=高脚杯",
+		                // 发送请求的URL字符串
+		                {
+		                    type: "get",      //
+		                    async:true,  //
+		                    success: function(data){
+								//alert("facade bottom goblet test length="+data.length);
+								fillCodeGoblet(data);
+								
+		                    },
+		                    error: function(){
+		                        alert("数据发送失败denglu");
+		                    }
+		                });
 
-	
+	        });
+	</script>
 
-	<div style="width: 101%;">
+	<div class="codeCgoblet" style="width: 100%;">
 		<div>
             <div id="inputcorpus" id="style1" style="padding-top: 5.5px;">轮廓编码</div>
         </div>
@@ -309,49 +325,42 @@
 
 	
 	<script type="text/javascript">
-
 		var now = "theBaseGoblet";
 		var nowLeft = "baseGoblet";
 		$("#baseGoblet").css("color","#00a5bd");
-
-
 		
 		$(".facade1").on("click",function(){
 			$(".facade1").css({color:'black'});
 		   	$(this).css({color:'#00A5BD'});
 		});
-
 		
-		function loadmore(){
+		$(".codeCgoblet").on("click",".more1",function(){
 			window.location.href="facade_code_outline_golbet.html";
-		}
-
-		function loadmore1(){
-			window.location.href="facade_code_part_golbet.html";
-		}
-		function loadmore2(){
+		});
+		
+		$(".codeCgoblet").on("click",".more2",function(){
 			window.location.href="facade_code_color_golbet.html";
-		}
-
-		function loadmore3(){
+		});
+		
+		$(".codeCgoblet").on("click",".more3",function(){
+			window.location.href="facade_code_part_golbet.html";
+		});
+		
+		$(".codeCgoblet").on("click",".more4",function(){
 			window.location.href="facade_code_texture_golbet.html";
-		}
-
-
-
-
+		});
+		
+		
+		
 		$(".Btn").on("click",function(){
 			$("#detailBox").css({display:'block'});
 			getDetailInfo();
 		});
-
 		$(".close_btn").on("click",function(){
-
 			$("#detailBox").css({display:'none'});
 			// var a = document.getElementById("detailBox");//获取div块对象
 		});
-
-		$(".isclick").on("click",function(){
+		$(".codeCgoblet").on("click",".isclick",function(){
 			$("#detailBox").css({display:'block'});
 			//alert($(this).html());
 			var ht=$(this).html();
@@ -361,7 +370,6 @@
 			// $("#detailBox").css({display:'none'});
 			// var a = document.getElementById("detailBox");//获取div块对象
 		});
-
 		function getDetailInfo(msg){
 			var a = document.getElementById("detailBox");//获取div块对象
 	        var Height=document.documentElement.clientHeight;//取得浏览器页面可视区域的宽度
@@ -373,9 +381,7 @@
 	        a.style.top=Sgao1;
 	        a.style.left=Sgao2;
 	        $("#mainpic").attr("src",msg);
-
 		}
-
 		
 	</script>
 

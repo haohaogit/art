@@ -237,4 +237,10 @@ public class OutLineServiceImpl implements OutLineService {
 		return outLineMapper.selectByName(odescription);
 	}
 
+	@Override
+	public List<OutLine> selectByTID(Integer tid) {
+		// TODO Auto-generated method stub
+		return outLineMapper.selectByTID(tid);
+	}
+
 }

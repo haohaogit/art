@@ -112,12 +112,34 @@
 	</style>
 </head>
 <body>
+	<script type="text/javascript" src="../js/facade.js"></script>
 	<script type="text/javascript">
 	        $(document).ready(function () {
 	//  			alert(11);
 	            $('.configHead').load('conheader_waiguan.html');
 	            $('.configFoot').load('confooter.html');
 	        });
+	        
+	      
+	        //请求物件类型
+		  	$.ajax("facade/code/outline?tname=高脚杯",
+	                // 发送请求的URL字符串
+	                {
+	                    type: "get",      //
+	                    async:true,  //
+	                    success: function(data){
+							alert("facade code goblet test length="+data.length);
+							fillCodeoutline(data);
+							
+	                    },
+	                    error: function(){
+	                        alert("数据发送失败denglu");
+	                    }
+	                });
+	        
+	        
+	        
+	        
 	</script>
 
 	<!-- 	头部 -->
@@ -162,7 +184,7 @@
 			</div>
 
 			<div id="facadeContent">
-				<div style="width: 101%;">
+				<div class="outlineContent" style="width: 100%;">
 					<div>
 			            <div id="inputcorpus" id="style1" style="padding-top: 5.5px;">扩口型轮廓编码</div>
 			        </div>
@@ -465,11 +487,12 @@
 			// var a = document.getElementById("detailBox");//获取div块对象
 		});
 
-		$(".isclick").on("click",function(){
+		$(".outlineContent").on("click",".isclick",function(){
 			$("#detailBox").css({display:'block'});
 			//alert($(this).html());
 			var ht=$(this).html();
 			alert($(ht).find('img').attr('src'));
+			alert($(ht).find('img').attr('data-oid'));
 			//var img=$(this).attr("src");
 			getDetailInfo($(ht).find('img').attr('src'));
 			// $("#detailBox").css({display:'none'});

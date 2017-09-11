@@ -1,28 +1,75 @@
 package cn.art.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import cn.art.dao.ColorTypeMapper;
+import cn.art.dao.OutLineTypeMapper;
+import cn.art.dao.PartTypeMapper;
+import cn.art.dao.TextureTypeMapper;
+import cn.art.model.Color;
+import cn.art.model.OutLine;
+import cn.art.model.Part;
+import cn.art.model.Texture;
 import cn.art.service.ColorService;
 import cn.art.service.OutLineService;
 import cn.art.service.PartService;
 import cn.art.service.TextureService;
 import cn.art.service.TypeService;
+import cn.art.util.pojo.codeMerge;
+import cn.art.util.pojo.typeIdName;
 
 
 @Controller
-@RequestMapping("facade/code")
+@RequestMapping("html/facade/code")
 public class U_codingController {
 	private TypeService typeService;
 	private OutLineService outLineService;
+	private OutLineTypeMapper outLineTypeMapper;
 	private ColorService colorService;
+	private ColorTypeMapper colorTypeMapper;
 	private PartService partService;
+	private PartTypeMapper partTypeMapper;
 	private TextureService textureService;
+	private TextureTypeMapper textureTypeMapper;
 	
+	public OutLineTypeMapper getOutLineTypeMapper() {
+		return outLineTypeMapper;
+	}
+	@Autowired
+	public void setOutLineTypeMapper(OutLineTypeMapper outLineTypeMapper) {
+		this.outLineTypeMapper = outLineTypeMapper;
+	}
+	public ColorTypeMapper getColorTypeMapper() {
+		return colorTypeMapper;
+	}
+	@Autowired
+	public void setColorTypeMapper(ColorTypeMapper colorTypeMapper) {
+		this.colorTypeMapper = colorTypeMapper;
+	}
+	public PartTypeMapper getPartTypeMapper() {
+		return partTypeMapper;
+	}
+	@Autowired
+	public void setPartTypeMapper(PartTypeMapper partTypeMapper) {
+		this.partTypeMapper = partTypeMapper;
+	}
+	public TextureTypeMapper getTextureTypeMapper() {
+		return textureTypeMapper;
+	}
+	@Autowired
+	public void setTextureTypeMapper(TextureTypeMapper textureTypeMapper) {
+		this.textureTypeMapper = textureTypeMapper;
+	}
 	public TypeService getTypeService() {
 		return typeService;
 	}
@@ -61,47 +108,192 @@ public class U_codingController {
 	
 	//编码案列库 默认接口
 	@RequestMapping("")
-	public String codeingDefault(HttpServletRequest request){
-		String types = typeService.getOnlyIdandName();
-		request.setAttribute("types", types);
+	@ResponseBody
+	public List<codeMerge> codeingDefault(Model model,String tname, HttpServletRequest request){
+		List<codeMerge> codeMerges = new ArrayList<codeMerge>();
+		codeMerge codeMerge;
 		
-		//获取默认的第一个物件类型的id号
-		int tid = typeService.getFirstTid();
+		List<typeIdName> typeIdNames = typeService.selectAllByName(tname);
+		int tid = 0;
+		for (typeIdName typeIdName : typeIdNames) {
+			tid = typeIdName.getTid();
+			break;
+		}
 		
-		String TBianma = typeService.selectByPrimaryKey(tid).getTbianma();
-		String TIcon = typeService.selectByPrimaryKey(tid).getTicon();
-		request.setAttribute("TBianma", TBianma);
-		request.setAttribute("TIcon", TIcon);
+		List<OutLine> outLines = outLineService.selectByTID(tid);
+		for (OutLine outLine : outLines) {
+			codeMerge = new codeMerge();
+			codeMerge.setType("outline");
+			codeMerge.setId(outLine.getOid());
+			codeMerge.setTid(outLine.getTid());
+			codeMerge.setCodename(outLine.getOdescription());
+			codeMerge.setCodetypename(outLineTypeMapper.selectByPrimaryKey(outLine.getOtid()).getOname());
+			codeMerge.setCaseimg(outLine.getOimg());
+			
+			codeMerges.add(codeMerge);
+		}
 		
-		String colors = colorService.getColorBasic4(tid);
-		String outlines = outLineService.selectOutlineB4(tid);
-		String parts = partService.getPartBasic4(tid);
-		String textures = textureService.getTextureBasic4(tid);
-		request.setAttribute("colors", colors);
-		request.setAttribute("outlines", outlines);
-		request.setAttribute("parts", parts);
-		request.setAttribute("textures", textures);
+		List<Color> colors = colorService.selectByTID(tid);
+		for (Color color : colors) {
+			codeMerge = new codeMerge();
+			codeMerge.setType("color");
+			codeMerge.setId(color.getCid());
+			codeMerge.setTid(color.getTid());
+			codeMerge.setCodename(color.getCdescription());
+			codeMerge.setCodetypename(colorTypeMapper.selectByPrimaryKey(color.getCbid()).getCbname());
+			codeMerge.setCaseimg(color.getCimg());
+			
+			codeMerges.add(codeMerge);
+		}
+		List<Part> parts = partService.selectByTID(tid);
+		for (Part part : parts) {
+			codeMerge = new codeMerge();
+			codeMerge.setType("part");
+			codeMerge.setId(part.getPid());
+			codeMerge.setTid(part.getTid());
+			codeMerge.setCodename(part.getPdescription());
+			codeMerge.setCodetypename(partTypeMapper.selectByPrimaryKey(part.getPbid()).getPbname());
+			codeMerge.setCaseimg(part.getPimg());
+			
+			codeMerges.add(codeMerge);
+		}
 		
-		return "";
+		List<Texture> textures = textureService.selectByTID(tid);
+		for (Texture texture : textures) {
+			codeMerge = new codeMerge();
+			codeMerge.setType("texture");
+			codeMerge.setId(texture.getTextureid());
+			codeMerge.setTid(texture.getTid());
+			codeMerge.setCodename(texture.getTdescription());
+			codeMerge.setCodetypename(textureTypeMapper.selectByPrimaryKey(texture.getTtid()).getTtname());
+			codeMerge.setCaseimg(texture.getTimg());
+			
+			codeMerges.add(codeMerge);
+		}
+		
+		
+		return codeMerges;
 	}
 	
-	//编码案列库 类型分类详细 接口
-	@RequestMapping("{tid}")
-	public String codeingtypeClassify(@PathVariable Integer tid,HttpServletRequest request){
+	//编码案列库 类型分类详细 接口  轮廓
+	@RequestMapping("outline")
+	@ResponseBody
+	public List<codeMerge> codeingoutlineClassify(Model model, String tname,HttpServletRequest request){
+		List<typeIdName> typeIdNames = typeService.selectAllByName(tname);
+		int tid = 0;
+		for (typeIdName typeIdName : typeIdNames) {
+			tid = typeIdName.getTid();
+			break;
+		}
+		List<codeMerge> codeMerges = new ArrayList<codeMerge>();
+		codeMerge codeMerge;
 		
-		String TIcon = typeService.selectByPrimaryKey(tid).getTicon();
-		request.setAttribute("TIcon", TIcon);
+	
+		List<OutLine> outLines = outLineService.selectByTID(tid);
+		for (OutLine outLine : outLines) {
+			codeMerge = new codeMerge();
+			codeMerge.setType("outline");
+			codeMerge.setId(outLine.getOid());
+			codeMerge.setTid(outLine.getTid());
+			codeMerge.setCodename(outLine.getOdescription());
+			codeMerge.setCodetypename(outLineTypeMapper.selectByPrimaryKey(outLine.getOtid()).getOname());
+			codeMerge.setCaseimg(outLine.getOimg());
+			
+			codeMerges.add(codeMerge);
+		}
 		
-		String colors = colorService.getColorBasic4(tid);
-		String outlines = outLineService.selectOutlineB4(tid);
-		String parts = partService.getPartBasic4(tid);
-		String textures = textureService.getTextureBasic4(tid);
-		request.setAttribute("colors", colors);
-		request.setAttribute("outlines", outlines);
-		request.setAttribute("parts", parts);
-		request.setAttribute("textures", textures);
+		return codeMerges;
+	}
+	
+	//编码案列库 类型分类详细 接口  色彩
+	@RequestMapping("color")
+	@ResponseBody
+	public List<codeMerge> codeincolorClassify(Model model, String tname,HttpServletRequest request){
+		List<typeIdName> typeIdNames = typeService.selectAllByName(tname);
+		int tid = 0;
+		for (typeIdName typeIdName : typeIdNames) {
+			tid = typeIdName.getTid();
+			break;
+		}
+		List<codeMerge> codeMerges = new ArrayList<codeMerge>();
+		codeMerge codeMerge;
 		
-		return "";
+	
+		List<Color> colors = colorService.selectByTID(tid);
+		for (Color color: colors) {
+			codeMerge = new codeMerge();
+			codeMerge.setType("color");
+			codeMerge.setId(color.getCid());
+			codeMerge.setTid(color.getTid());
+			codeMerge.setCodename(color.getCdescription());
+			codeMerge.setCodetypename(colorTypeMapper.selectByPrimaryKey(color.getCbid()).getCbname());
+			codeMerge.setCaseimg(color.getCimg());
+			
+			codeMerges.add(codeMerge);
+		}
+		
+		return codeMerges;
+	}
+	
+	//编码案列库 类型分类详细 接口  部件
+	@RequestMapping("part")
+	@ResponseBody
+	public List<codeMerge> codeinpartClassify(Model model, String tname,HttpServletRequest request){
+		List<typeIdName> typeIdNames = typeService.selectAllByName(tname);
+		int tid = 0;
+		for (typeIdName typeIdName : typeIdNames) {
+			tid = typeIdName.getTid();
+			break;
+		}
+		List<codeMerge> codeMerges = new ArrayList<codeMerge>();
+		codeMerge codeMerge;
+		
+	
+		List<Part> parts = partService.selectByTID(tid);
+		for (Part part: parts) {
+			codeMerge = new codeMerge();
+			codeMerge.setType("part");
+			codeMerge.setId(part.getPid());
+			codeMerge.setTid(part.getTid());
+			codeMerge.setCodename(part.getPdescription());
+			codeMerge.setCodetypename(partTypeMapper.selectByPrimaryKey(part.getPbid()).getPbname());
+			codeMerge.setCaseimg(part.getPimg());
+			
+			codeMerges.add(codeMerge);
+		}
+		
+		return codeMerges;
+	}
+		
+		
+	//编码案列库 类型分类详细 接口  材质
+	@RequestMapping("texture")
+	@ResponseBody
+	public List<codeMerge> codeintextureClassify(Model model, String tname,HttpServletRequest request){
+		List<typeIdName> typeIdNames = typeService.selectAllByName(tname);
+		int tid = 0;
+		for (typeIdName typeIdName : typeIdNames) {
+			tid = typeIdName.getTid();
+			break;
+		}
+		List<codeMerge> codeMerges = new ArrayList<codeMerge>();
+		codeMerge codeMerge;
+		
+	
+		List<Texture> textures = textureService.selectByTID(tid);
+		for (Texture texture: textures) {
+			codeMerge = new codeMerge();
+			codeMerge.setType("texture");
+			codeMerge.setId(texture.getTextureid());
+			codeMerge.setTid(texture.getTid());
+			codeMerge.setCodename(texture.getTdescription());
+			codeMerge.setCodetypename(textureTypeMapper.selectByPrimaryKey(texture.getTtid()).getTtname());
+			codeMerge.setCaseimg(texture.getTimg());
+			
+			codeMerges.add(codeMerge);
+		}
+		
+		return codeMerges;
 	}
 	
 	//"加载更多"  接口

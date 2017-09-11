@@ -112,12 +112,30 @@
 	</style>
 </head>
 <body>
+	<script type="text/javascript" src="../js/facade.js"></script>
 	<script type="text/javascript">
 	        $(document).ready(function () {
 	//  			alert(11);
 	            $('.configHead').load('conheader_waiguan.html');
 	            $('.configFoot').load('confooter.html');
 	        });
+	        
+	        
+	        //请求物件类型
+		  	$.ajax("facade/code/color?tname=高脚杯",
+	                // 发送请求的URL字符串
+	                {
+	                    type: "get",      //
+	                    async:true,  //
+	                    success: function(data){
+							alert("facade code goblet color test length="+data.length);
+							fillCodecolor(data);
+							
+	                    },
+	                    error: function(){
+	                        alert("数据发送失败denglu");
+	                    }
+	                });
 	</script>
 
 	<!-- 	头部 -->
@@ -162,7 +180,7 @@
 			</div>
 
 			<div id="facadeContent">
-				<div style="width: 101%;">
+				<div class="colorContent" style="width: 100%;">
 					<div>
 			            <div id="inputcorpus" id="style1" style="padding-top: 5.5px;">暖色系编码</div>
 			        </div>
@@ -276,7 +294,7 @@
 				</div>
 
 
-				<button class="Btn">按钮</button>
+				<!-- <button class="Btn">按钮</button> -->
 				<div id="detailBox">
 					<a href="javascript:void(0)" title="关闭窗口" class="close_btn1" id="closeBtn" style="color: rgb(81, 163, 187);">×</a>
 					<div class="detail">
@@ -439,12 +457,13 @@
 			$("#detailBox").css({display:'none'});
 			// var a = document.getElementById("detailBox");//获取div块对象
 		});
-
-		$(".isclick").on("click",function(){
+		
+		$(".colorContent").on("click",".isclick",function(){
 			$("#detailBox").css({display:'block'});
 			//alert($(this).html());
 			var ht=$(this).html();
 			alert($(ht).find('img').attr('src'));
+			alert($(ht).find('img').attr('data-cid'));
 			//var img=$(this).attr("src");
 			getDetailInfo($(ht).find('img').attr('src'));
 			// $("#detailBox").css({display:'none'});

@@ -122,11 +122,32 @@
 	</style>
 </head>
 <body>
-	
+	<script type="text/javascript" src="../js/facade.js"></script>
+	<script type="text/javascript">
+	        $(document).ready(function () {
+	        	
+			  //请求物件类型
+			  	$.ajax("facade/bottom?tname=游艇",
+		                // 发送请求的URL字符串
+		                {
+		                    type: "get",      //
+		                    async:true,  //
+		                    success: function(data){
+								alert("facade bottom goblet test length="+data.length);
+								fillBottomHouseboat(data);
+								
+		                    },
+		                    error: function(){
+		                        alert("数据发送失败denglu");
+		                    }
+		                });
+
+	        });
+	</script>
 
 	
 
-	<div style="width: 101%;">
+	<div class="bottomHouseboat" style="width: 100%;">
 		<div>
             <div id="inputcorpus" id="style1" style="padding-top: 5.5px;">端庄型</div>
         </div>
@@ -363,11 +384,11 @@
 				<div class="otherpicinfo">
 					<label>案例图片:</label>
 					<div style="margin-top: 6px;">
-						<img class="pic1" src="../images/appearance/houseboat (1).jpg"/>
-						<img class="pic1" src="../images/appearance/houseboat (2).jpg"/>
-						<img class="pic1" src="../images/appearance/houseboat (2).jpg"/>
-						<img class="pic1" src="../images/appearance/houseboat (2).jpg"/>
-						<img class="pic1" src="../images/appearance/houseboat (3).jpg"/>
+						<img class="pic1 m1" src="../images/appearance/houseboat (1).jpg"/>
+						<img class="pic1 m2" src="../images/appearance/houseboat (2).jpg"/>
+						<img class="pic1 m3" src="../images/appearance/houseboat (2).jpg"/>
+						<img class="pic1 m4" src="../images/appearance/houseboat (2).jpg"/>
+						<img class="pic1 m5" src="../images/appearance/houseboat (3).jpg"/>
 						
 					</div>
 					
@@ -442,10 +463,10 @@
 
 
 
-		$(".Btn").on("click",function(){
+		/* $(".Btn").on("click",function(){
 			$("#detailBox").css({display:'block'});
 			getDetailInfo();
-		});
+		}); */
 
 		$(".close_btn").on("click",function(){
 
@@ -453,19 +474,27 @@
 			// var a = document.getElementById("detailBox");//获取div块对象
 		});
 
-		$(".isclick").on("click",function(){
+		$(".bottomHouseboat").on("click",".isclick",function(){
+			$("#detailBox").css({display:'block'});
+			
+			var ht=$(this).html();
+			
+			alert($(ht).find('img').attr('data-bcid'));
+
+			getDetailInfo($(ht).find('img').attr('data-bcid'));
+			// $("#detailBox").css({display:'none'});
+			// var a = document.getElementById("detailBox");//获取div块对象
+		});
+		/* $(".isclick").on("click",function(){
 			$("#detailBox").css({display:'block'});
 			//alert($(this).html());
 			var ht=$(this).html();
 			alert($(ht).find('img').attr('src'));
-			//alert($(ht).find('.descri1').html());
-
-
 			//var img=$(this).attr("src");
 			getDetailInfo($(ht).find('img').attr('src'),$(ht).find('.descri1').html());
 			// $("#detailBox").css({display:'none'});
 			// var a = document.getElementById("detailBox");//获取div块对象
-		});
+		}); */
 
 		function getDetailInfo(msg,content){
 			var a = document.getElementById("detailBox");//获取div块对象
@@ -477,8 +506,24 @@
 	        var Sgao2= (Width - gao2)/2+"px";
 	        a.style.top=Sgao1;
 	        a.style.left=Sgao2;
-	        $("#mainpic").attr("src",msg);
-	        $("#p3").html(content);
+	        
+	        //请求物件类型
+		  	$.ajax("facade/bottomcase/detail?bcid="+msg,
+	                // 发送请求的URL字符串
+	                {
+	                    type: "get",      //
+	                    async:true,  //
+	                    success: function(data){
+							//alert("facade bottom goblet test length="+data.length);
+							fillBottomDetailInfo(data);
+							
+	                    },
+	                    error: function(){
+	                        alert("数据发送失败denglu");
+	                    }
+	                });
+	       /*  $("#mainpic").attr("src",msg);
+	        $("#p3").html(content); */
 
 		}
 

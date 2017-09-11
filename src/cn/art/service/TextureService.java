@@ -14,6 +14,7 @@ public interface TextureService {
 
     Texture selectByPrimaryKey(Integer textureid);
     List<Texture> selectByTIDandTTID(Map map);
+    List<Texture> selectByTID(Integer tid);
     
     List<Texture> selectByName1(String tdescription);
     String selectByName(String tdescription);

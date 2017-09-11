@@ -211,4 +211,10 @@ public class PartServiceImpl implements PartService {
 		return partMapper.selectByName(pdescription);
 	}
 
+	@Override
+	public List<Part> selectByTID(Integer tid) {
+		// TODO Auto-generated method stub
+		return partMapper.selectByTID(tid);
+	}
+
 }

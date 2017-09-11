@@ -14,6 +14,7 @@ public interface PartService {
 
     Part selectByPrimaryKey(Integer pid);
     List<Part> selectByTIDandPBID(Map map);
+    List<Part> selectByTID(Integer tid);
     
     List<Part> selectByName1(String pdescription);
     String selectByName(String pdescription);
