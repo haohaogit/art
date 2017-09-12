@@ -57,7 +57,7 @@
 	        background-color: #3a3b3b;
 	        position: fixed;
 	        border: 3px solid #444;
-	        display: block;
+	        display: none;
 	        border-radius: 7px;
 
 			/*position: absolute;
@@ -112,12 +112,30 @@
 	</style>
 </head>
 <body>
+	<script type="text/javascript" src="../js/facade.js"></script>
 	<script type="text/javascript">
 	        $(document).ready(function () {
 	//  			alert(11);
 	            $('.configHead').load('conheader_waiguan.html');
 	            $('.configFoot').load('confooter.html');
 	        });
+	        
+	        
+	        //请求物件类型
+		  	$.ajax("facade/code/texture?tname=燃气灶",
+	                // 发送请求的URL字符串
+	                {
+	                    type: "get",      //
+	                    async:true,  //
+	                    success: function(data){
+							alert("facade code goblet color test length="+data.length);
+							fillCodetextureGascooker(data);
+							
+	                    },
+	                    error: function(){
+	                        alert("数据发送失败denglu");
+	                    }
+	                });
 	</script>
 
 	<!-- 	头部 -->
@@ -161,8 +179,8 @@
 				</div>
 			</div>
 
-			<div id="facadeContent">
-				<div style="width: 101%;">
+			<div id="facadeContent" style="width:856px;">
+				<div class="textureContent" style="width: 100%;">
 					<div>
 			            <div id="inputcorpus" id="style1" style="padding-top: 5.5px;">材质编码</div>
 			        </div>
@@ -279,6 +297,7 @@
 	<script type="text/javascript">
 	$("#baseContent").fadeOut(0);
 	$("#newContent").fadeOut(0);
+	
 	$("#baseToggle").click(function(){
 	    $("#baseContent").fadeToggle(0);
 	  });
@@ -314,35 +333,60 @@
 
 
 	$("#baseGoblet").click(function(){
-  			
-  			
-  			$(".imgicon").attr('src',"../images/genestyle/golbet.gif");
-  			
-  			// $("#inputcorpus").fadeIn(0);
-  			
-    		$.ajax({
-		        url: "facade_bottom_Cgolbet.html",
-		        global: false,
-		        type: "POST",
-		        data: ({
-		            id: this.getAttribute('globet')
-		        }),
-		        dataType: "html",
-		        async: false,
-		        success: function(msg) {
-		            $("#facadeContent").html(msg);
+	  		window.location.href="facade.html?txt=baseGoblet";
+	  	});
+	  	$("#baseYacht").click(function(){
+		    // alert("codeYacht");
+		    window.location.href="facade.html?txt=baseYacht";
+		});
+		$("#baseHanky").click(function(){
+		    // alert("codeHanky");
+		    window.location.href="facade.html?txt=baseHanky";
+		});
+		$("#baseRange").click(function(){
+		    // alert("codeRange");
+		    window.location.href="facade.html?txt=baseRange";
+		});
 
-		        }
-	   		})
-  		});
+
+
+	  	$("#codeGoblet").click(function(){
+			window.location.href="facade.html?txt=codeGoblet";
+	  	});
+
+		$("#codeYacht").click(function(){
+		    // alert("codeYacht");
+		    window.location.href="facade.html?txt=codeYacht";
+		});
+		$("#codeHanky").click(function(){
+		    // alert("codeHanky");
+		    window.location.href="facade.html?txt=codeHanky";
+		});
+		$("#codeRange").click(function(){
+		    // alert("codeRange");
+		    window.location.href="facade.html?txt=codeRange";
+		});
+
+
+
+	  	$("#newGoblet").click(function(){
+	  			window.location.href="facade_new.html?txt=newGoblet";
+	  		});
+		$("#newRange").click(function(){
+	  			window.location.href="facade_new.html?txt=newRange";
+	  		});
+		$("#newYacht").click(function(){
+	  			window.location.href="facade_new.html?txt=newYacht";
+	  		});
+		$("#newHanky").click(function(){
+	  			window.location.href="facade_new.html?txt=newHanky";
+	  		});
 
 
 
 	</script>
 	<script type="text/javascript">
 
-		var now = "theBaseGoblet";
-		var nowLeft = "baseGoblet";
 		$("#codeRange").css("color","#00a5bd");
 
 
@@ -352,10 +396,6 @@
 		   	$(this).css({color:'#00A5BD'});
 		});
 
-		$(".Btn").on("click",function(){
-			$("#detailBox").css({display:'block'});
-			getDetailInfo();
-		});
 
 		$(".close_btn1").on("click",function(){
 
@@ -363,11 +403,12 @@
 			// var a = document.getElementById("detailBox");//获取div块对象
 		});
 
-		$(".isclick").on("click",function(){
+		$(".textureContent").on("click",".isclick",function(){
 			$("#detailBox").css({display:'block'});
 			//alert($(this).html());
 			var ht=$(this).html();
 			alert($(ht).find('img').attr('src'));
+			alert($(ht).find('img').attr('data-texid'));
 			//var img=$(this).attr("src");
 			getDetailInfo($(ht).find('img').attr('src'));
 			// $("#detailBox").css({display:'none'});

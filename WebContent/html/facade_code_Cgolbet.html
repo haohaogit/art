@@ -121,7 +121,7 @@
 		                    async:true,  //
 		                    success: function(data){
 								//alert("facade bottom goblet test length="+data.length);
-								fillCodeGoblet(data);
+								fillCodeCcontent(data);
 								
 		                    },
 		                    error: function(){
@@ -132,7 +132,7 @@
 	        });
 	</script>
 
-	<div class="codeCgoblet" style="width: 100%;">
+	<div class="codeCcontent" style="width: 100%;">
 		<div>
             <div id="inputcorpus" id="style1" style="padding-top: 5.5px;">轮廓编码</div>
         </div>
@@ -334,19 +334,21 @@
 		   	$(this).css({color:'#00A5BD'});
 		});
 		
-		$(".codeCgoblet").on("click",".more1",function(){
+		
+		
+		$(".codeCcontent").on("click",".more1",function(){
 			window.location.href="facade_code_outline_golbet.html";
 		});
 		
-		$(".codeCgoblet").on("click",".more2",function(){
+		$(".codeCcontent").on("click",".more2",function(){
 			window.location.href="facade_code_color_golbet.html";
 		});
 		
-		$(".codeCgoblet").on("click",".more3",function(){
+		$(".codeCcontent").on("click",".more3",function(){
 			window.location.href="facade_code_part_golbet.html";
 		});
 		
-		$(".codeCgoblet").on("click",".more4",function(){
+		$(".codeCcontent").on("click",".more4",function(){
 			window.location.href="facade_code_texture_golbet.html";
 		});
 		
@@ -360,7 +362,7 @@
 			$("#detailBox").css({display:'none'});
 			// var a = document.getElementById("detailBox");//获取div块对象
 		});
-		$(".codeCgoblet").on("click",".isclick",function(){
+		$(".codeCcontent").on("click",".isclick",function(){
 			$("#detailBox").css({display:'block'});
 			//alert($(this).html());
 			var ht=$(this).html();

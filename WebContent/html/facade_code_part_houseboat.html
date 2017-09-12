@@ -112,11 +112,27 @@
 	</style>
 </head>
 <body>
+	<script type="text/javascript" src="../js/facade.js"></script>
 	<script type="text/javascript">
 	        $(document).ready(function () {
 	//  			alert(11);
 	            $('.configHead').load('conheader_waiguan.html');
 	            $('.configFoot').load('confooter.html');
+	            
+	            //请求物件类型
+			  	$.ajax("facade/code/part?tname=游艇",
+                // 发送请求的URL字符串
+                {
+                    type: "get",      //
+                    async:true,  //
+                    success: function(data){
+						//alert("facade code goblet test length="+data.length);
+						fillCodepartHouseboat(data);
+                    },
+                    error: function(){
+                        alert("数据发送失败denglu");
+                    }
+                });
 	        });
 	</script>
 
@@ -162,7 +178,7 @@
 			</div>
 
 			<div id="facadeContent">
-				<div style="width: 101%;">
+				<div class="codepart" style="width: 100%;">
 					<div>
 			            <div id="inputcorpus" id="style1" style="padding-top: 5.5px;">驾驶室部件编码</div>
 			        </div>
@@ -525,8 +541,7 @@
 	</script>
 	<script type="text/javascript">
 
-		var now = "theBaseGoblet";
-		var nowLeft = "baseGoblet";
+		
 		$("#codeYacht").css("color","#00a5bd");
 
 
@@ -546,12 +561,13 @@
 			$("#detailBox").css({display:'none'});
 			// var a = document.getElementById("detailBox");//获取div块对象
 		});
-
-		$(".isclick").on("click",function(){
+		
+		$(".codepart").on("click",".isclick",function(){
 			$("#detailBox").css({display:'block'});
 			//alert($(this).html());
 			var ht=$(this).html();
 			alert($(ht).find('img').attr('src'));
+			alert($(ht).find('img').attr('data-pid'));
 			//var img=$(this).attr("src");
 			getDetailInfo($(ht).find('img').attr('src'));
 			// $("#detailBox").css({display:'none'});

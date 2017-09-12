@@ -329,7 +329,7 @@ function fillBottomHouseboat(data){
 	
 }
 
-function fillCodeGoblet(data){
+function fillCodeCcontent(data){
 	
 	var a1Html="";
 	var b1Html="";
@@ -428,10 +428,12 @@ function fillCodeGoblet(data){
 	}
 	html=html+a1Html+b1Html+c1Html+d1Html;
 	
-	$(".codeCgoblet").html(html);
+	$(".codeCcontent").html(html);
 	
 	
 }
+
+
 
 function fillCodeoutline(data){
 	
@@ -503,6 +505,111 @@ function fillCodecolor(data){
 	
 }
 
+function fillCodecolorHouseboat(data){
+	
+	var kHtml="";
+	var sHtml="";
+	var cHtml="";
+	
+	for(var i=0;i<data.length;i++){
+		//var qwe = data[i].wfirstchar;
+		switch(data[i].codetypename)
+		{
+			case "船身":
+			  if(kHtml==""){
+				  kHtml+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>船身色彩编码</div></div><div class='color'>";
+			  }
+			 
+			  kHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='"+data[i].caseimg+"' data-cid='"+data[i].id+"'/></div>";
+			  kHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
+			  break;
+			case "船身装饰":
+			
+				if(sHtml==""){
+					sHtml+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>船身装饰色彩编码</div></div><div class='color'>";
+				}
+				sHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='"+data[i].caseimg+"' data-cid='"+data[i].id+"'/></div>";
+				sHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
+			    break;
+			case "船身装饰线":
+				
+				if(cHtml==""){
+					cHtml+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>船身装饰线色彩编码</div></div><div class='color'>";
+				}
+				cHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='"+data[i].caseimg+"' data-cid='"+data[i].id+"'/></div>";
+				cHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
+			    break;
+			default:
+				break;
+		}
+	}
+	var html="";
+	html=html+kHtml+"</div>"+sHtml+"</div>"+cHtml+"</div>";
+	$(".codeChouseboat").html(html);
+}
+
+function fillCodecolorGascooker(data){
+	var kHtml="";
+	var sHtml="";
+	for(var i=0;i<data.length;i++){
+		//var qwe = data[i].wfirstchar;
+		switch(data[i].codetypename)
+		{
+			case "面板色彩":
+			  if(kHtml==""){
+				  kHtml+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>面板色彩编码</div></div><div class='color'>";
+			  }
+			  kHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='"+data[i].caseimg+"' data-cid='"+data[i].id+"'/></div>";
+			  kHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
+			  break;
+			case "冷色调":
+			
+				if(sHtml==""){
+					sHtml+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>冷色系编码</div></div><div class='color'>";
+				}
+				sHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='"+data[i].caseimg+"' data-cid='"+data[i].id+"'/></div>";
+				sHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
+			    break;
+			default:
+				break;
+		}
+	}
+	var html="";
+	html=html+kHtml+"</div>";
+	$(".codeCgascooker").html(html);
+}
+
+function fillCodecolorFabric(data){
+	var kHtml="";
+	var sHtml="";
+	for(var i=0;i<data.length;i++){
+		//var qwe = data[i].wfirstchar;
+		switch(data[i].codetypename)
+		{
+			case "织物色彩":
+			  if(kHtml==""){
+				  kHtml+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>面料色彩编码</div></div><div class='color'>";
+			  }
+			  kHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='"+data[i].caseimg+"' data-cid='"+data[i].id+"'/></div>";
+			  kHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
+			  break;
+			case "冷色调":
+			
+				if(sHtml==""){
+					sHtml+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>冷色系编码</div></div><div class='color'>";
+				}
+				sHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='"+data[i].caseimg+"' data-cid='"+data[i].id+"'/></div>";
+				sHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
+			    break;
+			default:
+				break;
+		}
+	}
+	var html="";
+	html=html+kHtml+"</div>";
+	$(".codeCfabric").html(html);
+}
+
 
 function fillCodepart(data){
 	
@@ -535,6 +642,180 @@ function fillCodepart(data){
 	var html="";
 	html=html+kHtml+"</div>"+sHtml+"</div>";
 	$(".partContent").html(html);
+}
+
+function fillCodepartHouseboat(data){
+	var a1Html="";
+	var b1Html="";
+	var c1Html="";
+	var d1Html="";
+	var e1Html="";
+	var f1Html="";
+	
+	for(var i=0;i<data.length;i++){
+		//var qwe = data[i].wfirstchar;
+		switch(data[i].codetypename)
+		{
+			case "驾驶室":
+			  if(a1Html==""){
+				  a1Html+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>驾驶室部件编码</div></div><div class='macro'>";
+			  }
+			  a1Html+="<div class='hengStep isclick'><div><img class='imgfabric' src='"+data[i].caseimg+"' data-pid='"+data[i].id+"'/></div>";
+			  a1Html+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
+			  break;
+			case "船舱":
+				
+				if(b1Html==""){
+					b1Html+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>船舱部件编码</div></div><div class='macro'>";
+				}
+				b1Html+="<div class='hengStep isclick'><div><img class='imgfabric' src='"+data[i].caseimg+"' data-pid='"+data[i].id+"'/></div>";
+				b1Html+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
+			    break;
+			case "顶层":
+				  if(c1Html==""){
+					  c1Html+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>顶层部件编码</div></div><div class='macro'>";
+				  }
+				  c1Html+="<div class='hengStep isclick'><div><img class='imgfabric' src='"+data[i].caseimg+"' data-pid='"+data[i].id+"'/></div>";
+				  c1Html+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
+			 
+				  break;
+			case "船舱窗户":
+				if(d1Html==""){
+					d1Html+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>船舱窗户部件编码</div></div><div class='macro'>";
+				}
+				d1Html+="<div class='hengStep isclick'><div><img class='imgfabric' src='"+data[i].caseimg+"' data-pid='"+data[i].id+"'/></div>";
+				d1Html+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
+				
+			    break;
+			case "船舱跳水板":
+				if(e1Html==""){
+					e1Html+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>船舱跳水板部件编码</div></div><div class='macro'>";
+				}
+				e1Html+="<div class='hengStep isclick'><div><img class='imgfabric' src='"+data[i].caseimg+"' data-pid='"+data[i].id+"'/></div>";
+				e1Html+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
+				
+			    break;
+			case "通信":
+				if(f1Html==""){
+					f1Html+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>电子通信部件编码</div></div><div class='macro'>";
+				}
+				f1Html+="<div class='hengStep isclick'><div><img class='imgfabric' src='"+data[i].caseimg+"' data-pid='"+data[i].id+"'/></div>";
+				f1Html+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
+				
+			    break;
+			default:
+				break;
+		}
+	}
+	var html="";
+	
+	html=html+a1Html+"</div>"+b1Html+"</div>"+c1Html+"</div>"+d1Html+"</div>"+e1Html+"</div>"+f1Html+"</div>";
+	
+	$(".codepart").html(html);
+}
+
+function fillCodepartGascooker(data){
+	var a1Html="";
+	var b1Html="";
+	var c1Html="";
+	var d1Html="";
+	
+	for(var i=0;i<data.length;i++){
+		//var qwe = data[i].wfirstchar;
+		switch(data[i].codetypename)
+		{
+			case "炉灶":
+			  if(a1Html==""){
+				  a1Html+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>炉灶部件编码</div></div><div class='macro'>";
+			  }
+			  a1Html+="<div class='hengStep isclick'><div><img class='imgfabric' src='"+data[i].caseimg+"' data-pid='"+data[i].id+"'/></div>";
+			  a1Html+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
+			  break;
+			case "面板":
+				
+				if(b1Html==""){
+					b1Html+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>面板部件编码</div></div><div class='macro'>";
+				}
+				b1Html+="<div class='hengStep isclick'><div><img class='imgfabric' src='"+data[i].caseimg+"' data-pid='"+data[i].id+"'/></div>";
+				b1Html+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
+			    break;
+			case "开关":
+				  if(c1Html==""){
+					  c1Html+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>开关部件编码</div></div><div class='macro'>";
+				  }
+				  c1Html+="<div class='hengStep isclick'><div><img class='imgfabric' src='"+data[i].caseimg+"' data-pid='"+data[i].id+"'/></div>";
+				  c1Html+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
+			 
+				  break;
+			case "ui开关":
+				if(d1Html==""){
+					d1Html+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>开关/调节档位UI部件编码</div></div><div class='macro'>";
+				}
+				d1Html+="<div class='hengStep isclick'><div><img class='imgfabric' src='"+data[i].caseimg+"' data-pid='"+data[i].id+"'/></div>";
+				d1Html+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
+				
+			    break;
+			default:
+				break;
+		}
+	}
+	var html="";
+	
+	html=html+a1Html+"</div>"+b1Html+"</div>"+c1Html+"</div>"+d1Html+"</div>";
+	
+	$(".codepart").html(html);
+}
+
+function fillCodepartFabric(data){
+	var a1Html="";
+	var b1Html="";
+	var c1Html="";
+	var d1Html="";
+	
+	for(var i=0;i<data.length;i++){
+		//var qwe = data[i].wfirstchar;
+		switch(data[i].codetypename)
+		{
+			case "边框":
+			  if(a1Html==""){
+				  a1Html+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>边框部件编码</div></div><div class='macro'>";
+			  }
+			  a1Html+="<div class='hengStep isclick'><div><img class='imgfabric' src='"+data[i].caseimg+"' data-pid='"+data[i].id+"'/></div>";
+			  a1Html+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
+			  break;
+			case "主图":
+				
+				if(b1Html==""){
+					b1Html+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>主图部件编码</div></div><div class='macro'>";
+				}
+				b1Html+="<div class='hengStep isclick'><div><img class='imgfabric' src='"+data[i].caseimg+"' data-pid='"+data[i].id+"'/></div>";
+				b1Html+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
+			    break;
+			case "辅图":
+				  if(c1Html==""){
+					  c1Html+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>辅图部件编码</div></div><div class='macro'>";
+				  }
+				  c1Html+="<div class='hengStep isclick'><div><img class='imgfabric' src='"+data[i].caseimg+"' data-pid='"+data[i].id+"'/></div>";
+				  c1Html+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
+			 
+				  break;
+			case "ui开关":
+				if(d1Html==""){
+					d1Html+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>开关/调节档位UI部件编码</div></div><div class='macro'>";
+				}
+				d1Html+="<div class='hengStep isclick'><div><img class='imgfabric' src='"+data[i].caseimg+"' data-pid='"+data[i].id+"'/></div>";
+				d1Html+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
+				
+			    break;
+			default:
+				break;
+		}
+	}
+	var html="";
+	
+	html=html+a1Html+"</div>"+b1Html+"</div>"+c1Html+"</div>"+d1Html+"</div>";
+	
+	$(".codepart").html(html);
 }
 
 function fillCodetexture(data){
@@ -570,4 +851,71 @@ function fillCodetexture(data){
 	html=html+kHtml+"</div>"+sHtml+"</div>";
 	$(".textureContent").html(html);
 }
+function fillCodetextureGascooker(data){
+	
+	var kHtml="";
+	var sHtml="";
+	
+	for(var i=0;i<data.length;i++){
+		//var qwe = data[i].wfirstchar;
+		
+		switch(data[i].codetypename)
+		{
+			case "面板材质":
+			  if(kHtml==""){
+				  kHtml+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>面板材质编码</div></div><div class='texture'>";
+			  }
+			 
+			  kHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='"+data[i].caseimg+"' data-texid='"+data[i].id+"'/></div>";
+			  kHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
+			  break;
+			case "磨砂":
+				if(sHtml==""){
+					sHtml+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>磨砂材质编码</div></div><div class='texture'>";
+				}
+				sHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='"+data[i].caseimg+"' data-texid='"+data[i].id+"'/></div>";
+				sHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
+			    break;
+			default:
+				break;
+		}
+	}
+	var html="";
+	html=html+kHtml+"</div>"+sHtml+"</div>";
+	$(".textureContent").html(html);
+}
+function fillCodetextureFabric(data){
+	
+	var kHtml="";
+	var sHtml="";
+	
+	for(var i=0;i<data.length;i++){
+		//var qwe = data[i].wfirstchar;
+		
+		switch(data[i].codetypename)
+		{
+			case "织物材质":
+			  if(kHtml==""){
+				  kHtml+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>面料材质编码</div></div><div class='texture'>";
+			  }
+			 
+			  kHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='"+data[i].caseimg+"' data-texid='"+data[i].id+"'/></div>";
+			  kHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
+			  break;
+			case "磨砂":
+				if(sHtml==""){
+					sHtml+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>磨砂材质编码</div></div><div class='texture'>";
+				}
+				sHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='"+data[i].caseimg+"' data-texid='"+data[i].id+"'/></div>";
+				sHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
+			    break;
+			default:
+				break;
+		}
+	}
+	var html="";
+	html=html+kHtml+"</div>"+sHtml+"</div>";
+	$(".textureContent").html(html);
+}
+
 

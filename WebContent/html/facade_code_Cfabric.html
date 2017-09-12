@@ -112,11 +112,29 @@
 	</style>
 </head>
 <body>
-	
+	<script type="text/javascript" src="../js/facade.js"></script>
+	<script type="text/javascript">
+	        $(document).ready(function () {
+	        	
+			  //请求物件类型
+			  	$.ajax("facade/code?tname=织物",
+		                // 发送请求的URL字符串
+		                {
+		                    type: "get",      //
+		                    async:true,  //
+		                    success: function(data){
+								//alert("facade bottom goblet test length="+data.length);
+								fillCodeCcontent(data);
+		                    },
+		                    error: function(){
+		                        alert("数据发送失败denglu");
+		                    }
+		                });
 
-	
+	        });
+	</script>
 
-	<div style="width: 101%;">
+	<div class="codeCcontent" style="width: 100%;">
 		<div>
             <div id="inputcorpus" id="style1" style="padding-top: 5.5px;">轮廓编码</div>
         </div>
@@ -322,28 +340,21 @@
 		// });
 
 		
-		function loadmore(){
-			// window.location.href="facade_code_outline_golbet.html";
-			alert("织物的轮廓编码暂无，待补充");
-		}
-
-		function loadmore1(){
-			window.location.href="facade_code_part_fabric.html";
-		}
-		function loadmore2(){
+		$(".codeCcontent").on("click",".more1",function(){
+			alert("织物轮廓交互稿暂无，待补充！");
+			//window.location.href="facade_code_outline_fabric.html";
+		});
+		
+		$(".codeCcontent").on("click",".more2",function(){
 			window.location.href="facade_code_color_fabric.html";
-		}
-
-		function loadmore3(){
+		});
+		
+		$(".codeCcontent").on("click",".more3",function(){
+			window.location.href="facade_code_part_fabric.html";
+		});
+		
+		$(".codeCcontent").on("click",".more4",function(){
 			window.location.href="facade_code_texture_fabric.html";
-		}
-
-
-
-
-		$(".Btn").on("click",function(){
-			$("#detailBox").css({display:'block'});
-			getDetailInfo();
 		});
 
 		$(".close_btn").on("click",function(){
@@ -352,7 +363,7 @@
 			// var a = document.getElementById("detailBox");//获取div块对象
 		});
 
-		$(".isclick").on("click",function(){
+		$(".codeCcontent").on("click",".isclick",function(){
 			$("#detailBox").css({display:'block'});
 			//alert($(this).html());
 			var ht=$(this).html();

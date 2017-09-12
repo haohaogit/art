@@ -57,7 +57,7 @@
 	        background-color: #3a3b3b;
 	        position: fixed;
 	        border: 3px solid #444;
-	        display: block;
+	        display: none;
 	        border-radius: 7px;
 
 			/*position: absolute;
@@ -112,11 +112,29 @@
 	</style>
 </head>
 <body>
+	<script type="text/javascript" src="../js/facade.js"></script>
 	<script type="text/javascript">
 	        $(document).ready(function () {
-	//  			alert(11);
+
 	            $('.configHead').load('conheader_waiguan.html');
 	            $('.configFoot').load('confooter.html');
+	            
+	            //请求物件类型
+			  	$.ajax("facade/code/texture?tname=织物",
+                // 发送请求的URL字符串
+                {
+                    type: "get",      //
+                    async:true,  //
+                    success: function(data){
+						alert("facade code goblet test length="+data.length);
+						fillCodetextureFabric(data);
+						
+                    },
+                    error: function(){
+                        alert("数据发送失败denglu");
+                    }
+                });
+	            
 	        });
 	</script>
 
@@ -161,8 +179,8 @@
 				</div>
 			</div>
 
-			<div id="facadeContent">
-				<div style="width: 101%;">
+			<div id="facadeContent" style="width:856px;">
+				<div class="textureContent" style="width: 100%;">
 					<div>
 			            <div id="inputcorpus" id="style1" style="padding-top: 5.5px;">材质编码</div>
 			        </div>
@@ -279,6 +297,7 @@
 	<script type="text/javascript">
 	$("#baseContent").fadeOut(0);
 	$("#newContent").fadeOut(0);
+	
 	$("#baseToggle").click(function(){
 	    $("#baseContent").fadeToggle(0);
 	  });
@@ -289,31 +308,9 @@
 	    $("#newContent").fadeToggle(0);
 	  });
 
-	// var load1=false;
-	// var load2=false;
-	// function loadmore(){
-	// 	if(load1){
-	// 		load1=false;
-	// 		$(".isLoadMore").css({display:'none'});
-	// 	}else{
-	// 		load1=true;
-	// 		$(".isLoadMore").css({display:'block'});
-	// 	}
-	// }
-
-	// function loadmore1(){
-	// 	if(load2){
-	// 		load2=false;
-	// 		$(".isLoadMore1").css({display:'none'});
-	// 	}else{
-	// 		load2=true;
-	// 		$(".isLoadMore1").css({display:'block'});
-	// 	}
-	// }
 
 
-
-	$("#baseGoblet").click(function(){
+		$("#baseGoblet").click(function(){
 	  		window.location.href="facade.html?txt=baseGoblet";
 	  	});
 	  	$("#baseYacht").click(function(){
@@ -351,23 +348,16 @@
 
 
 	  	$("#newGoblet").click(function(){
-	  			
 	  			window.location.href="facade_new.html?txt=newGoblet";
 	  		});
 		$("#newRange").click(function(){
-	  			
 	  			window.location.href="facade_new.html?txt=newRange";
-	  			
 	  		});
 		$("#newYacht").click(function(){
-	  			
 	  			window.location.href="facade_new.html?txt=newYacht";
-	  			
 	  		});
 		$("#newHanky").click(function(){
-	  			
 	  			window.location.href="facade_new.html?txt=newHanky";
-	  			
 	  		});
 
 
@@ -378,17 +368,12 @@
 		
 		$("#codeHanky").css("color","#00a5bd");
 
-
 		
 		$(".facade1").on("click",function(){
 			$(".facade1").css({color:'black'});
 		   	$(this).css({color:'#00A5BD'});
 		});
 
-		$(".Btn").on("click",function(){
-			$("#detailBox").css({display:'block'});
-			getDetailInfo();
-		});
 
 		$(".close_btn1").on("click",function(){
 
@@ -396,11 +381,12 @@
 			// var a = document.getElementById("detailBox");//获取div块对象
 		});
 
-		$(".isclick").on("click",function(){
+		$(".textureContent").on("click",".isclick",function(){
 			$("#detailBox").css({display:'block'});
 			//alert($(this).html());
 			var ht=$(this).html();
 			alert($(ht).find('img').attr('src'));
+			alert($(ht).find('img').attr('data-texid'));
 			//var img=$(this).attr("src");
 			getDetailInfo($(ht).find('img').attr('src'));
 			// $("#detailBox").css({display:'none'});

@@ -57,7 +57,7 @@
 	        background-color: #3a3b3b;
 	        position: fixed;
 	        border: 3px solid #444;
-	        display: block;
+	        display: none;
 	        border-radius: 7px;
 
 			/*position: absolute;
@@ -296,8 +296,9 @@
 	<div class="configFoot"></div>
 
 	<script type="text/javascript">
-	$("#codeContent").fadeOut(0);
+	$("#baseContent").fadeOut(0);
 	$("#newContent").fadeOut(0);
+	
 	$("#baseToggle").click(function(){
 	    $("#baseContent").fadeToggle(0);
 	  });
@@ -394,9 +395,8 @@
 	</script>
 	<script type="text/javascript">
 
-		var now = "theBaseGoblet";
-		var nowLeft = "baseGoblet";
-		$("#baseGoblet").css("color","#00a5bd");
+		
+		$("#codeGoblet").css("color","#00a5bd");
 
 
 		
