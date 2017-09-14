@@ -1,24 +1,29 @@
 package cn.art.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import cn.art.model.NewCase;
 import cn.art.service.ColorService;
 import cn.art.service.JWordService;
 import cn.art.service.NewCaseService;
 import cn.art.service.TextureService;
 import cn.art.service.TypeService;
+import cn.art.util.pojo.newcaseB;
 import cn.art.util.pojo.typeIdName;
 
 
 @Controller
-@RequestMapping("facade/newcase")
+@RequestMapping("html/facade/newcase")
 public class U_newcaseController {
 	private TypeService typeService;
 	private NewCaseService newCaseService;
@@ -63,7 +68,7 @@ public class U_newcaseController {
 	}
 	
 	//新造型库 默认接口
-	@RequestMapping("")
+	/*@RequestMapping("")
 	public String newCasedefault(HttpServletRequest request){
 		String types = typeService.getOnlyIdandName();
 		request.setAttribute("types", types);
@@ -82,6 +87,21 @@ public class U_newcaseController {
 		request.setAttribute("TZaoxing", TZaoxing);
 		
 		return "";
+	}*/
+	
+	@RequestMapping("")
+	@ResponseBody
+	public List<newcaseB> newCasedefault1(Model model,String tname, HttpServletRequest request){
+		List<newcaseB> lBs = new ArrayList<newcaseB>();
+		
+		List<typeIdName> typeIdNames = typeService.selectAllByName(tname);
+		int tid = 0;
+		for (typeIdName typeIdName : typeIdNames) {
+			tid = typeIdName.getTid();
+			break;
+		}
+		lBs = newCaseService.selectNewcaseBByTID(tid);
+		return lBs;
 	}
 	
 	//新造型库 类型分类接口
@@ -100,20 +120,13 @@ public class U_newcaseController {
 	}
 	
 	//"调整前后详细展示"  接口
-	@RequestMapping("detail/{nid}")
-	public String newCaseDetailInfo(@PathVariable Integer nid,HttpServletRequest request){
+	@RequestMapping("detail")
+	@ResponseBody
+	public NewCase newCaseDetailInfo(Model model,Integer nid,HttpServletRequest request){
+		NewCase newCase = newCaseService.selectByPrimaryKey(nid);
 		
-		int tid = newCaseService.selectByPrimaryKey(nid).getTid();
-		String jWords = jWordService.getAllJwordByTID(tid);
-		request.setAttribute("jWords", jWords);
 		
-		int TWordType = typeService.selectByPrimaryKey(tid).getTwordtype();
-		request.setAttribute("TWordType", TWordType);
-		
-		String newcase = newCaseService.getNewCaseByPrimaryKey(nid);
-		request.setAttribute("newcase", newcase);
-		
-		return "";
+		return newCase;
 	}
 	
 	//推荐信息详情 接口

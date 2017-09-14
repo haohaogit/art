@@ -3,6 +3,7 @@ package cn.art.service;
 import java.util.List;
 
 import cn.art.model.NewCase;
+import cn.art.util.pojo.newcaseB;
 
 public interface NewCaseService {
 	 int deleteByPrimaryKey(Integer nid);
@@ -17,6 +18,7 @@ public interface NewCaseService {
 	    
 	    List<NewCase> selectByName1(String newcasename);
 	    String selectNewcaseByTID(Integer tid);
+	    List<newcaseB> selectNewcaseBByTID(Integer tid);
 	    String selectByName(String newcasename);
 	    int CountNumByName(String newcasename);
 

@@ -438,6 +438,7 @@
 	</style>
 </head>
 <body>
+	<script type="text/javascript" src="../js/facade.js"></script>
 	<script type="text/javascript">
 	        $(document).ready(function () {
 	//  			alert(11);
@@ -446,99 +447,31 @@
 	            $('.Recommand').load('facade_new_Rgolbet.html');
 
 
-	            var score1 = -2;
-		        var score2 = 2;
-		        var score3 = 1;
-		        var score4 = -1;
-		        var score5 = 3;
-		        var score6 = -3;
-		        if(score1>0){
-		        	//alert("11111111111111111111");
-		        	document.getElementById("score11").style.width=270+'px';
-		        	$(".point12").css("display","block");
-	                $(".point11").css("display","none");
-	                $('#score12').width(score1*90);
-		        }else{
-		        	document.getElementById("score12").style.width=0;
-		        	$(".point11").css("display","block");
-	                $(".point12").css("display","none");
-	                $('#score11').width(270-Math.abs(score1)*90);
-	                //$('#score11').csscss({"width":90px;});
-		        }
-
-		        if(score2>0){
-		        	//alert("11111111111111111111");
-		        	document.getElementById("score21").style.width=270+'px';
-		        	$(".point22").css("display","block");
-	                $(".point21").css("display","none");
-	                $('#score22').width(score2*90);
-		        }else{
-		        	document.getElementById("score22").style.width=0;
-		        	$(".point21").css("display","block");
-	                $(".point22").css("display","none");
-	                $('#score21').width(270-Math.abs(score2)*90);
-	                //$('#score11').csscss({"width":90px;});
-		        }
-
-		        if(score3>0){
-		        	//alert("11111111111111111111");
-		        	document.getElementById("score31").style.width=270+'px';
-		        	$(".point32").css("display","block");
-	                $(".point31").css("display","none");
-	                $('#score32').width(score3*90);
-		        }else{
-		        	document.getElementById("score32").style.width=0;
-		        	$(".point31").css("display","block");
-	                $(".point32").css("display","none");
-	                $('#score31').width(270-Math.abs(score3)*90);
-	                //$('#score11').csscss({"width":90px;});
-		        }
-
-		        if(score4>0){
-		        	document.getElementById("score41").style.width=270+'px';
-		        	$(".point42").css("display","block");
-	                $(".point41").css("display","none");
-	                $('#score42').width(score4*90);
-		        }else{
-		        	document.getElementById("score42").style.width=0;
-		        	$(".point41").css("display","block");
-	                $(".point42").css("display","none");
-	                $('#score41').width(270-Math.abs(score4)*90);
-		        }
-
-		        if(score5>0){
-		        	document.getElementById("score51").style.width=270+'px';
-		        	$(".point52").css("display","block");
-	                $(".point51").css("display","none");
-	                $('#score52').width(score5*90);
-		        }else{
-		        	document.getElementById("score52").style.width=0;
-		        	$(".point51").css("display","block");
-	                $(".point52").css("display","none");
-	                $('#score51').width(270-Math.abs(score5)*90);
-		        }
-
-		        if(score6>0){
-		        	document.getElementById("score61").style.width=270+'px';
-		        	$(".point62").css("display","block");
-	                $(".point61").css("display","none");
-	                $('#score62').width(score6*90);
-		        }else{
-		        	document.getElementById("score62").style.width=0;
-		        	$(".point61").css("display","block");
-	                $(".point62").css("display","none");
-	                $('#score61').width(270-Math.abs(score6)*90);
-		        }
-
-
+	           
+		        
 
                 var loc = location.href;
-                var n1 = loc.length;//地址的总长度
-                var n2 = loc.indexOf("=");//取得=号的位置
-                var urIimg = decodeURI(loc.substr(n2+1, n1-n2));//从=号后面的内容
-                var uri;
-                //alert(txt);
-                $('.recomImg').attr("src",urIimg);
+			  	var n1 = loc.length;//地址的总长度
+			  	var n2 = loc.indexOf("=");//取得=号的位置
+			  	var nid = decodeURI(loc.substr(n2+1, n1-n2));//从=号后面的内容
+			  	
+
+			  /* 	$(".facade1").css({color:'black'});
+			  	$("#"+txt).css("color","#00a5bd"); */
+			  	
+			  	$.ajax("facade/newcase/detail?nid="+nid,
+	            // 发送请求的URL字符串
+	            {
+	                type: "get",      //
+	                async:true,  //
+	                success: function(data){
+					//alert("facade newcase goblet test length");
+					fillNewcaseHouseboat(data);
+	                },
+	                error: function(){
+	                    alert("数据发送失败denglu");
+	                }
+	            });
 
 	        });
 	        

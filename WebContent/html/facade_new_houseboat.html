@@ -86,13 +86,27 @@
 	</style>
 </head>
 <body>
+	<script type="text/javascript" src="../js/facade.js"></script>
 	<script type="text/javascript">
 	        $(document).ready(function () {
-
-	        	
 	//  			alert(11);
 	            $('.configHead').load('conheader_waiguan.html');
 	            $('.configFoot').load('confooter.html');
+	            
+	            $.ajax("facade/newcase?tname=游艇",
+                // 发送请求的URL字符串
+                {
+                    type: "get",      //
+                    async:true,  //
+                    success: function(data){
+						alert("facade newcase goblet test length="+data.length);
+						fillNewcase(data);
+						
+                    },
+                    error: function(){
+                        alert("数据发送失败denglu");
+                    }
+                });
 	        });
 	</script>
 
@@ -137,8 +151,8 @@
 				</div>
 			</div>
 
-			<div id="facadeContent">
-				<div style="width: 101%;">
+			<div id="facadeContent" style="width:856px;">
+				<div class="newcaseContent" style="width: 100%;">
 					<div>
 			            <div id="inputcorpus" id="style1" style="padding-top: 5.5px;">新造型案例</div>
 			        </div>
@@ -291,12 +305,12 @@
 		   	$(this).css({color:'#00A5BD'});
 		});
 
-		$(".isclick").on("click",function(){
+		$(".newcaseContent").on("click",".isclick",function(){
 			
 			//alert($(this).html());
 			var ht=$(this).html();
 			alert($(ht).find('img').attr('src'));
-			window.location.href="facade_new_comhouseboat.html?img="+$(ht).find('img').attr('src');
+			window.location.href="facade_new_comhouseboat.html?nid="+$(ht).find('img').attr('data-nid');
 
 			//var img=$(this).attr("src");
 			// getDetailInfo($(ht).find('img').attr('src'));

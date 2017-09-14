@@ -3,6 +3,7 @@ package cn.art.dao;
 import java.util.List;
 
 import cn.art.model.NewCase;
+import cn.art.util.pojo.newcaseB;
 
 public interface NewCaseMapper {
     int deleteByPrimaryKey(Integer nid);
@@ -13,6 +14,7 @@ public interface NewCaseMapper {
 
     NewCase selectByPrimaryKey(Integer nid);
     List<NewCase> selectByTID(Integer tid);
+    List<newcaseB> selectNewcaseBByTID(Integer tid);
     
     List<NewCase> selectByName(String newcasename);
     int CountNumByName(String newcasename);

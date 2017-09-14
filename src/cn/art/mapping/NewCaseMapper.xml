@@ -21,11 +21,24 @@
     <result column="NewCaseATexture" property="newcaseatexture" jdbcType="VARCHAR" />
     <result column="NewCaseATextureID" property="newcaseatextureid" jdbcType="INTEGER" />
   </resultMap>
+  
+  <resultMap id="BaseResultMap1" type="cn.art.util.pojo.newcaseB" >
+    <id column="NID" property="nid" jdbcType="INTEGER" />
+    <result column="TID" property="tid" jdbcType="INTEGER" />
+    <result column="NewCaseName" property="newcasename" jdbcType="VARCHAR" />
+    <result column="NewCaseImg" property="newcaseimg" jdbcType="VARCHAR" />
+  </resultMap>
+  
   <sql id="Base_Column_List" >
     NID, TID, NewCaseName, NewCaseImg, NewCaseArg, NewCaseData, NewCaseRTotal, NewCaseROutline, 
     NewCaseRColor, NewCaseRColorID, NewCaseRTexture, NewCaseRTextureID, NewCaseATotal, 
     NewCaseAOutline, NewCaseAColor, NewCaseAColorID, NewCaseATexture, NewCaseATextureID
   </sql>
+  
+   <sql id="Base_Column_List1" >
+    NID, TID, NewCaseName, NewCaseImg
+  </sql>
+  
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
@@ -36,6 +49,13 @@
   <select id="selectByTID" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
   select 
   <include refid="Base_Column_List" />
+  from newcase_
+  where TID = #{tid,jdbcType=INTEGER}
+  </select>
+  
+  <select id="selectNewcaseBByTID" resultMap="BaseResultMap1" parameterType="java.lang.Integer" >
+  select 
+  <include refid="Base_Column_List1" />
   from newcase_
   where TID = #{tid,jdbcType=INTEGER}
   </select>

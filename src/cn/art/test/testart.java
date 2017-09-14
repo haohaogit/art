@@ -17,6 +17,7 @@ import cn.art.dao.SurveyMapper;
 import cn.art.dao.UserMapper;
 import cn.art.model.User;
 import cn.art.service.UserService;
+import cn.art.util.pojo.newcaseB;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -108,6 +109,15 @@ public class testart {
 		
 		System.out.println(" generate id  "+getid);
 		System.out.println(" generate id  "+user.getUid());		
+	}
+	@Test
+	public void testnewcaseB() {
+		List<newcaseB> lBs = newCaseMapper.selectNewcaseBByTID(1);
+		for (newcaseB newcaseB : lBs) {
+			System.out.println(newcaseB.getNid()+" "+newcaseB.getNewcasename());
+		}
+		//userService.deleteByPrimaryKey(4);
+		//System.out.println("删除成功");
 	}
 	
 	

@@ -104,12 +104,12 @@ public class testController {
 	
 	
 	//          文件上传
-	@RequestMapping(value="upload",method=RequestMethod.POST)
-	public String upload(HttpServletRequest request,
+	@RequestMapping(value="/upload1",method=RequestMethod.POST)
+	public void upload(HttpServletRequest request,
 			@RequestParam("description") String description,
 			@RequestParam("file") MultipartFile file) throws Exception{
 		System.out.println("description "+description+" file "+file);
-		if(!file.isEmpty()){
+		/*if(!file.isEmpty()){
 			//上传文件路径
 			String path = request.getServletContext().getRealPath("/image/");
 			System.out.println("file "+file);
@@ -125,10 +125,10 @@ public class testController {
 			//将上传文件保存到一个目标文件夹中
 			file.transferTo(new File(path+File.separator+filename));
 			request.setAttribute("filename", filename);
-			return "manager/success";
+			return "manager/success.jsp";
 		}else{
-			return "manager/error";
-		}
+			return "manager/error.jsp";
+		}*/
 	}
 	
 	

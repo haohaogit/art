@@ -11,6 +11,7 @@ import cn.art.dao.TextureMapper;
 import cn.art.model.NewCase;
 import cn.art.service.NewCaseService;
 import cn.art.util.JsonConvert;
+import cn.art.util.pojo.newcaseB;
 
 
 @Service("NewCaseService")
@@ -204,6 +205,12 @@ public class NewCaseServiceImpl implements NewCaseService {
 	public List<NewCase> selectByName1(String newcasename) {
 		// TODO Auto-generated method stub
 		return newCaseMapper.selectByName(newcasename);
+	}
+
+	@Override
+	public List<newcaseB> selectNewcaseBByTID(Integer tid) {
+		// TODO Auto-generated method stub
+		return newCaseMapper.selectNewcaseBByTID(tid);
 	}
 	
 	

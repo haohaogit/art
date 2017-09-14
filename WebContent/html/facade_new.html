@@ -86,6 +86,7 @@
 	</style>
 </head>
 <body>
+	<script type="text/javascript" src="../js/facade.js"></script>
 	<script type="text/javascript">
 	        $(document).ready(function () {
 
@@ -119,6 +120,21 @@
 	//  			alert(11);
 	            $('.configHead').load('conheader_waiguan.html');
 	            $('.configFoot').load('confooter.html');
+	            
+	            $.ajax("facade/newcase?tname=高脚杯",
+	                    // 发送请求的URL字符串
+	                    {
+	                        type: "get",      //
+	                        async:true,  //
+	                        success: function(data){
+	    						alert("facade newcase goblet test length="+data.length);
+	    						fillNewcase(data);
+	    						
+	                        },
+	                        error: function(){
+	                            alert("数据发送失败denglu");
+	                        }
+	                    });
 	        });
 	</script>
 
@@ -163,8 +179,8 @@
 				</div>
 			</div>
 
-			<div id="facadeContent">
-				<div style="width: 101%;">
+			<div id="facadeContent" style="width:856px;">
+				<div class="newcaseContent" style="width: 100%;">
 					<div>
 			            <div id="inputcorpus" id="style1" style="padding-top: 5.5px;">新造型案例</div>
 			        </div>
@@ -237,97 +253,109 @@
 	    $("#newContent").fadeToggle(0);
 	  });
 
+	
+	$("#baseGoblet").click(function(){
+  		window.location.href="facade.html?txt=baseGoblet";
+  	});
+  	$("#baseYacht").click(function(){
+	    // alert("codeYacht");
+	    window.location.href="facade.html?txt=baseYacht";
+	});
+	$("#baseHanky").click(function(){
+	    // alert("codeHanky");
+	    window.location.href="facade.html?txt=baseHanky";
+	});
+	$("#baseRange").click(function(){
+	    // alert("codeRange");
+	    window.location.href="facade.html?txt=baseRange";
+	});
+
+
+
+  	$("#codeGoblet").click(function(){
+		window.location.href="facade.html?txt=codeGoblet";
+  	});
+
+	$("#codeYacht").click(function(){
+	    // alert("codeYacht");
+	    window.location.href="facade.html?txt=codeYacht";
+	});
+	$("#codeHanky").click(function(){
+	    // alert("codeHanky");
+	    window.location.href="facade.html?txt=codeHanky";
+	});
+	$("#codeRange").click(function(){
+	    // alert("codeRange");
+	    window.location.href="facade.html?txt=codeRange";
+	});
+
+	
 	$("#newGoblet").click(function(){
   			$(".imgicon").attr('src',"../images/genestyle/golbet.png");
-  			// $("#inputcorpus").fadeIn(0);
-    		// $.ajax({
-		    //     url: "facade_bottom_Cgolbet.html",
-		    //     global: false,
-		    //     type: "POST",
-		    //     data: ({
-		    //         id: this.getAttribute('globet')
-		    //     }),
-		    //     dataType: "html",
-		    //     async: false,
-		    //     success: function(msg) {
-		    //         $("#facadeContent").html(msg);
-		    //     }
-	   		// })
+		 	$.ajax("facade/newcase?tname=高脚杯",
+            // 发送请求的URL字符串
+            {
+                type: "get",      //
+                async:true,  //
+                success: function(data){
+				alert("facade newcase goblet test length="+data.length);
+				fillNewcase(data);
+                },
+                error: function(){
+                    alert("数据发送失败denglu");
+                }
+            });
   		});
 	$("#newRange").click(function(){
   			$(".imgicon").attr('src',"../images/genestyle/gascooker.png");
-  			// $("#inputcorpus").fadeIn(0);
-    		// $.ajax({
-		    //     url: "facade_bottom_Cgascooker.html",
-		    //     global: false,
-		    //     type: "POST",
-		    //     data: ({
-		    //         id: this.getAttribute('globet')
-		    //     }),
-		    //     dataType: "html",
-		    //     async: false,
-		    //     success: function(msg) {
-		    //         $("#facadeContent").html(msg);
-		    //     }
-	   		// })
+  			$.ajax("facade/newcase?tname=燃气灶",
+            // 发送请求的URL字符串
+            {
+                type: "get",      //
+                async:true,  //
+                success: function(data){
+				alert("facade newcase goblet test length="+data.length);
+				fillNewcase(data);
+                },
+                error: function(){
+                    alert("数据发送失败denglu");
+                }
+            });
   		});
 	$("#newYacht").click(function(){
   			$(".imgicon").attr('src',"../images/genestyle/houseboat.png");
-  			// $("#inputcorpus").fadeIn(0);
-    		// $.ajax({
-		    //     url: "facade_bottom_Chouseboat.html",
-		    //     global: false,
-		    //     type: "POST",
-		    //     data: ({
-		    //         id: this.getAttribute('houseboat')
-		    //     }),
-		    //     dataType: "html",
-		    //     async: false,
-		    //     success: function(msg) {
-		    //         $("#facadeContent").html(msg);
-		    //     }
-	   		// })
+  			$.ajax("facade/newcase?tname=游艇",
+            // 发送请求的URL字符串
+            {
+                type: "get",      //
+                async:true,  //
+                success: function(data){
+				alert("facade newcase goblet test length="+data.length);
+				fillNewcase(data);
+                },
+                error: function(){
+                    alert("数据发送失败denglu");
+                }
+            });
+    		
   		});
 	$("#newHanky").click(function(){
   			$(".imgicon").attr('src',"../images/genestyle/fabric.png");
-  			// $("#inputcorpus").fadeIn(0);
-    		// $.ajax({
-		    //     url: "facade_bottom_Cfabric.html",
-		    //     global: false,
-		    //     type: "POST",
-		    //     data: ({
-		    //         id: this.getAttribute('fabric')
-		    //     }),
-		    //     dataType: "html",
-		    //     async: false,
-		    //     success: function(msg) {
-		    //         $("#facadeContent").html(msg);
-		    //     }
-	   		// })
+  			$.ajax("facade/newcase?tname=织物",
+            // 发送请求的URL字符串
+            {
+                type: "get",      //
+                async:true,  //
+                success: function(data){
+				alert("facade newcase goblet test length="+data.length);
+				fillNewcase(data);
+                },
+                error: function(){
+                    alert("数据发送失败denglu");
+                }
+            });
+    		
   		});
-
-
-
-
-
-
-
-	$("#codeGoblet").click(function(){
-  			$(".imgicon").attr('src',"../images/genestyle/golbet.png");
-  			// $("#inputcorpus").fadeIn(0);
-    		window.location.href="facade.html?"+"txt="+encodeURI("codeGoblet");
-  		});
-	// 游艇
-	$("#codeYacht").click(function(){
-  			// $(".imgicon").attr('src',"../images/genestyle/golbet.png");
-  			// $("#inputcorpus").fadeIn(0);
-    		window.location.href="facade.html?"+"txt="+encodeURI("baseYacht");
-  		});
-
-
-
-
-
 
 
 
@@ -336,6 +364,8 @@
 
 		// var now = "theBaseGoblet";
 		// var nowLeft = "baseGoblet";
+		var txt="goblet";
+		
 		$("#newGoblet").css("color","#00a5bd");
 
 
@@ -343,14 +373,44 @@
 		$(".facade1").on("click",function(){
 			$(".facade1").css({color:'black'});
 		   	$(this).css({color:'#00A5BD'});
+		   	if("高脚杯"==$(this).html()){
+				txt="goblet";
+			}
+			if("燃气灶"==$(this).html()){
+					txt="gascooker";
+			}
+			if("游艇"==$(this).html()){
+				txt="houseboat";
+			}
+			if("织物"==$(this).html()){
+					txt="fabric";
+			}
 		});
 
-		$(".isclick").on("click",function(){
+		$(".newcaseContent").on("click",".isclick",function(){
 			
 			//alert($(this).html());
 			var ht=$(this).html();
 			alert($(ht).find('img').attr('src'));
-			window.location.href="facade_new_comgolbet.html?img="+$(ht).find('img').attr('src');
+			alert($(ht).find('img').attr('data-nid'));
+			
+			
+		   	
+			if("goblet"==txt){
+				window.location.href="facade_new_comgolbet.html?nid="+$(ht).find('img').attr('data-nid');
+			}
+			if("gascooker"==txt){
+				window.location.href="facade_new_comgascooker.html?nid="+$(ht).find('img').attr('data-nid');
+			}
+			if("houseboat"==txt){
+				window.location.href="facade_new_comhouseboat.html?nid="+$(ht).find('img').attr('data-nid');
+			}
+			if("fabric"==txt){
+				window.location.href="facade_new_comfabric.html?nid="+$(ht).find('img').attr('data-nid');
+			}
+		   	
+			
+			//window.location.href="facade_new_comgolbet.html?nid="+$(ht).find('img').attr('data-nid');
 
 			//var img=$(this).attr("src");
 			// getDetailInfo($(ht).find('img').attr('src'));
