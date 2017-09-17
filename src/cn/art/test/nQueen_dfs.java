@@ -3,7 +3,7 @@ package cn.art.test;
 import java.util.Scanner;
 
 public class nQueen_dfs {
-	private static int n =8;
+	private static int n;
 	private static int num_tree;
 	private static boolean flag;
 	private static boolean isSearch;
@@ -13,17 +13,17 @@ public class nQueen_dfs {
 		flag = false;
 		isSearch = false;
 		num_tree = 0;
-		p = 9;
-		queen = new int[8][9];
-		for(int i = 0;i<8;i++){
-			for(int j = 0;j<=8;j++)
+		p = 15;     //皇后的数量
+		/*queen = new int[15][16];
+		for(int i = 0;i<15;i++){
+			for(int j = 0;j<=15;j++)
 				queen[i][j] = 0;
-		}
-		queen[3][4] = 2;
-		queen[3][8] = 4;
-		queen[5][5] = 2;
-		queen[5][8] = 5;    //在数组末位记录该行是否有数及树的位置
-		print();
+		}*/
+		//queen[3][4] = 2;
+		//queen[3][8] = 4;
+		//queen[5][5] = 2;
+		//queen[5][8] = 5;    //在数组末位记录该行是否有数及树的位置
+		//print();
 	}
 	
 	
@@ -32,17 +32,22 @@ public class nQueen_dfs {
 		
 		Scanner S=new Scanner(System.in);
 		System.out.print("Enter no. of Queens: ");
-        int n = S.nextInt();
-        
+        n = S.nextInt();
+        queen = new int[20][21];
+		for(int i = 0;i<n;i++){
+			for(int j = 0;j<=n;j++)
+				queen[i][j] = 0;
+		}
+		//print();
         solveNQueens(n);
         
-        for(int i = 0;i<n;i++){
+        /*for(int i = 0;i<n;i++){
 			for(int j = 0;j<=n;j++){
 				System.out.print(queen[i][j]);
 			}
 			System.out.println();
 				
-		}
+		}*/
 
         
 		
@@ -57,11 +62,11 @@ public class nQueen_dfs {
 			        for(int i = 0; i < n ; i++){
 			        	//判断该位置是否有树，没有树则开始搜索，有树的话换到下一列
 			        	if(queen[0][i]==0){
-			        		System.out.println("row= "+0+" col= "+i);
+			        		//System.out.println("row= "+0+" col= "+i);
 			        		queen[0][i] = 1;   //从第一行第一列开始搜索
 			        		num_tree++;
 			        		//如果该行没有树，则搜索下一行（从第一列开始）
-			        		if(queen[0][8]==0){ 
+			        		if(queen[0][n]==0){ 
 			        			dfs(queen,1,n);
 			        		}else{//该行有树，则继续搜索该行
 			        			i+=2;
@@ -101,14 +106,14 @@ public class nQueen_dfs {
 			        for(int i = 0; i < n; i++){
 			        	
 			            if((queen[row][i]==0)&&valid(row, i, queen)){
-			            	System.out.println("row= "+row+" col= "+i);
+			            	//System.out.println("row= "+row+" col= "+i);
 			                queen[row][i] = 1;
 			                num_tree++;  //找到一个皇后位置
-			                if(num_tree==p) {
+			                if(num_tree==n) {
 			                	flag = true;   //如果找到一个解决方案，则置搜索判断条件为真
 			                	print();
 			                }
-			                if(queen[row][8]!=0){   //该行有树,继续该行搜索，否则换下一行搜索
+			                if(queen[row][n]!=0){   //该行有树,继续该行搜索，否则换下一行搜索
 			                	if(isSearch){  //在该行搜索过，就换行
 			                		isSearch = false;
 			                		dfs(queen, row+1, n);
@@ -132,8 +137,8 @@ public class nQueen_dfs {
 			        }
 			    }
 			    public static boolean valid(int row, int col, int [][]queen) {
-			    	if(queen[row][8]!=0){ //如果该行有树  queen[row][8]会记录树的位置
-			    		int posT = queen[row][8];
+			    	if(queen[row][n]!=0){ //如果该行有树  queen[row][8]会记录树的位置
+			    		//int posT = queen[row][8];
 			    		if(isExistQ(row,n)){ //该行是否有皇后
 			    			//判断位置是否和已有的皇后冲突
 			    			if(!rowIsOk(row, col)){
@@ -190,7 +195,7 @@ public class nQueen_dfs {
 			        return true;
 			    }
 			    public static boolean right(int row,int col) {
-			    	while(col<8&&row>=0){
+			    	while(col<n&&row>=0){
 			    		if(queen[row][col]==1){  //遇到皇后，则表明该位置不能放
 			    			return false;
 			    		}
@@ -224,8 +229,8 @@ public class nQueen_dfs {
 			        return true;
 			    }
 			    public static  void print() {
-			    	for(int i = 0;i<8;i++){
-						for(int j = 0;j<=8;j++){
+			    	for(int i = 0;i<n;i++){
+						for(int j = 0;j<n;j++){
 							System.out.print(queen[i][j]);
 						}
 						System.out.println();
