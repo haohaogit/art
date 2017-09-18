@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import cn.art.model.OutLine;
+import cn.art.util.pojo.outlineB;
 
 public interface OutLineService {
 	int deleteByPrimaryKey(Integer oid);
@@ -16,6 +17,7 @@ public interface OutLineService {
     List<OutLine> selectByTIDandOTID(Map<String, Integer> map);
     
     List<OutLine> selectByTID(Integer tid);
+    List<outlineB> selectByTID1(Integer tid);
     
     List<OutLine> selectByName1(String odescription);
     String selectByName(String odescription);

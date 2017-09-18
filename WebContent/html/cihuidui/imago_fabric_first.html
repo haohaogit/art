@@ -28,7 +28,7 @@
 		}
 		.imgfabric{
 			width: 139px;
-			height: 139px;
+			height: 155px;
 			margin-top: 11px;
 			box-shadow: none;
 		}
@@ -38,11 +38,40 @@
 			margin-top: 11px;
 			box-shadow: 1px 1px 14px red;
 		}
+		.macro{
+			display: flex;
+			flex-wrap: wrap;
+		}
+		.hengStep{
+			margin-right: 11px;
+		}
 		
 	</style>
 
 </head>
+
 <body>
+	
+	<script type="text/javascript" src="../js/imago.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function () {
+			
+			$.ajax("model?tname=织物",
+            // 发送请求的URL字符串
+            {
+                type: "get",      //
+                async:true,  //
+                success: function(data){
+					//alert("facade model fabric test length= "+data.length);
+					fillModelFabric(data);
+                },
+                error: function(){
+                    alert("数据发送失败denglu");
+                }
+            });
+
+		});
+	</script>
 		<div id="fabric">
 			
 			<div id="inputcorpus">
@@ -53,147 +82,110 @@
 				<div class="lunkuo">
 					<div class="descri" >兽纹图案轮廓</div>
 				</div>
-
-				<div>
-					<div style="float: left;">
-						<div><img id="animal1" class="imgfabric" src="../images/genestyle/animal.jpg" /></div>
+				<div class="macro">
+					<div class="hengStep isclick">
+						<div><img class="imgfabric" src="../images/genestyle/animal.jpg" /></div>
 						<div class="lunkuo1">
-							<div class="descri1" >鸟纹图案</div>
+							<div class="descri1" >兽纹图案</div>
 						</div>
 					</div>
-
-					<!-- <div style="float: left;margin-left: 11px;">
-						<div><img src="../../images/genestyle/flower1.jpg" style="width: 139px;height: 139px; margin-top: 11px;" /></div>
-						<div class="lunkuo1">
-							<div class="descri1" >鸟纹图案</div>
-						</div>
-					</div> -->
-
+						
 				</div>
 
 
 				
 
 				<div class="lunkuo">
-					<div class="descri" style="margin-top: 196px;">花草纹图案轮廓</div>
+					<div class="descri" >花草纹图案轮廓</div>
 				</div>
-				<div>
-					<div style="float: left;">
-						<div><img id="flower1" class="imgfabric" src="../images/genestyle/flower.jpg" /></div>
-						<div class="lunkuo1">
-							<div class="descri1" >花草纹图案</div>
+				<div class="macro">
+						<div class="hengStep isclick">
+							<div><img class="imgfabric" src="../images/genestyle/flower.jpg" /></div>
+							<div class="lunkuo1">
+								<div class="descri1" >花草纹图案</div>
+							</div>
 						</div>
-					</div>
-					<!-- <div class="lunkuo1">
-						<div class="descri1" >花草纹图案</div>
-					</div> -->
-
-					<div style="float: left;margin-left: 11px;">
-						<div><img id="flower2" class="imgfabric" src="../images/genestyle/flower1.jpg" /></div>
-						<div class="lunkuo1">
-							<div class="descri1" >花草纹图案</div>
+						<div class="hengStep isclick">
+							<div><img class="imgfabric" src="../images/genestyle/flower1.jpg" /></div>
+							<div class="lunkuo1">
+								<div class="descri1" >花草纹图案</div>
+							</div>
 						</div>
-					</div>
-
-					<div style="float: left;margin-left: 11px;">
-						<div><img id="flower3" class="imgfabric" src="../images/genestyle/flower2.jpg" /></div>
-						<div class="lunkuo1">
-							<div class="descri1" >花草纹图案</div>
+						<div class="hengStep isclick">
+							<div><img class="imgfabric" src="../images/genestyle/flower2.jpg" /></div>
+							<div class="lunkuo1">
+								<div class="descri1" >花草纹图案</div>
+							</div>
 						</div>
-					</div>
-
 				</div>
 
+				<!-- <div>
+		            <div id="inputcorpus" id="style1" style="padding-top: 5.5px;">新造型案例</div>
+		        </div> -->
+		         
+				<div class="lunkuo">
+					<div class="descri" >鸟纹图案轮廓</div>
+				</div>
+				
+				<div class="macro">
+						<div class="hengStep isclick">
+							<div><img class="imgfabric" src="../images/genestyle/bird.jpg" /></div>
+							<div class="lunkuo1">
+								<div class="descri1" >鸟纹图案</div>
+							</div>
+						</div>
+						
+				</div>
+				
+				
 
 				<div class="lunkuo">
-					<div class="descri" style="margin-top: 196px;">鸟纹图案轮廓</div>
+					<div class="descri" >几何图案轮廓</div>
 				</div>
-				<div>
-					<div style="float: left;">
-						<div><img id="bird1" class="imgfabric" src="../images/genestyle/bird.jpg" /></div>
-						<div class="lunkuo1">
-							<div class="descri1" >鸟纹图案</div>
+				<div class="macro">
+						<div class="hengStep isclick">
+							<div><img class="imgfabric" src="../images/genestyle/graphic.jpg" /></div>
+							<div class="lunkuo1">
+								<div class="descri1" >几何图案</div>
+							</div>
 						</div>
-					</div>
-					<!-- <div class="lunkuo1">
-						<div class="descri1" >花草纹图案</div>
-					</div> -->
-
-					<div style="float: left;margin-left: 11px;">
-						<div><img id="bird2" class="imgfabric" src="../images/genestyle/bird1.jpg" /></div>
-						<div class="lunkuo1">
-							<div class="descri1" >鸟纹图案</div>
+						<div class="hengStep isclick">
+							<div><img class="imgfabric" src="../images/genestyle/graphic1.jpg" /></div>
+							<div class="lunkuo1">
+								<div class="descri1" >几何图案</div>
+							</div>
 						</div>
-					</div>
-
+						<div class="hengStep isclick">
+							<div><img class="imgfabric" src="../images/genestyle/graphic2.jpg" /></div>
+							<div class="lunkuo1">
+								<div class="descri1" >几何图案</div>
+							</div>
+						</div>
 				</div>
+	
+				
 
-
-				<div class="lunkuo">
-					<div class="descri" style="margin-top: 196px;">几何图案轮廓</div>
-				</div>
-				<div>
-					<div style="float: left;">
-						<div><img id="graphic1" class="imgfabric" src="../images/genestyle/graphic.jpg" /></div>
-						<div class="lunkuo1">
-							<div class="descri1" >几何图案</div>
-						</div>
-					</div>
-					
-
-					<div style="float: left;margin-left: 11px;">
-						<div><img id="graphic2" class="imgfabric" src="../images/genestyle/graphic1.jpg" /></div>
-						<div class="lunkuo1">
-							<div class="descri1" >几何图案</div>
-						</div>
-					</div>
-
-					<div style="float: left;margin-left: 11px;">
-						<div><img id="graphic3" class="imgfabric" src="../images/genestyle/graphic2.jpg" /></div>
-						<div class="lunkuo1">
-							<div class="descri1" >几何图案</div>
-						</div>
-					</div>
-
-				</div>
-				<div id="geneBottomBtn1" style="margin-top: 206px;text-align: center;">
-					<button type="submit" id="save" onclick="savalunkuo()">保存</button>
-					<button type="submit" id="cancel">取消</button>
-				</div>
-
+		</div>
+		<div id="geneBottomBtn1" style="text-align: center;">
+			<button type="submit" id="save" onclick="savalunkuo()">保存</button>
+			<button type="submit" id="cancel">取消</button>
 		</div>
 	</div>
 	
 
 		<script type="text/javascript">
 			var imglunkuo;
-
-			$(".imgfabric").click(function(){
+			
+			$("#fabricLunkuo").on("click",".isclick",function(){
 				
 				$(".imgfabric").css({boxShadow:'none'});
-				$(this).css({boxShadow:'1px 2px 16px #8af413'});
+				//alert($(this).html());
+				$(this).find(".imgfabric").css({boxShadow:'1px 2px 16px #8af413'});
 				imglunkuo = $(this).attr('src');
 				//alert($(this).attr('src'));
 
 			});
 
-			// function savalunkuo(){
-			// 	//alert(imglunkuo);
-			// 	$.ajax({
-			//         url: "cihuidui/Cfabric.html",
-			//         global: false,
-			//         type: "POST",
-			//         data: ({
-			//             id: this.getAttribute('fabric')
-			//         }),
-			//         dataType: "html",
-			//         async: false,
-			//         success: function(msg) {
-			//             $("#paramSet").html(msg);
-
-			//         }
-		 //   		})
-			// }
 		</script>
 	
 </body>

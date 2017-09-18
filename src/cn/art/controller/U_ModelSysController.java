@@ -1,12 +1,17 @@
 package cn.art.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import cn.art.service.ColorService;
 import cn.art.service.JWordService;
@@ -16,11 +21,14 @@ import cn.art.service.PartService;
 import cn.art.service.SurveyService;
 import cn.art.service.TextureService;
 import cn.art.service.TypeService;
+import cn.art.util.pojo.outlineB;
+import cn.art.util.pojo.typeIdName;
 
 
 @Controller
-@RequestMapping("model")
+@RequestMapping("html")
 public class U_ModelSysController {
+	
 	private JWordService jWordService;
 	private TypeService typeService;
 	private SurveyService surveyService;
@@ -88,6 +96,39 @@ public class U_ModelSysController {
 	}
 
 	
+	@RequestMapping("cihuidui/model")
+	@ResponseBody
+	public List<outlineB> model(Model model,String tname,HttpServletRequest request){
+		
+		List<typeIdName> typeIdNames = typeService.selectAllByName(tname);
+		int tid = 0;
+		for (typeIdName typeIdName : typeIdNames) {
+			tid = typeIdName.getTid();
+			break;
+		}
+		
+		List<outlineB> outlineBs = new ArrayList<outlineB>();
+		outlineBs = outLineService.selectByTID1(tid);
+		System.out.println("cccccccccccccccccccccccc");
+		return outlineBs;
+	}
+	@RequestMapping("model")
+	@ResponseBody
+	public List<outlineB> model1(Model model,String tname,HttpServletRequest request){
+		
+		List<typeIdName> typeIdNames = typeService.selectAllByName(tname);
+		int tid = 0;
+		for (typeIdName typeIdName : typeIdNames) {
+			tid = typeIdName.getTid();
+			break;
+		}
+		
+		List<outlineB> outlineBs = new ArrayList<outlineB>();
+		outlineBs = outLineService.selectByTID1(tid);
+		System.out.println("cccccccccccccccccccccccc");
+		return outlineBs;
+	}
+		
 	//参数设置 类型分类默认接口
 	@RequestMapping("setparameter")
 	public String modelSetpara(HttpServletRequest request){

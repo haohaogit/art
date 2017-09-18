@@ -16,6 +16,7 @@ import cn.art.model.NewCase;
 import cn.art.service.ColorService;
 import cn.art.service.JWordService;
 import cn.art.service.NewCaseService;
+import cn.art.service.OutLineService;
 import cn.art.service.TextureService;
 import cn.art.service.TypeService;
 import cn.art.util.pojo.newcaseB;
@@ -30,7 +31,15 @@ public class U_newcaseController {
 	private JWordService jWordService;
 	private ColorService colorService;
 	private TextureService textureService;
+	private OutLineService outLineService;
 	
+	public OutLineService getOutLineService() {
+		return outLineService;
+	}
+	@Autowired
+	public void setOutLineService(OutLineService outLineService) {
+		this.outLineService = outLineService;
+	}
 	public ColorService getColorService() {
 		return colorService;
 	}
@@ -92,6 +101,7 @@ public class U_newcaseController {
 	@RequestMapping("")
 	@ResponseBody
 	public List<newcaseB> newCasedefault1(Model model,String tname, HttpServletRequest request){
+		System.out.println("22222222222222222222");
 		List<newcaseB> lBs = new ArrayList<newcaseB>();
 		
 		List<typeIdName> typeIdNames = typeService.selectAllByName(tname);
@@ -101,22 +111,23 @@ public class U_newcaseController {
 			break;
 		}
 		lBs = newCaseService.selectNewcaseBByTID(tid);
+		
 		return lBs;
 	}
 	
 	//新造型库 类型分类接口
 	@RequestMapping("{tid}")
-	public String newCaseTypecalssify(@PathVariable Integer tid,HttpServletRequest request){
+	public void newCaseTypecalssify(@PathVariable Integer tid,HttpServletRequest request){
 		
-		String newcases = newCaseService.selectNewcaseByTID(tid);
-		request.setAttribute("newcases", newcases);
+		//String newcases = newCaseService.selectNewcaseByTID(tid);
+		//request.setAttribute("newcases", newcases);
 		
-		String ticon = typeService.selectByPrimaryKey(tid).getTicon();
+		/*String ticon = typeService.selectByPrimaryKey(tid).getTicon();
 		String TZaoxing = typeService.selectByPrimaryKey(tid).getTzaoxing();
 		request.setAttribute("ticon", ticon);
-		request.setAttribute("TZaoxing", TZaoxing);
-		
-		return "";
+		request.setAttribute("TZaoxing", TZaoxing);*/
+		System.out.println("22222222222222222222");
+		//return "";
 	}
 	
 	//"调整前后详细展示"  接口

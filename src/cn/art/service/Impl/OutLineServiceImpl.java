@@ -243,4 +243,25 @@ public class OutLineServiceImpl implements OutLineService {
 		return outLineMapper.selectByTID(tid);
 	}
 
+	@Override
+	public List<outlineB> selectByTID1(Integer tid) {
+		// TODO Auto-generated method stub
+		List<OutLine> outLines = outLineMapper.selectByTID(tid);
+		List<outlineB> outlineBs = new LinkedList<outlineB>();
+		outlineB outlineB;
+		for (OutLine outLine : outLines) {
+			
+			outlineB = new outlineB();
+			OutLineType outLineType = outLineTypeMapper.selectByPrimaryKey(outLine.getOtid());
+			outlineB.setOdescription(outLine.getOdescription());
+			outlineB.setOid(outLine.getOid());
+			outlineB.setTid(outLine.getTid());
+			outlineB.setOimg(outLine.getOimg());
+			outlineB.setOname(outLineType.getOname());
+
+			outlineBs.add(outlineB);
+		}
+		return outlineBs;
+	}
+
 }
