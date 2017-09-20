@@ -1,16 +1,16 @@
 package cn.art.test;
 
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class dfspan {
+public class bfspan {
 	static boolean Result = false;
 	static int n;
 	static int p;
-	static int pos[][];
-    static int p_num=0;
+	static int pos[][] = null;
 
 	public static void solveNQueens(int pos[][], int p) {
 		solve(pos, 0, p);
@@ -18,9 +18,8 @@ public class dfspan {
 
 	public static void solve(int pos[][], int col, int p) {
 		int n = pos[0].length;
-		if (p_num == p ||col == n) {
-			if (p == p_num) {
-				
+		if (col == n) {
+			if (p == n) {
 				System.out.println("OK");
 				Result = true;
 				for (int i = 0; i < pos[0].length; i++) {
@@ -28,19 +27,9 @@ public class dfspan {
 					System.out.println();
 					for (int j = 0; j < pos[0].length; j++)
 						System.out.print(pos[i][j]);
-					
 
 				}
-				
 			} else {
-//				for (int i = 0; i < pos[0].length; i++) {
-//
-//					System.out.println();
-//					for (int j = 0; j < pos[0].length; j++)
-//						System.out.print(pos[i][j]);
-//					
-//					}
-//				System.out.println();
 				solve_rest(pos, n - 1, p - n);
 			}
 
@@ -48,21 +37,13 @@ public class dfspan {
 			for (int j = 0; j < n; j++) {
 				if (IsOK(pos, col, j)) {
 					pos[j][col] = 1;
-					p_num++;
 					solve(pos, col + 1, p);
-					if(Result)
-						break;
-					p_num--;
 					pos[j][col] = 0;
 				}
 			}
 		}
 	}
 
-	
-	
-	
-	
 	public static void solve_rest(int pos[][], int col, int count) {
 		int n = pos.length;
 		if (count-- == 0) {
@@ -80,10 +61,6 @@ public class dfspan {
 				for (int j = n - 1; j >= 0; j--) {
 					if (IsOK(pos, i, j)) {
 						pos[j][i] = 1;
-						p_num++;
-						if(Result)
-							break;
-						p_num--;
 						solve_rest(pos, i - 1, count);
 						pos[j][i] = 0;
 					}
@@ -98,68 +75,7 @@ public class dfspan {
 			return false;
 
 		int flag = 0;
-		
-		for(int i = 0; i < n; i++) {
-			if (pos[i][col] == 1) {
-				if (row > i) {
-					for (int j = i+1; j < row; j++) {
-						if (pos[j][col] == 2) {
-							    flag = 1;
-								break;
-						}
-					}
-					if (flag == 1) {
-						flag = 0;
-					}else
-					    return false;
-				} else {
-					for (int j = row+1; j < i; j++) {
-						if (pos[j][col] == 2) {
-							flag = 1;
-							break;
-						}
-					}
-					if (flag == 1) {
-						flag = 0;
-					}else
-					    return false;
-				}
-			}
-		}
-		
-		
-		
-		for(int i = 0; i < n; i++) {
-			if (pos[row][i] == 1) {
-				if (col > i) {
-					for (int j = i+1; j < col; j++) {
-						if (pos[row][j] == 2) {
-							    flag = 1;
-								break;
-						}
-					}
-					if (flag == 1) {
-						flag = 0;
-					}else
-					    return false;
-				} else {
-					for (int j = col+1; j < i; j++) {
-						if (pos[row][j] == 2) {
-							flag = 1;
-							break;
-						}
-					}
-					if (flag == 1) {
-						flag = 0;
-					}else
-					    return false;
-				}
-			}
-		}
-		
-		
-		
-		for (int i = 0; i < n; i++) {
+		for (int i = 0; i < col; i++) {
 			for (int j = 0; j < n; j++) {
 				if (pos[j][i] == 1) {
 
@@ -180,7 +96,6 @@ public class dfspan {
 						if (j > row) {
 							int i1=i+1;
 							for (int k = j - 1; k > row; k--) {
-								if(i1>=8) break;
 								if (pos[k][i1] == 2) {
 									flag = 1;
 									break;
@@ -194,7 +109,6 @@ public class dfspan {
 						} else {
 							int i2=i+1;
 							for (int k = j + 1; k < row; k++) {
-								if(i2>=8) break;
 								if (pos[k][i2] == 2) {
 									flag = 1;
 									break;
@@ -209,9 +123,9 @@ public class dfspan {
 						return false;
 					}
 				}
+
 			}
 		}
-		
 		return true;
 
 	}
@@ -257,14 +171,9 @@ public class dfspan {
 			e.printStackTrace();
 		}
 		solveNQueens(pos, p);
-		
 		if (!Result)
-			{
-				System.out.println("FAIL");
-			}
-		
+			System.out.println("FALL");
 	}
 
 }
-
 

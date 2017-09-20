@@ -1,11 +1,18 @@
 package cn.art.controller;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -136,8 +143,37 @@ public class U_newcaseController {
 	public NewCase newCaseDetailInfo(Model model,Integer nid,HttpServletRequest request){
 		NewCase newCase = newCaseService.selectByPrimaryKey(nid);
 		
-		
 		return newCase;
+	}
+	
+	@RequestMapping("detail/downloadPic")
+	@ResponseBody
+	public ResponseEntity<byte[]> newCaseDetailInfoPic(Model model,String nid,HttpServletRequest request) throws IOException{
+		//NewCase newCase = newCaseService.selectByPrimaryKey(nid);
+		//下载文件路径
+		String path = request.getServletContext().getRealPath("/image/");
+		String filename = "微信图片.png";
+		//System.out.println("filename "+filename);*/
+		System.out.println(path+" 111111111111111111111 nid= "+nid);
+		
+		//File file = new File(path+File.separator+filename);
+		File file = new File("C:\\Users\\Administrator\\workspace\\art\\WebContent\\images\\1.jpg");
+		
+		HttpHeaders headers = new HttpHeaders();
+		//下载显示的文件名，解决中文名称轮吗问题
+		String downloadfilename = new String(filename.getBytes("UTF-8"),"iso-8859-1");
+		
+		//通知浏览器以attachment(下载方式) 打开图片
+		headers.setContentDispositionFormData("attachment", downloadfilename);
+		
+		// application/octet-stream；二进制流数据(最常见的下载方式)
+		headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
+		
+		// 201 httpstatus.CREATED
+		
+		
+		return new ResponseEntity<byte[]>(FileUtils.readFileToByteArray(file),headers,HttpStatus.CREATED);
+
 	}
 	
 	//推荐信息详情 接口

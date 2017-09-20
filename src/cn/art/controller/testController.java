@@ -15,7 +15,6 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -45,11 +44,11 @@ public class testController {
 		this.userService = userService;
 	}
 	
-	@RequestMapping("{formname}")
+	/*@RequestMapping("{formname}")
 	public String formservice(@PathVariable String formname){
 		//动态跳转页面
 		return "manager/"+formname;
-	}
+	}*/
 
 	//  接收 JSON格式的数据
 	@RequestMapping("testRequestBody")
@@ -105,11 +104,11 @@ public class testController {
 	
 	//          文件上传
 	@RequestMapping(value="/upload1",method=RequestMethod.POST)
-	public void upload(HttpServletRequest request,
+	public String upload(HttpServletRequest request,
 			@RequestParam("description") String description,
 			@RequestParam("file") MultipartFile file) throws Exception{
 		System.out.println("description "+description+" file "+file);
-		/*if(!file.isEmpty()){
+		if(!file.isEmpty()){
 			//上传文件路径
 			String path = request.getServletContext().getRealPath("/image/");
 			System.out.println("file "+file);
@@ -125,10 +124,10 @@ public class testController {
 			//将上传文件保存到一个目标文件夹中
 			file.transferTo(new File(path+File.separator+filename));
 			request.setAttribute("filename", filename);
-			return "manager/success.jsp";
+			return "manager/success";
 		}else{
-			return "manager/error.jsp";
-		}*/
+			return "manager/error";
+		}
 	}
 	
 	
@@ -139,14 +138,8 @@ public class testController {
 		//下载文件路径
 		String path = request.getServletContext().getRealPath("/image/");
 		
-		
-		
 		System.out.println("filename "+filename);
 		File file = new File(path+File.separator+filename);
-		
-		
-		
-		
 		
 		HttpHeaders headers = new HttpHeaders();
 		//下载显示的文件名，解决中文名称轮吗问题

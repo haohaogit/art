@@ -5,7 +5,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class dfspan {
+public class dfspan2 {
 	static boolean Result = false;
 	static int n;
 	static int p;
@@ -16,9 +16,9 @@ public class dfspan {
 		solve(pos, 0, p);
 	}
 
-	public static void solve(int pos[][], int col, int p) {
+	public static void solve(int pos[][], int row, int p) {
 		int n = pos[0].length;
-		if (p_num == p ||col == n) {
+		if (p_num == p ||row == n) {
 			if (p == p_num) {
 				
 				System.out.println("OK");
@@ -33,37 +33,25 @@ public class dfspan {
 				}
 				
 			} else {
-//				for (int i = 0; i < pos[0].length; i++) {
-//
-//					System.out.println();
-//					for (int j = 0; j < pos[0].length; j++)
-//						System.out.print(pos[i][j]);
-//					
-//					}
-//				System.out.println();
 				solve_rest(pos, n - 1, p - n);
 			}
 
 		} else {
 			for (int j = 0; j < n; j++) {
-				if (IsOK(pos, col, j)) {
-					pos[j][col] = 1;
+				if (IsOK(pos, row, j)) {
+					pos[row][j] = 1;
 					p_num++;
-					solve(pos, col + 1, p);
+					solve(pos, row + 1, p);
 					if(Result)
 						break;
 					p_num--;
-					pos[j][col] = 0;
+					pos[row][j] = 0;
 				}
 			}
 		}
 	}
 
-	
-	
-	
-	
-	public static void solve_rest(int pos[][], int col, int count) {
+	public static void solve_rest(int pos[][], int row, int count) {
 		int n = pos.length;
 		if (count-- == 0) {
 			System.out.println("OK");
@@ -76,58 +64,28 @@ public class dfspan {
 			}
 
 		} else {
-			for (int i = col; i >= 0; i--) {
+			for (int i = row; i >= 0; i--) {
 				for (int j = n - 1; j >= 0; j--) {
 					if (IsOK(pos, i, j)) {
-						pos[j][i] = 1;
+						pos[i][j] = 1;
 						p_num++;
 						if(Result)
 							break;
 						p_num--;
 						solve_rest(pos, i - 1, count);
-						pos[j][i] = 0;
+						pos[i][j] = 0;
 					}
 				}
 			}
 		}
 	}
 
-	public static boolean IsOK(int pos[][], int col, int row) {
+	public static boolean IsOK(int pos[][], int row, int col) {
 		int n = pos.length;
 		if (pos[row][col] == 2 || pos[row][col] == 1)
 			return false;
 
 		int flag = 0;
-		
-		for(int i = 0; i < n; i++) {
-			if (pos[i][col] == 1) {
-				if (row > i) {
-					for (int j = i+1; j < row; j++) {
-						if (pos[j][col] == 2) {
-							    flag = 1;
-								break;
-						}
-					}
-					if (flag == 1) {
-						flag = 0;
-					}else
-					    return false;
-				} else {
-					for (int j = row+1; j < i; j++) {
-						if (pos[j][col] == 2) {
-							flag = 1;
-							break;
-						}
-					}
-					if (flag == 1) {
-						flag = 0;
-					}else
-					    return false;
-				}
-			}
-		}
-		
-		
 		
 		for(int i = 0; i < n; i++) {
 			if (pos[row][i] == 1) {
@@ -137,11 +95,13 @@ public class dfspan {
 							    flag = 1;
 								break;
 						}
+						
 					}
 					if (flag == 1) {
 						flag = 0;
 					}else
 					    return false;
+					
 				} else {
 					for (int j = col+1; j < i; j++) {
 						if (pos[row][j] == 2) {
@@ -153,19 +113,19 @@ public class dfspan {
 						flag = 0;
 					}else
 					    return false;
+				
 				}
 			}
+			
 		}
 		
-		
-		
-		for (int i = 0; i < n; i++) {
+		for (int i = 0; i < row; i++) {
 			for (int j = 0; j < n; j++) {
-				if (pos[j][i] == 1) {
+				if (pos[i][j] == 1) {
 
-					if (j == row) {
-						for (int k = i + 1; k < col; k++) {
-							if (pos[j][k] == 2) {
+					if (j == col) {
+						for (int k = i + 1; k < row; k++) {
+							if (pos[k][j] == 2) {
 								flag = 1;
 								break;
 							}
@@ -176,30 +136,24 @@ public class dfspan {
 						}
 						return false;
 					}
-					if (Math.abs(i - col) == Math.abs(j - row)) {
-						if (j > row) {
-							int i1=i+1;
-							for (int k = j - 1; k > row; k--) {
-								if(i1>=8) break;
-								if (pos[k][i1] == 2) {
+					if (Math.abs(i - row) == Math.abs(j - col)) {
+						if (j > col) {
+							for (int k = j - 1; k > col; k--) {
+								if (pos[k][j] == 2) {
 									flag = 1;
 									break;
 								}
-								i1++;
 							}
 							if (flag == 1) {
 								flag = 0;
 								break;
 							}
 						} else {
-							int i2=i+1;
-							for (int k = j + 1; k < row; k++) {
-								if(i2>=8) break;
-								if (pos[k][i2] == 2) {
+							for (int k = j + 1; k < col; k++) {
+								if (pos[k][j] == 2) {
 									flag = 1;
 									break;
 								}
-								i2++;
 							}
 							if (flag == 1) {
 								flag = 0;
@@ -209,9 +163,9 @@ public class dfspan {
 						return false;
 					}
 				}
+
 			}
 		}
-		
 		return true;
 
 	}
@@ -260,11 +214,11 @@ public class dfspan {
 		
 		if (!Result)
 			{
-				System.out.println("FAIL");
+			System.out.println("FAIL");
+		
 			}
 		
 	}
 
 }
-
 

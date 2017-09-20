@@ -276,7 +276,7 @@
 				<div class="otherpicinfo">
 					<label>下载特征文件:</label>
 					<div style="margin-top: 6px;">
-						<img class="pic1" src="../images/appearance/download.png"/>	
+						<img class="downloadPic" src="../images/appearance/download.png"/>	
 					</div>
 				</div>
 
@@ -315,9 +315,28 @@
 
 
 
-		$(".Btn").on("click",function(){
-			$("#detailBox").css({display:'block'});
-			getDetailInfo();
+		$(".downloadPic").on("click",function(){
+			//$("#detailBox").css({display:'block'});
+			//getDetailInfo();
+			alert("downloadPic is click");
+			window.location.href="facade/newcase/detail/downloadPic?nid=1";
+			/* $.ajax("facade/newcase/detail/downloadPic?nid=1",
+            // 发送请求的URL字符串
+            {
+                type: "get",      //
+                async:true,  //
+                success: function(data){
+				alert("downloadPic is successful!");
+				//fillNewcaseGoblet(data);
+                },
+                error: function(){
+                    alert("数据发送失败denglu");
+                }
+            }); */
+	
+			
+			
+			
 		});
 
 		$(".close_btn").on("click",function(){

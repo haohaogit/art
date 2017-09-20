@@ -28,10 +28,10 @@
 					<div id="paraWord">1.参数设置</div>
 				</a>
 				<ul id="paramContent">
-					<li><a href="javascript:void(0)" id="paragoblet">高脚杯</a></li>
-					<li><a href="javascript:void(0)" id="parayacht">游艇</a></li>
+					<li><a href="javascript:void(0)" id="paragoblet" class="imago1">高脚杯</a></li>
+					<li><a href="javascript:void(0)" id="parayacht" class="imago1">游艇</a></li>
 					<li><a href="javascript:void(0)" id="parahanky">织物</a></li>
-					<li><a href="javascript:void(0)" id="pararange">燃气灶</a></li>
+					<li><a href="javascript:void(0)" id="pararange" class="imago1">燃气灶</a></li>
 				</ul>
 			</div>
 			<div id="geneStyle">
@@ -41,10 +41,10 @@
 					
 				</a>
 				<ul id="geneContent">
-					<li><a href="javascript:void(0)" id="genegoblet">高脚杯</a></li>
-					<li><a href="javascript:void(0)" id="geneyacht">游艇</a></li>
-					<li><a href="javascript:void(0)" id="genehanky">织物</a></li>
-					<li><a href="javascript:void(0)" id="generange">燃气灶</a></li>
+					<li><a href="javascript:void(0)" id="genegoblet" class="imago1">高脚杯</a></li>
+					<li><a href="javascript:void(0)" id="geneyacht" class="imago1">游艇</a></li>
+					<li><a href="javascript:void(0)" id="genehanky" class="imago1">织物</a></li>
+					<li><a href="javascript:void(0)" id="generange" class="imago1">燃气灶</a></li>
 				</ul>
 			</div>
 			<div id="adjustStyle">
@@ -53,11 +53,11 @@
 					<div id="paraWord">3.造型调整</div>
 				</a>
 				<ul id="adjustContent">
-					<li><a href="javascript:void(0)" id="partAdd">部件添加</a></li>
+					<li><a href="javascript:void(0)" id="partAdd" class="imago1">部件添加</a></li>
 					<img src="../images/genestyle/navigatebar.png" class="pimg">
-					<li><a href="javascript:void(0)" id="colorAdjust">色彩调整</a></li>
+					<li><a href="javascript:void(0)" id="colorAdjust" class="imago1">色彩调整</a></li>
 					<img src="../images/genestyle/navigatebar.png" class="pimg">
-					<li><a href="javascript:void(0)" id="textureAdjust">材质调整</a></li>
+					<li><a href="javascript:void(0)" id="textureAdjust" class="imago1">材质调整</a></li>
 				</ul>
 			</div>
 			<div id="bottomcolor"></div>
@@ -76,7 +76,7 @@
 
 			<div class="fabricParam">
 
-				1234567
+				<!-- 1234567 -->
 
 			</div>
 
@@ -110,125 +110,23 @@
     		$("#adjustContent").fadeToggle(0);
     		$("#bottomcolor").fadeToggle(0);
   		});
-  		$("#paragoblet").click(function(){
+  		/* $("#paragoblet").click(function(){
+  			alert("请您先从物品 参数设置开始，然后按照顺序操作！");
   			document.getElementById("pararange").style.color="black";
   			document.getElementById("parahanky").style.color="black";
   			document.getElementById("parayacht").style.color="black";
   			document.getElementById("paragoblet").style.color="#00A5BD";
-  			$(".imgicon").attr('src',"../images/genestyle/golbet.png");
+  			$(".imgicon").attr('src',"../images/genestyle/golbet.png"); 
   			
-  			// $("#inputcorpus").fadeIn(0);
   			
-    		// $.ajax({
-		    //     url: "cihuidui/Cglobet.html",
-		    //     global: false,
-		    //     type: "POST",
-		    //     data: ({
-		    //         id: this.getAttribute('globet')
-		    //     }),
-		    //     dataType: "html",
-		    //     async: false,
-		    //     success: function(msg) {
-		    //         $("#paramSet").html(msg);
-
-		    //     }
-	   		// })
+  		}); */
+  		
+  		$(".imago1").on("click",function(){
+  			alert("请您先从物品 参数设置开始，然后按照顺序操作！");
   		});
-  		$("#parayacht").click(function(){
-  			document.getElementById("pararange").style.color="black";
-  			document.getElementById("parahanky").style.color="black";
-  			document.getElementById("parayacht").style.color="#00A5BD";
-  			document.getElementById("paragoblet").style.color="black";
-  			$(".imgicon").attr('src',"../images/genestyle/houseboat.png");
-  			
-  			// $("#inputcorpus").fadeIn(0);
-  			
-    		// $.ajax({
-		    //     url: "cihuidui/Chouseboat.html",
-		    //     global: false,
-		    //     type: "POST",
-		    //     data: ({
-		    //         id: this.getAttribute('houseboat')
-		    //     }),
-		    //     dataType: "html",
-		    //     async: false,
-		    //     success: function(msg) {
-		    //         $("#paramSet").html(msg);
-
-		    //     }
-	   		// })
-  		});
-  		$("#parahanky").click(function(){
-  			document.getElementById("pararange").style.color="black";
-  			document.getElementById("parahanky").style.color="#00A5BD";
-  			document.getElementById("parayacht").style.color="black";
-  			document.getElementById("paragoblet").style.color="black";
-  			$(".imgicon").attr('src',"../images/genestyle/fabric.png");
-  			
-  			// $("#inputcorpus").fadeOut(0);
-  			
-    		// $.ajax({
-		    //     url: "cihuidui/imago_fabric_first.html",
-		    //     // url: "cihuidui/Cfabric.html",
-		    //     global: false,
-		    //     type: "POST",
-		    //     data: ({
-		    //         id: this.getAttribute('fabric')
-		    //     }),
-		    //     dataType: "html",
-		    //     async: false,
-		    //     success: function(msg) {
-		    //         $("#paramSet").html(msg);
-
-		    //     }
-	   		// })
-  		});
-  		$("#pararange").click(function(){
-  			document.getElementById("pararange").style.color="#00A5BD";
-  			document.getElementById("parahanky").style.color="black";
-  			document.getElementById("parayacht").style.color="black";
-  			document.getElementById("paragoblet").style.color="black";
-  			$(".imgicon").attr('src',"../images/genestyle/gascooker.png");
-  			
-  			// $("#inputcorpus").fadeIn(0);
-  			
-    		// $.ajax({
-		    //     url: "cihuidui/Cgascooker.html",
-		    //     global: false,
-		    //     type: "POST",
-		    //     data: ({
-		    //         id: this.getAttribute('gascooker')
-		    //     }),
-		    //     dataType: "html",
-		    //     async: false,
-		    //     success: function(msg) {
-		    //         $("#paramSet").html(msg);
-
-		    //     }
-	   		// })
-  		});
-
-  	// 	function savalunkuo(){
-			// 	alert(imglunkuo);
-			// 	$.ajax({
-			//         url: "cihuidui/Cfabric.html",
-			//         global: false,
-			//         type: "POST",
-			//         data: ({
-			//             id: this.getAttribute('fabric')
-			//         }),
-			//         dataType: "html",
-			//         async: false,
-			//         success: function(msg) {
-			//         	alert("发送成功");
-			//             $("#paramSet").html(msg);
-			//         },
-			//         error:function() {
-			//         	// body...
-			//         	alert("发送失败");
-			//         }
-		 //   		});
-			// }
+  		
+  		
+  		
   		
 	</script>
 </body>
