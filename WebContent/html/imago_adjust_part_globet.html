@@ -17,7 +17,7 @@
 		canvas.move { cursor: move; }
 		canvas.default { cursor: default; }
 		.img1 	{ display: block; visibility: hidden; position: absolute; top: -1000; left: -1000; }
-		input 	{ margin-left: 20px; }
+		/* input 	{ margin-left: 20px; } */
 		fieldset { width: 280px; float: left; }
 		.fieldset { width: 200px; float: left; }
 		#ft 	{ background-color: #eee; height: 70px; width: 99%; border-top: 1px solid #ccc; padding: 5px; position: absolute; top: 0; left: 0; }
@@ -69,11 +69,11 @@
 					<div id="paraWord">3.造型调整</div>
 				</a>
 				<ul id="adjustContent">
+					<li><a href="javascript:void(0)" id="colorAdjust" class="errorOperate">色彩调整</a></li>
+					<img src="../images/genestyle/navigatebar.png" class="pimg">
+					<li><a href="javascript:void(0)" id="textureAdjust" class="errorOperate">材质调整</a></li>
+					<img src="../images/genestyle/navigatebar.png" class="pimg">
 					<li><a href="javascript:void(0)" id="partAdd" class="errorOperate">部件添加</a></li>
-					<img src="../images/genestyle/navigatebar.png" class="pimg">
-					<li><a href="javascript:void(0)" id="colorAdjust" class="errorOperate" class="errorOperate">色彩调整</a></li>
-					<img src="../images/genestyle/navigatebar.png" class="pimg">
-					<li><a href="javascript:void(0)" id="textureAdjust" class="errorOperate" class="errorOperate">材质调整</a></li>
 				</ul>
 			</div>
 			<div id="bottomcolor"></div>
@@ -105,41 +105,9 @@
 				<div>
 					<canvas id="canvid1"></canvas>
 				</div>
-				
-				
-				<img class="img1" id="img0" src="../images/4.jpg" width="100px" height="81" />
-				<!-- <img id="img1" src="canvas_files/7.jpg" />
-				<img id="img2" src="canvas_files/8.jpg" />
-				<img id="img3" src="canvas_files/9.jpg" />
-				<img id="img4" src="canvas_files/5.jpg" /> -->
+				<img class="img1" id="img0" src="../images/4.jpg" width="100px" height="134px" />
 				<img class="img1" id="bg" src="../images/bg.jpg" />
-				
-				<!-- <div id="ft">
-				<br>
-					<div class="fieldset">
-						<input type="button" id="jpegbutton" value="Export to JPEG" />
-						<input type="button" id="pngbutton" value="Export to PNG (heavy)" />
-					</div>
-					<fieldset>
-						<legend>Photo</legend>
-						<span><input type="radio" name="some_name" value="" id="togglenone" /> None</span>
-						<span><input type="radio" name="some_name" value="" id="toggleborders" /> Border</span>
-						<span><input type="radio" name="some_name" value="" id="togglepolaroid" /> Polaroid</span>
-					</fieldset>
-					<span><input type="checkbox" name="some_name" value="" id="showcorners" /> 显示角落<span>
-				</div><br> -->
-				<!-- <canvas id="myCanvas" width="800" height="400" style="border:1px solid #d3d3d3;background:#ffffff;">
-					<p class="p2">画布：</p>
-					<img src="../images/genestyle/p5.png">
-				</canvas> -->
 			</div>
-
-
-
-
-
-
-
 
 
 
@@ -175,7 +143,7 @@
 			</div>
 
 			<div id="geneBottomBtn">
-				<button type="submit" id="save" onclick="savePart()">确定</button>
+				<button type="submit" id="jpegbutton" class="save" onclick="savePart()">确定</button>
 				<button type="submit" class="cancel">取消</button>
 				<button type="submit" class="cancel" onclick="returned()">返回上一步</button>
 			</div>
@@ -192,12 +160,7 @@
   			window.history.back(-1);
   		}
   		
-		$(".lunbo-item").click(function(){
-  			var ht = $(this).html();
-  			//$(ht).find('img').attr("src");
-  			//alert(ht);
-  			alert($(ht).attr('src'));
-  		});
+		
 		//圆角矩形
 		CanvasRenderingContext2D.prototype.roundRect = function (x, y, w, h, r) {
 		    var min_size = Math.min(w, h);
@@ -217,10 +180,22 @@
 	<script src="../js/canvasEl.js" type="text/javascript" charset="utf-8"></script>
 	<script src="../js/canvasIm.js" type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript" charset="utf-8">
+		$(".lunbo-item").click(function(){
+			var ht = $(this).html();
+			//$(ht).find('img').attr("src");
+			//alert(ht);
+			
+			$("#img0").attr("src",$(ht).attr('src'));
+			canvas1.renderAll();
+			//alert($(ht).attr('src'));
+			
+		});
+		var canvas1;
+		var str;
 		var CanvasDemo = function() {
 			var YD = YAHOO.util.Dom;
 			var YE = YAHOO.util.Event;
-			var canvas1;
+			
 			var img = [];
 			return {
 				init: function() {
@@ -232,18 +207,13 @@
 					//img[img.length] = new Canvas.Img('img3', {});
 					img[img.length] = new Canvas.Img('bg', {});
 					img[img.length] = new Canvas.Img('img0', {});
-					//img[img.length] = new Canvas.Img('img4', {});
-				
 					
 					// @param array of images ToDo: individual images
-					
 					
 					canvas1.setCanvasBackground(img[0]);
 					canvas1.addImage(img[1]);
 					//canvas1.addImage(img[4]);
 					//canvas1.addImage(img[5]);
-					
-					
 					this.cornersvisible = true;
 					for (var i = 0, l = canvas1._aImages.length; i < l; i += 1) {
 						canvas1._aImages[i].setCornersVisibility(this.cornersvisible);
@@ -295,7 +265,27 @@
 				},
 				convertTo: function(format) {
 					var imgData = canvas1.canvasTo(format);
-					window.open(imgData, "_blank");
+					//str = imgData.split(",");
+					str = imgData;
+					$.ajax("partAdd?tname=高脚杯",
+	                // 发送请求的URL字符串
+	                {
+	                    type: "post",      //
+	                    async:true,  //
+	                    data: {imgdata:str},  
+	                    success: function(data){
+							alert("base64 img success");
+							//fillNewcase(data);
+	                    }
+	                    /* error: function(XMLHttpRequest, textStatus, errorThrown){
+	                    	 alert("请求对象XMLHttpRequest: "+XMLHttpRequest);  
+	                         alert("错误类型textStatus: "+textStatus);  
+	                         alert("异常对象errorThrown: "+errorThrown);  
+	                         alert("数据发送失败denglu0000");
+	                    } */
+	                });
+					//alert(str[1]);
+					//window.open(imgData, "_blank");
 				},
 				whatever: function(e, o) {
 					// console.log(e);
@@ -306,9 +296,11 @@
 		}();
 		
 		function loadtitle(){
+			
 			var canvas = document.getElementById("canvid1-canvas-background");
 			//简单地检测当前浏览器是否支持Canvas对象，以免在一些不支持html5的浏览器中提示语法错误
 			if(canvas.getContext){  
+				//alert("aaaaaaaaaaaaaaaa"+canvas.getContext);
 			    //获取对应的CanvasRenderingContext2D对象(画笔)
 			    var ctx = canvas.getContext("2d");
 			    ctx.fillStyle="#00A5BD";
@@ -326,99 +318,18 @@
 		
 		
 		YAHOO.util.Event.on(window, 'load', CanvasDemo.init, CanvasDemo, true);
-	</script>
-	<script type="text/javascript">
 		function savePart(){
 			alert("高脚杯部件保存，然后调整色彩");
-			window.location.href="imago_adjust_color_globet.html";
-		}
-
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		/* window.onload = function(){
-			var c=document.getElementById("canvid1");
-			var cxt=c.getContext("2d");
-
-			var img=new Image();
-			img.src="../images/2.jpg";
-			img.onload = function(){
-				cxt.drawImage(img,10,50);
-			}
-
-			var img1=new Image();
-			img1.src="../images/genestyle/p5.png";
-			img1.onload = function(){
-				ctx.drawImage(img1, 540, 120,130,160);
+			//alert(str);
 			
-			}
-		} */
-		
-		/* //获取Canvas对象(画布)
-		var canvas = document.getElementById("canvid1");
-		//简单地检测当前浏览器是否支持Canvas对象，以免在一些不支持html5的浏览器中提示语法错误
-		if(canvas.getContext){  
-		    //获取对应的CanvasRenderingContext2D对象(画笔)
-		    var ctx = canvas.getContext("2d");
-		    
-		    //设置字体样式
-		    ctx.font = "18px Courier New";
-		    //设置字体填充颜色
-		    ctx.fillStyle = "white";
-		    //从坐标点(50,50)开始绘制文字
-		    ctx.fillText("部件方案预览", 20, 22);
-		    alert("部件方案预览11111111");
-		} */
+			 
+			//window.location.href="imago_adjust_color_globet.html";
+		}
 		
 		var c=document.getElementById("canvid1");
 		var ctx=c.getContext("2d");
 		ctx.fillStyle="#00A5BD";
 		ctx.fillRect(0,0,150,36);
-		
-		/* window.onload = function(){
-			var c=document.getElementById("myCanvas");
-			var cxt=c.getContext("2d");
-
-			var img=new Image();
-			img.src="../images/2.jpg";
-			img.onload = function(){
-				cxt.drawImage(img,10,50);
-			}
-
-			var img1=new Image();
-			img1.src="../images/genestyle/p5.png";
-			img1.onload = function(){
-				ctx.drawImage(img1, 540, 120,130,160);
-			
-			}
-		} */
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-
-		
 	</script>
 
 

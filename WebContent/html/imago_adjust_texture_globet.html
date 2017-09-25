@@ -70,11 +70,11 @@
 					<div id="paraWord">3.造型调整</div>
 				</a>
 				<ul id="adjustContent">
-					<li><a href="javascript:void(0)" id="partAdd" class="errorOperate" class="errorOperate">部件添加</a></li>
-					<img src="../images/genestyle/navigatebar.png" class="pimg">
-					<li><a href="javascript:void(0)" id="colorAdjust" class="errorOperate" class="errorOperate">色彩调整</a></li>
+					<li><a href="javascript:void(0)" id="colorAdjust" class="errorOperate">色彩调整</a></li>
 					<img src="../images/genestyle/navigatebar.png" class="pimg">
 					<li><a href="javascript:void(0)" id="textureAdjust" class="errorOperate">材质调整</a></li>
+					<img src="../images/genestyle/navigatebar.png" class="pimg">
+					<li><a href="javascript:void(0)" id="partAdd" class="errorOperate">部件添加</a></li>
 				</ul>
 			</div>
 			<div id="bottomcolor"></div>
@@ -128,7 +128,7 @@
 			</div>
 
 			<div id="geneBottomBtn">
-				<button type="submit" id="save">确定</button>
+				<button type="submit" id="save" onclick="saveTexture()">确定</button>
 				<button type="submit" class="cancel">取消</button>
 				<button type="submit" class="cancel" onclick="returned()">返回上一步</button>
 			</div>
@@ -140,6 +140,10 @@
 
 	<script type="text/javascript" src="../js/lunbo.js"></script>
 	<script type="text/javascript">
+		function saveTexture(){
+			alert("高脚杯材质保存，然后调整部件");
+			window.location.href="imago_adjust_part_globet.html";
+		}
 
 		function returned(){
   			window.history.back(-1);

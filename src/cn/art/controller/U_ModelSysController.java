@@ -21,6 +21,7 @@ import cn.art.service.PartService;
 import cn.art.service.SurveyService;
 import cn.art.service.TextureService;
 import cn.art.service.TypeService;
+import cn.art.util.pojo.base64;
 import cn.art.util.pojo.outlineB;
 import cn.art.util.pojo.typeIdName;
 
@@ -109,7 +110,7 @@ public class U_ModelSysController {
 		
 		List<outlineB> outlineBs = new ArrayList<outlineB>();
 		outlineBs = outLineService.selectByTID1(tid);
-		System.out.println("cccccccccccccccccccccccc");
+		//System.out.println("cccccccccccccccccccccccc");
 		return outlineBs;
 	}
 	@RequestMapping("model")
@@ -125,7 +126,7 @@ public class U_ModelSysController {
 		
 		List<outlineB> outlineBs = new ArrayList<outlineB>();
 		outlineBs = outLineService.selectByTID1(tid);
-		System.out.println("cccccccccccccccccccccccc");
+		//System.out.println("cccccccccccccccccccccccc");
 		return outlineBs;
 	}
 		
@@ -277,6 +278,44 @@ public class U_ModelSysController {
 		System.out.println("myname is 33333333333333333333");
 		System.out.println(generatetid);
 		return "manager/testlogin";
+	}
+	
+	@RequestMapping("partAdd")
+	public String modelPartAdjust1(Model model,String tname,HttpServletRequest request){
+		List<typeIdName> typeIdNames = typeService.selectAllByName(tname);
+		int tid = 0;
+		for (typeIdName typeIdName : typeIdNames) {
+			tid = typeIdName.getTid();
+			break;
+		}
+		
+		
+		String imgdata = request.getParameter("imgdata");
+		//String[] str = imgdata.split("/");
+		
+		  //输出base64 数据,截取","之后的值进行转换
+        String str = imgdata.substring(imgdata.indexOf(",")+1);
+        //System.currentTimeMillis()意思是获取当前系统的时间戳给图片命名
+        //实例化Base64转换类  调用里面的GenerateImage方法（把base64数据转为图片）
+        //第一个参数base64转图片的必须的base64数据，第二个是转换后生成的图片存放路径
+        base64.GenerateImage(str, "D:/2017/"+System.currentTimeMillis()+".jpg");
+        //数据库存入绝对路径下的图片名称（上传图片即是修改操作）
+        
+       /* buyerMess.setPhotourl("D:/images/user_head/"+System.currentTimeMillis()+".jpg");
+        buyerMess.setId("zhangsan");
+        //根据用户Id修改头像图片存的路径
+        Integer ret = buyerMessService.updatePhotoUrl(buyerMess);
+        if(ret>0){
+            System.out.println("存入成功");
+        }else{
+            System.out.println("存入失败");
+        }*/
+		//request.setAttribute("recommendImg", recommendImg);
+		//request.setAttribute("parts", parts);
+		
+		System.out.println("myname is 33333333333333333333  "+imgdata);
+		return "imago_adjust_part_globet";
+		//return "manager/testlogin";
 	}
 	
 	//部件添加 保存接口 (也是调转到造型调整的 色彩调整接口)

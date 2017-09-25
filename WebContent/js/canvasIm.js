@@ -221,16 +221,33 @@ var Canvas = window.Canvas || {};
 	 * See configuration documentation for more details.
 	 */
 	Canvas.Img.prototype._setRandomProperties = function(oConfig) {
-		if (oConfig.angle == null) { // use YUI.lang
+		/*if (oConfig.angle == null) { // use YUI.lang
 			this.angle = (Math.random() * 40) - 20;
 		}
 		
 		if (oConfig.top == null) {
 			this.top = this.height / 2 + Math.random() * 500;
+			alert("this.top "+this.top);
 		}
 		
 		if (oConfig.left == null) {
 			this.left = this.width / 2 + Math.random() * 700;
+			alert("this.left "+this.left);
+		}*/
+		if (oConfig.angle == null) { // use YUI.lang
+			this.angle = 20 - 20;
+		}
+		
+		if (oConfig.top == null) {
+			//this.top = this.height / 2 + 1* 500;
+			this.top = 1* 330;
+			//alert("this.top "+this.top);
+		}
+		
+		if (oConfig.left == null) {
+			//this.left = this.width / 2 + 1* 700;
+			this.left = 1* 670;
+			//alert("this.left "+this.left);
 		}
 	};
 	

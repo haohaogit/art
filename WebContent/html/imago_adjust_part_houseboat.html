@@ -7,6 +7,22 @@
 	<link href="../css/lunbo.css" rel="stylesheet" type="text/css"/>
 	<script type="text/javascript" src="../js/jquery-1.8.2.min.js"></script>
 	<title>意象映射-意象映射系统</title>
+	<style type="text/css" media="screen">
+		/* body 	{ font: 75% "Lucida Grande", "Trebuchet MS", Verdana, sans-serif; } */
+		canvas 	{ background-color: transparent; border: 1px solid gray; top: 0; left: 0; position: absolute;left:351px;top:300px;}
+		canvas.resize-ne { cursor: ne-resize; }
+		canvas.resize-se { cursor: se-resize; }
+		canvas.resize-sw { cursor: sw-resize; }
+		canvas.resize-nw { cursor: nw-resize; }
+		canvas.move { cursor: move; }
+		canvas.default { cursor: default; }
+		.img1 	{ display: block; visibility: hidden; position: absolute; top: -1000; left: -1000; }
+		input 	{ margin-left: 20px; }
+		fieldset { width: 280px; float: left; }
+		.fieldset { width: 200px; float: left; }
+		#ft 	{ background-color: #eee; height: 70px; width: 99%; border-top: 1px solid #ccc; padding: 5px; position: absolute; top: 0; left: 0; }
+		#ft span { width: 100%; }
+	</style>
 </head>
 <body>
 <script type="text/javascript">
@@ -53,11 +69,12 @@
 					<div id="paraWord">3.造型调整</div>
 				</a>
 				<ul id="adjustContent">
+					<li><a href="javascript:void(0)" id="colorAdjust" class="errorOperate" >色彩调整</a></li>
+					<img src="../images/genestyle/navigatebar.png" class="pimg">
+					<li><a href="javascript:void(0)" id="textureAdjust" class="errorOperate">材质调整</a></li>
+					<img src="../images/genestyle/navigatebar.png" class="pimg">
 					<li><a href="javascript:void(0)" id="partAdd" class="errorOperate">部件添加</a></li>
-					<img src="../images/genestyle/navigatebar.png" class="pimg">
-					<li><a href="javascript:void(0)" id="colorAdjust" class="errorOperate" class="errorOperate">色彩调整</a></li>
-					<img src="../images/genestyle/navigatebar.png" class="pimg">
-					<li><a href="javascript:void(0)" id="textureAdjust" class="errorOperate" class="errorOperate">材质调整</a></li>
+					
 				</ul>
 			</div>
 			<div id="bottomcolor"></div>
@@ -74,13 +91,23 @@
 				<div class="corpusword" style="padding-top: 5.5px;">推荐方案</div>
 			</div> -->
 
-			<div id="picGene" style="margin-top: 40px;">
+			<!-- <div id="picGene" style="margin-top: 40px;">
 				
 				<canvas id="myCanvas" width="800" height="400" style="border:1px solid #d3d3d3;background:#ffffff;">
 					<p class="p2">画布：</p>
-					<!-- <img src="../images/genestyle/p5.png"> -->
+					<img src="../images/genestyle/p5.png">
 				</canvas>
+			</div> -->
+			<div id="picGene" style="height:560px;">
+				<div>
+					<canvas id="canvid1"></canvas>
+				</div>
+				<img class="img1" id="img0" src="../images/4.jpg" width="100px" height="134px" />
+				<img class="img1" id="bg" src="../images/bg.jpg" />
 			</div>
+			
+			
+			
 
 			<div id="partStyle">
 				<div id="beidu">
@@ -114,7 +141,7 @@
 			</div>
 
 			<div id="geneBottomBtn">
-				<button type="submit" id="save" onclick="savePart()">确定</button>
+				<button type="submit" id="jpegbutton" class="save" onclick="savePart()">确定</button>
 				<button type="submit" class="cancel">取消</button>
 				<button type="submit" class="cancel" onclick="returned()">返回上一步</button>
 			</div>
@@ -125,93 +152,143 @@
 	<div class="configFoot"></div>
 
 	<script type="text/javascript" src="../js/lunbo.js"></script>
-	<script type="text/javascript">
-		$(".lunbo-item").click(function(){
-  			var ht = $(this).html();
-  			//$(ht).find('img').attr("src");
-  			//alert(ht);
-  			alert($(ht).attr('src'));
-  		});
-
-
+	
+	<script src="../js/utilitie.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/canvasEl.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/canvasIm.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" charset="utf-8">
 		function returned(){
-  			window.history.back(-1);
-  		}
-  		
-		//圆角矩形
-		CanvasRenderingContext2D.prototype.roundRect = function (x, y, w, h, r) {
-		    var min_size = Math.min(w, h);
-		    if (r > min_size / 2) r = min_size / 2;
-		    // 开始绘制
-		    this.beginPath();
-		    this.moveTo(x + r, y);
-		    this.arcTo(x + w, y, x + w, y + h, r);
-		    this.arcTo(x + w, y + h, x, y + h, r);
-		    this.arcTo(x, y + h, x, y, r);
-		    this.arcTo(x, y, x + w, y, r);
-		    this.closePath();
-		    return this;
-	}
-	</script>
-
-	<script type="text/javascript">
+			window.history.back(-1);
+		}
+		
+		$(".lunbo-item").click(function(){
+			var ht = $(this).html();
+			//$(ht).find('img').attr("src");
+			//alert(ht);
+			
+			$("#img0").attr("src",$(ht).attr('src'));
+			canvas1.renderAll();
+			//alert($(ht).attr('src'));
+			
+		});
+		var canvas1;
+		var CanvasDemo = function() {
+			var YD = YAHOO.util.Dom;
+			var YE = YAHOO.util.Event;
+			
+			var img = [];
+			return {
+				init: function() {
+					canvas1 = new Canvas.Element();
+					//canvas1.init('canvid1',  { width: YD.getViewportWidth() - 5, height: YD.getViewportHeight() - 5 });
+					canvas1.init('canvid1',  { width: 800, height: 481 });			
+					//img[img.length] = new Canvas.Img('img1', {});
+					//img[img.length] = new Canvas.Img('img2', {});
+					//img[img.length] = new Canvas.Img('img3', {});
+					img[img.length] = new Canvas.Img('bg', {});
+					img[img.length] = new Canvas.Img('img0', {});
+					
+					// @param array of images ToDo: individual images
+					
+					canvas1.setCanvasBackground(img[0]);
+					canvas1.addImage(img[1]);
+					//canvas1.addImage(img[4]);
+					//canvas1.addImage(img[5]);
+					this.cornersvisible = true;
+					for (var i = 0, l = canvas1._aImages.length; i < l; i += 1) {
+						canvas1._aImages[i].setCornersVisibility(this.cornersvisible);
+					}
+					canvas1.renderAll();
+					loadtitle();
+					
+					this.initEvents();
+				},
+				initEvents: function() {
+					YE.on('togglebg','click', this.toggleBg, this, true);
+					YE.on('showcorners','click', this.showCorners, this, true);
+					YE.on('togglenone','click', this.toggleNone, this, true);
+					YE.on('toggleborders','click', this.toggleBorders, this, true);
+					YE.on('togglepolaroid','click', this.togglePolaroid, this, true);
+					YE.on('pngbutton','click', function() { this.convertTo('png') }, this, true);
+					YE.on('jpegbutton','click', function() { this.convertTo('jpeg') }, this, true);
+				},
+				switchBg: function() {
+					canvas1.fillBackground = (canvas1.fillBackground) ? false : true;							
+					canvas1.renderAll();
+				},
+				
+				//! insert these functions to the library. No access to _aImages should be done from here
+				showCorners: function() {
+					this.cornersvisible = (this.cornersvisible) ? false : true;
+					for (var i = 0, l = canvas1._aImages.length; i < l; i += 1) {
+						canvas1._aImages[i].setCornersVisibility(this.cornersvisible);
+					}
+					canvas1.renderAll();
+				},
+				toggleNone: function() {
+					for (var i = 0, l = canvas1._aImages.length; i < l; i += 1) {
+						canvas1._aImages[i].setBorderVisibility(false);
+					}
+					canvas1.renderAll();
+				},
+				toggleBorders: function() {
+					for (var i = 0, l = canvas1._aImages.length; i < l; i += 1) {
+						canvas1._aImages[i].setBorderVisibility(true);
+					}
+					canvas1.renderAll();
+				},
+				togglePolaroid: function() {
+					for (var i = 0, l = canvas1._aImages.length; i < l; i += 1) {
+						canvas1._aImages[i].setPolaroidVisibility(true);
+					}
+					canvas1.renderAll();
+				},
+				convertTo: function(format) {
+					var imgData = canvas1.canvasTo(format);
+					window.open(imgData, "_blank");
+				},
+				whatever: function(e, o) {
+					// console.log(e);
+					// console.log(o);
+				}
+			}
+			
+		}();
+		
+		function loadtitle(){
+			
+			var canvas = document.getElementById("canvid1-canvas-background");
+			//简单地检测当前浏览器是否支持Canvas对象，以免在一些不支持html5的浏览器中提示语法错误
+			if(canvas.getContext){  
+				//alert("aaaaaaaaaaaaaaaa"+canvas.getContext);
+			    //获取对应的CanvasRenderingContext2D对象(画笔)
+			    var ctx = canvas.getContext("2d");
+			    ctx.fillStyle="#00A5BD";
+				ctx.fillRect(0,0,150,36);
+			    //设置字体样式
+			    ctx.font = "18px Courier New";
+			    //设置字体填充颜色
+			    ctx.fillStyle = "white";
+			    //从坐标点(50,50)开始绘制文字
+			    ctx.fillText("部件方案预览", 20, 22);
+			    //alert("部件方案预览11111111");
+			}
+		}
+		
+		
+		
+		YAHOO.util.Event.on(window, 'load', CanvasDemo.init, CanvasDemo, true);
 		function savePart(){
 			alert("游艇部件保存，然后调整色彩");
-			window.location.href="imago_adjust_color_houseboat.html";
+			//window.location.href="imago_adjust_color_houseboat.html";
 		}
-
-		window.onload = function(){
-			var c=document.getElementById("myCanvas");
-			var cxt=c.getContext("2d");
-
-			var img=new Image();
-			img.src="../images/genestyle/houseboat.jpg";
-			img.onload = function(){
-				cxt.drawImage(img,10,50);
-			}
-
-			var img1=new Image();
-			img1.src="../images/genestyle/p5.png";
-			img1.onload = function(){
-				ctx.drawImage(img1, 540, 120,130,160);
-				// // 创建图片纹理
-			 //    var pattern = cxt.createPattern(img1, "repeat");
-			 //    // 绘制一个矩形
-			 //    cxt.roundRect(540, 20, 130, 160, 1);
-			 //    //使用rc2.scale(0.45, 0.45);方法可以等比例缩小图片可以达到你的效果,但是里面的放大缩小的数值需要自己计算！！！
-			 //    cxt.scale(0.45, 0.45);
-			 //    //cxt.strokeRect(560,20,192,220);
-			 //    // 填充绘制的圆
-			 //    cxt.fillStyle = pattern;
-			 //    cxt.fill();    
-			}
-		}
-	</script>
-
-	<script>
-		var c=document.getElementById("myCanvas");
+		
+		var c=document.getElementById("canvid1");
 		var ctx=c.getContext("2d");
 		ctx.fillStyle="#00A5BD";
 		ctx.fillRect(0,0,150,36);
 	</script>
-	<script type="text/javascript">
 	
-		//获取Canvas对象(画布)
-		var canvas = document.getElementById("myCanvas");
-		//简单地检测当前浏览器是否支持Canvas对象，以免在一些不支持html5的浏览器中提示语法错误
-		if(canvas.getContext){  
-		    //获取对应的CanvasRenderingContext2D对象(画笔)
-		    var ctx = canvas.getContext("2d");
-		    
-		    //设置字体样式
-		    ctx.font = "18px Courier New";
-		    //设置字体填充颜色
-		    ctx.fillStyle = "white";
-		    //从坐标点(50,50)开始绘制文字
-		    ctx.fillText("部件方案预览", 20, 22);
-		}
-	</script>
-
 	<script type="text/javascript">
 		$("#geneContent").fadeOut(0);
 		$("#paramContent").fadeOut(0);
