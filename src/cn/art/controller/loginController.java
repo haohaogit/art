@@ -31,6 +31,14 @@ public class loginController {
 		this.userService = userService;
 	}
 
+	@RequestMapping("managerLogin")
+	public String managerLogin(String account, String password) {
+
+		System.out.println("account " + account + " password " + password);
+
+		return "pass";
+	}
+
 	// 验证 注解 @requestparam()
 
 	@RequestMapping(value = "manager/register", method = RequestMethod.GET)

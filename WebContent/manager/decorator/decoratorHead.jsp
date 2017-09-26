@@ -49,7 +49,7 @@
 	         工业设计云服务平台管理系统
 	         <span class="pull-right">
 		         当前登录：user2  
-		         <span class="blue">[退出]</span>
+		         <span class="blue"><a href="${contextPath }/">[退出]</a></span>
 	         </span>
         </div>
         <div class="mydiv div-head"style=" top: 38px; height: 47px;"></div>

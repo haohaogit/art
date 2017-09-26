@@ -73,6 +73,7 @@
          <url-pattern>*.js</url-pattern>  
      </servlet-mapping>  
 	<welcome-file-list>
+	    <welcome-file>managerLogin.jsp</welcome-file>
 		<welcome-file>indexx.jsp</welcome-file>
 	</welcome-file-list>
 	<!-- 配置session超时时间，单位分钟 -->
