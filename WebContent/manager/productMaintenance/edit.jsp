@@ -36,7 +36,7 @@
 	<div class="mydiv"style=" width: initial;height: initial;">
 			<div id="myTabContent" class="tab-content">
 				<div class="tab-pane fade in active" id="home">
-					<form:form id="editForm0"  class="editForm"  method="post"  action="${contextPath}/manager/productMaintenance/load/save"
+				<form:form id="editForm0"  class="editForm"  method="post"  action="${contextPath}/manager/productMaintenance/load/save"
 					commandName="item" methodParam="post">
 					<form:hidden path="tid" />
 <%-- 					<form:hidden path="tname" /> --%>
@@ -49,7 +49,7 @@
 					<form:hidden path="tcanshu" />
 					<form:hidden path="tshengcheng" />
 					<form:hidden path="ttiaozheng" />
-<%-- 					<form:hidden path="ticon" /> --%>
+					<form:hidden path="ticon" />
 						<br>
 						<div class="input-title-position">
 								  <label for="product_name"><span class="thick label-name">产品名称</span></label>
@@ -60,9 +60,21 @@
 						<div class="input-title-position">
 								  <label for="product_ico"><span class="thick label-name">产品图标</span></label>
 								  <div class="my-no-br-right" >
+								  <!--用来存放item-->  
+								     <button id="filePicker" class="btn filePicker " style=" padding: 0;">选择图片</button> 
+								     <div id="thelist" class="uploader-list " value="${filename }"></div>  
+								     <div id="filename" value="${filename }"></div>
+<!-- 								     <div id="thelist" class="uploader-list"></div>   -->
+<!-- 								    <div>   -->
+<!-- 								       <button id="filePicker" class="btn filePicker " style=" padding: 0;">选择图片</button>  -->
+<%-- 								        <div id="filename" value="${filename }"></div>  --%>
+<!-- 								    </div>   -->
+<!-- 								</div>   -->
+								 <!--用来存放item end-->  
+<!-- 								  <input path="ticon"   class="form-control "  size="10"  type="hidden"/>  -->
 								  <!-- 									  		<a href="#">浏览上传</a>  -->
 <%-- 								  <form:input path="tico"   class="form-control " size="10"/> --%>
-								  		<input type="file" class="form-control " id="tico"  size="10"/>
+<!-- 								  		<input type="file" class="form-control " id="file"  size="10"/> -->
 								  </div>
 						</div> 
 						<div class="input-title-position">

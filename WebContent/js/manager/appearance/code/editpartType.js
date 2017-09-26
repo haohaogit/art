@@ -1,5 +1,5 @@
 
-var listUrl =contextPath + "/manager/newcase/list";
+var listUrl =contextPath + "/manager/code/list";
 //var toSaveUrl =contextPath + "/manager/bottom/load/edit";
 $(".cancelbtn").click(function(){
 		debugger
@@ -9,7 +9,7 @@ $(".cancelbtn").click(function(){
 	$(".savebtn").click(function(){
 		debugger
 		var form = $("#editForm");
-		 var params = form.serialize()+"&tid="+tid;
+		 var params = form.serialize();
 	     var action = form.attr("action");
 	     //如果验证通过
 			$.post(action, params, function(data) {
@@ -19,35 +19,37 @@ $(".cancelbtn").click(function(){
 	});
 	
 	
-	var newcasename0=$('#newcasertotal').val();
-	var newcasename1=$('#newcaseroutline').val();
-	var newcasename2=$('#newcasercolor').val();
-	var newcasename3=$('#newcasertexture').val();
-	var newcasename4=$('#newcaseatotal').val();
-	var newcasename5=$('#newcaseaoutline').val();
-	var newcasename6=$('#newcaseacolor').val();
-	var newcasename7=$('#newcaseatexture').val();
 	debugger
-	var nameArray={
-			newcasename0:newcasename0,
-			newcasename1:newcasename1,
-			newcasename2:newcasename2,
-			newcasename3:newcasename3,
-			newcasename4:newcasename4,
-			newcasename5:newcasename5,
-			newcasename6:newcasename6,
-			newcasename7:newcasename7
-	};
 	var oldfilename="";
-	for(var i=0;i<8;i++){
-		debugger
-		oldfilename=nameArray["newcasename"+i];
+	oldfilename=$('#pimg').val();
+	if(oldfilename!=""){
+		$('#filename0').html('<a  href="'+contextPath+'/file/download?filename='+encodeURIComponent(oldfilename)+
+				'"><div class="file-item thumbnail upload-state-done" style="	margin-bottom: 15px;margin-top: 12; display:inline-block ;margin-right:12px;width:170px;"><img src="'+contextPath+
+				"/image/"+oldfilename+'" alt="'+oldfilename+
+		'"/>	<div class="info">'+oldfilename+'</div></div></a>');
+		 oldfilename="";
+//		$('#filename0').html('<a class=" " href="'+contextPath+'/file/download?filename='+encodeURIComponent(oldfilename)+'"><img src="'+contextPath+"/image/"+oldfilename+'" alt="'+oldfilename+
+//		'" style="margin-top: 12px; width: 125px;"/></a>');
+	}
+	oldfilename=$('#pfile').val();
+	if(oldfilename!=""){
+		$('#filename5').html('<a  href="'+contextPath+'/file/download?filename='+encodeURIComponent(oldfilename)+
+				'"><div class="file-item thumbnail upload-state-done" style="	margin-bottom: 15px;margin-top: 12; display:inline-block ;margin-right:12px;width:170px;"><img src="'+contextPath+
+				"/image/"+oldfilename+'" alt="'+oldfilename+
+		'"/>	<div class="info">'+oldfilename+'</div></div></a>');
+		 oldfilename="";
+	}
+	
+	for(var i=1;i<5;i++){
+		oldfilename=$('#pimg'+i).val();
 		if(oldfilename!=""){
 			$('#filename'+i).html('<a  href="'+contextPath+'/file/download?filename='+encodeURIComponent(oldfilename)+
 					'"><div class="file-item thumbnail upload-state-done" style="	margin-bottom: 15px;margin-top: 12; display:inline-block ;margin-right:12px;width:170px;"><img src="'+contextPath+
 					"/image/"+oldfilename+'" alt="'+oldfilename+
 			'"/>	<div class="info">'+oldfilename+'</div></div></a>');
 			 oldfilename="";
+//		$('#filename'+i).html('<a class=" " href="'+contextPath+'/file/download?filename='+encodeURIComponent(oldfilename)+'"><img src="'+contextPath+"/image/"+oldfilename+'" alt="'+oldfilename+
+//		'" style="margin-top: 12px; width: 125px;"/></a>');
 		}
 	}
 		
@@ -59,7 +61,7 @@ $(".cancelbtn").click(function(){
 	 	   var thumbnailWidth = 170;   //缩略图高度和宽度 （单位是像素），当宽高度是0~1的时候，是按照百分比计算，具体可以看api文档  
 	 	   var thumbnailHeight = 200;  
 //	 	   number是0~4
-	 	   for(var i=0;i<8;i++){
+	 	   for(var i=0;i<6;i++){
 	 		  uploaderFun(i);
 	 	   }
 	 	  function uploaderFun(number){
@@ -77,7 +79,7 @@ $(".cancelbtn").click(function(){
 		 	       // 只允许选择图片文件。  
 		 	       accept: {  
 		 	           title: 'Images',  
-		 	           extensions: 'gif,jpg,jpeg,bmp,png,txt,psd',  
+		 	           extensions: 'gif,jpg,jpeg,bmp,png,txt',  
 		 	           mimeTypes: 'image/*'  
 		 	       },  
 		 	       method:'POST',  
@@ -126,29 +128,13 @@ $(".cancelbtn").click(function(){
 		 		   var filename=response.filename;
 		 	       $( '#'+file.id ).addClass('upload-state-done');  
 						if(number=="0"||number==0){
-							$( '#newcasertotal' ).val(filename);  
-						}
-						if(number=="1"||number==1){
-							$( '#newcaseroutline' ).val(filename);  
-						}
-						if(number=="2"||number==2){
-							$( '#newcasercolor' ).val(filename);  
-						}
-						if(number=="3"||number==3){
-							$( '#newcasertexture' ).val(filename);  
-						}
-						if(number=="4"||number==4){
-							$( '#newcaseatotal' ).val(filename);  
-						}
-						if(number=="5"||number==5){
-							$( '#newcaseaoutline' ).val(filename);  
-						}
-						if(number=="6"||number==6){
-							$( '#newcaseacolor' ).val(filename);  
-						}
-						if(number=="7"||number==7){
-							$( '#newcaseatexture' ).val(filename);  
-						}
+							$( '#pimg' ).val(filename);  
+						}else if(number=="5"||number==5){
+							$( '#pfile' ).val(filename);  
+						}else
+							{
+							$( '#pimg'+number ).val(filename);  
+							}
 		 	   });  
 		 	   // 文件上传失败，显示上传出错。  
 		 	   uploader.on( 'uploadError', function( file,reason  ) {  

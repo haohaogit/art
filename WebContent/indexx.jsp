@@ -47,7 +47,7 @@
 <!-- 为了让 Bootstrap 开发的网站对移动设备友好，确保适当的绘制和触屏缩放 -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>登陆</title>
-<%-- <script type="text/javascript" src="${contextPath}/js/lib/jquery-3.2.1.min.js"></script> --%>
+<link rel="stylesheet" href="${contextPath}/lib/iCheck/skins/flat/blue.css" />
 <style type="text/css">
 .panel-body>.list-group>.list-group-item{
 	border: 0px solid #fff;
@@ -55,15 +55,25 @@
 	text-align: center;
 }
 </style>
+	<script type="text/javascript" src="${contextPath }/lib/iCheck/icheck.min.js"></script>  
+
 <script type="text/javascript">
 $(document).ready(function(){
 	  $("#hide").click(function(){
 	    $("p").hide();
 	  });
 	});
+$(function(){
+	//设置checkbox的样式，就是美化
+	$("input[type='checkbox']").iCheck({
+	    checkboxClass: 'icheckbox_flat-blue'
+	});
+});
 </script>
 </head>
 <body>
+
+	<input type="checkbox" class="form-control" placeholder="twitterhandle">
 	<div class="container">
 	<p>如果你点击“隐藏” 按钮，我将会消失。</p>
 									<button id="hide">隐藏</button>

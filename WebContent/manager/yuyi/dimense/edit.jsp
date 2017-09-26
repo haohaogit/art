@@ -5,9 +5,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>添加新词对</title>
-
+<%-- <link rel="stylesheet" href="${contextPath}/lib/iCheck/skins/flat/blue.css" /> --%>
 </head>
-<!-- typeIdNameMap -->
 <body>
 	<div class="main-body-position">
 		<form:form id="editForm"  method="post"  action="${contextPath}/manager/dimense/load/save"
@@ -18,7 +17,7 @@
 					<div class="input-title-position">
 							  <label for="product_name"><h5><span class="thick label-name">产品类型</span></h5></label>
 							  <div class="my-no-br-right" >
-							 		<form:select class="form-control "   	path="tid"  items="${typesList}"  itemLabel="tname" itemValue="tid" ></form:select>
+							 		<form:select class="form-control"   path="tid"  items="${typesList}"  itemLabel="tname" itemValue="tid" ></form:select>
 							  </div>
 					</div> 
 					<br>
@@ -47,6 +46,7 @@
 							 <c:forEach var="item" items="${wordList}" varStatus="status">	
 								<c:if test="${item.wfirstchar eq 'A'}">
 									<span class="my-left"> 
+									<input type="checkbox" name="checkbox"   myid="${item.wid}" value="${item.wword} " />
 										<button type="button" class="btn btn-link pull-right addbtn" style="line-height: 0.25;" myid="${item.wid}">${item.wword} </button> 
 									</span>
 								</c:if>
@@ -58,7 +58,10 @@
 						<td>
 							 <c:forEach var="item" items="${wordList}" varStatus="status">	
 								<c:if test="${item.wfirstchar eq 'B'}">
-									<span class="my-left"> <button type="button" class="btn btn-link pull-right addbtn" style="line-height: 0.25;" >${item.wword}</button>  </span>
+									<span class="my-left"> 
+									<input type="checkbox" name="checkbox"   myid="${item.wid}" value="${item.wword} " />
+										<button type="button" class="btn btn-link pull-right addbtn" style="line-height: 0.25;" myid="${item.wid}">${item.wword} </button> 
+									</span>
 								</c:if>
 							</c:forEach>
 						</td>
@@ -68,7 +71,10 @@
 						<td>
 							 <c:forEach var="item" items="${wordList}" varStatus="status">	
 								<c:if test="${item.wfirstchar eq 'C'}">
-									<span class="my-left"> <button type="button" class="btn btn-link pull-right addbtn" style="line-height: 0.25;" >${item.wword}</button>  </span>
+									<span class="my-left"> 
+									<input type="checkbox" name="checkbox"   myid="${item.wid}" value="${item.wword} " />
+										<button type="button" class="btn btn-link pull-right addbtn" style="line-height: 0.25;" myid="${item.wid}">${item.wword} </button> 
+									</span>								
 								</c:if>
 							</c:forEach>
 						</td>
@@ -78,7 +84,10 @@
 						<td>
 							 <c:forEach var="item" items="${wordList}" varStatus="status">	
 								<c:if test="${item.wfirstchar eq 'D'}">
-									<span class="my-left"> <button type="button" class="btn btn-link pull-right addbtn" style="line-height: 0.25;" >${item.wword}</button>  </span>
+									<span class="my-left"> 
+									<input type="checkbox" name="checkbox"   myid="${item.wid}" value="${item.wword} " />
+										<button type="button" class="btn btn-link pull-right addbtn" style="line-height: 0.25;" myid="${item.wid}">${item.wword} </button> 
+									</span>								
 								</c:if>
 							</c:forEach>
 						</td>
@@ -88,7 +97,10 @@
 						<td>
 							 <c:forEach var="item" items="${wordList}" varStatus="status">	
 								<c:if test="${item.wfirstchar eq 'E'}">
-									<span class="my-left"> <button type="button" class="btn btn-link pull-right addbtn" style="line-height: 0.25;" >${item.wword}</button>  </span>
+									<span class="my-left"> 
+									<input type="checkbox" name="checkbox"   myid="${item.wid}" value="${item.wword} " />
+										<button type="button" class="btn btn-link pull-right addbtn" style="line-height: 0.25;" myid="${item.wid}">${item.wword} </button> 
+									</span>								
 								</c:if>
 							</c:forEach>
 						</td>
@@ -98,7 +110,10 @@
 						<td>
 							 <c:forEach var="item" items="${wordList}" varStatus="status">	
 								<c:if test="${item.wfirstchar eq 'F'}">
-									<span class="my-left"> <button type="button" class="btn btn-link pull-right addbtn" style="line-height: 0.25;" >${item.wword}</button>  </span>
+								<span class="my-left"> 
+									<input type="checkbox" name="checkbox"   myid="${item.wid}" value="${item.wword} " />
+										<button type="button" class="btn btn-link pull-right addbtn" style="line-height: 0.25;" myid="${item.wid}">${item.wword} </button> 
+									</span>								
 								</c:if>
 							</c:forEach>
 						</td>
@@ -108,7 +123,10 @@
 						<td>
 							 <c:forEach var="item" items="${wordList}" varStatus="status">	
 								<c:if test="${item.wfirstchar eq 'G'}">
-									<span class="my-left"> <button type="button" class="btn btn-link pull-right addbtn" style="line-height: 0.25;" >${item.wword}</button>  </span>
+									<span class="my-left"> 
+									<input type="checkbox" name="checkbox"   myid="${item.wid}" value="${item.wword} " />
+										<button type="button" class="btn btn-link pull-right addbtn" style="line-height: 0.25;" myid="${item.wid}">${item.wword} </button> 
+									</span>								
 								</c:if>
 							</c:forEach>
 						</td>
@@ -118,7 +136,10 @@
 						<td>
 							 <c:forEach var="item" items="${wordList}" varStatus="status">	
 								<c:if test="${item.wfirstchar eq 'H'}">
-									<span class="my-left"> <button type="button" class="btn btn-link pull-right addbtn" style="line-height: 0.25;" >${item.wword}</button>  </span>
+									<span class="my-left"> 
+									<input type="checkbox" name="checkbox"   myid="${item.wid}" value="${item.wword} " />
+										<button type="button" class="btn btn-link pull-right addbtn" style="line-height: 0.25;" myid="${item.wid}">${item.wword} </button> 
+									</span>								
 								</c:if>
 							</c:forEach>
 						</td>
@@ -128,7 +149,10 @@
 						<td>
 							 <c:forEach var="item" items="${wordList}" varStatus="status">	
 								<c:if test="${item.wfirstchar eq 'I'}">
-									<span class="my-left"> <button type="button" class="btn btn-link pull-right addbtn" style="line-height: 0.25;" >${item.wword}</button>  </span>
+									<span class="my-left"> 
+									<input type="checkbox" name="checkbox"   myid="${item.wid}" value="${item.wword} " />
+										<button type="button" class="btn btn-link pull-right addbtn" style="line-height: 0.25;" myid="${item.wid}">${item.wword} </button> 
+									</span>								
 								</c:if>
 							</c:forEach>
 						</td>
@@ -139,7 +163,10 @@
 						<td>
 							 <c:forEach var="item" items="${wordList}" varStatus="status">	
 								<c:if test="${item.wfirstchar eq 'J'}">
-									<span class="my-left"> <button type="button" class="btn btn-link pull-right addbtn" style="line-height: 0.25;" >${item.wword}</button>  </span>
+									<span class="my-left"> 
+									<input type="checkbox" name="checkbox"   myid="${item.wid}" value="${item.wword} " />
+										<button type="button" class="btn btn-link pull-right addbtn" style="line-height: 0.25;" myid="${item.wid}">${item.wword} </button> 
+									</span>								
 								</c:if>
 							</c:forEach>
 						</td>
@@ -149,7 +176,10 @@
 						<td>
 							 <c:forEach var="item" items="${wordList}" varStatus="status">	
 								<c:if test="${item.wfirstchar eq 'K'}">
-									<span class="my-left"> <button type="button" class="btn btn-link pull-right addbtn" style="line-height: 0.25;" >${item.wword}</button>  </span>
+									<span class="my-left"> 
+									<input type="checkbox" name="checkbox"   myid="${item.wid}" value="${item.wword} " />
+										<button type="button" class="btn btn-link pull-right addbtn" style="line-height: 0.25;" myid="${item.wid}">${item.wword} </button> 
+									</span>								
 								</c:if>
 							</c:forEach>
 						</td>
@@ -159,7 +189,10 @@
 						<td>
 							 <c:forEach var="item" items="${wordList}" varStatus="status">	
 								<c:if test="${item.wfirstchar eq 'L'}">
-									<span class="my-left"> <button type="button" class="btn btn-link pull-right addbtn" style="line-height: 0.25;" >${item.wword}</button>  </span>
+									<span class="my-left"> 
+									<input type="checkbox" name="checkbox"   myid="${item.wid}" value="${item.wword} " />
+										<button type="button" class="btn btn-link pull-right addbtn" style="line-height: 0.25;" myid="${item.wid}">${item.wword} </button> 
+									</span>								
 								</c:if>
 							</c:forEach>
 						</td>
@@ -169,7 +202,10 @@
 						<td>
 							 <c:forEach var="item" items="${wordList}" varStatus="status">	
 								<c:if test="${item.wfirstchar eq 'M'}">
-									<span class="my-left"> <button type="button" class="btn btn-link pull-right addbtn" style="line-height: 0.25;" >${item.wword}</button>  </span>
+									<span class="my-left"> 
+									<input type="checkbox" name="checkbox"   myid="${item.wid}" value="${item.wword} " />
+										<button type="button" class="btn btn-link pull-right addbtn" style="line-height: 0.25;" myid="${item.wid}">${item.wword} </button> 
+									</span>								
 								</c:if>
 							</c:forEach>
 						</td>
@@ -179,7 +215,10 @@
 						<td>
 							 <c:forEach var="item" items="${wordList}" varStatus="status">	
 								<c:if test="${item.wfirstchar eq 'N'}">
-									<span class="my-left"> <button type="button" class="btn btn-link pull-right addbtn" style="line-height: 0.25;" >${item.wword}</button>  </span>
+									<span class="my-left"> 
+									<input type="checkbox" name="checkbox"   myid="${item.wid}" value="${item.wword} " />
+										<button type="button" class="btn btn-link pull-right addbtn" style="line-height: 0.25;" myid="${item.wid}">${item.wword} </button> 
+									</span>								
 								</c:if>
 							</c:forEach>
 						</td>
@@ -189,7 +228,10 @@
 						<td>
 							 <c:forEach var="item" items="${wordList}" varStatus="status">	
 								<c:if test="${item.wfirstchar eq 'O'}">
-									<span class="my-left"> <button type="button" class="btn btn-link pull-right addbtn" style="line-height: 0.25;" >${item.wword}</button>  </span>
+									<span class="my-left"> 
+									<input type="checkbox" name="checkbox"   myid="${item.wid}" value="${item.wword} " />
+										<button type="button" class="btn btn-link pull-right addbtn" style="line-height: 0.25;" myid="${item.wid}">${item.wword} </button> 
+									</span>								
 								</c:if>
 							</c:forEach>
 						</td>
@@ -200,7 +242,10 @@
 						<td>
 							 <c:forEach var="item" items="${wordList}" varStatus="status">	
 								<c:if test="${item.wfirstchar eq 'P'}">
-									<span class="my-left"> <button type="button" class="btn btn-link pull-right addbtn" style="line-height: 0.25;" >${item.wword}</button>  </span>
+									<span class="my-left"> 
+									<input type="checkbox" name="checkbox"   myid="${item.wid}" value="${item.wword} " />
+										<button type="button" class="btn btn-link pull-right addbtn" style="line-height: 0.25;" myid="${item.wid}">${item.wword} </button> 
+									</span>								
 								</c:if>
 							</c:forEach>
 						</td>
@@ -210,7 +255,10 @@
 						<td>
 							 <c:forEach var="item" items="${wordList}" varStatus="status">	
 								<c:if test="${item.wfirstchar eq 'Q'}">
-									<span class="my-left"> <button type="button" class="btn btn-link pull-right addbtn" style="line-height: 0.25;" >${item.wword}</button>  </span>
+									<span class="my-left"> 
+									<input type="checkbox" name="checkbox"   myid="${item.wid}" value="${item.wword} " />
+										<button type="button" class="btn btn-link pull-right addbtn" style="line-height: 0.25;" myid="${item.wid}">${item.wword} </button> 
+									</span>								
 								</c:if>
 							</c:forEach>
 						</td>
@@ -219,7 +267,10 @@
 						<td>
 							 <c:forEach var="item" items="${wordList}" varStatus="status">	
 								<c:if test="${item.wfirstchar eq 'R'}">
-									<span class="my-left"> <button type="button" class="btn btn-link pull-right addbtn" style="line-height: 0.25;" >${item.wword}</button>  </span>
+									<span class="my-left"> 
+									<input type="checkbox" name="checkbox"   myid="${item.wid}" value="${item.wword} " />
+										<button type="button" class="btn btn-link pull-right addbtn" style="line-height: 0.25;" myid="${item.wid}">${item.wword} </button> 
+									</span>								
 								</c:if>
 							</c:forEach>
 						</td>
@@ -229,7 +280,10 @@
 						<td>
 							 <c:forEach var="item" items="${wordList}" varStatus="status">	
 								<c:if test="${item.wfirstchar eq 'S'}">
-									<span class="my-left"> <button type="button" class="btn btn-link pull-right addbtn" style="line-height: 0.25;" >${item.wword}</button>  </span>
+									<span class="my-left"> 
+									<input type="checkbox" name="checkbox"   myid="${item.wid}" value="${item.wword} " />
+										<button type="button" class="btn btn-link pull-right addbtn" style="line-height: 0.25;" myid="${item.wid}">${item.wword} </button> 
+									</span>								
 								</c:if>
 							</c:forEach>
 						</td>
@@ -239,7 +293,10 @@
 						<td>
 							 <c:forEach var="item" items="${wordList}" varStatus="status">	
 								<c:if test="${item.wfirstchar eq 'T'}">
-									<span class="my-left"> <button type="button" class="btn btn-link pull-right addbtn" style="line-height: 0.25;" >${item.wword}</button>  </span>
+									<span class="my-left"> 
+									<input type="checkbox" name="checkbox"   myid="${item.wid}" value="${item.wword} " />
+										<button type="button" class="btn btn-link pull-right addbtn" style="line-height: 0.25;" myid="${item.wid}">${item.wword} </button> 
+									</span>								
 								</c:if>
 							</c:forEach>
 						</td>
@@ -250,7 +307,10 @@
 						<td>
 							 <c:forEach var="item" items="${wordList}" varStatus="status">	
 								<c:if test="${item.wfirstchar eq 'U'}">
-									<span class="my-left"> <button type="button" class="btn btn-link pull-right addbtn" style="line-height: 0.25;" >${item.wword}</button>  </span>
+									<span class="my-left"> 
+									<input type="checkbox" name="checkbox"   myid="${item.wid}" value="${item.wword} " />
+										<button type="button" class="btn btn-link pull-right addbtn" style="line-height: 0.25;" myid="${item.wid}">${item.wword} </button> 
+									</span>								
 								</c:if>
 							</c:forEach>
 						</td>
@@ -259,7 +319,10 @@
 						<td>
 							 <c:forEach var="item" items="${wordList}" varStatus="status">	
 								<c:if test="${item.wfirstchar eq 'V'}">
-									<span class="my-left"> <button type="button" class="btn btn-link pull-right addbtn" style="line-height: 0.25;" >${item.wword}</button>  </span>
+									<span class="my-left"> 
+									<input type="checkbox" name="checkbox"   myid="${item.wid}" value="${item.wword} " />
+										<button type="button" class="btn btn-link pull-right addbtn" style="line-height: 0.25;" myid="${item.wid}">${item.wword} </button> 
+									</span>								
 								</c:if>
 							</c:forEach>
 						</td>
@@ -269,7 +332,10 @@
 						<td>
 							 <c:forEach var="item" items="${wordList}" varStatus="status">	
 								<c:if test="${item.wfirstchar eq 'W'}">
-									<span class="my-left"> <button type="button" class="btn btn-link pull-right addbtn" style="line-height: 0.25;" >${item.wword}</button>  </span>
+									<span class="my-left"> 
+									<input type="checkbox" name="checkbox"   myid="${item.wid}" value="${item.wword} " />
+										<button type="button" class="btn btn-link pull-right addbtn" style="line-height: 0.25;" myid="${item.wid}">${item.wword} </button> 
+									</span>								
 								</c:if>
 							</c:forEach>
 						</td>
@@ -280,7 +346,10 @@
 						<td>
 							 <c:forEach var="item" items="${wordList}" varStatus="status">	
 								<c:if test="${item.wfirstchar eq 'X'}">
-									<span class="my-left"> <button type="button" class="btn btn-link pull-right addbtn" style="line-height: 0.25;" >${item.wword}</button>  </span>
+									<span class="my-left"> 
+									<input type="checkbox" name="checkbox"   myid="${item.wid}" value="${item.wword} " />
+										<button type="button" class="btn btn-link pull-right addbtn" style="line-height: 0.25;" myid="${item.wid}">${item.wword} </button> 
+									</span>								
 								</c:if>
 							</c:forEach>
 						</td>
@@ -290,7 +359,10 @@
 						<td>
 							 <c:forEach var="item" items="${wordList}" varStatus="status">	
 								<c:if test="${item.wfirstchar eq 'Y'}">
-									<span class="my-left"> <button type="button" class="btn btn-link pull-right addbtn" style="line-height: 0.25;" >${item.wword}</button>  </span>
+									<span class="my-left"> 
+									<input type="checkbox" name="checkbox"   myid="${item.wid}" value="${item.wword} " />
+										<button type="button" class="btn btn-link pull-right addbtn" style="line-height: 0.25;" myid="${item.wid}">${item.wword} </button> 
+									</span>								
 								</c:if>
 							</c:forEach>
 						</td>
@@ -300,7 +372,10 @@
 						<td>
 							 <c:forEach var="item" items="${wordList}" varStatus="status">	
 								<c:if test="${item.wfirstchar eq 'Z'}">
-									<span class="my-left"> <button type="button" class="btn btn-link pull-right addbtn" style="line-height: 0.25;" >${item.wword}</button>  </span>
+									<span class="my-left"> 
+									<input type="checkbox" name="checkbox"   myid="${item.wid}" value="${item.wword} " />
+										<button type="button" class="btn btn-link pull-right addbtn" style="line-height: 0.25;" myid="${item.wid}">${item.wword} </button> 
+									</span>								
 								</c:if>
 							</c:forEach>
 						</td>
@@ -309,30 +384,14 @@
 			       	</table>
 			</div>
 			<div class=" text-center">
-							<button type="submit" class="btn btn-primary savebtn">添加</button>
+							<button type="button" class="btn btn-primary savebtn">保存</button>
 							<button type="reset" class="btn btn-primary cancelbtn">取消</button>
 			</div>	
   	</div>
 		</form:form>	
 		
 	</div>
-	<!-- 按钮触发模态框 -->
-	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-			<div class="modal-dialog">
-				<div class="modal-content" style=" width: 65%;">
-						<div class="mydiv gray-background "  style="width: 100%;">
-							语义库  
-						</div>
-						<div class="mydiv  text-center" style=" height: 130px; width: 100%;">
-							您确定需要删除这个类型吗？ 
-						<div  style="padding: 28px;    text-align: right;">
-							<button type="button" class="btn btn-primary">确定</button>
-							<button type="button" class="btn btn-primary" data-dismiss="modal">取消</button>
-						</div>
-						</div>
-				</div>
-				</div>
-			</div>
+<%-- 	<script type="text/javascript" src="${contextPath }/lib/iCheck/icheck.min.js"></script>   --%>
 <script type="text/javascript" src="${contextPath}/js/manager/yuyi/dimense/edit.js"></script>
 </body>
 </html>

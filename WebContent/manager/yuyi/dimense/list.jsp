@@ -9,9 +9,9 @@
 </style>
 
 </head>
-
-<body>
+<body >
 	<div class="main-body-position">
+	<span   id="Refresh"   type="button" ></span>
 	<form id="editform"  method="post" action="${contextPath}/manager/dimense/list">
 		<div class="position-for-head2 thick ">语义库管理>降维词汇库</div>
 		<div class="container-position">
@@ -22,7 +22,7 @@
 				</div>
 				<br>
 				<div class="mydiv gray-background" >降维词汇库
-						<button type="button" myid="${types.tid }" class="btn btn-link pull-right deletebtn" >删除</button> 
+<%-- 						<button type="button" myid="${types.tid }" class="btn btn-link pull-right deletebtn" >删除</button>  --%>
 						<button type="button" class="btn btn-link pull-right addbtn">+添加新词汇</button>
 				</div> 
 				<c:forEach var="type" items="${typesList}" varStatus="status">
@@ -31,7 +31,7 @@
 								<c:if test="${wordList.key ==type.tid}">
 									<c:forEach var="word" items="${wordList.value}" varStatus="status">	
 <!-- 										<span class="my-left">  -->
-												<button type="button" class="btn btn-link addbtn" >${word.wword}</button>  
+												<button type="button" class="btn btn-link " >${word.wword}</button>  
 <!-- 										</span> -->
 									</c:forEach>
 								</c:if>
@@ -59,7 +59,14 @@
 				</div>
 				</div>
 			</div>
+			<script >
+// myRefresh();
+// function myRefresh(){
+// 	location.reload()
+// }
+</script>
 <script type="text/javascript" src="${contextPath}/js/manager/yuyi/dimense/list.js"></script>
+
 </body>
 
 </html>

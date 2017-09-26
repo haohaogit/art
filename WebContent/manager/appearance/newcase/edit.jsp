@@ -38,34 +38,158 @@
 					commandName="newcase"  methodParam="post">
 					<form:hidden path="nid" />
 					<form:hidden path="tid" />
+					
+					<form:hidden path="newcasertotal"  val=""/>
+					<form:hidden path="newcaseroutline" />
+					<form:hidden path="newcasercolor" />
+					<form:hidden path="newcasertexture" />
+					<form:hidden path="newcaseatotal" />
+					<form:hidden path="newcaseaoutline" />
+					<form:hidden path="newcaseacolor" />
+					<form:hidden path="newcaseatexture" />
+					
+					
 				<div class="mydiv " style=" width: initial;height: initial;" >
 						<br> 
 						<div class="input-title-position">
-								  <label for="product_name"><span class="thick label-name">产品名称</span></label>
+								  <label for="product_name"><h4><span class="thick label-name">产品名称</span></h4></label>
 								  <div class="my-no-br-right" >
 								  <form:input path="newcasename"   class="form-control "  size="10"/>
 								  </div>
 						</div> 
 						<div class="input-title-position">
-							  <label for="product_name"><h5><span class="thick label-name">推荐方案</span></h5></label>
+							  <label for="product_name"><h4><span class="thick label-name">推荐方案</span></h4></label>
 							  <div class="my-no-br-right" >
-<%-- 							 		<form:select class="form-control "   path="tid"  items="${typesList}"  itemLabel="tname" itemValue="tid" ></form:select> --%>
 							  </div>
 						</div>
+						 <table>
+								    <thead>
+										<tr>
+										<th>
+											<div class="input-title-position">
+												  <label for="product_name"><h5><span class="thick label-name">整体效果</span></h5></label>
+												  <div class="my-no-br-right" >
+												  <button id="filePicker0" class="btn filePicker "  number="0" style=" padding: 0;">浏览上传</button> 
+												  </div>
+											</div>
+											<h6><span class="thick label-name">方案详文件</span></h6>
+										</th>
+										<th>
+											<div class="input-title-position">
+												  <label for="product_name"><h5><span class="thick label-name">轮廓推荐</span></h5></label>
+												  <div class="my-no-br-right" >
+												  <button id="filePicker1" class="btn filePicker "  number="1" style=" padding: 0;">浏览上传</button> 
+												  </div>
+											</div>
+											<h6><span class="thick label-name">轮廓源文件1</span></h6>
+<!-- 								      <button id="filePicker1" class="btn filePicker "  number="1" style=" padding: 0;">选择图片</button>  -->
+								     	</th>
+								     	<th>
+								     	<div class="input-title-position">
+												  <label for="product_name"><h5><span class="thick label-name">色彩推荐</span></h5></label>
+												  <div class="my-no-br-right" >
+												  <button id="filePicker2" class="btn filePicker "  number="2" style=" padding: 0;">浏览上传</button> 
+												  </div>
+											</div>
+											<h6><span class="thick label-name">色彩源文件1</span></h6>
+<!-- 								      <button id="filePicker2" class="btn filePicker "  number="2" style=" padding: 0;">选择图片</button>  -->
+								     </th>
+								     	<th>
+								     	<div class="input-title-position">
+												  <label for="product_name"><h5><span class="thick label-name">材质推荐</span></h5></label>
+												  <div class="my-no-br-right" >
+												  <button id="filePicker3" class="btn filePicker "  number="3" style=" padding: 0;">浏览上传</button> 
+												  </div>
+											</div>
+											<h6><span class="thick label-name">材质源文件1</span></h6>
+<!-- 								      <button id="filePicker3" class="btn filePicker "  number="3" style=" padding: 0;">选择图片</button>  -->
+								      </th>
+									</tr>
+								 </thead>
+								 <tbody>
+									<tr>
+									<td>
+									<div id="filename0" class="uploader-list " ></div>  
+									</td>
+									<td>
+									<div id="filename1" class="uploader-list"></div> 
+									</td>
+									<td>
+									<div id="filename2" class="uploader-list "></div> 
+									</td>
+									<td>
+									<div id="filename3" class="uploader-list"></div>
+									</td>
+									</tr>  
+									</tbody>
+								 </table>
 						<div class="input-title-position">
-							  <label for="product_name " ><strong   class="label-name">整体效果</strong></label>
+							  <label for="product_name"><h4><span class="thick label-name">调整后方案</span></h4></label>
 							  <div class="my-no-br-right" >
-<!-- 							  浏览上传 -->
-<%-- 							  		 <form:textarea  class="form-control textarea-size" path="wbasic"  /> --%>
 							  </div>
-						</div> 
-						<div class="input-title-position">
-							  <label for="product_name " ><strong   class="label-name">方案详文件</strong></label>
-							  <div class="my-no-br-right" >
-<!-- 							  浏览上传 -->
-<%-- 							  		 <form:textarea  class="form-control textarea-size" path="wbasic"  /> --%>
-							  </div>
-						</div> 
+						</div>
+						 <table>
+								    <thead>
+										<tr>
+										<th>
+											<div class="input-title-position">
+												  <label for="product_name"><h5><span class="thick label-name">整体效果</span></h5></label>
+												  <div class="my-no-br-right" >
+												  <button id="filePicker4" class="btn filePicker "  number="4" style=" padding: 0;">浏览上传</button> 
+												  </div>
+											</div>
+											<h6><span class="thick label-name">方案详文件</span></h6>
+										</th>
+										<th>
+											<div class="input-title-position">
+												  <label for="product_name"><h5><span class="thick label-name">轮廓推荐</span></h5></label>
+												  <div class="my-no-br-right" >
+												  <button id="filePicker5" class="btn filePicker "  number="5" style=" padding: 0;">浏览上传</button> 
+												  </div>
+											</div>
+											<h6><span class="thick label-name">轮廓源文件1</span></h6>
+<!-- 								      <button id="filePicker1" class="btn filePicker "  number="1" style=" padding: 0;">选择图片</button>  -->
+								     	</th>
+								     	<th>
+								     	<div class="input-title-position">
+												  <label for="product_name"><h5><span class="thick label-name">色彩推荐</span></h5></label>
+												  <div class="my-no-br-right" >
+												  <button id="filePicker6" class="btn filePicker "  number="6" style=" padding: 0;">浏览上传</button> 
+												  </div>
+											</div>
+											<h6><span class="thick label-name">色彩源文件1</span></h6>
+<!-- 								      <button id="filePicker2" class="btn filePicker "  number="2" style=" padding: 0;">选择图片</button>  -->
+								     </th>
+								     	<th>
+								     	<div class="input-title-position">
+												  <label for="product_name"><h5><span class="thick label-name">材质推荐</span></h5></label>
+												  <div class="my-no-br-right" >
+												  <button id="filePicker7" class="btn filePicker "  number="7" style=" padding: 0;">浏览上传</button> 
+												  </div>
+											</div>
+											<h6><span class="thick label-name">材质源文件1</span></h6>
+<!-- 								      <button id="filePicker3" class="btn filePicker "  number="3" style=" padding: 0;">选择图片</button>  -->
+								      </th>
+									</tr>
+								 </thead>
+								 <tbody>
+									<tr>
+									<td>
+									<div id="filename4" class="uploader-list " ></div>  
+									</td>
+									<td>
+									<div id="filename5" class="uploader-list"></div> 
+									</td>
+									<td>
+									<div id="filename6" class="uploader-list "></div> 
+									</td>
+									<td>
+									<div id="filename7" class="uploader-list"></div>
+									</td>
+									</tr>  
+									</tbody>
+								 </table>
+
 						<br>	
 				       <br><br>
 				       <div class=" text-center">

@@ -8,16 +8,27 @@
 <!-- CSS -->
 <link type="text/css" rel="stylesheet" href="${contextPath}/css/basic_style.css"/>
 <link type="text/css" rel="stylesheet" href="${contextPath}/css/style.css"/>
-<link type="text/css" rel="stylesheet" href="${contextPath}/lib/bootstrap3/css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="${contextPath}/lib/bootstrap3/css/bootstrap.css">
 <!-- 可选的Bootstrap主题文件（一般不使用） -->
 <%-- <link type="text/css" rel="stylesheet" href="${contextPath}/lib/bootstrap3/css/bootstrap-theme.min.css"> --%>
+<link rel="stylesheet" href="${contextPath }/lib/webuploader/webuploader.css"/>  
 
 <link rel="stylesheet" href="${contextPath}/js/lib/SpryAssets/SpryTabbedPanels.css" />
 <link rel="stylesheet" href="${contextPath}/js/lib/SpryAssets/SpryCollapsiblePanel.css" />
 
+
 <%-- <script type="text/javascript" src="${contextPath}/js/lib/jquery.js"></script> --%>
 <script type="text/javascript" src="${contextPath}/js/lib/jquery-1.11.2.min.js"></script>
+<%-- <script type="text/javascript" src="${contextPath}/js/lib/jquery-3.2.1.min.js"></script> --%>
 <script type="text/javascript" src="${contextPath}/js/lib/jquery.form.js"></script>
 <script type="text/javascript" src="${contextPath}/lib/bootstrap3/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="${contextPath}/js/lib/SpryAssets/SpryCollapsiblePanel.js"></script>
 <script type="text/javascript" src="${contextPath}/js/lib/SpryAssets/SpryTabbedPanels.js"></script>
+<script type="text/javascript" src="${contextPath }/lib/webuploader/webuploader.min.js"></script>  
+
+ <script type="text/javascript">
+    var contextPath = '${contextPath}';
+</script >
+
+
+

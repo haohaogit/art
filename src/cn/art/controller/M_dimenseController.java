@@ -83,13 +83,15 @@ public class M_dimenseController {
 	@RequestMapping(value = "/edit")
 	public String edit(Model model, JWord item) {
 		List<typeIdName> typesList = typeService.selectAllOnlyIdandName();
-		Map<String, Object> typeIdNameMap = new HashMap<String, Object>();
-		for (typeIdName typeIdName : typesList) {
-			typeIdNameMap.put("id", typeIdName.getTid());
-			typeIdNameMap.put("name", typeIdName.getTname());
-		}
+		// Map<String, Object> typeIdNameMap = new HashMap<String, Object>();
+		// for (typeIdName typeIdName : typesList) {
+		//
+		// typeIdNameMap.put("id", typeIdName.getTid());
+		// typeIdNameMap.put("name", typeIdName.getTname());
+		// }
+
 		model.addAttribute("typesList", typesList);
-		model.addAttribute("typeIdNameMap", typeIdNameMap);
+		// model.addAttribute("typeIdNameMap", typeIdNameMap);
 		List<Word> wordList = wordService.selectAll();
 		model.addAttribute("wordList", wordList);
 		model.addAttribute("item", item);
@@ -98,15 +100,30 @@ public class M_dimenseController {
 
 	@RequestMapping("load/save")
 	@ResponseBody
-	public String save(JWord item) {
-		String message = "0";// 插入新类型成功
-		if (item.getJwid() != null) {
-			jWordService.updateByPrimaryKey(item);
-			message = "1";// 更新类型成功
-			return message;
+	public String save(JWord item, String widsString, Integer tid) {
+		String message = "0";// 失败
+		List<JWord> JWordList = jWordService.selectByTID(tid);
+		for (JWord jword : JWordList) {
+			jWordService.deleteByPrimaryKey(jword.getJwid());
 		}
-		jWordService.insert(item);
+		if (widsString != null) {
+			String[] array = widsString.split("，");
+			if (tid != null) {
+				for (String wid : array) {
+					jWordService.insertVoca(Integer.parseInt(wid), tid);
+				}
+				message = "1";// 成功
+				// return message;
+			}
+		}
 		return message;
+	}
+
+	@RequestMapping("load/JWord")
+	@ResponseBody
+	public List<JWord> survey(Integer tid) {
+		List<JWord> jwordList = jWordService.selectByTID(tid);
+		return jwordList;
 	}
 
 	// 降维词汇库 (默认接口)

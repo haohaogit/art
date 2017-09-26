@@ -109,8 +109,11 @@ public class M_bottomController {
 	@SuppressWarnings("unchecked")
 	@RequestMapping(value = "/edit")
 	public String edit(BottomCase bottomcase, Model model, Integer id, Integer tid, Integer bctid) {
+		List<BottomCaseType> bottomCaseTypeList = new ArrayList<BottomCaseType>();
+		bottomCaseTypeList = bottomCaseTypeService.selectByTID(tid);
 		if (id != null) {
 			bottomcase = bottomCaseService.selectByPrimaryKey(id);
+			bottomCaseTypeList = bottomCaseTypeService.selectByTID(bottomcase.getTid());
 		} else {
 			if (tid != null && bctid != null) {
 				bottomcase.setTid(tid);
@@ -118,6 +121,7 @@ public class M_bottomController {
 			}
 		}
 		model.addAttribute("bottomcase", bottomcase);
+		model.addAttribute("bottomCaseTypeList", bottomCaseTypeList);
 		return "manager/appearance/bottom/edit";
 	}
 
@@ -150,8 +154,6 @@ public class M_bottomController {
 			message = "1";// 更新类型成功
 			return message;
 		}
-		// bottomcase.setBctid(1);
-		// bottomcase.setTid(2);
 		bottomCaseService.insert(bottomcase);
 		return message;
 	}

@@ -55,17 +55,10 @@ public class M_questionController {
 	@ResponseBody
 	public Survey survey(Model model, Integer tid) {
 		Survey survey = new Survey();
-		// List<String> wordsurveyList = new ArrayList<String>();
 		if (tid != null) {
 			survey = surveyService.selectByTID(tid);
-			// String wordsurvey = survey.getWordsurvey();
-			// String[] a = wordsurvey.split("，");
-			// for (String b : a) {
-			// wordsurveyList.add(b);
-			// }
 		}
 		model.addAttribute("survey", survey);
-		// model.addAttribute("wordsurveyList", wordsurveyList);
 		return survey;
 	}
 

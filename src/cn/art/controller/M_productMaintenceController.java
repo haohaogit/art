@@ -175,6 +175,7 @@ public class M_productMaintenceController {
 		model.addAttribute("textureTypeList", textureTypeList);
 		model.addAttribute("partTypeList", partTypeList);
 		model.addAttribute("colorTypeList", colorTypeList);
+		model.addAttribute("filename", item.getTicon());
 		return "manager/productMaintenance/edit";
 	}
 
@@ -260,6 +261,7 @@ public class M_productMaintenceController {
 					textureTypeService.insert(textureType);
 				}
 			}
+
 			typeService.updateByPrimaryKey(item);
 			message = "1";// 更新类型成功
 			return message;

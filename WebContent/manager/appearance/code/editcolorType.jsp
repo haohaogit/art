@@ -60,8 +60,53 @@
 								  </div>
 						</div> 
 						<div class="input-title-position">
-							  <label for="product_name " ><strong   class="label-name">案例图片</strong></label>
+							  <label for="product_name " ><strong   class="label-name">特征图片</strong></label>
 							  <div class="my-no-br-right" >
+							     <form:hidden path="cimg" />
+								    <form:hidden path="cimg1" />
+								    <form:hidden path="cimg2" />
+								    <form:hidden path="cimg3" />
+								    <form:hidden path="cimg4" />
+								    <table>
+								    <thead>
+										<tr>
+										<th>
+								       <button id="filePicker0" class="btn filePicker "  number="0" style=" padding: 0;">选择图片</button> 
+										</th>
+										<th>
+								      <button id="filePicker1" class="btn filePicker "  number="1" style=" padding: 0;">选择图片</button> 
+								     	</th>
+								     	<th>
+								      <button id="filePicker2" class="btn filePicker "  number="2" style=" padding: 0;">选择图片</button> 
+								     </th>
+								     	<th>
+								      <button id="filePicker3" class="btn filePicker "  number="3" style=" padding: 0;">选择图片</button> 
+								      </th>
+								     	<th>
+								      <button id="filePicker4" class="btn filePicker "  number="4" style=" padding: 0;">选择图片</button> 
+									</th>
+									</tr>
+								 </thead>
+								 <tbody>
+									<tr>
+									<td>
+									<div id="filename0" class="uploader-list " ></div>  
+									</td>
+									<td>
+									<div id="filename1" class="uploader-list"></div> 
+									</td>
+									<td>
+									<div id="filename2" class="uploader-list "></div> 
+									</td>
+									<td>
+									<div id="filename3" class="uploader-list"></div>
+									</td>
+									<td>
+									<div id="filename4" class="uploader-list "></div>
+									</td>
+									</tr>  
+									</tbody>
+								 </table>
 <!-- 							  浏览上传 -->
 <%-- 							  		 <form:textarea  class="form-control textarea-size" path="wbasic"  /> --%>
 							  </div>
@@ -82,6 +127,6 @@
 <script type="text/javascript">
 	var contextPath='${contextPath}';
 </script>
-<script type="text/javascript" src="${contextPath}/js/manager/appearance/code/edit.js"></script>
+<script type="text/javascript" src="${contextPath}/js/manager/appearance/code/editcolorType.js"></script>
 </body>
 </html>
