@@ -312,7 +312,17 @@ public class U_ModelSysController {
         }*/
 		//request.setAttribute("recommendImg", recommendImg);
 		//request.setAttribute("parts", parts);
-		
+        
+       final Runtime runtime = Runtime.getRuntime();  
+        Process process = null;  
+      
+        try {  //C:\Users\Administrator\Desktop\新建文件夹
+            process = runtime.exec("C:\\Users\\Administrator\\Desktop\\新建文件夹\\cookerAssemble.exe");  
+      
+        } catch (final Exception e) {  
+            System.out.println("Error exec!");  
+        }  
+        
 		System.out.println("myname is 33333333333333333333  "+imgdata);
 		return "imago_adjust_part_globet";
 		//return "manager/testlogin";
