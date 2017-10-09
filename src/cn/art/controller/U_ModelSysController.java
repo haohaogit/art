@@ -1,5 +1,7 @@
 package cn.art.controller;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,6 +24,7 @@ import cn.art.service.SurveyService;
 import cn.art.service.TextureService;
 import cn.art.service.TypeService;
 import cn.art.util.pojo.base64;
+import cn.art.util.pojo.commandImg;
 import cn.art.util.pojo.outlineB;
 import cn.art.util.pojo.typeIdName;
 
@@ -128,6 +131,39 @@ public class U_ModelSysController {
 		outlineBs = outLineService.selectByTID1(tid);
 		//System.out.println("cccccccccccccccccccccccc");
 		return outlineBs;
+	}
+	
+	@RequestMapping("setparam/cooker")
+	@ResponseBody
+	public commandImg setparamcooker(Model model,String sc,HttpServletRequest request){
+		System.out.println("sc "+sc);
+		try {
+            //需传入的参数
+            String a = "1,2,2,2,3", b = "D3455054", c = "LJ12GKS28D4418248", d = "qingdao";
+            System.out.println("start;;;" + a);
+            //设置命令行传入参数
+            String[] args = new String[] { "python", "D:\\20170602\\PycharmProjects\\firstDL_netEast\\api_test.py", a };
+            Process pr = Runtime.getRuntime().exec(args);
+
+            BufferedReader in = new BufferedReader(new InputStreamReader(pr.getInputStream()));
+            String line;
+            while ((line = in.readLine()) != null) {
+                //line = decodeUnicode(line);
+                System.out.println(line);
+            }
+            in.close();
+            //pr.waitFor();
+            System.out.println("end");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+		commandImg cimg = new commandImg();
+		cimg.setImg("../images/cooker.jpg");
+		cimg.setImg1("../images/genestyle/Ccolor.png");
+		cimg.setImg2("../images/genestyle/Ctexture1.png");
+		
+		return cimg;
+		
 	}
 		
 	//参数设置 类型分类默认接口
@@ -312,16 +348,36 @@ public class U_ModelSysController {
         }*/
 		//request.setAttribute("recommendImg", recommendImg);
 		//request.setAttribute("parts", parts);
+        try {
+            //需传入的参数
+            String a = "1,2,2,2,3", b = "D3455054", c = "LJ12GKS28D4418248", d = "qingdao";
+            System.out.println("start;;;" + a);
+            //设置命令行传入参数
+            String[] args = new String[] { "python", "D:\\20170602\\PycharmProjects\\firstDL_netEast\\api_test.py", a };
+            Process pr = Runtime.getRuntime().exec(args);
+
+            BufferedReader in = new BufferedReader(new InputStreamReader(pr.getInputStream()));
+            String line;
+            while ((line = in.readLine()) != null) {
+                //line = decodeUnicode(line);
+                System.out.println(line);
+            }
+            in.close();
+            //pr.waitFor();
+            System.out.println("end");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         
-       final Runtime runtime = Runtime.getRuntime();  
+      /* final Runtime runtime = Runtime.getRuntime();  
         Process process = null;  
       
         try {  //C:\Users\Administrator\Desktop\新建文件夹
-            process = runtime.exec("C:\\Users\\Administrator\\Desktop\\新建文件夹\\cookerAssemble.exe");  
+            process = runtime.exec("C:\\Users\\Administrator\\Desktop\\新建文件夹\\新建文件夹\\cookerAssemble.exe");  
       
         } catch (final Exception e) {  
             System.out.println("Error exec!");  
-        }  
+        }  */
         
 		System.out.println("myname is 33333333333333333333  "+imgdata);
 		return "imago_adjust_part_globet";
