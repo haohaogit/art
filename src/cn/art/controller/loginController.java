@@ -36,7 +36,7 @@ public class loginController {
 
 		System.out.println("account " + account + " password " + password);
 
-		return "pass";
+		return "pass1";
 	}
 
 	// 验证 注解 @requestparam()
