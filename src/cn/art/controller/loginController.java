@@ -35,6 +35,8 @@ public class loginController {
 	public String managerLogin(String account, String password) {
 
 		System.out.println("account " + account + " password " + password);
+		
+		System.out.println(" 1010test account " + account + " test password " + password);
 
 		return "pass1";
 	}
