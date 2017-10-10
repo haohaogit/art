@@ -358,6 +358,18 @@ public class SurveyServiceImpl implements SurveyService {
 		}
 		return survey1;
 	}
+
+	@Override
+	public Survey selectByTID1(Integer tid) {
+		// TODO Auto-generated method stub
+		List<Survey> surveys = surveyMapper.selectByTID(tid);
+		Survey survey1 = new Survey();
+		for (Survey survey : surveys) {
+			survey1 = survey;
+			break;
+		}
+		return survey1;
+	}
 	
 
 }

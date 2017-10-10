@@ -15,6 +15,7 @@ public interface SurveyService {
     Survey selectByPrimaryKey(Integer sid);
     Survey selectByTname(String tname);
     List<Survey> selectByTID(Integer tid);
+    Survey selectByTID1(Integer tid);
     String selectSurveysByTID(Integer tid);
 
     int updateByPrimaryKeySelective(Survey record);
