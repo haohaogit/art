@@ -1,6 +1,9 @@
 
 var listUrl =contextPath + "/manager/bottom/list";
 //var toSaveUrl =contextPath + "/manager/bottom/load/edit";
+$('#otid').change(function(a){
+	var b =a ;
+});
 $(".cancelbtn").click(function(){
 		debugger
 		 window.location.href= listUrl;

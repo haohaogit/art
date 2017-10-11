@@ -1,6 +1,16 @@
 
 var listUrl =contextPath + "/manager/code/list";
 //var toSaveUrl =contextPath + "/manager/bottom/load/edit";
+$('#otid').change(function(){
+	var value = this.value;
+	var selectIndex = this.selectedIndex;
+	$(this).children().removeAttr('selected');
+	$(this).children().eq(selectIndex).attr('selected','selected');
+	this.value = value;
+//	this.selectOption(this.selectedIndex);
+	
+//	this.setAttribute()
+});
 $(".cancelbtn").click(function(){
 		debugger
 		 window.location.href= listUrl;

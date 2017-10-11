@@ -148,6 +148,7 @@ public class M_bottomController {
 	@RequestMapping("load/save")
 	@ResponseBody
 	public String save(BottomCase bottomcase) {
+		System.out.println("bottomcase.getBctid()"+bottomcase.getBctid()+"  bottomcase.getCasename()"+bottomcase.getCasename()+"  bottomcase.getCasebrand()"+bottomcase.getCasebrand());
 		String message = "0";// 插入新类型成功
 		if (bottomcase.getBcid() != null) {
 			bottomCaseService.updateByPrimaryKey(bottomcase);

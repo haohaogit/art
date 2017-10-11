@@ -1,5 +1,5 @@
-@CHARSET "UTF-8";
-
+/* @CHARSET "UTF-8"; */
+@charset "utf-8";
 #header{
 	margin: 0px 100px 30px 100px;
 	overflow: hidden;
