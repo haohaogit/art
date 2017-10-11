@@ -26,12 +26,34 @@
 	</style>
 </head>
 <body>
-
-<script type="text/javascript">
+	<script type="text/javascript" src="../js/imago.js"></script>
+	<script type="text/javascript">
+		var geneimg;
         $(document).ready(function () {
 //  			alert(11);
             $('.configHead').load('conheader_yixiang.html');
             $('.configFoot').load('confooter.html');
+            
+            var loc = location.href;
+		  	var n1 = loc.length;//地址的总长度
+		  	var n2 = loc.indexOf("=");//取得=号的位置
+		  	geneimg = decodeURI(loc.substr(n2+1, n1-n2));//从=号后面的内容
+		  	
+		  	$.ajax("getcolor?tname=燃气灶",
+	                // 发送请求的URL字符串
+	                {
+	                    type: "get",      //
+	                    async:true,  //
+	                    success: function(data){
+							//alert("facade newcase goblet test length="+data.length);
+							filllunbo(data);
+							//alert("successful")
+	                    },
+	                    error: function(){
+	                        alert("数据发送失败denglu");
+	                    }
+	                });
+		  	
         });
 </script>
 	<!-- 	头部 -->
@@ -173,11 +195,11 @@
 		window.onload = function(){
 			var c=document.getElementById("myCanvas");
 			var cxt=c.getContext("2d");
-
 			var img=new Image();
-			img.src="../images/genestyle/gascooker.jpg";
+			//img.src="../images/genestyle/gascooker.jpg";
+			img.src = geneimg;
 			img.onload = function(){
-				cxt.drawImage(img,10,50);
+				cxt.drawImage(img,10,40,600,340);
 			}
 
 			// var img1=new Image();
@@ -198,12 +220,7 @@
 		}
 	</script>
 
-	<script>
-		var c=document.getElementById("myCanvas");
-		var ctx=c.getContext("2d");
-		ctx.fillStyle="#00A5BD";
-		ctx.fillRect(0,0,150,36);
-	</script>
+	
 	<script type="text/javascript">
 	
 		//获取Canvas对象(画布)
@@ -212,7 +229,8 @@
 		if(canvas.getContext){  
 		    //获取对应的CanvasRenderingContext2D对象(画笔)
 		    var ctx = canvas.getContext("2d");
-		    
+		    ctx.fillStyle="#00A5BD";
+			ctx.fillRect(0,0,150,36);
 		    //设置字体样式
 		    ctx.font = "18px Courier New";
 		    //设置字体填充颜色

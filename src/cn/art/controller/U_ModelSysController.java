@@ -24,6 +24,7 @@ import cn.art.service.SurveyService;
 import cn.art.service.TextureService;
 import cn.art.service.TypeService;
 import cn.art.util.pojo.base64;
+import cn.art.util.pojo.colorB;
 import cn.art.util.pojo.commandImg;
 import cn.art.util.pojo.outlineB;
 import cn.art.util.pojo.typeIdName;
@@ -131,6 +132,60 @@ public class U_ModelSysController {
 		outlineBs = outLineService.selectByTID1(tid);
 		//System.out.println("cccccccccccccccccccccccc");
 		return outlineBs;
+	}
+	//  获取面板色彩
+	@RequestMapping("getcolor")
+	@ResponseBody
+	public List<colorB> getpanelColor(Model model,String tname,HttpServletRequest request){
+		//System.out.println("sc "+sc);
+		List<colorB> listbBs = new ArrayList<colorB>();
+		List<typeIdName> typeIdNames = typeService.selectAllByName(tname);
+		int tid = 0;
+		for (typeIdName typeIdName : typeIdNames) {
+			tid = typeIdName.getTid();
+			break;
+		}
+		
+		listbBs = colorService.selectByTID1(tid);
+		for (colorB colorB : listbBs) {
+			System.out.println("colorB.getCbname() "+colorB.getCbname()+" colorB.getCimg()"+colorB.getCimg());
+		}
+		
+		return listbBs;
+		
+	}
+	
+	@RequestMapping("adjust/color")
+	@ResponseBody
+	public commandImg adjustColor(Model model,String crgb,HttpServletRequest request){
+		//System.out.println("crgb "+crgb);
+		try {
+            //需传入的参数
+            String a = "A5", b = "B1", c = "C2", d = "D2",crgb1 = crgb;
+            //System.out.println("start;;;" + a);
+            //设置命令行传入参数
+            String[] args = new String[] { "python", "D:\\20170602\\PycharmProjects\\firstDL_netEast\\cookerAssembleColor.py", a,b,c,d,crgb1 };
+            Process pr = Runtime.getRuntime().exec(args);
+
+            BufferedReader in = new BufferedReader(new InputStreamReader(pr.getInputStream()));
+            String line;
+            while ((line = in.readLine()) != null) {
+                //line = decodeUnicode(line);
+                System.out.println(line);
+            }
+            in.close();
+            //pr.waitFor();
+            System.out.println("end");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+		commandImg cimg = new commandImg();
+		cimg.setImg("../images/cookerColor.png");
+		//cimg.setImg1("../images/genestyle/Ccolor.png");
+		//cimg.setImg2("../images/genestyle/Ctexture1.png");
+		
+		return cimg;
+		
 	}
 	
 	@RequestMapping("setparam/cooker")

@@ -9,6 +9,7 @@
 </head>
 <body>
 <script type="text/javascript">
+		var geneimg ;
         $(document).ready(function () {
 //  			alert(11);
             $('.configHead').load('conheader_yixiang.html');
@@ -18,6 +19,7 @@
 		  	var n1 = loc.length;//地址的总长度
 		  	var n2 = loc.indexOf("=");//取得=号的位置
 		  	var sc = decodeURI(loc.substr(n2+1, n1-n2));//从=号后面的内容
+		  	
 		  	alert("sc = "+sc);
 		  	$.ajax("setparam/cooker/?sc="+sc,
 		            // 发送请求的URL字符串
@@ -29,6 +31,7 @@
 						//fillNewcaseHouseboat(data);
 						
 						$(".i1").attr('src',data.img);
+						geneimg = data.img;
 						//alert(data.img);
 		                },
 		                error: function(){
@@ -116,7 +119,7 @@
 			</div>
 
 			<div id="picGene">
-				<img class="i1" src="../images/genestyle/gascooker.jpg" style="margin-left: 125px;width: 550px;" />
+				<img class="i1" src="" style="margin-left: 125px;width: 550px;" />
 				
 			</div>
 
@@ -148,8 +151,8 @@
   		}
   		
 		function saveGene(){
-			alert("燃气灶推荐方案保存，然后调整部件");
-			window.location.href="imago_adjust_color_gascooker.html";
+			alert("燃气灶推荐方案保存，然后调整色彩"+geneimg);
+			window.location.href="imago_adjust_color_gascooker.html?img="+geneimg;
 		}
 
 		/* window.onload = function(){

@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import cn.art.model.Color;
+import cn.art.util.pojo.colorB;
 
 public interface ColorService {
 	int deleteByPrimaryKey(Integer cid);
@@ -13,6 +14,7 @@ public interface ColorService {
 
     Color selectByPrimaryKey(Integer cid);
     List<Color> selectByTID(Integer tid);
+    List<colorB> selectByTID1(Integer tid);
     List<Color> selectByTIDandCBID(Map map);
     
     List<Color> selectByName1(String cdescription);

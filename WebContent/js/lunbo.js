@@ -1,4 +1,5 @@
 function AddCarousel(baseObj) {
+	
     var that = this;
     this.baseWidth = $('#lunbo1').width(); //父div的宽度
     // alert("width "+$('#lunbo1').width());
@@ -10,9 +11,11 @@ function AddCarousel(baseObj) {
 
     $('.left-arrow').click(function() {
         if (that.speIndex == 0) {
+        	
             that.speIndex = that.item.count;
         }
         that.moveToCenter(that.speIndex - 1);
+        //alert("222222222");
     });
 
     $('.right-arrow').click(function() {
@@ -63,6 +66,37 @@ function AddCarousel(baseObj) {
     // 添加点击移至中间事件
     $('.lunbo-item').on('click', function() {
         var index = parseInt($(this).attr('data-itemid'));
+        
+        var ss = $(this).html();
+        var crgb = $(ss).attr('alt');
+        alert("crgb "+crgb);
+        $.ajax("adjust/color/?crgb="+crgb,
+	            // 发送请求的URL字符串
+	            {
+	                type: "get",      //
+	                async:true,  //
+	                success: function(data){
+					//alert("facade newcase goblet test length");
+					//fillNewcaseHouseboat(data);
+					
+					//$(".i1").attr('src',data.img);
+	               
+        			var c=document.getElementById("myCanvas");
+        			var cxt=c.getContext("2d");
+        			var img=new Image();
+        			//img.src="../images/genestyle/gascooker.jpg";
+        			img.src = data.img;
+        			img.onload = function(){
+        				cxt.drawImage(img,10,40,600,340);
+        			}
+	        		
+					//alert("adjustcolor successful"+data.img);
+	                },
+	                error: function(){
+	                    alert("数据发送失败denglu");
+	                }
+	            });
+        
         that.moveToCenter(index);
     });
 

@@ -55,3 +55,12 @@ function fillModelFabric(data){
 	html=html+aHtml+"</div>"+bHtml+"</div>"+cHtml+"</div>"+dHtml+"</div>";
 	$("#fabricLunkuo").html(html);
 }
+function filllunbo(data){
+	var aHtml="<ul>";
+	for(var i=0;i<data.length;i++){
+		aHtml+="<li class='lunbo-item'><img src='"+data[i].cimg+"' alt='"+data[i].crgb+"'><span>"+data[i].cbname+"</span></li>";
+	}
+	aHtml+="</ul>";
+	$(".lunbo-window").html(aHtml);
+	AddCarousel();
+}

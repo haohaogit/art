@@ -3,9 +3,17 @@ package cn.art.util.pojo;
 public class colorB {
 	private Integer cid;
     private String cbname;
+    private String crgb;
     private Integer tid;
     private String cdescription;
     private String cimg;
+    public String getCrgb() {
+        return crgb;
+    }
+
+    public void setCrgb(String crgb) {
+        this.crgb = crgb == null ? null : crgb.trim();
+    }
 	public Integer getCid() {
 		return cid;
 	}

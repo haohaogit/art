@@ -217,4 +217,27 @@ public class ColorServiceImpl implements ColorService {
 		return colorMapper.selectByName(cdescription);
 	}
 
+	@Override
+	public List<colorB> selectByTID1(Integer tid) {
+		// TODO Auto-generated method stub
+		List<Color> colors = colorMapper.selectByTID(tid);
+		List<colorB> colorBs = new LinkedList<colorB>();
+		colorB colorB;
+		int i = 0;
+		for (Color color : colors) {
+			//if(i>=4) break;
+			colorB = new colorB();
+			colorB.setCid(color.getCid());
+			colorB.setTid(color.getTid());
+			colorB.setCrgb(color.getCrgb());
+			colorB.setCbname(colorTypeMapper.selectByPrimaryKey(color.getCbid()).getCbname());
+			colorB.setCdescription(color.getCdescription());
+			colorB.setCimg(color.getCimg());
+			
+			colorBs.add(colorB);
+			i++;
+		}
+		return colorBs;
+	}
+
 }
