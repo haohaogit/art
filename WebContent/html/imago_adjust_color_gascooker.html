@@ -22,6 +22,7 @@
 			float: left;
 			height: 26px;
 		}
+		
 
 	</style>
 </head>
@@ -113,14 +114,21 @@
 				<div class="corpusword" style="padding-top: 5.5px;">推荐方案</div>
 			</div> -->
 
-			<div id="picGene" style="margin-top: 40px;">
+			<!-- <div id="picGene" style="margin-top: 40px;">
 				
 				<canvas id="myCanvas" width="800" height="400" style="border:1px solid #d3d3d3;background:#ffffff;">
-					<!-- <p class="p2">画布：</p> -->
-					<!-- <img src="../images/genestyle/p5.png"> -->
+					<p class="p2">画布：</p>
+					<img src="../../images/cookerColor.png">
 				</canvas>
+			</div> -->
+			
+			<div id="picGene1" style="margin-top: 40px;" >
+				<div class="picfont" style="background:#00A5BD;width:145px; height:37px; ">
+					色彩方案预览
+				</div>
+				<img class="picimg" src="../../images/cookerColor.png" >
 			</div>
-
+			
 			<div id="partStyle">
 				<div id="warmcolor">
 					<a href="javascript:void(0)" id="beidu1" style="color: white;padding-left: 11px;">面板颜色</a>
@@ -169,20 +177,6 @@
   			window.history.back(-1);
   		}
   		
-		//圆角矩形
-		CanvasRenderingContext2D.prototype.roundRect = function (x, y, w, h, r) {
-		    var min_size = Math.min(w, h);
-		    if (r > min_size / 2) r = min_size / 2;
-		    // 开始绘制
-		    this.beginPath();
-		    this.moveTo(x + r, y);
-		    this.arcTo(x + w, y, x + w, y + h, r);
-		    this.arcTo(x + w, y + h, x, y + h, r);
-		    this.arcTo(x, y + h, x, y, r);
-		    this.arcTo(x, y, x + w, y, r);
-		    this.closePath();
-		    return this;
-	}
 	</script>
 
 	<script type="text/javascript">
@@ -192,36 +186,20 @@
 			window.location.href="imago_adjust_texture_gascooker.html";
 		}
 
-		window.onload = function(){
+		/* window.onload = function(){
 			var c=document.getElementById("myCanvas");
 			var cxt=c.getContext("2d");
 			var img=new Image();
-			//img.src="../images/genestyle/gascooker.jpg";
+			//img.src="/images/cookerColor.png";
 			img.src = geneimg;
 			img.onload = function(){
 				cxt.drawImage(img,10,40,600,340);
 			}
-
-			// var img1=new Image();
-			// img1.src="../images/genestyle/p5.png";
-			// img1.onload = function(){
-			// 	ctx.drawImage(img1, 540, 120,130,160);
-				// // 创建图片纹理
-			 //    var pattern = cxt.createPattern(img1, "repeat");
-			 //    // 绘制一个矩形
-			 //    cxt.roundRect(540, 20, 130, 160, 1);
-			 //    //使用rc2.scale(0.45, 0.45);方法可以等比例缩小图片可以达到你的效果,但是里面的放大缩小的数值需要自己计算！！！
-			 //    cxt.scale(0.45, 0.45);
-			 //    //cxt.strokeRect(560,20,192,220);
-			 //    // 填充绘制的圆
-			 //    cxt.fillStyle = pattern;
-			 //    cxt.fill();    
-			//}
-		}
+		} */
 	</script>
 
 	
-	<script type="text/javascript">
+	<!-- <script type="text/javascript">
 	
 		//获取Canvas对象(画布)
 		var canvas = document.getElementById("myCanvas");
@@ -238,7 +216,7 @@
 		    //从坐标点(50,50)开始绘制文字
 		    ctx.fillText("色彩方案预览", 20, 22);
 		}
-	</script>
+	</script> -->
 
 	<script type="text/javascript">
 		$("#geneContent").fadeOut(0);

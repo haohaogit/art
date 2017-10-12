@@ -407,3 +407,26 @@ a{
 	padding-top: 5px;
 
 }
+.picfont{
+	background: #00A5BD;
+	width: 145px;
+	height: 37px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: white;
+	font-size: 18px;
+}
+#picGene1{
+	width: 800px;
+	height: 400px;
+	/* background: white; */
+	border: 1.5px solid #ae9b9b;
+	border-radius: 5px;
+}
+.picimg{
+	margin-top: 6px;
+	margin-left: 10px;
+	width:600px;
+	height:340px;
+}

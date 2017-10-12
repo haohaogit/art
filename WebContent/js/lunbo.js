@@ -80,17 +80,11 @@ function AddCarousel(baseObj) {
 					//fillNewcaseHouseboat(data);
 					
 					//$(".i1").attr('src',data.img);
-	               
-        			var c=document.getElementById("myCanvas");
-        			var cxt=c.getContext("2d");
-        			var img=new Image();
-        			//img.src="../images/genestyle/gascooker.jpg";
-        			img.src = data.img;
-        			img.onload = function(){
-        				cxt.drawImage(img,10,40,600,340);
-        			}
+	                //debugger;
 	        		
-					//alert("adjustcolor successful"+data.img);
+	        		$(".picimg").attr('src',data.img);
+	        		window.location.reload(); 
+					//alert("adjustcolor successful   "+data.img);
 	                },
 	                error: function(){
 	                    alert("数据发送失败denglu");

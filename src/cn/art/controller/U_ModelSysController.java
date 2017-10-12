@@ -158,7 +158,7 @@ public class U_ModelSysController {
 	@RequestMapping("adjust/color")
 	@ResponseBody
 	public commandImg adjustColor(Model model,String crgb,HttpServletRequest request){
-		//System.out.println("crgb "+crgb);
+		System.out.println("crgb111 "+crgb);
 		try {
             //需传入的参数
             String a = "A5", b = "B1", c = "C2", d = "D2",crgb1 = crgb;
@@ -180,7 +180,8 @@ public class U_ModelSysController {
             e.printStackTrace();
         }
 		commandImg cimg = new commandImg();
-		cimg.setImg("../images/cookerColor.png");
+		cimg.setImg("../../images/cookerColor.png");
+		
 		//cimg.setImg1("../images/genestyle/Ccolor.png");
 		//cimg.setImg2("../images/genestyle/Ctexture1.png");
 		
