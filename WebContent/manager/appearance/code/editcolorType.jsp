@@ -37,7 +37,7 @@
 				<form:form id="editForm"  class="editForm" method="post"  action="${contextPath}/manager/code/load/savecolorType"
 					commandName="item"  methodParam="post">
 					<form:hidden path="cid" />
-<%-- 					<form:hidden path="cbid" /> --%>
+					<%-- <form:hidden path="cbid" /> --%>
 					<form:hidden path="tid" />
 				<div class="mydiv " style=" width: initial;height: initial;" >
 						<br> 

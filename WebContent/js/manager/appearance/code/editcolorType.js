@@ -8,12 +8,13 @@ $(".cancelbtn").click(function(){
 
 	$(".savebtn").click(function(){
 		debugger
+		//alert("1111111haohao");
 		var form = $("#editForm");
 		 var params = form.serialize();
 	     var action = form.attr("action");
 	     //如果验证通过
 			$.post(action, params, function(data) {
-				alert("保存成功！");
+				alert("保存成功ddd！");
 			});
 			 window.location.href= listUrl;
 	});

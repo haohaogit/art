@@ -257,13 +257,14 @@ public class M_codingController {
 	public List<Map<String, String>> codecasePart(Integer tid, Integer codeTypeId) {
 		List<Part> partList = new ArrayList<Part>();
 		List<Map<String, String>> codeTypeList = new ArrayList<Map<String, String>>();
-		Map<String, String> codeTypeMap = new HashMap<String, String>();
+		Map<String, String> codeTypeMap;
 		Map<String, Integer> TIDandOTIDMap = new HashMap<String, Integer>();
 		TIDandOTIDMap.put("tid", tid);
 		TIDandOTIDMap.put("pbid", codeTypeId);
 		if (tid != null) {
 			partList = partService.selectByTIDandPBID(TIDandOTIDMap);
 			for (Part Part : partList) {
+				codeTypeMap = new HashMap<String, String>();
 				codeTypeMap.put("id", Part.getPid().toString());
 				// codeTypeMap.put("tid", Part.getTid().toString());
 				codeTypeMap.put("name", Part.getPdescription());
@@ -278,10 +279,13 @@ public class M_codingController {
 	public List<Map<String, String>> ColorType(Integer tid) {
 		List<ColorType> colorTypeList = new ArrayList<ColorType>();
 		List<Map<String, String>> codeTypeList = new ArrayList<Map<String, String>>();
-		Map<String, String> codeTypeMap = new HashMap<String, String>();
+		//Map<String, String> codeTypeMap = new HashMap<String, String>();
 		if (tid != null) {
 			colorTypeList = colorTypeService.selectByTID(tid);
+			
 			for (ColorType ColorType : colorTypeList) {
+				//System.out.println("ColorType.getCbname() "+ColorType.getCbname());
+				Map<String, String> codeTypeMap = new HashMap<String, String>();
 				codeTypeMap.put("id", ColorType.getCbid().toString());
 				codeTypeMap.put("tid", ColorType.getTid().toString());
 				codeTypeMap.put("name", ColorType.getCbname());
@@ -296,13 +300,15 @@ public class M_codingController {
 	public List<Map<String, String>> codecaseColor(Integer tid, Integer codeTypeId) {
 		List<Color> colorList = new ArrayList<Color>();
 		List<Map<String, String>> codeTypeList = new ArrayList<Map<String, String>>();
-		Map<String, String> codeTypeMap = new HashMap<String, String>();
+		Map<String, String> codeTypeMap;
 		Map<String, Integer> TIDandOTIDMap = new HashMap<String, Integer>();
 		TIDandOTIDMap.put("tid", tid);
 		TIDandOTIDMap.put("cbid", codeTypeId);
 		if (tid != null) {
 			colorList = colorService.selectByTIDandCBID(TIDandOTIDMap);
 			for (Color Color : colorList) {
+				//System.out.println("Color.getCdescription () "+Color.getCdescription());
+				codeTypeMap = new HashMap<String, String>();
 				codeTypeMap.put("id", Color.getCid().toString());
 				// codeTypeMap.put("tid", Color.getTid().toString());
 				codeTypeMap.put("name", Color.getCdescription());
@@ -420,7 +426,9 @@ public class M_codingController {
 	public String save(Color item) {
 		String message = "0";// 插入新类型成功
 		if (item.getCid() != null) {
-			colorService.updateByPrimaryKey(item);
+			//System.out.println("1111111111111111111111111111111111111111111111111111111111111111111111  "+item.getCid());
+			//colorService.updateByPrimaryKey(item);
+			colorService.updateByPrimaryKeySelective(item);
 			message = "1";// 更新类型成功
 			return message;
 		}

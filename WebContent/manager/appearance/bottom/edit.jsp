@@ -36,7 +36,7 @@
 				</div> 
 				<form:form id="editForm"  class="editForm" method="post"  action="${contextPath}/manager/bottom/load/save"
 					commandName="bottomcase"  methodParam="post">
-					<form:hidden path="bctid" />
+					<%-- <form:hidden path="bctid" /> --%>
 					<form:hidden path="bcid" />
 					<form:hidden path="tid" />
 				<div class="mydiv " style=" width: initial;height: initial;" >
