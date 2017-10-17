@@ -23,6 +23,7 @@
 				<br>
 				<div class="mydiv gray-background" >降维词汇库
 <%-- 						<button type="button" myid="${types.tid }" class="btn btn-link pull-right deletebtn" >删除</button>  --%>
+						<button type="button" class="btn btn-link pull-right deletebtn">删除</button>
 						<button type="button" class="btn btn-link pull-right addbtn">+添加新词汇</button>
 				</div> 
 				<c:forEach var="type" items="${typesList}" varStatus="status">

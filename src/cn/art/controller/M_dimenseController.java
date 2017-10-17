@@ -79,21 +79,24 @@ public class M_dimenseController {
 		model.addAttribute("wordListMap", wordListMap);
 		return "manager/yuyi/dimense/list";
 	}
-
+	
+	
+	
+	@SuppressWarnings("unchecked")
 	@RequestMapping(value = "/edit")
-	public String edit(Model model, JWord item) {
-		List<typeIdName> typesList = typeService.selectAllOnlyIdandName();
+	public String edit(Model model, Word item) {
+		//List<typeIdName> typesList = typeService.selectAllOnlyIdandName();
 		// Map<String, Object> typeIdNameMap = new HashMap<String, Object>();
 		// for (typeIdName typeIdName : typesList) {
 		//
 		// typeIdNameMap.put("id", typeIdName.getTid());
 		// typeIdNameMap.put("name", typeIdName.getTname());
 		// }
-
-		model.addAttribute("typesList", typesList);
+		
+		//model.addAttribute("typesList", typesList);
 		// model.addAttribute("typeIdNameMap", typeIdNameMap);
-		List<Word> wordList = wordService.selectAll();
-		model.addAttribute("wordList", wordList);
+		//List<Word> wordList = wordService.selectAll();
+		//model.addAttribute("wordList", wordList);
 		model.addAttribute("item", item);
 		return "manager/yuyi/dimense/edit";
 	}

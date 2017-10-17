@@ -3,395 +3,88 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>添加新词对</title>
-<%-- <link rel="stylesheet" href="${contextPath}/lib/iCheck/skins/flat/blue.css" /> --%>
+<title>添加/编辑词汇</title>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+</script>
 </head>
+
 <body>
 	<div class="main-body-position">
-		<form:form id="editForm"  method="post"  action="${contextPath}/manager/dimense/load/save"
+		<div class="position-for-head2 thick ">语义库管理>降维词汇库>
+			<span>
+	        	<c:if test="${empty item.wid}">
+	        		添加新词汇
+	        	</c:if>
+	        	<c:if test="${not empty item.wid}">
+	        		编辑已有词汇
+	        	</c:if>
+	        </span>
+		</div>
+		<div class="container-position">
+				<div class="mydiv gray-background" >
+					<span>
+		        	<c:if test="${empty item.wid}">
+		        		添加新词汇
+		        	</c:if>
+		        	<c:if test="${not empty item.wid}">
+		        		编辑已有词汇
+		        	</c:if>
+		           </span>
+				</div> 
+		<form:form id="editForm"  class="editForm" method="post"  action="${contextPath}/manager/dimense/load/save"
 					commandName="item"  methodParam="post">
-					<form:hidden path="jwid" />
-			<div class="position-for-head2 thick ">语义库管理>降维词汇库>添加新词汇</div>
-			<div class="container-position">
-					<div class="input-title-position">
-							  <label for="product_name"><h5><span class="thick label-name">产品类型</span></h5></label>
+					<form:hidden path="wid" />
+				<div class="mydiv " style=" width: initial;height: initial;" >
+						<br> 
+						<div class="input-title-position">
+								  <label for="product_name"><span class="thick label-name">词汇名称</span></label>
+								  <div class="my-no-br-right" >
+								  <form:input path="wword"   class="form-control "  size="10"/>
+								  </div>
+						</div> 
+						<div class="input-title-position">
+							  <label for="product_name " ><strong   class="label-name">基本释义</strong></label>
 							  <div class="my-no-br-right" >
-							 		<form:select class="form-control"   path="tid"  items="${typesList}"  itemLabel="tname" itemValue="tid" ></form:select>
+							  		 <form:textarea  class="form-control textarea-size" path="wbasic"  />
 							  </div>
-					</div> 
-					<br>
-			<div class="table-responsive">          
-			       	<table class="table table-striped table-bordered">
-					<thead>
-						<tr>
-								<th  style="width: 80px;">
-									<span class="my-no-br-right" > 
-											首字母
-									</span>
-								</th>
-								<th>
-									<span class="my-no-br-right" style="display: inline-block; padding-top: 7px; "> 
-											已有词汇
-									</span>
-<!-- 									<button type="button" class="btn btn-link pull-right deletebtn" >删除</button>  -->
-<!-- 									<button type="button" class="btn btn-link pull-right addbtn" >+添加新词汇</button> -->
-								</th>
-						</tr>
-					</thead>
-		         	<tbody>
-					<tr>
-	             		<td>A</td>
-						<td>
-							 <c:forEach var="item" items="${wordList}" varStatus="status">	
-								<c:if test="${item.wfirstchar eq 'A'}">
-									<span class="my-left"> 
-									<input type="checkbox" name="checkbox"   myid="${item.wid}" value="${item.wword} " />
-										<button type="button" class="btn btn-link pull-right addbtn" style="line-height: 0.25;" myid="${item.wid}">${item.wword} </button> 
-									</span>
-								</c:if>
-							</c:forEach>
-						</td>
-		           	</tr>
-		           	<tr>
-	             		<td>B</td>
-						<td>
-							 <c:forEach var="item" items="${wordList}" varStatus="status">	
-								<c:if test="${item.wfirstchar eq 'B'}">
-									<span class="my-left"> 
-									<input type="checkbox" name="checkbox"   myid="${item.wid}" value="${item.wword} " />
-										<button type="button" class="btn btn-link pull-right addbtn" style="line-height: 0.25;" myid="${item.wid}">${item.wword} </button> 
-									</span>
-								</c:if>
-							</c:forEach>
-						</td>
-		           	</tr>
-		           	<tr>
-	             		<td>C</td>
-						<td>
-							 <c:forEach var="item" items="${wordList}" varStatus="status">	
-								<c:if test="${item.wfirstchar eq 'C'}">
-									<span class="my-left"> 
-									<input type="checkbox" name="checkbox"   myid="${item.wid}" value="${item.wword} " />
-										<button type="button" class="btn btn-link pull-right addbtn" style="line-height: 0.25;" myid="${item.wid}">${item.wword} </button> 
-									</span>								
-								</c:if>
-							</c:forEach>
-						</td>
-		           	</tr>
-		           	<tr>
-	             		<td>D</td>
-						<td>
-							 <c:forEach var="item" items="${wordList}" varStatus="status">	
-								<c:if test="${item.wfirstchar eq 'D'}">
-									<span class="my-left"> 
-									<input type="checkbox" name="checkbox"   myid="${item.wid}" value="${item.wword} " />
-										<button type="button" class="btn btn-link pull-right addbtn" style="line-height: 0.25;" myid="${item.wid}">${item.wword} </button> 
-									</span>								
-								</c:if>
-							</c:forEach>
-						</td>
-		           	</tr>
-		           	<tr>
-	             		<td>E</td>
-						<td>
-							 <c:forEach var="item" items="${wordList}" varStatus="status">	
-								<c:if test="${item.wfirstchar eq 'E'}">
-									<span class="my-left"> 
-									<input type="checkbox" name="checkbox"   myid="${item.wid}" value="${item.wword} " />
-										<button type="button" class="btn btn-link pull-right addbtn" style="line-height: 0.25;" myid="${item.wid}">${item.wword} </button> 
-									</span>								
-								</c:if>
-							</c:forEach>
-						</td>
-		           	</tr>
-		           	<tr>
-	             		<td>F</td>
-						<td>
-							 <c:forEach var="item" items="${wordList}" varStatus="status">	
-								<c:if test="${item.wfirstchar eq 'F'}">
-								<span class="my-left"> 
-									<input type="checkbox" name="checkbox"   myid="${item.wid}" value="${item.wword} " />
-										<button type="button" class="btn btn-link pull-right addbtn" style="line-height: 0.25;" myid="${item.wid}">${item.wword} </button> 
-									</span>								
-								</c:if>
-							</c:forEach>
-						</td>
-		           	</tr>
-		           	<tr>
-	             		<td>G</td>
-						<td>
-							 <c:forEach var="item" items="${wordList}" varStatus="status">	
-								<c:if test="${item.wfirstchar eq 'G'}">
-									<span class="my-left"> 
-									<input type="checkbox" name="checkbox"   myid="${item.wid}" value="${item.wword} " />
-										<button type="button" class="btn btn-link pull-right addbtn" style="line-height: 0.25;" myid="${item.wid}">${item.wword} </button> 
-									</span>								
-								</c:if>
-							</c:forEach>
-						</td>
-		           	</tr>
-		           	<tr>
-	             		<td>H</td>
-						<td>
-							 <c:forEach var="item" items="${wordList}" varStatus="status">	
-								<c:if test="${item.wfirstchar eq 'H'}">
-									<span class="my-left"> 
-									<input type="checkbox" name="checkbox"   myid="${item.wid}" value="${item.wword} " />
-										<button type="button" class="btn btn-link pull-right addbtn" style="line-height: 0.25;" myid="${item.wid}">${item.wword} </button> 
-									</span>								
-								</c:if>
-							</c:forEach>
-						</td>
-		           	</tr>
-		           	<tr>
-	             		<td>I</td>
-						<td>
-							 <c:forEach var="item" items="${wordList}" varStatus="status">	
-								<c:if test="${item.wfirstchar eq 'I'}">
-									<span class="my-left"> 
-									<input type="checkbox" name="checkbox"   myid="${item.wid}" value="${item.wword} " />
-										<button type="button" class="btn btn-link pull-right addbtn" style="line-height: 0.25;" myid="${item.wid}">${item.wword} </button> 
-									</span>								
-								</c:if>
-							</c:forEach>
-						</td>
-		           	</tr>
-		           	
-		           	<tr>
-	             		<td>J</td>
-						<td>
-							 <c:forEach var="item" items="${wordList}" varStatus="status">	
-								<c:if test="${item.wfirstchar eq 'J'}">
-									<span class="my-left"> 
-									<input type="checkbox" name="checkbox"   myid="${item.wid}" value="${item.wword} " />
-										<button type="button" class="btn btn-link pull-right addbtn" style="line-height: 0.25;" myid="${item.wid}">${item.wword} </button> 
-									</span>								
-								</c:if>
-							</c:forEach>
-						</td>
-		           	</tr>
-		           	<tr>
-	             		<td>K</td>
-						<td>
-							 <c:forEach var="item" items="${wordList}" varStatus="status">	
-								<c:if test="${item.wfirstchar eq 'K'}">
-									<span class="my-left"> 
-									<input type="checkbox" name="checkbox"   myid="${item.wid}" value="${item.wword} " />
-										<button type="button" class="btn btn-link pull-right addbtn" style="line-height: 0.25;" myid="${item.wid}">${item.wword} </button> 
-									</span>								
-								</c:if>
-							</c:forEach>
-						</td>
-		           	</tr>
-		           	<tr>
-	             		<td>L</td>
-						<td>
-							 <c:forEach var="item" items="${wordList}" varStatus="status">	
-								<c:if test="${item.wfirstchar eq 'L'}">
-									<span class="my-left"> 
-									<input type="checkbox" name="checkbox"   myid="${item.wid}" value="${item.wword} " />
-										<button type="button" class="btn btn-link pull-right addbtn" style="line-height: 0.25;" myid="${item.wid}">${item.wword} </button> 
-									</span>								
-								</c:if>
-							</c:forEach>
-						</td>
-		           	</tr>
-		           	<tr>
-	             		<td>M</td>
-						<td>
-							 <c:forEach var="item" items="${wordList}" varStatus="status">	
-								<c:if test="${item.wfirstchar eq 'M'}">
-									<span class="my-left"> 
-									<input type="checkbox" name="checkbox"   myid="${item.wid}" value="${item.wword} " />
-										<button type="button" class="btn btn-link pull-right addbtn" style="line-height: 0.25;" myid="${item.wid}">${item.wword} </button> 
-									</span>								
-								</c:if>
-							</c:forEach>
-						</td>
-		           	</tr>
-		           	<tr>
-	             		<td>N</td>
-						<td>
-							 <c:forEach var="item" items="${wordList}" varStatus="status">	
-								<c:if test="${item.wfirstchar eq 'N'}">
-									<span class="my-left"> 
-									<input type="checkbox" name="checkbox"   myid="${item.wid}" value="${item.wword} " />
-										<button type="button" class="btn btn-link pull-right addbtn" style="line-height: 0.25;" myid="${item.wid}">${item.wword} </button> 
-									</span>								
-								</c:if>
-							</c:forEach>
-						</td>
-		           	</tr>
-		           	<tr>
-	             		<td>O</td>
-						<td>
-							 <c:forEach var="item" items="${wordList}" varStatus="status">	
-								<c:if test="${item.wfirstchar eq 'O'}">
-									<span class="my-left"> 
-									<input type="checkbox" name="checkbox"   myid="${item.wid}" value="${item.wword} " />
-										<button type="button" class="btn btn-link pull-right addbtn" style="line-height: 0.25;" myid="${item.wid}">${item.wword} </button> 
-									</span>								
-								</c:if>
-							</c:forEach>
-						</td>
-		           	</tr>
-		           	
-		           	<tr>
-	             		<td>P</td>
-						<td>
-							 <c:forEach var="item" items="${wordList}" varStatus="status">	
-								<c:if test="${item.wfirstchar eq 'P'}">
-									<span class="my-left"> 
-									<input type="checkbox" name="checkbox"   myid="${item.wid}" value="${item.wword} " />
-										<button type="button" class="btn btn-link pull-right addbtn" style="line-height: 0.25;" myid="${item.wid}">${item.wword} </button> 
-									</span>								
-								</c:if>
-							</c:forEach>
-						</td>
-		           	</tr>
-		           	<tr>
-	             		<td>Q</td>
-						<td>
-							 <c:forEach var="item" items="${wordList}" varStatus="status">	
-								<c:if test="${item.wfirstchar eq 'Q'}">
-									<span class="my-left"> 
-									<input type="checkbox" name="checkbox"   myid="${item.wid}" value="${item.wword} " />
-										<button type="button" class="btn btn-link pull-right addbtn" style="line-height: 0.25;" myid="${item.wid}">${item.wword} </button> 
-									</span>								
-								</c:if>
-							</c:forEach>
-						</td>
-		           	</tr><tr>
-	             		<td>R</td>
-						<td>
-							 <c:forEach var="item" items="${wordList}" varStatus="status">	
-								<c:if test="${item.wfirstchar eq 'R'}">
-									<span class="my-left"> 
-									<input type="checkbox" name="checkbox"   myid="${item.wid}" value="${item.wword} " />
-										<button type="button" class="btn btn-link pull-right addbtn" style="line-height: 0.25;" myid="${item.wid}">${item.wword} </button> 
-									</span>								
-								</c:if>
-							</c:forEach>
-						</td>
-		           	</tr>
-		           	<tr>
-	             		<td>S</td>
-						<td>
-							 <c:forEach var="item" items="${wordList}" varStatus="status">	
-								<c:if test="${item.wfirstchar eq 'S'}">
-									<span class="my-left"> 
-									<input type="checkbox" name="checkbox"   myid="${item.wid}" value="${item.wword} " />
-										<button type="button" class="btn btn-link pull-right addbtn" style="line-height: 0.25;" myid="${item.wid}">${item.wword} </button> 
-									</span>								
-								</c:if>
-							</c:forEach>
-						</td>
-		           	</tr>
-		           	<tr>
-	             		<td>T</td>
-						<td>
-							 <c:forEach var="item" items="${wordList}" varStatus="status">	
-								<c:if test="${item.wfirstchar eq 'T'}">
-									<span class="my-left"> 
-									<input type="checkbox" name="checkbox"   myid="${item.wid}" value="${item.wword} " />
-										<button type="button" class="btn btn-link pull-right addbtn" style="line-height: 0.25;" myid="${item.wid}">${item.wword} </button> 
-									</span>								
-								</c:if>
-							</c:forEach>
-						</td>
-		           	</tr>
-		           	
-		           	<tr>
-	             		<td>U</td>
-						<td>
-							 <c:forEach var="item" items="${wordList}" varStatus="status">	
-								<c:if test="${item.wfirstchar eq 'U'}">
-									<span class="my-left"> 
-									<input type="checkbox" name="checkbox"   myid="${item.wid}" value="${item.wword} " />
-										<button type="button" class="btn btn-link pull-right addbtn" style="line-height: 0.25;" myid="${item.wid}">${item.wword} </button> 
-									</span>								
-								</c:if>
-							</c:forEach>
-						</td>
-		           	</tr><tr>
-	             		<td>V</td>
-						<td>
-							 <c:forEach var="item" items="${wordList}" varStatus="status">	
-								<c:if test="${item.wfirstchar eq 'V'}">
-									<span class="my-left"> 
-									<input type="checkbox" name="checkbox"   myid="${item.wid}" value="${item.wword} " />
-										<button type="button" class="btn btn-link pull-right addbtn" style="line-height: 0.25;" myid="${item.wid}">${item.wword} </button> 
-									</span>								
-								</c:if>
-							</c:forEach>
-						</td>
-		           	</tr>
-		           	<tr>
-	             		<td>W</td>
-						<td>
-							 <c:forEach var="item" items="${wordList}" varStatus="status">	
-								<c:if test="${item.wfirstchar eq 'W'}">
-									<span class="my-left"> 
-									<input type="checkbox" name="checkbox"   myid="${item.wid}" value="${item.wword} " />
-										<button type="button" class="btn btn-link pull-right addbtn" style="line-height: 0.25;" myid="${item.wid}">${item.wword} </button> 
-									</span>								
-								</c:if>
-							</c:forEach>
-						</td>
-		           	</tr>
-		           	
-		           	<tr>
-	             		<td>X</td>
-						<td>
-							 <c:forEach var="item" items="${wordList}" varStatus="status">	
-								<c:if test="${item.wfirstchar eq 'X'}">
-									<span class="my-left"> 
-									<input type="checkbox" name="checkbox"   myid="${item.wid}" value="${item.wword} " />
-										<button type="button" class="btn btn-link pull-right addbtn" style="line-height: 0.25;" myid="${item.wid}">${item.wword} </button> 
-									</span>								
-								</c:if>
-							</c:forEach>
-						</td>
-		           	</tr>
-		           	<tr>
-	             		<td>Y</td>
-						<td>
-							 <c:forEach var="item" items="${wordList}" varStatus="status">	
-								<c:if test="${item.wfirstchar eq 'Y'}">
-									<span class="my-left"> 
-									<input type="checkbox" name="checkbox"   myid="${item.wid}" value="${item.wword} " />
-										<button type="button" class="btn btn-link pull-right addbtn" style="line-height: 0.25;" myid="${item.wid}">${item.wword} </button> 
-									</span>								
-								</c:if>
-							</c:forEach>
-						</td>
-		           	</tr>
-		           	<tr>
-	             		<td>Z</td>
-						<td>
-							 <c:forEach var="item" items="${wordList}" varStatus="status">	
-								<c:if test="${item.wfirstchar eq 'Z'}">
-									<span class="my-left"> 
-									<input type="checkbox" name="checkbox"   myid="${item.wid}" value="${item.wword} " />
-										<button type="button" class="btn btn-link pull-right addbtn" style="line-height: 0.25;" myid="${item.wid}">${item.wword} </button> 
-									</span>								
-								</c:if>
-							</c:forEach>
-						</td>
-		           	</tr>
-		         	</tbody>
-			       	</table>
-			</div>
-			<div class=" text-center">
+						</div> 
+						<br>	
+						<div class="input-title-position">
+							  <label for="product_name " ><strong   class="label-name">详细释义</strong></label>
+							  <div class="my-no-br-right" >
+							  		 <form:textarea  class="form-control textarea-size" path="wdetail"  />
+							  </div>
+						</div> 	
+						<br>
+						<div class="input-title-position" >
+							  <label for="product_name " ><strong   class="label-name">近义词</strong></label>
+							  <div style="width:603px;background:red;margin-left:11px;">
+								  <div class="my-no-br-right1" style="display: flex;flex-wrap:wrap;"><!-- justify-content: left; -->
+								  		<input type="text" class="form-control " id="similar1"  size="10"  value=""/ style="margin-right:3px;width:102px;	">
+								  		<%-- <form:textarea  class="form-control textarea-size" path="wdetail"  /> --%>
+								  </div>
+							  </div>
+						</div>
+						<div class="input-title-position">
+								 <button type="button" myid="" class="btn btn-link  addnewtypebtn">+添加新类型12</button>  
+						</div>
+				       <br><br>
+				       <div class=" text-center">
 							<button type="button" class="btn btn-primary savebtn">保存</button>
 							<button type="reset" class="btn btn-primary cancelbtn">取消</button>
-			</div>	
-  	</div>
-		</form:form>	
-		
-	</div>
-<%-- 	<script type="text/javascript" src="${contextPath }/lib/iCheck/icheck.min.js"></script>   --%>
+						</div>
+						<br>
+				</div>
+				</form:form>  
+				</div>
+		</div>
+		<script type="text/javascript">
+	var contextPath='${contextPath}';
+// 	var bottomCaseTypeList="${bottomCaseTypeList }";
+// 	var outLineTypeJa="${outLineTypeJa }";
+</script>
 <script type="text/javascript" src="${contextPath}/js/manager/yuyi/dimense/edit.js"></script>
 </body>
 </html>

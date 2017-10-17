@@ -1,11 +1,12 @@
-
+var count1 = 2;
+var count2 = 2;
 var listUrl = "list";
 	$(".cancelbtn").click(function(){
 		 window.location.href= listUrl;
 //		 opener.location.reload();
 	});
 	debugger
-	changeProduct();
+	//changeProduct();
 	function changeProduct(){
 		var tid=$("#tid").find("option:selected").val();
 		$("input[name='checkbox']").prop("checked",false);
@@ -37,26 +38,45 @@ $("#tid").change(function(){
 //		    checkboxClass: 'icheckbox_flat-blue'
 //		});
 //	});
-	$(document).on("click",".savebtn",function(){
+$(document).on("click",".savebtn",function(){
+	debugger
+	var widArray=[];
+	var form =$("#editForm");
+	var params = form.serialize();
+    var action = form.attr("action");
+    var  wordList=$("input[name='checkbox']");
+	$.each(wordList,function(index,value){
 		debugger
-		var widArray=[];
-		var form =$("#editForm");
-		var params = form.serialize();
-	    var action = form.attr("action");
-	    var  wordList=$("input[name='checkbox']");
-		$.each(wordList,function(index,value){
-			debugger
-			if($(value).is(':checked')){
-				widArray.push(value.attributes.myid.nodeValue);
-			}
-		})
-		 var widsString=widArray.join("，");
-		var tid=$("#tid").find("option:selected").val();
-		params+="&widsString="+widsString+"&tid="+tid;
-	     //如果验证通过
-			$.post(action, params,	function(data) {
-				alert("保存成功！");
-			});
-			 window.location.href= listUrl;
+		if($(value).is(':checked')){
+			widArray.push(value.attributes.myid.nodeValue);
+		}
+	})
+	 var widsString=widArray.join("，");
+	var tid=$("#tid").find("option:selected").val();
+	params+="&widsString="+widsString+"&tid="+tid;
+     //如果验证通过
+		$.post(action, params,	function(data) {
+			alert("保存成功！");
+		});
+		 window.location.href= listUrl;
+});
+
+	$(document).on("click",".addnewtypebtn",function(){
+		debugger
+		
+		addbottomCaseType(count1);
+//		chooseType(tid);
+		count1=count1+1;
 	});
+	
+	//增加输入框
+	 function addbottomCaseType(number){
+	 	addHtml=$(".my-no-br-right1").html();
+	 	/*addHtml+='<div class="input-title-position">'+
+		  '<label for="product_name"><span class="thick label-name">类型'+(number+1)+
+		  '</span></label> <div class="my-no-br-right" >'+
+		  '<input type="text" class="form-control " id="type'+number+'"  size="10"  value=""/> </div></div> ';*/
+	 	addHtml+="<input type='text' class='form-control ' id='similar"+number+"'  size='10'  value=''/ style='margin-right:3px;width:102px;'>";
+	 	$(".my-no-br-right1").html(addHtml);
+	 }
 //});

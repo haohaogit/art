@@ -17,7 +17,7 @@ $(".loginbtn").click(function(){
 				data:params,
 				async:true,  //
 				success: function(data){
-					alert("数据发送成功denglu");
+					//alert("数据发送成功denglu");
 					window.location.href= listUrl;
 				},
 				error: function(){

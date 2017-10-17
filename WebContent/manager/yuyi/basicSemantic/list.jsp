@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>语义库</title>
+<title>意象映射</title>
 
 </head>
 
@@ -29,8 +29,9 @@
 									
 <!-- 									<button type="button" class="btn btn-link pull-right addbtn">编辑</button>  -->
 <!-- 									 <a href="javascript:void(0)" hidefocus="true" class="btn btn-link pull-right addbtn" id="addBtn">+添加新词汇</a> -->
+									<button type="button" class="btn btn-link pull-right editbtn" >编辑</button>
 									<button type="button" class="btn btn-link pull-right deletebtn" >删除</button> 
-									<button type="button" class="btn btn-link pull-right addbtn" >+添加新词汇</button>
+									<button type="button" class="btn btn-link pull-right addVocabtn" >+添加新词汇</button>
 								</th>
 						</tr>
 					</thead>
