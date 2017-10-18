@@ -5,8 +5,6 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
-import net.sourceforge.pinyin4j.PinyinHelper;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +15,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import cn.art.model.Word;
 import cn.art.service.WordService;
 import cn.art.util.pojo.wordp;
+
+import com.nillith.pinyin.Pinyin;
 
 @Controller
 @RequestMapping("manager/basicSemantic")
@@ -71,8 +71,20 @@ public class M_basicSemanticController {
 	 */
 	@RequestMapping("/load/save")
 	@ResponseBody
-	public int save(Word item) {
-		// List<Word> typesList = wordService.selectAll();
+	public String save(Word item, String widsString, String tid,String similar,String opposite) {
+		item.setWsimilar(item.getWsimilar()+similar);
+		item.setWoposite(item.getWoposite()+opposite);
+		
+		String message = "0";// 失败
+		Pinyin[] hao = Pinyin.getPinyin(item.getWword());
+		char[] firString = hao[0].toStringAsciiNoTone().toUpperCase().toCharArray();
+		
+		item.setWfirstchar(String.valueOf(firString[0]));
+		//System.out.println("item.getWsimilar() "+item.getWsimilar());
+		wordService.insertSelective(item);
+		
+		
+		/*// List<Word> typesList = wordService.selectAll();
 		String Wword = item.getWword();
 		String[] pinyinArray = PinyinHelper.toHanyuPinyinStringArray(Wword.charAt(0));
 		if (pinyinArray != null) {
@@ -91,7 +103,7 @@ public class M_basicSemanticController {
 			// }
 		} else {
 			wordService.insert(item);
-		}
+		}*/
 		return message;
 	}
 

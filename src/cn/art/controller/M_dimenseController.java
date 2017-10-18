@@ -22,6 +22,8 @@ import cn.art.service.WordService;
 import cn.art.util.JsonConvert;
 import cn.art.util.pojo.typeIdName;
 
+import com.nillith.pinyin.Pinyin;
+
 @Controller
 @RequestMapping("manager/dimense")
 public class M_dimenseController {
@@ -103,8 +105,21 @@ public class M_dimenseController {
 
 	@RequestMapping("load/save")
 	@ResponseBody
-	public String save(JWord item, String widsString, Integer tid) {
+	public String save(Word item, String widsString, String tid,String similar,String opposite) {
+		//System.out.println("similar "+similar+" ,opposite "+opposite);
+		item.setWsimilar(item.getWsimilar()+similar);
+		item.setWoposite(item.getWoposite()+opposite);
+		
 		String message = "0";// 失败
+		Pinyin[] hao = Pinyin.getPinyin(item.getWword());
+		char[] firString = hao[0].toStringAsciiNoTone().toUpperCase().toCharArray();
+		
+		item.setWfirstchar(String.valueOf(firString[0]));
+		//System.out.println("item.getWsimilar() "+item.getWsimilar());
+		wordService.insertSelective(item);
+		//hao1.
+		
+		/*wordService.insertSelective(item);
 		List<JWord> JWordList = jWordService.selectByTID(tid);
 		for (JWord jword : JWordList) {
 			jWordService.deleteByPrimaryKey(jword.getJwid());
@@ -118,7 +133,7 @@ public class M_dimenseController {
 				message = "1";// 成功
 				// return message;
 			}
-		}
+		}*/
 		return message;
 	}
 

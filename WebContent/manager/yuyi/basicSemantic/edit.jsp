@@ -57,6 +57,32 @@
 							  		 <form:textarea  class="form-control textarea-size" path="wdetail"  />
 							  </div>
 						</div> 	
+						<br>
+						<div class="input-title-position" >
+							  <label for="product_name " ><strong   class="label-name">近义词</strong></label>
+							  <div style="width:630px;margin-left:11px;">
+								  <div class="my-no-br-right1" style="display: flex;flex-wrap:wrap;">
+								  		<form:input path="wsimilar" class="form-control "  size="10"  value="" style="margin-right:3px;margin-bottom:2px;width:102px;	"/>
+								  		<%-- <form:textarea  class="form-control textarea-size" path="wdetail"  /> --%>
+								  </div>
+							  </div>
+						</div>
+						<div class="input-title-position">
+								 <button type="button" myid="" class="btn btn-link  addnewtypebtn">+添加新类型</button>  
+						</div>
+						<br>
+						<div class="input-title-position" >
+							  <label for="product_name " ><strong   class="label-name">反义词</strong></label>
+							  <div style="width:630px;margin-left:11px;">
+								  <div class="my-no-br-right2" style="display: flex;flex-wrap:wrap;"><!-- justify-content: left; -->
+								  		<form:input path="woposite" class="form-control " size="10"  value="" style="margin-right:3px;margin-bottom:2px;width:102px;	"/>
+								  		<%-- <form:textarea  class="form-control textarea-size" path="wdetail"  /> --%>
+								  </div>
+							  </div>
+						</div>
+						<div class="input-title-position">
+								 <button type="button" myid="" class="btn btn-link  addnewtypebtn2">+添加新类型</button>  
+						</div>
 				       <br><br>
 				       <div class=" text-center">
 							<button type="button" class="btn btn-primary savebtn">保存</button>
