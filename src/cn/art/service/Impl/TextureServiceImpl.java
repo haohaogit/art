@@ -217,4 +217,23 @@ public class TextureServiceImpl implements TextureService {
 		return textureMapper.selectByTID(tid);
 	}
 
+	@Override
+	public List<textureB> getTextureBasic1(Integer tid) {
+		// TODO Auto-generated method stub
+		List<textureB> textureBs = new LinkedList<textureB>();
+		textureB textureB;
+		List<Texture> textures = textureMapper.selectByTID(tid);
+		for (Texture texture : textures) {
+			textureB = new textureB();
+			textureB.setTid(texture.getTid());
+			textureB.setTextureid(texture.getTextureid());
+			textureB.setTtname(textureTypeMapper.selectByPrimaryKey(texture.getTtid()).getTtname());
+			textureB.setTdescription(texture.getTdescription());
+			textureB.setTimg(texture.getTimg());
+			
+			textureBs.add(textureB);
+		}
+		return textureBs;
+	}
+
 }

@@ -1,15 +1,10 @@
-﻿
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
-<!-- <meta charset="UTF-8"></meta>
+<meta charset="UTF-8"></meta>
 <link href="../css/home.css" rel="stylesheet" type="text/css" />
 <link href="../css/loginDialog.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="js/jquery-1.8.2.min.js"></script> -->
-<meta charset="UTF-8"></meta>
-<link href="css/home.css" rel="stylesheet" type="text/css" />
-<link href="css/loginDialog.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" src="../js/jquery-1.8.2.min.js"></script>
 <title>意象映射</title>
 <style type="text/css">
 	.backcolor{
@@ -32,7 +27,7 @@
 <body>
 	<script type="text/javascript">
 	        $(document).ready(function () {
-	 			//alert(11);
+	 			//alert(123);
 	            $('#rightHead').load('righthead1.html');
 	            
 	        });
@@ -48,13 +43,13 @@
 				</div>
 			</div>
 
-			<div class="backcolor corpus" style="width: 133px; background-color: #23e7ef;">
+			<div class="backcolor corpus" style="width: 133px;background-color: #23e7ef;">
 				<div>
 					语义库
 				</div>
 			</div>
 
-			<div class="backcolor facade" style="width: 133px;">
+			<div class="backcolor facade" style="width: 133px; ">
 				<div>
 					外观库
 				</div>
@@ -88,11 +83,12 @@
 			window.location.href="artIndex.html";
 		});
 		$('.corpus').click(function(){
-			// window.location.href="corpus_basic.html";
+			
 		});
 
 		$('.facade').click(function(){
 			window.location.href="facade.html?txt=baseGoblet";
+			// window.location.href="index.html";
 		});
 
 		$('.imago').click(function(){
@@ -198,9 +194,9 @@
 			sendLoginContent($("#account").val(),$("#password").val());
 		})
 		function sendLoginContent(name,password){
-			alert(name+password);
+			alert("外观库登录");
 // 			$.ajax("${pageContext.request.contextPath}/search/facade",
-			$.ajax("customerLogin",
+			$.ajax("html/customerLogin",
 				// 发送请求的URL字符串
 				{
 					dataType : "json", //
@@ -213,6 +209,7 @@
 						$(".loginSucc").css({display:'none'});
 						
 						$("#p1").html(data.uname);
+						
 						
 						$("#LoginBox").fadeOut("fast");
 						
@@ -342,7 +339,7 @@
 		function sendregisterContent(name,email,password,cpassword){
 			alert(name+password);
 // 			$.ajax("${pageContext.request.contextPath}/search/facade",
-			$.ajax("customerRegister",
+			$.ajax("html/customerRegister",
 				// 发送请求的URL字符串
 				{
 					dataType : "json", //

@@ -104,17 +104,18 @@ $(".chooseTypebtn").click(function () {
 	tid=$(this).attr("myid");  //取tid值
 	
 	$("input").val("");
-	$(".choosebtn").click(function () {
-			var questionTitle=$(this).attr("myname");
-			$('#questionTitle').html(questionTitle);
-			$(this).siblings().removeClass('orange');
-			$(this).addClass("orange");
-			$("input").val("");
-			surveytypename=$(this).attr("surveytypename"); 
-			debugger
-			surveyLinks(tid,surveytypename);
-	      
-		});
+	
+});
+$(".choosebtn").click(function () {
+	var questionTitle=$(this).attr("myname");
+	$('#questionTitle').html(questionTitle);
+	$(this).siblings().removeClass('orange');
+	$(this).addClass("orange");
+	$("input").val("");
+	surveytypename=$(this).attr("surveytypename"); 
+	debugger
+	surveyLinks(tid,surveytypename);
+  
 });
 
 //for(var i=0;i<wordList.length;i++){

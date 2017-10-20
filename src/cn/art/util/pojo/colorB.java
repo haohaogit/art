@@ -7,6 +7,7 @@ public class colorB {
     private Integer tid;
     private String cdescription;
     private String cimg;
+    
     public String getCrgb() {
         return crgb;
     }

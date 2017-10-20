@@ -31,14 +31,13 @@
 	<script type="text/javascript">
 		var geneimg;
         $(document).ready(function () {
-//  			alert(11);
             $('.configHead').load('conheader_yixiang.html');
             $('.configFoot').load('confooter.html');
             
-            var loc = location.href;
+           /*  var loc = location.href;
 		  	var n1 = loc.length;//地址的总长度
 		  	var n2 = loc.indexOf("=");//取得=号的位置
-		  	geneimg = decodeURI(loc.substr(n2+1, n1-n2));//从=号后面的内容
+		  	geneimg = decodeURI(loc.substr(n2+1, n1-n2));//从=号后面的内容 */
 		  	
 		  	$.ajax("getcolor?tname=燃气灶",
 	                // 发送请求的URL字符串
@@ -126,7 +125,7 @@
 				<div class="picfont" style="background:#00A5BD;width:145px; height:37px; ">
 					色彩方案预览
 				</div>
-				<img class="picimg" src="../../images/cookerColor.png" >
+				<img class="picimg" src="../../images/cookerColor.jpg" >
 			</div>
 			
 			<div id="partStyle">

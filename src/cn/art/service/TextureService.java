@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import cn.art.model.Texture;
+import cn.art.util.pojo.textureB;
 
 public interface TextureService {
 	int deleteByPrimaryKey(Integer textureid);
@@ -31,6 +32,7 @@ public interface TextureService {
     		String timg,String timg1,String timg2,String timg3,String timg4);
     
     String getTextureBasic(Integer tid);
+    List<textureB> getTextureBasic1(Integer tid);
     String getTextureBasic4(Integer tid);
 
 }

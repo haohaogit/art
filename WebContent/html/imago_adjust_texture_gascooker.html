@@ -25,12 +25,28 @@
 	</style>
 </head>
 <body>
-
+<script type="text/javascript" src="../js/imago.js"></script>
 <script type="text/javascript">
         $(document).ready(function () {
 //  			alert(11);
             $('.configHead').load('conheader_yixiang.html');
             $('.configFoot').load('confooter.html');
+            
+            $.ajax("gettexture?tname=燃气灶",
+            // 发送请求的URL字符串
+            {
+                type: "get",      //
+                async:true,  //
+                success: function(data){
+				//alert("facade newcase goblet test length="+data.length);
+				filllunboTexture(data);
+				//alert("successful")
+                },
+                error: function(){
+                    alert("数据发送失败denglu");
+                }
+            });
+		  	
         });
 </script>
 	<!-- 	头部 -->
@@ -91,12 +107,11 @@
 				<div class="corpusword" style="padding-top: 5.5px;">推荐方案</div>
 			</div> -->
 
-			<div id="picGene" style="margin-top: 40px;">
-				
-				<canvas id="myCanvas" width="800" height="400" style="border:1px solid #d3d3d3;background:#ffffff;">
-					<!-- <p class="p2">画布：</p> -->
-					<!-- <img src="../images/genestyle/p5.png"> -->
-				</canvas>
+			<div id="picGene1" style="margin-top: 40px;" >
+				<div class="picfont" style="background:#00A5BD;width:145px; height:37px; ">
+					材质方案预览
+				</div>
+				<img class="picimg" src="../../images/cookerTexture.jpg" >
 			</div>
 
 			<div id="partStyle">

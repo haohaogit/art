@@ -21,6 +21,7 @@ import cn.art.service.TypeService;
 import cn.art.service.WordService;
 import cn.art.util.JsonConvert;
 import cn.art.util.pojo.typeIdName;
+import cn.art.util.pojo.wordp2;
 
 import com.nillith.pinyin.Pinyin;
 
@@ -68,18 +69,141 @@ public class M_dimenseController {
 	public String list(Model model) {
 		List<typeIdName> typesList = typeService.selectAllOnlyIdandName();
 		model.addAttribute("typesList", typesList);
-		Map<String, List<Word>> wordListMap = new HashMap<String, List<Word>>();
+		
+		Map<String, List<wordp2>> wordListMap1 = new HashMap<String, List<wordp2>>();
+		int tid = typeService.getTidByTName("高脚杯");
+		List<JWord> jwordList = jWordService.selectByTID(tid);
+		
+		List<wordp2> wordList = new ArrayList<wordp2>();
+		wordp2 wordp2;
+		Word word;
+		for (JWord JWord : jwordList) {
+			word = wordService.selectByPrimaryKey(JWord.getWid());
+			wordp2 = new wordp2();
+			wordp2.setJwid(JWord.getJwid());
+			wordp2.setTid(JWord.getTid());
+			wordp2.setWid(word.getWid());
+			wordp2.setWword1(word.getWword());
+			
+			wordList.add(wordp2);
+		}
+		wordListMap1.put(tid+"", wordList);
+		
+		model.addAttribute("wordListMap1", wordListMap1);
+		
+		
+		
+		
+		Map<String, List<wordp2>> wordListMap2 = new HashMap<String, List<wordp2>>();
+		
 		for (typeIdName typeIdName : typesList) {
-			List<JWord> jwordList = jWordService.selectByTID(typeIdName.getTid());
-			List<Word> wordList = new ArrayList<Word>();
-			for (JWord JWord : jwordList) {
-				Word word = wordService.selectByPrimaryKey(JWord.getWid());
-				wordList.add(word);
+			if(tid !=typeIdName.getTid()){
+				List<JWord> jwordList1 = jWordService.selectByTID(typeIdName.getTid());
+				List<wordp2> wordList1 = new ArrayList<wordp2>();
+				
+				for (JWord JWord : jwordList1) {
+					word = wordService.selectByPrimaryKey(JWord.getWid());
+					wordp2 = new wordp2();
+					wordp2.setJwid(JWord.getJwid());
+					wordp2.setTid(JWord.getTid());
+					wordp2.setWid(word.getWid());
+					wordp2.setWword1(word.getWword());
+					wordp2.setCouplewid(JWord.getCouplewid());
+					word = wordService.selectByPrimaryKey(JWord.getCouplewid());
+					wordp2.setWword2(word.getWword());
+					
+					
+					wordList1.add(wordp2);
+		
+				}
+				wordListMap2.put(typeIdName.getTid().toString(), wordList1);
 			}
-			wordListMap.put(typeIdName.getTid().toString(), wordList);
+			
+		}
+		model.addAttribute("wordListMap2", wordListMap2);
+		return "manager/yuyi/dimense/list";
+		
+		
+	}
+	
+	@RequestMapping("list/cihui")
+	public String listcihui(Model model) {
+		List<typeIdName> typesList = typeService.selectAllOnlyIdandName();
+		model.addAttribute("typesList", typesList);
+		Map<String, List<wordp2>> wordListMap = new HashMap<String, List<wordp2>>();
+		int tid = typeService.getTidByTName("高脚杯");
+		List<JWord> jwordList = jWordService.selectByTID(tid);
+		
+		List<wordp2> wordList = new ArrayList<wordp2>();
+		wordp2 wordp2;
+		Word word;
+		for (JWord JWord : jwordList) {
+			word = wordService.selectByPrimaryKey(JWord.getWid());
+			wordp2 = new wordp2();
+			wordp2.setJwid(JWord.getJwid());
+			wordp2.setTid(JWord.getTid());
+			wordp2.setWid(word.getWid());
+			wordp2.setWword1(word.getWword());
+			
+			wordList.add(wordp2);
+		}
+		wordListMap.put(tid+"", wordList);
+		
+		model.addAttribute("wordListMap", wordListMap);
+		return "manager/yuyi/dimense/list";
+	}
+	
+	@RequestMapping("list/cidui")
+	public String listcidui(Model model) {
+		List<typeIdName> typesList = typeService.selectAllOnlyIdandName();
+		model.addAttribute("typesList", typesList);
+		Map<String, List<wordp2>> wordListMap = new HashMap<String, List<wordp2>>();
+		int tid = typeService.getTidByTName("高脚杯");
+		
+		for (typeIdName typeIdName : typesList) {
+			if(tid !=typeIdName.getTid()){
+				List<JWord> jwordList = jWordService.selectByTID(typeIdName.getTid());
+				List<wordp2> wordList = new ArrayList<wordp2>();
+				wordp2 wordp2;
+				Word word;
+				for (JWord JWord : jwordList) {
+					word = wordService.selectByPrimaryKey(JWord.getWid());
+					wordp2 = new wordp2();
+					wordp2.setJwid(JWord.getJwid());
+					wordp2.setTid(JWord.getTid());
+					wordp2.setWid(word.getWid());
+					wordp2.setWword1(word.getWword());
+					wordp2.setCouplewid(JWord.getCouplewid());
+					word = wordService.selectByPrimaryKey(JWord.getCouplewid());
+					wordp2.setWword2(word.getWword());
+					
+					
+					wordList.add(wordp2);
+		
+				}
+				wordListMap.put(typeIdName.getTid().toString(), wordList);
+			}
+			
 		}
 		model.addAttribute("wordListMap", wordListMap);
 		return "manager/yuyi/dimense/list";
+		/*List<typeIdName> typesList = typeService.selectAllOnlyIdandName();
+		model.addAttribute("typesList", typesList);
+		Map<String, List<Word>> wordListMap = new HashMap<String, List<Word>>();
+		for (typeIdName typeIdName : typesList) {
+			if("高脚杯"!=typeIdName.getTname()){
+				List<JWord> jwordList = jWordService.selectByTID(typeIdName.getTid());
+				List<Word> wordList = new ArrayList<Word>();
+				for (JWord JWord : jwordList) {
+					Word word = wordService.selectByPrimaryKey(JWord.getWid());
+					wordList.add(word);
+				}
+				wordListMap.put(typeIdName.getTid().toString(), wordList);
+			}
+			
+		}
+		model.addAttribute("wordListMap", wordListMap);
+		return "manager/yuyi/dimense/list";*/
 	}
 	
 	
@@ -100,7 +224,42 @@ public class M_dimenseController {
 		//List<Word> wordList = wordService.selectAll();
 		//model.addAttribute("wordList", wordList);
 		model.addAttribute("item", item);
+		List<typeIdName> typesList = typeService.selectAllOnlyIdandName();
+		model.addAttribute("typesList", typesList);
+		Map<String, List<Word>> wordListMap = new HashMap<String, List<Word>>();
+		for (typeIdName typeIdName : typesList) {
+			List<JWord> jwordList = jWordService.selectByTID(typeIdName.getTid());
+			List<Word> wordList = new ArrayList<Word>();
+			for (JWord JWord : jwordList) {
+				Word word = wordService.selectByPrimaryKey(JWord.getWid());
+				wordList.add(word);
+			}
+			wordListMap.put(typeIdName.getTid().toString(), wordList);
+		}
+		model.addAttribute("wordListMap", wordListMap);
 		return "manager/yuyi/dimense/edit";
+	}
+	
+	@SuppressWarnings("unchecked")
+	@RequestMapping(value = "/delete")
+	public String delete(Model model, String wid) {
+		//System.out.println("wid "+wid);
+		wordService.deleteByPrimaryKey(Integer.parseInt(wid));
+		
+		List<typeIdName> typesList = typeService.selectAllOnlyIdandName();
+		model.addAttribute("typesList", typesList);
+		Map<String, List<Word>> wordListMap = new HashMap<String, List<Word>>();
+		for (typeIdName typeIdName : typesList) {
+			List<JWord> jwordList = jWordService.selectByTID(typeIdName.getTid());
+			List<Word> wordList = new ArrayList<Word>();
+			for (JWord JWord : jwordList) {
+				Word word = wordService.selectByPrimaryKey(JWord.getWid());
+				wordList.add(word);
+			}
+			wordListMap.put(typeIdName.getTid().toString(), wordList);
+		}
+		model.addAttribute("wordListMap", wordListMap);
+		return "manager/yuyi/dimense/list";
 	}
 
 	@RequestMapping("load/save")

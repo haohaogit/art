@@ -58,7 +58,17 @@ function fillModelFabric(data){
 function filllunbo(data){
 	var aHtml="<ul>";
 	for(var i=0;i<data.length;i++){
-		aHtml+="<li class='lunbo-item'><img src='"+data[i].cimg+"' alt='"+data[i].crgb+"'><span>"+data[i].cbname+"</span></li>";
+		aHtml+="<li class='lunbo-item LColor'><img src='"+data[i].cimg+"' alt='"+data[i].crgb+"'><span>"+data[i].cbname+"</span></li>";
+	}
+	aHtml+="</ul>";
+	$(".lunbo-window").html(aHtml);
+	AddCarousel();
+}
+
+function filllunboTexture(data){
+	var aHtml="<ul>";
+	for(var i=0;i<data.length;i++){
+		aHtml+="<li class='lunbo-item LTexture'><img src='"+data[i].timg+"' alt='"+data[i].textureid+"'><span>"+data[i].ttname+"</span></li>";
 	}
 	aHtml+="</ul>";
 	$(".lunbo-window").html(aHtml);

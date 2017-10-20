@@ -64,7 +64,7 @@ function AddCarousel(baseObj) {
     };
     this.dealItems();
     // 添加点击移至中间事件
-    $('.lunbo-item').on('click', function() {
+    $('.LColor').on('click', function() {
         var index = parseInt($(this).attr('data-itemid'));
         
         var ss = $(this).html();
@@ -93,6 +93,38 @@ function AddCarousel(baseObj) {
         
         that.moveToCenter(index);
     });
+    
+    $('.LTexture').on('click', function() {
+        
+        debugger;
+        var ss = $(this).html();
+        var src = $(ss).attr('src');
+        //alert("src "+src);
+        $.ajax("adjust/texture/cooker?img="+src,
+	            // 发送请求的URL字符串
+	            {
+	                type: "get",      //
+	                async:true,  //
+	                success: function(data){
+					//alert("facade newcase goblet test length");
+					//fillNewcaseHouseboat(data);
+					
+					//$(".i1").attr('src',data.img);
+	                //debugger;
+	        		
+	        		$(".picimg").attr('src',data.img);
+	        		window.location.reload(); 
+					//alert("adjustcolor successful   "+data.img);
+	                },
+	                error: function(){
+	                    alert("数据发送失败denglu");
+	                }
+	            });
+        
+        that.moveToCenter(index);
+    });
+    
+    
 
     this.moveToCenter(0);
 }

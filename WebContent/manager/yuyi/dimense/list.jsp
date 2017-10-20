@@ -16,7 +16,7 @@
 		<div class="position-for-head2 thick ">语义库管理>降维词汇库</div>
 		<div class="container-position">
 				<div class="mydiv gray-background" >降维词汇库</div> 
-				<div class="mydiv"  myid="">组织形式
+				<div class="mydiv vocaBtn"  myid="">组织形式
 						<button type="button" myid="" class="btn btn-link cihuibtn" >词汇</button> 
 						<button type="button" myid="" class="btn btn-link ciduibtn" >词对</button> 
 				</div>
@@ -26,19 +26,52 @@
 						<button type="button" class="btn btn-link pull-right deletebtn">删除</button>
 						<button type="button" class="btn btn-link pull-right addbtn">+添加新词汇</button>
 				</div> 
-				<c:forEach var="type" items="${typesList}" varStatus="status">
+				<div class = "cihuiType" style = "display:block">
+					<c:forEach var="type" items="${typesList}" varStatus="status">
 						<div class="mydiv"  myid="${type.tid }">${type.tname }
-							<c:forEach var="wordList" items="${wordListMap}" varStatus="status">	
+							<c:forEach var="wordList" items="${wordListMap1}" varStatus="status">	
 								<c:if test="${wordList.key ==type.tid}">
 									<c:forEach var="word" items="${wordList.value}" varStatus="status">	
 <!-- 										<span class="my-left">  -->
-												<button type="button" class="btn btn-link " >${word.wword}</button>  
+												<button type="button" class="btn btn-link wbtn" jwid="${word.jwid}">${word.wword1}</button>  
 <!-- 										</span> -->
 									</c:forEach>
 								</c:if>
 							</c:forEach>
 						</div>
-				</c:forEach>
+					</c:forEach>
+				</div>
+				<div class = "ciduiType" style = "display:none">
+					<c:forEach var="type" items="${typesList}" varStatus="status">
+							<div class="mydiv"  myid="${type.tid }">${type.tname }
+								<c:forEach var="wordList" items="${wordListMap2}" varStatus="status">	
+									<c:if test="${wordList.key ==type.tid}">
+										<c:forEach var="word" items="${wordList.value}" varStatus="status">	
+	<!-- 										<span class="my-left">  -->
+													<button type="button" class="btn btn-link wbtn" jwid="${word.jwid}">${word.wword1}</button>
+													—
+													<button type="button" class="btn btn-link wbtn" jwid="${word.jwid}">${word.wword2}</button>  
+	<!-- 										</span> -->
+										</c:forEach>
+									</c:if>
+								</c:forEach>
+							</div>
+					</c:forEach>
+					<%-- <c:forEach var="type" items="${typesList}" varStatus="status">
+							<div class="mydiv"  myid="${type.tid }">${type.tname }
+								<c:forEach var="wordList" items="${wordListMap}" varStatus="status">	
+									<c:if test="${wordList.key ==type.tid}">
+										<c:forEach var="word" items="${wordList.value}" varStatus="status">	
+	<!-- 										<span class="my-left">  -->
+													<button type="button" class="btn btn-link wbtn" wid="${word.wid}">${word.wword}</button>  
+	<!-- 										</span> -->
+										</c:forEach>
+									</c:if>
+								</c:forEach>
+							</div>
+					</c:forEach> --%>
+				</div>
+				
 				<br>
 		</div>
 		</form>
