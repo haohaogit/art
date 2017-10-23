@@ -200,7 +200,7 @@ var oldfilename=$('#thelist').attr("value");
 $("#thelist").html('<a  href="'+contextPath+'/file/download?filename='+encodeURIComponent(oldfilename)+
 		'"><div class="file-item thumbnail upload-state-done" style="	margin-bottom: 15px;margin-top: 12; display:inline-block ;margin-right:12px;width:100px"><img src="'+contextPath+
 		"/image/"+oldfilename+'" alt="'+oldfilename+
-'"/>	<div class="info">"'+oldfilename+'"</div></div></a>');
+'"/>	<div class="info"></div></div></a>');
 
 //var oldfilename=$('#filename').attr("value");
 //$('#filename').html('<a class=" " href="'+contextPath+'/file/download?filename='+encodeURIComponent(oldfilename)+'">'+oldfilename+'</a>');

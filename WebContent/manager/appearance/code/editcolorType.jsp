@@ -71,19 +71,19 @@
 								    <thead>
 										<tr>
 										<th>
-								       <button id="filePicker0" class="btn filePicker "  number="0" style=" padding: 0;">选择图片</button> 
+								       <div id="filePicker0" class="btn filePicker "  number="0" style=" padding: 0;">选择图片</div> 
 										</th>
 										<th>
-								      <button id="filePicker1" class="btn filePicker "  number="1" style=" padding: 0;">选择图片</button> 
+								      <div id="filePicker1" class="btn filePicker "  number="1" style=" padding: 0;">选择图片</div> 
 								     	</th>
 								     	<th>
-								      <button id="filePicker2" class="btn filePicker "  number="2" style=" padding: 0;">选择图片</button> 
+								      <div id="filePicker2" class="btn filePicker "  number="2" style=" padding: 0;">选择图片</div> 
 								     </th>
 								     	<th>
-								      <button id="filePicker3" class="btn filePicker "  number="3" style=" padding: 0;">选择图片</button> 
+								      <div id="filePicker3" class="btn filePicker "  number="3" style=" padding: 0;">选择图片</div> 
 								      </th>
 								     	<th>
-								      <button id="filePicker4" class="btn filePicker "  number="4" style=" padding: 0;">选择图片</button> 
+								      <div id="filePicker4" class="btn filePicker "  number="4" style=" padding: 0;">选择图片</div> 
 									</th>
 									</tr>
 								 </thead>

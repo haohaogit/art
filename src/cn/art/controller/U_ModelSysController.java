@@ -27,6 +27,7 @@ import cn.art.util.pojo.base64;
 import cn.art.util.pojo.colorB;
 import cn.art.util.pojo.commandImg;
 import cn.art.util.pojo.outlineB;
+import cn.art.util.pojo.partB;
 import cn.art.util.pojo.textureB;
 import cn.art.util.pojo.typeIdName;
 
@@ -47,6 +48,7 @@ public class U_ModelSysController {
 	private String minitemK;
 	private String minitemB;
 	private String minitemD;
+	private String textureimg;
 	private String Rgb;
 	
 	
@@ -161,6 +163,64 @@ public class U_ModelSysController {
 		return listbBs;
 		
 	}
+	@RequestMapping("getpart")
+	@ResponseBody
+	public List<partB> getpanelpart(Model model,String tname,HttpServletRequest request){
+		//System.out.println("sc "+sc);
+		List<partB> listbBs = new ArrayList<partB>();
+		List<typeIdName> typeIdNames = typeService.selectAllByName(tname);
+		int tid = 0;
+		for (typeIdName typeIdName : typeIdNames) {
+			tid = typeIdName.getTid();
+			break;
+		}
+		
+		listbBs = partService.selectpartBByTid(tid);
+		for (partB colorB : listbBs) {
+			System.out.println("bname() "+colorB.getPbname()+" .getimg()"+colorB.getPimg());
+		}
+		
+		return listbBs;
+		
+	}
+	@RequestMapping("adjust/part/cooker")
+	@ResponseBody
+	public commandImg adjustpartCooker(Model model,String img,HttpServletRequest request){
+		//System.out.println("crgb111 "+crgb);
+		String[] s1 = img.split("/");
+		String Logoimg = s1[s1.length-1];
+		
+		Logoimg = "D:/20170602/PycharmProjects/firstDL_netEast/artgene/"+Logoimg;
+		s1 = Rgb.split(",");
+		try {
+            
+            //设置命令行传入参数
+            String[] args = new String[] { "python", "D:\\20170602\\PycharmProjects\\firstDL_netEast\\cookerAssembleLogo.py",minitemS,minitemK,minitemB,minitemD,s1[0],s1[1],s1[2],textureimg,Logoimg};
+            Process pr = Runtime.getRuntime().exec(args);
+
+            BufferedReader in = new BufferedReader(new InputStreamReader(pr.getInputStream()));
+            String line;
+            while ((line = in.readLine()) != null) {
+                //line = decodeUnicode(line);
+                System.out.println(line);
+            }
+            in.close();
+            //pr.waitFor();
+            System.out.println("end");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+		commandImg cimg = new commandImg();
+		cimg.setImg("../../images/cookerPart.jpg");
+		
+		//cimg.setImg1("../images/genestyle/Ccolor.png");
+		//cimg.setImg2("../images/genestyle/Ctexture1.png");
+		
+		return cimg;
+		
+	}
+	
+	
 	@RequestMapping("gettexture")
 	@ResponseBody
 	public List<textureB> getpanelTexture(Model model,String tname,HttpServletRequest request){
@@ -174,9 +234,9 @@ public class U_ModelSysController {
 		}
 		
 		listbBs = textureService.getTextureBasic1(tid);
-		for (textureB colorB : listbBs) {
+		/*for (textureB colorB : listbBs) {
 			System.out.println("colorB.getCbname() "+colorB.getTtname()+" colorB.getCimg()"+colorB.getTimg());
-		}
+		}*/
 		
 		return listbBs;
 		
@@ -190,13 +250,14 @@ public class U_ModelSysController {
 		String timg = s1[s1.length-1];
 		
 		timg = "D:/20170602/PycharmProjects/firstDL_netEast/artgene/"+timg;
-		System.out.println("111  "+timg);
+		textureimg = timg;
+		//System.out.println("111  "+timg);
 		s1 = Rgb.split(",");
 		try {
             
             //System.out.println("start;;;" + a);
             //设置命令行传入参数
-			System.out.println(minitemS+","+minitemK+","+minitemB+","+minitemD+","+Rgb);
+			//System.out.println(minitemS+","+minitemK+","+minitemB+","+minitemD+","+Rgb);
             String[] args = new String[] { "python", "D:\\20170602\\PycharmProjects\\firstDL_netEast\\cookerAssembleMaterial.py",minitemS,minitemK,minitemB,minitemD,s1[0],s1[1],s1[2],timg};
             Process pr = Runtime.getRuntime().exec(args);
 
@@ -267,7 +328,6 @@ public class U_ModelSysController {
 			temp  = Integer.parseInt(s1)+3;
 			s1 = temp+",";
 			score +=s1;
-			
 		}
 		System.out.println("score "+score);
 		
@@ -307,6 +367,52 @@ public class U_ModelSysController {
 		
 		return cimg;
 		
+	}
+	
+	@RequestMapping("setparam/fabric")
+	@ResponseBody
+	public commandImg setparamfabric(Model model,String sc,HttpServletRequest request){
+		
+		String[] s = sc.split(",");
+		int temp =0;
+		String score = "";
+		for (String s1 : s) {
+			temp  = Integer.parseInt(s1)+3;
+			s1 = temp+",";
+			score +=s1;
+		}
+		System.out.println("score "+score);
+		
+		commandImg cimg = new commandImg();
+		try {
+            //需传入的参数
+            String a = score, b = "D3455054", c = "LJ12GKS28D4418248", d = "qingdao";
+            System.out.println("start;;;" + a);
+            //设置命令行传入参数
+            String[] args = new String[] { "python", "D:\\20170602\\PycharmProjects\\firstDL_netEast\\scarvesColorGen.py", a };
+            Process pr = Runtime.getRuntime().exec(args);
+
+            BufferedReader in = new BufferedReader(new InputStreamReader(pr.getInputStream()));
+            String line;
+            while ((line = in.readLine()) != null) {
+                //line = decodeUnicode(line);
+                System.out.println(line);
+                String[] str = line.split(",");
+                minitemS = str[0];
+                minitemK = str[1];
+                minitemB = str[2];
+                minitemD = str[3];
+            }
+            in.close();
+            //pr.waitFor();
+            cimg.setImg("../../images/cooker.jpg");
+    		cimg.setImg1("../images/genestyle/Ccolor.png");
+    		cimg.setImg2("../images/genestyle/Ctexture1.png");
+            System.out.println("end");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+		return cimg;
 	}
 		
 	//参数设置 类型分类默认接口

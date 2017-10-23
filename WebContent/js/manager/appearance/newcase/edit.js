@@ -46,7 +46,7 @@ $(".cancelbtn").click(function(){
 			$('#filename'+i).html('<a  href="'+contextPath+'/file/download?filename='+encodeURIComponent(oldfilename)+
 					'"><div class="file-item thumbnail upload-state-done" style="	margin-bottom: 15px;margin-top: 12; display:inline-block ;margin-right:12px;width:170px;"><img src="'+contextPath+
 					"/image/"+oldfilename+'" alt="'+oldfilename+
-			'"/>	<div class="info">'+oldfilename+'</div></div></a>');
+			'"/>	<div class="info"></div></div></a>');
 			 oldfilename="";
 		}
 	}

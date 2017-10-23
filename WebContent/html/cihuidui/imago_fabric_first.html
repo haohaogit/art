@@ -183,13 +183,18 @@
 				$(this).find(".imgfabric").css({boxShadow:'1px 2px 16px #8af413'});
 				imglunkuo = $(this).find(".imgfabric").attr('src');
 				//alert("111111111111");
-				alert($(this).find(".imgfabric").attr('src'));
+				//alert($(this).find(".imgfabric").attr('src'));
 
 			});
 			
 			function savalunkuo(){
-				alert(imglunkuo);
-				window.location.href="imago-fabric.html?img="+imglunkuo;
+				//alert(imglunkuo);
+				if(!imglunkuo){
+					alert("请选择织物轮廓！");
+				}else{
+					window.location.href="imago-fabric.html?img="+imglunkuo;
+				}
+				
 			}
 
 		</script>

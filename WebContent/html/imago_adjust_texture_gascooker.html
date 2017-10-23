@@ -143,7 +143,7 @@
 			</div>
 
 			<div id="geneBottomBtn">
-				<button type="submit" id="save">确定</button>
+				<button type="submit" id="save" onclick="saveTexture()">确定</button>
 				<button type="submit" class="cancel">取消</button>
 				<button type="submit" class="cancel" onclick="returned()">返回上一步</button>
 			</div>
@@ -159,6 +159,10 @@
 		function returned(){
   			window.history.back(-1);
   		}
+		function saveTexture(){
+			//alert("燃气灶材质保存，然后调整部件");
+			window.location.href="imago_adjust_part_gascooker.html";
+		}
   		
 		$(".lunbo-item").click(function(){
   			var ht = $(this).html();

@@ -69,7 +69,8 @@
 											<div class="input-title-position">
 												  <label for="product_name"><h5><span class="thick label-name">整体效果</span></h5></label>
 												  <div class="my-no-br-right" >
-												  <button id="filePicker0" class="btn filePicker "  number="0" style=" padding: 0;">浏览上传</button> 
+												  <!-- <button id="filePicker0" class="btn filePicker "  number="0" style=" padding: 0;">浏览上传</button> -->
+												  <div id="filePicker0" class="btn filePicker "  number="0" style=" padding: 0;">浏览上传</div> 
 												  </div>
 											</div>
 											<h6><span class="thick label-name">方案详文件</span></h6>
@@ -78,7 +79,7 @@
 											<div class="input-title-position">
 												  <label for="product_name"><h5><span class="thick label-name">轮廓推荐</span></h5></label>
 												  <div class="my-no-br-right" >
-												  <button id="filePicker1" class="btn filePicker "  number="1" style=" padding: 0;">浏览上传</button> 
+												  <div id="filePicker1" class="btn filePicker "  number="1" style=" padding: 0;">浏览上传</div> 
 												  </div>
 											</div>
 											<h6><span class="thick label-name">轮廓源文件1</span></h6>
@@ -88,7 +89,7 @@
 								     	<div class="input-title-position">
 												  <label for="product_name"><h5><span class="thick label-name">色彩推荐</span></h5></label>
 												  <div class="my-no-br-right" >
-												  <button id="filePicker2" class="btn filePicker "  number="2" style=" padding: 0;">浏览上传</button> 
+												  <div id="filePicker2" class="btn filePicker "  number="2" style=" padding: 0;">浏览上传</div> 
 												  </div>
 											</div>
 											<h6><span class="thick label-name">色彩源文件1</span></h6>
@@ -98,7 +99,7 @@
 								     	<div class="input-title-position">
 												  <label for="product_name"><h5><span class="thick label-name">材质推荐</span></h5></label>
 												  <div class="my-no-br-right" >
-												  <button id="filePicker3" class="btn filePicker "  number="3" style=" padding: 0;">浏览上传</button> 
+												  <div id="filePicker3" class="btn filePicker "  number="3" style=" padding: 0;">浏览上传</div> 
 												  </div>
 											</div>
 											<h6><span class="thick label-name">材质源文件1</span></h6>
@@ -144,7 +145,7 @@
 											<div class="input-title-position">
 												  <label for="product_name"><h5><span class="thick label-name">轮廓推荐</span></h5></label>
 												  <div class="my-no-br-right" >
-												  <button id="filePicker5" class="btn filePicker "  number="5" style=" padding: 0;">浏览上传</button> 
+												  <div id="filePicker5" class="btn filePicker "  number="5" style=" padding: 0;">浏览上传</div> 
 												  </div>
 											</div>
 											<h6><span class="thick label-name">轮廓源文件1</span></h6>
@@ -154,7 +155,7 @@
 								     	<div class="input-title-position">
 												  <label for="product_name"><h5><span class="thick label-name">色彩推荐</span></h5></label>
 												  <div class="my-no-br-right" >
-												  <button id="filePicker6" class="btn filePicker "  number="6" style=" padding: 0;">浏览上传</button> 
+												  <div id="filePicker6" class="btn filePicker "  number="6" style=" padding: 0;">浏览上传</div> 
 												  </div>
 											</div>
 											<h6><span class="thick label-name">色彩源文件1</span></h6>
@@ -164,7 +165,7 @@
 								     	<div class="input-title-position">
 												  <label for="product_name"><h5><span class="thick label-name">材质推荐</span></h5></label>
 												  <div class="my-no-br-right" >
-												  <button id="filePicker7" class="btn filePicker "  number="7" style=" padding: 0;">浏览上传</button> 
+												  <div id="filePicker7" class="btn filePicker "  number="7" style=" padding: 0;">浏览上传</div> 
 												  </div>
 											</div>
 											<h6><span class="thick label-name">材质源文件1</span></h6>

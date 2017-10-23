@@ -253,6 +253,7 @@
 
 <body>
 	<script type="text/javascript">
+	var colorNum = "";
 	  $(document).ready(function () {
 		 
 		var loc = location.href;
@@ -260,6 +261,12 @@
 		var n2 = loc.indexOf("=");//取得=号的位置
 		var img = decodeURI(loc.substr(n2+1, n1-n2));//从=号后面的内容
 		$(".imgfabric").attr("src",img);
+		var fimg = img.split("/");
+		alert(fimg[fimg.length-1]);
+		var fNum = fimg[fimg.length-1].split("-");
+		colorNum = fNum[fNum.length-2][0];
+		alert(fNum[fNum.length-2][0]);
+		
 		/* alert("2222222222"); */
 	  });
 	</script>
@@ -302,7 +309,7 @@
                     </div>
                 </div>
             </div>
-            <span class="des_font">坚硬</span>
+            <span class="des_font">尖锐</span>
         </div>
 
 
@@ -368,7 +375,7 @@
             <span class="des_font">鲜艳</span>
         </div>
 
-        <div class="description">
+        <!-- <div class="description">
             <span class="des_font">4.和谐</span>
             <div class="pingfen">
                 <div class="ciduijindu">    
@@ -397,7 +404,7 @@
                 </div>
             </div>
             <span class="des_font">尖锐</span>
-        </div>
+        </div> -->
 
 
 
@@ -468,7 +475,7 @@
             })
 
 
-            $('.c1jindu41').click(function(e) {
+            /* $('.c1jindu41').click(function(e) {
                 document.getElementById("score42").style.width=0;
                 // showdiv();
                 $(".point41").css("display","block");
@@ -481,7 +488,7 @@
                  $(".point42").css("display","block");
                  $(".point41").css("display","none");
                 $(this).find('#score42').width(Math.round(e.offsetX / 90) * averageWidth);
-            })
+            }) */
            
 
           
@@ -507,15 +514,17 @@
                  var sc3 = Math.round($('#score31').width() / averageWidth)-3;
             }
 
-            if($(".point41").css("display")=='none'){
+            /* if($(".point41").css("display")=='none'){
                  var sc4 = Math.round($('#score42').width() / averageWidth);
             }else{
                  var sc4 = Math.round($('#score41').width() / averageWidth)-3;
-            }
+            } */
            
            
-            alert("sc1="+sc1+" sc2="+sc2+" sc3="+sc3+" sc4="+sc4);
-            window.location.href="imago_gene_fabric.html";
+            //alert("sc1 2 ="+sc1+" sc2="+sc2+" sc3="+sc3);
+            var sc = ""+sc1+","+sc2+","+sc3+","+colorNum;
+            alert("sc + num "+sc);
+            //window.location.href="imago_gene_fabric.html?sc="+sc;
 
         }
 

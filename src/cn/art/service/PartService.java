@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import cn.art.model.Part;
+import cn.art.util.pojo.partB;
 
 public interface PartService {
 	int deleteByPrimaryKey(Integer pid);
@@ -15,6 +16,7 @@ public interface PartService {
     Part selectByPrimaryKey(Integer pid);
     List<Part> selectByTIDandPBID(Map map);
     List<Part> selectByTID(Integer tid);
+    List<partB> selectpartBByTid(Integer tid);
     
     List<Part> selectByName1(String pdescription);
     String selectByName(String pdescription);

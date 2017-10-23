@@ -13,6 +13,30 @@
 //  			alert(11);
             $('.configHead').load('conheader_yixiang.html');
             $('.configFoot').load('confooter.html');
+            
+            var loc = location.href;
+		  	var n1 = loc.length;//地址的总长度
+		  	var n2 = loc.indexOf("=");//取得=号的位置
+		  	var sc = decodeURI(loc.substr(n2+1, n1-n2));//从=号后面的内容
+		  	
+		  	alert("sc = "+sc);
+		  	/* $.ajax("setparam/fabric/?sc="+sc,
+		            // 发送请求的URL字符串
+		            {
+		                type: "get",      //
+		                async:true,  //
+		                success: function(data){
+						//alert("facade newcase goblet test length");
+						//fillNewcaseHouseboat(data);
+						
+						$(".i1").attr('src',data.img);
+						geneimg = data.img;
+						//alert(data.img);
+		                },
+		                error: function(){
+		                    alert("数据发送失败denglu");
+		                }
+		            }); */
         });
 </script>
 	<!-- 	头部 -->
