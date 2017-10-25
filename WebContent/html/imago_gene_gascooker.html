@@ -9,7 +9,7 @@
 </head>
 <body>
 <script type="text/javascript">
-		var geneimg ;
+		var timeid ;
         $(document).ready(function () {
 //  			alert(11);
             $('.configHead').load('conheader_yixiang.html');
@@ -21,7 +21,7 @@
 		  	var sc = decodeURI(loc.substr(n2+1, n1-n2));//从=号后面的内容
 		  	
 		  	//alert("sc = "+sc);
-		  	$.ajax("setparam/cooker/?sc="+sc,
+		  	$.ajax("setparam/cooker?sc="+sc,
 		            // 发送请求的URL字符串
 		            {
 		                type: "get",      //
@@ -31,7 +31,7 @@
 						//fillNewcaseHouseboat(data);
 						
 						$(".i1").attr('src',data.img);
-						geneimg = data.img;
+						timeid = data.timeid;
 						//alert(data.img);
 		                },
 		                error: function(){
@@ -152,7 +152,7 @@
   		
 		function saveGene(){
 			//alert("燃气灶推荐方案保存，然后调整色彩"+geneimg);
-			window.location.href="imago_adjust_color_gascooker.html";
+			window.location.href="imago_adjust_color_gascooker.html?timeid="+timeid;
 		}
 
 		/* window.onload = function(){

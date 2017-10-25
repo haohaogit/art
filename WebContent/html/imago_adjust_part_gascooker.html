@@ -27,11 +27,19 @@
 <body>
 <script type="text/javascript" src="../js/imago.js"></script>
 <script type="text/javascript">
+		var timeid;
         $(document).ready(function () {
 //  			alert(11);
             $('.configHead').load('conheader_yixiang.html');
             $('.configFoot').load('confooter.html');
             
+            var loc = location.href;
+		  	var n1 = loc.length;//地址的总长度
+		  	var n2 = loc.indexOf("=");//取得=号的位置
+		  	timeid = decodeURI(loc.substr(n2+1, n1-n2));//从=号后面的内容 
+		  	var geneimg = "../../images/cookerPart"+timeid+".jpg";
+		  	$(".picimg1").attr("src",geneimg);
+		  	
             $.ajax("getpart?tname=燃气灶",
             // 发送请求的URL字符串
             {
@@ -107,13 +115,13 @@
 				<div class="corpusword" style="padding-top: 5.5px;">推荐方案</div>
 			</div> -->
 
-			<div id="picGene" style="height:560px;">
+			<div id="picGene" style="height:530px;">
 				<div>
 					<canvas id="canvid1"></canvas>
 				</div>
-				<img class="img1" id="img0" src="../images/4.jpg" width="100px" height="134px"/>
+				<!-- <img class="img1" id="img0" src="../images/4.jpg" width="100px" height="134px"/> -->
 				
-				<img class="img1" id="bg" src="../../images/cookerPart.jpg" style ="width:800px;height:481px;"/>
+				<img class="picimg1" id="bg" src="../../images/cookerPart.jpg" style ="width:800px;height:481px;margin-top: 11px;margin-left: -1.5px;"/>
 			</div>
 
 			<div id="partStyle">
@@ -169,14 +177,29 @@
 		$(".lunbo-window").on("click",".lunbo-item",function(){
 			debugger;
 			var ht = $(this).html();
-			//$(ht).find('img').attr("src");
-			//alert($(ht).attr('src'));
+			var src = $(ht).attr('src');
 			Logoimg = $(ht).attr('src');
-			$("#img0").attr("src",$(ht).attr('src'));
-			canvas1.renderAll();
+			alert($(ht).attr('src'));
+		/* 	$("#img0").attr("src",$(ht).attr('src')); */
+			//canvas1.renderAll();
 			//alert($(ht).attr('src'));
+			$.ajax("adjust/part/cooker/"+timeid+"?img="+src,
+                // 发送请求的URL字符串
+                {
+                    type: "get",      //
+                    async:true,  //
+                    success: function(data){
+            		//$(".picimg").attr('src',data.img);
+                    //alert("adjustcolor successful   "+data.img);
+            		window.location.reload(); 
+    				
+                    },
+                    error: function(){
+                        alert("数据发送失败denglu");
+                    }
+                });
 			
-		});
+		}); 
 		var canvas1;
 		var CanvasDemo = function() {
 			var YD = YAHOO.util.Dom;
@@ -287,11 +310,12 @@
 		
 		function savePart(){
 			
-			if(!Logoimg){
+			/* if(!Logoimg){
 				alert("请选择LOGO图标！");
 				
 			}else{
-				$.ajax("adjust/part/cooker?img="+Logoimg,
+				alert("ok it is down");
+				/* $.ajax("adjust/part/cooker?img="+Logoimg,
 	            // 发送请求的URL字符串
 	            {
 	                type: "get",      //
@@ -303,8 +327,8 @@
 	                error: function(){
 	                    alert("数据发送失败denglu");
 	                }
-	            });  
-			}
+	            });   */
+			} */
 			
 			//window.location.href="imago_adjust_color_gascooker.html";
 		}

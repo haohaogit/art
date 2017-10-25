@@ -254,18 +254,19 @@
 <body>
 	<script type="text/javascript">
 	var colorNum = "";
+	var img = "";
 	  $(document).ready(function () {
 		 
 		var loc = location.href;
 		var n1 = loc.length;//地址的总长度
 		var n2 = loc.indexOf("=");//取得=号的位置
-		var img = decodeURI(loc.substr(n2+1, n1-n2));//从=号后面的内容
+		img = decodeURI(loc.substr(n2+1, n1-n2));//从=号后面的内容
 		$(".imgfabric").attr("src",img);
 		var fimg = img.split("/");
-		alert(fimg[fimg.length-1]);
+		//alert(fimg[fimg.length-1]);
 		var fNum = fimg[fimg.length-1].split("-");
 		colorNum = fNum[fNum.length-2][0];
-		alert(fNum[fNum.length-2][0]);
+		//alert(fNum[fNum.length-2][0]);
 		
 		/* alert("2222222222"); */
 	  });
@@ -524,7 +525,8 @@
             //alert("sc1 2 ="+sc1+" sc2="+sc2+" sc3="+sc3);
             var sc = ""+sc1+","+sc2+","+sc3+","+colorNum;
             alert("sc + num "+sc);
-            //window.location.href="imago_gene_fabric.html?sc="+sc;
+            window.location.href="imago_gene_fabric.html?sc="+sc+"&img="+img;
+            //window.location.href="corpus_detail.html?wid="+$(ht).attr('id')+"&txt="+txt;
 
         }
 

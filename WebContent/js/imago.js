@@ -84,3 +84,12 @@ function filllunboPart(data){
 	$(".lunbo-window").html(aHtml);
 	AddCarousel();
 }
+function filllunboFabric(timeid){
+	var aHtml="<ul>";
+	for(var i=0;i<7;i++){
+		aHtml+="<li class='lunbo-item'><img src='../../images/3Colors_Template"+i+"_"+timeid+".jpg' alt=''><span>色块"+(i+1)+"</span></li>";
+	}
+	aHtml+="</ul>";
+	$(".lunbo-window").html(aHtml);
+	AddCarousel();
+}

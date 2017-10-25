@@ -25,12 +25,27 @@
 	</style>
 </head>
 <body>
-
+<script type="text/javascript" src="../js/imago.js"></script>
 <script type="text/javascript">
+		var timeid;
+		var img_timeid;
         $(document).ready(function () {
 //  			alert(11);
             $('.configHead').load('conheader_yixiang.html');
             $('.configFoot').load('confooter.html');
+            
+            var loc = location.href;
+		  	var n1 = loc.length;//地址的总长度
+		  	var n2 = loc.indexOf("=");//取得=号的位置
+		  	img_timeid = decodeURI(loc.substr(n2+1, n1-n2));//从=号后面的内容 
+		  	var geneimg = "../../images/"+img_timeid+".jpg";
+		  	$(".picimg").attr("src",geneimg);
+		  	img_timeid = img_timeid.split("_");
+		  	timeid = img_timeid[1];
+		  	//AddCarousel();
+		  	filllunboFabric(timeid);
+		  	
+            
         });
 </script>
 	<!-- 	头部 -->
@@ -91,15 +106,14 @@
 				<div class="corpusword" style="padding-top: 5.5px;">推荐方案</div>
 			</div> -->
 
-			<div id="picGene" style="margin-top: 40px;">
-				
-				<canvas id="myCanvas" width="800" height="400" style="border:1px solid #d3d3d3;background:#ffffff;">
-					<!-- <p class="p2">画布：</p> -->
-					<!-- <img src="../images/genestyle/p5.png"> -->
-				</canvas>
+			<div id="picGene1" style="margin-top: 40px;" >
+				<div class="picfont" style="background:#00A5BD;width:145px; height:37px; ">
+					色彩方案预览
+				</div>
+				<img class="picimg" src="" >
 			</div>
 
-			<div id="partStyle">
+			<div id="partStyle" style="margin-top:40px;">
 				<div id="warmcolor">
 					<a href="javascript:void(0)" id="beidu1" style="color: white;padding-left: 11px;">色彩方案</a>
 				</div>
@@ -108,7 +122,7 @@
 				</div> -->
 			</div>
 
-			<div id="lunbo">
+			<div id="lunbo" style="margin-top:67px;">
 				<div id="lunbo1">
 					<div class="left-arrow arrow">&lt;</div>
 					<div class="right-arrow arrow">&gt;</div>

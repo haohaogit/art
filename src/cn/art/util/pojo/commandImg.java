@@ -4,6 +4,14 @@ public class commandImg {
 	private String img;
 	private String img1;
 	private String img2;
+	private String timeid;
+	
+	public String getTimeid() {
+		return timeid;
+	}
+	public void setTimeid(String timeid) {
+		this.timeid = timeid;
+	}
 	public String getImg() {
 		return img;
 	}

@@ -3,7 +3,10 @@ package cn.art.controller;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -44,12 +47,13 @@ public class U_ModelSysController {
 	private ColorService colorService;
 	private TextureService textureService;
 	private NewCaseService newCaseService;
-	private String minitemS;
-	private String minitemK;
-	private String minitemB;
-	private String minitemD;
-	private String textureimg;
+
 	private String Rgb;
+	private String timeid1;
+	private String[] colorgene; 
+	private Map<String , String[]> colorBlock = new HashMap<String, String[]>();
+	private Map<String, String> minitem = new HashMap<String, String>();
+	private Map<String , String > backimg = new HashMap<String, String>();
 	
 	
 	public OutLineService getOutLineService() {
@@ -183,19 +187,20 @@ public class U_ModelSysController {
 		return listbBs;
 		
 	}
-	@RequestMapping("adjust/part/cooker")
+	@RequestMapping("adjust/part/cooker/{timeid}")
 	@ResponseBody
-	public commandImg adjustpartCooker(Model model,String img,HttpServletRequest request){
-		//System.out.println("crgb111 "+crgb);
+	public commandImg adjustpartCooker(@PathVariable String timeid,Model model,String img,HttpServletRequest request){
+		System.out.println("img  "+img);
 		String[] s1 = img.split("/");
 		String Logoimg = s1[s1.length-1];
 		
 		Logoimg = "D:/20170602/PycharmProjects/firstDL_netEast/artgene/"+Logoimg;
+		
 		s1 = Rgb.split(",");
 		try {
             
             //设置命令行传入参数
-            String[] args = new String[] { "python", "D:\\20170602\\PycharmProjects\\firstDL_netEast\\cookerAssembleLogo.py",minitemS,minitemK,minitemB,minitemD,s1[0],s1[1],s1[2],textureimg,Logoimg};
+            String[] args = new String[] { "python", "D:\\20170602\\PycharmProjects\\firstDL_netEast\\cookerAssembleLogo.py",minitem.get(timeid),s1[0],s1[1],s1[2],backimg.get(timeid),Logoimg,timeid};
             Process pr = Runtime.getRuntime().exec(args);
 
             BufferedReader in = new BufferedReader(new InputStreamReader(pr.getInputStream()));
@@ -211,7 +216,7 @@ public class U_ModelSysController {
             e.printStackTrace();
         }
 		commandImg cimg = new commandImg();
-		cimg.setImg("../../images/cookerPart.jpg");
+		cimg.setImg("../../images/cookerPart"+timeid+".jpg");
 		
 		//cimg.setImg1("../images/genestyle/Ccolor.png");
 		//cimg.setImg2("../images/genestyle/Ctexture1.png");
@@ -242,23 +247,24 @@ public class U_ModelSysController {
 		
 	}
 	
-	@RequestMapping("adjust/texture/cooker")
+	@RequestMapping("adjust/texture/cooker/{timeid}")
 	@ResponseBody
-	public commandImg adjustTextureCooker(Model model,String img,HttpServletRequest request){
+	public commandImg adjustTextureCooker(@PathVariable String timeid,Model model,String img,String timid,HttpServletRequest request){
 		//System.out.println("crgb111 "+crgb);
 		String[] s1 = img.split("/");
 		String timg = s1[s1.length-1];
 		
 		timg = "D:/20170602/PycharmProjects/firstDL_netEast/artgene/"+timg;
-		textureimg = timg;
-		//System.out.println("111  "+timg);
+		backimg.put(timeid, timg);
+		//System.out.println("timg "+timg);
+		
 		s1 = Rgb.split(",");
 		try {
             
             //System.out.println("start;;;" + a);
             //设置命令行传入参数
 			//System.out.println(minitemS+","+minitemK+","+minitemB+","+minitemD+","+Rgb);
-            String[] args = new String[] { "python", "D:\\20170602\\PycharmProjects\\firstDL_netEast\\cookerAssembleMaterial.py",minitemS,minitemK,minitemB,minitemD,s1[0],s1[1],s1[2],timg};
+            String[] args = new String[] { "python", "D:\\20170602\\PycharmProjects\\firstDL_netEast\\cookerAssembleMaterial.py",minitem.get(timeid),s1[0],s1[1],s1[2],timg,timeid};
             Process pr = Runtime.getRuntime().exec(args);
 
             BufferedReader in = new BufferedReader(new InputStreamReader(pr.getInputStream()));
@@ -274,7 +280,7 @@ public class U_ModelSysController {
             e.printStackTrace();
         }
 		commandImg cimg = new commandImg();
-		cimg.setImg("../../images/cookerTexture.jpg");
+		cimg.setImg("../../images/cookerTexture"+timeid+".jpg");
 		
 		//cimg.setImg1("../images/genestyle/Ccolor.png");
 		//cimg.setImg2("../images/genestyle/Ctexture1.png");
@@ -283,16 +289,17 @@ public class U_ModelSysController {
 		
 	}
 	
-	@RequestMapping("adjust/color")
+	@RequestMapping("adjust/color/gascooker/{timeid}")
 	@ResponseBody
-	public commandImg adjustColor(Model model,String crgb,HttpServletRequest request){
+	public commandImg adjustColor(@PathVariable String timeid,Model model,String crgb,HttpServletRequest request){
 		//System.out.println("crgb111 "+crgb);
+		
 		try {
             //需传入的参数
             Rgb = crgb;
             //System.out.println("start;;;" + a);
             //设置命令行传入参数
-            String[] args = new String[] { "python", "D:\\20170602\\PycharmProjects\\firstDL_netEast\\cookerAssembleColor.py",minitemS,minitemK,minitemB,minitemD,Rgb };
+            String[] args = new String[] { "python", "D:\\20170602\\PycharmProjects\\firstDL_netEast\\cookerAssembleColor.py",minitem.get(timeid),Rgb,timeid };
             Process pr = Runtime.getRuntime().exec(args);
 
             BufferedReader in = new BufferedReader(new InputStreamReader(pr.getInputStream()));
@@ -308,7 +315,7 @@ public class U_ModelSysController {
             e.printStackTrace();
         }
 		commandImg cimg = new commandImg();
-		cimg.setImg("../../images/cookerColor.jpg");
+		cimg.setImg("../../images/cookerColor"+timeid+".jpg");
 		
 		//cimg.setImg1("../images/genestyle/Ccolor.png");
 		//cimg.setImg2("../images/genestyle/Ctexture1.png");
@@ -329,86 +336,128 @@ public class U_ModelSysController {
 			s1 = temp+",";
 			score +=s1;
 		}
-		System.out.println("score "+score);
-		
 		commandImg cimg = new commandImg();
 		try {
             //需传入的参数
-            String a = score, b = "D3455054", c = "LJ12GKS28D4418248", d = "qingdao";
-            System.out.println("start;;;" + a);
+            String a = score;
+            long current_time = new Date().getTime();
+            timeid1 = current_time+"";
+            //System.out.println("start;;;" + a);
             //设置命令行传入参数
-            String[] args = new String[] { "python", "D:\\20170602\\PycharmProjects\\firstDL_netEast\\cookerAssemble.py", a };
-            Process pr = Runtime.getRuntime().exec(args);
+            String[] args1 = new String[] { "python", "D:\\20170602\\PycharmProjects\\firstDL_netEast\\cookerAssemble.py", a,timeid1};
+            Process pr = Runtime.getRuntime().exec(args1);
 
             BufferedReader in = new BufferedReader(new InputStreamReader(pr.getInputStream()));
             String line;
             while ((line = in.readLine()) != null) {
                 //line = decodeUnicode(line);
                 System.out.println(line);
-                String[] str = line.split(",");
-                minitemS = str[0];
-                minitemK = str[1];
-                minitemB = str[2];
-                minitemD = str[3];
-                
+                minitem.put(timeid1, line);
             }
            
             in.close();
             //pr.waitFor();
-            cimg.setImg("../../images/cooker.jpg");
+            cimg.setImg("../../images/cookerColor"+timeid1+".jpg");
+            cimg.setTimeid(timeid1);
     		cimg.setImg1("../images/genestyle/Ccolor.png");
     		cimg.setImg2("../images/genestyle/Ctexture1.png");
             System.out.println("end");
         } catch (Exception e) {
             e.printStackTrace();
         }
-		
-		
-		
 		return cimg;
 		
 	}
 	
-	@RequestMapping("setparam/fabric")
+	@RequestMapping("setparam/fabric/{img}")
 	@ResponseBody
-	public commandImg setparamfabric(Model model,String sc,HttpServletRequest request){
-		
+	public commandImg setparamfabric(@PathVariable String img,Model model,String sc,HttpServletRequest request){
 		String[] s = sc.split(",");
-		int temp =0;
-		String score = "";
-		for (String s1 : s) {
-			temp  = Integer.parseInt(s1)+3;
-			s1 = temp+",";
-			score +=s1;
-		}
-		System.out.println("score "+score);
-		
+		int colorNum = Integer.parseInt(s[s.length-1]);
+		System.out.println("colorNum "+colorNum);
 		commandImg cimg = new commandImg();
+		
+		
+		String bgimg = img;
+		
+		bgimg = "C:/Users/Administrator/git/art0804/WebContent/images/"+img+".jpg";
+		System.out.println("bgimg "+bgimg);
+		
+		
 		try {
             //需传入的参数
-            String a = score, b = "D3455054", c = "LJ12GKS28D4418248", d = "qingdao";
-            System.out.println("start;;;" + a);
+            String a = sc;
+            System.out.println("start11122 " + a);
             //设置命令行传入参数
-            String[] args = new String[] { "python", "D:\\20170602\\PycharmProjects\\firstDL_netEast\\scarvesColorGen.py", a };
+            
+            //生成色彩快RGB值   参数1：3个意象词汇参数和一个图片RGB色彩的组数 拼接而成
+            String[] args = new String[] { "python", "D:\\20170602\\PycharmProjects\\firstDL_netEast\\scarvesColorGen.py",a};
             Process pr = Runtime.getRuntime().exec(args);
 
             BufferedReader in = new BufferedReader(new InputStreamReader(pr.getInputStream()));
             String line;
+            int i = 0;
+            int k = 0;
+            String templatRGB="";
+            colorgene = new String[7];
             while ((line = in.readLine()) != null) {
                 //line = decodeUnicode(line);
                 System.out.println(line);
-                String[] str = line.split(",");
-                minitemS = str[0];
-                minitemK = str[1];
-                minitemB = str[2];
-                minitemD = str[3];
+                if(i != 0) templatRGB = templatRGB+",";
+                templatRGB = templatRGB+line;
+                k = i/colorNum;
+                if(i%colorNum==0){
+                	colorgene[k] = line;
+                }else{
+                	colorgene[k] = colorgene[k]+","+line;
+                }
+                i++;
+            }
+            System.out.println("i "+i);
+            for (int j = 0; j < i/colorNum; j++) {
+				System.out.println(colorgene[j]);
+				
+			}
+            colorBlock.put(timeid1, colorgene);
+            in.close();
+            
+            //生成推荐的图片  参数1：第一个色彩块RGB值，参数2：每个色彩快中RGB的组数，参数3：所选图片底图，参数4：当前时间戳
+            long current_time = new Date().getTime();
+            timeid1 = current_time+"";
+            args = new String[] { "python", "D:\\20170602\\PycharmProjects\\firstDL_netEast\\scarvesColorGenColorImage.py",colorgene[0],colorNum+"", bgimg,timeid1};
+            pr = Runtime.getRuntime().exec(args);
+
+            in = new BufferedReader(new InputStreamReader(pr.getInputStream()));
+            
+            while ((line = in.readLine()) != null) {
+                //line = decodeUnicode(line);
+                System.out.println(line);
+               
             }
             in.close();
+            
+            
+            //生成色彩调整是 轮播组件的7张图片 参数1：色彩块RGB值，参数2：每个色彩快中RGB的组数，参数3：底图，参数4：当前时间戳
+            String lunboColorBlock = "D:/20170602/PycharmProjects/firstDL_netEast/artgene/3Colors.jpg";
+            System.out.println("templatRGB "+templatRGB);
+            
+            args = new String[] { "python", "D:\\20170602\\PycharmProjects\\firstDL_netEast\\scarvesColorGenColorImageTemplate.py",templatRGB,colorNum+"", lunboColorBlock,timeid1};
+            pr = Runtime.getRuntime().exec(args);
+            in = new BufferedReader(new InputStreamReader(pr.getInputStream()));
+            while ((line = in.readLine()) != null) {
+                //line = decodeUnicode(line);
+                System.out.println(line);
+            }
+            in.close();
+            
+            
             //pr.waitFor();
-            cimg.setImg("../../images/cooker.jpg");
+            cimg.setImg("../../images/"+img+"_"+timeid1+".jpg");
+            cimg.setTimeid(timeid1);
+            
     		cimg.setImg1("../images/genestyle/Ccolor.png");
     		cimg.setImg2("../images/genestyle/Ctexture1.png");
-            System.out.println("end");
+            System.out.println("end111");
         } catch (Exception e) {
             e.printStackTrace();
         }

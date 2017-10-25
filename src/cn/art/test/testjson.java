@@ -1,5 +1,6 @@
 package cn.art.test;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -50,6 +51,8 @@ public class testjson {
 		JsonConvert jsonConvert = new JsonConvert();
 		Word word = jsonConvert.Json2Bean(jsonstr);
 		//System.out.println(word.getWbasic());
+		long id = new  Date().getTime(); 
+		System.out.println("id "+id);
 		System.out.println(word.getWbasic()+" "+word.getWdetail());
 	}
 	

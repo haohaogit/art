@@ -9,34 +9,44 @@
 </head>
 <body>
 <script type="text/javascript">
+		var img_timeid ="";
+		var timeid = "";
         $(document).ready(function () {
 //  			alert(11);
             $('.configHead').load('conheader_yixiang.html');
             $('.configFoot').load('confooter.html');
             
-            var loc = location.href;
-		  	var n1 = loc.length;//地址的总长度
-		  	var n2 = loc.indexOf("=");//取得=号的位置
-		  	var sc = decodeURI(loc.substr(n2+1, n1-n2));//从=号后面的内容
+            var loc = location.search;	
+           
+            var sc = GetRequest(loc)["sc"];
+            var img = GetRequest(loc)["img"];
+            
+		  	img = img.split("/");
+		  	var lastNimg = img[img.length-1];
+		  	lastNimg = lastNimg.split(".");
 		  	
-		  	alert("sc = "+sc);
-		  	/* $.ajax("setparam/fabric/?sc="+sc,
-		            // 发送请求的URL字符串
-		            {
-		                type: "get",      //
-		                async:true,  //
-		                success: function(data){
-						//alert("facade newcase goblet test length");
-						//fillNewcaseHouseboat(data);
-						
-						$(".i1").attr('src',data.img);
-						geneimg = data.img;
-						//alert(data.img);
-		                },
-		                error: function(){
-		                    alert("数据发送失败denglu");
-		                }
-		            }); */
+		  	alert("lastNimg "+lastNimg[0]);
+		  	img_timeid = img_timeid+lastNimg[0]+"_";
+		  	//alert("sc = "+sc+" img = "+img); 
+		  	$.ajax("setparam/fabric/"+lastNimg[0]+"?sc="+sc,
+		  	//$.ajax("adjust/color/gk/"+timeid+"?crgb="+crgb,
+            // 发送请求的URL字符串
+            {
+                type: "get",      //
+                async:true,  //
+                success: function(data){
+				//alert("facade newcase goblet test length");
+				//fillNewcaseHouseboat(data);
+				timeid = data.timeid;
+				img_timeid = img_timeid + data.timeid;
+				$(".i1").attr('src',data.img);
+				geneimg = data.img;
+				//alert(data.img);
+                },
+                error: function(){
+                    alert("织物图案生成失败");
+                }
+            });
         });
 </script>
 	<!-- 	头部 -->
@@ -98,7 +108,7 @@
 			</div>
 
 			<div id="picGene">
-				<img src="../images/genestyle/fabric.jpg" style="margin-left: 125px;" />
+				<img class="i1" src="" style="width: 400px;" />
 				
 			</div>
 
@@ -131,7 +141,8 @@
   		
 		function saveGene(){
 			alert("织物推荐方案保存，然后调整部件");
-			window.location.href="imago_adjust_color_fabric.html";
+			
+			window.location.href="imago_adjust_color_fabric.html?img_timeid="+img_timeid;
 		}
 
 		// window.onload = function(){
@@ -189,6 +200,20 @@
   		$('.errorOperate').click(function(){
   			alert("请您先确认是否保存语义参数，然后按照顺序操作！");
   		});
+  		
+  		function GetRequest(loc) {
+  		    var url = loc;
+  		    var theRequest = new Object();//新建对象
+  	            //获取url中"?"符后的字串   
+  		    if (url.indexOf("?") != -1) { //排除没有参数的情况
+  		        var str = url.substr(1);//抽取从第二个字符到结尾的字符子串
+  		        strs = str.split("&");//将str以&作为分隔符分成多个部分，以数组形式存在strs里
+  		        for (var i = 0; i < strs.length; i++) {//遍历strs数组
+  		            theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);//使theRsquest[key] = value
+  		        }
+  		    }
+  		    return theRequest;
+  		}
 
 
 

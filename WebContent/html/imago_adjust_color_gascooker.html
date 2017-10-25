@@ -29,16 +29,17 @@
 <body>
 	<script type="text/javascript" src="../js/imago.js"></script>
 	<script type="text/javascript">
-		var geneimg;
+		var timeid;
         $(document).ready(function () {
             $('.configHead').load('conheader_yixiang.html');
             $('.configFoot').load('confooter.html');
             
-           /*  var loc = location.href;
+            var loc = location.href;
 		  	var n1 = loc.length;//地址的总长度
 		  	var n2 = loc.indexOf("=");//取得=号的位置
-		  	geneimg = decodeURI(loc.substr(n2+1, n1-n2));//从=号后面的内容 */
-		  	
+		  	timeid = decodeURI(loc.substr(n2+1, n1-n2));//从=号后面的内容 
+		  	var geneimg = "../../images/cookerColor"+timeid+".jpg";
+		  	$(".picimg").attr("src",geneimg);
 		  	$.ajax("getcolor?tname=燃气灶",
 	                // 发送请求的URL字符串
 	                {
@@ -125,7 +126,7 @@
 				<div class="picfont" style="background:#00A5BD;width:145px; height:37px; ">
 					色彩方案预览
 				</div>
-				<img class="picimg" src="../../images/cookerColor.jpg" >
+				<img class="picimg" src="" >
 			</div>
 			
 			<div id="partStyle">
@@ -182,7 +183,7 @@
 		
 		function saveColor(){
 			alert("燃气灶色彩保存，然后调整材质");
-			window.location.href="imago_adjust_texture_gascooker.html";
+			window.location.href="imago_adjust_texture_gascooker.html?timeid="+timeid;
 		}
 
 		/* window.onload = function(){
