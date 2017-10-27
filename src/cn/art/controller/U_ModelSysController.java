@@ -54,6 +54,8 @@ public class U_ModelSysController {
 	private Map<String , String[]> colorBlock = new HashMap<String, String[]>();
 	private Map<String, String> minitem = new HashMap<String, String>();
 	private Map<String , String > backimg = new HashMap<String, String>();
+	private Map<String , String > FabricTexturebackimg = new HashMap<String, String>();
+	private Map<String , String > RgbNum = new HashMap<String, String>();
 	
 	
 	public OutLineService getOutLineService() {
@@ -225,6 +227,50 @@ public class U_ModelSysController {
 		
 	}
 	
+	@RequestMapping("adjust/part/fabric/{timeid}")
+	@ResponseBody
+	public commandImg adjustpartFabric(@PathVariable String timeid,Model model,String pbimg,HttpServletRequest request){
+		
+		System.out.println("img  "+pbimg);
+		String[] s1 = pbimg.split("/");
+		String adjPimg = s1[s1.length-1];
+		
+		adjPimg = "C:/Users/Administrator/git/art0804/WebContent/images/"+adjPimg;
+		
+		int Nrgb = Integer.parseInt(RgbNum.get(timeid));
+		String imgString = "D:/2017/images/fabric_"+timeid+".jpg";
+		System.out.println("RgbNum.get(timeid) "+RgbNum.get(timeid));
+		System.out.println("imgString "+imgString);
+		System.out.println("FabricTexturebackimg.get(timeid) "+FabricTexturebackimg.get(timeid));
+		System.out.println("adjPimg "+adjPimg);
+		try {
+            
+            //设置命令行传入参数
+            String[] args = new String[] { "python", "D:\\20170602\\PycharmProjects\\firstDL_netEast\\scarvesColorGenColorImageMateriaFrame.py",colorgene[Nrgb],RgbNum.get(timeid),imgString,FabricTexturebackimg.get(timeid),adjPimg,timeid};
+            Process pr = Runtime.getRuntime().exec(args);
+
+            BufferedReader in = new BufferedReader(new InputStreamReader(pr.getInputStream()));
+            String line;
+            while ((line = in.readLine()) != null) {
+                //line = decodeUnicode(line);
+                System.out.println(line);
+            }
+            in.close();
+            //pr.waitFor();
+            System.out.println("end");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+		commandImg cimg = new commandImg();
+		cimg.setImg("../../images/cookerPart"+timeid+".jpg");
+		
+		//cimg.setImg1("../images/genestyle/Ccolor.png");
+		//cimg.setImg2("../images/genestyle/Ctexture1.png");
+		
+		return cimg;
+		
+	}
+	
 	
 	@RequestMapping("gettexture")
 	@ResponseBody
@@ -258,6 +304,7 @@ public class U_ModelSysController {
 		backimg.put(timeid, timg);
 		//System.out.println("timg "+timg);
 		
+		
 		s1 = Rgb.split(",");
 		try {
             
@@ -289,6 +336,49 @@ public class U_ModelSysController {
 		
 	}
 	
+	@RequestMapping("adjust/texture/fabric/{timeid}")
+	@ResponseBody
+	public commandImg adjustTextureFabric(@PathVariable String timeid,Model model,String tbimg,String timid,HttpServletRequest request){
+		System.out.println("crgb111 ");
+		String[] s1 = tbimg.split("/");
+		String timg = s1[s1.length-1];
+		
+		timg = "D:/20170602/PycharmProjects/firstDL_netEast/artgene/"+timg;
+		System.out.println("ting "+timg);
+		FabricTexturebackimg.put(timeid, timg);
+		
+		int Nrgb = Integer.parseInt(RgbNum.get(timeid));
+		String imgString = "D:/2017/images/fabric_"+timeid+".jpg";
+		try {
+            
+            //System.out.println("start;;;" + a);
+            //设置命令行传入参数
+			//System.out.println(minitemS+","+minitemK+","+minitemB+","+minitemD+","+Rgb);
+            String[] args = new String[] { "python", "D:\\20170602\\PycharmProjects\\firstDL_netEast\\scarvesColorGenColorImageMateria.py",colorgene[Nrgb],RgbNum.get(timeid),imgString,timg,timeid};
+            Process pr = Runtime.getRuntime().exec(args);
+
+            BufferedReader in = new BufferedReader(new InputStreamReader(pr.getInputStream()));
+            String line;
+            while ((line = in.readLine()) != null) {
+                //line = decodeUnicode(line);
+                System.out.println(line);
+            }
+            in.close();
+            //pr.waitFor();
+            System.out.println("end");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+		commandImg cimg = new commandImg();
+		cimg.setImg("../../images/fabricTexture_"+timeid+".jpg");
+		
+		//cimg.setImg1("../images/genestyle/Ccolor.png");
+		//cimg.setImg2("../images/genestyle/Ctexture1.png");
+		
+		return cimg;
+		
+	}
+	
 	@RequestMapping("adjust/color/gascooker/{timeid}")
 	@ResponseBody
 	public commandImg adjustColor(@PathVariable String timeid,Model model,String crgb,HttpServletRequest request){
@@ -307,6 +397,42 @@ public class U_ModelSysController {
             while ((line = in.readLine()) != null) {
                 //line = decodeUnicode(line);
                 System.out.println(line);
+            }
+            in.close();
+            //pr.waitFor();
+            System.out.println("end");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+		commandImg cimg = new commandImg();
+		cimg.setImg("../../images/cookerColor"+timeid+".jpg");
+		
+		//cimg.setImg1("../images/genestyle/Ccolor.png");
+		//cimg.setImg2("../images/genestyle/Ctexture1.png");
+		
+		return cimg;
+		
+	}
+	
+	@RequestMapping("adjust/color/fabric/{timeid}")
+	@ResponseBody
+	public commandImg adjustColorFabric(@PathVariable String timeid,Model model,String cnum,HttpServletRequest request){
+		//System.out.println("crgb111 "+crgb);
+		
+		try {
+            //需传入的参数
+            //Rgb = crgb;
+            //设置命令行传入参数
+			//调整织物的图片  参数1：第cnum个色彩块RGB值，参数2：每个色彩快中RGB的组数，参数3：所选图片底图，参数4：当前时间戳
+			String[] args = new String[] { "python", "D:\\20170602\\PycharmProjects\\firstDL_netEast\\scarvesColorGenColorImage1.py",colorgene[Integer.parseInt(cnum)],RgbNum.get(timeid), backimg.get(timeid),timeid};
+			Process pr = Runtime.getRuntime().exec(args);
+
+			BufferedReader in = new BufferedReader(new InputStreamReader(pr.getInputStream()));
+			String line;
+            while ((line = in.readLine()) != null) {
+                //line = decodeUnicode(line);
+                System.out.println(line);
+               
             }
             in.close();
             //pr.waitFor();
@@ -384,11 +510,16 @@ public class U_ModelSysController {
 		System.out.println("bgimg "+bgimg);
 		
 		
+		
 		try {
             //需传入的参数
             String a = sc;
             System.out.println("start11122 " + a);
             //设置命令行传入参数
+            long current_time = new Date().getTime();
+            timeid1 = current_time+"";
+            RgbNum.put(timeid1, colorNum+"");
+            backimg.put(timeid1, bgimg);
             
             //生成色彩快RGB值   参数1：3个意象词汇参数和一个图片RGB色彩的组数 拼接而成
             String[] args = new String[] { "python", "D:\\20170602\\PycharmProjects\\firstDL_netEast\\scarvesColorGen.py",a};
@@ -422,9 +553,8 @@ public class U_ModelSysController {
             in.close();
             
             //生成推荐的图片  参数1：第一个色彩块RGB值，参数2：每个色彩快中RGB的组数，参数3：所选图片底图，参数4：当前时间戳
-            long current_time = new Date().getTime();
-            timeid1 = current_time+"";
-            args = new String[] { "python", "D:\\20170602\\PycharmProjects\\firstDL_netEast\\scarvesColorGenColorImage.py",colorgene[0],colorNum+"", bgimg,timeid1};
+            
+            args = new String[] { "python", "D:\\20170602\\PycharmProjects\\firstDL_netEast\\scarvesColorGenColorImage.py",colorgene[0],RgbNum.get(timeid1), backimg.get(timeid1),timeid1};
             pr = Runtime.getRuntime().exec(args);
 
             in = new BufferedReader(new InputStreamReader(pr.getInputStream()));
@@ -452,7 +582,7 @@ public class U_ModelSysController {
             
             
             //pr.waitFor();
-            cimg.setImg("../../images/"+img+"_"+timeid1+".jpg");
+            cimg.setImg("../../images/fabric"+"_"+timeid1+".jpg");
             cimg.setTimeid(timeid1);
             
     		cimg.setImg1("../images/genestyle/Ccolor.png");

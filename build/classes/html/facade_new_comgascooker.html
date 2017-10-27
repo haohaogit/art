@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<link href="../css/facade.css" rel="stylesheet" type="text/css"/>
+	<link href="../css/loginDialog.css" rel="stylesheet" type="text/css"/>
+	<script type="text/javascript" src="../js/jquery-1.8.2.min.js"></script>
+	<title>意象映射-appearance</title>
+	<style>
+		.imgfabric{
+            width: 198px;
+            box-shadow: none;
+        }
+        .isLoadMore{
+        	display: none;
+        }
+        .isLoadMore1{
+        	display: none;
+        }
+        #inputcorpus {
+            background-color: #00A5BD;
+            font-size: 20px;
+            color: white;
+            padding-left: 18px;
+            height: 35px;
+            width: auto;
+            margin-bottom: 16px;
+        }
+        .descri1{
+			padding-top: 4.5px;
+			/*padding-left: 12px;*/
+			display: flex;
+			justify-content: center;
+
+		}
+		.lunkuo1{
+			background-color: #bbc3c4;
+			width: 198px;
+			height: 30px;
+			margin-top: -13px;
+			margin-bottom: 23px;
+		}
+		.loadMore{
+			height: 35px;
+			width: 840px;
+		}
+		.macro{
+			display: flex;
+			flex-wrap: wrap;
+		}
+		.hengStep{
+			margin-right: 11px;
+		}
+		.detail{
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100%;
+
+		}
+		.pic{
+			height: 190px;
+		}
+		.pic1{
+			height: 45px;
+		}
+		.rightinfo{
+			margin-left: 11px;
+			display: flex;
+			flex-flow: column;
+			justify-content: space-around;
+			
+			height: 211px;
+		}
+		.otherpicinfo{
+			width: 140px;
+		}
+		.font{
+			font-size: 12px;
+			color: white;
+		}
+		.imgicon{
+			width: 83px; 
+			margin-top: 16px;
+		}
+		.description {
+            margin-bottom: 38px;
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: space-between;
+        }
+
+        .pingfen {
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        .get-score {
+            display: flex;
+        }
+
+       
+
+        .ciduijindu {
+            width: 540px;
+        }
+        .c1jindu11 {
+            float: left;
+            width: 270px;
+            height: 9px;
+            background: #00A5BD;
+            border-radius: 8px 0 0 8px;
+            /*border-radius: 8px;*/
+        }
+        .c1jindu12 {
+            float: left;
+            margin-left: -4px;
+            width: 270px;
+            height: 9px;
+            background: #c0c0c0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .c1jindu21 {
+            float: left;
+            width: 270px;
+            height: 9px;
+            background: #00A5BD;
+            border-radius: 8px 0 0 8px;
+            /*border-radius: 8px;*/
+        }
+        .c1jindu22 {
+            float: left;
+            margin-left: -4px;
+            width: 270px;
+            height: 9px;
+            background: #c0c0c0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .c1jindu31 {
+            float: left;
+            width: 270px;
+            height: 9px;
+            background: #00A5BD;
+            border-radius: 8px 0 0 8px;
+            /*border-radius: 8px;*/
+        }
+        .c1jindu32 {
+            float: left;
+            margin-left: -4px;
+            width: 270px;
+            height: 9px;
+            background: #c0c0c0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .c1jindu41 {
+            float: left;
+            width: 270px;
+            height: 9px;
+            background: #00A5BD;
+            border-radius: 8px 0 0 8px;
+            /*border-radius: 8px;*/
+        }
+        .c1jindu42 {
+            float: left;
+            margin-left: -4px;
+            width: 270px;
+            height: 9px;
+            background: #c0c0c0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        
+        .point11 {
+            margin: -2px 0 0 -3px;
+            width: 10px;
+            height: 10px;
+            border: 1px solid #00A5BD;
+            border-radius: 10px;
+            background: #fff;
+        }
+        .point12 {
+            display: none;
+            margin: -2px 0 0 -5.5px;
+            width: 10px;
+            height: 10px;
+            border: 1px solid #00A5BD;
+            border-radius: 10px;
+            background: #fff;
+        }
+
+        .point21 {
+            margin: -2px 0 0 -3px;
+            width: 10px;
+            height: 10px;
+            border: 1px solid #00A5BD;
+            border-radius: 10px;
+            background: #fff;
+        }
+        .point22 {
+            display: none;
+            margin: -2px 0 0 -5.5px;
+            width: 10px;
+            height: 10px;
+            border: 1px solid #00A5BD;
+            border-radius: 10px;
+            background: #fff;
+        }
+
+        .point31 {
+            margin: -2px 0 0 -3px;
+            width: 10px;
+            height: 10px;
+            border: 1px solid #00A5BD;
+            border-radius: 10px;
+            background: #fff;
+        }
+        .point32 {
+            display: none;
+            margin: -2px 0 0 -5.5px;
+            width: 10px;
+            height: 10px;
+            border: 1px solid #00A5BD;
+            border-radius: 10px;
+            background: #fff;
+        }
+
+        .point41 {
+            margin: -2px 0 0 -3px;
+            width: 10px;
+            height: 10px;
+            border: 1px solid #00A5BD;
+            border-radius: 10px;
+            background: #fff;
+        }
+        .point42 {
+            display: none;
+            margin: -2px 0 0 -5.5px;
+            width: 10px;
+            height: 10px;
+            border: 1px solid #00A5BD;
+            border-radius: 10px;
+            background: #fff;
+        }
+
+        #score11 {
+            width: 180px;
+            height: 9px;
+            border-radius: 8px;
+            background: #c0c0c0;
+        }
+        #score12 {
+            width: 0;
+            height: 9px;
+            /*border-radius: 8px;*/
+            background: #00A5BD;
+        }
+
+        #score21 {
+            width: 180px;
+            height: 9px;
+            border-radius: 8px;
+            background: #c0c0c0;
+        }
+        #score22 {
+            width: 0;
+            height: 9px;
+            /*border-radius: 8px;*/
+            background: #00A5BD;
+        }
+
+        #score31 {
+            width: 180px;
+            height: 9px;
+            border-radius: 8px;
+            background: #c0c0c0;
+        }
+        #score32 {
+            width: 0;
+            height: 9px;
+            /*border-radius: 8px;*/
+            background: #00A5BD;
+        }
+
+        #score41 {
+            width: 180px;
+            height: 9px;
+            border-radius: 8px;
+            background: #c0c0c0;
+        }
+        #score42 {
+            width: 0px;
+            height: 9px;
+            /*border-radius: 8px;*/
+            background: #00A5BD;
+        }
+       
+
+        .shuzi {
+            font-size: 12px;
+            margin-top: 4px;
+            width: 100%;
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: space-between;
+        }
+        .des_font{
+            font-size: 13px;
+        }
+        .commandDis{
+        	border: 2px solid #00a5bd;
+    		display: flex;
+    		background-color: #4098bc;
+    		justify-content: center;
+    		margin-bottom: 21px;
+        }
+        .com3{
+        	display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+        }
+        .comp{
+        	font-size: 30px;
+			color: white;
+        }
+        .button1{
+			background-color: white;
+			border-radius: 8px;
+			width: 77px;
+			height: 33px;
+			border: 2px solid #00a5bd;
+			color: #00a5bd;
+		}
+		.btn1{
+			padding-top: 11px;
+			margin-bottom: 10px;
+			display: flex;
+			justify-content: flex-end;
+		}
+	</style>
+</head>
+<body>
+	<script type="text/javascript" src="../js/facade.js"></script>
+	<script type="text/javascript">
+	        $(document).ready(function () {
+	//  			alert(11);
+	            $('.configHead').load('conheader_waiguan.html');
+	            $('.configFoot').load('confooter.html');
+	            $('.Recommand').load('facade_new_Rgolbet.html');
+
+		        var loc = location.href;
+			  	var n1 = loc.length;//地址的总长度
+			  	var n2 = loc.indexOf("=");//取得=号的位置
+			  	var nid = decodeURI(loc.substr(n2+1, n1-n2));//从=号后面的内容
+			  	
+
+			  /* 	$(".facade1").css({color:'black'});
+			  	$("#"+txt).css("color","#00a5bd"); */
+			  	
+			  	$.ajax("facade/newcase/detail?nid="+nid,
+	            // 发送请求的URL字符串
+	            {
+	                type: "get",      //
+	                async:true,  //
+	                success: function(data){
+					//alert("facade newcase goblet test length");
+					fillNewcaseGascooker(data);
+	                },
+	                error: function(){
+	                    alert("数据发送失败denglu");
+	                }
+	            });
+
+	        });
+	        
+
+
+
+
+
+
+	</script>
+
+	<!-- 	头部 -->
+	<div class="configHead"></div>
+
+	<div id="content">
+		<div id="leftBody">
+			<div id="base">
+				<a href="javascript:void(0)" id="baseToggle">底层案例库</a>
+				<ul id="baseContent">
+					<li><a href="javascript:void(0)" id="baseGoblet" class="facade1">高脚杯</a></li>
+					<li><a href="javascript:void(0)" id="baseYacht" class="facade1">游艇</a></li>
+					<li><a href="javascript:void(0)" id="baseHanky" class="facade1">织物</a></li>
+					<li><a href="javascript:void(0)" id="baseRange" class="facade1">煤气灶</a></li>
+				</ul>
+				</div>
+			<div id="code">
+				<a href="javascript:void(0)" id="codeToggle">编码案例库</a>
+				<ul id="codeContent">
+					<li><a href="javascript:void(0)" id="codeGoblet" class="facade1">高脚杯</a></li>
+					<li><a href="javascript:void(0)" id="codeYacht" class="facade1">游艇</a></li>
+					<li><a href="javascript:void(0)" id="codeHanky" class="facade1">织物</a></li>
+					<li><a href="javascript:void(0)" id="codeRange" class="facade1">煤气灶</a></li>
+				</ul>
+				</div>
+			<div id="new">
+				<a href="javascript:void(0)" id="newToggle">新造型库</a>
+				<ul id="newContent">
+					<li><a href="javascript:void(0)" id="newGoblet" class="facade1">高脚杯</a></li>
+					<li><a href="javascript:void(0)" id="newYacht" class="facade1">游艇</a></li>
+					<li><a href="javascript:void(0)" id="newHanky" class="facade1">织物</a></li>
+					<li><a href="javascript:void(0)" id="newRange" class="facade1">煤气灶</a></li>
+				</ul>
+			</div>
+		</div>
+		<div id="rightBody">
+			<!-- <div id="iconAndcorpus">
+				<div id="introicon"><img class="imgicon" src="../images/genestyle/golbet.png" /></div>
+				<div id="introduce">
+					<p id="corpus">底层啊啥的交换机啊啥的卡斯柯卡号的看见好多看哈的华盛asd请问萨达vvghgfhdg阿尔法啊啥的范围飞啊飞玩手动阀发阿斯蒂芬万二分阿斯蒂芬阿斯蒂芬顿奥德赛华盛顿看哈是读好书看哈的华盛顿很快的</p>
+				</div>
+			</div> -->
+			<div class="btn1">
+	        	<button class="button1" onclick="returnLast()">返回</button>
+	        </div>
+
+			<div id="facadeContent">
+				<div>
+					<div class="commandDis">
+						<div style="flex: 1;">
+							
+						</div>
+
+						<div style="flex: 1;">
+							<img class="recomImg" src="../images/appearance/gascooker (7).jpg">
+						</div>
+
+						<div style="flex: 1;" class="com3">
+							<div>
+								<label id="comp1" class="comp">优雅燃气灶 </label>
+							</div>
+							<div>
+								<label id="comp2" class="comp" style="font-size: 16px;">20170411A </label>
+							</div>
+						</div>
+					</div>
+
+
+
+
+			        <div id="inputcorpus">
+			            <div id="corpusword" style="padding-top: 5.5px;">输入语义</div>
+			        </div>
+
+			        <div class="description">
+			            <span class="des_font">1.现代的</span>
+			            <div class="pingfen">
+			                <div class="ciduijindu">    
+			                    <div class="c1jindu11">
+			                        <div class="get-score">
+			                            <div id="score11"></div>
+			                            <div class="point11"></div>
+			                        </div>
+			                    </div>
+			                    <div class="c1jindu12">
+			                        <div class="get-score">
+			                            <div id="score12"></div>
+			                            <div class="point12"></div>
+			                        </div> 
+			                    </div>
+
+			                    <div class="shuzi">
+			                            <span>3</span>
+			                            <span>2</span>
+			                            <span>1</span>
+			                            <span>0</span>
+			                            <span>1</span>
+			                            <span>2</span>
+			                            <span>3</span>  
+			                    </div>
+			                </div>
+			            </div>
+			            <span class="des_font">复古的</span>
+			        </div>
+
+
+			        <div class="description">
+			            <span class="des_font">2.阳刚的</span>
+			            <div class="pingfen">  
+			                <div class="ciduijindu">    
+			                    <div class="c1jindu21">
+			                        <div class="get-score">
+			                            <div id="score21"></div>
+			                            <div class="point21"></div>
+			                        </div>
+			                    </div>
+			                    <div class="c1jindu22">
+			                        <div class="get-score">
+			                            <div id="score22"></div>
+			                            <div class="point22"></div>
+			                        </div> 
+			                    </div>
+
+			                    <div class="shuzi">
+			                            <span>3</span>
+			                            <span>2</span>
+			                            <span>1</span>
+			                            <span>0</span>
+			                            <span>1</span>
+			                            <span>2</span>
+			                            <span>3</span>  
+			                    </div>
+			                </div>
+			            </div>
+			            <span class="des_font">温婉的</span>
+			        </div>
+
+			        <div class="description">
+			            <span class="des_font">3.稳定的</span>
+			            <div class="pingfen">
+			                <div class="ciduijindu">    
+			                    <div class="c1jindu31">
+			                        <div class="get-score">
+			                            <div id="score31"></div>
+			                            <div class="point31"></div>
+			                        </div>
+			                    </div>
+			                    <div class="c1jindu32">
+			                        <div class="get-score">
+			                            <div id="score32"></div>
+			                            <div class="point32"></div>
+			                        </div> 
+			                    </div>
+
+			                    <div class="shuzi">
+			                            <span>3</span>
+			                            <span>2</span>
+			                            <span>1</span>
+			                            <span>0</span>
+			                            <span>1</span>
+			                            <span>2</span>
+			                            <span>3</span>  
+			                    </div>
+			                </div>
+			            </div>
+			            <span class="des_font">多变的</span>
+			        </div>
+
+			        <div class="description">
+			            <span class="des_font">4.简约的</span>
+			            <div class="pingfen">
+			                <div class="ciduijindu">    
+			                    <div class="c1jindu41">
+			                        <div class="get-score">
+			                            <div id="score41"></div>
+			                            <div class="point41"></div>
+			                        </div>
+			                    </div>
+			                    <div class="c1jindu42">
+			                        <div class="get-score">
+			                            <div id="score42"></div>
+			                            <div class="point42"></div>
+			                        </div> 
+			                    </div>
+
+			                    <div class="shuzi">
+			                            <span>3</span>
+			                            <span>2</span>
+			                            <span>1</span>
+			                            <span>0</span>
+			                            <span>1</span>
+			                            <span>2</span>
+			                            <span>3</span>  
+			                    </div>
+			                </div>
+			            </div>
+			            <span class="des_font">繁琐的</span>
+			        </div>
+
+
+			        <!-- <button onclick="getScore()">!!获取评分数!!</button> -->
+
+			        <!-- <div id="showicon">
+			                <img id="pic1" src="../images/vocabularys/semantic-dimension-survey/j1.png" />
+			                <img id="pic2" src="../images/vocabularys/semantic-dimension-survey/j2.png" />
+			        </div>
+
+			        <div id="geneBottomBtn" style="text-align: center;margin-top: 24px;">
+			                <button type="submit" id="save" onclick="getScore()">保存</button>
+			                <button type="submit" id="cancel">取消</button>
+			        </div> -->
+			    </div>
+
+			    <div class="Recommand">
+			    	111111111111
+			    </div>
+
+
+
+			</div>
+			
+		</div>
+	</div>
+
+	<!-- 	底部 -->
+	<div class="configFoot"></div>
+
+	<script type="text/javascript">
+		$("#codeContent").fadeOut(0);
+		$("#baseContent").fadeOut(0);
+
+		$("#baseToggle").click(function(){
+		    $("#baseContent").fadeToggle(0);
+		  });
+		$("#codeToggle").click(function(){
+		    $("#codeContent").fadeToggle(0);
+		  });
+		$("#newToggle").click(function(){
+		    $("#newContent").fadeToggle(0);
+		  });
+
+
+		$("#baseGoblet").click(function(){
+	  		window.location.href="facade.html?txt=baseGoblet";
+	  	});
+	  	$("#baseYacht").click(function(){
+		    // alert("codeYacht");
+		    window.location.href="facade.html?txt=baseYacht";
+		});
+		$("#baseHanky").click(function(){
+		    // alert("codeHanky");
+		    window.location.href="facade.html?txt=baseHanky";
+		});
+		$("#baseRange").click(function(){
+		    // alert("codeRange");
+		    window.location.href="facade.html?txt=baseRange";
+		});
+
+
+
+	  	$("#codeGoblet").click(function(){
+			window.location.href="facade.html?txt=codeGoblet";
+	  	});
+
+		$("#codeYacht").click(function(){
+		    // alert("codeYacht");
+		    window.location.href="facade.html?txt=codeYacht";
+		});
+		$("#codeHanky").click(function(){
+		    // alert("codeHanky");
+		    window.location.href="facade.html?txt=codeHanky";
+		});
+		$("#codeRange").click(function(){
+		    // alert("codeRange");
+		    window.location.href="facade.html?txt=codeRange";
+		});
+
+
+
+		$("#newGoblet").click(function(){
+			window.location.href="facade_new_golbet.html";
+		});
+		// 游艇
+		$("#newYacht").click(function(){     
+			window.location.href="facade_new_houseboat.html";
+		});
+		// 织物
+		$("#newHanky").click(function(){
+			window.location.href="facade_new_fabric.html";
+		});
+		// 燃气灶
+		$("#newRange").click(function(){
+			window.location.href="facade_new_gascooker.html";
+		});
+
+
+
+
+
+
+
+
+	</script>
+	<script type="text/javascript">
+
+		// var now = "theBaseGoblet";
+		// var nowLeft = "baseGoblet";
+		$("#newRange").css("color","#00a5bd");
+
+
+		
+		$(".facade1").on("click",function(){
+			$(".facade1").css({color:'black'});
+		   	$(this).css({color:'#00A5BD'});
+		});
+
+		// $(".isclick").on("click",function(){
+			
+		// 	//alert($(this).html());
+		// 	var ht=$(this).html();
+		// 	alert($(ht).find('img').attr('src'));
+
+		// 	//var img=$(this).attr("src");
+		// 	// getDetailInfo($(ht).find('img').attr('src'));
+		// 	// $("#detailBox").css({display:'none'});
+		// 	// var a = document.getElementById("detailBox");//获取div块对象
+		// });
+
+		function returnLast(){
+			window.history.back(-1);
+		}
+		
+	</script>
+
+
+
+
+
+
+
+</body>
+</html>

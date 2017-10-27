@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<link href="../css/facade.css" rel="stylesheet" type="text/css"/>
+	<link href="../css/loginDialog.css" rel="stylesheet" type="text/css"/>
+	<link href="../css/corpus_basic.css" rel="stylesheet" type="text/css"/>
+	<!-- <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script> -->
+	<script type="text/javascript" src="../js/jquery-1.8.2.min.js"></script>
+	<title>意象映射-appearance</title>
+	<!-- <style>
+		.imgfabric{
+            width: 198px;
+            box-shadow: none;
+        }
+        .isLoadMore{
+        	display: none;
+        }
+        .isLoadMore1{
+        	display: none;
+        }
+        #inputcorpus {
+            background-color: #00A5BD;
+            font-size: 20px;
+            color: white;
+            padding-left: 18px;
+            height: 35px;
+            width: auto;
+            margin-bottom: 16px;
+        }
+        .descri1{
+			padding-top: 4.5px;
+			/*padding-left: 12px;*/
+			display: flex;
+			justify-content: center;
+
+		}
+		.lunkuo1{
+			background-color: #bbc3c4;
+			width: 198px;
+			height: 30px;
+			margin-top: -13px;
+			margin-bottom: 23px;
+		}
+		.loadMore{
+			height: 35px;
+			width: 840px;
+		}
+		.macro{
+			display: flex;
+			flex-wrap: wrap;
+			width: 856px;
+			//justify-content: space-between;
+		}
+		.hengStep1{
+			margin-right: 10px;
+			margin-bottom: 10px;
+			width: 198px;
+			background-color: #00a5bd;
+			height: 196px;
+			color: white;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+
+		}
+		.detail{
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100%;
+
+		}
+		.pic{
+			height: 190px;
+		}
+		.pic1{
+			height: 45px;
+		}
+		.rightinfo{
+			margin-left: 11px;
+			display: flex;
+			flex-flow: column;
+			justify-content: space-around;
+			
+			height: 211px;
+		}
+		.otherpicinfo{
+			width: 140px;
+		}
+		.font{
+			font-size: 12px;
+			color: white;
+		}
+		.imgicon{
+			width: 83px; 
+			margin-top: 16px;
+		}
+		.introicon{
+			width: 75px;
+			/*display: inline-block;*/
+			height: 110px;
+			background-repeat: no-repeat;
+			display: none;
+		}
+		.char1{
+			font-size: 40px;
+			margin-left: 11px;
+		}
+		.word{
+			display: flex;
+			flex-direction: row;
+			justify-content: center;
+			font-size: 31px;
+			align-items: center;
+			height: 80px;
+		}
+		.descri2{
+			height: 90px;
+			width: 140px;
+			padding-left: 16px;
+		}
+		
+	</style> -->
+</head>
+<body>
+	<script type="text/javascript" src="../js/corpus.js"></script>
+	<script type="text/javascript">
+			
+		
+	        $(document).ready(function () {
+	        	//  			alert(11);
+	            $('.configHead').load('conheader_yuyi.html');
+	            $('.configFoot').load('confooter.html');
+	            
+	            
+	        	var loc = location.href;
+			  	var n1 = loc.length;//地址的总长度
+			  	var n2 = loc.indexOf("=");//取得=号的位置
+			  	var txt = decodeURI(loc.substr(n2+1, n1-n2));//从=号后面的内容
+				
+			  	var basicUri="";
+	        	$(".facade1").css({color:'black'});
+			  	$("#"+txt).css("color","#00a5bd");
+
+			  	var flag = "base";
+	        	if("firstChar"==txt){
+	        		flag = "base";
+	        		basicUri="corpus/basic/firstChar";
+			  		//alert("基础词汇库-首字母");
+			  	}
+			  	if("vocubulary"==txt){
+			  		flag = "base";
+			  		basicUri="corpus/basic/vocabularyType";
+			  		//alert("基础词汇库-词汇类型");
+			  	}
+
+			  	if("codeGoblet"==txt){
+			  		//alert("降维词汇库-高脚杯");
+			  		flag = "code";
+			  	}
+			  	if("codeYacht"==txt){
+			  		//alert("降维词汇库-游艇");
+			  		flag = "code";
+			  	}
+			  	if("codeHanky"==txt){
+			  		//alert("降维词汇库-织物");
+			  		flag = "code";
+			  	}
+			  	if("codeRange"==txt){
+			  		//alert("降维词汇库-燃气灶");
+			  		flag = "code";
+			  	}
+
+
+			  	if("base"==flag){
+			  		$("#codeContent").fadeOut(0);
+					$("#newContent").fadeOut(0);
+			  	}
+			  	if("code"==flag){
+			  		$("#baseContent").fadeOut(0);
+					$("#newContent").fadeOut(0);
+			  	}
+
+			  	
+			  	$.ajax(basicUri,
+                // 发送请求的URL字符串
+                {
+                    type: "get",      //
+                    async:true,  //
+                    success: function(data){
+						if("firstChar"==txt){
+							getHtmlfirstchar(data);
+						}
+						if("vocubulary"==txt){	
+							getHtmlvocabularyType(data);
+					  	}
+                    },
+                    error: function(){
+                        alert("数据发送失败denglu");
+                    }
+                });
+			  	
+	        });
+	</script>
+	
+	<!-- 	头部 -->
+	<div class="configHead"></div>
+
+	<div id="content">
+		<div id="leftBody">
+			<div class="base type1">
+				<a href="javascript:void(0)" id="baseToggle">基础意象语义库</a>
+				<ul id="baseContent">
+					<li><a href="javascript:void(0)" id="firstChar" class="facade1">首字母分类</a></li>
+					<li><a href="javascript:void(0)" id="vocubulary" class="facade1">词汇类型分类</a></li>
+				</ul>
+			</div>
+			<div class="code type2">
+				<a href="javascript:void(0)" id="codeToggle">降维词汇库</a>
+				<ul id="codeContent">
+					<li><a href="javascript:void(0)" id="codeGoblet" class="facade1">高脚杯</a></li>
+					<li><a href="javascript:void(0)" id="codeYacht" class="facade1">游艇</a></li>
+					<li><a href="javascript:void(0)" id="codeHanky" class="facade1">织物</a></li>
+					<li><a href="javascript:void(0)" id="codeRange" class="facade1">煤气灶</a></li>
+				</ul>
+			</div>
+			<div class="new type2">
+				<a href="javascript:void(0)" id="newToggle">问卷调查与检验</a>
+				<ul id="newContent">
+					<li><a href="javascript:void(0)" id="newGoblet" class="facade1">高脚杯</a></li>
+					<li><a href="javascript:void(0)" id="newYacht" class="facade1">游艇</a></li>
+					<li><a href="javascript:void(0)" id="newHanky" class="facade1">织物</a></li>
+					<li><a href="javascript:void(0)" id="newRange" class="facade1">煤气灶</a></li>
+				</ul>
+			</div>
+		</div>
+		<div id="rightBody">
+			<div id="iconAndcorpus">
+				<div class="introicon"><img class="imgicon" src="../images/genestyle/golbet.png" /></div>
+				<div id="introduce">
+					<p id="corpus">底层啊啥的交换机啊啥的卡斯柯卡号的看见好多看哈的华盛asd请问萨达vvghgfhdg阿尔法啊啥的范围飞啊飞玩手动阀发阿斯蒂芬万二分阿斯蒂芬阿斯蒂芬顿奥德赛华盛顿看哈是读好书看哈的华盛顿很快的</p>
+				</div>
+			</div>
+
+			<div id="corpusContent" style="margin-left: 2px;">
+				<div class="wordType" style="width: 100%;">
+					<div class="char1 cA">
+			            A
+			        </div>
+			        <div class="macro">
+
+						<div class="hengStep1 isclick">
+							<div class="word">安宁</div>
+							<div class="descri2">
+								<div>近义词：<lable class="w11">悠闲 安定</lable></div>
+								<div>反义词：<lable class="w12">混乱 纷乱</lable></div>
+								<div>类型：<lable class="w12">混乱 纷乱</lable></div>
+							</div>
+						</div>
+						
+					</div>
+					<!-- <div><img class="loadMore" src="../images/appearance/waiguan (18).png" onclick="loadmore()" /></div> -->
+					<div class="char1 cB"></div>
+					<div class="char1 cC">
+			            C
+			        </div>
+			        <div class="macro">
+						<div class="hengStep1 isclick">
+							<div class="word">朝气</div>
+							<div class="descri2">
+								<div>近义词：<lable class="w11">生机 生气</lable></div>
+								<div>反义词：<lable class="w12">暮气</lable></div>
+								<div>类型：<lable class="w12"></lable></div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+			
+		</div>
+	</div>
+
+	<!-- 	底部 -->
+	<div class="configFoot"></div>
+
+	<script type="text/javascript">
+	// $("#codeContent").fadeOut(0);
+	// $("#newContent").fadeOut(0);
+	
+	$('.type1').click(function(){
+		$('.introicon').css({"display":"none"});
+		$('.introduce').css({"width":688+'px'});
+	});
+	$('.type2').click(function(){
+		$('.introicon').css({"display":"inline-block"});
+		$('.introduce').css({"width":814+'px'});
+	});
+
+
+	$("#baseToggle").click(function(){
+	    $("#baseContent").fadeToggle(0);
+	  });
+	$("#codeToggle").click(function(){
+	    $("#codeContent").fadeToggle(0);
+	  });
+	$("#newToggle").click(function(){
+	    $("#newContent").fadeToggle(0);
+	  });
+
+
+	$("#firstChar").click(function(){
+	    //alert("firstchar");
+	    $.ajax("corpus/basic/firstChar",
+                // 发送请求的URL字符串
+                {
+                    type: "get",      //
+                    async:true,  //
+                    success: function(data){
+                    	getHtmlfirstchar(data);
+                    },
+                    error: function(){
+                        alert("数据发送失败denglu");
+                    }
+                });
+	});
+	$("#vocubulary").click(function(){
+	    //alert("vocubulary");
+	    $.ajax("corpus/basic/vocabularyType",
+                // 发送请求的URL字符串
+                {
+                    type: "get",      //
+                    async:true,  //
+                    success: function(data){
+                    	//alert("haohao");
+                    	getHtmlvocabularyType(data);
+                    },
+                    error: function(){
+                        alert("数据发送失败denglu");
+                    }
+                });
+	});
+
+	$("#codeGoblet").click(function(){
+		
+	    // alert("codeGoblet");
+	    window.location.href="corpus_dimension.html?txt=codeGoblet";
+	});
+	$("#codeYacht").click(function(){
+	    // alert("codeYacht");
+	    window.location.href="corpus_dimension.html?txt=codeYacht";
+	});
+	$("#codeHanky").click(function(){
+	    // alert("codeHanky");
+	    window.location.href="corpus_dimension.html?txt=codeHanky";
+	});
+	$("#codeRange").click(function(){
+	    // alert("codeRange");
+	    window.location.href="corpus_dimension.html?txt=codeRange";
+	});
+
+
+	$("#newGoblet").click(function(){
+  			window.location.href="corpus_question.html?txt=newGoblet";
+  		});
+	$("#newRange").click(function(){
+  			
+  			window.location.href="corpus_question.html?txt=newRange";
+  			
+  		});
+	$("#newYacht").click(function(){
+  			
+  			window.location.href="corpus_question.html?txt=newYacht";
+  			
+  		});
+	$("#newHanky").click(function(){
+  			
+  			window.location.href="corpus_question.html?txt=newHanky";
+  			
+  		});
+
+	</script>
+	<script type="text/javascript">
+		// $("#firstChar").css("color","#00a5bd");
+		var txt="firstChar";   
+		$(".facade1").on("click",function(){
+			$(".facade1").css({color:'black'});
+		   	$(this).css({color:'#00A5BD'});
+		   	
+		   	if("词汇类型分类"==$(this).html()){
+		   		txt="vocubulary";
+		   	}
+		   	if("首字母分类"==$(this).html()){
+		   		txt="firstChar";
+		   	}
+		   	
+		   	//alert("txt="+txt);
+		   	
+		});
+
+		$(".wordType").on("click",".isclick",function(){
+			
+			//alert($(this).html());
+			var ht=$(this).html();
+			/* var id = $(ht).attr('id');
+			alert("id "+id); */
+			
+			/* var loc = location.href;
+		  	var n1 = loc.length;//地址的总长度
+		  	var n2 = loc.indexOf("=");//取得=号的位置
+		  	var txt = decodeURI(loc.substr(n2+1, n1-n2));//从=号后面的内容 */
+			
+			window.location.href="corpus_detail.html?wid="+$(ht).attr('id')+"&txt="+txt;
+
+			//var img=$(this).attr("src");
+			// getDetailInfo($(ht).find('img').attr('src'));
+			// $("#detailBox").css({display:'none'});
+			// var a = document.getElementById("detailBox");//获取div块对象
+		});
+		
+		
+		
+	</script>
+
+</body>
+</html>

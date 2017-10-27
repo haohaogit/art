@@ -1,0 +1,95 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8"/>
+<link href="../css/home.css" rel="stylesheet" type="text/css" />
+<link href="../css/loginDialog.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../js/jquery-1.8.2.min.js"></script>
+<title>意象映射</title>
+</head>
+<body>
+<script type="text/javascript">
+ 
+        $(document).ready(function () {
+ 			// alert(11);
+            $('.configHead').load('conheader_shouye.html');
+ 
+            $('.configFoot').load('confooter.html');
+ 
+        });
+ 
+    </script>
+    <div class="configHead"></div>
+<div id="content">
+		<div id="focus">
+			<div id="pic">
+				<ul>
+					<li><img src="../images/first/image1.png" /></li>
+					<li><img src="../images/first/image2.png" /></li>
+					<li><img src="../images/first/image3.png" /></li>
+					<li><img src="../images/first/image4.png" /></li>
+					<li><img src="../images/first/image5.png" /></li>
+				</ul>
+			</div>
+			<div id="tip">
+				<ul>
+					<li id="smallimg_1" onclick="change(1)" class="current"></li>
+					<li id="smallimg_2" onclick="change(2)"></li>
+					<li id="smallimg_3" onclick="change(3)"></li>
+					<li id="smallimg_4" onclick="change(4)"></li>
+					<li id="smallimg_5" onclick="change(5)"></li>
+				</ul>
+			</div>
+		</div>
+		<div id="show">
+			<ul>
+				<li><img src="../images/first/the1.png" /></li>
+				<li><img src="../images/first/the2.png" /></li>
+				<li><img src="../images/first/the3.png" /></li>
+				<li><img src="../images/first/the4.png" /></li>
+			</ul>
+		</div>
+	</div>
+
+	<script>
+		var isround = "";
+		var scrollmove = "";
+		var masktime = 10;
+		var focus_cur = 1;
+		var p = document.getElementById("pic").getElementsByTagName("li");
+		var h = document.getElementById("tip").getElementsByTagName("li");
+		function change(id) {
+			clearTimeout(isround);
+			clearInterval(scrollmove);
+			for (var i = 1; i <= h.length; i++) {
+				if (i == id) {
+					document.getElementById("smallimg_" + i).className = "current";
+				} else {
+					document.getElementById("smallimg_" + i).className = "";
+				}
+			}
+			if ((next = id + 1) > h.length) {
+				next = 1;
+			}
+			isround = setTimeout("change(" + next + ")", 8000);
+			scrollmove = setInterval("scrollMove(" + id + ")", masktime);
+			focus_cur = id;
+		}
+		function scrollMove(m) {
+			var srl = document.getElementById("pic").scrollLeft;
+			var dsrl = Math.floor((p[0].clientWidth * (m - 1) - srl) / 5);
+			var xsrl = Math.ceil((p[0].clientWidth * (m - 1) - srl) / 5);
+			if (srl > p[0].clientWidth * (m - 1)) {
+				document.getElementById("pic").scrollLeft = srl + dsrl;
+			} else if (srl < p[0].clientWidth * (m - 1)) {
+				document.getElementById("pic").scrollLeft = srl + xsrl;
+			} else {
+				clearInterval(scrollmove);
+			}
+		}
+		isround = setTimeout("change(2)", 8000);
+	</script>
+	<div class="configFoot"></div>
+</body>
+</html>

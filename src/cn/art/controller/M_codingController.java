@@ -425,8 +425,9 @@ public class M_codingController {
 	@ResponseBody
 	public String save(Color item) {
 		String message = "0";// 插入新类型成功
+		System.out.println("load/savecolorType  ");
 		if (item.getCid() != null) {
-			//System.out.println("1111111111111111111111111111111111111111111111111111111111111111111111  "+item.getCid());
+			System.out.println("1111111111111111111111111111111111111111111111111111111111111111111111  "+item.getCid());
 			//colorService.updateByPrimaryKey(item);
 			colorService.updateByPrimaryKeySelective(item);
 			message = "1";// 更新类型成功
