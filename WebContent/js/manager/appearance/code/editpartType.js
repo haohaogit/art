@@ -9,13 +9,13 @@ $(".cancelbtn").click(function(){
 	$(".savebtn").click(function(){
 		debugger
 		var form = $("#editForm");
-		 var params = form.serialize();
-	     var action = form.attr("action");
+		var params = form.serialize();
+	    var action = form.attr("action");
 	     //如果验证通过
-			$.post(action, params, function(data) {
-				alert("保存成功！");
-			});
-			 window.location.href= listUrl;
+		$.post(action, params, function(data) {
+			alert("保存成功111！");
+			window.location.href= listUrl;
+		});
 	});
 	
 	
@@ -42,6 +42,7 @@ $(".cancelbtn").click(function(){
 	
 	for(var i=1;i<5;i++){
 		oldfilename=$('#pimg'+i).val();
+		alert("contextPath "+contextPath);
 		if(oldfilename!=""){
 			$('#filename'+i).html('<a  href="'+contextPath+'/file/download?filename='+encodeURIComponent(oldfilename)+
 					'"><div class="file-item thumbnail upload-state-done" style="	margin-bottom: 15px;margin-top: 12; display:inline-block ;margin-right:12px;width:170px;"><img src="'+contextPath+

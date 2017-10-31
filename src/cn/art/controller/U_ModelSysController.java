@@ -31,6 +31,7 @@ import cn.art.util.pojo.colorB;
 import cn.art.util.pojo.commandImg;
 import cn.art.util.pojo.outlineB;
 import cn.art.util.pojo.partB;
+import cn.art.util.pojo.survey2;
 import cn.art.util.pojo.textureB;
 import cn.art.util.pojo.typeIdName;
 
@@ -148,6 +149,38 @@ public class U_ModelSysController {
 		//System.out.println("cccccccccccccccccccccccc");
 		return outlineBs;
 	}
+	
+	@RequestMapping("getHref")
+	@ResponseBody
+	public survey2 getHref(Model model,String tname,HttpServletRequest request){
+		
+		List<typeIdName> typeIdNames = typeService.selectAllByName(tname);
+		int tid = 0;
+		for (typeIdName typeIdName : typeIdNames) {
+			tid = typeIdName.getTid();
+			break;
+		}
+		survey2 survey2 =surveyService.selectByTid(tid);
+		
+		System.out.println("cccccccccccccccccccccccc"+survey2.getWordresult());
+		return survey2;
+	}
+	@RequestMapping("cihuidui/getHref")
+	@ResponseBody
+	public survey2 getHref1(Model model,String tname,HttpServletRequest request){
+		
+		List<typeIdName> typeIdNames = typeService.selectAllByName(tname);
+		int tid = 0;
+		for (typeIdName typeIdName : typeIdNames) {
+			tid = typeIdName.getTid();
+			break;
+		}
+		survey2 survey2 =surveyService.selectByTid(tid);
+		
+		System.out.println("cccccccccccccccccccccccc"+survey2.getWordresult());
+		return survey2;
+	}
+	
 	//  获取面板色彩
 	@RequestMapping("getcolor")
 	@ResponseBody
@@ -275,7 +308,7 @@ public class U_ModelSysController {
 	@RequestMapping("gettexture")
 	@ResponseBody
 	public List<textureB> getpanelTexture(Model model,String tname,HttpServletRequest request){
-		//System.out.println("sc "+sc);
+		System.out.println("tname "+tname);
 		List<textureB> listbBs = new ArrayList<textureB>();
 		List<typeIdName> typeIdNames = typeService.selectAllByName(tname);
 		int tid = 0;
@@ -506,7 +539,11 @@ public class U_ModelSysController {
 		
 		String bgimg = img;
 		
-		bgimg = "C:/Users/Administrator/git/art0804/WebContent/images/"+img+".jpg";
+		String basePath = request.getSession().getServletContext().getRealPath("/");
+		String path = basePath.replace('\\', '/');
+		System.out.println("basePath "+basePath);
+		bgimg = basePath+"image/"+img+".jpg";
+		
 		System.out.println("bgimg "+bgimg);
 		
 		
@@ -553,7 +590,7 @@ public class U_ModelSysController {
             in.close();
             
             //生成推荐的图片  参数1：第一个色彩块RGB值，参数2：每个色彩快中RGB的组数，参数3：所选图片底图，参数4：当前时间戳
-            
+            System.out.println("image  11111111111");
             args = new String[] { "python", "D:\\20170602\\PycharmProjects\\firstDL_netEast\\scarvesColorGenColorImage.py",colorgene[0],RgbNum.get(timeid1), backimg.get(timeid1),timeid1};
             pr = Runtime.getRuntime().exec(args);
 
@@ -561,6 +598,7 @@ public class U_ModelSysController {
             
             while ((line = in.readLine()) != null) {
                 //line = decodeUnicode(line);
+            	System.out.println("image  11111111111");
                 System.out.println(line);
                
             }

@@ -177,7 +177,8 @@ var talgorithm=$("#talgorithm").attr("value");
  				//async:true,  //
  				success: function(data){
  					alert("编辑数据成功");
- 					window.location.href= listUrl;
+ 					window.location.href= contextPath + "/manager/productMaintenance/edit?tt=0.6675290000631579&id=1";
+ 					//window.location.href= listUrl;
  				},
  				error: function(){
  					alert("编辑数据失败");

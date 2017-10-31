@@ -351,7 +351,7 @@ function fillCodeCcontent(data){
 				  a1Html+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>轮廓编码</div></div><div class='macro'>";
 			  }
 			  if(a1<4){
-				  a1Html+="<div class='hengStep isclick'><div><img class='imgfabric' src='"+data[i].caseimg+"' data-oid='"+data[i].id+"'/></div>";
+				  a1Html+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-oid='"+data[i].id+"'/></div>";
 				  a1Html+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
 				  a1++;
 			  }/*else{
@@ -366,7 +366,7 @@ function fillCodeCcontent(data){
 					b1Html+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>色彩编码</div></div><div class='macro'>";
 				}
 				if(b1<4){
-					b1Html+="<div class='hengStep isclick'><div><img class='imgfabric' src='"+data[i].caseimg+"' data-bcid='"+data[i].id+"'/></div>";
+					b1Html+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-bcid='"+data[i].id+"'/></div>";
 					b1Html+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
 					b1++;
 				}/*else{
@@ -381,7 +381,7 @@ function fillCodeCcontent(data){
 					  c1Html+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>部件编码</div></div><div class='macro'>";
 				  }
 				  if(c1<4){
-					  c1Html+="<div class='hengStep isclick'><div><img class='imgfabric' src='"+data[i].caseimg+"' data-bcid='"+data[i].id+"'/></div>";
+					  c1Html+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-bcid='"+data[i].id+"'/></div>";
 					  c1Html+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
 					  c1++;
 				  }/*else{
@@ -396,7 +396,7 @@ function fillCodeCcontent(data){
 					d1Html+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>材质编码</div></div><div class='macro'>";
 				}
 				if(d1<4){
-					d1Html+="<div class='hengStep isclick'><div><img class='imgfabric' src='"+data[i].caseimg+"' data-bcid='"+data[i].id+"'/></div>";
+					d1Html+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-bcid='"+data[i].id+"'/></div>";
 					d1Html+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
 					d1++;
 				}/*else{
@@ -411,19 +411,19 @@ function fillCodeCcontent(data){
 	}
 	var html="";
 	if(a1!=0){
-		a1Html+="</div><div><img class='loadMore more1' src='../images/appearance/waiguan (18).png' /></div>";
+		a1Html+="</div><div><img class='loadMore more1' src='../image/waiguan (18).png' /></div>";
 		
 	}
 	if(b1!=0){
-		b1Html+="</div><div><img class='loadMore more2' src='../images/appearance/waiguan (18).png' /></div>";
+		b1Html+="</div><div><img class='loadMore more2' src='../image/waiguan (18).png' /></div>";
 		
 	}
 	if(c1!=0){
-		c1Html+="</div><div><img class='loadMore more3' src='../images/appearance/waiguan (18).png' /></div>";
+		c1Html+="</div><div><img class='loadMore more3' src='../image/waiguan (18).png' /></div>";
 		
 	}
 	if(d1!=0){
-		d1Html+="</div><div><img class='loadMore more4' src='../images/appearance/waiguan (18).png' /></div>";
+		d1Html+="</div><div><img class='loadMore more4' src='../image/waiguan (18).png' /></div>";
 		
 	}
 	html=html+a1Html+b1Html+c1Html+d1Html;

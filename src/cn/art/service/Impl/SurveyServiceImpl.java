@@ -10,6 +10,7 @@ import cn.art.model.Survey;
 import cn.art.service.SurveyService;
 import cn.art.service.TypeService;
 import cn.art.util.JsonConvert;
+import cn.art.util.pojo.survey2;
 import cn.art.util.pojo.surveyCA;
 
 @Service("SurveyService")
@@ -369,6 +370,19 @@ public class SurveyServiceImpl implements SurveyService {
 			break;
 		}
 		return survey1;
+	}
+
+	@Override
+	public survey2 selectByTid(Integer tid) {
+		// TODO Auto-generated method stub
+		List<Survey> surveys = surveyMapper.selectByTID(tid);
+		survey2 survey2 = new survey2();
+		for (Survey survey : surveys) {
+			survey2.setWordresult(survey.getWordresult());
+			survey2.setWordsurvey(survey.getWordsurvey());
+			break;
+		}
+		return survey2;
 	}
 	
 

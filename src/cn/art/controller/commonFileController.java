@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -32,23 +33,39 @@ public class commonFileController {
 		if (!file.isEmpty()) {
 			// 上传文件路径
 			String projectName = "art";// 项目名
-			String basePath = request.getSession().getServletContext().getRealPath("");
+			String basePath = request.getSession().getServletContext().getRealPath("/");
+			
+			System.out.println("basePath " + basePath);
 			int num = basePath.indexOf(".metadata");
-			String path = basePath.substring(0, num).replace('/', '\\') + projectName + "\\WebContent\\image\\";
-			// String path = "D:\\image";
+			String path = basePath.replace('/', '\\') + "\\image\\";
+			
+			
+			//String path = "C:\\Users\\Administrator\\git\\art0804\\WebContent\\image\\";
+			//String path = "C:\\Users\\Administrator\\workspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp1\\wtpwebapps\\art0804\\image\\";
+			//String path = "\\image111";
 			// String path = request.getServletContext().getRealPath("/image/");
 			System.out.println("file " + file);
 			// 上传文件名
 			String filename = file.getOriginalFilename();
-			System.out.println("filename " + filename);
+			
 			File filepath = new File(path, filename);
 			System.out.println("filepath " + filepath);
 			// 判断路径是否存在，如果不存在就创建一个
 			if (!filepath.getParentFile().exists()) {
 				filepath.getParentFile().mkdirs();
 			}
+			System.out.println("filename " + filename);
 			// 将上传文件保存到一个目标文件夹中
 			// 保存
+			
+			String[] fm = filename.split("\\.");
+			//获取当前时间
+			long currenttime = new Date().getTime();
+			String current_time = "_"+currenttime+"";
+			//拼接带有当前时间戳的文件名
+			filename = fm[0]+current_time+"."+fm[1];
+			System.out.println("filename1111111 " + filename);
+			
 			try {
 				file.transferTo(new File(path + File.separator + filename));
 			} catch (Exception e) {

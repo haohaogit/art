@@ -1,5 +1,6 @@
 package cn.art.controller;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -115,12 +116,28 @@ public class U_corpusController {
 	//问卷调查与检验 物件类型默认接口
 	@RequestMapping("question")
 	@ResponseBody
-	public Survey corpusQuestion(Model model,String tname,HttpServletRequest request){
-		Survey survey = new Survey();
+	public Survey corpusQuestion(Model model,String tname,HttpServletRequest request) throws UnsupportedEncodingException{
+		String str = java.net.URLDecoder.decode(tname, "UTF-8");
+		tname = java.net.URLDecoder.decode(str, "UTF-8"); 
+		/*String tString = "";
+		System.out.println("survey 11111111111111  000000000000 tname "+tname);
+		if("gao"==tname){
+			System.out.println("survey 444411111111111111   ");
+			tString = "高脚杯";
+		}else if("ran"!=tname){
+			System.out.println("survey  000000000000 tname ");
+			tString = "燃气灶";
+		}else if("you"==tname){
+			tString = "游艇";
+		}else if("zhi"==tname){
+			tString = "织物";
+		}*/
 		
+		Survey survey = new Survey();
+		System.out.println("survey 11111111111111  000000000000 tstring "+tname);
 		survey = seurveyService.selectByTname(tname);
-		/*System.out.println("survey.getWordsurvey "+survey.getWordsurvey());
-		System.out.println("survey 11111111111111  000000000000");*/
+		System.out.println("survey.getWordsurvey "+survey.getWordsurvey());
+		
 		return survey;
 	}
 	

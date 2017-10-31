@@ -151,6 +151,7 @@
 		</div>
 <script type="text/javascript">
 	var contextPath='${contextPath}';
+	//alert(contextPath);
 </script>
 <script type="text/javascript" src="${contextPath}/js/manager/appearance/code/editpartType.js"></script>
 </body>

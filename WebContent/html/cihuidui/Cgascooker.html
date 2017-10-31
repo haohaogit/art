@@ -282,6 +282,30 @@
 </head>
 
 <body>
+	<script type="text/javascript" src="../js/image.js"></script>
+	<script type="text/javascript">
+	        $(document).ready(function () {
+
+			  //请求物件类型
+			  alert("111111111111");
+			  debugger;
+			  	$.ajax("getHref?tname=燃气灶",
+		                // 发送请求的URL字符串
+		                {
+		                    type: "get",      //
+		                    async:true,  //
+		                    success: function(data){
+								//alert("dimension test  words");
+								fillwordSurveyHref(data);
+								
+		                    },
+		                    error: function(){
+		                        alert("数据发送失败denglu");
+		                    }
+		                });
+
+	        });
+	</script>
     <div>
 
         <div id="inputcorpus">
@@ -446,9 +470,13 @@
 
 
         <!-- <button onclick="getScore()">!!获取评分数!!</button> -->
-        <div id="showicon">
-                <img id="pic1" src="../images/vocabularys/semantic-dimension-survey/j1.png" />
-                <img id="pic2" src="../images/vocabularys/semantic-dimension-survey/j2.png" />
+        <div id="showicon" style="display: flex;justify-content: center;">
+        	<div class="href1" onclick="window.open(this.getAttribute('data-url'))" data-url="">
+        		<img id="pic1" src="../images/vocabularys/semantic-dimension-survey/j1.png" />
+        	</div>
+        	<div class="href1" onclick="window.open(this.getAttribute('data-url'))" data-url="">
+        		<img id="pic2" src="../images/vocabularys/semantic-dimension-survey/j2.png" />
+        	</div>
         </div>
 
         <div id="geneBottomBtn" style="text-align: center;margin-top: 24px;">

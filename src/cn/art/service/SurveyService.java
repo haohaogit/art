@@ -3,6 +3,7 @@ package cn.art.service;
 import java.util.List;
 
 import cn.art.model.Survey;
+import cn.art.util.pojo.survey2;
 import cn.art.util.pojo.surveyCA;
 
 public interface SurveyService {
@@ -16,6 +17,7 @@ public interface SurveyService {
     Survey selectByTname(String tname);
     List<Survey> selectByTID(Integer tid);
     Survey selectByTID1(Integer tid);
+    survey2 selectByTid(Integer tid);
     String selectSurveysByTID(Integer tid);
 
     int updateByPrimaryKeySelective(Survey record);

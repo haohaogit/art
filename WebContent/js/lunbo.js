@@ -127,7 +127,7 @@ function AddCarousel(baseObj) {
         
         var ss = $(this).html();
         var crgb = $(ss).attr('alt');
-        alert("crgb "+crgb);
+        //alert("crgb "+crgb);
         //alert("timeid "+timeid);
         $.ajax("adjust/color/gascooker/"+timeid+"?crgb="+crgb,
                 // 发送请求的URL字符串

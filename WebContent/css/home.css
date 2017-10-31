@@ -19,7 +19,7 @@
 	float:left;
 }
 #rightHead{
-	background-image:url("../images/first/navigationBackground.gif");
+	background-color: #00a5bd;
 	height:96px;
 	float:left;
 }
@@ -138,8 +138,8 @@ input[type=text],textarea{border-radius:5px;}
 
 #focus #tip{text-align:center;margin:-32px 0 0;position:absolute;z-index:13;left:44%;overflow:hidden;}
 #focus #tip ul{padding: 0px;overflow:hidden;width: 120px;list-style:none;}
-#focus #tip ul li{width:14px;height:14px;float:left;display:inline;margin:0 5px;cursor:pointer;background:url(../images/first/imgLi.png) no-repeat;}
-#focus #tip ul li.current{background:url(../images/first/imgLiCurrent.png) no-repeat;}
+#focus #tip ul li{width:14px;height:14px;float:left;display:inline;margin:0 5px;cursor:pointer;background:url(../image/imgLi.png) no-repeat;}
+#focus #tip ul li.current{background:url(../image/imgLiCurrent.png) no-repeat;}
 
 #show{
 	text-align: center;

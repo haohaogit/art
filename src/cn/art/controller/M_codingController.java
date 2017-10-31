@@ -396,7 +396,7 @@ public class M_codingController {
 	public String save(Texture item) {
 		String message = "0";// 插入新类型成功
 		if (item.getTextureid() != null) {
-			textureService.updateByPrimaryKey(item);
+			textureService.updateByPrimaryKeySelective(item);
 			message = "1";// 更新类型成功
 			return message;
 		}
@@ -410,8 +410,10 @@ public class M_codingController {
 	@ResponseBody
 	public String save(Part item) {
 		String message = "0";// 插入新类型成功
+		System.out.println("load/savecolorType  ");
 		if (item.getPid() != null) {
-			partService.updateByPrimaryKey(item);
+			System.out.println("1111111111111111111111111111111111111111111111111111111111111111111111  "+item.getPid());
+			partService.updateByPrimaryKeySelective(item);
 			message = "1";// 更新类型成功
 			return message;
 		}
@@ -444,7 +446,7 @@ public class M_codingController {
 	public String save(OutLine item) {
 		String message = "0";// 插入新类型成功
 		if (item.getOid() != null) {
-			outLineService.updateByPrimaryKey(item);
+			outLineService.updateByPrimaryKeySelective(item);
 			message = "1";// 更新类型成功
 			return message;
 		}

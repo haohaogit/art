@@ -13,7 +13,7 @@ function fillModelFabric(data){
 			  if(aHtml==""){
 				  aHtml+="<div class='lunkuo'><div class='descri' >鸟纹图案轮廓</div></div><div class='macro'>";
 			  }
-			  aHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='"+data[i].oimg+"' data-oid='"+data[i].oid+"'/></div>";
+			  aHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].oimg+"' data-oid='"+data[i].oid+"'/></div>";
 			  aHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].oname+"</div></div></div>";
 			 
 			  break;
@@ -23,7 +23,7 @@ function fillModelFabric(data){
 					bHtml+="<div class='lunkuo'><div class='descri' >花草图案轮廓</div></div><div class='macro'>";
 				}
 				
-				bHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='"+data[i].oimg+"' data-oid='"+data[i].oid+"'/></div>";
+				bHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].oimg+"' data-oid='"+data[i].oid+"'/></div>";
 				bHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].oname+"</div></div></div>";
 			
 			    break;
@@ -32,7 +32,7 @@ function fillModelFabric(data){
 					  cHtml+="<div class='lunkuo'><div class='descri' >几何图案轮廓</div></div><div class='macro'>";
 				  }
 				
-				  cHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='"+data[i].oimg+"' data-oid='"+data[i].oid+"'/></div>";
+				  cHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].oimg+"' data-oid='"+data[i].oid+"'/></div>";
 				  cHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].oname+"</div></div></div>";
 				 
 				  break;
@@ -42,7 +42,7 @@ function fillModelFabric(data){
 					dHtml+="<div class='lunkuo'><div class='descri' >鸟纹图案轮廓</div></div><div class='macro'>";
 				}
 				
-				dHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='"+data[i].oimg+"' data-oid='"+data[i].oid+"'/></div>";
+				dHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].oimg+"' data-oid='"+data[i].oid+"'/></div>";
 				dHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].oname+"</div></div></div>";
 				
 			    break;
@@ -58,7 +58,7 @@ function fillModelFabric(data){
 function filllunbo(data){
 	var aHtml="<ul>";
 	for(var i=0;i<data.length;i++){
-		aHtml+="<li class='lunbo-item LColor'><img src='"+data[i].cimg+"' alt='"+data[i].crgb+"'><span>"+data[i].cid+"</span></li>";
+		aHtml+="<li class='lunbo-item LColor'><img src='../image/"+data[i].cimg+"' alt='"+data[i].crgb+"'><span>"+data[i].crgb+"</span></li>";
 	}
 	aHtml+="</ul>";
 	$(".lunbo-window").html(aHtml);
@@ -68,7 +68,7 @@ function filllunbo(data){
 function filllunboTexture(data){
 	var aHtml="<ul>";
 	for(var i=0;i<data.length;i++){
-		aHtml+="<li class='lunbo-item LTexture'><img src='"+data[i].timg+"' alt='"+data[i].textureid+"'><span>id "+data[i].textureid+"</span></li>";
+		aHtml+="<li class='lunbo-item LTexture'><img src='../image/"+data[i].timg+"' alt='"+data[i].textureid+"'><span>id "+data[i].textureid+"</span></li>";
 	}
 	aHtml+="</ul>";
 	$(".lunbo-window").html(aHtml);
@@ -78,7 +78,7 @@ function filllunboTexture(data){
 function filllunboTextureFabric(data){
 	var aHtml="<ul>";
 	for(var i=0;i<data.length;i++){
-		aHtml+="<li class='lunbo-item TextureFabric'><img src='"+data[i].timg+"' alt='"+data[i].textureid+"'><span>id "+data[i].textureid+"</span></li>";
+		aHtml+="<li class='lunbo-item TextureFabric'><img src='../image/"+data[i].timg+"' alt='"+data[i].textureid+"'><span>id "+data[i].textureid+"</span></li>";
 	}
 	aHtml+="</ul>";
 	$(".lunbo-window").html(aHtml);
@@ -88,7 +88,7 @@ function filllunboTextureFabric(data){
 function filllunbopartFabric(data){
 	var aHtml="<ul>";
 	for(var i=0;i<data.length;i++){
-		aHtml+="<li class='lunbo-item PartFabric'><img src='"+data[i].pimg+"' alt='"+data[i].pid+"'><span>id "+data[i].pid+"</span></li>";
+		aHtml+="<li class='lunbo-item PartFabric'><img src='../image/"+data[i].pimg+"' alt='"+data[i].pid+"'><span>id "+data[i].pid+"</span></li>";
 	}
 	aHtml+="</ul>";
 	$(".lunbo-window").html(aHtml);
@@ -98,7 +98,7 @@ function filllunbopartFabric(data){
 function filllunboPart(data){
 	var aHtml="<ul>";
 	for(var i=0;i<data.length;i++){
-		aHtml+="<li class='lunbo-item LPart'><img src='"+data[i].pimg+"' alt='"+data[i].pid+"'><span>"+data[i].pid+"</span></li>";
+		aHtml+="<li class='lunbo-item LPart'><img src='../image/"+data[i].pimg+"' alt='"+data[i].pid+"'><span>"+data[i].pid+"</span></li>";
 	}
 	aHtml+="</ul>";
 	$(".lunbo-window").html(aHtml);
@@ -113,4 +113,10 @@ function filllunboFabric(timeid){
 	aHtml+="</ul>";
 	$(".lunbo-window").html(aHtml);
 	AddCarousel();
+}
+
+
+function fillwordSurveyHref(data){
+	$('.href1').eq(0).attr('data-url',data.wordsurvey);
+	$('.href1').eq(1).attr('data-url',data.wordresult);
 }

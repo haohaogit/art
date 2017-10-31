@@ -1,5 +1,6 @@
 package cn.art.controller;
 
+import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -110,6 +111,9 @@ public class U_codingController {
 	@RequestMapping("")
 	@ResponseBody
 	public List<codeMerge> codeingDefault(Model model,String tname, HttpServletRequest request){
+		
+		tname = URLDecoder.decode(tname);
+		System.out.println("tname "+tname);
 		List<codeMerge> codeMerges = new ArrayList<codeMerge>();
 		codeMerge codeMerge;
 		
@@ -122,6 +126,7 @@ public class U_codingController {
 		
 		List<OutLine> outLines = outLineService.selectByTID(tid);
 		for (OutLine outLine : outLines) {
+			System.out.println("outLine.getOimg() "+outLine.getOimg());
 			codeMerge = new codeMerge();
 			codeMerge.setType("outline");
 			codeMerge.setId(outLine.getOid());

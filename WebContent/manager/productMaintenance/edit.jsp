@@ -99,7 +99,7 @@
 				          		<button type="button" class="btn btn-default talgorithmbtn"  id="gaojiaobei" data="111">高脚杯算法</button>
 				          		<button type="button" class="btn btn-default talgorithmbtn"  id="youting"   data="222">游艇算法</button>
 				          		<button type="button" class="btn btn-default talgorithmbtn"  id="zhiwu"  data="333">织物算法</button>
-				          		<button type="button" class="btn btn-default talgorithmbtn"  id="meiqizao"   data="444">煤气灶算法</button>
+				          		<button type="button" class="btn btn-default talgorithmbtn"  id="meiqizao"   data="444">燃气灶算法</button>
 				          		<form:input path="talgorithm"   class="form-control " size="10" type="hidden"/>
 				          	</span>
 					     </p>
