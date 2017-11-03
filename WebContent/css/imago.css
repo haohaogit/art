@@ -55,10 +55,11 @@ a{
 
 #leftBody{
 	float:left;
-	width:17.3%;
+	/* width:17.3%; */
+	width:17%;
 	text-align:left;
 	background-color: white;
-	padding: 5px 10px 10px 10px;
+	padding: 5px 0px 10px 0px;
 }
 #leftBody div{
 	margin: 5px 5px 5px 5px;
@@ -107,7 +108,10 @@ a{
 
 #rightBody{
 	float:left;
-	width: 63.7%;
+	/* width: 63.7%; */
+	/* width: 64.5%; */
+	width: 856.6px;
+	margin-left: 11px;
 	text-align:left;
 	background-color: white;
 }
@@ -131,9 +135,10 @@ a{
 	width: 688px;
 	display: inline-block;
     vertical-align: top;
+    margin-top: 5px;
 }
 .imgicon{
-	margin-top: 10px;
+	margin-top: 5px;
 	width: 103px;
 }
 #picGene{
@@ -215,13 +220,27 @@ a{
 	margin-left: 4px;
 }
 #lunbo{
-	margin-top: 25px;
-	/*background-color: #31dd1a;*/
+	
 	height: 226px;
 
 }
 
-
+#beidu1{
+	color: white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 18px;
+	height: 37px;
+}
+#beibing1{
+	color: white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 18px;
+	height: 37px;
+}
 #upFooter{
 	overflow: hidden;
 }

@@ -47,7 +47,7 @@
 			margin-right: 11px;
 		}
 		#detailBox{
-			width: 740px;
+			
 	        height: 300px;
 	        background-color: #3a3b3b;
 	        position: fixed;
@@ -127,7 +127,9 @@
 	<div id="content">
 		<div id="leftBody">
 			<div id="base">
-				<a href="javascript:void(0)" id="baseToggle">底层案例库</a>
+				<a href="javascript:void(0)" id="baseToggle" class="kuohao"><div>底层案例库</div>
+					<div class="left-arrow arrow1">&lt;</div>
+				</a>
 				<ul id="baseContent">
 					<li><a href="javascript:void(0)" id="baseGoblet" class="facade1">高脚杯</a></li>
 					<li><a href="javascript:void(0)" id="baseYacht" class="facade1">游艇</a></li>
@@ -136,7 +138,9 @@
 				</ul>
 				</div>
 			<div id="code">
-				<a href="javascript:void(0)" id="codeToggle">编码案例库</a>
+				<a href="javascript:void(0)" id="codeToggle" class="kuohao"><div>编码案例库</div>
+					<div class="left-arrow arrow2">&lt;</div>
+				</a>
 				<ul id="codeContent">
 					<li><a href="javascript:void(0)" id="codeGoblet" class="facade1">高脚杯</a></li>
 					<li><a href="javascript:void(0)" id="codeYacht" class="facade1">游艇</a></li>
@@ -145,7 +149,9 @@
 				</ul>
 				</div>
 			<div id="new">
-				<a href="javascript:void(0)" id="newToggle">新造型库</a>
+				<a href="javascript:void(0)" id="newToggle" class="kuohao"><div>新造型库</div>
+					<div class="left-arrow arrow3">&lt;</div>
+				</a>
 				<ul id="newContent">
 					<li><a href="javascript:void(0)" id="newGoblet" class="facade1">高脚杯</a></li>
 					<li><a href="javascript:void(0)" id="newYacht" class="facade1">游艇</a></li>
@@ -156,9 +162,9 @@
 		</div>
 		<div id="rightBody">
 			<div id="iconAndcorpus">
-				<div id="introicon"><img class="imgicon" src="../images/genestyle/houseboat.png" style="width: 80px;" /></div>
+				<div id="introicon"><img class="imgicon" src="../image/houseboat.png" style="width: 80px;" /></div>
 				<div id="introduce">
-					<p id="corpus">底层啊啥的交换机啊啥的卡斯柯卡号的看见好多看哈的华盛asd请问萨达vvghgfhdg阿尔法啊啥的范围飞啊飞玩手动阀发阿斯蒂芬万二分阿斯蒂芬阿斯蒂芬顿奥德赛华盛顿看哈是读好书看哈的华盛顿很快的</p>
+					<lable id="corpus">底层啊啥的交换机啊啥的卡斯柯卡号的看见好多看哈的华盛asd请问萨达vvghgfhdg阿尔法啊啥的范围飞啊飞玩手动阀发阿斯蒂芬万二分阿斯蒂芬阿斯蒂芬顿奥德赛华盛顿看哈是读好书看哈的华盛顿很快的</lable>
 				</div>
 			</div>
 
@@ -326,38 +332,33 @@
 	<script type="text/javascript">
 	$("#baseContent").fadeOut(0);
 	$("#newContent").fadeOut(0);
+	$(".arrow1").css({transform:'rotate(270deg)'});
+	$(".arrow3").css({transform:'rotate(270deg)'});
 	
 	$("#baseToggle").click(function(){
-	    $("#baseContent").fadeToggle(0);
+	    $("#baseContent").fadeIn(0);  //淡入
+	    $("#codeContent").fadeOut(0);
+	    $("#newContent").fadeOut(0);
+	    $(".arrow1").css({transform:'rotate(90deg)'});
+	    $(".arrow2").css({transform:'rotate(270deg)'});
+		$(".arrow3").css({transform:'rotate(270deg)'});
 	  });
 	$("#codeToggle").click(function(){
-	    $("#codeContent").fadeToggle(0);
+	    $("#codeContent").fadeIn(0); 
+	    $("#baseContent").fadeOut(0);
+	    $("#newContent").fadeOut(0);
+	    $(".arrow1").css({transform:'rotate(270deg)'});
+	    $(".arrow2").css({transform:'rotate(90deg)'});
+		$(".arrow3").css({transform:'rotate(270deg)'});
 	  });
 	$("#newToggle").click(function(){
-	    $("#newContent").fadeToggle(0);
+	    $("#newContent").fadeIn(0); 
+	    $("#codeContent").fadeOut(0);
+	    $("#baseContent").fadeOut(0);
+	    $(".arrow1").css({transform:'rotate(270deg)'});
+		$(".arrow2").css({transform:'rotate(270deg)'});
+		$(".arrow3").css({transform:'rotate(90deg)'});
 	  });
-
-	// var load1=false;
-	// var load2=false;
-	// function loadmore(){
-	// 	if(load1){
-	// 		load1=false;
-	// 		$(".isLoadMore").css({display:'none'});
-	// 	}else{
-	// 		load1=true;
-	// 		$(".isLoadMore").css({display:'block'});
-	// 	}
-	// }
-
-	// function loadmore1(){
-	// 	if(load2){
-	// 		load2=false;
-	// 		$(".isLoadMore1").css({display:'none'});
-	// 	}else{
-	// 		load2=true;
-	// 		$(".isLoadMore1").css({display:'block'});
-	// 	}
-	// }
 
 
 
@@ -438,10 +439,10 @@
 			$("#detailBox").css({display:'block'});
 			//alert($(this).html());
 			var ht=$(this).html();
-			alert($(ht).find('img').attr('src'));
-			alert($(ht).find('img').attr('data-cid'));
+			/* alert($(ht).find('img').attr('src'));
+			alert($(ht).find('img').attr('data-cid')); */
 			//var img=$(this).attr("src");
-			getDetailInfo($(ht).find('img').attr('src'));
+			getDetailInfo($(ht).find('img').attr('data-cid'));
 			// $("#detailBox").css({display:'none'});
 			// var a = document.getElementById("detailBox");//获取div块对象
 		});
@@ -456,11 +457,33 @@
 	        var Sgao2= (Width - gao2)/2+"px";
 	        a.style.top=Sgao1;
 	        a.style.left=Sgao2;
-	        $("#mainpic").attr("src",msg);
-	        $(".p3").html("w1(455,0),w1(455,0),w1(455,0),w1(455,0),w1(455,0),w1(455,0),w1(455,0),w1(455,0),w1(455,0)");
 	        
-	       
-
+	        $.ajax("facade/code/detail/color?id="+msg,
+	        	{
+                    type: "get",      //
+                    async:true,  //
+                    success: function(data){
+						
+						filldetailInfo(data);
+						
+                    },
+                    error: function(){
+                        alert("数据发送失败denglu");
+                    }
+	        });
+	        //$("#mainpic").attr("src",msg);
+	        
+		}
+		
+		function filldetailInfo(data){
+			$("#mainpic").attr("src","../image/"+data.img);
+			var ahtml = "";
+			ahtml = ahtml + "<div>"+data.description+"<label id='p1'></label></div>";
+			ahtml = ahtml + "<div>色彩类型： <label id='p2'>"+data.typeName+"</label></div>";
+			ahtml = ahtml + "<div>色彩RGB值：<div><label id='p3'>"+data.rgb+"</label></div></div>";
+			ahtml = ahtml + "<div>色彩6数值： <label id='p2'>"+data.colornum+"</label></div>";
+			$(".contentinfo").html(ahtml);
+			
 		}
 		
 	</script>

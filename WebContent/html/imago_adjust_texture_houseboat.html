@@ -10,9 +10,9 @@
 	<style>
 		#warmcolor{
 			background-color: #00A5BD;
-			width: 86px;
+			width: 106px;
 			float: left;
-			height: 26px;
+			height: 37px;
 		}
 		#coldcolor{
     		margin-left: 2px;
@@ -99,9 +99,9 @@
 				</canvas>
 			</div>
 
-			<div id="partStyle">
+			<div id="partStyle" style="height:37px;">
 				<div id="warmcolor">
-					<a href="javascript:void(0)" id="beidu1" style="color: white;padding-left: 11px;">材质类型</a>
+					<a href="javascript:void(0)" id="beidu1" style="color: white;">材质类型</a>
 				</div>
 			</div>
 
@@ -111,15 +111,15 @@
 					<div class="right-arrow arrow">&gt;</div>
 					<div class="lunbo-window">
 						<ul>
-							<li class="lunbo-item"><img src="../images/appearance/color (1).png" alt=""><span>xin1</span></li>
-							<li class="lunbo-item"><img src="../images/appearance/color (2).png" alt=""><span>xin2</span></li>
-							<li class="lunbo-item"><img src="../images/appearance/color (3).png" alt=""><span>xin3</span></li>
-							<li class="lunbo-item"><img src="../images/appearance/color (4).png" alt=""><span>xin4</span></li>
-							<li class="lunbo-item"><img src="../images/appearance/color (5).png" alt=""><span>xin5</span></li>
-							<li class="lunbo-item"><img src="../images/appearance/color (6).png" alt=""><span>xin6</span></li>
-							<li class="lunbo-item"><img src="../images/appearance/color (7).png" alt=""><span>xin7</span></li>
-							<li class="lunbo-item"><img src="../images/appearance/color (8).png" alt=""><span>xin8</span></li>
-							<li class="lunbo-item"><img src="../images/appearance/color (1).png" alt=""><span>xin1</span></li>
+							<li class="lunbo-item"><img src="../image/color (1).png" alt=""><span>xin1</span></li>
+							<li class="lunbo-item"><img src="../image/color (2).png" alt=""><span>xin2</span></li>
+							<li class="lunbo-item"><img src="../image/color (3).png" alt=""><span>xin3</span></li>
+							<li class="lunbo-item"><img src="../image/color (4).png" alt=""><span>xin4</span></li>
+							<li class="lunbo-item"><img src="../image/color (5).png" alt=""><span>xin5</span></li>
+							<li class="lunbo-item"><img src="../image/color (6).png" alt=""><span>xin6</span></li>
+							<li class="lunbo-item"><img src="../image/color (7).png" alt=""><span>xin7</span></li>
+							<li class="lunbo-item"><img src="../image/color (8).png" alt=""><span>xin8</span></li>
+							<li class="lunbo-item"><img src="../image/color (1).png" alt=""><span>xin1</span></li>
 							
 						</ul>
 					</div>
@@ -129,7 +129,7 @@
 			</div>
 
 			<div id="geneBottomBtn">
-				<button type="submit" id="save">确定</button>
+				<button type="submit" id="save" onclick="saveTexture()">确定</button>
 				<button type="submit" class="cancel">取消</button>
 				<button type="submit" class="cancel" onclick="returned()">返回上一步</button>
 			</div>
@@ -141,11 +141,16 @@
 
 	<script type="text/javascript" src="../js/lunbo.js"></script>
 	<script type="text/javascript">
+		function saveTexture(){
+			//alert("燃气灶材质保存，然后调整部件");
+			window.location.href="imago_adjust_part_houseboat.html?timeid=0";
+		}
+	
 		$(".lunbo-item").click(function(){
   			var ht = $(this).html();
   			//$(ht).find('img').attr("src");
   			//alert(ht);
-  			alert($(ht).attr('src'));
+  			alert("图片名："+$(ht).attr('src')+",  修改该类型材质功能暂未实现！");
   		});
 
   		function returned(){

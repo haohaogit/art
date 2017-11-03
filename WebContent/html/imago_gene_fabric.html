@@ -25,9 +25,9 @@
 		  	var lastNimg = img[img.length-1];
 		  	lastNimg = lastNimg.split(".");
 		  	
-		  	alert("lastNimg "+lastNimg[0]);
+		  	//alert("lastNimg "+lastNimg[0]);
 		  	img_timeid = img_timeid+lastNimg[0]+"_";
-		  	alert("sc = "+sc+" img = "+img); 
+		  	//alert("sc = "+sc+" img = "+img); 
 		  	$.ajax("setparam/fabric/"+lastNimg[0]+"?sc="+sc,
 		  	//$.ajax("adjust/color/gk/"+timeid+"?crgb="+crgb,
             // 发送请求的URL字符串
@@ -74,10 +74,10 @@
 					
 				</a>
 				<ul id="geneContent">
-					<li><a href="javascript:void(0)" id="genegoblet" class="errorOperate">高脚杯</a></li>
-					<li><a href="javascript:void(0)" id="geneyacht" class="errorOperate">游艇</a></li>
+					<!-- <li><a href="javascript:void(0)" id="genegoblet" class="errorOperate">高脚杯</a></li>
+					<li><a href="javascript:void(0)" id="geneyacht" class="errorOperate">游艇</a></li> -->
 					<li><a href="javascript:void(0)" id="genehanky">织物</a></li>
-					<li><a href="javascript:void(0)" id="generange" class="errorOperate">燃气灶</a></li>
+					<!-- <li><a href="javascript:void(0)" id="generange" class="errorOperate">燃气灶</a></li> -->
 				</ul>
 			</div>
 			<div id="adjustStyle">

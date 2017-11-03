@@ -144,7 +144,9 @@
 	<div id="content">
 		<div id="leftBody">
 			<div id="base">
-				<a href="javascript:void(0)" id="baseToggle">底层案例库</a>
+				<a href="javascript:void(0)" id="baseToggle" class="kuohao"><div>底层案例库</div>
+					<div class="left-arrow arrow1">&lt;</div>
+				</a>
 				<ul id="baseContent">
 					<li><a href="javascript:void(0)" id="baseGoblet" class="facade1">高脚杯</a></li>
 					<li><a href="javascript:void(0)" id="baseYacht" class="facade1">游艇</a></li>
@@ -153,7 +155,9 @@
 				</ul>
 				</div>
 			<div id="code">
-				<a href="javascript:void(0)" id="codeToggle">编码案例库</a>
+				<a href="javascript:void(0)" id="codeToggle" class="kuohao"><div>编码案例库</div>
+					<div class="left-arrow arrow2">&lt;</div>
+				</a>
 				<ul id="codeContent">
 					<li><a href="javascript:void(0)" id="codeGoblet" class="facade1">高脚杯</a></li>
 					<li><a href="javascript:void(0)" id="codeYacht" class="facade1">游艇</a></li>
@@ -162,7 +166,9 @@
 				</ul>
 				</div>
 			<div id="new">
-				<a href="javascript:void(0)" id="newToggle">新造型库</a>
+				<a href="javascript:void(0)" id="newToggle" class="kuohao"><div>新造型库</div>
+					<div class="left-arrow arrow3">&lt;</div>
+				</a>
 				<ul id="newContent">
 					<li><a href="javascript:void(0)" id="newGoblet" class="facade1">高脚杯</a></li>
 					<li><a href="javascript:void(0)" id="newYacht" class="facade1">游艇</a></li>
@@ -173,9 +179,9 @@
 		</div>
 		<div id="rightBody">
 			<div id="iconAndcorpus">
-				<div id="introicon"><img class="imgicon" src="../images/genestyle/golbet.png" style="width: 80px;" /></div>
+				<div id="introicon"><img class="imgicon" src="../image/golbet.png" style="width: 80px;" /></div>
 				<div id="introduce">
-					<p id="corpus">底层啊啥的交换机啊啥的卡斯柯卡号的看见好多看哈的华盛asd请问萨达vvghgfhdg阿尔法啊啥的范围飞啊飞玩手动阀发阿斯蒂芬万二分阿斯蒂芬阿斯蒂芬顿奥德赛华盛顿看哈是读好书看哈的华盛顿很快的</p>
+					<lable id="corpus">底层啊啥的交换机啊啥的卡斯柯卡号的看见好多看哈的华盛asd请问萨达vvghgfhdg阿尔法啊啥的范围飞啊飞玩手动阀发阿斯蒂芬万二分阿斯蒂芬阿斯蒂芬顿奥德赛华盛顿看哈是读好书看哈的华盛顿很快的</lable>
 				</div>
 			</div>
 
@@ -404,16 +410,34 @@
 	<script type="text/javascript">
 	$("#baseContent").fadeOut(0);
 	$("#newContent").fadeOut(0);
+	$(".arrow1").css({transform:'rotate(270deg)'});
+	$(".arrow3").css({transform:'rotate(270deg)'});
 
 	$("#baseToggle").click(function(){
-	    $("#baseContent").fadeToggle(0);
+	    $("#baseContent").fadeIn(0);  //淡入
+	    $("#codeContent").fadeOut(0);
+	    $("#newContent").fadeOut(0);
+	    $(".arrow1").css({transform:'rotate(90deg)'});
+	    $(".arrow2").css({transform:'rotate(270deg)'});
+		$(".arrow3").css({transform:'rotate(270deg)'});
 	  });
 	$("#codeToggle").click(function(){
-	    $("#codeContent").fadeToggle(0);
+	    $("#codeContent").fadeIn(0); 
+	    $("#baseContent").fadeOut(0);
+	    $("#newContent").fadeOut(0);
+	    $(".arrow1").css({transform:'rotate(270deg)'});
+	    $(".arrow2").css({transform:'rotate(90deg)'});
+		$(".arrow3").css({transform:'rotate(270deg)'});
 	  });
 	$("#newToggle").click(function(){
-	    $("#newContent").fadeToggle(0);
+	    $("#newContent").fadeIn(0); 
+	    $("#codeContent").fadeOut(0);
+	    $("#baseContent").fadeOut(0);
+	    $(".arrow1").css({transform:'rotate(270deg)'});
+		$(".arrow2").css({transform:'rotate(270deg)'});
+		$(".arrow3").css({transform:'rotate(90deg)'});
 	  });
+
 
 	// var load1=false;
 	// var load2=false;

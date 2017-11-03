@@ -157,7 +157,7 @@ public class U_newcaseController {
 		System.out.println(path+" 111111111111111111111 nid= "+nid);
 		
 		//File file = new File(path+File.separator+filename);
-		File file = new File("C:\\Users\\Administrator\\workspace\\art\\WebContent\\images\\1.jpg");
+		File file = new File("C:\\Users\\Administrator\\workspace\\art\\WebContent\\image\\1.jpg");
 		
 		HttpHeaders headers = new HttpHeaders();
 		//下载显示的文件名，解决中文名称轮吗问题

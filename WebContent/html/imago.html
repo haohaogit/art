@@ -113,7 +113,7 @@
 			<div id="iconAndcorpus">
 				<div id="introicon"><img class="imgicon" src="../image/golbet.png"/></div>
 				<div id="introduce">
-					<p id="corpus">底层啊啥的交换机啊啥的卡斯柯卡号的看见好多看哈的华盛asd请问萨达vvghgfhdg阿尔法啊啥的范围飞啊飞玩手动阀发阿斯蒂芬万二分阿斯蒂芬阿斯蒂芬顿奥德赛华盛顿看哈是读好书看哈的华盛顿很快的</p>
+					<lable id="corpus">底层啊啥的交换机啊啥的卡斯柯卡号的看见好多看哈的华盛asd请问萨达vvghgfhdg阿尔法啊啥的范围飞啊飞玩手动阀发阿斯蒂芬万二分阿斯蒂芬阿斯蒂芬顿奥德赛华盛顿看哈是读好书看哈的华盛顿很快的</lable>
 				</div>
 			</div>
 
@@ -148,15 +148,21 @@
 		$("#bottomcolor").fadeOut(0);
 
 		$("#paramToggle").click(function(){
-   			$("#paramContent").fadeToggle(0);
+   			$("#paramContent").fadeIn(0);
+   			$("#geneContent").fadeOut(0);
+   			$("#adjustContent").fadeOut(0);
   		});
 		$("#geneToggle").click(function(){
-  			$("#geneContent").fadeToggle(0);
+			$("#paramContent").fadeOut(0);
+   			$("#geneContent").fadeIn(0);
+   			$("#adjustContent").fadeOut(0);
   		});
 		$("#adjustToggle").click(function(){
-    		$("#adjustContent").fadeToggle(0);
-    		$("#bottomcolor").fadeToggle(0);
+			$("#paramContent").fadeOut(0);
+   			$("#geneContent").fadeOut(0);
+   			$("#adjustContent").fadeIn(0);
   		});
+		
   		$("#paragoblet").click(function(){
   			$(".param").css({color:'black'});
   			$(this).css({color:'#00A5BD'});

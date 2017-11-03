@@ -12,6 +12,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import cn.art.dao.OutLineMapper;
 import cn.art.model.OutLine;
+import cn.art.model.OutLineType;
+import cn.art.service.OutLineTypeService;
 import cn.art.service.PartService;
 
 
@@ -20,7 +22,15 @@ import cn.art.service.PartService;
 public class testoutline {
 	private OutLineMapper outLineMapper;
 	private PartService partService;
+	private OutLineTypeService outLineTypeService;
 	
+	public OutLineTypeService getOutLineTypeService() {
+		return outLineTypeService;
+	}
+	@Autowired
+	public void setOutLineTypeService(OutLineTypeService outLineTypeService) {
+		this.outLineTypeService = outLineTypeService;
+	}
 	public PartService getPartService() {
 		return partService;
 	}
@@ -54,6 +64,13 @@ public class testoutline {
 	public void testPartGetpartB4() {
 		
 		String part4 = partService.getPartBasic4(1);
+		System.out.println("part4 "+part4);
+		//System.out.println(word.getWbasic()+" "+word.getWdetail());
+	}
+	@Test
+	public void testoutlineservice() {
+		
+		OutLineType part4 = outLineTypeService.selectByPrimaryKey(2);
 		System.out.println("part4 "+part4);
 		//System.out.println(word.getWbasic()+" "+word.getWdetail());
 	}

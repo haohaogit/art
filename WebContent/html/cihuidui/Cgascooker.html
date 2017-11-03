@@ -282,12 +282,18 @@
 </head>
 
 <body>
-	<script type="text/javascript" src="../js/image.js"></script>
+	
 	<script type="text/javascript">
+	
+			function fillwordSurveyHref(data){
+				
+				$('.href1').eq(0).attr('data-url',data.wordsurvey);
+				$('.href1').eq(1).attr('data-url',data.wordresult);
+			}
 	        $(document).ready(function () {
 
 			  //请求物件类型
-			  alert("111111111111");
+			 
 			  debugger;
 			  	$.ajax("getHref?tname=燃气灶",
 		                // 发送请求的URL字符串

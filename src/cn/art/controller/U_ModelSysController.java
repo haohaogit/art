@@ -160,10 +160,11 @@ public class U_ModelSysController {
 			tid = typeIdName.getTid();
 			break;
 		}
-		survey2 survey2 =surveyService.selectByTid(tid);
+		survey2 survey =surveyService.selectByTid(tid);
 		
-		System.out.println("cccccccccccccccccccccccc"+survey2.getWordresult());
-		return survey2;
+		System.out.println("cccccccccccccccccccccccc   "+survey.getWordresult());
+		System.out.println("dddddddddddddddddddddddd   "+survey.getWordsurvey());
+		return survey;
 	}
 	@RequestMapping("cihuidui/getHref")
 	@ResponseBody

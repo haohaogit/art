@@ -13,11 +13,11 @@ function fillBottomGoblet(data){
 				  kHtml+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>扩口型</div></div><div class='macro'>";
 			  }
 			  if(k<4){
-				  kHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='"+data[i].caseimg+"' data-bcid='"+data[i].bcid+"'/></div>";
+				  kHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-bcid='"+data[i].bcid+"'/></div>";
 				  kHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].casename+"</div></div></div>";
 				  k++;
 			  }else{
-				  kHtml+="<div class='hengStep isLoadMore isclick'><div><img class='imgfabric' src='"+data[i].caseimg+"' data-bcid='"+data[i].bcid+"'/></div>";
+				  kHtml+="<div class='hengStep isLoadMore isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-bcid='"+data[i].bcid+"'/></div>";
 				  kHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].casename+"</div></div></div>";
 				  k++;
 			  }
@@ -28,11 +28,11 @@ function fillBottomGoblet(data){
 					sHtml+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>收口型</div></div><div class='macro'>";
 				}
 				if(k<4){
-					sHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='"+data[i].caseimg+"' data-bcid='"+data[i].bcid+"'/></div>";
+					sHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-bcid='"+data[i].bcid+"'/></div>";
 					sHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].casename+"</div></div></div>";
 					s++;
 				}else{
-					sHtml+="<div class='hengStep isLoadMore isclick'><div><img class='imgfabric' src='"+data[i].caseimg+"' data-bcid='"+data[i].bcid+"'/></div>";
+					sHtml+="<div class='hengStep isLoadMore isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-bcid='"+data[i].bcid+"'/></div>";
 					sHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].casename+"</div></div></div>";
 					s++;
 				}
@@ -85,11 +85,11 @@ function fillBottomfabric(data){
 				  aHtml+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>兽纹图案型</div></div><div class='macro'>";
 			  }
 			  if(a<4){
-				  aHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='"+data[i].caseimg+"' data-bcid='"+data[i].bcid+"'/></div>";
+				  aHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-bcid='"+data[i].bcid+"'/></div>";
 				  aHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].casename+"</div></div></div>";
 				  a++;
 			  }else{
-				  aHtml+="<div class='hengStep isLoadMore isclick'><div><img class='imgfabric' src='"+data[i].caseimg+"' data-bcid='"+data[i].bcid+"'/></div>";
+				  aHtml+="<div class='hengStep isLoadMore isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-bcid='"+data[i].bcid+"'/></div>";
 				  aHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].casename+"</div></div></div>";
 				  a++;
 			  }
@@ -100,11 +100,11 @@ function fillBottomfabric(data){
 					bHtml+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>花草图案型</div></div><div class='macro'>";
 				}
 				if(b<4){
-					bHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='"+data[i].caseimg+"' data-bcid='"+data[i].bcid+"'/></div>";
+					bHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-bcid='"+data[i].bcid+"'/></div>";
 					bHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].casename+"</div></div></div>";
 					b++;
 				}else{
-					bHtml+="<div class='hengStep isLoadMore isclick'><div><img class='imgfabric' src='"+data[i].caseimg+"' data-bcid='"+data[i].bcid+"'/></div>";
+					bHtml+="<div class='hengStep isLoadMore isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-bcid='"+data[i].bcid+"'/></div>";
 					bHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].casename+"</div></div></div>";
 					b++;
 				}
@@ -114,11 +114,11 @@ function fillBottomfabric(data){
 					  cHtml+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>几何图案型</div></div><div class='macro'>";
 				  }
 				  if(c<4){
-					  cHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='"+data[i].caseimg+"' data-bcid='"+data[i].bcid+"'/></div>";
+					  cHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-bcid='"+data[i].bcid+"'/></div>";
 					  cHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].casename+"</div></div></div>";
 					  c++;
 				  }else{
-					  cHtml+="<div class='hengStep isLoadMore isclick'><div><img class='imgfabric' src='"+data[i].caseimg+"' data-bcid='"+data[i].bcid+"'/></div>";
+					  cHtml+="<div class='hengStep isLoadMore isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-bcid='"+data[i].bcid+"'/></div>";
 					  cHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].casename+"</div></div></div>";
 					  c++;
 				  }
@@ -129,11 +129,11 @@ function fillBottomfabric(data){
 					dHtml+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>鸟纹图案型</div></div><div class='macro'>";
 				}
 				if(d<4){
-					dHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='"+data[i].caseimg+"' data-bcid='"+data[i].bcid+"'/></div>";
+					dHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-bcid='"+data[i].bcid+"'/></div>";
 					dHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].casename+"</div></div></div>";
 					d++;
 				}else{
-					dHtml+="<div class='hengStep isLoadMore isclick'><div><img class='imgfabric' src='"+data[i].caseimg+"' data-bcid='"+data[i].bcid+"'/></div>";
+					dHtml+="<div class='hengStep isLoadMore isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-bcid='"+data[i].bcid+"'/></div>";
 					dHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].casename+"</div></div></div>";
 					d++;
 				}
@@ -183,11 +183,11 @@ function fillBottomgascooker(data){
 				  aHtml+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>数字极简型</div></div><div class='macro'>";
 			  }
 			  if(a<4){
-				  aHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='"+data[i].caseimg+"' data-bcid='"+data[i].bcid+"'/></div>";
+				  aHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-bcid='"+data[i].bcid+"'/></div>";
 				  aHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].casename+"</div></div></div>";
 				  a++;
 			  }else{
-				  aHtml+="<div class='hengStep isLoadMore isclick'><div><img class='imgfabric' src='"+data[i].caseimg+"' data-bcid='"+data[i].bcid+"'/></div>";
+				  aHtml+="<div class='hengStep isLoadMore isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-bcid='"+data[i].bcid+"'/></div>";
 				  aHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].casename+"</div></div></div>";
 				  a++;
 			  }
@@ -198,11 +198,11 @@ function fillBottomgascooker(data){
 					bHtml+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>美式风格型</div></div><div class='macro'>";
 				}
 				if(b<4){
-					bHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='"+data[i].caseimg+"' data-bcid='"+data[i].bcid+"'/></div>";
+					bHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-bcid='"+data[i].bcid+"'/></div>";
 					bHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].casename+"</div></div></div>";
 					b++;
 				}else{
-					bHtml+="<div class='hengStep isLoadMore isclick'><div><img class='imgfabric' src='"+data[i].caseimg+"' data-bcid='"+data[i].bcid+"'/></div>";
+					bHtml+="<div class='hengStep isLoadMore isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-bcid='"+data[i].bcid+"'/></div>";
 					bHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].casename+"</div></div></div>";
 					b++;
 				}
@@ -253,11 +253,11 @@ function fillBottomHouseboat(data){
 				  aHtml+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>端庄型</div></div><div class='macro'>";
 			  }
 			  if(a<4){
-				  aHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='"+data[i].caseimg+"' data-bcid='"+data[i].bcid+"'/></div>";
+				  aHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-bcid='"+data[i].bcid+"'/></div>";
 				  aHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].casename+"</div></div></div>";
 				  a++;
 			  }else{
-				  aHtml+="<div class='hengStep isLoadMore isclick'><div><img class='imgfabric' src='"+data[i].caseimg+"' data-bcid='"+data[i].bcid+"'/></div>";
+				  aHtml+="<div class='hengStep isLoadMore isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-bcid='"+data[i].bcid+"'/></div>";
 				  aHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].casename+"</div></div></div>";
 				  a++;
 			  }
@@ -268,11 +268,11 @@ function fillBottomHouseboat(data){
 					bHtml+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>流线型</div></div><div class='macro'>";
 				}
 				if(b<4){
-					bHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='"+data[i].caseimg+"' data-bcid='"+data[i].bcid+"'/></div>";
+					bHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-bcid='"+data[i].bcid+"'/></div>";
 					bHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].casename+"</div></div></div>";
 					b++;
 				}else{
-					bHtml+="<div class='hengStep isLoadMore isclick'><div><img class='imgfabric' src='"+data[i].caseimg+"' data-bcid='"+data[i].bcid+"'/></div>";
+					bHtml+="<div class='hengStep isLoadMore isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-bcid='"+data[i].bcid+"'/></div>";
 					bHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].casename+"</div></div></div>";
 					b++;
 				}
@@ -282,11 +282,11 @@ function fillBottomHouseboat(data){
 					  cHtml+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>轻巧型</div></div><div class='macro'>";
 				  }
 				  if(c<4){
-					  cHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='"+data[i].caseimg+"' data-bcid='"+data[i].bcid+"'/></div>";
+					  cHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-bcid='"+data[i].bcid+"'/></div>";
 					  cHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].casename+"</div></div></div>";
 					  c++;
 				  }else{
-					  cHtml+="<div class='hengStep isLoadMore isclick'><div><img class='imgfabric' src='"+data[i].caseimg+"' data-bcid='"+data[i].bcid+"'/></div>";
+					  cHtml+="<div class='hengStep isLoadMore isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-bcid='"+data[i].bcid+"'/></div>";
 					  cHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].casename+"</div></div></div>";
 					  c++;
 				  }
@@ -297,11 +297,11 @@ function fillBottomHouseboat(data){
 					dHtml+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>稳重型</div></div><div class='macro'>";
 				}
 				if(d<4){
-					dHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='"+data[i].caseimg+"' data-bcid='"+data[i].bcid+"'/></div>";
+					dHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-bcid='"+data[i].bcid+"'/></div>";
 					dHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].casename+"</div></div></div>";
 					d++;
 				}else{
-					dHtml+="<div class='hengStep isLoadMore isclick'><div><img class='imgfabric' src='"+data[i].caseimg+"' data-bcid='"+data[i].bcid+"'/></div>";
+					dHtml+="<div class='hengStep isLoadMore isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-bcid='"+data[i].bcid+"'/></div>";
 					dHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].casename+"</div></div></div>";
 					d++;
 				}
@@ -449,7 +449,7 @@ function fillCodeoutline(data){
 				  kHtml+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>扩口型轮廓编码</div></div><div class='macro'>";
 			  }
 			 
-			  kHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='"+data[i].caseimg+"' data-oid='"+data[i].id+"'/></div>";
+			  kHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-oid='"+data[i].id+"'/></div>";
 			  kHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
 			  break;
 			case "收口型":
@@ -457,7 +457,7 @@ function fillCodeoutline(data){
 				if(sHtml==""){
 					sHtml+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>收口型轮廓编码</div></div><div class='macro'>";
 				}
-				sHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='"+data[i].caseimg+"' data-oid='"+data[i].id+"'/></div>";
+				sHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-oid='"+data[i].id+"'/></div>";
 				sHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
 			    break;
 			default:
@@ -484,7 +484,7 @@ function fillCodecolor(data){
 				  kHtml+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>暖色系编码</div></div><div class='color'>";
 			  }
 			 
-			  kHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='"+data[i].caseimg+"' data-cid='"+data[i].id+"'/></div>";
+			  kHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-cid='"+data[i].id+"'/></div>";
 			  kHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
 			  break;
 			case "冷色调":
@@ -492,7 +492,7 @@ function fillCodecolor(data){
 				if(sHtml==""){
 					sHtml+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>冷色系编码</div></div><div class='color'>";
 				}
-				sHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='"+data[i].caseimg+"' data-cid='"+data[i].id+"'/></div>";
+				sHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-cid='"+data[i].id+"'/></div>";
 				sHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
 			    break;
 			default:
@@ -520,7 +520,7 @@ function fillCodecolorHouseboat(data){
 				  kHtml+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>船身色彩编码</div></div><div class='color'>";
 			  }
 			 
-			  kHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='"+data[i].caseimg+"' data-cid='"+data[i].id+"'/></div>";
+			  kHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-cid='"+data[i].id+"'/></div>";
 			  kHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
 			  break;
 			case "船身装饰":
@@ -528,7 +528,7 @@ function fillCodecolorHouseboat(data){
 				if(sHtml==""){
 					sHtml+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>船身装饰色彩编码</div></div><div class='color'>";
 				}
-				sHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='"+data[i].caseimg+"' data-cid='"+data[i].id+"'/></div>";
+				sHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-cid='"+data[i].id+"'/></div>";
 				sHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
 			    break;
 			case "船身装饰线":
@@ -536,7 +536,7 @@ function fillCodecolorHouseboat(data){
 				if(cHtml==""){
 					cHtml+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>船身装饰线色彩编码</div></div><div class='color'>";
 				}
-				cHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='"+data[i].caseimg+"' data-cid='"+data[i].id+"'/></div>";
+				cHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-cid='"+data[i].id+"'/></div>";
 				cHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
 			    break;
 			default:
@@ -559,7 +559,7 @@ function fillCodecolorGascooker(data){
 			  if(kHtml==""){
 				  kHtml+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>面板色彩编码</div></div><div class='color'>";
 			  }
-			  kHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='"+data[i].caseimg+"' data-cid='"+data[i].id+"'/></div>";
+			  kHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-cid='"+data[i].id+"'/></div>";
 			  kHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
 			  break;
 			case "冷色调":
@@ -567,7 +567,7 @@ function fillCodecolorGascooker(data){
 				if(sHtml==""){
 					sHtml+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>冷色系编码</div></div><div class='color'>";
 				}
-				sHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='"+data[i].caseimg+"' data-cid='"+data[i].id+"'/></div>";
+				sHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-cid='"+data[i].id+"'/></div>";
 				sHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
 			    break;
 			default:
@@ -575,7 +575,12 @@ function fillCodecolorGascooker(data){
 		}
 	}
 	var html="";
-	html=html+kHtml+"</div>";
+	if(kHtml!=""){
+		html=html+kHtml+"</div>"
+	}
+	if(sHtml!=""){
+		html=html+sHtml+"</div>"
+	}
 	$(".codeCgascooker").html(html);
 }
 
@@ -590,7 +595,7 @@ function fillCodecolorFabric(data){
 			  if(kHtml==""){
 				  kHtml+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>面料色彩编码</div></div><div class='color'>";
 			  }
-			  kHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='"+data[i].caseimg+"' data-cid='"+data[i].id+"'/></div>";
+			  kHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-cid='"+data[i].id+"'/></div>";
 			  kHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
 			  break;
 			case "冷色调":
@@ -598,7 +603,7 @@ function fillCodecolorFabric(data){
 				if(sHtml==""){
 					sHtml+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>冷色系编码</div></div><div class='color'>";
 				}
-				sHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='"+data[i].caseimg+"' data-cid='"+data[i].id+"'/></div>";
+				sHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-cid='"+data[i].id+"'/></div>";
 				sHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
 			    break;
 			default:
@@ -625,14 +630,14 @@ function fillCodepart(data){
 				  kHtml+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>杯柄部件编码</div></div><div class='macro'>";
 			  }
 			 
-			  kHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='"+data[i].caseimg+"' data-pid='"+data[i].id+"'/></div>";
+			  kHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-pid='"+data[i].id+"'/></div>";
 			  kHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
 			  break;
 			case "杯肚":
 				if(sHtml==""){
 					sHtml+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>杯肚部件编码</div></div><div class='macro'>";
 				}
-				sHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='"+data[i].caseimg+"' data-pid='"+data[i].id+"'/></div>";
+				sHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-pid='"+data[i].id+"'/></div>";
 				sHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
 			    break;
 			default:
@@ -660,7 +665,7 @@ function fillCodepartHouseboat(data){
 			  if(a1Html==""){
 				  a1Html+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>驾驶室部件编码</div></div><div class='macro'>";
 			  }
-			  a1Html+="<div class='hengStep isclick'><div><img class='imgfabric' src='"+data[i].caseimg+"' data-pid='"+data[i].id+"'/></div>";
+			  a1Html+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-pid='"+data[i].id+"'/></div>";
 			  a1Html+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
 			  break;
 			case "船舱":
@@ -668,14 +673,14 @@ function fillCodepartHouseboat(data){
 				if(b1Html==""){
 					b1Html+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>船舱部件编码</div></div><div class='macro'>";
 				}
-				b1Html+="<div class='hengStep isclick'><div><img class='imgfabric' src='"+data[i].caseimg+"' data-pid='"+data[i].id+"'/></div>";
+				b1Html+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-pid='"+data[i].id+"'/></div>";
 				b1Html+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
 			    break;
 			case "顶层":
 				  if(c1Html==""){
 					  c1Html+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>顶层部件编码</div></div><div class='macro'>";
 				  }
-				  c1Html+="<div class='hengStep isclick'><div><img class='imgfabric' src='"+data[i].caseimg+"' data-pid='"+data[i].id+"'/></div>";
+				  c1Html+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-pid='"+data[i].id+"'/></div>";
 				  c1Html+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
 			 
 				  break;
@@ -683,7 +688,7 @@ function fillCodepartHouseboat(data){
 				if(d1Html==""){
 					d1Html+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>船舱窗户部件编码</div></div><div class='macro'>";
 				}
-				d1Html+="<div class='hengStep isclick'><div><img class='imgfabric' src='"+data[i].caseimg+"' data-pid='"+data[i].id+"'/></div>";
+				d1Html+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-pid='"+data[i].id+"'/></div>";
 				d1Html+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
 				
 			    break;
@@ -691,7 +696,7 @@ function fillCodepartHouseboat(data){
 				if(e1Html==""){
 					e1Html+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>船舱跳水板部件编码</div></div><div class='macro'>";
 				}
-				e1Html+="<div class='hengStep isclick'><div><img class='imgfabric' src='"+data[i].caseimg+"' data-pid='"+data[i].id+"'/></div>";
+				e1Html+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-pid='"+data[i].id+"'/></div>";
 				e1Html+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
 				
 			    break;
@@ -699,7 +704,7 @@ function fillCodepartHouseboat(data){
 				if(f1Html==""){
 					f1Html+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>电子通信部件编码</div></div><div class='macro'>";
 				}
-				f1Html+="<div class='hengStep isclick'><div><img class='imgfabric' src='"+data[i].caseimg+"' data-pid='"+data[i].id+"'/></div>";
+				f1Html+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-pid='"+data[i].id+"'/></div>";
 				f1Html+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
 				
 			    break;
@@ -728,7 +733,7 @@ function fillCodepartGascooker(data){
 			  if(a1Html==""){
 				  a1Html+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>炉灶部件编码</div></div><div class='macro'>";
 			  }
-			  a1Html+="<div class='hengStep isclick'><div><img class='imgfabric' src='"+data[i].caseimg+"' data-pid='"+data[i].id+"'/></div>";
+			  a1Html+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-pid='"+data[i].id+"'/></div>";
 			  a1Html+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
 			  break;
 			case "面板":
@@ -736,14 +741,14 @@ function fillCodepartGascooker(data){
 				if(b1Html==""){
 					b1Html+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>面板部件编码</div></div><div class='macro'>";
 				}
-				b1Html+="<div class='hengStep isclick'><div><img class='imgfabric' src='"+data[i].caseimg+"' data-pid='"+data[i].id+"'/></div>";
+				b1Html+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-pid='"+data[i].id+"'/></div>";
 				b1Html+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
 			    break;
 			case "开关":
 				  if(c1Html==""){
 					  c1Html+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>开关部件编码</div></div><div class='macro'>";
 				  }
-				  c1Html+="<div class='hengStep isclick'><div><img class='imgfabric' src='"+data[i].caseimg+"' data-pid='"+data[i].id+"'/></div>";
+				  c1Html+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-pid='"+data[i].id+"'/></div>";
 				  c1Html+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
 			 
 				  break;
@@ -751,7 +756,7 @@ function fillCodepartGascooker(data){
 				if(d1Html==""){
 					d1Html+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>开关/调节档位UI部件编码</div></div><div class='macro'>";
 				}
-				d1Html+="<div class='hengStep isclick'><div><img class='imgfabric' src='"+data[i].caseimg+"' data-pid='"+data[i].id+"'/></div>";
+				d1Html+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-pid='"+data[i].id+"'/></div>";
 				d1Html+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
 				
 			    break;
@@ -780,7 +785,7 @@ function fillCodepartFabric(data){
 			  if(a1Html==""){
 				  a1Html+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>边框部件编码</div></div><div class='macro'>";
 			  }
-			  a1Html+="<div class='hengStep isclick'><div><img class='imgfabric' src='"+data[i].caseimg+"' data-pid='"+data[i].id+"'/></div>";
+			  a1Html+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-pid='"+data[i].id+"'/></div>";
 			  a1Html+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
 			  break;
 			case "主图":
@@ -788,14 +793,14 @@ function fillCodepartFabric(data){
 				if(b1Html==""){
 					b1Html+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>主图部件编码</div></div><div class='macro'>";
 				}
-				b1Html+="<div class='hengStep isclick'><div><img class='imgfabric' src='"+data[i].caseimg+"' data-pid='"+data[i].id+"'/></div>";
+				b1Html+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-pid='"+data[i].id+"'/></div>";
 				b1Html+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
 			    break;
 			case "辅图":
 				  if(c1Html==""){
 					  c1Html+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>辅图部件编码</div></div><div class='macro'>";
 				  }
-				  c1Html+="<div class='hengStep isclick'><div><img class='imgfabric' src='"+data[i].caseimg+"' data-pid='"+data[i].id+"'/></div>";
+				  c1Html+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-pid='"+data[i].id+"'/></div>";
 				  c1Html+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
 			 
 				  break;
@@ -803,7 +808,7 @@ function fillCodepartFabric(data){
 				if(d1Html==""){
 					d1Html+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>开关/调节档位UI部件编码</div></div><div class='macro'>";
 				}
-				d1Html+="<div class='hengStep isclick'><div><img class='imgfabric' src='"+data[i].caseimg+"' data-pid='"+data[i].id+"'/></div>";
+				d1Html+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-pid='"+data[i].id+"'/></div>";
 				d1Html+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
 				
 			    break;
@@ -833,14 +838,14 @@ function fillCodetexture(data){
 				  kHtml+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>玻璃材质编码</div></div><div class='texture'>";
 			  }
 			 
-			  kHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='"+data[i].caseimg+"' data-texid='"+data[i].id+"'/></div>";
+			  kHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-texid='"+data[i].id+"'/></div>";
 			  kHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
 			  break;
 			case "磨砂":
 				if(sHtml==""){
 					sHtml+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>磨砂材质编码</div></div><div class='texture'>";
 				}
-				sHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='"+data[i].caseimg+"' data-texid='"+data[i].id+"'/></div>";
+				sHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-texid='"+data[i].id+"'/></div>";
 				sHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
 			    break;
 			default:
@@ -866,14 +871,14 @@ function fillCodetextureGascooker(data){
 				  kHtml+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>面板材质编码</div></div><div class='texture'>";
 			  }
 			 
-			  kHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='"+data[i].caseimg+"' data-texid='"+data[i].id+"'/></div>";
+			  kHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-texid='"+data[i].id+"'/></div>";
 			  kHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
 			  break;
 			case "磨砂":
 				if(sHtml==""){
 					sHtml+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>磨砂材质编码</div></div><div class='texture'>";
 				}
-				sHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='"+data[i].caseimg+"' data-texid='"+data[i].id+"'/></div>";
+				sHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-texid='"+data[i].id+"'/></div>";
 				sHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
 			    break;
 			default:
@@ -899,14 +904,14 @@ function fillCodetextureFabric(data){
 				  kHtml+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>面料材质编码</div></div><div class='texture'>";
 			  }
 			 
-			  kHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='"+data[i].caseimg+"' data-texid='"+data[i].id+"'/></div>";
+			  kHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-texid='"+data[i].id+"'/></div>";
 			  kHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
 			  break;
 			case "磨砂":
 				if(sHtml==""){
 					sHtml+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>磨砂材质编码</div></div><div class='texture'>";
 				}
-				sHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='"+data[i].caseimg+"' data-texid='"+data[i].id+"'/></div>";
+				sHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-texid='"+data[i].id+"'/></div>";
 				sHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
 			    break;
 			default:
@@ -928,7 +933,7 @@ function fillNewcase(data){
 		if(kHtml==""){
 			kHtml+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>新造型案例</div></div><div class='macro'>";
 		}
-		kHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='"+data[i].newcaseimg+"' data-nid='"+data[i].nid+"'/></div>";
+		kHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].newcaseimg+"' data-nid='"+data[i].nid+"'/></div>";
 		kHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].newcasename+"</div></div></div>";
 		
 	}
@@ -951,16 +956,17 @@ function GetRequest(loc) {
 }
 
 function fillNewcaseGoblet(data) {
-    $(".recomImg").attr("src",data.newcaseimg);
+	//alert("111111111");
+    $(".recomImg").attr("src","../image/"+data.newcaseimg);
     $("#comp2").html(data.newcasename);
-    $(".imgtotal").attr("src",data.newcasertotal);
-    $(".imgoutline").attr("src",data.newcaseroutline);
-    $(".imgcolor").attr("src",data.newcasercolor);
-    $(".imgtexture").attr("src",data.newcasertexture);
-    $(".imgAtotal").attr("src",data.newcaseatotal);
-    $(".imgAoutline").attr("src",data.newcaseaoutline);
-    $(".imgAcolor").attr("src",data.newcaseacolor);
-    $(".imgAtexture").attr("src",data.newcaseatexture);
+    $(".imgtotal").attr("src","../image/"+data.newcasertotal);
+    $(".imgoutline").attr("src","../image/"+data.newcaseroutline);
+    $(".imgcolor").attr("src","../image/"+data.newcasercolor);
+    $(".imgtexture").attr("src","../image/"+data.newcasertexture);
+    $(".imgAtotal").attr("src","../image/"+data.newcaseatotal);
+    $(".imgAoutline").attr("src","../image/"+data.newcaseaoutline);
+    $(".imgAcolor").attr("src","../image/"+data.newcaseacolor);
+    $(".imgAtexture").attr("src","../image/"+data.newcaseatexture);
     var strs = data.newcasearg;
     var result=strs.split(",");
     
@@ -985,16 +991,16 @@ function fillNewcaseGoblet(data) {
 }
 
 function fillNewcaseHouseboat(data) {
-    $(".recomImg").attr("src",data.newcaseimg);
+    $(".recomImg").attr("src","../image/"+data.newcaseimg);
     $("#comp2").html(data.newcasename);
-    $(".imgtotal").attr("src",data.newcasertotal);
-    $(".imgoutline").attr("src",data.newcaseroutline);
-    $(".imgcolor").attr("src",data.newcasercolor);
-    $(".imgtexture").attr("src",data.newcasertexture);
-    $(".imgAtotal").attr("src",data.newcaseatotal);
-    $(".imgAoutline").attr("src",data.newcaseaoutline);
-    $(".imgAcolor").attr("src",data.newcaseacolor);
-    $(".imgAtexture").attr("src",data.newcaseatexture);
+    $(".imgtotal").attr("src","../image/"+data.newcasertotal);
+    $(".imgoutline").attr("src","../image/"+data.newcaseroutline);
+    $(".imgcolor").attr("src","../image/"+data.newcasercolor);
+    $(".imgtexture").attr("src","../image/"+data.newcasertexture);
+    $(".imgAtotal").attr("src","../image/"+data.newcaseatotal);
+    $(".imgAoutline").attr("src","../image/"+data.newcaseaoutline);
+    $(".imgAcolor").attr("src","../image/"+data.newcaseacolor);
+    $(".imgAtexture").attr("src","../image/"+data.newcaseatexture);
     var strs = data.newcasearg;
     var result=strs.split(",");
     
@@ -1098,16 +1104,16 @@ function fillNewcaseHouseboat(data) {
 }
 
 function fillNewcaseFabric(data) {
-    $(".recomImg").attr("src",data.newcaseimg);
+    $(".recomImg").attr("src","../image/"+data.newcaseimg);
     $("#comp2").html(data.newcasename);
-    $(".imgtotal").attr("src",data.newcasertotal);
-    $(".imgoutline").attr("src",data.newcaseroutline);
-    $(".imgcolor").attr("src",data.newcasercolor);
-    $(".imgtexture").attr("src",data.newcasertexture);
-    $(".imgAtotal").attr("src",data.newcaseatotal);
-    $(".imgAoutline").attr("src",data.newcaseaoutline);
-    $(".imgAcolor").attr("src",data.newcaseacolor);
-    $(".imgAtexture").attr("src",data.newcaseatexture);
+    $(".imgtotal").attr("src","../image/"+data.newcasertotal);
+    $(".imgoutline").attr("src","../image/"+data.newcaseroutline);
+    $(".imgcolor").attr("src","../image/"+data.newcasercolor);
+    $(".imgtexture").attr("src","../image/"+data.newcasertexture);
+    $(".imgAtotal").attr("src","../image/"+data.newcaseatotal);
+    $(".imgAoutline").attr("src","../image/"+data.newcaseaoutline);
+    $(".imgAcolor").attr("src","../image/"+data.newcaseacolor);
+    $(".imgAtexture").attr("src","../image/"+data.newcaseatexture);
     var strs = data.newcasearg;
     var result=strs.split(",");
     
@@ -1178,16 +1184,16 @@ function fillNewcaseFabric(data) {
 }
 
 function fillNewcaseGascooker(data) {
-    $(".recomImg").attr("src",data.newcaseimg);
+    $(".recomImg").attr("src","../image/"+data.newcaseimg);
     $("#comp2").html(data.newcasename);
-    $(".imgtotal").attr("src",data.newcasertotal);
-    $(".imgoutline").attr("src",data.newcaseroutline);
-    $(".imgcolor").attr("src",data.newcasercolor);
-    $(".imgtexture").attr("src",data.newcasertexture);
-    $(".imgAtotal").attr("src",data.newcaseatotal);
-    $(".imgAoutline").attr("src",data.newcaseaoutline);
-    $(".imgAcolor").attr("src",data.newcaseacolor);
-    $(".imgAtexture").attr("src",data.newcaseatexture);
+    $(".imgtotal").attr("src","../image/"+data.newcasertotal);
+    $(".imgoutline").attr("src","../image/"+data.newcaseroutline);
+    $(".imgcolor").attr("src","../image/"+data.newcasercolor);
+    $(".imgtexture").attr("src","../image/"+data.newcasertexture);
+    $(".imgAtotal").attr("src","../image/"+data.newcaseatotal);
+    $(".imgAoutline").attr("src","../image/"+data.newcaseaoutline);
+    $(".imgAcolor").attr("src","../image/"+data.newcaseacolor);
+    $(".imgAtexture").attr("src","../image/"+data.newcaseatexture);
     var strs = data.newcasearg;
     var result=strs.split(",");
     

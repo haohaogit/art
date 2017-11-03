@@ -105,7 +105,6 @@
 	<script type="text/javascript" src="../js/facade.js"></script>
 	<script type="text/javascript">
 	        $(document).ready(function () {
-	//  			alert(11);
 	            $('.configHead').load('conheader_waiguan.html');
 	            $('.configFoot').load('confooter.html');
 	        });
@@ -134,7 +133,9 @@
 	<div id="content">
 		<div id="leftBody">
 			<div id="base">
-				<a href="javascript:void(0)" id="baseToggle">底层案例库</a>
+				<a href="javascript:void(0)" id="baseToggle" class="kuohao"><div>底层案例库</div>
+					<div class="left-arrow arrow1">&lt;</div>
+				</a>
 				<ul id="baseContent">
 					<li><a href="javascript:void(0)" id="baseGoblet" class="facade1">高脚杯</a></li>
 					<li><a href="javascript:void(0)" id="baseYacht" class="facade1">游艇</a></li>
@@ -143,7 +144,9 @@
 				</ul>
 				</div>
 			<div id="code">
-				<a href="javascript:void(0)" id="codeToggle">编码案例库</a>
+				<a href="javascript:void(0)" id="codeToggle" class="kuohao"><div>编码案例库</div>
+					<div class="left-arrow arrow2">&lt;</div>
+				</a>
 				<ul id="codeContent">
 					<li><a href="javascript:void(0)" id="codeGoblet" class="facade1">高脚杯</a></li>
 					<li><a href="javascript:void(0)" id="codeYacht" class="facade1">游艇</a></li>
@@ -152,7 +155,9 @@
 				</ul>
 				</div>
 			<div id="new">
-				<a href="javascript:void(0)" id="newToggle">新造型库</a>
+				<a href="javascript:void(0)" id="newToggle" class="kuohao"><div>新造型库</div>
+					<div class="left-arrow arrow3">&lt;</div>
+				</a>
 				<ul id="newContent">
 					<li><a href="javascript:void(0)" id="newGoblet" class="facade1">高脚杯</a></li>
 					<li><a href="javascript:void(0)" id="newYacht" class="facade1">游艇</a></li>
@@ -163,9 +168,9 @@
 		</div>
 		<div id="rightBody">
 			<div id="iconAndcorpus">
-				<div id="introicon"><img class="imgicon" src="../images/genestyle/golbet.png" style="width: 80px;" /></div>
+				<div id="introicon"><img class="imgicon" src="../image/golbet.png" style="width: 80px;" /></div>
 				<div id="introduce">
-					<p id="corpus">底层啊啥的交换机啊啥的卡斯柯卡号的看见好多看哈的华盛asd请问萨达vvghgfhdg阿尔法啊啥的范围飞啊飞玩手动阀发阿斯蒂芬万二分阿斯蒂芬阿斯蒂芬顿奥德赛华盛顿看哈是读好书看哈的华盛顿很快的</p>
+					<lable id="corpus">底层啊啥的交换机啊啥的卡斯柯卡号的看见好多看哈的华盛asd请问萨达vvghgfhdg阿尔法啊啥的范围飞啊飞玩手动阀发阿斯蒂芬万二分阿斯蒂芬阿斯蒂芬顿奥德赛华盛顿看哈是读好书看哈的华盛顿很快的</lable>
 				</div>
 			</div>
 
@@ -331,16 +336,34 @@
 	<script type="text/javascript">
 	$("#baseContent").fadeOut(0);
 	$("#newContent").fadeOut(0);
+	$(".arrow1").css({transform:'rotate(270deg)'});
+	$(".arrow3").css({transform:'rotate(270deg)'});
 	
 	$("#baseToggle").click(function(){
-	    $("#baseContent").fadeToggle(0);
+	    $("#baseContent").fadeIn(0);  //淡入
+	    $("#codeContent").fadeOut(0);
+	    $("#newContent").fadeOut(0);
+	    $(".arrow1").css({transform:'rotate(90deg)'});
+	    $(".arrow2").css({transform:'rotate(270deg)'});
+		$(".arrow3").css({transform:'rotate(270deg)'});
 	  });
 	$("#codeToggle").click(function(){
-	    $("#codeContent").fadeToggle(0);
+	    $("#codeContent").fadeIn(0); 
+	    $("#baseContent").fadeOut(0);
+	    $("#newContent").fadeOut(0);
+	    $(".arrow1").css({transform:'rotate(270deg)'});
+	    $(".arrow2").css({transform:'rotate(90deg)'});
+		$(".arrow3").css({transform:'rotate(270deg)'});
 	  });
 	$("#newToggle").click(function(){
-	    $("#newContent").fadeToggle(0);
+	    $("#newContent").fadeIn(0); 
+	    $("#codeContent").fadeOut(0);
+	    $("#baseContent").fadeOut(0);
+	    $(".arrow1").css({transform:'rotate(270deg)'});
+		$(".arrow2").css({transform:'rotate(270deg)'});
+		$(".arrow3").css({transform:'rotate(90deg)'});
 	  });
+
 
 	// var load1=false;
 	// var load2=false;
@@ -382,8 +405,6 @@
 		    window.location.href="facade.html?txt=baseRange";
 		});
 
-
-
 	  	$("#codeGoblet").click(function(){
 			window.location.href="facade.html?txt=codeGoblet";
 	  	});
@@ -401,8 +422,6 @@
 		    window.location.href="facade.html?txt=codeRange";
 		});
 
-
-
 	  	$("#newGoblet").click(function(){
 	  			window.location.href="facade_new.html?txt=newGoblet";
 	  		});
@@ -416,38 +435,27 @@
 	  			window.location.href="facade_new.html?txt=newHanky";
 	  		});
 
-
-
 	</script>
 	<script type="text/javascript">
-
 		
 		$("#codeRange").css("color","#00a5bd");
-
-
 		
 		$(".facade1").on("click",function(){
 			$(".facade1").css({color:'black'});
 		   	$(this).css({color:'#00A5BD'});
 		});
-
 		
-
 		$(".close_btn1").on("click",function(){
-
 			$("#detailBox").css({display:'none'});
 			// var a = document.getElementById("detailBox");//获取div块对象
 		});
 
 		$(".codeCgascooker").on("click",".isclick",function(){
 			$("#detailBox").css({display:'block'});
-			//alert($(this).html());
 			var ht=$(this).html();
-			alert($(ht).find('img').attr('src'));
-			alert($(ht).find('img').attr('data-cid'));
-			//var img=$(this).attr("src");
-			getDetailInfo($(ht).find('img').attr('src'));
-			// $("#detailBox").css({display:'none'});
+			/* alert($(ht).find('img').attr('src'));
+			alert($(ht).find('img').attr('data-cid')); */
+			getDetailInfo($(ht).find('img').attr('data-cid'));
 			// var a = document.getElementById("detailBox");//获取div块对象
 		});
 		
@@ -461,11 +469,30 @@
 	        var Sgao2= (Width - gao2)/2+"px";
 	        a.style.top=Sgao1;
 	        a.style.left=Sgao2;
-	        $("#mainpic").attr("src",msg);
-	        $(".p3").html("w1(455,0),w1(455,0),w1(455,0),w1(455,0),w1(455,0),w1(455,0),w1(455,0),w1(455,0),w1(455,0)");
 	        
-	       
-
+	        $.ajax("facade/code/detail/color?id="+msg,
+		        	{
+	                    type: "get",      //
+	                    async:true,  //
+	                    success: function(data){
+							
+							filldetailInfo(data);
+							
+	                    },
+	                    error: function(){
+	                        alert("数据发送失败denglu");
+	                    }
+		        });
+		}
+		function filldetailInfo(data){
+			$("#mainpic").attr("src","../image/"+data.img);
+			var ahtml = "";
+			ahtml = ahtml + "<div>"+data.description+"<label id='p1'></label></div>";
+			ahtml = ahtml + "<div>色彩类型： <label id='p2'>"+data.typeName+"</label></div>";
+			ahtml = ahtml + "<div>色彩RGB值：<div><label id='p3'>"+data.rgb+"</label></div></div>";
+			ahtml = ahtml + "<div>色彩6数值： <label id='p2'>"+data.colornum+"</label></div>";
+			$(".contentinfo").html(ahtml);
+			
 		}
 		
 	</script>

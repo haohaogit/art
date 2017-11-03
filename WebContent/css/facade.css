@@ -32,11 +32,17 @@
 #register{
 	float:left;
 }
-
+#iconAndcorpus{
+	width:856px;
+	display: flex;
+}
+#facadeContent{
+	width:856px;
+}
 
 #introduce{
 	padding: 0 16px;
-	width: 688px;
+	
 	display: inline-block;
     vertical-align: top;
 }
@@ -57,22 +63,24 @@
 	width:17%;
 	text-align:left;
 	background-color: white;
-	padding: 10px 6px 10px 6px;
+	padding: 0px 0px 10px 0px;
 }
+
 #leftBody div{
-	margin: 5px 5px 5px 5px;
+	margin: 0px 5px 5px 5px;
 	background-image: url("../images/vocabularys/YixiangVocabulary-basicinfo/title.png");
 	font-size:20px;
 }
 #leftBody div a{
 	text-decoration:none;
 	padding: 13px 10px 13px 10px;
-	display:block;
+	/* display:block; */
 	color: white;
 }
 #rightBody{
 	float: left;
-	width: 63.7%;
+	/* width: 63.7%; */
+	width: 64.5%;
 	text-align: left;
 	background-color: white;
 
@@ -168,4 +176,20 @@
 	margin-left:10%;
 	padding: 10px 0px 10px 0px;
 	font-size:13px;
+}
+#detailBox{
+	left: 0px;
+	width: 100%;
+	opacity: 0.9;
+	background-color: #0f1010;
+}
+.kuohao{
+	display:flex;
+	justify-content: space-between;
+}
+.left-arrow{
+	width: 20px;
+	transform: rotate(90deg);
+	margin-top: 3px;
+	margin-left: 15px;
 }

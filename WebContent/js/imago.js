@@ -117,6 +117,7 @@ function filllunboFabric(timeid){
 
 
 function fillwordSurveyHref(data){
+	alert(data.wordsurvey);
 	$('.href1').eq(0).attr('data-url',data.wordsurvey);
 	$('.href1').eq(1).attr('data-url',data.wordresult);
 }

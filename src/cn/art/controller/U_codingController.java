@@ -18,15 +18,20 @@ import cn.art.dao.OutLineTypeMapper;
 import cn.art.dao.PartTypeMapper;
 import cn.art.dao.TextureTypeMapper;
 import cn.art.model.Color;
+import cn.art.model.ColorType;
 import cn.art.model.OutLine;
+import cn.art.model.OutLineType;
 import cn.art.model.Part;
+import cn.art.model.PartType;
 import cn.art.model.Texture;
+import cn.art.model.TextureType;
 import cn.art.service.ColorService;
 import cn.art.service.OutLineService;
 import cn.art.service.PartService;
 import cn.art.service.TextureService;
 import cn.art.service.TypeService;
 import cn.art.util.pojo.codeMerge;
+import cn.art.util.pojo.show_detail;
 import cn.art.util.pojo.typeIdName;
 
 
@@ -132,7 +137,13 @@ public class U_codingController {
 			codeMerge.setId(outLine.getOid());
 			codeMerge.setTid(outLine.getTid());
 			codeMerge.setCodename(outLine.getOdescription());
-			codeMerge.setCodetypename(outLineTypeMapper.selectByPrimaryKey(outLine.getOtid()).getOname());
+			OutLineType outLineType = outLineTypeMapper.selectByPrimaryKey(outLine.getOtid());
+			if(outLineType==null){
+				codeMerge.setCodetypename(null);
+			}else{
+				codeMerge.setCodetypename(outLineType.getOname());
+			}
+			
 			codeMerge.setCaseimg(outLine.getOimg());
 			
 			codeMerges.add(codeMerge);
@@ -145,7 +156,13 @@ public class U_codingController {
 			codeMerge.setId(color.getCid());
 			codeMerge.setTid(color.getTid());
 			codeMerge.setCodename(color.getCdescription());
-			codeMerge.setCodetypename(colorTypeMapper.selectByPrimaryKey(color.getCbid()).getCbname());
+			ColorType colorType = colorTypeMapper.selectByPrimaryKey(color.getCbid());
+			if(colorType == null){
+				codeMerge.setCodetypename(null);
+			}else{
+				codeMerge.setCodetypename(colorType.getCbname());
+			}
+			
 			codeMerge.setCaseimg(color.getCimg());
 			
 			codeMerges.add(codeMerge);
@@ -157,7 +174,13 @@ public class U_codingController {
 			codeMerge.setId(part.getPid());
 			codeMerge.setTid(part.getTid());
 			codeMerge.setCodename(part.getPdescription());
-			codeMerge.setCodetypename(partTypeMapper.selectByPrimaryKey(part.getPbid()).getPbname());
+			PartType partType = partTypeMapper.selectByPrimaryKey(part.getPbid());
+			if(partType == null){
+				codeMerge.setCodetypename(null);
+			}else{
+				codeMerge.setCodetypename(partType.getPbname());
+			}
+			
 			codeMerge.setCaseimg(part.getPimg());
 			
 			codeMerges.add(codeMerge);
@@ -170,7 +193,13 @@ public class U_codingController {
 			codeMerge.setId(texture.getTextureid());
 			codeMerge.setTid(texture.getTid());
 			codeMerge.setCodename(texture.getTdescription());
-			codeMerge.setCodetypename(textureTypeMapper.selectByPrimaryKey(texture.getTtid()).getTtname());
+			TextureType textureType = textureTypeMapper.selectByPrimaryKey(texture.getTtid());
+			if(textureType == null){
+				codeMerge.setCodetypename(null);
+			}else{
+				codeMerge.setCodetypename(textureType.getTtname());
+			}
+			
 			codeMerge.setCaseimg(texture.getTimg());
 			
 			codeMerges.add(codeMerge);
@@ -201,7 +230,13 @@ public class U_codingController {
 			codeMerge.setId(outLine.getOid());
 			codeMerge.setTid(outLine.getTid());
 			codeMerge.setCodename(outLine.getOdescription());
-			codeMerge.setCodetypename(outLineTypeMapper.selectByPrimaryKey(outLine.getOtid()).getOname());
+			OutLineType outLineType = outLineTypeMapper.selectByPrimaryKey(outLine.getOtid());
+			if(outLineType==null){
+				codeMerge.setCodetypename("");
+			}else{
+				codeMerge.setCodetypename(outLineType.getOname());
+			}
+			
 			codeMerge.setCaseimg(outLine.getOimg());
 			
 			codeMerges.add(codeMerge);
@@ -231,7 +266,13 @@ public class U_codingController {
 			codeMerge.setId(color.getCid());
 			codeMerge.setTid(color.getTid());
 			codeMerge.setCodename(color.getCdescription());
-			codeMerge.setCodetypename(colorTypeMapper.selectByPrimaryKey(color.getCbid()).getCbname());
+			ColorType colorType = colorTypeMapper.selectByPrimaryKey(color.getCbid());
+			if(colorType == null){
+				codeMerge.setCodetypename("");
+			}else{
+				codeMerge.setCodetypename(colorType.getCbname());
+			}
+			
 			codeMerge.setCaseimg(color.getCimg());
 			
 			codeMerges.add(codeMerge);
@@ -261,7 +302,13 @@ public class U_codingController {
 			codeMerge.setId(part.getPid());
 			codeMerge.setTid(part.getTid());
 			codeMerge.setCodename(part.getPdescription());
-			codeMerge.setCodetypename(partTypeMapper.selectByPrimaryKey(part.getPbid()).getPbname());
+			PartType partType = partTypeMapper.selectByPrimaryKey(part.getPbid());
+			if(partType == null){
+				codeMerge.setCodetypename("");
+			}else{
+				codeMerge.setCodetypename(partType.getPbname());
+			}
+			
 			codeMerge.setCaseimg(part.getPimg());
 			
 			codeMerges.add(codeMerge);
@@ -284,7 +331,6 @@ public class U_codingController {
 		List<codeMerge> codeMerges = new ArrayList<codeMerge>();
 		codeMerge codeMerge;
 		
-	
 		List<Texture> textures = textureService.selectByTID(tid);
 		for (Texture texture: textures) {
 			codeMerge = new codeMerge();
@@ -292,13 +338,42 @@ public class U_codingController {
 			codeMerge.setId(texture.getTextureid());
 			codeMerge.setTid(texture.getTid());
 			codeMerge.setCodename(texture.getTdescription());
-			codeMerge.setCodetypename(textureTypeMapper.selectByPrimaryKey(texture.getTtid()).getTtname());
+			TextureType textureType = textureTypeMapper.selectByPrimaryKey(texture.getTtid());
+			if(textureType == null){
+				codeMerge.setCodetypename("");
+			}else{
+				codeMerge.setCodetypename(textureType.getTtname());
+			}
+			
 			codeMerge.setCaseimg(texture.getTimg());
 			
 			codeMerges.add(codeMerge);
 		}
 		
 		return codeMerges;
+	}
+	
+	@RequestMapping("detail/color")
+	@ResponseBody
+	public show_detail getdetailInfo(Model model, Integer id,HttpServletRequest request){
+		
+		show_detail show_detail = new show_detail();
+		Color color = colorService.selectByPrimaryKey(id);
+		
+		
+		show_detail.setDescription(color.getCdescription());
+		show_detail.setColornum(color.getCnum());
+		show_detail.setImg(color.getCimg());
+		show_detail.setFile(color.getCfile());
+		show_detail.setRgb(color.getCrgb());
+		ColorType colorType = colorTypeMapper.selectByPrimaryKey(color.getCbid());
+		if(colorType==null){
+			show_detail.setTypeName("");
+		}else{
+			show_detail.setTypeName(colorType.getCbname());
+		}
+		System.out.println("show_detail.getDescription() "+show_detail.getDescription());
+		return show_detail;
 	}
 	
 	//"加载更多"  接口
