@@ -25,32 +25,32 @@
 			<div id="setParam">
 				<a href="javascript:void(0)" id="paramToggle">
 					<div id="paraIcon"> <img src="../image/setparam.png"></div>
-					<div id="paraWord">1.参数设置</div>
+					<div id="paraWord" style="margin-left: 50px;">1.参数设置<div class="left-arrow1 arrow1" style="margin-top: -1px;margin-left: 25px;">&lt;</div></div>
 				</a>
 				<ul id="paramContent">
-					<li><a href="javascript:void(0)" id="paragoblet" class="imago1">高脚杯</a></li>
-					<li><a href="javascript:void(0)" id="parayacht" class="imago1">游艇</a></li>
-					<li><a href="javascript:void(0)" id="parahanky">织物</a></li>
-					<li><a href="javascript:void(0)" id="pararange" class="imago1">燃气灶</a></li>
+					<li><a href="javascript:void(0)" id="paragoblet" class="param">高脚杯</a></li>
+					<li><a href="javascript:void(0)" id="parayacht" class="param">游艇</a></li>
+					<li><a href="javascript:void(0)" id="parahanky" class="param">织物</a></li>
+					<li><a href="javascript:void(0)" id="pararange" class="param">燃气灶</a></li>
 				</ul>
 			</div>
 			<div id="geneStyle">
 				<a href="javascript:void(0)" id="geneToggle">
 					<div id="paraIcon"> <img src="../image/genestyle.png"></div>
-					<div id="paraWord">2.造型生成</div>
-					
+					<div id="paraWord" style="margin-left: 50px;">2.造型生成<div class="left-arrow1 arrow2" style="margin-top: -1px;margin-left: 25px;">&lt;</div></div>
 				</a>
 				<ul id="geneContent">
-					<li><a href="javascript:void(0)" id="genegoblet" class="imago1">高脚杯</a></li>
-					<li><a href="javascript:void(0)" id="geneyacht" class="imago1">游艇</a></li>
-					<li><a href="javascript:void(0)" id="genehanky" class="imago1">织物</a></li>
-					<li><a href="javascript:void(0)" id="generange" class="imago1">燃气灶</a></li>
+					<li><a href="javascript:void(0)" id="genegoblet" class="errorOperate">高脚杯</a></li>
+					<li><a href="javascript:void(0)" id="geneyacht" class="errorOperate">游艇</a></li>
+					<li><a href="javascript:void(0)" id="genehanky" class="errorOperate">织物</a></li>
+					<li><a href="javascript:void(0)" id="generange" class="errorOperate">燃气灶</a></li>
 				</ul>
 			</div>
 			<div id="adjustStyle">
 				<a href="javascript:void(0)" id="adjustToggle">
 					<div id="paraIcon"> <img src="../image/adjuststyle.png"></div>
-					<div id="paraWord">3.造型调整</div>
+					<div id="paraWord" style="margin-left: 50px;">3.造型调整<div class="left-arrow1 arrow3" style="margin-top: -1px;margin-left: 25px;">&lt;</div></div>
+					
 				</a>
 				<ul id="adjustContent">
 					<li><a href="javascript:void(0)" id="colorAdjust" class="errorOperate">色彩调整</a></li>
@@ -66,18 +66,11 @@
 			<div id="iconAndcorpus">
 				<div id="introicon"><img class="imgicon" src="../image/fabric.png"/></div>
 				<div id="introduce">
-					<p id="corpus">底层啊啥的交换机啊啥的卡斯柯卡号的看见好多看哈的华盛asd请问萨达vvghgfhdg阿尔法啊啥的范围飞啊飞玩手动阀发阿斯蒂芬万二分阿斯蒂芬阿斯蒂芬顿奥德赛华盛顿看哈是读好书看哈的华盛顿很快的</p>
+					<lable id="corpus">底层啊啥的交换机啊啥的卡斯柯卡号的看见好多看哈的华盛asd请问萨达vvghgfhdg阿尔法啊啥的范围飞啊飞玩手动阀发阿斯蒂芬万二分阿斯蒂芬阿斯蒂芬顿奥德赛华盛顿看哈是读好书看哈的华盛顿很快的</lable>
 				</div>
 			</div>
 
-			<!-- <div id="inputcorpus">
-				<div id="corpusword" style="padding-top: 5.5px;">输入语义</div>
-			</div> -->
-
 			<div class="fabricParam">
-
-				<!-- 1234567 -->
-
 			</div>
 
 			<!-- <div id="showicon">
@@ -91,7 +84,6 @@
 		</div>
 	</div>
 	
-
 	<!-- 	底部 -->
 	<div class="configFoot"></div>
 
@@ -100,33 +92,42 @@
 		$("#adjustContent").fadeOut(0);
 		$("#bottomcolor").fadeOut(0);
 
+		$("#parahanky").css({color:'#00A5BD'});
+		$(".arrow2").css({transform:'rotate(270deg)'});
+		$(".arrow3").css({transform:'rotate(270deg)'});
+
 		$("#paramToggle").click(function(){
-   			$("#paramContent").fadeToggle(0);
-  		});
+				$("#paramContent").fadeIn(0);
+				$("#geneContent").fadeOut(0);
+				$("#adjustContent").fadeOut(0);
+				$("#bottomcolor").fadeOut(0);
+				$(".arrow1").css({transform:'rotate(90deg)'});
+				$(".arrow2").css({transform:'rotate(270deg)'});
+				$(".arrow3").css({transform:'rotate(270deg)'});
+			});
 		$("#geneToggle").click(function(){
-  			$("#geneContent").fadeToggle(0);
-  		});
+			$("#paramContent").fadeOut(0);
+				$("#geneContent").fadeIn(0);
+				$("#adjustContent").fadeOut(0);
+				$("#bottomcolor").fadeOut(0);
+				$(".arrow1").css({transform:'rotate(270deg)'});
+				$(".arrow2").css({transform:'rotate(90deg)'});
+				$(".arrow3").css({transform:'rotate(270deg)'});
+			});
 		$("#adjustToggle").click(function(){
-    		$("#adjustContent").fadeToggle(0);
-    		$("#bottomcolor").fadeToggle(0);
-  		});
-  		/* $("#paragoblet").click(function(){
-  			alert("请您先从物品 参数设置开始，然后按照顺序操作！");
-  			document.getElementById("pararange").style.color="black";
-  			document.getElementById("parahanky").style.color="black";
-  			document.getElementById("parayacht").style.color="black";
-  			document.getElementById("paragoblet").style.color="#00A5BD";
-  			$(".imgicon").attr('src',"../images/genestyle/golbet.png"); 
-  			
-  			
-  		}); */
+			$("#paramContent").fadeOut(0);
+				$("#geneContent").fadeOut(0);
+				$("#adjustContent").fadeIn(0);
+				$(".arrow1").css({transform:'rotate(270deg)'});
+				$(".arrow2").css({transform:'rotate(270deg)'});
+				$(".arrow3").css({transform:'rotate(90deg)'});
+				$("#bottomcolor").fadeIn(0);
+			});
+		
   		
   		$(".imago1").on("click",function(){
   			alert("请您先从物品 参数设置开始，然后按照顺序操作！");
   		});
-  		
-  		
-  		
   		
 	</script>
 </body>

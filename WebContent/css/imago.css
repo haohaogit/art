@@ -59,10 +59,10 @@ a{
 	width:17%;
 	text-align:left;
 	background-color: white;
-	padding: 5px 0px 10px 0px;
+	padding: 0px 0px 10px 0px;
 }
 #leftBody div{
-	margin: 5px 5px 5px 5px;
+	margin: 0px 5px 5px 5px;
 	background-color: #00A5BD;
 	font-size:20px;
 }
@@ -135,18 +135,15 @@ a{
 	width: 688px;
 	display: inline-block;
     vertical-align: top;
-    margin-top: 5px;
+    /* margin-top: 5px; */
 }
 .imgicon{
 	margin-top: 5px;
 	width: 103px;
 }
 #picGene{
-	margin-top: 20px;
+	/* margin-top: 20px; */
 }
-
-
-
 
 #corpus{
     margin-top: 23px;
@@ -210,7 +207,7 @@ a{
 
 #beidu{
 	background-color: #00A5BD;
-	width: 72px;
+	width: 106px;
 	float: left;
 }
 #beibing{
@@ -448,4 +445,11 @@ a{
 	margin-left: 10px;
 	width:600px;
 	height:340px;
+}
+.left-arrow1{
+	transform: rotate(90deg);
+	width: 20px;
+}
+#paraWord{
+	display: flex;
 }

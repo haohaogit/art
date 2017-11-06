@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import cn.art.model.NewCase;
 import cn.art.service.ColorService;
 import cn.art.service.JWordService;
 import cn.art.service.NewCaseService;
@@ -57,6 +58,7 @@ public class U_ModelSysController {
 	private Map<String , String > backimg = new HashMap<String, String>();
 	private Map<String , String > FabricTexturebackimg = new HashMap<String, String>();
 	private Map<String , String > RgbNum = new HashMap<String, String>();
+	private Map<String , String > scoreNum = new HashMap<String, String>();
 	
 	
 	public OutLineService getOutLineService() {
@@ -252,7 +254,7 @@ public class U_ModelSysController {
             e.printStackTrace();
         }
 		commandImg cimg = new commandImg();
-		cimg.setImg("../../images/cookerPart"+timeid+".jpg");
+		cimg.setImg("../image/cookerPart_"+timeid+".jpg");
 		
 		//cimg.setImg1("../images/genestyle/Ccolor.png");
 		//cimg.setImg2("../images/genestyle/Ctexture1.png");
@@ -269,10 +271,10 @@ public class U_ModelSysController {
 		String[] s1 = pbimg.split("/");
 		String adjPimg = s1[s1.length-1];
 		
-		adjPimg = "C:/Users/Administrator/git/art0804/WebContent/images/"+adjPimg;
+		adjPimg = "C:/Users/Administrator/workspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/art0804/image/"+adjPimg;
 		
 		int Nrgb = Integer.parseInt(RgbNum.get(timeid));
-		String imgString = "D:/2017/images/fabric_"+timeid+".jpg";
+		String imgString = "C:/Users/Administrator/workspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/art0804/image/fabric_"+timeid+".jpg";
 		System.out.println("RgbNum.get(timeid) "+RgbNum.get(timeid));
 		System.out.println("imgString "+imgString);
 		System.out.println("FabricTexturebackimg.get(timeid) "+FabricTexturebackimg.get(timeid));
@@ -361,7 +363,7 @@ public class U_ModelSysController {
             e.printStackTrace();
         }
 		commandImg cimg = new commandImg();
-		cimg.setImg("../../images/cookerTexture"+timeid+".jpg");
+		cimg.setImg("../image/cookerTexture_"+timeid+".jpg");
 		
 		//cimg.setImg1("../images/genestyle/Ccolor.png");
 		//cimg.setImg2("../images/genestyle/Ctexture1.png");
@@ -382,7 +384,7 @@ public class U_ModelSysController {
 		FabricTexturebackimg.put(timeid, timg);
 		
 		int Nrgb = Integer.parseInt(RgbNum.get(timeid));
-		String imgString = "D:/2017/images/fabric_"+timeid+".jpg";
+		String imgString = "C:/Users/Administrator/workspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/art0804/image/fabric_"+timeid+".jpg";
 		try {
             
             //System.out.println("start;;;" + a);
@@ -421,6 +423,7 @@ public class U_ModelSysController {
 		try {
             //需传入的参数
             Rgb = crgb;
+            RgbNum.put(timeid, Rgb);
             //System.out.println("start;;;" + a);
             //设置命令行传入参数
             String[] args = new String[] { "python", "D:\\20170602\\PycharmProjects\\firstDL_netEast\\cookerAssembleColor.py",minitem.get(timeid),Rgb,timeid };
@@ -439,7 +442,7 @@ public class U_ModelSysController {
             e.printStackTrace();
         }
 		commandImg cimg = new commandImg();
-		cimg.setImg("../../images/cookerColor"+timeid+".jpg");
+		cimg.setImg("../image/cookerColor_"+timeid+".jpg");
 		
 		//cimg.setImg1("../images/genestyle/Ccolor.png");
 		//cimg.setImg2("../images/genestyle/Ctexture1.png");
@@ -488,6 +491,7 @@ public class U_ModelSysController {
 	@ResponseBody
 	public commandImg setparamcooker(Model model,String sc,HttpServletRequest request){
 		
+		
 		String[] s = sc.split(",");
 		int temp =0;
 		String score = "";
@@ -500,9 +504,11 @@ public class U_ModelSysController {
 		try {
             //需传入的参数
             String a = score;
+            
             long current_time = new Date().getTime();
             timeid1 = current_time+"";
-            //System.out.println("start;;;" + a);
+            scoreNum.put(timeid1, sc);
+            System.out.println("start;;;" + a);
             //设置命令行传入参数
             String[] args1 = new String[] { "python", "D:\\20170602\\PycharmProjects\\firstDL_netEast\\cookerAssemble.py", a,timeid1};
             Process pr = Runtime.getRuntime().exec(args1);
@@ -517,7 +523,7 @@ public class U_ModelSysController {
            
             in.close();
             //pr.waitFor();
-            cimg.setImg("../../images/cookerColor"+timeid1+".jpg");
+            cimg.setImg("../image/cookerColor_"+timeid1+".jpg");
             cimg.setTimeid(timeid1);
     		cimg.setImg1("../images/genestyle/Ccolor.png");
     		cimg.setImg2("../images/genestyle/Ctexture1.png");
@@ -547,8 +553,6 @@ public class U_ModelSysController {
 		
 		System.out.println("bgimg "+bgimg);
 		
-		
-		
 		try {
             //需传入的参数
             String a = sc;
@@ -556,6 +560,7 @@ public class U_ModelSysController {
             //设置命令行传入参数
             long current_time = new Date().getTime();
             timeid1 = current_time+"";
+            scoreNum.put(timeid1, sc);
             RgbNum.put(timeid1, colorNum+"");
             backimg.put(timeid1, bgimg);
             
@@ -621,7 +626,7 @@ public class U_ModelSysController {
             
             
             //pr.waitFor();
-            cimg.setImg("../../images/fabric"+"_"+timeid1+".jpg");
+            cimg.setImg("../image/fabric"+"_"+timeid1+".jpg");
             cimg.setTimeid(timeid1);
             
     		cimg.setImg1("../images/genestyle/Ccolor.png");
@@ -631,6 +636,62 @@ public class U_ModelSysController {
             e.printStackTrace();
         }
 		return cimg;
+	}
+	
+	@RequestMapping("save/cooker/{timeid}")
+	@ResponseBody
+	public String savecooker(@PathVariable String timeid,Model model,HttpServletRequest request){
+		String message = "0";
+		List<typeIdName> typeIdNames = typeService.selectAllByName("燃气灶");
+		int tid = 0;
+		for (typeIdName typeIdName : typeIdNames) {
+			tid = typeIdName.getTid();
+			break;
+		}
+		NewCase newCase = new NewCase();
+		
+		newCase.setTid(tid);
+		newCase.setNewcasename(timeid);
+		newCase.setNewcasearg(scoreNum.get(timeid));
+		newCase.setNewcaseimg("cookerPart_"+timeid+".jpg");
+		
+		newCase.setNewcasercolor("cookerColor_"+timeid+".jpg");
+		newCase.setNewcasertexture("cookerTexture_"+timeid+".jpg");
+		
+		newCase.setNewcasertotal("cookerPart_"+timeid+".jpg");
+		newCase.setNewcaseroutline("cooker_"+timeid+".jpg");
+		
+		int isok = newCaseService.insertSelective(newCase);
+		message = isok+"";
+		return message;
+	}
+	
+	@RequestMapping("save/fabric/{timeid}")
+	@ResponseBody
+	public String savefabric(@PathVariable String timeid,Model model,HttpServletRequest request){
+		String message = "0";
+		List<typeIdName> typeIdNames = typeService.selectAllByName("织物");
+		int tid = 0;
+		for (typeIdName typeIdName : typeIdNames) {
+			tid = typeIdName.getTid();
+			break;
+		}
+		NewCase newCase = new NewCase();
+		
+		newCase.setTid(tid);
+		newCase.setNewcasename(timeid);
+		newCase.setNewcasearg(scoreNum.get(timeid));
+		newCase.setNewcaseimg("fabricPart_"+timeid+".jpg");
+		
+		newCase.setNewcasercolor("fabricColor_"+timeid+".jpg");
+		newCase.setNewcasertexture("fabricTexture_"+timeid+".jpg");
+		
+		newCase.setNewcasertotal("fabricPart_"+timeid+".jpg");
+		newCase.setNewcaseroutline("fabric_"+timeid+".jpg");
+		
+		int isok = newCaseService.insertSelective(newCase);
+		message = isok+"";
+		return message;
 	}
 		
 	//参数设置 类型分类默认接口

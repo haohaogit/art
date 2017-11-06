@@ -38,7 +38,7 @@
 		  	var n1 = loc.length;//地址的总长度
 		  	var n2 = loc.indexOf("=");//取得=号的位置
 		  	timeid = decodeURI(loc.substr(n2+1, n1-n2));//从=号后面的内容 
-		  	var geneimg = "../../images/cookerColor"+timeid+".jpg";
+		  	var geneimg = "../image/cookerColor_"+timeid+".jpg";
 		  	$(".picimg").attr("src",geneimg);
 		  	$.ajax("getcolor?tname=燃气灶",
 	                // 发送请求的URL字符串
@@ -66,32 +66,32 @@
 			<div id="setParam">
 				<a href="javascript:void(0)" id="paramToggle">
 					<div id="paraIcon"> <img src="../image/setparam.png"></div>
-					<div id="paraWord">1.参数设置</div>
+					<div id="paraWord" style="margin-left: 50px;">1.参数设置<div class="left-arrow1 arrow1" style="margin-top: -1px;margin-left: 25px;">&lt;</div></div>
 				</a>
 				<ul id="paramContent">
-					<li><a href="javascript:void(0)" id="paragoblet">高脚杯</a></li>
-					<li><a href="javascript:void(0)" id="parayacht">游艇</a></li>
-					<li><a href="javascript:void(0)" id="parahanky">织物</a></li>
-					<li><a href="javascript:void(0)" id="pararange">燃气灶</a></li>
+					<li><a href="javascript:void(0)" id="paragoblet" class="param">高脚杯</a></li>
+					<li><a href="javascript:void(0)" id="parayacht" class="param">游艇</a></li>
+					<li><a href="javascript:void(0)" id="parahanky" class="param">织物</a></li>
+					<li><a href="javascript:void(0)" id="pararange" class="param">燃气灶</a></li>
 				</ul>
 			</div>
 			<div id="geneStyle">
 				<a href="javascript:void(0)" id="geneToggle">
 					<div id="paraIcon"> <img src="../image/genestyle.png"></div>
-					<div id="paraWord">2.造型生成</div>
-					
+					<div id="paraWord" style="margin-left: 50px;">2.造型生成<div class="left-arrow1 arrow2" style="margin-top: -1px;margin-left: 25px;">&lt;</div></div>
 				</a>
 				<ul id="geneContent">
-					<li><a href="javascript:void(0)" id="genegoblet">高脚杯</a></li>
-					<li><a href="javascript:void(0)" id="geneyacht">游艇</a></li>
-					<li><a href="javascript:void(0)" id="genehanky">织物</a></li>
-					<li><a href="javascript:void(0)" id="generange">燃气灶</a></li>
+					<li><a href="javascript:void(0)" id="genegoblet" class="errorOperate">高脚杯</a></li>
+					<li><a href="javascript:void(0)" id="geneyacht" class="errorOperate">游艇</a></li>
+					<li><a href="javascript:void(0)" id="genehanky" class="errorOperate">织物</a></li>
+					<li><a href="javascript:void(0)" id="generange" class="errorOperate">燃气灶</a></li>
 				</ul>
 			</div>
 			<div id="adjustStyle">
 				<a href="javascript:void(0)" id="adjustToggle">
 					<div id="paraIcon"> <img src="../image/adjuststyle.png"></div>
-					<div id="paraWord">3.造型调整</div>
+					<div id="paraWord" style="margin-left: 50px;">3.造型调整<div class="left-arrow1 arrow3" style="margin-top: -1px;margin-left: 25px;">&lt;</div></div>
+					
 				</a>
 				<ul id="adjustContent">
 					<li><a href="javascript:void(0)" id="colorAdjust" class="errorOperate">色彩调整</a></li>
@@ -101,19 +101,15 @@
 					<li><a href="javascript:void(0)" id="partAdd" class="errorOperate">部件添加</a></li>
 				</ul>
 			</div>
+			<div id="bottomcolor"></div>
 		</div>
 		<div id="rightBody">
 			<div id="iconAndcorpus">
-				<div id="introicon"><img src="../image/gascooker.png" style="margin-top: 19px;" /></div>
+				<div id="introicon"><img src="../image/gascooker.png" style="" /></div>
 				<div id="introduce">
-					<p id="corpus">底层啊啥的交换机啊啥的卡斯柯卡号的看见好多看哈的华盛asd请问萨达vvghgfhdg阿尔法啊啥的范围飞啊飞玩手动阀发阿斯蒂芬万二分阿斯蒂芬阿斯蒂芬顿奥德赛华盛顿看哈是读好书看哈的华盛顿很快的</p>
+					<lable id="corpus">底层啊啥的交换机啊啥的卡斯柯卡号的看见好多看哈的华盛asd请问萨达vvghgfhdg阿尔法啊啥的范围飞啊飞玩手动阀发阿斯蒂芬万二分阿斯蒂芬阿斯蒂芬顿奥德赛华盛顿看哈是读好书看哈的华盛顿很快的</lable>
 				</div>
 			</div>
-
-			<!-- <div id="inputcorpus">
-				<div class="corpusword" style="padding-top: 5.5px;">推荐方案</div>
-			</div> -->
-
 			<!-- <div id="picGene" style="margin-top: 40px;">
 				
 				<canvas id="myCanvas" width="800" height="400" style="border:1px solid #d3d3d3;background:#ffffff;">
@@ -122,7 +118,7 @@
 				</canvas>
 			</div> -->
 			
-			<div id="picGene1" style="margin-top: 40px;" >
+			<div id="picGene1" style="" >
 				<div class="picfont" style="background:#00A5BD;width:145px; height:37px; ">
 					色彩方案预览
 				</div>
@@ -133,9 +129,6 @@
 				<div id="warmcolor">
 					<a href="javascript:void(0)" id="beidu1" >面板颜色</a>
 				</div>
-				<!-- <div id="coldcolor">
-					<a href="javascript:void(0)" id="beibing1" style="color: white;padding-left: 11px;">冷色系</a>
-				</div> -->
 			</div>
 
 			<div id="lunbo">
@@ -186,54 +179,45 @@
 			window.location.href="imago_adjust_texture_gascooker.html?timeid="+timeid;
 		}
 
-		/* window.onload = function(){
-			var c=document.getElementById("myCanvas");
-			var cxt=c.getContext("2d");
-			var img=new Image();
-			//img.src="/images/cookerColor.png";
-			img.src = geneimg;
-			img.onload = function(){
-				cxt.drawImage(img,10,40,600,340);
-			}
-		} */
 	</script>
 
-	
-	<!-- <script type="text/javascript">
-	
-		//获取Canvas对象(画布)
-		var canvas = document.getElementById("myCanvas");
-		//简单地检测当前浏览器是否支持Canvas对象，以免在一些不支持html5的浏览器中提示语法错误
-		if(canvas.getContext){  
-		    //获取对应的CanvasRenderingContext2D对象(画笔)
-		    var ctx = canvas.getContext("2d");
-		    ctx.fillStyle="#00A5BD";
-			ctx.fillRect(0,0,150,36);
-		    //设置字体样式
-		    ctx.font = "18px Courier New";
-		    //设置字体填充颜色
-		    ctx.fillStyle = "white";
-		    //从坐标点(50,50)开始绘制文字
-		    ctx.fillText("色彩方案预览", 20, 22);
-		}
-	</script> -->
 
 	<script type="text/javascript">
-		$("#geneContent").fadeOut(0);
-		$("#paramContent").fadeOut(0);
-		//$("#bottomcolor").fadeOut(0);
-		$("#colorAdjust").css({color:'#00a5bd'});
+	$("#geneContent").fadeOut(0);
+	$("#paramContent").fadeOut(0);
+	$(".arrow1").css({transform:'rotate(270deg)'});
+	$(".arrow2").css({transform:'rotate(270deg)'});
+	//$("#bottomcolor").fadeOut(0);
+	$("#colorAdjust").css({color:'#00a5bd'});
 
-		$("#paramToggle").click(function(){
-   			$("#paramContent").fadeToggle(0);
-  		});
-		$("#geneToggle").click(function(){
-  			$("#geneContent").fadeToggle(0);
-  		});
-		$("#adjustToggle").click(function(){
-    		$("#adjustContent").fadeToggle(0);
-    		$("#bottomcolor").fadeToggle(0);
-  		});
+	$("#paramToggle").click(function(){
+			$("#paramContent").fadeIn(0);
+			$("#geneContent").fadeOut(0);
+			$("#adjustContent").fadeOut(0);
+			$("#bottomcolor").fadeOut(0);
+			$(".arrow1").css({transform:'rotate(90deg)'});
+			$(".arrow2").css({transform:'rotate(270deg)'});
+			$(".arrow3").css({transform:'rotate(270deg)'});
+		});
+	$("#geneToggle").click(function(){
+		$("#paramContent").fadeOut(0);
+			$("#geneContent").fadeIn(0);
+			$("#adjustContent").fadeOut(0);
+			$("#bottomcolor").fadeOut(0);
+			$(".arrow1").css({transform:'rotate(270deg)'});
+			$(".arrow2").css({transform:'rotate(90deg)'});
+			$(".arrow3").css({transform:'rotate(270deg)'});
+		});
+	$("#adjustToggle").click(function(){
+		$("#paramContent").fadeOut(0);
+			$("#geneContent").fadeOut(0);
+			$("#adjustContent").fadeIn(0);
+			$(".arrow1").css({transform:'rotate(270deg)'});
+			$(".arrow2").css({transform:'rotate(270deg)'});
+			$(".arrow3").css({transform:'rotate(90deg)'});
+			$("#bottomcolor").fadeIn(0);
+		});
+
 
 
   		$("#paragoblet").click(function(){

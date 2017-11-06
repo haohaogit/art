@@ -9,7 +9,7 @@
 	<title>意象映射-意象映射系统</title>
 	<style type="text/css" media="screen">
 		/* body 	{ font: 75% "Lucida Grande", "Trebuchet MS", Verdana, sans-serif; } */
-		canvas 	{ background-color: transparent; border: 1px solid gray; top: 0; left: 0; position: absolute;left:446px;top:300px;}
+		canvas 	{ background-color: transparent; border: 1px solid gray; top: 0; left: 0; position: absolute;left:446px;top:280px;}
 		canvas.resize-ne { cursor: ne-resize; }
 		canvas.resize-se { cursor: se-resize; }
 		canvas.resize-sw { cursor: sw-resize; }
@@ -37,7 +37,7 @@
 		  	var n1 = loc.length;//地址的总长度
 		  	var n2 = loc.indexOf("=");//取得=号的位置
 		  	timeid = decodeURI(loc.substr(n2+1, n1-n2));//从=号后面的内容 
-		  	var geneimg = "../../images/cookerPart"+timeid+".jpg";
+		  	var geneimg = "../image/cookerPart_"+timeid+".jpg";
 		  	$(".picimg1").attr("src",geneimg);
 		  	
             $.ajax("getpart?tname=燃气灶",
@@ -65,20 +65,19 @@
 			<div id="setParam">
 				<a href="javascript:void(0)" id="paramToggle">
 					<div id="paraIcon"> <img src="../image/setparam.png"></div>
-					<div id="paraWord">1.参数设置</div>
+					<div id="paraWord" style="margin-left: 50px;">1.参数设置<div class="left-arrow1 arrow1" style="margin-top: -1px;margin-left: 25px;">&lt;</div></div>
 				</a>
 				<ul id="paramContent">
-					<li><a href="javascript:void(0)" id="paragoblet">高脚杯</a></li>
-					<li><a href="javascript:void(0)" id="parayacht">游艇</a></li>
-					<li><a href="javascript:void(0)" id="parahanky">织物</a></li>
-					<li><a href="javascript:void(0)" id="pararange">燃气灶</a></li>
+					<li><a href="javascript:void(0)" id="paragoblet" class="param">高脚杯</a></li>
+					<li><a href="javascript:void(0)" id="parayacht" class="param">游艇</a></li>
+					<li><a href="javascript:void(0)" id="parahanky" class="param">织物</a></li>
+					<li><a href="javascript:void(0)" id="pararange" class="param">燃气灶</a></li>
 				</ul>
 			</div>
 			<div id="geneStyle">
 				<a href="javascript:void(0)" id="geneToggle">
 					<div id="paraIcon"> <img src="../image/genestyle.png"></div>
-					<div id="paraWord">2.造型生成</div>
-					
+					<div id="paraWord" style="margin-left: 50px;">2.造型生成<div class="left-arrow1 arrow2" style="margin-top: -1px;margin-left: 25px;">&lt;</div></div>
 				</a>
 				<ul id="geneContent">
 					<li><a href="javascript:void(0)" id="genegoblet" class="errorOperate">高脚杯</a></li>
@@ -90,30 +89,26 @@
 			<div id="adjustStyle">
 				<a href="javascript:void(0)" id="adjustToggle">
 					<div id="paraIcon"> <img src="../image/adjuststyle.png"></div>
-					<div id="paraWord">3.造型调整</div>
+					<div id="paraWord" style="margin-left: 50px;">3.造型调整<div class="left-arrow1 arrow3" style="margin-top: -1px;margin-left: 25px;">&lt;</div></div>
+					
 				</a>
 				<ul id="adjustContent">
 					<li><a href="javascript:void(0)" id="colorAdjust" class="errorOperate">色彩调整</a></li>
 					<img src="../images/genestyle/navigatebar.png" class="pimg">
-					<li><a href="javascript:void(0)" id="textureAdjust" class="errorOperate" >材质调整</a></li>
+					<li><a href="javascript:void(0)" id="textureAdjust" class="errorOperate">材质调整</a></li>
 					<img src="../images/genestyle/navigatebar.png" class="pimg">
 					<li><a href="javascript:void(0)" id="partAdd" class="errorOperate">部件添加</a></li>
-					
 				</ul>
 			</div>
 			<div id="bottomcolor"></div>
 		</div>
 		<div id="rightBody">
 			<div id="iconAndcorpus">
-				<div id="introicon"><img src="../image/gascooker.png" style="margin-top: 13px;"/></div>
+				<div id="introicon"><img src="../image/gascooker.png" style=""/></div>
 				<div id="introduce">
-					<p id="corpus">底层啊啥的交换机啊啥的卡斯柯卡号的看见好多看哈的华盛asd请问萨达vvghgfhdg阿尔法啊啥的范围飞啊飞玩手动阀发阿斯蒂芬万二分阿斯蒂芬阿斯蒂芬顿奥德赛华盛顿看哈是读好书看哈的华盛顿很快的</p>
+					<lable id="corpus">底层啊啥的交换机啊啥的卡斯柯卡号的看见好多看哈的华盛asd请问萨达vvghgfhdg阿尔法啊啥的范围飞啊飞玩手动阀发阿斯蒂芬万二分阿斯蒂芬阿斯蒂芬顿奥德赛华盛顿看哈是读好书看哈的华盛顿很快的</lable>
 				</div>
 			</div>
-
-			<!-- <div id="inputcorpus">
-				<div class="corpusword" style="padding-top: 5.5px;">推荐方案</div>
-			</div> -->
 
 			<div id="picGene" style="height:530px;">
 				<!-- <div>
@@ -121,7 +116,7 @@
 				</div> -->
 				<!-- <img class="img1" id="img0" src="../images/4.jpg" width="100px" height="134px"/> -->
 				
-				<img class="picimg1" id="bg" src="../../images/cookerPart.jpg" style ="width:800px;height:481px;margin-top: 11px;margin-left: -1.5px;"/>
+				<img class="picimg1" id="bg" src="../image/cookerPart.jpg" style ="width:800px;height:481px;margin-top: 11px;margin-left: -1.5px;"/>
 			</div>
 
 			<div id="partStyle" style="height:37px;">
@@ -179,10 +174,6 @@
 			var ht = $(this).html();
 			var src = $(ht).attr('src');
 			Logoimg = $(ht).attr('src');
-			//alert($(ht).attr('src'));
-		/* 	$("#img0").attr("src",$(ht).attr('src')); */
-			//canvas1.renderAll();
-			//alert($(ht).attr('src'));
 			$.ajax("adjust/part/cooker/"+timeid+"?img="+src,
                 // 发送请求的URL字符串
                 {
@@ -211,13 +202,8 @@
 					canvas1 = new Canvas.Element();
 					//canvas1.init('canvid1',  { width: YD.getViewportWidth() - 5, height: YD.getViewportHeight() - 5 });
 					canvas1.init('canvid1',  { width: 800, height: 481 });			
-					//img[img.length] = new Canvas.Img('img1', {});
-					//img[img.length] = new Canvas.Img('img2', {});
-					//img[img.length] = new Canvas.Img('img3', {});
 					img[img.length] = new Canvas.Img('bg', {});
 					img[img.length] = new Canvas.Img('img0', {});
-					
-					// @param array of images ToDo: individual images
 					
 					canvas1.setCanvasBackground(img[0]);
 					canvas1.addImage(img[1]);
@@ -285,30 +271,28 @@
 		}();
 		
 		function loadtitle(){
-			
 			var canvas = document.getElementById("canvid1-canvas-background");
-			//简单地检测当前浏览器是否支持Canvas对象，以免在一些不支持html5的浏览器中提示语法错误
-			/* if(canvas.getContext){  
-				//alert("aaaaaaaaaaaaaaaa"+canvas.getContext);
-			    //获取对应的CanvasRenderingContext2D对象(画笔)
-			    var ctx = canvas.getContext("2d");
-			    ctx.fillStyle="#00A5BD";
-				ctx.fillRect(0,0,150,36);
-			    //设置字体样式
-			    ctx.font = "18px Courier New";
-			    //设置字体填充颜色
-			    ctx.fillStyle = "white";
-			    //从坐标点(50,50)开始绘制文字
-			    ctx.fillText("部件方案预览", 20, 22);
-			    //alert("部件方案预览11111111");
-			} */
 		}
-		
-		
 		
 		YAHOO.util.Event.on(window, 'load', CanvasDemo.init, CanvasDemo, true);
 		
 		function savePart(){
+			
+			$.ajax("save/cooker/"+timeid,
+            // 发送请求的URL字符串
+            {
+                type: "get",      //
+                async:true,  //
+                success: function(data){
+        		//window.location.reload(); 
+				alert("save success   ");
+				window.location.href = "facade_new_gascooker.html";
+                },
+                error: function(){
+                    alert("数据发送失败denglu");
+                }
+            });
+			
 			
 			/* if(!Logoimg){
 				alert("请选择LOGO图标！");
@@ -327,8 +311,8 @@
 	                error: function(){
 	                    alert("数据发送失败denglu");
 	                }
-	            });  
-			} */
+	            });
+			}  */
 			
 			//window.location.href="imago_adjust_color_gascooker.html";
 		}
@@ -340,21 +324,40 @@
 	</script>
 
 	<script type="text/javascript">
-		$("#geneContent").fadeOut(0);
-		$("#paramContent").fadeOut(0);
-		//$("#bottomcolor").fadeOut(0);
-		$("#partAdd").css({color:'#00a5bd'});
+	$("#geneContent").fadeOut(0);
+	$("#paramContent").fadeOut(0);
+	$(".arrow1").css({transform:'rotate(270deg)'});
+	$(".arrow2").css({transform:'rotate(270deg)'});
+	//$("#bottomcolor").fadeOut(0);
+	$("#partAdd").css({color:'#00a5bd'});
 
-		$("#paramToggle").click(function(){
-   			$("#paramContent").fadeToggle(0);
-  		});
-		$("#geneToggle").click(function(){
-  			$("#geneContent").fadeToggle(0);
-  		});
-		$("#adjustToggle").click(function(){
-    		$("#adjustContent").fadeToggle(0);
-    		$("#bottomcolor").fadeToggle(0);
-  		});
+	$("#paramToggle").click(function(){
+			$("#paramContent").fadeIn(0);
+			$("#geneContent").fadeOut(0);
+			$("#adjustContent").fadeOut(0);
+			$("#bottomcolor").fadeOut(0);
+			$(".arrow1").css({transform:'rotate(90deg)'});
+			$(".arrow2").css({transform:'rotate(270deg)'});
+			$(".arrow3").css({transform:'rotate(270deg)'});
+		});
+	$("#geneToggle").click(function(){
+		$("#paramContent").fadeOut(0);
+			$("#geneContent").fadeIn(0);
+			$("#adjustContent").fadeOut(0);
+			$("#bottomcolor").fadeOut(0);
+			$(".arrow1").css({transform:'rotate(270deg)'});
+			$(".arrow2").css({transform:'rotate(90deg)'});
+			$(".arrow3").css({transform:'rotate(270deg)'});
+		});
+	$("#adjustToggle").click(function(){
+		$("#paramContent").fadeOut(0);
+			$("#geneContent").fadeOut(0);
+			$("#adjustContent").fadeIn(0);
+			$(".arrow1").css({transform:'rotate(270deg)'});
+			$(".arrow2").css({transform:'rotate(270deg)'});
+			$(".arrow3").css({transform:'rotate(90deg)'});
+			$("#bottomcolor").fadeIn(0);
+		});
 
 
 
