@@ -95,34 +95,8 @@ function AddCarousel(baseObj) {
         that.moveToCenter(index);
     });
     
-    /*$('.LPart').on('click', function() {
-        
-        debugger;
-        var ss = $(this).html();
-        var src = $(ss).attr('src');
-        alert("src111 "+src);
-        $("#img0").attr("src",$(ht).attr('src'));
-		canvas1.renderAll();
-        $.ajax("adjust/part/cooker/"+timeid+"?img="+src,
-                // 发送请求的URL字符串
-                {
-                    type: "get",      //
-                    async:true,  //
-                    success: function(data){
-            		//$(".picimg").attr('src',data.img);
-                    alert("adjustcolor successful   "+data.img);
-            		window.location.reload(); 
-    				
-                    },
-                    error: function(){
-                        alert("数据发送失败denglu");
-                    }
-                });
-        
-        that.moveToCenter(index);
-    });*/
 
-    $('.LColor').on('click', function() {
+    /*$('.LColor').on('click', function() {
         var index = parseInt($(this).attr('data-itemid'));
         
         var ss = $(this).html();
@@ -141,8 +115,8 @@ function AddCarousel(baseObj) {
     				//$(".i1").attr('src',data.img);
                     //debugger;
                     window.location.reload(); 
-                    /*alert("data.img "+data.img);
-            		$(".picimg").attr('src',data.img);*/
+                    alert("data.img "+data.img);
+            		$(".picimg").attr('src',data.img);
             		//alert("data.img "+data.img);
             		//
     				//alert("adjustcolor successful   "+data.img);
@@ -153,7 +127,7 @@ function AddCarousel(baseObj) {
                 });
         
         that.moveToCenter(index);
-    });
+    });*/
     
     
 

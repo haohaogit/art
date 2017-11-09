@@ -179,20 +179,17 @@
 		$(".lunbo-window").on("click",".TextureFabric",function(){
   			var ht = $(this).html();
   			//$(ht).find('img').attr("src");
-  			//alert(ht);
   			
   			var TBimg = $(ht).attr('src');
-  			alert(TBimg);
+  			//alert(TBimg);
   			$.ajax("adjust/texture/fabric/"+timeid+"?tbimg="+TBimg,
 	                // 发送请求的URL字符串
 	                {
 	                    type: "get",      //
 	                    async:true,  //
 	                    success: function(data){
-	    				alert("facade newcase goblet test length");
+	    				//alert("facade newcase goblet test length");
 	    				//fillNewcaseHouseboat(data);
-	    				
-	    				//$(".i1").attr('src',data.img);
 	                    //debugger;
 	                    window.location.reload(); 
 	                    },

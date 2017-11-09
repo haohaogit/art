@@ -102,11 +102,14 @@ public class U_corpusController {
 	//降维词汇库  详细词汇接口(比如"朝气")
 	@RequestMapping("dimense/words")
 	@ResponseBody
-	public List<wordFV> corpusDimense(Model model,String tname){
+	public List<wordFV> corpusDimense(Model model,String tname) {
+		
+	
+		
 		List<wordFV> words = new ArrayList<wordFV>();
 		
 		words = jWordService.getAllJwordByTName(tname);
-		//System.out.println("111  jWordService.getAllJwordByTName(tname);   11111111111111");
+		System.out.println("111  jWordService.getAllJwordByTName(tname);   11111111111111");
 		return words;
 	}
 	
@@ -117,8 +120,8 @@ public class U_corpusController {
 	@RequestMapping("question")
 	@ResponseBody
 	public Survey corpusQuestion(Model model,String tname,HttpServletRequest request) throws UnsupportedEncodingException{
-		String str = java.net.URLDecoder.decode(tname, "UTF-8");
-		tname = java.net.URLDecoder.decode(str, "UTF-8"); 
+		/*String str = java.net.URLDecoder.decode(tname, "UTF-8");
+		tname = java.net.URLDecoder.decode(str, "UTF-8"); */
 		/*String tString = "";
 		System.out.println("survey 11111111111111  000000000000 tname "+tname);
 		if("gao"==tname){

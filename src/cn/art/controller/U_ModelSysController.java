@@ -191,7 +191,7 @@ public class U_ModelSysController {
 		//System.out.println("sc "+sc);
 		List<colorB> listbBs = new ArrayList<colorB>();
 		List<typeIdName> typeIdNames = typeService.selectAllByName(tname);
-		int tid = 0;
+		int tid = 2;
 		for (typeIdName typeIdName : typeIdNames) {
 			tid = typeIdName.getTid();
 			break;
@@ -211,7 +211,7 @@ public class U_ModelSysController {
 		//System.out.println("sc "+sc);
 		List<partB> listbBs = new ArrayList<partB>();
 		List<typeIdName> typeIdNames = typeService.selectAllByName(tname);
-		int tid = 0;
+		int tid = 2;
 		for (typeIdName typeIdName : typeIdNames) {
 			tid = typeIdName.getTid();
 			break;
@@ -232,13 +232,13 @@ public class U_ModelSysController {
 		String[] s1 = img.split("/");
 		String Logoimg = s1[s1.length-1];
 		
-		Logoimg = "D:/20170602/PycharmProjects/firstDL_netEast/artgene/"+Logoimg;
+		Logoimg = "C:/firstDL_netEast/artgene/"+Logoimg;
 		
 		s1 = Rgb.split(",");
 		try {
             
             //设置命令行传入参数
-            String[] args = new String[] { "python", "D:\\20170602\\PycharmProjects\\firstDL_netEast\\cookerAssembleLogo.py",minitem.get(timeid),s1[0],s1[1],s1[2],backimg.get(timeid),Logoimg,timeid};
+            String[] args = new String[] { "python", "C:\\firstDL_netEast\\cookerAssembleLogo.py",minitem.get(timeid),s1[0],s1[1],s1[2],backimg.get(timeid),Logoimg,timeid};
             Process pr = Runtime.getRuntime().exec(args);
 
             BufferedReader in = new BufferedReader(new InputStreamReader(pr.getInputStream()));
@@ -271,10 +271,10 @@ public class U_ModelSysController {
 		String[] s1 = pbimg.split("/");
 		String adjPimg = s1[s1.length-1];
 		
-		adjPimg = "C:/Users/Administrator/workspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/art0804/image/"+adjPimg;
+		adjPimg = "C:/apache-tomcat-7.0.53/wtpwebapps/art0804/image/"+adjPimg;
 		
 		int Nrgb = Integer.parseInt(RgbNum.get(timeid));
-		String imgString = "C:/Users/Administrator/workspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/art0804/image/fabric_"+timeid+".jpg";
+		String imgString = "C:/apache-tomcat-7.0.53/wtpwebapps/art0804/image/fabric_"+timeid+".jpg";
 		System.out.println("RgbNum.get(timeid) "+RgbNum.get(timeid));
 		System.out.println("imgString "+imgString);
 		System.out.println("FabricTexturebackimg.get(timeid) "+FabricTexturebackimg.get(timeid));
@@ -282,7 +282,7 @@ public class U_ModelSysController {
 		try {
             
             //设置命令行传入参数
-            String[] args = new String[] { "python", "D:\\20170602\\PycharmProjects\\firstDL_netEast\\scarvesColorGenColorImageMateriaFrame.py",colorgene[Nrgb],RgbNum.get(timeid),imgString,FabricTexturebackimg.get(timeid),adjPimg,timeid};
+            String[] args = new String[] { "python", "C:\\firstDL_netEast\\scarvesColorGenColorImageMateriaFrame.py",colorgene[Nrgb],RgbNum.get(timeid),imgString,FabricTexturebackimg.get(timeid),adjPimg,timeid};
             Process pr = Runtime.getRuntime().exec(args);
 
             BufferedReader in = new BufferedReader(new InputStreamReader(pr.getInputStream()));
@@ -314,7 +314,7 @@ public class U_ModelSysController {
 		System.out.println("tname "+tname);
 		List<textureB> listbBs = new ArrayList<textureB>();
 		List<typeIdName> typeIdNames = typeService.selectAllByName(tname);
-		int tid = 0;
+		int tid = 2;
 		for (typeIdName typeIdName : typeIdNames) {
 			tid = typeIdName.getTid();
 			break;
@@ -336,10 +336,9 @@ public class U_ModelSysController {
 		String[] s1 = img.split("/");
 		String timg = s1[s1.length-1];
 		
-		timg = "D:/20170602/PycharmProjects/firstDL_netEast/artgene/"+timg;
+		timg = "C:/firstDL_netEast/artgene/"+timg;
 		backimg.put(timeid, timg);
 		//System.out.println("timg "+timg);
-		
 		
 		s1 = Rgb.split(",");
 		try {
@@ -347,7 +346,7 @@ public class U_ModelSysController {
             //System.out.println("start;;;" + a);
             //设置命令行传入参数
 			//System.out.println(minitemS+","+minitemK+","+minitemB+","+minitemD+","+Rgb);
-            String[] args = new String[] { "python", "D:\\20170602\\PycharmProjects\\firstDL_netEast\\cookerAssembleMaterial.py",minitem.get(timeid),s1[0],s1[1],s1[2],timg,timeid};
+            String[] args = new String[] { "python", "C:\\firstDL_netEast\\cookerAssembleMaterial.py",minitem.get(timeid),s1[0],s1[1],s1[2],timg,timeid};
             Process pr = Runtime.getRuntime().exec(args);
 
             BufferedReader in = new BufferedReader(new InputStreamReader(pr.getInputStream()));
@@ -379,18 +378,18 @@ public class U_ModelSysController {
 		String[] s1 = tbimg.split("/");
 		String timg = s1[s1.length-1];
 		
-		timg = "D:/20170602/PycharmProjects/firstDL_netEast/artgene/"+timg;
+		timg = "C:/firstDL_netEast/artgene/"+timg;
 		System.out.println("ting "+timg);
 		FabricTexturebackimg.put(timeid, timg);
 		
 		int Nrgb = Integer.parseInt(RgbNum.get(timeid));
-		String imgString = "C:/Users/Administrator/workspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/art0804/image/fabric_"+timeid+".jpg";
+		String imgString = "C:/apache-tomcat-7.0.53/wtpwebapps/art0804/image/fabric_"+timeid+".jpg";
 		try {
             
             //System.out.println("start;;;" + a);
             //设置命令行传入参数
 			//System.out.println(minitemS+","+minitemK+","+minitemB+","+minitemD+","+Rgb);
-            String[] args = new String[] { "python", "D:\\20170602\\PycharmProjects\\firstDL_netEast\\scarvesColorGenColorImageMateria.py",colorgene[Nrgb],RgbNum.get(timeid),imgString,timg,timeid};
+            String[] args = new String[] { "python", "C:\\firstDL_netEast\\scarvesColorGenColorImageMateria.py",colorgene[Nrgb],RgbNum.get(timeid),imgString,timg,timeid};
             Process pr = Runtime.getRuntime().exec(args);
 
             BufferedReader in = new BufferedReader(new InputStreamReader(pr.getInputStream()));
@@ -426,7 +425,7 @@ public class U_ModelSysController {
             RgbNum.put(timeid, Rgb);
             //System.out.println("start;;;" + a);
             //设置命令行传入参数
-            String[] args = new String[] { "python", "D:\\20170602\\PycharmProjects\\firstDL_netEast\\cookerAssembleColor.py",minitem.get(timeid),Rgb,timeid };
+            String[] args = new String[] { "python", "C:\\firstDL_netEast\\cookerAssembleColor.py",minitem.get(timeid),Rgb,timeid };
             Process pr = Runtime.getRuntime().exec(args);
 
             BufferedReader in = new BufferedReader(new InputStreamReader(pr.getInputStream()));
@@ -461,7 +460,7 @@ public class U_ModelSysController {
             //Rgb = crgb;
             //设置命令行传入参数
 			//调整织物的图片  参数1：第cnum个色彩块RGB值，参数2：每个色彩快中RGB的组数，参数3：所选图片底图，参数4：当前时间戳
-			String[] args = new String[] { "python", "D:\\20170602\\PycharmProjects\\firstDL_netEast\\scarvesColorGenColorImage1.py",colorgene[Integer.parseInt(cnum)],RgbNum.get(timeid), backimg.get(timeid),timeid};
+			String[] args = new String[] { "python", "C:\\firstDL_netEast\\scarvesColorGenColorImage1.py",colorgene[Integer.parseInt(cnum)],RgbNum.get(timeid), backimg.get(timeid),timeid};
 			Process pr = Runtime.getRuntime().exec(args);
 
 			BufferedReader in = new BufferedReader(new InputStreamReader(pr.getInputStream()));
@@ -510,7 +509,7 @@ public class U_ModelSysController {
             scoreNum.put(timeid1, sc);
             System.out.println("start;;;" + a);
             //设置命令行传入参数
-            String[] args1 = new String[] { "python", "D:\\20170602\\PycharmProjects\\firstDL_netEast\\cookerAssemble.py", a,timeid1};
+            String[] args1 = new String[] { "python", "C:\\firstDL_netEast\\cookerAssemble.py", a,timeid1};
             Process pr = Runtime.getRuntime().exec(args1);
 
             BufferedReader in = new BufferedReader(new InputStreamReader(pr.getInputStream()));
@@ -522,6 +521,9 @@ public class U_ModelSysController {
             }
            
             in.close();
+            
+            Rgb = "123,123,123";
+            backimg.put(timeid1, "C:/firstDL_netEast/artgene/M22.jpg");
             //pr.waitFor();
             cimg.setImg("../image/cookerColor_"+timeid1+".jpg");
             cimg.setTimeid(timeid1);
@@ -565,7 +567,7 @@ public class U_ModelSysController {
             backimg.put(timeid1, bgimg);
             
             //生成色彩快RGB值   参数1：3个意象词汇参数和一个图片RGB色彩的组数 拼接而成
-            String[] args = new String[] { "python", "D:\\20170602\\PycharmProjects\\firstDL_netEast\\scarvesColorGen.py",a};
+            String[] args = new String[] { "python", "C:\\firstDL_netEast\\scarvesColorGen.py",a};
             Process pr = Runtime.getRuntime().exec(args);
 
             BufferedReader in = new BufferedReader(new InputStreamReader(pr.getInputStream()));
@@ -597,7 +599,7 @@ public class U_ModelSysController {
             
             //生成推荐的图片  参数1：第一个色彩块RGB值，参数2：每个色彩快中RGB的组数，参数3：所选图片底图，参数4：当前时间戳
             System.out.println("image  11111111111");
-            args = new String[] { "python", "D:\\20170602\\PycharmProjects\\firstDL_netEast\\scarvesColorGenColorImage.py",colorgene[0],RgbNum.get(timeid1), backimg.get(timeid1),timeid1};
+            args = new String[] { "python", "C:\\firstDL_netEast\\scarvesColorGenColorImage.py",colorgene[0],RgbNum.get(timeid1), backimg.get(timeid1),timeid1};
             pr = Runtime.getRuntime().exec(args);
 
             in = new BufferedReader(new InputStreamReader(pr.getInputStream()));
@@ -612,10 +614,10 @@ public class U_ModelSysController {
             
             
             //生成色彩调整是 轮播组件的7张图片 参数1：色彩块RGB值，参数2：每个色彩快中RGB的组数，参数3：底图，参数4：当前时间戳
-            String lunboColorBlock = "D:/20170602/PycharmProjects/firstDL_netEast/artgene/3Colors.jpg";
+            String lunboColorBlock = "C:/firstDL_netEast/artgene/3Colors.jpg";
             System.out.println("templatRGB "+templatRGB);
             
-            args = new String[] { "python", "D:\\20170602\\PycharmProjects\\firstDL_netEast\\scarvesColorGenColorImageTemplate.py",templatRGB,colorNum+"", lunboColorBlock,timeid1};
+            args = new String[] { "python", "C:\\firstDL_netEast\\scarvesColorGenColorImageTemplate.py",templatRGB,colorNum+"", lunboColorBlock,timeid1};
             pr = Runtime.getRuntime().exec(args);
             in = new BufferedReader(new InputStreamReader(pr.getInputStream()));
             while ((line = in.readLine()) != null) {

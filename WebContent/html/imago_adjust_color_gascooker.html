@@ -40,6 +40,7 @@
 		  	timeid = decodeURI(loc.substr(n2+1, n1-n2));//从=号后面的内容 
 		  	var geneimg = "../image/cookerColor_"+timeid+".jpg";
 		  	$(".picimg").attr("src",geneimg);
+		  	debugger;
 		  	$.ajax("getcolor?tname=燃气灶",
 	                // 发送请求的URL字符串
 	                {
@@ -137,15 +138,15 @@
 					<div class="right-arrow arrow">&gt;</div>
 					<div class="lunbo-window">
 						<ul>
-							<li class="lunbo-item"><img src="../images/appearance/color (1).png" alt=""><span>xin1</span></li>
-							<li class="lunbo-item"><img src="../images/appearance/color (2).png" alt=""><span>xin2</span></li>
-							<li class="lunbo-item"><img src="../images/appearance/color (3).png" alt=""><span>xin3</span></li>
-							<li class="lunbo-item"><img src="../images/appearance/color (4).png" alt=""><span>xin4</span></li>
-							<li class="lunbo-item"><img src="../images/appearance/color (5).png" alt=""><span>xin5</span></li>
-							<li class="lunbo-item"><img src="../images/appearance/color (6).png" alt=""><span>xin6</span></li>
-							<li class="lunbo-item"><img src="../images/appearance/color (7).png" alt=""><span>xin7</span></li>
-							<li class="lunbo-item"><img src="../images/appearance/color (8).png" alt=""><span>xin8</span></li>
-							<li class="lunbo-item"><img src="../images/appearance/color (1).png" alt=""><span>xin1</span></li>
+							<li class="lunbo-item"><img src="../image/color (1).png" alt=""><span>xin1</span></li>
+							<li class="lunbo-item"><img src="../image/color (2).png" alt=""><span>xin2</span></li>
+							<li class="lunbo-item"><img src="../image/color (3).png" alt=""><span>xin3</span></li>
+							<li class="lunbo-item"><img src="../image/color (4).png" alt=""><span>xin4</span></li>
+							<li class="lunbo-item"><img src="../image/color (5).png" alt=""><span>xin5</span></li>
+							<li class="lunbo-item"><img src="../image/color (6).png" alt=""><span>xin6</span></li>
+							<li class="lunbo-item"><img src="../image/color (7).png" alt=""><span>xin7</span></li>
+							<li class="lunbo-item"><img src="../image/color (8).png" alt=""><span>xin8</span></li>
+							<li class="lunbo-item"><img src="../image/color (1).png" alt=""><span>xin1</span></li>
 							
 						</ul>
 					</div>
@@ -178,6 +179,41 @@
 			//alert("燃气灶色彩保存，然后调整材质");
 			window.location.href="imago_adjust_texture_gascooker.html?timeid="+timeid;
 		}
+		
+		$(".lunbo-window").on("click",".LColor",function(){
+			debugger;
+			var index = parseInt($(this).attr('data-itemid'));
+	        
+	        var ss = $(this).html();
+	        var crgb = $(ss).attr('alt');
+	        //alert("crgb "+crgb);
+	        //alert("timeid "+timeid);
+	        $.ajax("adjust/color/gascooker/"+timeid+"?crgb="+crgb,
+	                // 发送请求的URL字符串
+	                {
+	                    type: "get",      //
+	                    async:true,  //
+	                    success: function(data){
+	    				//alert("facade newcase goblet test length");
+	    				//fillNewcaseHouseboat(data);
+	    				
+	    				//$(".i1").attr('src',data.img);
+	                    //debugger;
+	                    window.location.reload(); 
+	                    /*alert("data.img "+data.img);
+	            		$(".picimg").attr('src',data.img);*/
+	            		//alert("data.img "+data.img);
+	            		//
+	    				//alert("adjustcolor successful   "+data.img);
+	                    },
+	                    error: function(){
+	                        alert("调整颜色失败");
+	                    }
+	                });
+	        
+	        that.moveToCenter(index);
+		});
+
 
 	</script>
 

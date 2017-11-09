@@ -167,10 +167,10 @@
 			  	$.ajax("corpus/dimense/words?tname="+tname,
 		                // 发送请求的URL字符串
 		                {
-		                    type: "get",      //
+		                    type: "post",      //
 		                    async:true,  //
 		                    success: function(data){
-								//alert("dimension test  words");
+								//alert("dimension test  words"+data.length);
 								filldimensionContent(data);
 		                    },
 		                    error: function(){
@@ -335,13 +335,13 @@
 	  	});
 
 	  	$("#codeGoblet").click(function(){
-	  			$(".imgicon").attr('src',"../images/genestyle/golbet.png");
+	  			$(".imgicon").attr('src',"../image/golbet.png");
 	  			//请求物件类型
 	  			//alert("#codeGoblet");
 			  	$.ajax("corpus/dimense/words?tname=高脚杯",
 		                // 发送请求的URL字符串
 		                {
-		                    type: "get",      //
+		                    type: "post",      //
 		                    async:true,  //
 		                    success: function(data){
 								//alert("dimension test  words");

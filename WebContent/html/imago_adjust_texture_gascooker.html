@@ -39,7 +39,7 @@
 		  	timeid = decodeURI(loc.substr(n2+1, n1-n2));//从=号后面的内容 
 		  	var geneimg = "../image/cookerTexture_"+timeid+".jpg";
 		  	$(".picimg").attr("src",geneimg);
-		  	
+		  	debugger;
             $.ajax("gettexture?tname=燃气灶",
             // 发送请求的URL字符串
             {
@@ -172,12 +172,28 @@
 			window.location.href="imago_adjust_part_gascooker.html?timeid="+timeid;
 		}
   		
-		$(".lunbo-item").click(function(){
-  			var ht = $(this).html();
-  			//$(ht).find('img').attr("src");
-  			//alert(ht);
-  			alert($(ht).attr('src'));
+		$(".lunbo-window").on("click",".LTexture",function(){
+			var ss = $(this).html();
+	        var src = $(ss).attr('src');
+	        //alert("src "+src);
+	        $.ajax("adjust/texture/cooker/"+timeid+"?img="+src,
+	                // 发送请求的URL字符串
+	                {
+	                    type: "get",      //
+	                    async:true,  //
+	                    success: function(data){
+	    				//fillNewcaseHouseboat(data);
+	                    //debugger;
+	            		window.location.reload(); 
+	                    },
+	                    error: function(){
+	                        alert("数据发送失败denglu");
+	                    }
+	                });
+	        
+	        that.moveToCenter(index);
   		});
+		
   		
 		//圆角矩形
 		CanvasRenderingContext2D.prototype.roundRect = function (x, y, w, h, r) {

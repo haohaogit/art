@@ -42,7 +42,7 @@ $(".cancelbtn").click(function(){
 	
 	for(var i=1;i<5;i++){
 		oldfilename=$('#pimg'+i).val();
-		alert("contextPath "+contextPath);
+		//alert("contextPath "+contextPath);
 		if(oldfilename!=""){
 			$('#filename'+i).html('<a  href="'+contextPath+'/file/download?filename='+encodeURIComponent(oldfilename)+
 					'"><div class="file-item thumbnail upload-state-done" style="	margin-bottom: 15px;margin-top: 12; display:inline-block ;margin-right:12px;width:170px;"><img src="'+contextPath+

@@ -154,7 +154,8 @@ public class M_bottomController {
 			message = "1";// 更新类型成功
 			return message;
 		}
-		bottomCaseService.insert(bottomcase);
+		System.out.println("bottom save success    ");
+		bottomCaseService.insertSelective(bottomcase);
 		return message;
 	}
 
