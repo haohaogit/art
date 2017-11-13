@@ -640,9 +640,9 @@ public class U_ModelSysController {
 		return cimg;
 	}
 	
-	@RequestMapping("save/cooker/{timeid}")
+	@RequestMapping("save/cooker/{timeid}/{caseName}")
 	@ResponseBody
-	public String savecooker(@PathVariable String timeid,Model model,HttpServletRequest request){
+	public String savecooker(@PathVariable String timeid,@PathVariable String caseName,Model model,HttpServletRequest request){
 		String message = "0";
 		List<typeIdName> typeIdNames = typeService.selectAllByName("燃气灶");
 		int tid = 0;
@@ -653,7 +653,7 @@ public class U_ModelSysController {
 		NewCase newCase = new NewCase();
 		
 		newCase.setTid(tid);
-		newCase.setNewcasename(timeid);
+		newCase.setNewcasename(caseName+"_"+timeid);
 		newCase.setNewcasearg(scoreNum.get(timeid));
 		newCase.setNewcaseimg("cookerPart_"+timeid+".jpg");
 		

@@ -18,11 +18,7 @@
 #navigation li{
 	float:left;
 }
-#rightHead{
-	background-image:url("../images/appearance/generate/navigationBackground.png");
-	height:96px;
-	float:left;
-}
+
 #operator{
 	overflow: hidden;
 }
@@ -35,6 +31,7 @@
 #iconAndcorpus{
 	width:856px;
 	display: flex;
+	margin-bottom: 10px;
 }
 #facadeContent{
 	width:856px;
@@ -68,7 +65,8 @@
 
 #leftBody div{
 	margin: 0px 5px 5px 5px;
-	background-image: url("../images/vocabularys/YixiangVocabulary-basicinfo/title.png");
+	/* background-image: url("../images/vocabularys/YixiangVocabulary-basicinfo/title.png"); */
+	background-color: #00a5bd;
 	font-size:20px;
 }
 #leftBody div a{
@@ -85,8 +83,16 @@
 	background-color: white;
 
 }
+#leftBody div:hover {
+	/* color: #0099FF; */
+	background-color:#5fbfd2;
+}
+.navigation div:hover {
+	/* color: #0099FF; */
+	background-color:#5fbfd2;
+}
 
-#leftBody div a:hover {color: #FF5500}
+/* #leftBody div a:hover {color: #5fbfd2} */
 #leftBody div a:active {color: #0099FF}
 
 #leftBody ul{

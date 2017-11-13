@@ -230,6 +230,10 @@
 			display: flex;
 			justify-content: flex-end;
 		}
+		.divOver{
+			background:#eff8fe;
+			border:solid 1px #d2dce3;
+		}
 	</style>
 </head>
 <body>
@@ -285,7 +289,7 @@
 					<li><a href="javascript:void(0)" id="baseGoblet" class="facade1">高脚杯</a></li>
 					<li><a href="javascript:void(0)" id="baseYacht" class="facade1">游艇</a></li>
 					<li><a href="javascript:void(0)" id="baseHanky" class="facade1">织物</a></li>
-					<li><a href="javascript:void(0)" id="baseRange" class="facade1">煤气灶</a></li>
+					<li><a href="javascript:void(0)" id="baseRange" class="facade1">燃气灶</a></li>
 				</ul>
 				</div>
 			<div id="code">
@@ -296,7 +300,7 @@
 					<li><a href="javascript:void(0)" id="codeGoblet" class="facade1">高脚杯</a></li>
 					<li><a href="javascript:void(0)" id="codeYacht" class="facade1">游艇</a></li>
 					<li><a href="javascript:void(0)" id="codeHanky" class="facade1">织物</a></li>
-					<li><a href="javascript:void(0)" id="codeRange" class="facade1">煤气灶</a></li>
+					<li><a href="javascript:void(0)" id="codeRange" class="facade1">燃气灶</a></li>
 				</ul>
 				</div>
 			<div id="new">
@@ -307,7 +311,7 @@
 					<li><a href="javascript:void(0)" id="newGoblet" class="facade1">高脚杯</a></li>
 					<li><a href="javascript:void(0)" id="newYacht" class="facade1">游艇</a></li>
 					<li><a href="javascript:void(0)" id="newHanky" class="facade1">织物</a></li>
-					<li><a href="javascript:void(0)" id="newRange" class="facade1">煤气灶</a></li>
+					<li><a href="javascript:void(0)" id="newRange" class="facade1">燃气灶</a></li>
 				</ul>
 			</div>
 		</div>
@@ -342,9 +346,6 @@
 							</div>
 						</div>
 					</div>
-
-
-
 
 			        <div id="inputcorpus">
 			            <div id="corpusword" style="padding-top: 5.5px;">输入语义</div>
@@ -488,27 +489,10 @@
 			                <span class="des_font">非常符合</span>
 			            </div>   
 			        </div>
-
-
-			        <!-- <button onclick="getScore()">!!获取评分数!!</button> -->
-
-			        <!-- <div id="showicon">
-			                <img id="pic1" src="../images/vocabularys/semantic-dimension-survey/j1.png" />
-			                <img id="pic2" src="../images/vocabularys/semantic-dimension-survey/j2.png" />
-			        </div>
-
-			        <div id="geneBottomBtn" style="text-align: center;margin-top: 24px;">
-			                <button type="submit" id="save" onclick="getScore()">保存</button>
-			                <button type="submit" id="cancel">取消</button>
-			        </div> -->
 			    </div>
-
 			    <div class="Recommand">
 			    	
 			    </div>
-
-
-
 			</div>
 			
 		</div>
@@ -607,13 +591,6 @@
 		});
 
 
-
-
-
-
-
-
-
 	</script>
 	<script type="text/javascript">
 
@@ -644,6 +621,17 @@
 		function returnLast(){
 			window.history.back(-1);
 		}
+		
+		$(function(){
+		  //当鼠标滑入时将div的class换成divOver
+		  $('#base').hover(function(){
+		    $(this).addClass('divOver'); 
+		   },function(){
+		    //鼠标离开时移除divOver样式
+		    $(this).removeClass('divOver');
+		   }
+		  );
+		 });
 		
 	</script>
 

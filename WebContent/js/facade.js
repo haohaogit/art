@@ -41,10 +41,10 @@ function fillBottomGoblet(data){
 	}
 	var html="";
 	if(k!=0){
-		kHtml+="</div><div><img class='loadMore' src='../images/appearance/waiguan (18).png' onclick='loadmore()' /></div>";
+		kHtml+="</div><div><img class='loadMore' src='../image/waiguan (18).png' onclick='loadmore()' /></div>";
 	}
 	if(s!=0){
-		sHtml+="</div><div><img class='loadMore' src='../images/appearance/waiguan (18).png' onclick='loadmore1()' /></div>";
+		sHtml+="</div><div><img class='loadMore' src='../image/waiguan (18).png' onclick='loadmore1()' /></div>";
 	}
 	html=html+kHtml+sHtml;
 	
@@ -144,16 +144,16 @@ function fillBottomfabric(data){
 	}
 	var html="";
 	if(a!=0){
-		aHtml+="</div><div><img class='loadMore' src='../images/appearance/waiguan (18).png' onclick='loadmore()' /></div>";
+		aHtml+="</div><div><img class='loadMore' src='../image/waiguan (18).png' onclick='loadmore()' /></div>";
 	}
 	if(b!=0){
-		bHtml+="</div><div><img class='loadMore' src='../images/appearance/waiguan (18).png' onclick='loadmore1()' /></div>";
+		bHtml+="</div><div><img class='loadMore' src='../image/waiguan (18).png' onclick='loadmore1()' /></div>";
 	}
 	if(c!=0){
-		cHtml+="</div><div><img class='loadMore' src='../images/appearance/waiguan (18).png' onclick='loadmore2()' /></div>";
+		cHtml+="</div><div><img class='loadMore' src='../image/waiguan (18).png' onclick='loadmore2()' /></div>";
 	}
 	if(d!=0){
-		dHtml+="</div><div><img class='loadMore' src='../images/appearance/waiguan (18).png' onclick='loadmore3()' /></div>";
+		dHtml+="</div><div><img class='loadMore' src='../image/waiguan (18).png' onclick='loadmore3()' /></div>";
 	}
 	html=html+aHtml+bHtml+cHtml+dHtml;
 	
@@ -166,13 +166,13 @@ function fillBottomgascooker(data){
 	
 	var aHtml="";
 	var bHtml="";
-	/*var cHtml="";
-	var dHtml="";*/
+	var cHtml="";
+	/*var dHtml="";*/
 	
 	var a=0;
 	var b=0;
-	/*var c=0;
-	var d=0;*/
+	var c=0;
+	/*var d=0;*/
 	
 	for(var i=0;i<data.length;i++){
 		//var qwe = data[i].wfirstchar;
@@ -192,7 +192,7 @@ function fillBottomgascooker(data){
 				  a++;
 			  }
 			  break;
-			case "美式风格型":
+			case "美系风格型":
 			
 				if(bHtml==""){
 					bHtml+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>美式风格型</div></div><div class='macro'>";
@@ -207,24 +207,39 @@ function fillBottomgascooker(data){
 					b++;
 				}
 			    break;
+			case "韩系居家型":
+				
+				if(cHtml==""){
+					cHtml+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>韩系居家型</div></div><div class='macro'>";
+				}
+				if(b<4){
+					cHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-bcid='"+data[i].bcid+"'/></div>";
+					cHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].casename+"</div></div></div>";
+					c++;
+				}else{
+					cHtml+="<div class='hengStep isLoadMore isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-bcid='"+data[i].bcid+"'/></div>";
+					cHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].casename+"</div></div></div>";
+					c++;
+				}
+			    break;
 			default:
 				break;
 		}
 	}
 	var html="";
 	if(a!=0){
-		aHtml+="</div><div><img class='loadMore' src='../images/appearance/waiguan (18).png' onclick='loadmore()' /></div>";
+		aHtml+="</div><div><img class='loadMore' src='../image/waiguan (18).png' onclick='loadmore()' /></div>";
 	}
 	if(b!=0){
-		bHtml+="</div><div><img class='loadMore' src='../images/appearance/waiguan (18).png' onclick='loadmore1()' /></div>";
+		bHtml+="</div><div><img class='loadMore' src='../image/waiguan (18).png' onclick='loadmore1()' /></div>";
 	}
-	/*if(c!=0){
-		cHtml+="</div><div><img class='loadMore' src='../images/appearance/waiguan (18).png' onclick='loadmore2()' /></div>";
+	if(c!=0){
+		cHtml+="</div><div><img class='loadMore' src='../image/waiguan (18).png' onclick='loadmore2()' /></div>";
 	}
-	if(d!=0){
-		dHtml+="</div><div><img class='loadMore' src='../images/appearance/waiguan (18).png' onclick='loadmore3()' /></div>";
+	/*if(d!=0){
+		dHtml+="</div><div><img class='loadMore' src='../image/appearance/waiguan (18).png' onclick='loadmore3()' /></div>";
 	}*/
-	html=html+aHtml+bHtml;
+	html=html+aHtml+bHtml+cHtml;
 	
 	$(".bottomGascooker").html(html);
 	
@@ -312,16 +327,16 @@ function fillBottomHouseboat(data){
 	}
 	var html="";
 	if(a!=0){
-		aHtml+="</div><div><img class='loadMore' src='../images/appearance/waiguan (18).png' onclick='loadmore()' /></div>";
+		aHtml+="</div><div><img class='loadMore' src='../image/waiguan (18).png' onclick='loadmore()' /></div>";
 	}
 	if(b!=0){
-		bHtml+="</div><div><img class='loadMore' src='../images/appearance/waiguan (18).png' onclick='loadmore1()' /></div>";
+		bHtml+="</div><div><img class='loadMore' src='../image/waiguan (18).png' onclick='loadmore1()' /></div>";
 	}
 	if(c!=0){
-		cHtml+="</div><div><img class='loadMore' src='../images/appearance/waiguan (18).png' onclick='loadmore2()' /></div>";
+		cHtml+="</div><div><img class='loadMore' src='../image/waiguan (18).png' onclick='loadmore2()' /></div>";
 	}
 	if(d!=0){
-		dHtml+="</div><div><img class='loadMore' src='../images/appearance/waiguan (18).png' onclick='loadmore3()' /></div>";
+		dHtml+="</div><div><img class='loadMore' src='../image/waiguan (18).png' onclick='loadmore3()' /></div>";
 	}
 	html=html+aHtml+bHtml+cHtml+dHtml;
 	

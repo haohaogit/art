@@ -9,7 +9,7 @@
 	<title>意象映射-意象映射系统</title>
 	<style type="text/css" media="screen">
 		/* body 	{ font: 75% "Lucida Grande", "Trebuchet MS", Verdana, sans-serif; } */
-		canvas 	{ background-color: transparent; border: 1px solid gray; top: 0; left: 0; position: absolute;left:446px;top:280px;}
+		canvas 	{ background-color: transparent; border: 1px solid gray; top: 0; left: 0; position: absolute;left:445.5px;top:245px;}
 		canvas.resize-ne { cursor: ne-resize; }
 		canvas.resize-se { cursor: se-resize; }
 		canvas.resize-sw { cursor: sw-resize; }
@@ -110,7 +110,7 @@
 				</div>
 			</div>
 
-			<div id="picGene" style="height:530px;">
+			<div id="picGene" style="height:500px;">
 				<!-- <div>
 					<canvas id="canvid1"></canvas>
 				</div> -->
@@ -148,11 +148,14 @@
 			</div>
 
 			<div id="geneBottomBtn">
-				<button type="submit" id="save" onclick="savePart()">确定</button>
+				<button type="submit" id="save" onclick="savePart1()">确定</button>
 				<button type="submit" class="cancel">取消</button>
 				<button type="submit" class="cancel" onclick="returned()">返回上一步</button>
 			</div>
+			
+			
 		</div>
+		
 	</div>
 
 	<!-- 	底部 -->
@@ -164,7 +167,9 @@
 	<script src="../js/canvasEl.js" type="text/javascript" charset="utf-8"></script>
 	<script src="../js/canvasIm.js" type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript" charset="utf-8">
-	var Logoimg;
+		
+		
+		var Logoimg;
 		function returned(){
 			window.history.back(-1);
 		}
@@ -276,9 +281,16 @@
 		
 		YAHOO.util.Event.on(window, 'load', CanvasDemo.init, CanvasDemo, true);
 		
+		function savePart1(){
+			$("body").append("<div id='mask'></div>");
+	        $("#mask").addClass("mask").fadeIn("slow");
+	        $("#LoginBox1").fadeIn("slow");
+		}
+		
 		function savePart(){
-			
-			$.ajax("save/cooker/"+timeid,
+			var caseName = $("#account1").val();
+			alert("newcount "+caseName);
+			$.ajax("save/cooker/"+timeid+"/"+caseName,
             // 发送请求的URL字符串
             {
                 type: "get",      //

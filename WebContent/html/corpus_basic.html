@@ -8,6 +8,14 @@
 	<!-- <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script> -->
 	<script type="text/javascript" src="../js/jquery-1.8.2.min.js"></script>
 	<title>意象映射-appearance</title>
+	<style>
+		.divOver{
+			background:#eff8fe;
+			border:solid 1px #d2dce3;
+		}
+	</style>
+	
+		
 	
 </head>
 <body>
@@ -101,8 +109,8 @@
 	<div id="content">
 		<div id="leftBody">
 			<div class="base type1">
-				<a href="javascript:void(0)" id="baseToggle" class="kuohao"><div>基础意象语义库</div>
-					<div class="left-arrow arrow1">&lt;</div>
+				<a href="javascript:void(0)" id="baseToggle" class="kuohao"><lable>基础意象语义库</lable>
+					<lable class="left-arrow arrow1">&lt;</lable>
 				</a>
 				<ul id="baseContent">
 					<li><a href="javascript:void(0)" id="firstChar" class="facade1">首字母分类</a></li>
@@ -110,25 +118,25 @@
 				</ul>
 			</div>
 			<div class="code type2">
-				<a href="javascript:void(0)" id="codeToggle"  class="kuohao"><div>降维词汇库</div>
-					<div class="left-arrow arrow2">&lt;</div>
+				<a href="javascript:void(0)" id="codeToggle"  class="kuohao"><lable>降维词汇库</lable>
+					<lable class="left-arrow arrow2">&lt;</lable>
 				</a>
 				<ul id="codeContent">
 					<li><a href="javascript:void(0)" id="codeGoblet" class="facade1">高脚杯</a></li>
 					<li><a href="javascript:void(0)" id="codeYacht" class="facade1">游艇</a></li>
 					<li><a href="javascript:void(0)" id="codeHanky" class="facade1">织物</a></li>
-					<li><a href="javascript:void(0)" id="codeRange" class="facade1">煤气灶</a></li>
+					<li><a href="javascript:void(0)" id="codeRange" class="facade1">燃气灶</a></li>
 				</ul>
 			</div>
 			<div class="new type2">
-				<a href="javascript:void(0)" id="newToggle"  class="kuohao"><div>问卷调查与检验</div>
-					<div class="left-arrow arrow3">&lt;</div>
+				<a href="javascript:void(0)" id="newToggle"  class="kuohao"><lable>问卷调查与检验</lable>
+					<lable class="left-arrow arrow3">&lt;</lable>
 				</a>
 				<ul id="newContent">
 					<li><a href="javascript:void(0)" id="newGoblet" class="facade1">高脚杯</a></li>
 					<li><a href="javascript:void(0)" id="newYacht" class="facade1">游艇</a></li>
 					<li><a href="javascript:void(0)" id="newHanky" class="facade1">织物</a></li>
-					<li><a href="javascript:void(0)" id="newRange" class="facade1">煤气灶</a></li>
+					<li><a href="javascript:void(0)" id="newRange" class="facade1">燃气灶</a></li>
 				</ul>
 			</div>
 		</div>
@@ -330,6 +338,18 @@
 			// $("#detailBox").css({display:'none'});
 			// var a = document.getElementById("detailBox");//获取div块对象
 		});
+		
+		$(function(){
+			  //当鼠标滑入时将div的class换成divOver
+			  $('#base').hover(function(){
+				  alert("aa");
+			    $(this).addClass('divOver'); 
+			   },function(){
+			    //鼠标离开时移除divOver样式
+			    $(this).removeClass('divOver');
+			   }
+			  );
+			 });
 		
 		
 		
