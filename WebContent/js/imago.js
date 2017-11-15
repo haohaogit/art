@@ -55,15 +55,34 @@ function fillModelFabric(data){
 	html=html+aHtml+"</div>"+bHtml+"</div>"+cHtml+"</div>"+dHtml+"</div>";
 	$("#fabricLunkuo").html(html);
 }
+var GASaHtml="<ul>";
+var GASbHtml="<ul>";
 function filllunbo(data){
-	var aHtml="<ul>";
+
 	for(var i=0;i<data.length;i++){
-		aHtml+="<li class='lunbo-item LColor'><img src='../image/"+data[i].cimg+"' alt='"+data[i].crgb+"'><span>"+data[i].crgb+"</span></li>";
+		//var qwe = data[i].wfirstchar;
+		switch(data[i].cbname)
+		{
+			case "开关色彩":
+				GASaHtml+="<li class='lunbo-item LColor'><img src='../image/"+data[i].cimg+"' alt='"+data[i].crgb+"'><span>"+data[i].crgb+"</span></li>";
+				break;
+			case "面板色彩":
+				GASbHtml+="<li class='lunbo-item bLColor'><img src='../image/"+data[i].cimg+"' alt='"+data[i].crgb+"'><span>"+data[i].crgb+"</span></li>";
+				break;
+			default:
+				break;
+		}
 	}
-	aHtml+="</ul>";
-	$(".lunbo-window").html(aHtml);
+	
+	GASaHtml+="</ul>";
+	GASbHtml+="</ul>";
+	
+	
+	$(".lunbo-window").html(GASbHtml);
+	
 	AddCarousel();
 }
+
 
 function filllunboTexture(data){
 	var aHtml="<ul>";

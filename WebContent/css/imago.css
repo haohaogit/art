@@ -39,7 +39,7 @@ a{
 }
 
 #content{
-	margin: 10px 100px 50px 100px;
+	margin: 10px 100px 10px 100px;
 	overflow:hidden;
 }
 #bottomcolor{
@@ -126,27 +126,36 @@ a{
 }
 #introicon{
 	width: 105px;
-	display: inline-block;
+	/* display: inline-block; */
 	height: 100px;
 	background-repeat: no-repeat;
+	display: flex;
+	align-items: center;
 }
 #introduce{
-	padding: 0 16px;
-	width: 688px;
-	display: inline-block;
+	/* padding: 0 16px; */
+	display: flex;
+	align-items: center;
+	/* display: inline-block; */
     vertical-align: top;
     /* margin-top: 5px; */
 }
+#iconAndcorpus{
+	display:flex;
+}
 .imgicon{
-	margin-top: 5px;
-	width: 103px;
+	/* margin-top: 5px; */
+	width: 100px;
+	height:103px
 }
 #picGene{
 	/* margin-top: 20px; */
+	display: flex;
+	justify-content: center;
 }
 
 #corpus{
-    margin-top: 23px;
+   /*  margin-top: 23px; */
 }
 #showicon{
 	text-align: center;
@@ -168,7 +177,7 @@ a{
 }
 #geneBottomBtn{
 	text-align: center;
-	margin-top: -24px;
+	margin-bottom: 34px;
 }
 #save{
 	background-color: #00A5BD;
@@ -441,9 +450,15 @@ a{
 	border-radius: 5px;
 }
 .picimg{
-	margin-top: 6px;
-	margin-left: 10px;
+	margin-top: 9px;
+	margin-left: 100px;
 	width:600px;
+	height:340px;
+}
+.picimg1{
+	margin-top: 0px;
+	margin-left: 230px;
+	width:340px;
 	height:340px;
 }
 .left-arrow1{

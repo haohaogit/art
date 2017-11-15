@@ -10,17 +10,18 @@
 	<title>意象映射-意象映射系统</title>
 	<style>
 		#warmcolor{
-			background-color: #00A5BD;
+			background-color: #a39f9f;
 			width: 106px;
 			float: left;
 			height: 37px;
+			
 		}
 		#coldcolor{
-    		margin-left: 2px;
-			background-color: #a39f9f;
-			width: 72px;
+			margin-left: 2px;
+    		background-color: #00A5BD;
+			width: 106px;
 			float: left;
-			height: 26px;
+			height: 37px;
 		}
 		
 
@@ -49,6 +50,9 @@
 	                    success: function(data){
 							//alert("facade newcase goblet test length="+data.length);
 							filllunbo(data);
+							//alert("gasAhtml "+GASbHtml);
+							/* $(".panelColor").css({display:'block'});
+							$(".switchColor").css({display:'none'}); */
 							//alert("successful")
 	                    },
 	                    error: function(){
@@ -106,9 +110,9 @@
 		</div>
 		<div id="rightBody">
 			<div id="iconAndcorpus">
-				<div id="introicon"><img src="../image/gascooker.png" style="" /></div>
+				<div id="introicon"><img  src="../image/gascooker.png" style="width: 105px;" /></div>
 				<div id="introduce">
-					<lable id="corpus">底层啊啥的交换机啊啥的卡斯柯卡号的看见好多看哈的华盛asd请问萨达vvghgfhdg阿尔法啊啥的范围飞啊飞玩手动阀发阿斯蒂芬万二分阿斯蒂芬阿斯蒂芬顿奥德赛华盛顿看哈是读好书看哈的华盛顿很快的</lable>
+					<lable id="corpus">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在色彩调整步骤中，用户可以在操作窗口选择不同的色彩方案并预览。</lable>
 				</div>
 			</div>
 			<!-- <div id="picGene" style="margin-top: 40px;">
@@ -128,38 +132,34 @@
 			
 			<div id="partStyle" style="height:37px;">
 				<div id="warmcolor">
-					<a href="javascript:void(0)" id="beidu1" >面板颜色</a>
+					<a href="javascript:void(0)" id="beidu1" >开关颜色</a>
 				</div>
+				<div id="coldcolor">
+					<a href="javascript:void(0)" id="beibing1" >面板颜色</a>
+				</div>
+				
 			</div>
+			
 
 			<div id="lunbo">
 				<div id="lunbo1">
 					<div class="left-arrow arrow">&lt;</div>
 					<div class="right-arrow arrow">&gt;</div>
 					<div class="lunbo-window">
-						<ul>
-							<li class="lunbo-item"><img src="../image/color (1).png" alt=""><span>xin1</span></li>
-							<li class="lunbo-item"><img src="../image/color (2).png" alt=""><span>xin2</span></li>
-							<li class="lunbo-item"><img src="../image/color (3).png" alt=""><span>xin3</span></li>
-							<li class="lunbo-item"><img src="../image/color (4).png" alt=""><span>xin4</span></li>
-							<li class="lunbo-item"><img src="../image/color (5).png" alt=""><span>xin5</span></li>
-							<li class="lunbo-item"><img src="../image/color (6).png" alt=""><span>xin6</span></li>
-							<li class="lunbo-item"><img src="../image/color (7).png" alt=""><span>xin7</span></li>
-							<li class="lunbo-item"><img src="../image/color (8).png" alt=""><span>xin8</span></li>
-							<li class="lunbo-item"><img src="../image/color (1).png" alt=""><span>xin1</span></li>
-							
-						</ul>
+						
+						
 					</div>
 				</div>
 				<!-- 此处加载色彩方案图片轮播模块 -->
 			</div>
 
-			<div id="geneBottomBtn">
-				<button type="submit" id="save" onclick="saveColor()">确定</button>
-				<button type="submit" class="cancel">取消</button>
-				<button type="submit" class="cancel" onclick="returned()">返回上一步</button>
-			</div>
+			
 		</div>
+	</div>
+	<div id="geneBottomBtn">
+		<button type="submit" id="save" onclick="saveColor()">确定</button>
+		<button type="submit" class="cancel">取消</button>
+		<button type="submit" class="cancel" onclick="returned()">返回上一步</button>
 	</div>
 
 	<!-- 	底部 -->
@@ -183,7 +183,6 @@
 		$(".lunbo-window").on("click",".LColor",function(){
 			debugger;
 			var index = parseInt($(this).attr('data-itemid'));
-	        
 	        var ss = $(this).html();
 	        var crgb = $(ss).attr('alt');
 	        //alert("crgb "+crgb);
@@ -194,23 +193,33 @@
 	                    type: "get",      //
 	                    async:true,  //
 	                    success: function(data){
-	    				//alert("facade newcase goblet test length");
-	    				//fillNewcaseHouseboat(data);
-	    				
-	    				//$(".i1").attr('src',data.img);
-	                    //debugger;
 	                    window.location.reload(); 
-	                    /*alert("data.img "+data.img);
-	            		$(".picimg").attr('src',data.img);*/
-	            		//alert("data.img "+data.img);
-	            		//
-	    				//alert("adjustcolor successful   "+data.img);
 	                    },
 	                    error: function(){
 	                        alert("调整颜色失败");
 	                    }
 	                });
-	        
+	        that.moveToCenter(index);
+		});
+		$(".lunbo-window").on("click",".bLColor",function(){
+			debugger;
+			var index = parseInt($(this).attr('data-itemid'));
+	        var ss = $(this).html();
+	        var crgb = $(ss).attr('alt');
+	        //alert("crgb "+crgb);
+	        //alert("timeid "+timeid);
+	        $.ajax("adjust/color/gascooker/"+timeid+"?crgb="+crgb,
+	                // 发送请求的URL字符串
+	                {
+	                    type: "get",      //
+	                    async:true,  //
+	                    success: function(data){
+	                    window.location.reload(); 
+	                    },
+	                    error: function(){
+	                        alert("调整颜色失败");
+	                    }
+	                });
 	        that.moveToCenter(index);
 		});
 
@@ -278,19 +287,23 @@
   		$('.errorOperate').click(function(){
   			alert("请您先确认是否保存语义参数，然后按照顺序操作！");
   		});
-
-
+  		
+  		$("#beibing1").click(function(){
+  			document.getElementById('coldcolor').style.backgroundColor='#00A5BD';
+  			document.getElementById('warmcolor').style.backgroundColor='#a39f9f';
+  			
+  			$(".lunbo-window").html(GASbHtml);
+  			AddCarousel();
+  			});
   		$("#beidu1").click(function(){
+  			document.getElementById('coldcolor').style.backgroundColor='#a39f9f';
+  			document.getElementById('warmcolor').style.backgroundColor='#00A5BD';
+  			$(".lunbo-window").html(GASaHtml);
+  			AddCarousel();
   			
-  			document.getElementById('warmcolor').style.backgroundColor='#5fbfd2';
-    		document.getElementById('coldcolor').style.backgroundColor='#a39f9f';
   		});
-  		// $("#beibing1").click(function(){
-  			
-    // 		document.getElementById('warmcolor').style.backgroundColor='#a39f9f';
-    // 		document.getElementById('coldcolor').style.backgroundColor='#00A5BD';
-    		
-  		// });
+
+  		
   		
 	</script>
 </body>

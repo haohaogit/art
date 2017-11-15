@@ -23,14 +23,18 @@
         }
 
         .left-arrow {
-            left: 10px;
+            left: -10px;
         }
 
         .right-arrow {
-            right: 10px;
+            right: -10px;
         }
 
         .lunbo-window {
+            overflow: hidden;
+            /* background: #6798a9; */
+        }
+        .lunbo-window1 {
             overflow: hidden;
             /* background: #6798a9; */
         }

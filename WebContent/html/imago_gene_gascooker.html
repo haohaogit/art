@@ -15,6 +15,10 @@
             $('.configHead').load('conheader_yixiang.html');
             $('.configFoot').load('confooter.html');
             
+           /*  $("#corpus").html("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"意象造型系统分三步，参数设置、造型生成和方案调整。<br>"+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"其中参数设置步骤中，设计师主要完成产品类型选择"+
+				"和语义量表的设置，即对产品的语义赋值，设计师还可查看用户选择调差说明和算法选择说明，了解系统生成方案逻辑。");
+		 */
+            
             var loc = location.href;
 		  	var n1 = loc.length;//地址的总长度
 		  	var n2 = loc.indexOf("=");//取得=号的位置
@@ -108,9 +112,9 @@
 		</div>
 		<div id="rightBody">
 			<div id="iconAndcorpus">
-				<div id="introicon"><img src="../image/gascooker.png" style="" /></div>
+				<div id="introicon"><img src="../image/gascooker.png" style="width: 105px;" /></div>
 				<div id="introduce">
-					<lable id="corpus">底层啊啥的交换机啊啥的卡斯柯卡号的看见好多看哈的华盛asd请问萨达vvghgfhdg阿尔法啊啥的范围飞啊飞玩手动阀发阿斯蒂芬万二分阿斯蒂芬阿斯蒂芬顿奥德赛华盛顿看哈是读好书看哈的华盛顿很快的</lable>
+					<lable id="corpus">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;造型生成是基于映射模型，根据产品类型进行曲线造型或部件造型，以及相应的色彩和材质的推荐，并提供推荐方案预览。在方案生成步骤中，系统显示生成最终方案。</lable>
 				</div>
 			</div>
 
@@ -119,7 +123,7 @@
 			</div>
 
 			<div id="picGene">
-				<img class="i1" src="" style="margin-left: 125px;width: 550px;" />
+				<img class="i1" src="" style="width: 550px;height:305.55px;" />
 				
 			</div>
 
@@ -134,14 +138,14 @@
            		</div>
            		
 			</div>
-
-			<div id="geneBottomBtn"  style="margin-top: 227px;">
-				<button type="submit" id="save" onclick="saveGene()">确定</button>
-				<button type="submit" class="cancel">取消</button>
-				<button type="submit" class="cancel" onclick="returned()">返回上一步</button>
-			</div>
 		</div>
+		
 	</div>
+	<div id="geneBottomBtn"  ">
+			<button type="submit" id="save" onclick="saveGene()">确定</button>
+			<button type="submit" class="cancel">取消</button>
+			<button type="submit" class="cancel" onclick="returned()">返回上一步</button>
+		</div>
 
 	<!-- 	底部 -->
 	<div class="configFoot"></div>

@@ -668,9 +668,9 @@ public class U_ModelSysController {
 		return message;
 	}
 	
-	@RequestMapping("save/fabric/{timeid}")
+	@RequestMapping("save/fabric/{timeid}/{caseName}")
 	@ResponseBody
-	public String savefabric(@PathVariable String timeid,Model model,HttpServletRequest request){
+	public String savefabric(@PathVariable String timeid,@PathVariable String caseName,Model model,HttpServletRequest request){
 		String message = "0";
 		List<typeIdName> typeIdNames = typeService.selectAllByName("织物");
 		int tid = 0;
@@ -681,7 +681,7 @@ public class U_ModelSysController {
 		NewCase newCase = new NewCase();
 		
 		newCase.setTid(tid);
-		newCase.setNewcasename(timeid);
+		newCase.setNewcasename(caseName+"_"+timeid);
 		newCase.setNewcasearg(scoreNum.get(timeid));
 		newCase.setNewcaseimg("fabricPart_"+timeid+".jpg");
 		
