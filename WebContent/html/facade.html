@@ -84,14 +84,12 @@
 			        	if("code"==flag){
 			        		$("#baseContent").fadeOut(0);
 							$("#newContent").fadeOut(0);
-							$(".arrow1").css({transform:'rotate(270deg)'});
-							$(".arrow3").css({transform:'rotate(270deg)'});
+							
 			        	}
 			        	if("base"==flag){
 			        		$("#codeContent").fadeOut(0);
 							$("#newContent").fadeOut(0);
-							$(".arrow2").css({transform:'rotate(270deg)'});
-							$(".arrow3").css({transform:'rotate(270deg)'});
+							
 			        	}
 			        	
 			            $("#facadeContent").html(msg);
@@ -109,7 +107,7 @@
 		<div id="leftBody">
 			<div id="base">
 				<a href="javascript:void(0)" id="baseToggle" class="kuohao"><div>底层案例库</div>
-					<div class="left-arrow arrow1">&lt;</div>
+					<img class="left-arrow arrow1" src="../image/aup.png"/>
 				</a>
 				<ul id="baseContent">
 					<li><a href="javascript:void(0)" id="baseGoblet" class="facade1">高脚杯</a></li>
@@ -120,7 +118,7 @@
 				</div>
 			<div id="code">
 				<a href="javascript:void(0)" id="codeToggle" class="kuohao"><div>编码案例库</div>
-					<div class="left-arrow arrow2">&lt;</div>
+					<img class="left-arrow arrow2" src="../image/adown.png"/>
 				</a>
 				<ul id="codeContent">
 					<li><a href="javascript:void(0)" id="codeGoblet" class="facade1">高脚杯</a></li>
@@ -131,7 +129,7 @@
 				</div>
 			<div id="new">
 				<a href="javascript:void(0)" id="newToggle" class="kuohao"><div>新造型库</div>
-					<div class="left-arrow arrow3">&lt;</div>
+					<img class="left-arrow arrow3" src="../image/adown.png"/>
 				</a>
 				<ul id="newContent">
 					<li><a href="javascript:void(0)" id="newGoblet" class="facade1">高脚杯</a></li>
@@ -145,7 +143,7 @@
 			<div id="iconAndcorpus">
 				<div id="introicon" style="float: left;"><img class="imgicon" src="../image/golbet.png" style="width: 80px;" /></div>
 				<div id="introduce">
-					<lable id="corpus">底层啊啥的交换机啊啥的卡斯柯卡号的看见好多看哈的华盛asd请问萨达vvghgfhdg阿尔法啊啥的范围飞啊飞玩手动阀发阿斯蒂芬万二分阿斯蒂芬阿斯蒂芬顿奥德赛华盛顿看哈是读好书看哈的华盛顿很快的</lable>
+					<lable id="corpus">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;底层案例库用于全面收集产品外观案例样本知识，将已有的成果产品案例进行整理。用户通过点击查看底层案例库产品外观知识详情。外观类型利用名称的词汇首字母进行词汇组织。</lable>
 				</div>
 			</div>
 
@@ -166,28 +164,37 @@
 	    $("#baseContent").fadeIn(0);  //淡入
 	    $("#codeContent").fadeOut(0);
 	    $("#newContent").fadeOut(0);
-	    $(".arrow1").css({transform:'rotate(90deg)'});
-	    $(".arrow2").css({transform:'rotate(270deg)'});
-		$(".arrow3").css({transform:'rotate(270deg)'});
+	    $(".arrow1").attr("src","../image/aup.png");
+	    $(".arrow2").attr("src","../image/adown.png");
+	    $(".arrow3").attr("src","../image/adown.png");
+	    
 	  });
 	$("#codeToggle").click(function(){
 	    $("#codeContent").fadeIn(0); 
 	    $("#baseContent").fadeOut(0);
 	    $("#newContent").fadeOut(0);
-	    $(".arrow1").css({transform:'rotate(270deg)'});
-	    $(".arrow2").css({transform:'rotate(90deg)'});
-		$(".arrow3").css({transform:'rotate(270deg)'});
+	    $(".arrow1").attr("src","../image/adown.png");
+	    $(".arrow2").attr("src","../image/aup.png");
+	    $(".arrow3").attr("src","../image/adown.png");
+	    
 	  });
 	$("#newToggle").click(function(){
 	    $("#newContent").fadeIn(0); 
 	    $("#codeContent").fadeOut(0);
 	    $("#baseContent").fadeOut(0);
-	    $(".arrow1").css({transform:'rotate(270deg)'});
-		$(".arrow2").css({transform:'rotate(270deg)'});
-		$(".arrow3").css({transform:'rotate(90deg)'});
+	    $(".arrow1").attr("src","../image/adown.png");
+	    $(".arrow2").attr("src","../image/adown.png");
+	    $(".arrow3").attr("src","../image/aup.png");
+	    
 	  });
-
-
+	$("#base").click(function(){
+		$("#corpus").html("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;底层案例库用于全面收集产品外观案例样本知识，将已有的成果产品案例进行整理。用户通过点击查看底层案例库产品外观知识详情。外观类型利用名称的词汇首字母进行词汇组织。");
+	
+	});
+	$("#code").click(function(){
+		$("#corpus").html("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;编码案例库是利用底层案例库中某一产品各方面知识的收集整理，形成对一类产品的信息汇集。其内容包括轮廓、部件、色彩、材质，以及与底层案例库之间的关系，用户浏览相关知识时，可点击浏览具体内容。");
+		
+	});
 	$("#baseGoblet").click(function(){
   			$(".imgicon").attr('src',"../image/golbet.png");
   			// $("#inputcorpus").fadeIn(0);
@@ -264,6 +271,7 @@
 
 
 	$("#codeGoblet").click(function(){
+			
   			$(".imgicon").attr('src',"../image/golbet.png");
   			// $("#inputcorpus").fadeIn(0);
     		$.ajax({

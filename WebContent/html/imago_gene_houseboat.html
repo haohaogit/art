@@ -9,10 +9,36 @@
 </head>
 <body>
 <script type="text/javascript">
+		 var timeid ;
          $(document).ready(function () {
 //  			alert(11);
             $('.configHead').load('conheader_yixiang.html');
             $('.configFoot').load('confooter.html');
+            
+            var loc = location.href;
+		  	var n1 = loc.length;//地址的总长度
+		  	var n2 = loc.indexOf("=");//取得=号的位置
+		  	var sc = decodeURI(loc.substr(n2+1, n1-n2));//从=号后面的内容
+		  	//alert(sc);
+		  	
+		  	//alert("sc = "+sc);
+		  	$.ajax("setparam/houseboat?sc="+sc,
+		            // 发送请求的URL字符串
+		            {
+		                type: "get",      //
+		                async:true,  //
+		                success: function(data){
+						//alert("facade newcase goblet test length");
+						//fillNewcaseHouseboat(data);
+						
+						$(".i1").attr('src',data.img);
+						timeid = data.timeid;
+						//alert(data.img);
+		                },
+		                error: function(){
+		                    alert("数据发送失败denglu");
+		                }
+		            });
         });
 </script>
 	<!-- 	头部 -->
@@ -65,7 +91,7 @@
 			<div id="iconAndcorpus">
 				<div id="introicon"><img src="../image/houseboat.png"/></div>
 				<div id="introduce">
-					<lable id="corpus">底层啊啥的交换机啊啥的卡斯柯卡号的看见好多看哈的华盛asd请问萨达vvghgfhdg阿尔法啊啥的范围飞啊飞玩手动阀发阿斯蒂芬万二分阿斯蒂芬阿斯蒂芬顿奥德赛华盛顿看哈是读好书看哈的华盛顿很快的</lable>
+					<lable id="corpus">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;造型生成是基于映射模型，根据产品类型进行曲线造型或部件造型，以及相应的色彩和材质的推荐，并提供推荐方案预览。在方案生成步骤中，系统显示生成最终方案。</lable>
 				</div>
 			</div>
 
@@ -73,10 +99,15 @@
 				<div class="corpusword" style="padding-top: 5.5px;">推荐方案</div>
 			</div>
 
-			<div id="picGene">
+			<!-- <div id="picGene">
 				<img src="../image/houseboat.jpg" style="margin-left: 125px;" />
 				
+			</div> -->
+			<div id="picGene">
+				<img class="i1" src="" style="width: 380px;height:305.55px;" />
+				
 			</div>
+			
 			<div id="showCommander">
 				<div id="pic1" style="float: left;">
 					<img src="../image/Ccolor.png" style=" width: 130px;"/>
@@ -105,8 +136,8 @@
   		}
   		
 		function saveGene(){
-			alert("游艇推荐方案保存，然后调整部件");
-			window.location.href="imago_adjust_color_houseboat.html";
+			//alert("游艇推荐方案保存，然后调整部件");
+			window.location.href="imago_adjust_color_houseboat.html?timeid="+timeid;
 		}
 
 	</script>

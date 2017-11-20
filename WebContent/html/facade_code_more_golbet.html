@@ -114,7 +114,9 @@
 	<div id="content">
 		<div id="leftBody">
 			<div id="base">
-				<a href="javascript:void(0)" id="baseToggle">底层案例库</a>
+				<a href="javascript:void(0)" id="baseToggle" class="kuohao"><div>底层案例库</div>
+					<img class="left-arrow arrow1" src="../image/aup.png"/>
+				</a>
 				<ul id="baseContent">
 					<li><a href="javascript:void(0)" id="baseGoblet" class="facade1">高脚杯</a></li>
 					<li><a href="javascript:void(0)" id="baseYacht" class="facade1">游艇</a></li>
@@ -123,7 +125,9 @@
 				</ul>
 				</div>
 			<div id="code">
-				<a href="javascript:void(0)" id="codeToggle">编码案例库</a>
+				<a href="javascript:void(0)" id="codeToggle" class="kuohao"><div>编码案例库</div>
+					<img class="left-arrow arrow2" src="../image/adown.png"/>
+				</a>
 				<ul id="codeContent">
 					<li><a href="javascript:void(0)" id="codeGoblet" class="facade1">高脚杯</a></li>
 					<li><a href="javascript:void(0)" id="codeYacht" class="facade1">游艇</a></li>
@@ -132,7 +136,9 @@
 				</ul>
 				</div>
 			<div id="new">
-				<a href="javascript:void(0)" id="newToggle">新造型库</a>
+				<a href="javascript:void(0)" id="newToggle" class="kuohao"><div>新造型库</div>
+					<img class="left-arrow arrow3" src="../image/adown.png"/>
+				</a>
 				<ul id="newContent">
 					<li><a href="javascript:void(0)" id="newGoblet" class="facade1">高脚杯</a></li>
 					<li><a href="javascript:void(0)" id="newYacht" class="facade1">游艇</a></li>
@@ -335,13 +341,31 @@
 	$("#codeContent").fadeOut(0);
 	$("#newContent").fadeOut(0);
 	$("#baseToggle").click(function(){
-	    $("#baseContent").fadeToggle(0);
+	    $("#baseContent").fadeIn(0);  //淡入
+	    $("#codeContent").fadeOut(0);
+	    $("#newContent").fadeOut(0);
+	    $(".arrow1").attr("src","../image/aup.png");
+	    $(".arrow2").attr("src","../image/adown.png");
+	    $(".arrow3").attr("src","../image/adown.png");
+	    
 	  });
 	$("#codeToggle").click(function(){
-	    $("#codeContent").fadeToggle(0);
+	    $("#codeContent").fadeIn(0); 
+	    $("#baseContent").fadeOut(0);
+	    $("#newContent").fadeOut(0);
+	    $(".arrow1").attr("src","../image/adown.png");
+	    $(".arrow2").attr("src","../image/aup.png");
+	    $(".arrow3").attr("src","../image/adown.png");
+	    
 	  });
 	$("#newToggle").click(function(){
-	    $("#newContent").fadeToggle(0);
+	    $("#newContent").fadeIn(0); 
+	    $("#codeContent").fadeOut(0);
+	    $("#baseContent").fadeOut(0);
+	    $(".arrow1").attr("src","../image/adown.png");
+	    $(".arrow2").attr("src","../image/adown.png");
+	    $(".arrow3").attr("src","../image/aup.png");
+	    
 	  });
 
 	// var load1=false;

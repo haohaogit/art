@@ -137,7 +137,7 @@
 		<div id="leftBody">
 			<div id="base">
 				<a href="javascript:void(0)" id="baseToggle" class="kuohao"><div>底层案例库</div>
-					<div class="left-arrow arrow1">&lt;</div>
+					<img class="left-arrow arrow1" src="../image/aup.png"/>
 				</a>
 				<ul id="baseContent">
 					<li><a href="javascript:void(0)" id="baseGoblet" class="facade1">高脚杯</a></li>
@@ -148,7 +148,7 @@
 				</div>
 			<div id="code">
 				<a href="javascript:void(0)" id="codeToggle" class="kuohao"><div>编码案例库</div>
-					<div class="left-arrow arrow2">&lt;</div>
+					<img class="left-arrow arrow2" src="../image/adown.png"/>
 				</a>
 				<ul id="codeContent">
 					<li><a href="javascript:void(0)" id="codeGoblet" class="facade1">高脚杯</a></li>
@@ -159,7 +159,7 @@
 				</div>
 			<div id="new">
 				<a href="javascript:void(0)" id="newToggle" class="kuohao"><div>新造型库</div>
-					<div class="left-arrow arrow3">&lt;</div>
+					<img class="left-arrow arrow3" src="../image/adown.png"/>
 				</a>
 				<ul id="newContent">
 					<li><a href="javascript:void(0)" id="newGoblet" class="facade1">高脚杯</a></li>
@@ -173,7 +173,7 @@
 			<div id="iconAndcorpus">
 				<div id="introicon"><img class="imgicon" src="../image/golbet.png" style="width: 80px;" /></div>
 				<div id="introduce">
-					<lable id="corpus">底层啊啥的交换机啊啥的卡斯柯卡号的看见好多看哈的华盛asd请问萨达vvghgfhdg阿尔法啊啥的范围飞啊飞玩手动阀发阿斯蒂芬万二分阿斯蒂芬阿斯蒂芬顿奥德赛华盛顿看哈是读好书看哈的华盛顿很快的</lable>
+					<lable id="corpus">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;外观轮廓编码是对产品外观轮廓的信息汇集。其中的外观轮廓是经过工程师分析，对产品类型中具有典型代表的样本进行提取，一般是一段或多段曲线构成，通过外观轮廓线表达产品特征。在底层案例库上传的元数据分析中，可将高脚杯分为收口型、收口外扩型和外扩型等18类。</lable>
 				</div>
 			</div>
 
@@ -362,34 +362,33 @@
 	<script type="text/javascript">
 		$("#baseContent").fadeOut(0);
 		$("#newContent").fadeOut(0);
-		$(".arrow1").css({transform:'rotate(270deg)'});
-		$(".arrow3").css({transform:'rotate(270deg)'});
-
 		$("#baseToggle").click(function(){
 		    $("#baseContent").fadeIn(0);  //淡入
 		    $("#codeContent").fadeOut(0);
 		    $("#newContent").fadeOut(0);
-		    $(".arrow1").css({transform:'rotate(90deg)'});
-		    $(".arrow2").css({transform:'rotate(270deg)'});
-			$(".arrow3").css({transform:'rotate(270deg)'});
+		    $(".arrow1").attr("src","../image/aup.png");
+		    $(".arrow2").attr("src","../image/adown.png");
+		    $(".arrow3").attr("src","../image/adown.png");
+		    
 		  });
 		$("#codeToggle").click(function(){
 		    $("#codeContent").fadeIn(0); 
 		    $("#baseContent").fadeOut(0);
 		    $("#newContent").fadeOut(0);
-		    $(".arrow1").css({transform:'rotate(270deg)'});
-		    $(".arrow2").css({transform:'rotate(90deg)'});
-			$(".arrow3").css({transform:'rotate(270deg)'});
+		    $(".arrow1").attr("src","../image/adown.png");
+		    $(".arrow2").attr("src","../image/aup.png");
+		    $(".arrow3").attr("src","../image/adown.png");
+		    
 		  });
 		$("#newToggle").click(function(){
 		    $("#newContent").fadeIn(0); 
 		    $("#codeContent").fadeOut(0);
 		    $("#baseContent").fadeOut(0);
-		    $(".arrow1").css({transform:'rotate(270deg)'});
-			$(".arrow2").css({transform:'rotate(270deg)'});
-			$(".arrow3").css({transform:'rotate(90deg)'});
+		    $(".arrow1").attr("src","../image/adown.png");
+		    $(".arrow2").attr("src","../image/adown.png");
+		    $(".arrow3").attr("src","../image/aup.png");
+		    
 		  });
-
 
 		$("#baseGoblet").click(function(){
 	  		window.location.href="facade.html?txt=baseGoblet";

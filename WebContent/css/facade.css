@@ -38,9 +38,10 @@
 }
 
 #introduce{
-	padding: 0 16px;
+	padding: 0 0px;
 	
-	display: inline-block;
+	display: flex;
+	align-items: center;
     vertical-align: top;
 }
 #introicon{
@@ -195,7 +196,7 @@
 }
 .left-arrow{
 	width: 20px;
-	transform: rotate(90deg);
-	margin-top: 3px;
+	/* transform: rotate(90deg); */
+	margin-top: 5px;
 	margin-left: 15px;
 }

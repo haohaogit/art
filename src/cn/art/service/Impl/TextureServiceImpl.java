@@ -227,6 +227,7 @@ public class TextureServiceImpl implements TextureService {
 			textureB = new textureB();
 			textureB.setTid(texture.getTid());
 			textureB.setTextureid(texture.getTextureid());
+			//System.out.println(texture.getTtid());
 			textureB.setTtname(textureTypeMapper.selectByPrimaryKey(texture.getTtid()).getTtname());
 			textureB.setTdescription(texture.getTdescription());
 			textureB.setTimg(texture.getTimg());

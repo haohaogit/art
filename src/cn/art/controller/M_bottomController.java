@@ -135,6 +135,7 @@ public class M_bottomController {
 	@RequestMapping("/load/delete")
 	@ResponseBody
 	public int delete(Integer id) {
+		System.out.println("id = "+id);
 		int delete = bottomCaseService.deleteByPrimaryKey(id);
 		return delete;
 	}

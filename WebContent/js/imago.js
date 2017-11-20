@@ -67,7 +67,7 @@ function filllunbo(data){
 				GASaHtml+="<li class='lunbo-item LColor'><img src='../image/"+data[i].cimg+"' alt='"+data[i].crgb+"'><span>"+data[i].crgb+"</span></li>";
 				break;
 			case "面板色彩":
-				GASbHtml+="<li class='lunbo-item bLColor'><img src='../image/"+data[i].cimg+"' alt='"+data[i].crgb+"'><span>"+data[i].crgb+"</span></li>";
+				GASbHtml+="<li class='lunbo-item bLColor'><img src='../image/"+data[i].cimg+"' alt='"+data[i].crgb+"'><span>"+data[i].cdescription+"</span></li>";
 				break;
 			default:
 				break;
@@ -83,11 +83,31 @@ function filllunbo(data){
 	AddCarousel();
 }
 
+function fillHouseboatlunbo(data){
+	
+	var aHtml="<ul>";
+	for(var i=0;i<data.length;i++){
+		aHtml+="<li class='lunbo-item Cboat'><img src='../image/"+data[i].cimg+"' alt='"+data[i].crgb+"'><span>"+data[i].cdescription+"</span></li>";
+	}
+	aHtml+="</ul>";
+	$(".lunbo-window").html(aHtml);
+	AddCarousel();
+}
+
 
 function filllunboTexture(data){
 	var aHtml="<ul>";
 	for(var i=0;i<data.length;i++){
-		aHtml+="<li class='lunbo-item LTexture'><img src='../image/"+data[i].timg+"' alt='"+data[i].textureid+"'><span>id "+data[i].textureid+"</span></li>";
+		aHtml+="<li class='lunbo-item LTexture'><img src='../image/"+data[i].timg+"' alt='"+data[i].textureid+"'><span>"+data[i].ttname+"</span></li>";
+	}
+	aHtml+="</ul>";
+	$(".lunbo-window").html(aHtml);
+	AddCarousel();
+}
+function filllunboTextureBoat(data){
+	var aHtml="<ul>";
+	for(var i=0;i<data.length;i++){
+		aHtml+="<li class='lunbo-item TextureBoat'><img src='../image/"+data[i].timg+"' alt='"+data[i].textureid+"'><span>"+data[i].tdescription+"</span></li>";
 	}
 	aHtml+="</ul>";
 	$(".lunbo-window").html(aHtml);
@@ -104,6 +124,7 @@ function filllunboTextureFabric(data){
 	AddCarousel();
 }
 
+
 function filllunbopartFabric(data){
 	var aHtml="<ul>";
 	for(var i=0;i<data.length;i++){
@@ -117,7 +138,7 @@ function filllunbopartFabric(data){
 function filllunboPart(data){
 	var aHtml="<ul>";
 	for(var i=0;i<data.length;i++){
-		aHtml+="<li class='lunbo-item LPart'><img src='../image/"+data[i].pimg+"' alt='"+data[i].pid+"'><span>"+data[i].pid+"</span></li>";
+		aHtml+="<li class='lunbo-item LPart'><img src='../image/"+data[i].pimg+"' alt='"+data[i].pid+"'><span>"+data[i].pdescription+"</span></li>";
 	}
 	aHtml+="</ul>";
 	$(".lunbo-window").html(aHtml);

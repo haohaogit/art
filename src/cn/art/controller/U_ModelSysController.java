@@ -232,7 +232,7 @@ public class U_ModelSysController {
 		String[] s1 = img.split("/");
 		String Logoimg = s1[s1.length-1];
 		
-		Logoimg = "C:/firstDL_netEast/artgene/"+Logoimg;
+		Logoimg = "C:/apache-tomcat-7.0.53/wtpwebapps/art0804/image/"+Logoimg;
 		
 		s1 = Rgb.split(",");
 		try {
@@ -336,7 +336,8 @@ public class U_ModelSysController {
 		String[] s1 = img.split("/");
 		String timg = s1[s1.length-1];
 		
-		timg = "C:/firstDL_netEast/artgene/"+timg;
+		//timg = "C:/firstDL_netEast/artgene/"+timg;
+		timg = "C:/apache-tomcat-7.0.53/wtpwebapps/art0804/image/"+timg;
 		backimg.put(timeid, timg);
 		//System.out.println("timg "+timg);
 		
@@ -347,6 +348,50 @@ public class U_ModelSysController {
             //设置命令行传入参数
 			//System.out.println(minitemS+","+minitemK+","+minitemB+","+minitemD+","+Rgb);
             String[] args = new String[] { "python", "C:\\firstDL_netEast\\cookerAssembleMaterial.py",minitem.get(timeid),s1[0],s1[1],s1[2],timg,timeid};
+            Process pr = Runtime.getRuntime().exec(args);
+
+            BufferedReader in = new BufferedReader(new InputStreamReader(pr.getInputStream()));
+            String line;
+            while ((line = in.readLine()) != null) {
+                //line = decodeUnicode(line);
+                System.out.println(line);
+            }
+            in.close();
+            //pr.waitFor();
+            System.out.println("end");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+		commandImg cimg = new commandImg();
+		cimg.setImg("../image/cookerTexture_"+timeid+".jpg");
+		
+		//cimg.setImg1("../images/genestyle/Ccolor.png");
+		//cimg.setImg2("../images/genestyle/Ctexture1.png");
+		
+		return cimg;
+		
+	}
+	
+	@RequestMapping("adjust/texture/houseboat/{timeid}")
+	@ResponseBody
+	public commandImg adjustTextureHouseboat(@PathVariable String timeid,Model model,String img,String timid,HttpServletRequest request){
+		//System.out.println("crgb111 "+crgb);
+		String[] s1 = img.split("/");
+		String timg = s1[s1.length-1];
+		
+		//timg = "C:/firstDL_netEast/artgene/"+timg;
+		timg = "C:/apache-tomcat-7.0.53/wtpwebapps/art0804/image/"+timg;
+		backimg.put(timeid, timg);
+		System.out.println("timg "+timg);
+		
+		s1 = Rgb.split(",");
+		try {
+            
+            //System.out.println("start;;;" + a);
+            //设置命令行传入参数
+			//System.out.println(minitemS+","+minitemK+","+minitemB+","+minitemD+","+Rgb);
+            String[] args = new String[] { "python", "C:\\firstDL_netEast\\boatAssembleMaterialTest.py",minitem.get(timeid),RgbNum.get(timeid),timg,timeid};
+            //String[] args = new String[] { "python", "D:\\20170602\\PycharmProjects\\firstDL_netEast\\boatAssembleMaterialTest.py",minitem.get(timeid),RgbNum.get(timeid),timg,timeid};
             Process pr = Runtime.getRuntime().exec(args);
 
             BufferedReader in = new BufferedReader(new InputStreamReader(pr.getInputStream()));
@@ -450,6 +495,44 @@ public class U_ModelSysController {
 		
 	}
 	
+	@RequestMapping("adjust/color/houseboat/{timeid}")
+	@ResponseBody
+	public commandImg adjustColorBoat(@PathVariable String timeid,Model model,String crgb,HttpServletRequest request){
+		System.out.println("boat "+crgb);
+		System.out.println("minitem.get(timeid) "+minitem.get(timeid));
+		
+		try {
+            //需传入的参数
+            Rgb = crgb;
+            RgbNum.put(timeid, Rgb);
+            //System.out.println("start;;;" + a);
+            //设置命令行传入参数
+            String[] args = new String[] { "python", "C:\\firstDL_netEast\\boatAssembleColorTest.py",minitem.get(timeid),Rgb,timeid };
+            //String[] args = new String[] { "python", "D:\\20170602\\PycharmProjects\\firstDL_netEast\\boatAssembleColorTest.py",minitem.get(timeid),Rgb,timeid };
+            Process pr = Runtime.getRuntime().exec(args);
+
+            BufferedReader in = new BufferedReader(new InputStreamReader(pr.getInputStream()));
+            String line;
+            while ((line = in.readLine()) != null) {
+                //line = decodeUnicode(line);
+                System.out.println(line);
+            }
+            in.close();
+            //pr.waitFor();
+            System.out.println("end");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+		commandImg cimg = new commandImg();
+		cimg.setImg("../image/boatColor_"+timeid+".jpg");
+		
+		//cimg.setImg1("../images/genestyle/Ccolor.png");
+		//cimg.setImg2("../images/genestyle/Ctexture1.png");
+		
+		return cimg;
+		
+	}
+	
 	@RequestMapping("adjust/color/fabric/{timeid}")
 	@ResponseBody
 	public commandImg adjustColorFabric(@PathVariable String timeid,Model model,String cnum,HttpServletRequest request){
@@ -502,7 +585,7 @@ public class U_ModelSysController {
 		commandImg cimg = new commandImg();
 		try {
             //需传入的参数
-            String a = score;
+            String a = sc;
             
             long current_time = new Date().getTime();
             timeid1 = current_time+"";
@@ -638,6 +721,58 @@ public class U_ModelSysController {
             e.printStackTrace();
         }
 		return cimg;
+	}
+	
+	@RequestMapping("setparam/houseboat")
+	@ResponseBody
+	public commandImg setparamhouseboat(Model model,String sc,HttpServletRequest request){
+		
+		
+		String[] s = sc.split(",");
+		int temp =0;
+		String score = "";
+		for (String s1 : s) {
+			temp  = Integer.parseInt(s1)+3;
+			s1 = temp+",";
+			score +=s1;
+		}
+		commandImg cimg = new commandImg();
+		try {
+            //需传入的参数
+            String a = sc;
+            
+            long current_time = new Date().getTime();
+            timeid1 = current_time+"";
+            scoreNum.put(timeid1, sc);
+            System.out.println("start;;;" + a);
+            //设置命令行传入参数
+            String[] args1 = new String[] { "python", "C:\\firstDL_netEast\\boatAssembleTest.py", a,timeid1};
+            //String[] args1 = new String[] { "python", "D:\\20170602\\PycharmProjects\\firstDL_netEast\\boatAssembleTest.py", a,timeid1};
+            Process pr = Runtime.getRuntime().exec(args1);
+
+            BufferedReader in = new BufferedReader(new InputStreamReader(pr.getInputStream()));
+            String line;
+            while ((line = in.readLine()) != null) {
+                //line = decodeUnicode(line);
+                System.out.println(line);
+                minitem.put(timeid1, line);
+            }
+           
+            in.close();
+            
+            Rgb = "30,35,57";
+            //backimg.put(timeid1, "C:/firstDL_netEast/artgene/M22.jpg");
+            //pr.waitFor();
+            cimg.setImg("../image/boatColor_"+timeid1+".jpg");
+            cimg.setTimeid(timeid1);
+    		cimg.setImg1("../images/genestyle/Ccolor.png");
+    		cimg.setImg2("../images/genestyle/Ctexture1.png");
+            System.out.println("end");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+		return cimg;
+		
 	}
 	
 	@RequestMapping("save/cooker/{timeid}/{caseName}")

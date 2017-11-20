@@ -110,12 +110,15 @@ $(document).on("click",".choosebtn",function(){//修改成这样的写法
 });
 $(document).on("click",".deletebtn",function(){
 //$(".deletebtn").click(function(){
-	 var id= $(this).attr("myid");
+	  var id= $(this).attr("myid");
 	  $(".deleteOK").click(id,function(){
 		  debugger
+		  //alert("id="+id);
 		  var url = delUrl + "?id=" + id;
-		  $.post(url);
-		  location.reload([true]);
+		  $.post(url,function(){
+			  location.reload([true]);
+		  });
+		  /*location.reload([true]);*/
 	  });
 });
 

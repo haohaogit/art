@@ -124,7 +124,7 @@ var talgorithm=$("#talgorithm").attr("value");
 	 addInputHtml=$("#"+typeName+"List").html();
 	 var number=$("#"+typeName+"List").find("input").length+1;
 	 addInputHtml+='<div class="my-no-br-right"  >'+
-		'<input type="text" class="form-control " id="'+number+'"  value="" size="2"/></div>';
+		'<input type="text" class="form-control " id="'+number+'"  value="" size="6"/></div>';
  	$("#"+typeName+"List").html(addInputHtml);
  }
  

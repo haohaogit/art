@@ -225,7 +225,7 @@ public class PartServiceImpl implements PartService {
 		partB partB;
 		int i = 0;
 		for (Part part : parts) {
-			if(i>=4) break;
+			/*if(i>=4) break;*/
 			partB = new partB();
 			partB.setPid(part.getPid());
 			partB.setTid(part.getTid());

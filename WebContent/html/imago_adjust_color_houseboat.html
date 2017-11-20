@@ -21,16 +21,48 @@
 			float: left;
 			height: 26px;
 		}
+		.cimg{
+			width: 500px;
+			height: 360px;
+			margin-left: 150px;
+			margin-top:0px;
+		}
 
 	</style>
 </head>
 <body>
-
+<script type="text/javascript" src="../js/imago.js"></script>
 <script type="text/javascript">
+		var timeid;
         $(document).ready(function () {
 //  			alert(11);
             $('.configHead').load('conheader_yixiang.html');
             $('.configFoot').load('confooter.html');
+            
+            var loc = location.href;
+		  	var n1 = loc.length;//地址的总长度
+		  	var n2 = loc.indexOf("=");//取得=号的位置
+		  	timeid = decodeURI(loc.substr(n2+1, n1-n2));//从=号后面的内容 
+		  	var geneimg = "../image/boatColor_"+timeid+".jpg";
+		  	$(".picimg").attr("src",geneimg);
+		  	debugger;
+		  	$.ajax("getcolor?tname=游艇",
+	                // 发送请求的URL字符串
+	                {
+	                    type: "get",      //
+	                    async:true,  //
+	                    success: function(data){
+							//alert("facade newcase goblet test length="+data.length);
+							fillHouseboatlunbo(data);
+							//alert("gasAhtml "+GASbHtml);
+							//$(".panelColor").css({display:'block'});
+							//$(".switchColor").css({display:'none'}); 
+							//alert("successful")
+	                    },
+	                    error: function(){
+	                        alert("数据发送失败denglu");
+	                    }
+	                });
         });
 </script>
 	<!-- 	头部 -->
@@ -81,18 +113,17 @@
 		</div>
 		<div id="rightBody">
 			<div id="iconAndcorpus">
-				<div id="introicon"><img src="../image/houseboat.png" style="" /></div>
+				<div id="introicon"><img class="imgicon" src="../image/houseboat.png" style="" /></div>
 				<div id="introduce">
-					<lable id="corpus">底层啊啥的交换机啊啥的卡斯柯卡号的看见好多看哈的华盛asd请问萨达vvghgfhdg阿尔法啊啥的范围飞啊飞玩手动阀发阿斯蒂芬万二分阿斯蒂芬阿斯蒂芬顿奥德赛华盛顿看哈是读好书看哈的华盛顿很快的</lable>
+					<lable id="corpus">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在色彩调整步骤中，用户可以在操作窗口选择不同的色彩方案并预览。</lable>
 				</div>
 			</div>
 
-			<div id="picGene" style="margin-top: 40px;">
-				
-				<canvas id="myCanvas" width="800" height="400" style="border:1px solid #d3d3d3;background:#ffffff;">
-					<!-- <p class="p2">画布：</p> -->
-					<img src="../image/p5.png">
-				</canvas>
+			<div id="picGene1" style="" >
+				<div class="picfont" style="background:#00A5BD;width:145px; height:37px; ">
+					色彩方案预览
+				</div>
+				<img class="picimg cimg" src="" >
 			</div>
 
 			<div id="partStyle" style="height:37px;">
@@ -138,20 +169,27 @@
 	<div class="configFoot"></div>
 
 	<script type="text/javascript">
-		//圆角矩形
-		CanvasRenderingContext2D.prototype.roundRect = function (x, y, w, h, r) {
-		    var min_size = Math.min(w, h);
-		    if (r > min_size / 2) r = min_size / 2;
-		    // 开始绘制
-		    this.beginPath();
-		    this.moveTo(x + r, y);
-		    this.arcTo(x + w, y, x + w, y + h, r);
-		    this.arcTo(x + w, y + h, x, y + h, r);
-		    this.arcTo(x, y + h, x, y, r);
-		    this.arcTo(x, y, x + w, y, r);
-		    this.closePath();
-		    return this;
-	}
+		$(".lunbo-window").on("click",".Cboat",function(){
+			debugger;
+			//var index = parseInt($(this).attr('data-itemid'));
+	        var ss = $(this).html();
+	        var crgb = $(ss).attr('alt');
+	        //alert("crgb "+crgb);
+	        //alert("timeid "+timeid);
+	        $.ajax("adjust/color/houseboat/"+timeid+"?crgb="+crgb,
+	                // 发送请求的URL字符串
+	                {
+	                    type: "get",      //
+	                    async:true,  //
+	                    success: function(data){
+	                    window.location.reload(); 
+	                    },
+	                    error: function(){
+	                        alert("调整颜色失败");
+	                    }
+	                });
+	        that.moveToCenter(index);
+		});
 	</script>
 	<script type="text/javascript" src="../js/lunbo.js"></script>
 	<script type="text/javascript">
@@ -167,8 +205,8 @@
   		}
 
 		function saveColor(){
-			alert("游艇色彩保存，然后调整材质");
-			window.location.href="imago_adjust_texture_houseboat.html";
+			//alert("游艇色彩保存，然后调整材质");
+			window.location.href="imago_adjust_texture_houseboat.html?timeid="+timeid;
 		}
 
 		window.onload = function(){
@@ -181,30 +219,6 @@
 				cxt.drawImage(img,10,50);
 			}
 
-		}
-	</script>
-
-	<script>
-		var c=document.getElementById("myCanvas");
-		var ctx=c.getContext("2d");
-		ctx.fillStyle="#00A5BD";
-		ctx.fillRect(0,0,150,36);
-	</script>
-	<script type="text/javascript">
-	
-		//获取Canvas对象(画布)
-		var canvas = document.getElementById("myCanvas");
-		//简单地检测当前浏览器是否支持Canvas对象，以免在一些不支持html5的浏览器中提示语法错误
-		if(canvas.getContext){  
-		    //获取对应的CanvasRenderingContext2D对象(画笔)
-		    var ctx = canvas.getContext("2d");
-		    
-		    //设置字体样式
-		    ctx.font = "18px Courier New";
-		    //设置字体填充颜色
-		    ctx.fillStyle = "white";
-		    //从坐标点(50,50)开始绘制文字
-		    ctx.fillText("色彩方案预览", 20, 22);
 		}
 	</script>
 

@@ -188,7 +188,7 @@
 						<div class="input-title-position" id="outLineTypeList"  >
 						<c:forEach var="outLineType" items="${outLineTypeList}" varStatus="status">
 						  <div class="my-no-br-right"  >
-								  		<input type="text" class="form-control "  id="${status.count}"  myid="${outLineType.otid }"  value="${outLineType.oname}" size="2"/>
+								  		<input type="text" class="form-control "  id="${status.count}"  myid="${outLineType.otid }"  value="${outLineType.oname}" size="6"/>
 						</div>
 						</c:forEach>
 						</div> 
@@ -205,7 +205,7 @@
 <!-- 								  </div> -->
 						<c:forEach var="partType" items="${partTypeList}" varStatus="status">
 						 <div class="my-no-br-right"  >
-								  		<input type="text" class="form-control "  id="${status.count}"  myid="${partType.pbid }"  value="${partType.pbname}" size="2"/>
+								  		<input type="text" class="form-control "  id="${status.count}"  myid="${partType.pbid }"  value="${partType.pbname}" size="6"/>
 						</div>
 						</c:forEach>
 						</div> 
@@ -219,7 +219,7 @@
 						<div class="input-title-position" id="colorTypeList"  >
 						<c:forEach var="colorType" items="${colorTypeList}" varStatus="status">
 						  <div class="my-no-br-right"  >
-								  		<input type="text" class="form-control "  id="${status.count}"  myid="${colorType.cbid }"  value="${colorType.cbname}" size="2"/>
+								  		<input type="text" class="form-control "  id="${status.count}"  myid="${colorType.cbid }"  value="${colorType.cbname}" size="6"/>
 						</div>
 						</c:forEach>
 						</div> 
@@ -234,7 +234,7 @@
 						<div class="input-title-position" id="textureTypeList"  >
 						<c:forEach var="textureType" items="${textureTypeList}" varStatus="status">
 						  <div class="my-no-br-right"  >
-								  		<input type="text" class="form-control "  id="${status.count}"  myid="${textureType.ttid }"  value="${textureType.ttname}" size="2"/>
+								  		<input type="text" class="form-control "  id="${status.count}"  myid="${textureType.ttid }"  value="${textureType.ttname}" size="6"/>
 						</div>
 						</c:forEach>
 						</div> 

@@ -7,7 +7,7 @@
 	<link href="../css/lunbo.css" rel="stylesheet" type="text/css"/>
 	<script type="text/javascript" src="../js/jquery-1.8.2.min.js"></script>
 	<title>意象映射-意象映射系统</title>
-	<style type="text/css" media="screen">
+	<!-- <style type="text/css" media="screen">
 		/* body 	{ font: 75% "Lucida Grande", "Trebuchet MS", Verdana, sans-serif; } */
 		canvas 	{ background-color: transparent; border: 1px solid gray; top: 0; left: 0; position: absolute;left:446px;top:280px;}
 		canvas.resize-ne { cursor: ne-resize; }
@@ -22,14 +22,37 @@
 		.fieldset { width: 200px; float: left; }
 		#ft 	{ background-color: #eee; height: 70px; width: 99%; border-top: 1px solid #ccc; padding: 5px; position: absolute; top: 0; left: 0; }
 		#ft span { width: 100%; }
-	</style>
+	</style> -->
 </head>
 <body>
 <script type="text/javascript">
+		var timeid;
         $(document).ready(function () {
 //  			alert(11);
             $('.configHead').load('conheader_yixiang.html');
             $('.configFoot').load('confooter.html');
+            
+            var loc = location.href;
+		  	var n1 = loc.length;//地址的总长度
+		  	var n2 = loc.indexOf("=");//取得=号的位置
+		  	timeid = decodeURI(loc.substr(n2+1, n1-n2));//从=号后面的内容 
+		  	var geneimg = "../image/boatPart_"+timeid+".jpg";
+		  	$(".picimg").attr("src",geneimg);
+		  	debugger;
+           /*  $.ajax("getpart?tname=游艇",
+            // 发送请求的URL字符串
+            {
+                type: "get",      //
+                async:true,  //
+                success: function(data){
+				//alert("facade newcase goblet test length="+data.length);
+				filllunboPart(data);
+				//alert("successful")
+                },
+                error: function(){
+                    alert("数据发送失败denglu");
+                }
+            }); */
         });
 </script>
 	<!-- 	头部 -->
@@ -80,9 +103,9 @@
 		</div>
 		<div id="rightBody">
 			<div id="iconAndcorpus">
-				<div id="introicon"><img src="../image/houseboat.png" style="" /></div>
+				<div id="introicon"><img class="imgicon" src="../image/houseboat.png" style="" /></div>
 				<div id="introduce">
-					<lable id="corpus">底层啊啥的交换机啊啥的卡斯柯卡号的看见好多看哈的华盛asd请问萨达vvghgfhdg阿尔法啊啥的范围飞啊飞玩手动阀发阿斯蒂芬万二分阿斯蒂芬阿斯蒂芬顿奥德赛华盛顿看哈是读好书看哈的华盛顿很快的</lable>
+					<lable id="corpus">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在造型调整步骤中，用户可以在操作窗口选择不同的部件，并可以移动、缩放、旋转调整部件达到预想效果，提供预览。</lable>
 				</div>
 			</div>
 
@@ -93,12 +116,18 @@
 					<img src="../images/genestyle/p5.png">
 				</canvas>
 			</div> -->
-			<div id="picGene" style="height:500px;">
+			<!-- <div id="picGene" style="height:500px;">
 				<div>
 					<canvas id="canvid1"></canvas>
 				</div>
 				<img class="img1" id="img0" src="../image/4.jpg" width="100px" height="134px" />
 				<img class="img1" id="bg" src="../image/bg.jpg" />
+			</div> -->
+			<div id="picGene1" style="" >
+				<div class="picfont" style="background:#00A5BD;width:145px; height:37px; ">
+					部件方案预览
+				</div>
+				<img class="picimg" src="" style="margin-top: 3px;">
 			</div>
 			
 			
@@ -136,7 +165,7 @@
 			</div>
 
 			<div id="geneBottomBtn">
-				<button type="submit" id="jpegbutton" class="save" onclick="savePart()">确定</button>
+				<button type="submit" id="jpegbutton" class="save" onclick="savePart1()">确定</button>
 				<button type="submit" class="cancel">取消</button>
 				<button type="submit" class="cancel" onclick="returned()">返回上一步</button>
 			</div>
@@ -164,7 +193,7 @@
 			//alert($(ht).attr('src'));
 			
 		});
-		var canvas1;
+		/* var canvas1;
 		var CanvasDemo = function() {
 			var YD = YAHOO.util.Dom;
 			var YE = YAHOO.util.Event;
@@ -265,9 +294,17 @@
 		
 		
 		
-		YAHOO.util.Event.on(window, 'load', CanvasDemo.init, CanvasDemo, true);
+		YAHOO.util.Event.on(window, 'load', CanvasDemo.init, CanvasDemo, true); */
+		
+		function savePart1(){
+			$("body").append("<div id='mask'></div>");
+	        $("#mask").addClass("mask").fadeIn("slow");
+	        $("#LoginBox1").fadeIn("slow");
+		}
+		
 		function savePart(){
-			alert("游艇部件保存，然后调整色彩");
+			//alert("游艇部件保存，然后调整色彩");
+			window.location.href = "facade_new_houseboat.html";
 			//window.location.href="imago_adjust_color_houseboat.html";
 		}
 		
