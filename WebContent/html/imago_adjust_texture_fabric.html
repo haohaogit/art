@@ -40,7 +40,7 @@
 		  	img_timeid = decodeURI(loc.substr(n2+1, n1-n2));//从=号后面的内容 
 		  	img_timeid = img_timeid.split("_");
 		  	timeid = img_timeid[1];
-		  	var geneimg = "../image/fabricTexture_"+timeid+".jpg";
+		  	var geneimg = "../image/fabricTextureA_"+timeid+".jpg";
 		  	$(".picimg1").attr("src",geneimg);
 		  	
 		  	
@@ -71,7 +71,7 @@
 			<div id="setParam">
 				<a href="javascript:void(0)" id="paramToggle">
 					<div id="paraIcon"> <img src="../image/setparam.png"></div>
-					<div id="paraWord" style="margin-left: 50px;">1.参数设置<div class="left-arrow1 arrow1" style="margin-top: -1px;margin-left: 25px;">&lt;</div></div>
+					<div id="paraWord" style="margin-left: 50px;">1.参数设置<img class="left-arrow arrow1" src="../image/adown.png"/></div>
 				</a>
 				<ul id="paramContent">
 					<li><a href="javascript:void(0)" id="paragoblet" class="param">高脚杯</a></li>
@@ -83,7 +83,7 @@
 			<div id="geneStyle">
 				<a href="javascript:void(0)" id="geneToggle">
 					<div id="paraIcon"> <img src="../image/genestyle.png"></div>
-					<div id="paraWord" style="margin-left: 50px;">2.造型生成<div class="left-arrow1 arrow2" style="margin-top: -1px;margin-left: 25px;">&lt;</div></div>
+					<div id="paraWord" style="margin-left: 50px;">2.造型生成<img class="left-arrow arrow2" src="../image/adown.png"/></div>
 				</a>
 				<ul id="geneContent">
 					<li><a href="javascript:void(0)" id="genegoblet" class="errorOperate">高脚杯</a></li>
@@ -95,7 +95,7 @@
 			<div id="adjustStyle">
 				<a href="javascript:void(0)" id="adjustToggle">
 					<div id="paraIcon"> <img src="../image/adjuststyle.png"></div>
-					<div id="paraWord" style="margin-left: 50px;">3.造型调整<div class="left-arrow1 arrow3" style="margin-top: -1px;margin-left: 25px;">&lt;</div></div>
+					<div id="paraWord" style="margin-left: 50px;">3.造型调整<img class="left-arrow arrow3" src="../image/aup.png"/></div>
 					
 				</a>
 				<ul id="adjustContent">
@@ -237,38 +237,38 @@
 	<script type="text/javascript">
 		$("#geneContent").fadeOut(0);
 		$("#paramContent").fadeOut(0);
-		$(".arrow1").css({transform:'rotate(270deg)'});
-		$(".arrow2").css({transform:'rotate(270deg)'});
+		
 		//$("#bottomcolor").fadeOut(0);
 		$("#textureAdjust").css({color:'#00a5bd'});
 
 		$("#paramToggle").click(function(){
-				$("#paramContent").fadeIn(0);
-				$("#geneContent").fadeOut(0);
-				$("#adjustContent").fadeOut(0);
-				$("#bottomcolor").fadeOut(0);
-				$(".arrow1").css({transform:'rotate(90deg)'});
-				$(".arrow2").css({transform:'rotate(270deg)'});
-				$(".arrow3").css({transform:'rotate(270deg)'});
-			});
+   			$("#paramContent").fadeIn(0);
+   			$("#geneContent").fadeOut(0);
+   			$("#adjustContent").fadeOut(0);
+   			$("#bottomcolor").fadeOut(0);
+   			$(".arrow1").attr("src","../image/aup.png");
+   		    $(".arrow2").attr("src","../image/adown.png");
+   		    $(".arrow3").attr("src","../image/adown.png");
+  		});
 		$("#geneToggle").click(function(){
 			$("#paramContent").fadeOut(0);
-				$("#geneContent").fadeIn(0);
-				$("#adjustContent").fadeOut(0);
-				$("#bottomcolor").fadeOut(0);
-				$(".arrow1").css({transform:'rotate(270deg)'});
-				$(".arrow2").css({transform:'rotate(90deg)'});
-				$(".arrow3").css({transform:'rotate(270deg)'});
-			});
+   			$("#geneContent").fadeIn(0);
+   			$("#adjustContent").fadeOut(0);
+   			$("#bottomcolor").fadeOut(0);
+   			$(".arrow1").attr("src","../image/adown.png");
+   		    $(".arrow2").attr("src","../image/aup.png");
+   		    $(".arrow3").attr("src","../image/adown.png");
+  		});
 		$("#adjustToggle").click(function(){
 			$("#paramContent").fadeOut(0);
-				$("#geneContent").fadeOut(0);
-				$("#adjustContent").fadeIn(0);
-				$(".arrow1").css({transform:'rotate(270deg)'});
-				$(".arrow2").css({transform:'rotate(270deg)'});
-				$(".arrow3").css({transform:'rotate(90deg)'});
-				$("#bottomcolor").fadeIn(0);
-			});
+   			$("#geneContent").fadeOut(0);
+   			$("#adjustContent").fadeIn(0);
+   			$(".arrow1").attr("src","../image/adown.png");
+   		    $(".arrow2").attr("src","../image/adown.png");
+   		    $(".arrow3").attr("src","../image/aup.png");
+   			$("#bottomcolor").fadeIn(0);
+  		});
+
 
 
 

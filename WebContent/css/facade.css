@@ -73,7 +73,7 @@
 #leftBody div a{
 	text-decoration:none;
 	padding: 13px 10px 13px 10px;
-	/* display:block; */
+	display:block;
 	color: white;
 }
 #rightBody{
@@ -191,7 +191,7 @@
 	background-color: #0f1010;
 }
 .kuohao{
-	display:flex;
+	/* display:flex; */
 	justify-content: space-between;
 }
 .left-arrow{

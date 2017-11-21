@@ -468,3 +468,9 @@ a{
 #paraWord{
 	display: flex;
 }
+.left-arrow{
+	width: 20px;
+	/* transform: rotate(90deg); */
+	margin-top: 5px;
+	margin-left: 28px;
+}

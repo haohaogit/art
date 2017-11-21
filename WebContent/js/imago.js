@@ -11,7 +11,7 @@ function fillModelFabric(data){
 		{
 			case "兽纹图案":
 			  if(aHtml==""){
-				  aHtml+="<div class='lunkuo'><div class='descri' >鸟纹图案轮廓</div></div><div class='macro'>";
+				  aHtml+="<div class='lunkuo'><div class='descri' >兽纹图案轮廓</div></div><div class='macro'>";
 			  }
 			  aHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].oimg+"' data-oid='"+data[i].oid+"'/></div>";
 			  aHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].oname+"</div></div></div>";
@@ -128,7 +128,7 @@ function filllunboTextureFabric(data){
 function filllunbopartFabric(data){
 	var aHtml="<ul>";
 	for(var i=0;i<data.length;i++){
-		aHtml+="<li class='lunbo-item PartFabric'><img src='../image/"+data[i].pimg+"' alt='"+data[i].pid+"'><span>id "+data[i].pid+"</span></li>";
+		aHtml+="<li class='lunbo-item PartFabric'><img src='../image/"+data[i].pimg+"' alt='"+data[i].pid+"'><span>"+data[i].pdescription+"</span></li>";
 	}
 	aHtml+="</ul>";
 	$(".lunbo-window").html(aHtml);

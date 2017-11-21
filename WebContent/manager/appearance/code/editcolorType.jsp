@@ -115,7 +115,7 @@
 				       <br><br>
 				       <div class=" text-center">
 <!-- 							<button type="submit" class="btn btn-primary savebtn">保存</button> -->
-							<button type="button" class="btn btn-primary savebtn">保存1</button> 
+							<button type="button" class="btn btn-primary savebtn">保存</button> 
 							<button type="reset" class="btn btn-primary cancelbtn">取消</button>
 						</div>
 						<br>

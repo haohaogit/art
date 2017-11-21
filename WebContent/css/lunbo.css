@@ -48,12 +48,14 @@
             list-style: none;
             margin: 0 10px;
             width: 86px;
+            
             cursor: pointer;
             text-align: center;
         }
 
         .lunbo-item>img {
             width: 100%;
+            /* height: 86px; */
         }
         .lunbo-item>span {
             display: inline-block;

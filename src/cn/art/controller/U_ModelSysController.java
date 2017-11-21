@@ -790,13 +790,51 @@ public class U_ModelSysController {
 		newCase.setTid(tid);
 		newCase.setNewcasename(caseName+"_"+timeid);
 		newCase.setNewcasearg(scoreNum.get(timeid));
-		newCase.setNewcaseimg("cookerPart_"+timeid+".jpg");
+		
+		newCase.setNewcaseimg("cookerPartA_"+timeid+".jpg");
 		
 		newCase.setNewcasercolor("cookerColor_"+timeid+".jpg");
 		newCase.setNewcasertexture("cookerTexture_"+timeid+".jpg");
-		
 		newCase.setNewcasertotal("cookerPart_"+timeid+".jpg");
 		newCase.setNewcaseroutline("cooker_"+timeid+".jpg");
+		
+		newCase.setNewcaseacolor("cookerColorA_"+timeid+".jpg");
+		newCase.setNewcaseaoutline("cooker_"+timeid+".jpg");
+		newCase.setNewcaseatexture("cookerTextureA_"+timeid+".jpg");
+		newCase.setNewcaseatotal("cookerPartA_"+timeid+".jpg");
+		
+		int isok = newCaseService.insertSelective(newCase);
+		message = isok+"";
+		return message;
+	}
+	
+	@RequestMapping("save/houseboat/{timeid}/{caseName}")
+	@ResponseBody
+	public String savehouseboat(@PathVariable String timeid,@PathVariable String caseName,Model model,HttpServletRequest request){
+		String message = "0";
+		List<typeIdName> typeIdNames = typeService.selectAllByName("游艇");
+		int tid = 0;
+		for (typeIdName typeIdName : typeIdNames) {
+			tid = typeIdName.getTid();
+			break;
+		}
+		NewCase newCase = new NewCase();
+		
+		newCase.setTid(tid);
+		newCase.setNewcasename(caseName+"_"+timeid);
+		newCase.setNewcasearg(scoreNum.get(timeid));
+		
+		newCase.setNewcaseimg("boatPartA_"+timeid+".jpg");
+		
+		newCase.setNewcasercolor("boatColor_"+timeid+".jpg");
+		newCase.setNewcasertexture("boatTexture_"+timeid+".jpg");
+		newCase.setNewcasertotal("boatPart_"+timeid+".jpg");
+		newCase.setNewcaseroutline("boat_"+timeid+".jpg");
+		
+		newCase.setNewcaseacolor("boatColorA_"+timeid+".jpg");
+		newCase.setNewcaseaoutline("boat_"+timeid+".jpg");
+		newCase.setNewcaseatexture("boatTextureA_"+timeid+".jpg");
+		newCase.setNewcaseatotal("boatPartA_"+timeid+".jpg");
 		
 		int isok = newCaseService.insertSelective(newCase);
 		message = isok+"";
@@ -818,13 +856,18 @@ public class U_ModelSysController {
 		newCase.setTid(tid);
 		newCase.setNewcasename(caseName+"_"+timeid);
 		newCase.setNewcasearg(scoreNum.get(timeid));
-		newCase.setNewcaseimg("fabricPart_"+timeid+".jpg");
+		newCase.setNewcaseimg("fabricPartA_"+timeid+".jpg");
 		
 		newCase.setNewcasercolor("fabricColor_"+timeid+".jpg");
 		newCase.setNewcasertexture("fabricTexture_"+timeid+".jpg");
 		
 		newCase.setNewcasertotal("fabricPart_"+timeid+".jpg");
 		newCase.setNewcaseroutline("fabric_"+timeid+".jpg");
+		
+		newCase.setNewcaseacolor("fabricColorA_"+timeid+".jpg");
+		newCase.setNewcaseaoutline("fabric_"+timeid+".jpg");
+		newCase.setNewcaseatexture("fabricTextureA_"+timeid+".jpg");
+		newCase.setNewcaseatotal("fabricPartA_"+timeid+".jpg");
 		
 		int isok = newCaseService.insertSelective(newCase);
 		message = isok+"";
