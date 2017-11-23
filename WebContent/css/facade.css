@@ -76,6 +76,15 @@
 	display:block;
 	color: white;
 }
+.wlable{
+	margin-left:8px;
+}
+.appeimg{
+	margin-left:40px;
+}
+.appelable{
+	margin-left:8px;
+}
 #rightBody{
 	float: left;
 	/* width: 63.7%; */
@@ -198,5 +207,5 @@
 	width: 20px;
 	/* transform: rotate(90deg); */
 	margin-top: 5px;
-	margin-left: 15px;
+	margin-left: 13px;
 }

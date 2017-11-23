@@ -177,10 +177,14 @@
 			  	if("base"==flag){
 			  		$("#codeContent").fadeOut(0);
 					$("#newContent").fadeOut(0);
+					$(".arrow1").attr("src","../image/aup.png");
+					$(".arrow2").attr("src","../image/adown.png");
 			  	}
 			  	if("code"==flag){
 			  		$("#baseContent").fadeOut(0);
 					$("#newContent").fadeOut(0);
+					$(".arrow1").attr("src","../image/adown.png");
+					$(".arrow2").attr("src","../image/aup.png");
 			  	}
 
 	            
@@ -206,8 +210,8 @@
 	<div id="content">
 		<div id="leftBody">
 			<div class="base type1">
-				<a href="javascript:void(0)" id="baseToggle" class="kuohao"><div>基础意象语义库</div>
-					<div class="left-arrow arrow1">&lt;</div>
+				<a href="javascript:void(0)" id="baseToggle" class="kuohao"><lable class="wlable">基础意象语义库</lable>
+					<img class="left-arrow arrow1" src="../image/aup.png"/>
 				</a>
 				<ul id="baseContent">
 					<li><a href="javascript:void(0)" id="firstChar" class="facade1">首字母分类</a></li>
@@ -215,8 +219,8 @@
 				</ul>
 			</div>
 			<div class="code type2">
-				<a href="javascript:void(0)" id="codeToggle"  class="kuohao"><div>降维词汇库</div>
-					<div class="left-arrow arrow2">&lt;</div>
+				<a href="javascript:void(0)" id="codeToggle"  class="kuohao"><lable class="wlable">降维词汇库</lable>
+					<img class="left-arrow arrow2" src="../image/adown.png"/  style="margin-left:53px;">
 				</a>
 				<ul id="codeContent">
 					<li><a href="javascript:void(0)" id="codeGoblet" class="facade1">高脚杯</a></li>
@@ -226,8 +230,8 @@
 				</ul>
 			</div>
 			<div class="new type2">
-				<a href="javascript:void(0)" id="newToggle"  class="kuohao"><div>问卷调查与检验</div>
-					<div class="left-arrow arrow3">&lt;</div>
+				<a href="javascript:void(0)" id="newToggle"  class="kuohao"><lable class="wlable">问卷调查与检验</lable>
+					<img class="left-arrow arrow3" src="../image/adown.png"/>
 				</a>
 				<ul id="newContent">
 					<li><a href="javascript:void(0)" id="newGoblet" class="facade1">高脚杯</a></li>

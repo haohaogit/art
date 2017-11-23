@@ -1024,8 +1024,9 @@ public class U_ModelSysController {
 		return "manager/testlogin";
 	}
 	
-	@RequestMapping("partAdd")
-	public String modelPartAdjust1(Model model,String tname,HttpServletRequest request){
+	@RequestMapping("partAdd/{caseName}/{timeid}")
+	@ResponseBody
+	public String modelPartAdjust1(@PathVariable String caseName,@PathVariable String timeid,Model model,String tname,HttpServletRequest request){
 		List<typeIdName> typeIdNames = typeService.selectAllByName(tname);
 		int tid = 0;
 		for (typeIdName typeIdName : typeIdNames) {
@@ -1042,7 +1043,32 @@ public class U_ModelSysController {
         //System.currentTimeMillis()意思是获取当前系统的时间戳给图片命名
         //实例化Base64转换类  调用里面的GenerateImage方法（把base64数据转为图片）
         //第一个参数base64转图片的必须的base64数据，第二个是转换后生成的图片存放路径
-        base64.GenerateImage(str, "D:/2017/"+System.currentTimeMillis()+".jpg");
+        //base64.GenerateImage(str, "D:/2017/"+System.currentTimeMillis()+".jpg");
+        base64.GenerateImage(str, "C:/apache-tomcat-7.0.53/wtpwebapps/art0804/image/cookerPartA_"+timeid+".jpg");
+        
+        
+        
+        
+		NewCase newCase = new NewCase();
+		
+		newCase.setTid(tid);
+		newCase.setNewcasename(caseName+"_"+timeid);
+		newCase.setNewcasearg(scoreNum.get(timeid));
+		
+		newCase.setNewcaseimg("cookerPartA_"+timeid+".jpg");
+		
+		newCase.setNewcasercolor("cookerColor_"+timeid+".jpg");
+		newCase.setNewcasertexture("cookerTexture_"+timeid+".jpg");
+		newCase.setNewcasertotal("cookerPart_"+timeid+".jpg");
+		newCase.setNewcaseroutline("cooker_"+timeid+".jpg");
+		
+		newCase.setNewcaseacolor("cookerColorA_"+timeid+".jpg");
+		newCase.setNewcaseaoutline("cooker_"+timeid+".jpg");
+		newCase.setNewcaseatexture("cookerTextureA_"+timeid+".jpg");
+		newCase.setNewcaseatotal("cookerPartA_"+timeid+".jpg");
+		
+		int isok = newCaseService.insertSelective(newCase);
+       
         //数据库存入绝对路径下的图片名称（上传图片即是修改操作）
         
        /* buyerMess.setPhotourl("D:/images/user_head/"+System.currentTimeMillis()+".jpg");
@@ -1056,7 +1082,7 @@ public class U_ModelSysController {
         }*/
 		//request.setAttribute("recommendImg", recommendImg);
 		//request.setAttribute("parts", parts);
-        try {
+        /*try {
             //需传入的参数
             String a = "1,2,2,2,3", b = "D3455054", c = "LJ12GKS28D4418248", d = "qingdao";
             System.out.println("start;;;" + a);
@@ -1075,7 +1101,7 @@ public class U_ModelSysController {
             System.out.println("end");
         } catch (Exception e) {
             e.printStackTrace();
-        }
+        }*/
         
       /* final Runtime runtime = Runtime.getRuntime();  
         Process process = null;  
@@ -1088,7 +1114,7 @@ public class U_ModelSysController {
         }  */
         
 		System.out.println("myname is 33333333333333333333  "+imgdata);
-		return "imago_adjust_part_globet";
+		return "1";
 		//return "manager/testlogin";
 	}
 	

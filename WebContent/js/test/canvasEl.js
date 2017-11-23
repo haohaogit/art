@@ -292,7 +292,6 @@ var Canvas = window.Canvas || {};
 	 */
 	Canvas.Element.prototype.onMouseMove = function(e) {
 		var mp = this.findMousePosition(e);
-		
 		if (this._aImages == null) {
 			return;
 		}
@@ -333,7 +332,6 @@ var Canvas = window.Canvas || {};
 	 * @param e {Event} the mouse event
 	 */	
 	Canvas.Element.prototype.translateImage = function(mp) {
-		
 		this._currentTransform.target.left = mp.ex - this._currentTransform.offsetX;
 		this._currentTransform.target.top = mp.ey - this._currentTransform.offsetY;
 	};
@@ -521,7 +519,6 @@ var Canvas = window.Canvas || {};
 		if (oImg.cornervisibility) {
 			this.drawCorners(context, oImg, offsetX, offsetY);
 		}
-		//loadtitle();
 		context.restore();
 	};
 		
@@ -697,7 +694,7 @@ var Canvas = window.Canvas || {};
 	 * @param offsetY {Number} The vertical offset applied from the (0,0) of the canvas axis
 	 */	
 	Canvas.Element.prototype.drawCorners = function(context, oImg, offsetX, offsetY) {
-		context.fillStyle = "rgba(232, 253, 253, 0.5)";
+		context.fillStyle = "rgba(0, 200, 50, 0.5)";
 		context.fillRect(-offsetX, -offsetY, oImg.cornersize, oImg.cornersize);
 		context.fillRect(oImg.width - offsetX - oImg.cornersize, -offsetY, oImg.cornersize, oImg.cornersize);
 		context.fillRect(-offsetX, oImg.height - offsetY - oImg.cornersize, oImg.cornersize, oImg.cornersize);

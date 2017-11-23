@@ -1216,11 +1216,13 @@ function fillNewcaseGascooker(data) {
     var score2 = 1;
     var score3 = 1;
     var score4 = 1;
+    var score5 = 1;
    
     score1 = result[0];
     score2 = result[1];
     score3 = result[2];
     score4 = result[3];
+    score5 = result[4];
     
    
     if(score1>0){
@@ -1275,6 +1277,18 @@ function fillNewcaseGascooker(data) {
     	$(".point41").css("display","block");
         $(".point42").css("display","none");
         $('#score41').width(270-Math.abs(score4)*90);
+    }
+    
+    if(score5>0){
+    	document.getElementById("score51").style.width=270+'px';
+    	$(".point52").css("display","block");
+        $(".point51").css("display","none");
+        $('#score52').width(score5*90);
+    }else{
+    	document.getElementById("score52").style.width=0;
+    	$(".point51").css("display","block");
+        $(".point52").css("display","none");
+        $('#score51').width(270-Math.abs(score5)*90);
     }
 }
 

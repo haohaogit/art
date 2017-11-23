@@ -2,14 +2,14 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<link href="../css/imago1.css" rel="stylesheet" type="text/css"/>
+	<link href="../css/imago.css" rel="stylesheet" type="text/css"/>
 	<link href="../css/loginDialog.css" rel="stylesheet" type="text/css"/>
 	<link href="../css/lunbo.css" rel="stylesheet" type="text/css"/>
 	<script type="text/javascript" src="../js/jquery-1.8.2.min.js"></script>
 	<title>意象映射-意象映射系统</title>
 	<style type="text/css" media="screen">
 		/* body 	{ font: 75% "Lucida Grande", "Trebuchet MS", Verdana, sans-serif; } */
-		canvas 	{ background-color: transparent; border: 1px solid gray; top: 0; left: 0; position: absolute;left:467px;top:300px;}
+		canvas 	{ background-color: transparent; border: 1px solid gray; top: 0; left: 0; position: absolute;left:537.5px;top:275px;}
 		canvas.resize-ne { cursor: ne-resize; }
 		canvas.resize-se { cursor: se-resize; }
 		canvas.resize-sw { cursor: sw-resize; }
@@ -17,7 +17,7 @@
 		canvas.move { cursor: move; }
 		canvas.default { cursor: default; }
 		.img1 	{ display: block; visibility: hidden; position: absolute; top: -1000; left: -1000; }
-		/* input 	{ margin-left: 20px; } */
+		input1 	{ margin-left: 20px; }
 		fieldset { width: 280px; float: left; }
 		.fieldset { width: 200px; float: left; }
 		#ft 	{ background-color: #eee; height: 70px; width: 99%; border-top: 1px solid #ccc; padding: 5px; position: absolute; top: 0; left: 0; }
@@ -25,11 +25,37 @@
 	</style>
 </head>
 <body>
+<script type="text/javascript" src="../js/imago.js"></script>
 <script type="text/javascript">
+		var timeid;
         $(document).ready(function () {
 //  			alert(11);
             $('.configHead').load('conheader_yixiang.html');
             $('.configFoot').load('confooter.html');
+            
+            var loc = location.href;
+		  	var n1 = loc.length;//地址的总长度
+		  	var n2 = loc.indexOf("=");//取得=号的位置
+		  	timeid = decodeURI(loc.substr(n2+1, n1-n2));//从=号后面的内容 
+		  	//var geneimg = "../image/cookerPartA_"+timeid+".jpg";
+		  	var geneimg = "../image/cooker.jpg";
+		  	
+		  	$(".picimg2").attr("src",geneimg);
+		  	debugger;
+            $.ajax("getpart?tname=燃气灶",
+            // 发送请求的URL字符串
+            {
+                type: "get",      //
+                async:true,  //
+                success: function(data){
+				//alert("facade newcase goblet test length="+data.length);
+				filllunboPart(data);
+				//alert("successful")
+                },
+                error: function(){
+                    alert("数据发送失败denglu");
+                }
+            });
         });
 </script>
 	<!-- 	头部 -->
@@ -80,50 +106,37 @@
 		</div>
 		<div id="rightBody">
 			<div id="iconAndcorpus">
-				<div id="introicon" style="width: 100px;"><img class="imgicon" src="../image/golbet.png"/></div>
+				<div id="introicon"><img src="../image/gascooker.png" style="width: 105px;"/></div>
 				<div id="introduce">
-					<lable id="corpus">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在造型调整步骤中，用户可以在操作窗口选择不同的部件，并可以移动、缩放、旋转调整部件达到预想效果，提供预览。</lable>
+					<lable id="corpus">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在造型调整步骤中，用户可以在操作窗口选择不同的部件，并可以移动、缩放、旋转调整部件达到你想要的效果，窗口同样可以给你提供预览。</lable>
 				</div>
 			</div>
+			
+			<div id="picGene1" style="" >
+				<div class="picfont" style="background:#00A5BD;width:145px; height:37px; ">
+					部件方案预览
+				</div>
+				<div>
+					<div style="margin-left: 89px;">
+						<canvas id="canvid1"></canvas>
+					</div>
+					<img class="img1" id="img0" src="../image/4.jpg" width="70px" height="90px" />
+					<img class="picimg2" id="bg" src="../image/cooker.jpg" style ="width:600px;height:350px;margin-left: 89px;margin-top: 3px;"/>
+				</div>
+				<!-- <img class="picimg" src="" style="margin-top: 3px;"> -->
+			</div>
 
-			<!-- <div id="inputcorpus">
-				<div class="corpusword" style="padding-top: 5.5px;">推荐方案</div>
-			</div> -->
-
-			<!-- <div id="picGene">
-				
-				<canvas id="myCanvas" width="800" height="400" style="border:1px solid #d3d3d3;background:#ffffff;">
-					<p class="p2">画布：</p>
-					<img src="../images/genestyle/p5.png">
-				</canvas>
-			</div> -->
-			
-			
-			
-			
-			<div id="picGene" style="height:500px;">
+			<!-- <div id="picGene" style="height:500px;">
 				<div>
 					<canvas id="canvid1"></canvas>
 				</div>
 				<img class="img1" id="img0" src="../image/4.jpg" width="100px" height="134px" />
-				<img class="img1" id="bg" src="../image/bg.jpg" />
-			</div> 
-			<!-- <div id="picGene1" style="" >
-				<div class="picfont" style="background:#00A5BD;width:145px; height:37px; ">
-					部件方案预览
-				</div>
-				<img class="picimg" src="" style="margin-top: 3px;">
+				<img class="picimg" id="bg" src="../image/cooker.jpg" style ="width:800px;height:481px;margin-top: 11px;margin-left: -1.5px;"/>
 			</div> -->
-			
-
-
 
 			<div id="partStyle" style="height:37px;">
 				<div id="beidu" style="width:106px;">
-					<a href="javascript:void(0)" id="beidu1" style="color: white;">杯肚部件</a>
-				</div>
-				<div id="beibing" style="width:106px;">
-					<a href="javascript:void(0)" id="beibing1" style="color: white;">杯柄部件</a>
+					<a href="javascript:void(0)" id="beidu1" >logo添加</a>
 				</div>
 			</div>
 
@@ -133,73 +146,78 @@
 					<div class="right-arrow arrow">&gt;</div>
 					<div class="lunbo-window">
 						<ul>
-							<li class="lunbo-item"><img src="../image/color (1).png" alt=""><span>xin1</span></li>
-							<li class="lunbo-item"><img src="../image/color (2).png" alt=""><span>xin2</span></li>
-							<li class="lunbo-item"><img src="../image/color (3).png" alt=""><span>xin3</span></li>
-							<li class="lunbo-item"><img src="../image/color (4).png" alt=""><span>xin4</span></li>
-							<li class="lunbo-item"><img src="../image/color (5).png" alt=""><span>xin5</span></li>
-							<li class="lunbo-item"><img src="../image/color (6).png" alt=""><span>xin6</span></li>
-							<li class="lunbo-item"><img src="../image/color (7).png" alt=""><span>xin7</span></li>
-							<li class="lunbo-item"><img src="../image/color (8).png" alt=""><span>xin8</span></li>
-							<li class="lunbo-item"><img src="../image/color (1).png" alt=""><span>xin1</span></li>
+							<li class="lunbo-item"><img src="../images/appearance/color (1).png" alt=""><span>xin1</span></li>
+							<li class="lunbo-item"><img src="../images/appearance/color (2).png" alt=""><span>xin2</span></li>
+							<li class="lunbo-item"><img src="../images/appearance/color (3).png" alt=""><span>xin3</span></li>
+							<li class="lunbo-item"><img src="../images/appearance/color (4).png" alt=""><span>xin4</span></li>
+							<li class="lunbo-item"><img src="../images/appearance/color (5).png" alt=""><span>xin5</span></li>
+							<li class="lunbo-item"><img src="../images/appearance/color (6).png" alt=""><span>xin6</span></li>
+							<li class="lunbo-item"><img src="../images/appearance/color (7).png" alt=""><span>xin7</span></li>
+							<li class="lunbo-item"><img src="../images/appearance/color (8).png" alt=""><span>xin8</span></li>
+							<li class="lunbo-item"><img src="../images/appearance/color (1).png" alt=""><span>xin1</span></li>
 							
 						</ul>
 					</div>
 				</div>
 				<!-- 此处加载图片轮播模块 -->
 			</div>
-
-			<div id="geneBottomBtn">
-				<!-- <button type="submit" id="jpegbutton" class="save" onclick="savePart1()">确定</button> -->
-				<button type="submit" id="jpegbutton1" class="save" onclick="savePart1()">确定</button>
-				<button type="submit" class="cancel">取消</button>
-				<button type="submit" class="cancel" onclick="returned()">返回上一步</button>
-			</div>
 		</div>
+		
+	</div>
+	<div id="geneBottomBtn">
+		<button type="submit" id="save" onclick="savePart1()">确定</button>
+		<button type="submit" class="cancel">取消</button>
+		<button type="submit" class="cancel" onclick="returned()">返回上一步</button>
 	</div>
 
 	<!-- 	底部 -->
 	<div class="configFoot"></div>
 
 	<script type="text/javascript" src="../js/lunbo.js"></script>
-	<script type="text/javascript">
-
-		function returned(){
-  			window.history.back(-1);
-  		}
-  		
-		
-		//圆角矩形
-		CanvasRenderingContext2D.prototype.roundRect = function (x, y, w, h, r) {
-		    var min_size = Math.min(w, h);
-		    if (r > min_size / 2) r = min_size / 2;
-		    // 开始绘制
-		    this.beginPath();
-		    this.moveTo(x + r, y);
-		    this.arcTo(x + w, y, x + w, y + h, r);
-		    this.arcTo(x + w, y + h, x, y + h, r);
-		    this.arcTo(x, y + h, x, y, r);
-		    this.arcTo(x, y, x + w, y, r);
-		    this.closePath();
-		    return this;
-	}
-	</script>
+	
 	<script src="../js/utilitie.js" type="text/javascript" charset="utf-8"></script>
 	<script src="../js/canvasEl.js" type="text/javascript" charset="utf-8"></script>
 	<script src="../js/canvasIm.js" type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript" charset="utf-8">
-		$(".lunbo-item").click(function(){
+		
+		
+		var Logoimg;
+		function returned(){
+			window.history.back(-1);
+		}
+		
+		$(".lunbo-window").on("click",".LPart",function(){
+			
 			var ht = $(this).html();
 			//$(ht).find('img').attr("src");
-			//alert(ht);
+			//alert($(ht).attr("src"));
 			
-			$("#img0").attr("src",$(ht).attr('src'));
+			
+			$("#img0").attr("src",$(ht).attr("src"));
 			canvas1.renderAll();
-			//alert($(ht).attr('src'));
 			
-		});
+			debugger;
+			/* var ht = $(this).html();
+			var src = $(ht).attr('src');
+			Logoimg = $(ht).attr('src');
+			$.ajax("adjust/part/cooker/"+timeid+"?img="+src,
+                // 发送请求的URL字符串
+                {
+                    type: "get",      //
+                    async:true,  //
+                    success: function(data){
+            		//$(".picimg").attr('src',data.img);
+                    //alert("adjustcolor successful   "+data.img);
+            		window.location.reload(); 
+    				
+                    },
+                    error: function(){
+                        alert("数据发送失败denglu");
+                    }
+                }); */
+			
+		}); 
 		var canvas1;
-		var str;
 		var CanvasDemo = function() {
 			var YD = YAHOO.util.Dom;
 			var YE = YAHOO.util.Event;
@@ -209,14 +227,9 @@
 				init: function() {
 					canvas1 = new Canvas.Element();
 					//canvas1.init('canvid1',  { width: YD.getViewportWidth() - 5, height: YD.getViewportHeight() - 5 });
-					canvas1.init('canvid1',  { width: 800, height: 481 });			
-					//img[img.length] = new Canvas.Img('img1', {});
-					//img[img.length] = new Canvas.Img('img2', {});
-					//img[img.length] = new Canvas.Img('img3', {});
+					canvas1.init('canvid1',  { width: 600, height: 350 });			
 					img[img.length] = new Canvas.Img('bg', {});
 					img[img.length] = new Canvas.Img('img0', {});
-					
-					// @param array of images ToDo: individual images
 					
 					canvas1.setCanvasBackground(img[0]);
 					canvas1.addImage(img[1]);
@@ -273,28 +286,25 @@
 				},
 				convertTo: function(format) {
 					var imgData = canvas1.canvasTo(format);
-					//str = imgData.split(",");
-					str = imgData;
-					
-					$.ajax("partAdd?tname=高脚杯",
-	                // 发送请求的URL字符串
-	                {
-	                    type: "post",      //
-	                    async:true,  //
-	                    data: {imgdata:str},  
-	                    success: function(data){
-							alert("base64 img success");
-							window.location.href = "facade_new_gascooker.html";
-							//fillNewcase(data);
-	                    }
-	                    /* error: function(XMLHttpRequest, textStatus, errorThrown){
-	                    	 alert("请求对象XMLHttpRequest: "+XMLHttpRequest);  
-	                         alert("错误类型textStatus: "+textStatus);  
-	                         alert("异常对象errorThrown: "+errorThrown);  
-	                         alert("数据发送失败denglu0000");
-	                    } */
-	                });
-					//alert(str[1]);
+					var caseName = $("#account1").val();
+					$.ajax("partAdd/"+caseName+"/"+timeid+"?tname=燃气灶",
+			                // 发送请求的URL字符串
+			                {
+			                    type: "post",      //
+			                    async:true,  //
+			                    data: {imgdata:imgData},  
+			                    success: function(data){
+									alert("save success");
+									window.location.href = "facade_new_gascooker.html";
+									//fillNewcase(data);
+			                    }
+			                    /* error: function(XMLHttpRequest, textStatus, errorThrown){
+			                    	 alert("请求对象XMLHttpRequest: "+XMLHttpRequest);  
+			                         alert("错误类型textStatus: "+textStatus);  
+			                         alert("异常对象errorThrown: "+errorThrown);  
+			                         alert("数据发送失败denglu0000");
+			                    } */
+			                });
 					//window.open(imgData, "_blank");
 				},
 				whatever: function(e, o) {
@@ -306,28 +316,11 @@
 		}();
 		
 		function loadtitle(){
-			
 			var canvas = document.getElementById("canvid1-canvas-background");
-			//简单地检测当前浏览器是否支持Canvas对象，以免在一些不支持html5的浏览器中提示语法错误
-			if(canvas.getContext){  
-				//alert("aaaaaaaaaaaaaaaa"+canvas.getContext);
-			    //获取对应的CanvasRenderingContext2D对象(画笔)
-			    var ctx = canvas.getContext("2d");
-			    ctx.fillStyle="#00A5BD";
-				ctx.fillRect(0,0,150,36);
-			    //设置字体样式
-			    ctx.font = "18px Courier New";
-			    //设置字体填充颜色
-			    ctx.fillStyle = "white";
-			    //从坐标点(50,50)开始绘制文字
-			    ctx.fillText("部件方案预览", 20, 22);
-			    //alert("部件方案预览11111111");
-			}
 		}
 		
+		YAHOO.util.Event.on(window, 'load', CanvasDemo.init, CanvasDemo, true);
 		
-		
-		YAHOO.util.Event.on(window, 'load', CanvasDemo.init, CanvasDemo, true); 
 		function savePart1(){
 			$("body").append("<div id='mask'></div>");
 	        $("#mask").addClass("mask").fadeIn("slow");
@@ -335,13 +328,23 @@
 		}
 		
 		/* function savePart(){
-			debugger;
-			canvas1.convertTo('jpeg');
-			alert("高脚杯部件保存，然后调整色彩");
-			//alert(str);
-			
-			 
-			//window.location.href="imago_adjust_color_globet.html";
+			var caseName = $("#account1").val();
+			//alert("newcount "+caseName);
+			//canvas1
+			$.ajax("save/cooker/"+timeid+"/"+caseName,
+            // 发送请求的URL字符串
+            {
+                type: "get",      //
+                async:true,  //
+                success: function(data){
+        		//window.location.reload(); 
+				alert("save success   ");
+				window.location.href = "facade_new_gascooker.html";
+                },
+                error: function(){
+                    alert("数据发送失败denglu");
+                }
+            });
 		} */
 		
 		var c=document.getElementById("canvid1");
@@ -349,7 +352,6 @@
 		ctx.fillStyle="#00A5BD";
 		ctx.fillRect(0,0,150,36);
 	</script>
-
 
 	<script type="text/javascript">
 	$("#geneContent").fadeOut(0);
@@ -390,7 +392,6 @@
 
 
 
-
   		$("#paragoblet").click(function(){
     		// $("#paramSet").html("111111111111111111");
     		window.location.href="imago.html?txt=paragoblet";
@@ -413,8 +414,6 @@
   		$('.errorOperate').click(function(){
   			alert("请您先确认是否保存语义参数，然后按照顺序操作！");
   		});
-
-  		
 
   		$("#beidu1").click(function(){
   			
