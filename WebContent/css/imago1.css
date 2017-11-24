@@ -127,9 +127,10 @@ a{
 	background-repeat: no-repeat;
 }
 #introduce{
-	padding: 0 16px;
-	width: 688px;
-	display: inline-block;
+	/* padding: 0 16px;
+	width: 688px; */
+	display: flex;
+	align-items:center;
     vertical-align: top;
 }
 .imgicon{
@@ -144,7 +145,7 @@ a{
 
 
 #corpus{
-    margin-top: 23px;
+    /* margin-top: 23px; */
 }
 #showicon{
 	text-align: center;
@@ -428,4 +429,11 @@ a{
 	align-items: center;
 	font-size: 18px;
 	height: 37px;
+}
+#picGene1{
+	width: 800px;
+	height: 400px;
+	/* background: white; */
+	border: 1.5px solid #ae9b9b;
+	border-radius: 5px;
 }

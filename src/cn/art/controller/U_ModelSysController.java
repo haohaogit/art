@@ -775,6 +775,58 @@ public class U_ModelSysController {
 		
 	}
 	
+	@RequestMapping("setparam/globet")
+	@ResponseBody
+	public commandImg setparamGlobet(Model model,String sc,HttpServletRequest request){
+		
+		
+		/*String[] s = sc.split(",");
+		int temp =0;
+		String score = "";
+		for (String s1 : s) {
+			temp  = Integer.parseInt(s1)+3;
+			s1 = temp+",";
+			score +=s1;
+		}*/
+		commandImg cimg = new commandImg();
+		try {
+            //需传入的参数
+            String a = sc;
+            
+            long current_time = new Date().getTime();
+            timeid1 = current_time+"";
+            scoreNum.put(timeid1, sc);
+            System.out.println("start;;;" + a);
+            //设置命令行传入参数
+            //String[] args1 = new String[] { "python", "C:\\firstDL_netEast\\boatAssembleTest.py", a,timeid1};
+            String[] args1 = new String[] { "python", "D:\\20170602\\PycharmProjects\\firstDL_netEast\\globet.py", a,timeid1};
+            Process pr = Runtime.getRuntime().exec(args1);
+
+            BufferedReader in = new BufferedReader(new InputStreamReader(pr.getInputStream()));
+            String line;
+            while ((line = in.readLine()) != null) {
+                //line = decodeUnicode(line);
+                System.out.println(line);
+                minitem.put(timeid1, line);
+            }
+           
+            in.close();
+            
+            Rgb = "30,35,57";
+            //backimg.put(timeid1, "C:/firstDL_netEast/artgene/M22.jpg");
+            //pr.waitFor();
+            cimg.setImg("../image/boatColor_"+timeid1+".jpg");
+            cimg.setTimeid(timeid1);
+    		cimg.setImg1("../images/genestyle/Ccolor.png");
+    		cimg.setImg2("../images/genestyle/Ctexture1.png");
+            System.out.println("end");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+		return cimg;
+		
+	}
+	
 	@RequestMapping("save/cooker/{timeid}/{caseName}")
 	@ResponseBody
 	public String savecooker(@PathVariable String timeid,@PathVariable String caseName,Model model,HttpServletRequest request){

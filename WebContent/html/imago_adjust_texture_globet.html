@@ -27,10 +27,33 @@
 <body>
 
 <script type="text/javascript">
+		var timeid = 0;
         $(document).ready(function () {
 //  			alert(11);
             $('.configHead').load('conheader_yixiang.html');
             $('.configFoot').load('confooter.html');
+            
+            var loc = location.href;
+		  	var n1 = loc.length;//地址的总长度
+		  	var n2 = loc.indexOf("=");//取得=号的位置
+		  	timeid = decodeURI(loc.substr(n2+1, n1-n2));//从=号后面的内容 
+		  	var geneimg = "../image/globetTextureA_"+timeid+".jpg";
+		  	$(".picimg").attr("src",geneimg);
+		  	debugger;
+            /* $.ajax("gettexture?tname=高脚杯",
+            // 发送请求的URL字符串
+            {
+                type: "get",      //
+                async:true,  //
+                success: function(data){
+				//alert("facade newcase goblet test length="+data.length);
+				filllunboTexture(data);
+				//alert("successful")
+                },
+                error: function(){
+                    alert("数据发送失败denglu");
+                }
+            }); */
         });
 </script>
 	<!-- 	头部 -->
@@ -81,23 +104,29 @@
 		</div>
 		<div id="rightBody">
 			<div id="iconAndcorpus">
-				<div id="introicon"><img src="../image/golbet.png" /></div>
+				<div id="introicon"><img class="imgicon" src="../image/golbet.png" /></div>
 				<div id="introduce">
-					<lable id="corpus">底层啊啥的交换机啊啥的卡斯柯卡号的看见好多看哈的华盛asd请问萨达vvghgfhdg阿尔法啊啥的范围飞啊飞玩手动阀发阿斯蒂芬万二分阿斯蒂芬阿斯蒂芬顿奥德赛华盛顿看哈是读好书看哈的华盛顿很快的</lable>
+					<lable id="corpus">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在材质调整步骤中，用户可以在操作窗口选择不同的材质方案并预览。</lable>
 				</div>
 			</div>
 
 			<!-- <div id="inputcorpus">
 				<div class="corpusword" style="padding-top: 5.5px;">推荐方案</div>
 			</div> -->
-
-			<div id="picGene">
+			
+			<div id="picGene1" style="" >
+				<div class="picfont" style="background:#00A5BD;width:145px; height:37px; ">
+					材质方案预览
+				</div>
+				<img class="picimg" src="" >
+			</div>
+			<!-- <div id="picGene">
 				
 				<canvas id="myCanvas" width="800" height="400" style="border:1px solid #d3d3d3;background:#ffffff;">
-					<!-- <p class="p2">画布：</p> -->
-					<!-- <img src="../images/genestyle/p5.png"> -->
+					<p class="p2">画布：</p>
+					<img src="../images/genestyle/p5.png">
 				</canvas>
-			</div>
+			</div> -->
 
 			<div id="partStyle" style="height:37px;">
 				<div id="warmcolor">
@@ -142,7 +171,7 @@
 	<script type="text/javascript">
 		function saveTexture(){
 			alert("高脚杯材质保存，然后调整部件");
-			window.location.href="imago_adjust_part_globet.html";
+			window.location.href="imago_adjust_part_globet1.html?timeid="+timeid;
 		}
 
 		function returned(){
