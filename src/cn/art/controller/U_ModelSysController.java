@@ -574,14 +574,14 @@ public class U_ModelSysController {
 	public commandImg setparamcooker(Model model,String sc,HttpServletRequest request){
 		
 		
-		String[] s = sc.split(",");
+		/*String[] s = sc.split(",");
 		int temp =0;
 		String score = "";
 		for (String s1 : s) {
 			temp  = Integer.parseInt(s1)+3;
 			s1 = temp+",";
 			score +=s1;
-		}
+		}*/
 		commandImg cimg = new commandImg();
 		try {
             //需传入的参数
