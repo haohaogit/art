@@ -2,6 +2,7 @@ package cn.art.controller;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -418,12 +419,13 @@ public class U_ModelSysController {
 	
 	@RequestMapping("adjust/texture/fabric/{timeid}")
 	@ResponseBody
-	public commandImg adjustTextureFabric(@PathVariable String timeid,Model model,String tbimg,String timid,HttpServletRequest request){
+	public commandImg adjustTextureFabric(@PathVariable String timeid,Model model,String tbimg,String timid,HttpServletRequest request) throws UnsupportedEncodingException{
 		System.out.println("crgb111 ");
 		String[] s1 = tbimg.split("/");
-		String timg = s1[s1.length-1];
+		String timg1 = s1[s1.length-1];
+		String timg = new String(timg1.getBytes(),"UTF-8");
 		
-		timg = "C:/firstDL_netEast/artgene/"+timg;
+		timg = "C:/apache-tomcat-7.0.53/wtpwebapps/art0804/image/"+timg;
 		System.out.println("ting "+timg);
 		FabricTexturebackimg.put(timeid, timg);
 		
@@ -434,6 +436,7 @@ public class U_ModelSysController {
             //System.out.println("start;;;" + a);
             //设置命令行传入参数
 			//System.out.println(minitemS+","+minitemK+","+minitemB+","+minitemD+","+Rgb);
+            //String[] args = new String[] { "python", "D:\\20170602\\PycharmProjects\\firstDL_netEast\\scarvesColorGenColorImageMateria.py",colorgene[Nrgb],RgbNum.get(timeid),imgString,timg,timeid};
             String[] args = new String[] { "python", "C:\\firstDL_netEast\\scarvesColorGenColorImageMateria.py",colorgene[Nrgb],RgbNum.get(timeid),imgString,timg,timeid};
             Process pr = Runtime.getRuntime().exec(args);
 
@@ -728,14 +731,14 @@ public class U_ModelSysController {
 	public commandImg setparamhouseboat(Model model,String sc,HttpServletRequest request){
 		
 		
-		String[] s = sc.split(",");
+		/*String[] s = sc.split(",");
 		int temp =0;
 		String score = "";
 		for (String s1 : s) {
 			temp  = Integer.parseInt(s1)+3;
 			s1 = temp+",";
 			score +=s1;
-		}
+		}*/
 		commandImg cimg = new commandImg();
 		try {
             //需传入的参数
@@ -744,7 +747,7 @@ public class U_ModelSysController {
             long current_time = new Date().getTime();
             timeid1 = current_time+"";
             scoreNum.put(timeid1, sc);
-            System.out.println("start;;;" + a);
+            System.out.println("start111" + a);
             //设置命令行传入参数
             String[] args1 = new String[] { "python", "C:\\firstDL_netEast\\boatAssembleTest.py", a,timeid1};
             //String[] args1 = new String[] { "python", "D:\\20170602\\PycharmProjects\\firstDL_netEast\\boatAssembleTest.py", a,timeid1};
@@ -796,7 +799,7 @@ public class U_ModelSysController {
             long current_time = new Date().getTime();
             timeid1 = current_time+"";
             scoreNum.put(timeid1, sc);
-            System.out.println("start;;;" + a);
+            System.out.println("start222" + a);
             //设置命令行传入参数
             //String[] args1 = new String[] { "python", "C:\\firstDL_netEast\\boatAssembleTest.py", a,timeid1};
             String[] args1 = new String[] { "python", "D:\\20170602\\PycharmProjects\\firstDL_netEast\\globet.py", a,timeid1};

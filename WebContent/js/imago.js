@@ -117,7 +117,7 @@ function filllunboTextureBoat(data){
 function filllunboTextureFabric(data){
 	var aHtml="<ul>";
 	for(var i=0;i<data.length;i++){
-		aHtml+="<li class='lunbo-item TextureFabric'><img src='../image/"+data[i].timg+"' alt='"+data[i].textureid+"'><span>id "+data[i].textureid+"</span></li>";
+		aHtml+="<li class='lunbo-item TextureFabric'><img src='../image/"+data[i].timg+"' alt='"+data[i].textureid+"'><span>"+data[i].tdescription+"</span></li>";
 	}
 	aHtml+="</ul>";
 	$(".lunbo-window").html(aHtml);

@@ -6,7 +6,7 @@
     <title></title>
     <style>
     	.description {
-            margin-bottom: 38px;
+            margin-bottom: 22px;
             display: flex;
             flex-flow: row nowrap;
             justify-content: space-between;
@@ -23,21 +23,32 @@
         .get-score {
             display: flex;
         }
+        .progress11{
+        	position: relative;
+			width: 550px;
+			margin-top: 4px;
+			margin-left: 40px;
+			margin-right: 40px;
+        }
+        .shuzi{
+	        display: flex;	
+			justify-content: space-between;
+	    }
 
         
         .des_font{
             font-size: 13px;
         }
     </style>
-    <link href="../../css/processBar.css" rel="stylesheet" type="text/css"/>
-	<script type="text/javascript" src="../../js/jquery-1.8.2.min.js"></script>
-	<script type="text/javascript" src="../../js/processBar.js"></script>
+    <link href="../css/processBar.css" rel="stylesheet" type="text/css"/>
+	<script type="text/javascript" src="../js/jquery-1.8.2.min.js"></script>
+	<script type="text/javascript" src="../js/processBar1.js"></script>
 </head>
 
 <body>
 	<script type="text/javascript">
 	
-			/* function fillwordSurveyHref(data){
+			function fillwordSurveyHref(data){
 				
 				$('.href1').eq(0).attr('data-url',data.wordsurvey);
 				$('.href1').eq(1).attr('data-url',data.wordresult);
@@ -62,7 +73,7 @@
                     }
                 });
 
-	        }); */
+	        });
 	</script>
     <div>
         <div id="inputcorpus">
@@ -73,12 +84,20 @@
             <div class="description1">1.温和</div>
             <div class="pingfen">
                 <span class="des_font">符合</span>
-                <div class="progress">
+                <div class="progress11">
 			         <div class="progress_bg1">
 			             <div class="progress_bar1"></div>
 			         </div>
 			         <div class="progress_btn1"></div>
-			         <div class="text1">50%</div>
+			         <div class="shuzi">
+                        <span>1</span>
+                        <span>2</span>
+                        <span>3</span>
+                        <span>4</span>
+                        <span>5</span>
+                        <span>6</span>
+                        <span>7</span>
+                    </div>
 			     </div>
             	<span class="des_font">非常符合</span>
             </div>
@@ -88,12 +107,20 @@
             <div class="description1">2.严谨</div>
             <div class="pingfen">
                 <span class="des_font">符合</span>
-                <div class="progress">
+                <div class="progress11">
 			         <div class="progress_bg2">
 			             <div class="progress_bar2"></div>
 			         </div>
 			         <div class="progress_btn2"></div>
-			         <div class="text2">50%</div>
+			         <div class="shuzi">
+                        <span>1</span>
+                        <span>2</span>
+                        <span>3</span>
+                        <span>4</span>
+                        <span>5</span>
+                        <span>6</span>
+                        <span>7</span>
+                    </div>
 			     </div>
 
                 <span class="des_font">非常符合</span>
@@ -104,12 +131,20 @@
             <div class="description1">3.雅致</div>
             <div class="pingfen">
                 <span class="des_font">符合</span>
-                <div class="progress">
+                <div class="progress11">
 			         <div class="progress_bg3">
 			             <div class="progress_bar3"></div>
 			         </div>
 			         <div class="progress_btn3"></div>
-			         <div class="text3">50%</div>
+			         <div class="shuzi">
+                        <span>1</span>
+                        <span>2</span>
+                        <span>3</span>
+                        <span>4</span>
+                        <span>5</span>
+                        <span>6</span>
+                        <span>7</span>
+                    </div>
 			     </div>
                 <span class="des_font">非常符合</span>
             </div>   
@@ -119,12 +154,20 @@
             <div class="description1">4.简朴</div>
             <div class="pingfen">
                 <span class="des_font">符合</span>
-                <div class="progress">
+                <div class="progress11">
 			         <div class="progress_bg4">
 			             <div class="progress_bar4"></div>
 			         </div>
 			         <div class="progress_btn4"></div>
-			         <div class="text4">50%</div>
+			         <div class="shuzi">
+                        <span>1</span>
+                        <span>2</span>
+                        <span>3</span>
+                        <span>4</span>
+                        <span>5</span>
+                        <span>6</span>
+                        <span>7</span>
+                    </div>
 			     </div>
                 <span class="des_font">非常符合</span>
             </div>   
@@ -134,12 +177,20 @@
             <div class="description1">5.娇美</div>
             <div class="pingfen">
                 <span class="des_font">符合</span>
-                <div class="progress">
+                <div class="progress11">
 			         <div class="progress_bg5">
 			             <div class="progress_bar5"></div>
 			         </div>
 			         <div class="progress_btn5"></div>
-			         <div class="text5">50%</div>
+			         <div class="shuzi">
+                        <span>1</span>
+                        <span>2</span>
+                        <span>3</span>
+                        <span>4</span>
+                        <span>5</span>
+                        <span>6</span>
+                        <span>7</span>
+                    </div>
 			     </div>
                 <span class="des_font">非常符合</span>
             </div>   
@@ -149,12 +200,20 @@
             <div class="description1">6.古典</div>
             <div class="pingfen">
                 <span class="des_font">符合</span>
-                <div class="progress">
+                <div class="progress11">
 			         <div class="progress_bg6">
 			             <div class="progress_bar6"></div>
 			         </div>
 			         <div class="progress_btn6"></div>
-			         <div class="text6">50%</div>
+			         <div class="shuzi">
+                        <span>1</span>
+                        <span>2</span>
+                        <span>3</span>
+                        <span>4</span>
+                        <span>5</span>
+                        <span>6</span>
+                        <span>7</span>
+                    </div>
 			     </div>
                 <span class="des_font">非常符合</span>
             </div>   
@@ -181,19 +240,19 @@
    <script>
         
         function getScore() {
-            var sc1 = left1/550;
-            var sc2 = left2/550;
-            var sc3 = left3/550;
-            var sc4 = left4/550;
-            var sc5 = left5/550;
-            var sc6 = left6/550;
+            var sc1 = parseInt((left1/90)*100)/100+1;
+            var sc2 = parseInt((left2/90)*100)/100+1;
+            var sc3 = parseInt((left3/90)*100)/100+1;
+            var sc4 = parseInt((left4/90)*100)/100+1;
+            var sc5 = parseInt((left5/90)*100)/100+1;
+            var sc6 = parseInt((left6/90)*100)/100+1;
             
            
             
            
-            alert("sc1="+sc1+" sc2="+sc2+" sc3="+sc3+" sc4="+sc4+" sc5="+sc5+" sc6="+sc6);
+            //alert("sc1="+sc1+" sc2="+sc2+" sc3="+sc3+" sc4="+sc4+" sc5="+sc5+" sc6="+sc6);
             var sc = ""+sc1+","+sc2+","+sc3+","+sc4+","+sc5+","+sc6;
-           /*  window.location.href="imago_gene_globet.html?sc="+sc; */
+            window.location.href="imago_gene_globet.html?sc="+sc; 
         }
     </script>
 </body>
