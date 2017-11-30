@@ -5,7 +5,14 @@ public class commandImg {
 	private String img1;
 	private String img2;
 	private String timeid;
+	private String wordIndex;
 	
+	public String getWordIndex() {
+		return wordIndex;
+	}
+	public void setWordIndex(String wordIndex) {
+		this.wordIndex = wordIndex;
+	}
 	public String getTimeid() {
 		return timeid;
 	}

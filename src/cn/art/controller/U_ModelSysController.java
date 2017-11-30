@@ -603,6 +603,7 @@ public class U_ModelSysController {
             while ((line = in.readLine()) != null) {
                 //line = decodeUnicode(line);
                 System.out.println(line);
+                
                 minitem.put(timeid1, line);
             }
            
@@ -614,8 +615,10 @@ public class U_ModelSysController {
             cimg.setImg("../image/cookerColor_"+timeid1+".jpg");
             cimg.setTimeid(timeid1);
     		cimg.setImg1("../images/genestyle/Ccolor.png");
-    		cimg.setImg2("../images/genestyle/Ctexture1.png");
-            System.out.println("end");
+    		cimg.setImg2("../images/genestyle/Ctexture1111.png");
+    		cimg.setWordIndex(minitem.get(timeid1));
+    		System.out.println("wordIndex "+minitem.get(timeid1));
+            System.out.println("end111");
         } catch (Exception e) {
             e.printStackTrace();
         }

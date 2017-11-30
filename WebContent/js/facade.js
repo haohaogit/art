@@ -1200,6 +1200,8 @@ function fillNewcaseFabric(data) {
 
 function fillNewcaseGascooker(data) {
     $(".recomImg").attr("src","../image/"+data.newcaseimg);
+    var s = data.newcasename.split("_");
+    //alert("name = "+s[0]);
     $("#comp2").html(data.newcasename);
     $(".imgtotal").attr("src","../image/"+data.newcasertotal);
     $(".imgoutline").attr("src","../image/"+data.newcaseroutline);

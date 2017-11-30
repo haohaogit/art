@@ -83,6 +83,9 @@ a{
 }
 #leftBody div a:hover {color: #FF5500}
 #leftBody div a:active {color: #0099FF}
+#showicon{
+	cursor:pointer; 
+}
 
 #leftBody ul{
 	margin: 5px 5px 5px 5px;
