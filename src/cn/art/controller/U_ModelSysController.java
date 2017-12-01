@@ -1,6 +1,8 @@
 package cn.art.controller;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileWriter;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
@@ -60,6 +62,10 @@ public class U_ModelSysController {
 	private Map<String , String > FabricTexturebackimg = new HashMap<String, String>();
 	private Map<String , String > RgbNum = new HashMap<String, String>();
 	private Map<String , String > scoreNum = new HashMap<String, String>();
+	
+	private Map<String , String > colorimgMap = new HashMap<String, String>();
+	private Map<String , String > textureimgMap = new HashMap<String, String>();
+	
 	
 	
 	public OutLineService getOutLineService() {
@@ -336,6 +342,7 @@ public class U_ModelSysController {
 		//System.out.println("crgb111 "+crgb);
 		String[] s1 = img.split("/");
 		String timg = s1[s1.length-1];
+		textureimgMap.put(timeid, timg);
 		
 		//timg = "C:/firstDL_netEast/artgene/"+timg;
 		timg = "C:/apache-tomcat-7.0.53/wtpwebapps/art0804/image/"+timg;
@@ -425,6 +432,8 @@ public class U_ModelSysController {
 		String timg1 = s1[s1.length-1];
 		String timg = new String(timg1.getBytes(),"UTF-8");
 		
+		textureimgMap.put(timeid, timg);
+		
 		timg = "C:/apache-tomcat-7.0.53/wtpwebapps/art0804/image/"+timg;
 		System.out.println("ting "+timg);
 		FabricTexturebackimg.put(timeid, timg);
@@ -445,6 +454,7 @@ public class U_ModelSysController {
             while ((line = in.readLine()) != null) {
                 //line = decodeUnicode(line);
                 System.out.println(line);
+                
             }
             in.close();
             //pr.waitFor();
@@ -462,10 +472,13 @@ public class U_ModelSysController {
 		
 	}
 	
-	@RequestMapping("adjust/color/gascooker/{timeid}")
+	@RequestMapping("adjust/color/gascooker/{colorimg}/{timeid}")
 	@ResponseBody
-	public commandImg adjustColor(@PathVariable String timeid,Model model,String crgb,HttpServletRequest request){
+	public commandImg adjustColor(@PathVariable String colorimg,@PathVariable String timeid,Model model,String crgb,HttpServletRequest request){
 		//System.out.println("crgb111 "+crgb);
+		/*String[] s1 = colorimg.split("/");
+		String timg = s1[s1.length-1];*/
+		colorimgMap.put(timeid, colorimg);
 		
 		try {
             //需传入的参数
@@ -540,6 +553,7 @@ public class U_ModelSysController {
 	@ResponseBody
 	public commandImg adjustColorFabric(@PathVariable String timeid,Model model,String cnum,HttpServletRequest request){
 		//System.out.println("crgb111 "+crgb);
+		colorimgMap.put(timeid, "3Colors_Template"+cnum+"_"+timeid+".jpg");
 		
 		try {
             //需传入的参数
@@ -697,6 +711,7 @@ public class U_ModelSysController {
                 //line = decodeUnicode(line);
             	System.out.println("image  11111111111");
                 System.out.println(line);
+                cimg.setWordIndex(line);
                
             }
             in.close();
@@ -761,6 +776,7 @@ public class U_ModelSysController {
             while ((line = in.readLine()) != null) {
                 //line = decodeUnicode(line);
                 System.out.println(line);
+                cimg.setWordIndex(line);
                 minitem.put(timeid1, line);
             }
            
@@ -803,8 +819,32 @@ public class U_ModelSysController {
             timeid1 = current_time+"";
             scoreNum.put(timeid1, sc);
             System.out.println("start222" + a);
+            
+            String data = sc;
+            
+            FileWriter out = new FileWriter("C:\\apache-tomcat-7.0.53\\wtpwebapps\\art0804\\image\\globet_appendfile.txt", true); 
+            //往文件写入
+            out.write(data);
+            //换行
+            
+            //刷新IO内存流
+            out.flush();
+            //关闭
+            out.close();
+
+            System.out.println("Done");
+            
+            
+            Runtime mt =Runtime.getRuntime();
+            //找到相对应的绝对路径。启动记事本文件
+            File  myfile =new File("C:\\apache-tomcat-7.0.53\\wtpwebapps\\art0804\\image","GeneticAlgorithm.exe");
+            mt.exec(myfile.getAbsolutePath());
+            System.out.println("test globet by .exe");
+            //创建新的文件路径,启动ie浏览器
+            //myfile = new File("c:\\program Files\\Internet Explorer","IEXPLORE.www.sohu.com");
+            //mt.exec(myfile.getAbsolutePath());
             //设置命令行传入参数
-            //String[] args1 = new String[] { "python", "C:\\firstDL_netEast\\boatAssembleTest.py", a,timeid1};
+           /* //String[] args1 = new String[] { "python", "C:\\firstDL_netEast\\boatAssembleTest.py", a,timeid1};
             String[] args1 = new String[] { "python", "D:\\20170602\\PycharmProjects\\firstDL_netEast\\globet.py", a,timeid1};
             Process pr = Runtime.getRuntime().exec(args1);
 
@@ -816,7 +856,7 @@ public class U_ModelSysController {
                 minitem.put(timeid1, line);
             }
            
-            in.close();
+            in.close();*/
             
             Rgb = "30,35,57";
             //backimg.put(timeid1, "C:/firstDL_netEast/artgene/M22.jpg");
@@ -851,14 +891,15 @@ public class U_ModelSysController {
 		
 		newCase.setNewcaseimg("cookerPartA_"+timeid+".jpg");
 		
-		newCase.setNewcasercolor("cookerColor_"+timeid+".jpg");
-		newCase.setNewcasertexture("cookerTexture_"+timeid+".jpg");
+		newCase.setNewcasercolor("RGB值000000.jpg");
+		newCase.setNewcasertexture("maskboardD2RGB229.229.229.jpg");
 		newCase.setNewcasertotal("cookerPart_"+timeid+".jpg");
 		newCase.setNewcaseroutline("cooker_"+timeid+".jpg");
-		
-		newCase.setNewcaseacolor("cookerColorA_"+timeid+".jpg");
+		System.out.println(colorimgMap.get(timeid));
+		System.out.println(textureimgMap.get(timeid));
+		newCase.setNewcaseacolor(colorimgMap.get(timeid));
 		newCase.setNewcaseaoutline("cooker_"+timeid+".jpg");
-		newCase.setNewcaseatexture("cookerTextureA_"+timeid+".jpg");
+		newCase.setNewcaseatexture(textureimgMap.get(timeid));
 		newCase.setNewcaseatotal("cookerPartA_"+timeid+".jpg");
 		
 		int isok = newCaseService.insertSelective(newCase);
@@ -916,15 +957,14 @@ public class U_ModelSysController {
 		newCase.setNewcasearg(scoreNum.get(timeid));
 		newCase.setNewcaseimg("fabricPartA_"+timeid+".jpg");
 		
-		newCase.setNewcasercolor("fabricColor_"+timeid+".jpg");
-		newCase.setNewcasertexture("fabricTexture_"+timeid+".jpg");
-		
+		newCase.setNewcasercolor("3Colors_Template0_"+timeid+".jpg");
+		newCase.setNewcasertexture("纱布.jpg");
 		newCase.setNewcasertotal("fabricPart_"+timeid+".jpg");
 		newCase.setNewcaseroutline("fabric_"+timeid+".jpg");
 		
-		newCase.setNewcaseacolor("fabricColorA_"+timeid+".jpg");
+		newCase.setNewcaseacolor(colorimgMap.get(timeid));
 		newCase.setNewcaseaoutline("fabric_"+timeid+".jpg");
-		newCase.setNewcaseatexture("fabricTextureA_"+timeid+".jpg");
+		newCase.setNewcaseatexture(textureimgMap.get(timeid));
 		newCase.setNewcaseatotal("fabricPartA_"+timeid+".jpg");
 		
 		int isok = newCaseService.insertSelective(newCase);
@@ -1115,15 +1155,17 @@ public class U_ModelSysController {
 		
 		newCase.setNewcaseimg("cookerPartA_"+timeid+".jpg");
 		
-		newCase.setNewcasercolor("cookerColor_"+timeid+".jpg");
-		newCase.setNewcasertexture("cookerTexture_"+timeid+".jpg");
+		newCase.setNewcasercolor("RGB值000000.jpg");
+		newCase.setNewcasertexture("maskboardD2RGB229.229.229.jpg");
 		newCase.setNewcasertotal("cookerPart_"+timeid+".jpg");
 		newCase.setNewcaseroutline("cooker_"+timeid+".jpg");
-		
-		newCase.setNewcaseacolor("cookerColorA_"+timeid+".jpg");
+		System.out.println(colorimgMap.get(timeid));
+		System.out.println(textureimgMap.get(timeid));
+		newCase.setNewcaseacolor(colorimgMap.get(timeid));
 		newCase.setNewcaseaoutline("cooker_"+timeid+".jpg");
-		newCase.setNewcaseatexture("cookerTextureA_"+timeid+".jpg");
+		newCase.setNewcaseatexture(textureimgMap.get(timeid));
 		newCase.setNewcaseatotal("cookerPartA_"+timeid+".jpg");
+		
 		
 		int isok = newCaseService.insertSelective(newCase);
        

@@ -47,7 +47,7 @@
             float: left;
             list-style: none;
             margin: 0 10px;
-            width: 86px;
+            width: 92px;
             
             cursor: pointer;
             text-align: center;
@@ -65,9 +65,9 @@
         }
 
         .spe-lunbo-item{
-            margin-top: -25px;
-            width: 120px;
-            font-size: 1.2rem;
+            /* margin-top: -25px; */
+            /* width: 86px; */
+            /* font-size: 1.2rem; */
         }
 
         .introu-item {

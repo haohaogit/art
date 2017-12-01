@@ -64,7 +64,7 @@ function filllunbo(data){
 		switch(data[i].cbname)
 		{
 			case "开关色彩":
-				GASaHtml+="<li class='lunbo-item LColor'><img src='../image/"+data[i].cimg+"' alt='"+data[i].crgb+"'><span>"+data[i].crgb+"</span></li>";
+				/*GASaHtml+="<li class='lunbo-item LColor'><img src='../image/"+data[i].cimg+"' alt='"+data[i].crgb+"'><span>"+data[i].crgb+"</span></li>";*/
 				break;
 			case "面板色彩":
 				GASbHtml+="<li class='lunbo-item bLColor'><img src='../image/"+data[i].cimg+"' alt='"+data[i].crgb+"'><span>"+data[i].cdescription+"</span></li>";
@@ -98,7 +98,7 @@ function fillHouseboatlunbo(data){
 function filllunboTexture(data){
 	var aHtml="<ul>";
 	for(var i=0;i<data.length;i++){
-		aHtml+="<li class='lunbo-item LTexture'><img src='../image/"+data[i].timg+"' alt='"+data[i].textureid+"'><span>"+data[i].ttname+"</span></li>";
+		aHtml+="<li class='lunbo-item LTexture'><img src='../image/"+data[i].timg+"' alt='"+data[i].textureid+"'><span>"+data[i].tdescription+"</span></li>";
 	}
 	aHtml+="</ul>";
 	$(".lunbo-window").html(aHtml);

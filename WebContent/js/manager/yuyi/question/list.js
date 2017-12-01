@@ -8,7 +8,7 @@ $('#questionTitle').html("意象词汇降维调查");
 var surveytypename="wordsurvey"; 
 //动态增加input输入框
 var addHtml="";
-var count=3;
+var count=1;
 var wordListlengthOld=0;
 var  wordArray=new Array();
 //增加输入框
@@ -19,7 +19,7 @@ function addinput(number){
 	$("#addinput").html(addHtml);
 }
 //默认显示三个输入框
-for(var i=0;i<3;i++){
+for(var i=0;i<1;i++){
 	addinput(i);
 }
 
@@ -129,9 +129,9 @@ $(".choosebtn").click(function () {
 $(".savebtn").click(function(){
 	debugger
 	 var wordList =new Array();
-	   for(var i=0;i<count;i++){
+	   for(var i=0;i<1;i++){
 		   var wordsurvey6= $("#wordsurvey"+i).val();
-		   if(wordsurvey6!= " "||wordsurvey6!=null||wordsurvey6!=undefined)
+		   if(wordsurvey6!= ""||wordsurvey6!=null||wordsurvey6!=undefined)
 		   wordList.push(wordsurvey6);
 	       }
 	 var wordsurveys=wordList.join("，");

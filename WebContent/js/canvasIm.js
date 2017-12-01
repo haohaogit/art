@@ -240,7 +240,7 @@ var Canvas = window.Canvas || {};
 		
 		if (oConfig.top == null) {
 			//this.top = this.height / 2 + 1* 500;
-			this.top = 1* 250;
+			this.top = 1* 290;
 			//alert("this.top "+this.top);
 		}
 		

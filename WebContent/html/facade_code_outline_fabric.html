@@ -9,6 +9,7 @@
 	<style>
 		.imgfabric{
             width: 198px;
+            height:198px;
             box-shadow: none;
         }
         /*.isLoadMore{
@@ -37,7 +38,7 @@
 			background-color: #bbc3c4;
 			width: 198px;
 			height: 30px;
-			margin-top: -13px;
+			margin-top: -3px;
 			margin-bottom: 23px;
 		}
 		.loadMore{
@@ -57,20 +58,8 @@
 	        background-color: #3a3b3b;
 	        position: fixed;
 	        border: 3px solid #444;
-	        display: block;
+	        display: none;
 	        border-radius: 7px;
-
-			/*position: absolute;
-			left: 460px;
-			top: 100px;
-			background: white;
-			width: 450px;
-			height: 450px;
-			border: 3px solid #444;
-			border-radius: 7px;
-			z-index: 10000;
-			display: none;
-			overflow: hidden;*/
 		}
 		.close_btn{
 			font-family: arial;
@@ -118,22 +107,28 @@
 	//  			alert(11);
 	            $('.configHead').load('conheader_waiguan.html');
 	            $('.configFoot').load('confooter.html');
-	            
-	            //请求物件类型
-			  	$.ajax("facade/code/part?tname=游艇",
-                // 发送请求的URL字符串
-                {
-                    type: "get",      //
-                    async:true,  //
-                    success: function(data){
-						//alert("facade code goblet test length="+data.length);
-						fillCodepartHouseboat(data);
-                    },
-                    error: function(){
-                        alert("数据发送失败denglu");
-                    }
-                });
 	        });
+	        
+	      
+	        //请求物件类型
+		  	$.ajax("facade/code/outline?tname=织物",
+	                // 发送请求的URL字符串
+	                {
+	                    type: "get",      //
+	                    async:true,  //
+	                    success: function(data){
+							//alert("facade code goblet test length="+data.length);
+							fillCodeoutlineFabric(data);
+							
+	                    },
+	                    error: function(){
+	                        alert("数据发送失败denglu");
+	                    }
+	                });
+	        
+	        
+	        
+	        
 	</script>
 
 	<!-- 	头部 -->
@@ -177,47 +172,87 @@
 		</div>
 		<div id="rightBody">
 			<div id="iconAndcorpus">
-				<div id="introicon"><img class="imgicon" src="../image/houseboat.png" style="width: 80px;" /></div>
+				<div id="introicon"><img class="imgicon" src="../image/golbet.png" style="width: 80px;" /></div>
 				<div id="introduce">
-					<lable id="corpus">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;部件库是对产品外观构成部件的信息汇集。一类产品有多个部件，各个部件下有不同类型的外观形式。基于底层案例库的案例信息，将游艇部件总结为三大类，分别为：驾驶室、船舱、顶棚。</lable>
+					<lable id="corpus">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;外观轮廓编码是对产品外观轮廓的信息汇集。其中的外观轮廓是经过工程师分析，对产品类型中具有典型代表的样本进行提取，一般是一段或多段曲线构成，通过外观轮廓线表达产品特征。在底层案例库上传的元数据分析中，可将高脚杯分为收口型、收口外扩型和外扩型等18类。</lable>
 				</div>
 			</div>
 
 			<div id="facadeContent">
-				<div class="codepart" style="width: 100%;">
+				<div class="outlineContent" style="width: 100%;">
 					<div>
-			            <div id="inputcorpus" id="style1" style="padding-top: 5.5px;">驾驶室部件编码</div>
+			            <div id="inputcorpus" id="style1" style="padding-top: 5.5px;">扩口型轮廓编码</div>
 			        </div>
 
 			        <div class="macro">
 						<div class="hengStep isclick">
-							<div><img class="imgfabric" src="../images/appearance/part (1).png" /></div>
+							<div><img class="imgfabric" src="../images/appearance/macro (1).gif" /></div>
 							<div class="lunkuo1">
-								<div class="descri1" >驾驶室部件</div>
+								<div class="descri1" >扩口型高脚杯</div>
 							</div>
 						</div>
 
 						<div class="hengStep isclick">
-							<div><img class="imgfabric" src="../images/appearance/part (2).png"  /></div>
+							<div><img class="imgfabric" src="../images/appearance/macro (1).png"  /></div>
 							<div class="lunkuo1">
-								<div class="descri1" >驾驶室部件</div>
+								<div class="descri1" >扩口型高脚杯</div>
 							</div>
 						</div>
 
 						<div class="hengStep isclick">
-							<div><img class="imgfabric" src="../images/appearance/part (3).png"  /></div>
+							<div><img class="imgfabric" src="../images/appearance/macro (2).gif"  /></div>
 							<div class="lunkuo1">
-								<div class="descri1" >驾驶室部件</div>
+								<div class="descri1" >扩口型高脚杯</div>
 							</div>
 						</div>
 
 						<div class="hengStep isclick">
-							<div><img class="imgfabric" src="../images/appearance/part (4).png"  /></div>
+							<div><img class="imgfabric" src="../images/appearance/macro (3).gif"  /></div>
 							<div class="lunkuo1">
-								<div class="descri1" >驾驶室部件</div>
+								<div class="descri1" >扩口型高脚杯</div>
 							</div>
 						</div>
-					
+
+						<div class="hengStep isLoadMore isclick">
+							<div><img class="imgfabric" src="../images/appearance/waiguan (4).png"  /></div>
+							<div class="lunkuo1">
+								<div class="descri1" >扩口型高脚杯</div>
+							</div>
+						</div>
+
+						<div class="hengStep isLoadMore isclick">
+							<div><img class="imgfabric" src="../images/appearance/waiguan (6).png"  /></div>
+							<div class="lunkuo1">
+								<div class="descri1" >扩口型高脚杯</div>
+							</div>
+						</div>
+
+						<div class="hengStep isLoadMore isclick">
+							<div><img class="imgfabric" src="../images/appearance/waiguan (11).png"  /></div>
+							<div class="lunkuo1">
+								<div class="descri1" >扩口型高脚杯</div>
+							</div>
+						</div>
+
+						<div class="hengStep isLoadMore isclick">
+							<div><img class="imgfabric" src="../images/appearance/waiguan (12).png"  /></div>
+							<div class="lunkuo1">
+								<div class="descri1" >扩口型高脚杯</div>
+							</div>
+						</div>
+						<div class="hengStep isLoadMore isclick">
+							<div><img class="imgfabric" src="../images/appearance/waiguan (16).png"  /></div>
+							<div class="lunkuo1">
+								<div class="descri1" >扩口型高脚杯</div>
+							</div>
+						</div>
+
+						<div class="hengStep isLoadMore isclick">
+							<div><img class="imgfabric" src="../images/appearance/waiguan (17).png"  /></div>
+							<div class="lunkuo1">
+								<div class="descri1" >扩口型高脚杯</div>
+							</div>
+						</div>
 
 					</div>
 					<!-- <div><img class="loadMore" src="../images/appearance/waiguan (18).png" onclick="loadmore()" /></div> -->
@@ -226,174 +261,54 @@
 			      
 
 			        <div >
-			            <div  id="inputcorpus"  id="style2" style="padding-top: 5.5px;">船舱部件编码</div>
+			            <div  id="inputcorpus"  id="style2" style="padding-top: 5.5px;">收口型轮廓编码</div>
 			        </div>
 
 			        <div class="macro">
-						<div class="hengStep isclick">
-							<div><img class="imgfabric" src="../images/appearance/part (8).png" /></div>
+						<div class="isclick">
+							<div><img class="imgfabric" src="../images/appearance/waiguan (7).png" /></div>
 							<div class="lunkuo1">
-								<div class="descri1" >船舱部件</div>
-							</div>
-						</div>
-						<div class="hengStep isclick">
-							<div><img class="imgfabric" src="../images/appearance/part (1).png" /></div>
-							<div class="lunkuo1">
-								<div class="descri1" >船舱部件</div>
-							</div>
-						</div>
-						<div class="hengStep isclick">
-							<div><img class="imgfabric" src="../images/appearance/part (8).png" /></div>
-							<div class="lunkuo1">
-								<div class="descri1" >船舱部件</div>
-							</div>
-						</div>
-						<div class="hengStep isclick">
-							<div><img class="imgfabric" src="../images/appearance/part (1).png" /></div>
-							<div class="lunkuo1">
-								<div class="descri1" >船舱部件</div>
+								<div class="descri1" >收口型高脚杯</div>
 							</div>
 						</div>
 
-						
-					</div>
-					<!-- <div><img class="loadMore" src="../images/appearance/waiguan (18).png" onclick="loadmore1()" /></div> -->
+						<div class="hengStep isclick">
+							<div><img class="imgfabric" src="../images/appearance/waiguan (8).png"  /></div>
+							<div class="lunkuo1">
+								<div class="descri1" >收口型高脚杯</div>
+							</div>
+						</div>
 
-					<div >
-			            <div  id="inputcorpus"  id="style2" style="padding-top: 5.5px;">顶层部件编码</div>
-			        </div>
+						<div class="hengStep isclick">
+							<div><img class="imgfabric" src="../images/appearance/waiguan (9).png"  /></div>
+							<div class="lunkuo1">
+								<div class="descri1" >收口型高脚杯</div>
+							</div>
+						</div>
 
-			        <div class="macro">
 						<div class="hengStep isclick">
-							<div><img class="imgfabric" src="../images/appearance/part (8).png" /></div>
+							<div><img class="imgfabric" src="../images/appearance/waiguan (10).png"  /></div>
 							<div class="lunkuo1">
-								<div class="descri1" >顶层部件</div>
+								<div class="descri1" >收口型高脚杯</div>
 							</div>
 						</div>
-						<div class="hengStep isclick">
-							<div><img class="imgfabric" src="../images/appearance/part (8).png" /></div>
-							<div class="lunkuo1">
-								<div class="descri1" >顶层部件</div>
-							</div>
-						</div>
-						<div class="hengStep isclick">
-							<div><img class="imgfabric" src="../images/appearance/part (1).png" /></div>
-							<div class="lunkuo1">
-								<div class="descri1" >顶层部件</div>
-							</div>
-						</div>
-						<div class="hengStep isclick">
-							<div><img class="imgfabric" src="../images/appearance/part (8).png" /></div>
-							<div class="lunkuo1">
-								<div class="descri1" >顶层部件</div>
-							</div>
-						</div>
-						
 
-					</div>
-					<!-- <div><img class="loadMore" src="../images/appearance/waiguan (18).png" onclick="loadmore1()" /></div> -->
-
-
-					<div >
-			            <div  id="inputcorpus"  id="style2" style="padding-top: 5.5px;">船舱窗户部件编码</div>
-			        </div>
-
-			        <div class="macro">
-						<div class="hengStep isclick">
-							<div><img class="imgfabric" src="../images/appearance/part (8).png" /></div>
+						<div class="hengStep isLoadMore1 isclick">
+							<div><img class="imgfabric" src="../images/appearance/waiguan (14).png"  /></div>
 							<div class="lunkuo1">
-								<div class="descri1" >电子通信部件</div>
+								<div class="descri1" >收口型高脚杯</div>
 							</div>
 						</div>
-						<div class="hengStep isclick">
-							<div><img class="imgfabric" src="../images/appearance/part (8).png" /></div>
+
+						<div class="hengStep isLoadMore1 isclick">
+							<div><img class="imgfabric" src="../images/appearance/waiguan (15).png"  /></div>
 							<div class="lunkuo1">
-								<div class="descri1" >电子通信部件</div>
-							</div>
-						</div>
-						<div class="hengStep isclick">
-							<div><img class="imgfabric" src="../images/appearance/part (8).png" /></div>
-							<div class="lunkuo1">
-								<div class="descri1" >电子通信部件</div>
-							</div>
-						</div>
-						<div class="hengStep isclick">
-							<div><img class="imgfabric" src="../images/appearance/part (8).png" /></div>
-							<div class="lunkuo1">
-								<div class="descri1" >电子通信部件</div>
+								<div class="descri1" >收口型高脚杯</div>
 							</div>
 						</div>
 
 					</div>
 					<!-- <div><img class="loadMore" src="../images/appearance/waiguan (18).png" onclick="loadmore1()" /></div> -->
-
-					<div >
-			            <div  id="inputcorpus"  id="style2" style="padding-top: 5.5px;">船舱跳水板部件编码</div>
-			        </div>
-
-			        <div class="macro">
-						<div class="hengStep isclick">
-							<div><img class="imgfabric" src="../images/appearance/part (8).png" /></div>
-							<div class="lunkuo1">
-								<div class="descri1" >电子通信部件</div>
-							</div>
-						</div>
-						<div class="hengStep isclick">
-							<div><img class="imgfabric" src="../images/appearance/part (8).png" /></div>
-							<div class="lunkuo1">
-								<div class="descri1" >电子通信部件</div>
-							</div>
-						</div>
-						<div class="hengStep isclick">
-							<div><img class="imgfabric" src="../images/appearance/part (8).png" /></div>
-							<div class="lunkuo1">
-								<div class="descri1" >电子通信部件</div>
-							</div>
-						</div>
-						<div class="hengStep isclick">
-							<div><img class="imgfabric" src="../images/appearance/part (8).png" /></div>
-							<div class="lunkuo1">
-								<div class="descri1" >电子通信部件</div>
-							</div>
-						</div>
-
-					</div>
-					<!-- <div><img class="loadMore" src="../images/appearance/waiguan (18).png" onclick="loadmore1()" /></div> -->
-
-					<div >
-			            <div  id="inputcorpus"  id="style2" style="padding-top: 5.5px;">电子通信部件编码</div>
-			        </div>
-
-			        <div class="macro">
-						<div class="hengStep isclick">
-							<div><img class="imgfabric" src="../images/appearance/part (8).png" /></div>
-							<div class="lunkuo1">
-								<div class="descri1" >电子通信部件</div>
-							</div>
-						</div>
-						<div class="hengStep isclick">
-							<div><img class="imgfabric" src="../images/appearance/part (8).png" /></div>
-							<div class="lunkuo1">
-								<div class="descri1" >电子通信部件</div>
-							</div>
-						</div>
-						<div class="hengStep isclick">
-							<div><img class="imgfabric" src="../images/appearance/part (8).png" /></div>
-							<div class="lunkuo1">
-								<div class="descri1" >电子通信部件</div>
-							</div>
-						</div>
-						<div class="hengStep isclick">
-							<div><img class="imgfabric" src="../images/appearance/part (8).png" /></div>
-							<div class="lunkuo1">
-								<div class="descri1" >电子通信部件</div>
-							</div>
-						</div>
-
-					</div>
-					<!-- <div><img class="loadMore" src="../images/appearance/waiguan (18).png" onclick="loadmore1()" /></div> -->
-
-
 					
 				</div>
 
@@ -412,28 +327,26 @@
 
 						<div style="margin-left: 11px;" class="rightinfo font">
 							<div class="contentinfo" >
-								<div> <label id="p1">方形X支架</label></div>
-								<div>部件类型： <label id="p2">驾驶室部件</label></div>
-								
+								<div>外观轮廓名称： <label id="p1">小翻口</label></div>
+								<div>外观轮廓类型： <label id="p2">翻口型</label></div>
+								<div>外观轮廓数据：
+									<!-- <div><p id="p3">p1(144,0),p2(144,0),p1(144,0),p1(144,0),p1(144,0),p1(144,0)</p></div> -->
+									<table style="width: 160px;">
+									　　	<tr>
+										　　	<td class="p3" style="word-break: break-all;">p1(144,0),p2(144,0),p1(144,0),p1(144,0),p1(144,0),p1(144,0)</td>
+									　　	</tr>
+								　	　</table>
+								</div>
 							</div>
 
 							<div class="otherpicinfo">
 								<label>下载特征文件:</label>
 								<div style="margin-top: 6px;">
 									<img class="pic1" src="../images/appearance/download.png"/>
-								</div>	
-							</div>
-
-							<div class="otherpicinfo">
-								<label>案例图片:</label>
-								<div style="margin-top: 6px;">
-									<img class="pic1" src="../images/appearance/part (1).png"/>
-									<img class="pic1" src="../images/appearance/part (2).png"/>
 									
 								</div>
 								
 							</div>
-
 						</div>
 
 					</div>
@@ -448,60 +361,35 @@
 	<div class="configFoot"></div>
 
 	<script type="text/javascript">
-	$("#baseContent").fadeOut(0);
-	$("#newContent").fadeOut(0);
-	$("#baseToggle").click(function(){
-	    $("#baseContent").fadeIn(0);  //淡入
-	    $("#codeContent").fadeOut(0);
-	    $("#newContent").fadeOut(0);
-	    $(".arrow1").attr("src","../image/aup.png");
-	    $(".arrow2").attr("src","../image/adown.png");
-	    $(".arrow3").attr("src","../image/adown.png");
-	    
-	  });
-	$("#codeToggle").click(function(){
-	    $("#codeContent").fadeIn(0); 
-	    $("#baseContent").fadeOut(0);
-	    $("#newContent").fadeOut(0);
-	    $(".arrow1").attr("src","../image/adown.png");
-	    $(".arrow2").attr("src","../image/aup.png");
-	    $(".arrow3").attr("src","../image/adown.png");
-	    
-	  });
-	$("#newToggle").click(function(){
-	    $("#newContent").fadeIn(0); 
-	    $("#codeContent").fadeOut(0);
-	    $("#baseContent").fadeOut(0);
-	    $(".arrow1").attr("src","../image/adown.png");
-	    $(".arrow2").attr("src","../image/adown.png");
-	    $(".arrow3").attr("src","../image/aup.png");
-	    
-	  });
-
-
-	// var load1=false;
-	// var load2=false;
-	// function loadmore(){
-	// 	if(load1){
-	// 		load1=false;
-	// 		$(".isLoadMore").css({display:'none'});
-	// 	}else{
-	// 		load1=true;
-	// 		$(".isLoadMore").css({display:'block'});
-	// 	}
-	// }
-
-	// function loadmore1(){
-	// 	if(load2){
-	// 		load2=false;
-	// 		$(".isLoadMore1").css({display:'none'});
-	// 	}else{
-	// 		load2=true;
-	// 		$(".isLoadMore1").css({display:'block'});
-	// 	}
-	// }
-
-
+		$("#baseContent").fadeOut(0);
+		$("#newContent").fadeOut(0);
+		$("#baseToggle").click(function(){
+		    $("#baseContent").fadeIn(0);  //淡入
+		    $("#codeContent").fadeOut(0);
+		    $("#newContent").fadeOut(0);
+		    $(".arrow1").attr("src","../image/aup.png");
+		    $(".arrow2").attr("src","../image/adown.png");
+		    $(".arrow3").attr("src","../image/adown.png");
+		    
+		  });
+		$("#codeToggle").click(function(){
+		    $("#codeContent").fadeIn(0); 
+		    $("#baseContent").fadeOut(0);
+		    $("#newContent").fadeOut(0);
+		    $(".arrow1").attr("src","../image/adown.png");
+		    $(".arrow2").attr("src","../image/aup.png");
+		    $(".arrow3").attr("src","../image/adown.png");
+		    
+		  });
+		$("#newToggle").click(function(){
+		    $("#newContent").fadeIn(0); 
+		    $("#codeContent").fadeOut(0);
+		    $("#baseContent").fadeOut(0);
+		    $(".arrow1").attr("src","../image/adown.png");
+		    $(".arrow2").attr("src","../image/adown.png");
+		    $(".arrow3").attr("src","../image/aup.png");
+		    
+		  });
 
 		$("#baseGoblet").click(function(){
 	  		window.location.href="facade.html?txt=baseGoblet";
@@ -566,7 +454,7 @@
 	<script type="text/javascript">
 
 		
-		$("#codeYacht").css("color","#00a5bd");
+		$("#codeRange").css("color","#00a5bd");
 
 
 		
@@ -585,13 +473,13 @@
 			$("#detailBox").css({display:'none'});
 			// var a = document.getElementById("detailBox");//获取div块对象
 		});
-		
-		/* $(".codepart").on("click",".isclick",function(){
+
+		/* $(".outlineContent").on("click",".isclick",function(){
 			$("#detailBox").css({display:'block'});
 			//alert($(this).html());
 			var ht=$(this).html();
 			alert($(ht).find('img').attr('src'));
-			alert($(ht).find('img').attr('data-pid'));
+			alert($(ht).find('img').attr('data-oid'));
 			//var img=$(this).attr("src");
 			getDetailInfo($(ht).find('img').attr('src'));
 			// $("#detailBox").css({display:'none'});

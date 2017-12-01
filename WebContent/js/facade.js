@@ -369,11 +369,11 @@ function fillCodeCcontent(data){
 				  a1Html+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-oid='"+data[i].id+"'/></div>";
 				  a1Html+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
 				  a1++;
-			  }/*else{
+			  }else{
 				  a1Html+="<div class='hengStep isLoadMore isclick'><div><img class='imgfabric' src='"+data[i].caseimg+"' data-oid='"+data[i].id+"'/></div>";
 				  a1Html+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
 				  a1++;
-			  }*/
+			  }
 			  break;
 			case "color":
 				
@@ -1292,6 +1292,59 @@ function fillNewcaseGascooker(data) {
         $(".point52").css("display","none");
         $('#score51').width(270-Math.abs(score5)*90);
     }
+}
+
+function fillCodeoutlineFabric(data){
+	var aHtml="";
+	var bHtml="";
+	var kHtml="";
+	var sHtml="";
+	
+	for(var i=0;i<data.length;i++){
+		//var qwe = data[i].wfirstchar;
+		switch(data[i].codetypename)
+		{
+			case "兽纹图案":
+			  if(aHtml==""){
+				  aHtml+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>兽纹图案轮廓编码</div></div><div class='macro'>";
+			  }
+			 
+			  aHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-oid='"+data[i].id+"'/></div>";
+			  aHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
+			  break;
+			case "鸟纹图案":
+			
+				if(bHtml==""){
+					bHtml+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>鸟纹图案轮廓编码</div></div><div class='macro'>";
+				}
+				bHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-oid='"+data[i].id+"'/></div>";
+				bHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
+			    break;
+			case "几何图案":
+			  if(kHtml==""){
+				  kHtml+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>几何图案轮廓编码</div></div><div class='macro'>";
+			  }
+			 
+			  kHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-oid='"+data[i].id+"'/></div>";
+			  kHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
+			  break;
+			case "花草图案":
+			
+				if(sHtml==""){
+					sHtml+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>花草图案轮廓编码</div></div><div class='macro'>";
+				}
+				sHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-oid='"+data[i].id+"'/></div>";
+				sHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
+			    break;
+			default:
+				break;
+		}
+	}
+	var html="";
+	html=html+aHtml+"</div>"+bHtml+"</div>"+kHtml+"</div>"+sHtml+"</div>";
+	$(".outlineContent").html(html);
+	
+	
 }
 
 

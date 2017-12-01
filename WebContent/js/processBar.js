@@ -1,28 +1,28 @@
-var left11 = 200,left12 = 100;
-var left21 = 200,left22 = 100;
-var left31 = 200,left32 = 100;
-var left41 = 200,left42 = 100;
-var left51 = 200,left52 = 100;
-var left61 = 200,left62 = 100;
+var left11 = 300,left12 = 0;
+var left21 = 300,left22 = 0;
+var left31 = 300,left32 = 0;
+var left41 = 300,left42 = 0;
+var left51 = 300,left52 = 0;
+var left61 = 300,left62 = 0;
 $(function(){
 	debugger;
-                var tag11 = false,ox11 = 0,bgleft11 = 100;
-                var tag12 = false,ox12 = 0,bgleft12 = 00;
+                var tag11 = false,ox11 = 0,bgleft11 = 0;
+                var tag12 = false,ox12 = 0,bgleft12 = 0;
                 
-                var tag21 = false,ox21 = 0,bgleft21 = 100;
-                var tag22 = false,ox22 = 0,bgleft22 = 00;
+                var tag21 = false,ox21 = 0,bgleft21 = 0;
+                var tag22 = false,ox22 = 0,bgleft22 = 0;
                 
-                var tag31 = false,ox31 = 0,bgleft31 = 100;
-                var tag32 = false,ox32 = 0,bgleft32 = 00;
+                var tag31 = false,ox31 = 0,bgleft31 = 0;
+                var tag32 = false,ox32 = 0,bgleft32 = 0;
                 
-                var tag41 = false,ox41 = 0,bgleft41 = 100;
-                var tag42 = false,ox42 = 0,bgleft42 = 00;
+                var tag41 = false,ox41 = 0,bgleft41 = 0;
+                var tag42 = false,ox42 = 0,bgleft42 = 0;
                 
-                var tag51 = false,ox51 = 0,bgleft51 = 100;
-                var tag52 = false,ox52 = 0,bgleft52 = 00;
+                var tag51 = false,ox51 = 0,bgleft51 = 0;
+                var tag52 = false,ox52 = 0,bgleft52 = 0;
                 
-                var tag61 = false,ox61 = 0,bgleft61 = 100;
-                var tag62 = false,ox62 = 0,bgleft62 = 00;
+                var tag61 = false,ox61 = 0,bgleft61 = 0;
+                var tag62 = false,ox62 = 0,bgleft62 = 0;
                 
                 
                
@@ -120,11 +120,11 @@ $(function(){
                         left12 = e.pageX - ox12;
                         if (left12 <= 0) {
                             left12 = 5;
-                        }else if (left12 > 300) {
-                            left12 = 300;
+                        }else if (left12 > 294) {
+                            left12 = 290;
                         }
                         $('.progress_btn12').css('left', left12);
-                        $('.progress_bar12').width(left12);
+                        $('.progress_bar12').width(left12+5);
                         $('.text12').html(parseInt((left12/300)*100) + '%');
                     }
                     
@@ -144,11 +144,11 @@ $(function(){
                         left22 = e.pageX - ox22;
                         if (left22 <= 0) {
                             left22 = 5;
-                        }else if (left22 > 300) {
-                            left22 = 300;
+                        }else if (left22 > 294) {
+                            left22 = 290;
                         }
                         $('.progress_btn22').css('left', left22);
-                        $('.progress_bar22').width(left22);
+                        $('.progress_bar22').width(left22+5);
                         $('.text22').html(parseInt((left22/300)*100) + '%');
                     }
                     
@@ -167,11 +167,11 @@ $(function(){
                         left32 = e.pageX - ox32;
                         if (left32 <= 0) {
                             left32 = 5;
-                        }else if (left32 > 300) {
-                            left32 = 300;
+                        }else if (left32 > 294) {
+                            left32 = 290;
                         }
                         $('.progress_btn32').css('left', left32);
-                        $('.progress_bar32').width(left32);
+                        $('.progress_bar32').width(left32+5);
                     }
                     
                     if (tag41) {
@@ -189,11 +189,11 @@ $(function(){
                         left42 = e.pageX - ox42;
                         if (left42 <= 0) {
                             left42 = 5;
-                        }else if (left42 > 300) {
-                            left42 = 300;
+                        }else if (left42 > 294) {
+                            left42 = 290;
                         }
                         $('.progress_btn42').css('left', left42);
-                        $('.progress_bar42').width(left42);
+                        $('.progress_bar42').width(left42+5);
                     }
                     
                     if (tag51) {
@@ -211,11 +211,11 @@ $(function(){
                         left52 = e.pageX - ox52;
                         if (left52 <= 0) {
                             left52 = 5;
-                        }else if (left52 > 300) {
-                            left52 = 300;
+                        }else if (left52 > 294) {
+                            left52 = 290;
                         }
                         $('.progress_btn52').css('left', left52);
-                        $('.progress_bar52').width(left52);
+                        $('.progress_bar52').width(left52+5);
                     }
                     
                     if (tag61) {
@@ -233,11 +233,11 @@ $(function(){
                         left62 = e.pageX - ox62;
                         if (left62 <= 0) {
                             left62 = 5;
-                        }else if (left62 > 300) {
-                            left62 = 300;
+                        }else if (left62 > 294) {
+                            left62 = 290;
                         }
                         $('.progress_btn62').css('left', left62);
-                        $('.progress_bar62').width(left62);
+                        $('.progress_bar62').width(left62+5);
                     }
                 });
                 
@@ -275,11 +275,11 @@ $(function(){
                        left12 = e.pageX - bgleft12;
                        if (left12 <= 0) {
                            left12 = 5;
-                       }else if (left12 > 300) {
-                           left12 = 300;
+                       }else if (left12 > 294) {
+                           left12 = 290;
                        }
                        $('.progress_btn12').css('left', left12);
-                       $('.progress_bar12').animate({width:left12},300);
+                       $('.progress_bar12').animate({width:left12+6},300);
                        $('.text12').html(parseInt((left12/300)*100) + '%');
                    }
                });
@@ -317,11 +317,11 @@ $(function(){
                       left22 = e.pageX - bgleft22;
                       if (left22 <= 0) {
                           left22 = 5;
-                      }else if (left22 > 300) {
-                          left22 = 300;
+                      }else if (left22 > 294) {
+                          left22 = 290;
                       }
                       $('.progress_btn22').css('left', left22);
-                      $('.progress_bar22').animate({width:left22},300);
+                      $('.progress_bar22').animate({width:left22+6},300);
                       $('.text22').html(parseInt((left22/300)*100) + '%');
                   }
               });
@@ -358,11 +358,11 @@ $(function(){
                      left32 = e.pageX - bgleft32;
                      if (left32 <= 0) {
                          left32 = 5;
-                     }else if (left32 > 300) {
-                         left32 = 300;
+                     }else if (left32 > 294) {
+                         left32 = 290;
                      }
                      $('.progress_btn32').css('left', left32);
-                     $('.progress_bar32').animate({width:left32},300);
+                     $('.progress_bar32').animate({width:left32+6},300);
                      $('.text32').html(parseInt((left32/300)*100) + '%');
                  }
              });
@@ -399,11 +399,11 @@ $(function(){
                     left42 = e.pageX - bgleft42;
                     if (left42 <= 0) {
                         left42 = 5;
-                    }else if (left42 > 300) {
-                        left42 = 300;
+                    }else if (left42 > 294) {
+                        left42 = 290;
                     }
                     $('.progress_btn42').css('left', left42);
-                    $('.progress_bar42').animate({width:left42},300);
+                    $('.progress_bar42').animate({width:left42+6},300);
                     $('.text42').html(parseInt((left42/300)*100) + '%');
                 }
             });
@@ -440,11 +440,11 @@ $(function(){
                    left52 = e.pageX - bgleft52;
                    if (left52 <= 0) {
                        left52 = 5;
-                   }else if (left52 > 300) {
-                       left52 = 300;
+                   }else if (left52 > 294) {
+                       left52 = 290;
                    }
                    $('.progress_btn52').css('left', left52);
-                   $('.progress_bar52').animate({width:left52},300);
+                   $('.progress_bar52').animate({width:left52+6},300);
                    $('.text52').html(parseInt((left52/300)*100) + '%');
                }
            });
@@ -482,11 +482,11 @@ $(function(){
                   left62 = e.pageX - bgleft62;
                   if (left62 <= 0) {
                       left62 = 5;
-                  }else if (left62 > 300) {
-                      left62 = 300;
+                  }else if (left62 > 294) {
+                      left62 = 290;
                   }
                   $('.progress_btn62').css('left', left62);
-                  $('.progress_bar62').animate({width:left62},300);
+                  $('.progress_bar62').animate({width:left62+6},300);
                   $('.text62').html(parseInt((left62/300)*100) + '%');
               }
           });

@@ -682,9 +682,9 @@ var Canvas = window.Canvas || {};
 	 */	
 	Canvas.Element.prototype.drawBorder = function(context, oImg, offsetX, offsetY) {
 		var outlinewidth = 2;
-		context.fillStyle = 'rgba(0, 0, 0, .3)';
+		context.fillStyle = 'rgba(0, 0, 0, 0)';
 		context.fillRect(-2 - offsetX, -2 - offsetY, oImg.width + (2 * outlinewidth), oImg.height + (2 * outlinewidth));
-		context.fillStyle = '#fff';
+		//context.fillStyle = '#fff';
 		context.fillRect(-offsetX, -offsetY, oImg.width, oImg.height);
 	};
 
@@ -697,7 +697,7 @@ var Canvas = window.Canvas || {};
 	 * @param offsetY {Number} The vertical offset applied from the (0,0) of the canvas axis
 	 */	
 	Canvas.Element.prototype.drawCorners = function(context, oImg, offsetX, offsetY) {
-		context.fillStyle = "rgba(232, 253, 253, 0.5)";
+		//context.fillStyle = "rgba(232, 253, 253, 0.5)";
 		context.fillRect(-offsetX, -offsetY, oImg.cornersize, oImg.cornersize);
 		context.fillRect(oImg.width - offsetX - oImg.cornersize, -offsetY, oImg.cornersize, oImg.cornersize);
 		context.fillRect(-offsetX, oImg.height - offsetY - oImg.cornersize, oImg.cornersize, oImg.cornersize);

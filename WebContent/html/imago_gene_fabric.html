@@ -40,6 +40,12 @@
 				timeid = data.timeid;
 				img_timeid = img_timeid + data.timeid;
 				$(".i1").attr('src',data.img);
+				$(".comdcimg").attr('src',"../image/3Colors_Template0_"+timeid+".jpg");
+				var sword = data.wordIndex.split(",");
+				$(".lable1").html(sword[0]);
+				$(".lable2").html(sword[1]);
+				$(".lable3").html(sword[2]);
+				$(".lable4").html(sword[3]);
 				geneimg = data.img;
 				//alert(data.img);
                 },
@@ -109,16 +115,21 @@
 
 			<div id="picGene">
 				<img class="i1" src="" style="width: 400px;height: 400px;" />
-				
+				<div class="wordindex">
+					<lable class="lable1"></lable><br />
+					<lable class="lable2"></lable><br />
+					<lable class="lable3"></lable><br />
+					<lable class="lable4"></lable>
+				</div>
 			</div>
 
 			<div id="showCommander" style="margin-top:14px;">
 				<div id="pic1" style="float: left;">
-					<img src="../image/Ccolor.png" style=" width: 130px;"/>
+					<img class="comdcimg" src="../../images/3Colors_Template1_.jpg" style=" width: 130px;height: 130px;"/>
 					<p class="p1">色彩推荐</p>
 				</div>
            		<div id="pic3" style="float: left;">
-           			<img src="../image/Ctexture1.png" style=" width: 130px;"/>
+           			<img src="../image/纱布.jpg" style=" width: 130px;height: 130px;"/>
            			<p class="p1">材质推荐</p>
            		</div>
            		

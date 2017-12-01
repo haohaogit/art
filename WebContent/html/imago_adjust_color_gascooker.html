@@ -131,9 +131,9 @@
 			</div>
 			
 			<div id="partStyle" style="height:37px;">
-				<div id="warmcolor">
+				<!-- <div id="warmcolor">
 					<a href="javascript:void(0)" id="beidu1" >开关颜色</a>
-				</div>
+				</div> -->
 				<div id="coldcolor">
 					<a href="javascript:void(0)" id="beibing1" >面板颜色</a>
 				</div>
@@ -184,10 +184,14 @@
 			debugger;
 			var index = parseInt($(this).attr('data-itemid'));
 	        var ss = $(this).html();
+	        
+	        var src = $(ss).attr('src');
+	        var colorimg = src.split(".");
+	        var cimg = colorimg[0];
 	        var crgb = $(ss).attr('alt');
 	        //alert("crgb "+crgb);
 	        //alert("timeid "+timeid);
-	        $.ajax("adjust/color/gascooker/"+timeid+"?crgb="+crgb,
+	        $.ajax("adjust/color/gascooker/"+cimg+"/"+timeid+"?crgb="+crgb,
 	                // 发送请求的URL字符串
 	                {
 	                    type: "get",      //
@@ -205,10 +209,16 @@
 			debugger;
 			var index = parseInt($(this).attr('data-itemid'));
 	        var ss = $(this).html();
+	        var src = $(ss).attr('src');
+	        var c1 = src.split("/");
+	        var c2 = c1[2];
+	        
+	        var colorimg = c2;
+	        
 	        var crgb = $(ss).attr('alt');
 	        //alert("crgb "+crgb);
 	        //alert("timeid "+timeid);
-	        $.ajax("adjust/color/gascooker/"+timeid+"?crgb="+crgb,
+	        $.ajax("adjust/color/gascooker/"+colorimg+"/"+timeid+"?crgb="+crgb,
 	                // 发送请求的URL字符串
 	                {
 	                    type: "get",      //
@@ -220,7 +230,7 @@
 	                        alert("调整颜色失败");
 	                    }
 	                });
-	        that.moveToCenter(index);
+	        //that.moveToCenter(index);
 		});
 
 
