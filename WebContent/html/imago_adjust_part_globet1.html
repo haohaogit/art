@@ -37,12 +37,12 @@
 		  	var n1 = loc.length;//地址的总长度
 		  	var n2 = loc.indexOf("=");//取得=号的位置
 		  	timeid = decodeURI(loc.substr(n2+1, n1-n2));//从=号后面的内容 
-		  	var geneimg = "../image/globetPartA_"+timeid+".jpg";
+		  	var geneimg = "../image/gaojiaobeiPartA_"+timeid+".jpg";
 		  	//var geneimg = "../image/cooker.jpg";
 		  	
 		  	$(".picimg2").attr("src",geneimg);
 		  	debugger;
-            $.ajax("getpart?tname=燃气灶",
+            $.ajax("getpart?tname=高脚杯",
             // 发送请求的URL字符串
             {
                 type: "get",      //
@@ -136,7 +136,7 @@
 
 			<div id="partStyle" style="height:37px;">
 				<div id="beidu" style="width:106px;">
-					<a href="javascript:void(0)" id="beidu1" >logo添加</a>
+					<a href="javascript:void(0)" id="beidu1" >杯肚部件</a>
 				</div>
 			</div>
 

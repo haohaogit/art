@@ -465,6 +465,13 @@ a{
 	width:340px;
 	height:340px;
 }
+.picimg11{
+	margin-top: 9px;
+	margin-left: 292px;
+	
+	height:340px;
+	border-radius: 8px;
+}
 .left-arrow1{
 	transform: rotate(90deg);
 	width: 20px;

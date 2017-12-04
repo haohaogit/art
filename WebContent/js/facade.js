@@ -161,7 +161,6 @@ function fillBottomfabric(data){
 	
 }
 
-
 function fillBottomgascooker(data){
 	
 	var aHtml="";
@@ -345,7 +344,7 @@ function fillBottomHouseboat(data){
 }
 
 function fillCodeCcontent(data){
-	
+	//alert("qqqq"+data.length);
 	var a1Html="";
 	var b1Html="";
 	var c1Html="";
@@ -357,7 +356,7 @@ function fillCodeCcontent(data){
 	var d1=0;
 	
 	for(var i=0;i<data.length;i++){
-		//var qwe = data[i].wfirstchar;
+		var qwe = data[i].wfirstchar;
 		switch(data[i].type)
 		{
 			case "outline":
@@ -441,10 +440,9 @@ function fillCodeCcontent(data){
 		d1Html+="</div><div><img class='loadMore more4' src='../image/waiguan (18).png' /></div>";
 		
 	}
-	html=html+a1Html+b1Html+c1Html+d1Html;
+	html=html+b1Html+c1Html+d1Html;
 	
 	$(".codeCcontent").html(html);
-	
 	
 }
 
@@ -494,7 +492,7 @@ function fillCodecolor(data){
 		//var qwe = data[i].wfirstchar;
 		switch(data[i].codetypename)
 		{
-			case "暖色调":
+			case "暖色":
 			  if(kHtml==""){
 				  kHtml+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>暖色系编码</div></div><div class='color'>";
 			  }
@@ -502,7 +500,7 @@ function fillCodecolor(data){
 			  kHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-cid='"+data[i].id+"'/></div>";
 			  kHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
 			  break;
-			case "冷色调":
+			case "冷色":
 			
 				if(sHtml==""){
 					sHtml+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>冷色系编码</div></div><div class='color'>";
@@ -875,33 +873,40 @@ function fillCodetextureGascooker(data){
 	
 	var kHtml="";
 	var sHtml="";
-	
+	var aHtml="";
 	for(var i=0;i<data.length;i++){
 		//var qwe = data[i].wfirstchar;
 		
 		switch(data[i].codetypename)
 		{
-			case "面板材质":
+			case "钢化玻璃":
 			  if(kHtml==""){
-				  kHtml+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>面板材质编码</div></div><div class='texture'>";
+				  kHtml+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>钢化玻璃材质编码</div></div><div class='texture'>";
 			  }
 			 
 			  kHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-texid='"+data[i].id+"'/></div>";
 			  kHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
 			  break;
-			case "磨砂":
+			case "磨砂玻璃":
 				if(sHtml==""){
-					sHtml+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>磨砂材质编码</div></div><div class='texture'>";
+					sHtml+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>磨砂玻璃材质编码</div></div><div class='texture'>";
 				}
 				sHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-texid='"+data[i].id+"'/></div>";
 				sHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
+			    break;
+			case "金属拉丝":
+				if(aHtml==""){
+					aHtml+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>金属拉丝材质编码</div></div><div class='texture'>";
+				}
+				aHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-texid='"+data[i].id+"'/></div>";
+				aHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
 			    break;
 			default:
 				break;
 		}
 	}
 	var html="";
-	html=html+kHtml+"</div>"+sHtml+"</div>";
+	html=html+kHtml+"</div>"+sHtml+"</div>"+aHtml+"</div>";
 	$(".textureContent").html(html);
 }
 function fillCodetextureFabric(data){

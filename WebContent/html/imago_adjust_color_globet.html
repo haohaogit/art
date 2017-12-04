@@ -25,9 +25,9 @@
 	</style>
 </head>
 <body>
-
+<script type="text/javascript" src="../js/imago.js"></script>
 <script type="text/javascript">
-		var timeid = 0;
+		var timeid = 1111111111;
         $(document).ready(function () {
 //  			alert(11);
             $('.configHead').load('conheader_yixiang.html');
@@ -37,26 +37,27 @@
 		  	var n1 = loc.length;//地址的总长度
 		  	var n2 = loc.indexOf("=");//取得=号的位置
 		  	timeid = decodeURI(loc.substr(n2+1, n1-n2));//从=号后面的内容 
-		  	var geneimg = "../image/globetColorA_"+timeid+".jpg";
+		  	var geneimg = "../image/gaojiaobeiColorA_"+timeid+".jpg";
+		  	//var geneimg = "../image/gaojiaobei.jpg";
 		  	$(".picimg").attr("src",geneimg);
 		  	debugger;
-		  	/* $.ajax("getcolor?tname=高脚杯",
+		  	$.ajax("getcolor?tname=高脚杯",
 	                // 发送请求的URL字符串
 	                {
 	                    type: "get",      //
 	                    async:true,  //
 	                    success: function(data){
 							//alert("facade newcase goblet test length="+data.length);
-							filllunbo(data);
+							filllunboGlobet(data);
 							//alert("gasAhtml "+GASbHtml);
 							/* $(".panelColor").css({display:'block'});
-							$(".switchColor").css({display:'none'}); */
+							$(".switchColor").css({display:'none'});*/
 							//alert("successful")
 	                    },
 	                    error: function(){
 	                        alert("数据发送失败denglu");
 	                    }
-	                }); */
+	                });
         });
 </script>
 	<!-- 	头部 -->
@@ -204,11 +205,37 @@
 	  		});
 	
 		function saveColor(){
-			alert("高脚杯色彩保存，然后调整材质");
-			window.location.href="imago_adjust_texture_globet.html";
+			
+			window.location.href="imago_adjust_texture_globet.html?timeid="+timeid;
 		}
+		
+		$(".lunbo-window").on("click",".LColor",function(){
+			debugger;
+			var index = parseInt($(this).attr('data-itemid'));
+	        var ss = $(this).html();
+	        
+	       /*  var src = $(ss).attr('src');
+	        var colorimg = src.split(".");
+	        var cimg = colorimg[0]; */
+	        var crgb = $(ss).attr('alt');
+	        //alert("crgb "+crgb);
+	        //alert("timeid "+timeid);
+	        $.ajax("adjust/color/globet/"+timeid+"?crgb="+crgb,
+	                // 发送请求的URL字符串
+	                {
+	                    type: "get",      //
+	                    async:true,  //
+	                    success: function(data){
+	                    window.location.reload(); 
+	                    },
+	                    error: function(){
+	                        alert("调整颜色失败");
+	                    }
+	                });
+	        that.moveToCenter(index);
+		});
 
-		window.onload = function(){
+		/* window.onload = function(){
 			var c=document.getElementById("myCanvas");
 			var cxt=c.getContext("2d");
 
@@ -217,7 +244,7 @@
 			img.onload = function(){
 				cxt.drawImage(img,10,50);
 			}
-
+ */
 			// var img1=new Image();
 			// img1.src="../images/genestyle/p5.png";
 			// img1.onload = function(){
@@ -233,31 +260,7 @@
 			 //    cxt.fillStyle = pattern;
 			 //    cxt.fill();    
 			//}
-		}
-	</script>
-
-	<script>
-		var c=document.getElementById("myCanvas");
-		var ctx=c.getContext("2d");
-		ctx.fillStyle="#00A5BD";
-		ctx.fillRect(0,0,150,36);
-	</script>
-	<script type="text/javascript">
-	
-		//获取Canvas对象(画布)
-		var canvas = document.getElementById("myCanvas");
-		//简单地检测当前浏览器是否支持Canvas对象，以免在一些不支持html5的浏览器中提示语法错误
-		if(canvas.getContext){  
-		    //获取对应的CanvasRenderingContext2D对象(画笔)
-		    var ctx = canvas.getContext("2d");
-		    
-		    //设置字体样式
-		    ctx.font = "18px Courier New";
-		    //设置字体填充颜色
-		    ctx.fillStyle = "white";
-		    //从坐标点(50,50)开始绘制文字
-		    ctx.fillText("色彩方案预览", 20, 22);
-		}
+		
 	</script>
 
 	<script type="text/javascript">
@@ -323,19 +326,21 @@
 
 
 
-  		
-
-  		$("#beidu1").click(function(){
-  			
-  			document.getElementById('warmcolor').style.backgroundColor='#00A5BD';
-    		document.getElementById('coldcolor').style.backgroundColor='#a39f9f';
-  		});
   		$("#beibing1").click(function(){
+  			document.getElementById('coldcolor').style.backgroundColor='#00A5BD';
+  			document.getElementById('warmcolor').style.backgroundColor='#a39f9f';
   			
-    		document.getElementById('warmcolor').style.backgroundColor='#a39f9f';
-    		document.getElementById('coldcolor').style.backgroundColor='#00A5BD';
-    		
+  			$(".lunbo-window").html(GASbHtml1);
+  			AddCarousel();
+  			});
+  		$("#beidu1").click(function(){
+  			document.getElementById('coldcolor').style.backgroundColor='#a39f9f';
+  			document.getElementById('warmcolor').style.backgroundColor='#00A5BD';
+  			$(".lunbo-window").html(GASaHtml1);
+  			AddCarousel();
+  			
   		});
+
   		
 	</script>
 </body>

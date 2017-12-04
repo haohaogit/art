@@ -83,6 +83,35 @@ function filllunbo(data){
 	AddCarousel();
 }
 
+var GASaHtml1="<ul>";
+var GASbHtml1="<ul>";
+function filllunboGlobet(data){
+	
+	
+	for(var i=0;i<data.length;i++){
+		
+		switch(data[i].cbname)
+		{
+			case "暖色":
+				GASaHtml1+="<li class='lunbo-item LColor'><img src='../image/"+data[i].cimg+"' alt='"+data[i].crgb+"'><span>"+data[i].crgb+"</span></li>";
+				break;
+			case "冷色":
+				GASbHtml1+="<li class='lunbo-item LColor'><img src='../image/"+data[i].cimg+"' alt='"+data[i].crgb+"'><span>"+data[i].cdescription+"</span></li>";
+				break;
+			default:
+				break;
+		}
+	}
+	
+	GASaHtml1+="</ul>";
+	GASbHtml1+="</ul>";
+	
+	
+	$(".lunbo-window").html(GASaHtml1);
+	
+	AddCarousel();
+}
+
 function fillHouseboatlunbo(data){
 	
 	var aHtml="<ul>";
@@ -138,7 +167,18 @@ function filllunbopartFabric(data){
 function filllunboPart(data){
 	var aHtml="<ul>";
 	for(var i=0;i<data.length;i++){
-		aHtml+="<li class='lunbo-item LPart'><img src='../image/"+data[i].pimg+"' alt='"+data[i].pid+"'><span>"+data[i].pdescription+"</span></li>";
+		//var qwe = data[i].wfirstchar;
+		switch(data[i].pbname)
+		{
+			case "开关色彩":
+				/*GASaHtml+="<li class='lunbo-item LColor'><img src='../image/"+data[i].cimg+"' alt='"+data[i].crgb+"'><span>"+data[i].crgb+"</span></li>";*/
+				break;
+			case "Logo":
+				aHtml+="<li class='lunbo-item LPart'><img src='../image/"+data[i].pimg+"' alt='"+data[i].pid+"'><span>"+data[i].pdescription+"</span></li>";
+				break;
+			default:
+				break;
+		}
 	}
 	aHtml+="</ul>";
 	$(".lunbo-window").html(aHtml);
@@ -148,13 +188,12 @@ function filllunboPart(data){
 function filllunboFabric(timeid){
 	var aHtml="<ul>";
 	for(var i=0;i<7;i++){
-		aHtml+="<li class='lunbo-item CFabric'><img src='../../images/3Colors_Template"+i+"_"+timeid+".jpg' alt='"+i+"'><span>色块"+(i+1)+"</span></li>";
+		aHtml+="<li class='lunbo-item CFabric'><img src='../image/3Colors_Template"+i+"_"+timeid+".jpg' alt='"+i+"'><span>色块"+(i+1)+"</span></li>";
 	}
 	aHtml+="</ul>";
 	$(".lunbo-window").html(aHtml);
 	AddCarousel();
 }
-
 
 function fillwordSurveyHref(data){
 	alert(data.wordsurvey);

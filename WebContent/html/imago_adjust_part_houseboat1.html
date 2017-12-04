@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<link href="../css/imago.css" rel="stylesheet" type="text/css"/>
+	<link href="../css/loginDialog.css" rel="stylesheet" type="text/css"/>
+	<link href="../css/lunbo.css" rel="stylesheet" type="text/css"/>
+	<script type="text/javascript" src="../js/jquery-1.8.2.min.js"></script>
+	<title>意象映射-意象映射系统</title>
+	<style type="text/css" media="screen">
+		/* body 	{ font: 75% "Lucida Grande", "Trebuchet MS", Verdana, sans-serif; } */
+		canvas 	{ background-color: transparent; border: 1px solid white; top: 0; left: 0; position: absolute;left:537.5px;top:275px;}
+		canvas.resize-ne { cursor: ne-resize; }
+		canvas.resize-se { cursor: se-resize; }
+		canvas.resize-sw { cursor: sw-resize; }
+		canvas.resize-nw { cursor: nw-resize; }
+		canvas.move { cursor: move; }
+		canvas.default { cursor: default; }
+		.img1 	{ display: block; visibility: hidden; position: absolute; top: -1000; left: -1000; }
+		input1 	{ margin-left: 20px; }
+		fieldset { width: 280px; float: left; }
+		.fieldset { width: 200px; float: left; }
+		#ft 	{ background-color: #eee; height: 70px; width: 99%; border-top: 1px solid #ccc; padding: 5px; position: absolute; top: 0; left: 0; }
+		#ft span { width: 100%; }
+	</style>
+</head>
+<body>
+<script type="text/javascript">
+		var timeid;
+        $(document).ready(function () {
+//  			alert(11);
+            $('.configHead').load('conheader_yixiang.html');
+            $('.configFoot').load('confooter.html');
+            
+            var loc = location.href;
+		  	var n1 = loc.length;//地址的总长度
+		  	var n2 = loc.indexOf("=");//取得=号的位置
+		  	timeid = decodeURI(loc.substr(n2+1, n1-n2));//从=号后面的内容 
+		  	var geneimg = "../image/boatPartA_"+timeid+".jpg";
+		  	//var geneimg = "../image/cooker.jpg";
+		  	$(".picimg2").attr("src",geneimg);
+		  	debugger;
+           /*  $.ajax("getpart?tname=游艇",
+            // 发送请求的URL字符串
+            {
+                type: "get",      //
+                async:true,  //
+                success: function(data){
+				//alert("facade newcase goblet test length="+data.length);
+				filllunboPart(data);
+				//alert("successful")
+                },
+                error: function(){
+                    alert("数据发送失败denglu");
+                }
+            }); */
+        });
+</script>
+	<!-- 	头部 -->
+	<div class="configHead"></div>
+	
+	<div id="content">
+
+		<div id="leftBody">
+			<div id="setParam">
+				<a href="javascript:void(0)" id="paramToggle">
+					<div id="paraIcon"> <img src="../image/setparam.png"></div>
+					<div id="paraWord" style="margin-left: 50px;">1.参数设置<img class="left-arrow arrow1" src="../image/adown.png"/></div>
+				</a>
+				<ul id="paramContent">
+					<li><a href="javascript:void(0)" id="paragoblet" class="param">高脚杯</a></li>
+					<li><a href="javascript:void(0)" id="parayacht" class="param">游艇</a></li>
+					<li><a href="javascript:void(0)" id="parahanky" class="param">织物</a></li>
+					<li><a href="javascript:void(0)" id="pararange" class="param">燃气灶</a></li>
+				</ul>
+			</div>
+			<div id="geneStyle">
+				<a href="javascript:void(0)" id="geneToggle">
+					<div id="paraIcon"> <img src="../image/genestyle.png"></div>
+					<div id="paraWord" style="margin-left: 50px;">2.造型生成<img class="left-arrow arrow2" src="../image/adown.png"/></div>
+				</a>
+				<ul id="geneContent">
+					<li><a href="javascript:void(0)" id="genegoblet" class="errorOperate">高脚杯</a></li>
+					<li><a href="javascript:void(0)" id="geneyacht" class="errorOperate">游艇</a></li>
+					<li><a href="javascript:void(0)" id="genehanky" class="errorOperate">织物</a></li>
+					<li><a href="javascript:void(0)" id="generange" class="errorOperate">燃气灶</a></li>
+				</ul>
+			</div>
+			<div id="adjustStyle">
+				<a href="javascript:void(0)" id="adjustToggle">
+					<div id="paraIcon"> <img src="../image/adjuststyle.png"></div>
+					<div id="paraWord" style="margin-left: 50px;">3.造型调整<img class="left-arrow arrow3" src="../image/aup.png"/></div>
+					
+				</a>
+				<ul id="adjustContent">
+					<li><a href="javascript:void(0)" id="colorAdjust" class="errorOperate">色彩调整</a></li>
+					<img src="../images/genestyle/navigatebar.png" class="pimg">
+					<li><a href="javascript:void(0)" id="textureAdjust" class="errorOperate">材质调整</a></li>
+					<img src="../images/genestyle/navigatebar.png" class="pimg">
+					<li><a href="javascript:void(0)" id="partAdd" class="errorOperate">部件添加</a></li>
+				</ul>
+			</div>
+			<div id="bottomcolor"></div>
+		</div>
+		<div id="rightBody">
+			<div id="iconAndcorpus">
+				<div id="introicon"><img class="imgicon" src="../image/houseboat.png" style="" /></div>
+				<div id="introduce">
+					<lable id="corpus">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在造型调整步骤中，用户可以在操作窗口选择不同的部件，并可以移动、缩放、旋转调整部件达到预想效果，提供预览。</lable>
+				</div>
+			</div>
+
+			<!-- <div id="picGene" style="margin-top: 40px;">
+				
+				<canvas id="myCanvas" width="800" height="400" style="border:1px solid #d3d3d3;background:#ffffff;">
+					<p class="p2">画布：</p>
+					<img src="../images/genestyle/p5.png">
+				</canvas>
+			</div> -->
+			<div id="picGene1" style="" >
+				<div class="picfont" style="background:#00A5BD;width:145px; height:37px; ">
+					部件方案预览1
+				</div>
+				<div>
+					<div style="margin-left: 89px;">
+						<canvas id="canvid1"></canvas>
+						<img class="img1" id="img0" src="../image/LOGO1.png" width="70px" height="90px"/>
+						<img class="picimg2" id="bg" src="" style ="dispaly:none;width:600px;height:350px;margin-left: 0px;margin-top: 3px;border-radius: 8px;"/>
+					</div>
+					
+				</div>
+				<!-- <img class="picimg" src="" style="margin-top: 3px;"> -->
+			</div>
+			<!-- <div id="picGene1" style="" >
+				<div class="picfont" style="background:#00A5BD;width:145px; height:37px; ">
+					部件方案预览
+				</div>
+				<img class="picimg" src="" style="margin-top: 3px;">
+			</div> -->
+			
+			
+			
+
+			<div id="partStyle" style="height:37px;">
+				<div id="beidu" style="width:106px;">
+					<a href="javascript:void(0)" id="beidu1" style="color: white;">天线</a>
+				</div>
+				<div id="beibing" style="width:106px;">
+					<a href="javascript:void(0)" id="beibing1" style="color: white;">钓鱼板</a>
+				</div>
+			</div>
+
+			<div id="lunbo">
+				<div id="lunbo1">
+					<div class="left-arrow arrow">&lt;</div>
+					<div class="right-arrow arrow">&gt;</div>
+					<div class="lunbo-window">
+						<ul>
+							<li class="lunbo-item"><img src="../image/color (1).png" alt=""><span>xin1</span></li>
+							<li class="lunbo-item"><img src="../image/color (2).png" alt=""><span>xin2</span></li>
+							<li class="lunbo-item"><img src="../image/color (3).png" alt=""><span>xin3</span></li>
+							<li class="lunbo-item"><img src="../image/color (4).png" alt=""><span>xin4</span></li>
+							<li class="lunbo-item"><img src="../image/color (5).png" alt=""><span>xin5</span></li>
+							<li class="lunbo-item"><img src="../image/color (6).png" alt=""><span>xin6</span></li>
+							<li class="lunbo-item"><img src="../image/color (7).png" alt=""><span>xin7</span></li>
+							<li class="lunbo-item"><img src="../image/color (8).png" alt=""><span>xin8</span></li>
+							<li class="lunbo-item"><img src="../image/color (1).png" alt=""><span>xin1</span></li>
+							
+						</ul>
+					</div>
+				</div>
+				<!-- 此处加载图片轮播模块 -->
+			</div>
+
+			<div id="geneBottomBtn">
+				<button type="submit" id="jpegbutton" class="save" onclick="savePart1()">确定</button>
+				<button type="submit" class="cancel">取消</button>
+				<button type="submit" class="cancel" onclick="returned()">返回上一步</button>
+			</div>
+		</div>
+	</div>
+
+	<!-- 	底部 -->
+	<div class="configFoot"></div>
+
+	<script type="text/javascript" src="../js/lunbo.js"></script>
+	
+	<script src="../js/utilitie.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/canvasEl.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/canvasIm.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" charset="utf-8">
+		function returned(){
+			window.history.back(-1);
+		}
+		
+		$(".lunbo-item").click(function(){
+			var ht = $(this).html();
+			
+			$("#img0").attr("src",$(ht).attr('src'));
+			canvas1.renderAll();
+			//alert($(ht).attr('src'));
+			
+		});
+		var canvas1;
+		var CanvasDemo = function() {
+			var YD = YAHOO.util.Dom;
+			var YE = YAHOO.util.Event;
+			
+			var img = [];
+			return {
+				init: function() {
+					canvas1 = new Canvas.Element();
+					//canvas1.init('canvid1',  { width: YD.getViewportWidth() - 5, height: YD.getViewportHeight() - 5 });
+					canvas1.init('canvid1',  { width: 600, height: 350 });			
+					img[img.length] = new Canvas.Img('bg', {});
+					img[img.length] = new Canvas.Img('img0', {});
+					// @param array of images ToDo: individual images
+					
+					canvas1.setCanvasBackground(img[0]);
+					canvas1.addImage(img[1]);
+					//canvas1.addImage(img[4]);
+					//canvas1.addImage(img[5]);
+					this.cornersvisible = true;
+					for (var i = 0, l = canvas1._aImages.length; i < l; i += 1) {
+						canvas1._aImages[i].setCornersVisibility(this.cornersvisible);
+					}
+					canvas1.renderAll();
+					loadtitle();
+					
+					this.initEvents();
+				},
+				initEvents: function() {
+					YE.on('togglebg','click', this.toggleBg, this, true);
+					YE.on('showcorners','click', this.showCorners, this, true);
+					YE.on('togglenone','click', this.toggleNone, this, true);
+					YE.on('toggleborders','click', this.toggleBorders, this, true);
+					YE.on('togglepolaroid','click', this.togglePolaroid, this, true);
+					YE.on('pngbutton','click', function() { this.convertTo('png') }, this, true);
+					YE.on('jpegbutton','click', function() { this.convertTo('jpeg') }, this, true);
+				},
+				switchBg: function() {
+					canvas1.fillBackground = (canvas1.fillBackground) ? false : true;							
+					canvas1.renderAll();
+				},
+				
+				//! insert these functions to the library. No access to _aImages should be done from here
+				showCorners: function() {
+					this.cornersvisible = (this.cornersvisible) ? false : true;
+					for (var i = 0, l = canvas1._aImages.length; i < l; i += 1) {
+						canvas1._aImages[i].setCornersVisibility(this.cornersvisible);
+					}
+					canvas1.renderAll();
+				},
+				toggleNone: function() {
+					for (var i = 0, l = canvas1._aImages.length; i < l; i += 1) {
+						canvas1._aImages[i].setBorderVisibility(false);
+					}
+					canvas1.renderAll();
+				},
+				toggleBorders: function() {
+					for (var i = 0, l = canvas1._aImages.length; i < l; i += 1) {
+						canvas1._aImages[i].setBorderVisibility(true);
+					}
+					canvas1.renderAll();
+				},
+				togglePolaroid: function() {
+					for (var i = 0, l = canvas1._aImages.length; i < l; i += 1) {
+						canvas1._aImages[i].setPolaroidVisibility(true);
+					}
+					canvas1.renderAll();
+				},
+				convertTo: function(format) {
+					var imgData = canvas1.canvasTo(format);
+					window.open(imgData, "_blank");
+				},
+				whatever: function(e, o) {
+					// console.log(e);
+					// console.log(o);
+				}
+			}
+			
+		}();
+		
+		/* function loadtitle(){
+			
+			var canvas = document.getElementById("canvid1-canvas-background");
+			//简单地检测当前浏览器是否支持Canvas对象，以免在一些不支持html5的浏览器中提示语法错误
+			if(canvas.getContext){  
+			    //获取对应的CanvasRenderingContext2D对象(画笔)
+			    var ctx = canvas.getContext("2d");
+			    ctx.fillStyle="#00A5BD";
+				ctx.fillRect(0,0,150,36);
+			    //设置字体样式
+			    ctx.font = "18px Courier New";
+			    //设置字体填充颜色
+			    ctx.fillStyle = "white";
+			    //从坐标点(50,50)开始绘制文字
+			    ctx.fillText("部件方案预览", 20, 22);
+			    //alert("部件方案预览11111111");
+			}
+		} */
+		
+		
+		
+		YAHOO.util.Event.on(window, 'load', CanvasDemo.init, CanvasDemo, true);
+		
+		function savePart1(){
+			$("body").append("<div id='mask'></div>");
+	        $("#mask").addClass("mask").fadeIn("slow");
+	        $("#LoginBox1").fadeIn("slow");
+		}
+		
+		function savePart(){
+			//alert("游艇部件保存，然后调整色彩");
+			
+			
+			var caseName = $("#account1").val();
+			//alert("newcount "+caseName);
+			$.ajax("save/houseboat/"+timeid+"/"+caseName,
+            // 发送请求的URL字符串
+            {
+                type: "get",      //
+                async:true,  //
+                success: function(data){
+        		//window.location.reload(); 
+				alert("save success   ");
+				window.location.href = "facade_new_houseboat.html";
+                },
+                error: function(){
+                    alert("数据发送失败denglu");
+                }
+            });
+		}
+		
+		var c=document.getElementById("canvid1");
+		var ctx=c.getContext("2d");
+		ctx.fillStyle="#00A5BD";
+		ctx.fillRect(0,0,150,36);
+	</script>
+	
+	<script type="text/javascript">
+	$("#geneContent").fadeOut(0);
+	$("#paramContent").fadeOut(0);
+	
+	//$("#bottomcolor").fadeOut(0);
+	$("#partAdd").css({color:'#00a5bd'});
+
+	$("#paramToggle").click(function(){
+			$("#paramContent").fadeIn(0);
+			$("#geneContent").fadeOut(0);
+			$("#adjustContent").fadeOut(0);
+			$("#bottomcolor").fadeOut(0);
+			$(".arrow1").attr("src","../image/aup.png");
+		    $(".arrow2").attr("src","../image/adown.png");
+		    $(".arrow3").attr("src","../image/adown.png");
+		});
+	$("#geneToggle").click(function(){
+		$("#paramContent").fadeOut(0);
+			$("#geneContent").fadeIn(0);
+			$("#adjustContent").fadeOut(0);
+			$("#bottomcolor").fadeOut(0);
+			$(".arrow1").attr("src","../image/adown.png");
+		    $(".arrow2").attr("src","../image/aup.png");
+		    $(".arrow3").attr("src","../image/adown.png");
+		});
+	$("#adjustToggle").click(function(){
+		$("#paramContent").fadeOut(0);
+			$("#geneContent").fadeOut(0);
+			$("#adjustContent").fadeIn(0);
+			$(".arrow1").attr("src","../image/adown.png");
+		    $(".arrow2").attr("src","../image/adown.png");
+		    $(".arrow3").attr("src","../image/aup.png");
+			$("#bottomcolor").fadeIn(0);
+		});
+
+
+
+
+
+
+  		$("#paragoblet").click(function(){
+    		// $("#paramSet").html("111111111111111111");
+    		window.location.href="imago.html?txt=paragoblet";
+  		});
+  		$("#parayacht").click(function(){
+    		// $("#paramSet").html("222222222222222222");
+    		window.location.href="imago.html?txt=parayacht";
+  		});
+  		$("#parahanky").click(function(){
+    		// $("#paramSet").html("333333333333333333");
+    		window.location.href="imago.html?txt=parahanky";
+  		});
+  		$("#pararange").click(function(){
+    		// $("#paramSet").html("444444444444444444");
+    		window.location.href="imago.html?txt=pararange";
+  		});
+
+
+
+  		$('.errorOperate').click(function(){
+  			alert("请您先确认是否保存语义参数，然后按照顺序操作！");
+  		});
+
+
+  		
+
+  		$("#beidu1").click(function(){
+  			
+  			document.getElementById('beidu').style.backgroundColor='#00A5BD';
+    		document.getElementById('beibing').style.backgroundColor='#a39f9f';
+  		});
+  		$("#beibing1").click(function(){
+  			
+    		document.getElementById('beibing').style.backgroundColor='#00A5BD';
+    		document.getElementById('beidu').style.backgroundColor='#a39f9f';
+    		
+  		});
+  		
+	</script>
+</body>
+</html>

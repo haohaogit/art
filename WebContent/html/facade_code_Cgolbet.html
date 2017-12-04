@@ -115,7 +115,7 @@
 	        $(document).ready(function () {
 	        	debugger;
 			  //请求物件类型
-			  	$.ajax("facade/code?tname="+encodeURI(encodeURI(高脚杯)),
+			  	$.ajax("facade/code?tname=高脚杯",
 		                // 发送请求的URL字符串
 		                {
 		                    type: "get",      //
@@ -123,13 +123,11 @@
 		                    success: function(data){
 								//alert("facade bottom goblet test length="+data.length);
 								fillCodeCcontent(data);
-								
 		                    },
 		                    error: function(){
 		                        alert("数据发送失败denglu");
 		                    }
 		                });
-
 	        });
 	</script>
 

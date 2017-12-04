@@ -1,8 +1,6 @@
 package cn.art.controller;
 
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileWriter;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
@@ -472,6 +470,46 @@ public class U_ModelSysController {
 		
 	}
 	
+	@RequestMapping("adjust/texture/globet/{timeid}")
+	@ResponseBody
+	public commandImg adjusttextureglobet(@PathVariable String timeid,Model model,String teximg,HttpServletRequest request){
+		System.out.println("globet "+teximg+"  "+timeid);
+		
+		String gaojiaobei = "C:/apache-tomcat-7.0.53/wtpwebapps/art0804/image/gaojiaobei_"+timeid+".jpg";
+		String textureimg = "C:/apache-tomcat-7.0.53/wtpwebapps/art0804/image/"+teximg;
+		System.out.println(gaojiaobei);
+		try {
+            //需传入的参数
+            
+            
+            //System.out.println("start;;;" + a);
+            //设置命令行传入参数
+            String[] args = new String[] { "python", "C:\\firstDL_netEast\\GeneticAlgorithmTexture.py",gaojiaobei,RgbNum.get(timeid),textureimg,timeid };
+            //String[] args = new String[] { "python", "D:\\20170602\\PycharmProjects\\firstDL_netEast\\boatAssembleColorTest.py",minitem.get(timeid),Rgb,timeid };
+            Process pr = Runtime.getRuntime().exec(args);
+
+            BufferedReader in = new BufferedReader(new InputStreamReader(pr.getInputStream()));
+            String line;
+            while ((line = in.readLine()) != null) {
+                //line = decodeUnicode(line);
+                System.out.println(line);
+            }
+            in.close();
+            //pr.waitFor();
+            System.out.println("end");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+		commandImg cimg = new commandImg();
+		cimg.setImg("../image/gaojiaobeiColorA_"+timeid+".jpg");
+		
+		//cimg.setImg1("../images/genestyle/Ccolor.png");
+		//cimg.setImg2("../images/genestyle/Ctexture1.png");
+		
+		return cimg;
+		
+	}
+	
 	@RequestMapping("adjust/color/gascooker/{colorimg}/{timeid}")
 	@ResponseBody
 	public commandImg adjustColor(@PathVariable String colorimg,@PathVariable String timeid,Model model,String crgb,HttpServletRequest request){
@@ -578,6 +616,45 @@ public class U_ModelSysController {
         }
 		commandImg cimg = new commandImg();
 		cimg.setImg("../../images/cookerColor"+timeid+".jpg");
+		
+		//cimg.setImg1("../images/genestyle/Ccolor.png");
+		//cimg.setImg2("../images/genestyle/Ctexture1.png");
+		
+		return cimg;
+		
+	}
+	
+	@RequestMapping("adjust/color/globet/{timeid}")
+	@ResponseBody
+	public commandImg adjustColorglobet(@PathVariable String timeid,Model model,String crgb,HttpServletRequest request){
+		System.out.println("globet "+crgb+"  "+timeid);
+		
+		String gaojiaobei = "C:/apache-tomcat-7.0.53/wtpwebapps/art0804/image/gaojiaobei_"+timeid+".jpg";
+		System.out.println(gaojiaobei);
+		try {
+            //需传入的参数
+            Rgb = crgb;
+            RgbNum.put(timeid, Rgb);
+            //System.out.println("start;;;" + a);
+            //设置命令行传入参数
+            String[] args = new String[] { "python", "C:\\firstDL_netEast\\GeneticAlgorithmColor.py",gaojiaobei,Rgb,timeid };
+            //String[] args = new String[] { "python", "D:\\20170602\\PycharmProjects\\firstDL_netEast\\boatAssembleColorTest.py",minitem.get(timeid),Rgb,timeid };
+            Process pr = Runtime.getRuntime().exec(args);
+
+            BufferedReader in = new BufferedReader(new InputStreamReader(pr.getInputStream()));
+            String line;
+            while ((line = in.readLine()) != null) {
+                //line = decodeUnicode(line);
+                System.out.println(line);
+            }
+            in.close();
+            //pr.waitFor();
+            System.out.println("end");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+		commandImg cimg = new commandImg();
+		cimg.setImg("../image/gaojiaobeiColorA_"+timeid+".jpg");
 		
 		//cimg.setImg1("../images/genestyle/Ccolor.png");
 		//cimg.setImg2("../images/genestyle/Ctexture1.png");
@@ -820,9 +897,9 @@ public class U_ModelSysController {
             scoreNum.put(timeid1, sc);
             System.out.println("start222" + a);
             
-            String data = sc;
+            String data = sc+","+timeid1;
             
-            FileWriter out = new FileWriter("C:\\apache-tomcat-7.0.53\\wtpwebapps\\art0804\\image\\globet_appendfile.txt", true); 
+            /*FileWriter out = new FileWriter("C:\\apache-tomcat-7.0.53\\wtpwebapps\\art0804\\image\\globet_appendfile.txt", false); 
             //往文件写入
             out.write(data);
             //换行
@@ -832,13 +909,19 @@ public class U_ModelSysController {
             //关闭
             out.close();
 
-            System.out.println("Done");
+            System.out.println("Done");*/
             
             
             Runtime mt =Runtime.getRuntime();
             //找到相对应的绝对路径。启动记事本文件
-            File  myfile =new File("C:\\apache-tomcat-7.0.53\\wtpwebapps\\art0804\\image","GeneticAlgorithm.exe");
-            mt.exec(myfile.getAbsolutePath());
+           
+            
+            //File  myfile =new File("C:\\apache-tomcat-7.0.53\\wtpwebapps\\art0804\\image","GeneticAlgorithm.exe");
+            
+            
+            Process p = mt.exec("C:\\apache-tomcat-7.0.53\\wtpwebapps\\art0804\\image\\GeneticAlgorithm.exe "+data);
+            
+            p.waitFor(); 
             System.out.println("test globet by .exe");
             //创建新的文件路径,启动ie浏览器
             //myfile = new File("c:\\program Files\\Internet Explorer","IEXPLORE.www.sohu.com");
@@ -857,11 +940,15 @@ public class U_ModelSysController {
             }
            
             in.close();*/
+            try   
+            {   
+            	Thread.currentThread().sleep(1000);//毫秒   
+            }   catch(Exception e){} 
             
             Rgb = "30,35,57";
             //backimg.put(timeid1, "C:/firstDL_netEast/artgene/M22.jpg");
             //pr.waitFor();
-            cimg.setImg("../image/boatColor_"+timeid1+".jpg");
+            cimg.setImg("../image/gaojiaobei_"+timeid1+".jpg");
             cimg.setTimeid(timeid1);
     		cimg.setImg1("../images/genestyle/Ccolor.png");
     		cimg.setImg2("../images/genestyle/Ctexture1.png");
