@@ -2,8 +2,10 @@ function fillBottomGoblet(data){
 	
 	var kHtml="";
 	var sHtml="";
+	var aHtml="";
 	var k=0;
 	var s=0;
+	var a=0;
 	for(var i=0;i<data.length;i++){
 		//var qwe = data[i].wfirstchar;
 		switch(data[i].bctname)
@@ -37,6 +39,21 @@ function fillBottomGoblet(data){
 					s++;
 				}
 			    break;
+			case "收口外扩型":
+				
+				if(aHtml==""){
+					aHtml+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>收口外扩型</div></div><div class='macro'>";
+				}
+				if(a<4){
+					aHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-bcid='"+data[i].bcid+"'/></div>";
+					aHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].casename+"</div></div></div>";
+					a++;
+				}else{
+					aHtml+="<div class='hengStep isLoadMore isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-bcid='"+data[i].bcid+"'/></div>";
+					aHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].casename+"</div></div></div>";
+					a++;
+				}
+			    break;
 		}
 	}
 	var html="";
@@ -46,7 +63,10 @@ function fillBottomGoblet(data){
 	if(s!=0){
 		sHtml+="</div><div><img class='loadMore' src='../image/waiguan (18).png' onclick='loadmore1()' /></div>";
 	}
-	html=html+kHtml+sHtml;
+	if(a!=0){
+		aHtml+="</div><div><img class='loadMore' src='../image/waiguan (18).png' onclick='loadmore1()' /></div>";
+	}
+	html=html+kHtml+sHtml+aHtml;
 	
 	$(".bottomContent").html(html);
 	
@@ -211,7 +231,7 @@ function fillBottomgascooker(data){
 				if(cHtml==""){
 					cHtml+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>韩系居家型</div></div><div class='macro'>";
 				}
-				if(b<4){
+				if(c<4){
 					cHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-bcid='"+data[i].bcid+"'/></div>";
 					cHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].casename+"</div></div></div>";
 					c++;
@@ -262,9 +282,9 @@ function fillBottomHouseboat(data){
 		//var qwe = data[i].wfirstchar;
 		switch(data[i].bctname)
 		{
-			case "端庄型":
+			case "奢华型":
 			  if(aHtml==""){
-				  aHtml+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>端庄型</div></div><div class='macro'>";
+				  aHtml+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>奢华型</div></div><div class='macro'>";
 			  }
 			  if(a<4){
 				  aHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-bcid='"+data[i].bcid+"'/></div>";
@@ -276,10 +296,10 @@ function fillBottomHouseboat(data){
 				  a++;
 			  }
 			  break;
-			case "流线型":
+			case "运动型":
 			
 				if(bHtml==""){
-					bHtml+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>流线型</div></div><div class='macro'>";
+					bHtml+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>运动型</div></div><div class='macro'>";
 				}
 				if(b<4){
 					bHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-bcid='"+data[i].bcid+"'/></div>";
@@ -291,9 +311,9 @@ function fillBottomHouseboat(data){
 					b++;
 				}
 			    break;
-			case "轻巧型":
+			case "个性型":
 				  if(cHtml==""){
-					  cHtml+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>轻巧型</div></div><div class='macro'>";
+					  cHtml+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>个性型</div></div><div class='macro'>";
 				  }
 				  if(c<4){
 					  cHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-bcid='"+data[i].bcid+"'/></div>";
@@ -305,10 +325,10 @@ function fillBottomHouseboat(data){
 					  c++;
 				  }
 				  break;
-			case "稳重型":
+			case "品质型":
 			
 				if(dHtml==""){
-					dHtml+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>稳重型</div></div><div class='macro'>";
+					dHtml+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>品质型</div></div><div class='macro'>";
 				}
 				if(d<4){
 					dHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-bcid='"+data[i].bcid+"'/></div>";

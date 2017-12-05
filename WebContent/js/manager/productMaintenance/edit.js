@@ -58,9 +58,10 @@ var talgorithm=$("#talgorithm").attr("value");
  	$("#bottomCaseTypeList").html(addHtml);
  }
  
- debugger
+ 
  chooseType(tid);
  function chooseType(tid){
+	    debugger
 		var loadUrl =bottomcasetypeUrl+'?tid='+tid;
 	    $.ajax({  
 	        type : "get",  
