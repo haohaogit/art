@@ -1,8 +1,8 @@
 $(".loginbtn").click(function(){
 	var listUrl=contextPath + "/manager/productMaintenance/list";
 	var url=contextPath + "/managerLogin";
-	var account=$("#account").attr("value");
-	var password=$("#password").attr("value");
+	var account=$("#account").val();
+	var password=$("#password").val();
 	var params={
 			account:account,
 			password:password
@@ -14,14 +14,16 @@ $(".loginbtn").click(function(){
 				type: "post",      //
 				//contentType: "application/json",  //
 				//data: JSON.stringify({uname:name,uemail:email,upassword:password,cpassword:cpassword}),
+				//data:{ds:JSON.stringify(params)},
 				data:params,
 				async:true,  //
+				
 				success: function(data){
 					//alert("数据发送成功denglu");
 					window.location.href= listUrl;
 				},
 				error: function(){
-					alert("数据发送失败denglu");
+					alert("密码或用户名错误！");
 				}
 			});
 	/*$.get(url,params,function(data,status){

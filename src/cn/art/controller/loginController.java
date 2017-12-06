@@ -48,13 +48,33 @@ public class loginController {
 	}
 	
 	@RequestMapping("managerLogin")
-	public User managerLogin(String account, String password) {
-		User user = new User();
+	public String  managerLogin(String account, String password,
+			HttpServletRequest request) {
+		
 		System.out.println("account " + account + " password " + password);
 		
-		System.out.println(" 1010test account " + account + " test password " + password);
-		user.setUname(account);
-		return user;
+		boolean isRegister = false;
+		List<User> users = userService.selectManagerByName(account.trim());
+		for(User user:users){
+			System.out.println(user.getUname()+" 12 "+user.getUpassword());
+			if(password.equals(user.getUpassword())){
+				//System.out.println("登录成功"+password+"  "+user.getUname()+"  "+user.getUpassword());
+				isRegister = true;
+				break;
+			}
+		}
+		//HTML之间怎么传值
+		HttpSession session = request.getSession();
+		if(isRegister){
+			session.setAttribute("status", "200");
+			session.setAttribute("name", account);
+			return "manager/productMaintenance/list";
+		}else{
+			System.out.println("aaaaaaaaaaaaahaohao");
+			session.setAttribute("status", "100");
+			session.setAttribute("errorMessage", "账户与密码不匹配");
+			return "managerLogin.jsp";
+		}
 	}
 	//             验证  注解 @requestparam() 
 	
@@ -125,37 +145,39 @@ public class loginController {
 			HttpSession session = request.getSession();
 			//checkLogin.setLogin(true);
 			//uname = user.getUname();
-			checkLogin.setUsername(user.getUname());
-			session.setAttribute("username1", user.getUname());
+			
 			//session.setMaxInactiveInterval(60);
-			/**
-			 * 
+			 
 			
 			MD5 md = new MD5();
-			List<User> users = userService.selectUserByName(account);
-			for(User user:users){
-				System.out.println(user.getUname()+"  "+user.getUpassword());
-				if(md.str2md5(password).equals(user.getUpassword())){
-					System.out.println("登录成功"+password+"  "+user.getUname()+"  "+user.getUpassword());
+			List<User> users = userService.selectUserByName(user.getUname());
+			for(User user1:users){
+				System.out.println(user1.getUname()+"  "+user1.getUpassword());
+				//if(md.str2md5(password).equals(user.getUpassword())){
+				if(user.getUpassword().equals(user1.getUpassword())){
+					System.out.println("登录成功"+user.getUpassword()+"  "+user.getUname()+"  "+user.getUpassword());
 					isRegister = true;
 					break;
 				}
 			}
 			//HTML之间怎么传值
-			HttpSession session = request.getSession();
 			if(isRegister){
-				session.setAttribute("status", "200");
-				session.setAttribute("name", account);
+				checkLogin.setUsername(user.getUname());
+				session.setAttribute("username1", user.getUname());
+				
+				ObjectMapper mapper = new ObjectMapper();
+				response.setContentType("text/html;charset=UTF-8");
+				response.getWriter().println(mapper.writeValueAsString(user));
 				//return "redirect:/user/corpus";
 			}else{
 				System.out.println("aaaaaaaaaaaaahaohao");
 				session.setAttribute("status", "100");
 				session.setAttribute("errorMessage", "账户与密码不匹配");
 				//return "user/customerLogin";
-			} */
-			ObjectMapper mapper = new ObjectMapper();
+			} 
+			/*ObjectMapper mapper = new ObjectMapper();
 			response.setContentType("text/html;charset=UTF-8");
-			response.getWriter().println(mapper.writeValueAsString(user));
+			response.getWriter().println(mapper.writeValueAsString(user));*/
 		}
 	
 	//用户注册

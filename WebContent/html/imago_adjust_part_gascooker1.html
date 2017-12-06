@@ -190,32 +190,11 @@
 		$(".lunbo-window").on("click",".LPart",function(){
 			
 			var ht = $(this).html();
-			//$(ht).find('img').attr("src");
-			//alert($(ht).attr("src"));
-			
 			
 			$("#img0").attr("src",$(ht).attr("src"));
 			canvas1.renderAll();
 			
 			debugger;
-			/* var ht = $(this).html();
-			var src = $(ht).attr('src');
-			Logoimg = $(ht).attr('src');
-			$.ajax("adjust/part/cooker/"+timeid+"?img="+src,
-                // 发送请求的URL字符串
-                {
-                    type: "get",      //
-                    async:true,  //
-                    success: function(data){
-            		//$(".picimg").attr('src',data.img);
-                    //alert("adjustcolor successful   "+data.img);
-            		window.location.reload(); 
-    				
-                    },
-                    error: function(){
-                        alert("数据发送失败denglu");
-                    }
-                }); */
 			
 		}); 
 		var canvas1;

@@ -30,6 +30,7 @@ import cn.art.service.PartTypeService;
 import cn.art.service.SurveyService;
 import cn.art.service.TextureTypeService;
 import cn.art.service.TypeService;
+import cn.art.service.UserService;
 import cn.art.util.JsonConvert;
 import cn.art.util.Bean2PartBean.Type2PartBean;
 import cn.art.util.pojo.typeIdName;
@@ -46,6 +47,7 @@ public class M_productMaintenceController {
 	private TextureTypeService textureTypeService;
 	private SurveyService surveyService;
 	private BottomCaseTypeService bottomCaseTypeService;
+	private UserService userService;
 
 	private JsonConvert jsonConvert;
 	private Type2PartBean type2PartBean;
@@ -54,7 +56,15 @@ public class M_productMaintenceController {
 		jsonConvert = new JsonConvert();
 		type2PartBean = new Type2PartBean();
 	}
+	
 
+	public UserService getUserService() {
+		return userService;
+	}
+	@Autowired
+	public void setUserService(UserService userService) {
+		this.userService = userService;
+	}
 	public TypeService getTypeService() {
 		return typeService;
 	}
@@ -132,7 +142,38 @@ public class M_productMaintenceController {
 	 */
 
 	@RequestMapping("list")
-	public String list(Model model) {
+	public String list(Model model,
+			HttpServletRequest request) {
+		
+		/*System.out.println("用户名和密码： "+ds);
+		JSONObject jso=JSON.parseObject(ds);//json字符串转换成jsonobject对象
+		String account = jso.getString("account");
+		String password = jso.getString("password");
+		boolean isRegister = false;
+		System.out.println(account+"22"+password+"33");
+		MD5 md = new MD5();
+		List<User> users = userService.selectManagerByName(account.trim());
+		for(User user:users){
+			System.out.println(user.getUname()+"  "+user.getUpassword());
+			if(password.equals(user.getUpassword())){
+				//System.out.println("登录成功"+password+"  "+user.getUname()+"  "+user.getUpassword());
+				isRegister = true;
+				break;
+			}
+		}
+		//HTML之间怎么传值
+		HttpSession session = request.getSession();
+		if(isRegister){
+			session.setAttribute("status", "200");
+			session.setAttribute("name", account);
+			return "manager/productMaintenance/list";
+		}else{
+			System.out.println("aaaaaaaaaaaaahaohao");
+			session.setAttribute("status", "100");
+			session.setAttribute("errorMessage", "账户与密码不匹配");
+			return "managerLogin";
+		}
+		*/
 		return "manager/productMaintenance/list";
 	}
 

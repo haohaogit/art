@@ -125,6 +125,7 @@ function fillHouseboatlunbo(data){
 
 
 function filllunboTexture(data){
+	//alert(data.length);
 	var aHtml="<ul>";
 	for(var i=0;i<data.length;i++){
 		aHtml+="<li class='lunbo-item LTexture'><img src='../image/"+data[i].timg+"' alt='"+data[i].textureid+"'><span>"+data[i].tdescription+"</span></li>";
@@ -147,6 +148,16 @@ function filllunboTextureFabric(data){
 	var aHtml="<ul>";
 	for(var i=0;i<data.length;i++){
 		aHtml+="<li class='lunbo-item TextureFabric'><img src='../image/"+data[i].timg+"' alt='"+data[i].textureid+"'><span>"+data[i].tdescription+"</span></li>";
+	}
+	aHtml+="</ul>";
+	$(".lunbo-window").html(aHtml);
+	AddCarousel();
+}
+
+function filllunboTextureGlobet(data){
+	var aHtml="<ul>";
+	for(var i=0;i<data.length;i++){
+		aHtml+="<li class='lunbo-item TextureGlobet'><img src='../image/"+data[i].timg+"' alt='"+data[i].textureid+"'><span>"+data[i].tdescription+"</span></li>";
 	}
 	aHtml+="</ul>";
 	$(".lunbo-window").html(aHtml);
@@ -185,6 +196,57 @@ function filllunboPart(data){
 	
 	AddCarousel();
 }
+
+var boatHtml1="<ul>";
+var boatHtml2="<ul>";
+function filllunboPartBoat(data){
+	
+	for(var i=0;i<data.length;i++){
+		//var qwe = data[i].wfirstchar;
+		switch(data[i].pbname)
+		{
+			case "天线":
+				boatHtml1+="<li class='lunbo-item LPart'><img src='../image/"+data[i].pimg+"' alt='"+data[i].pid+"'><span>"+data[i].pdescription+"</span></li>";
+				break;
+			case "钓鱼板":
+				boatHtml2+="<li class='lunbo-item LPart'><img src='../image/"+data[i].pimg+"' alt='"+data[i].pid+"'><span>"+data[i].pdescription+"</span></li>";
+				break;
+			default:
+				break;
+		}
+	}
+	boatHtml1+="</ul>";
+	boatHtml2+="</ul>";
+	$(".lunbo-window").html(boatHtml1);
+	
+	AddCarousel();
+}
+
+var globetHtml1="<ul>";
+var globetHtml2="<ul>";
+function filllunboPartGlobet(data){
+	
+	for(var i=0;i<data.length;i++){
+		//var qwe = data[i].wfirstchar;
+		switch(data[i].pbname)
+		{
+			case "杯肚":
+				globetHtml1+="<li class='lunbo-item LPart'><img src='../image/"+data[i].pimg+"' alt='"+data[i].pid+"'><span>"+data[i].pdescription+"</span></li>";
+				break;
+			case "杯柄":
+				globetHtml2+="<li class='lunbo-item LPart'><img src='../image/"+data[i].pimg+"' alt='"+data[i].pid+"'><span>"+data[i].pdescription+"</span></li>";
+				break;
+			default:
+				break;
+		}
+	}
+	globetHtml1+="</ul>";
+	globetHtml2+="</ul>";
+	$(".lunbo-window").html(globetHtml1);
+	
+	AddCarousel();
+}
+
 function filllunboFabric(timeid){
 	var aHtml="<ul>";
 	for(var i=0;i<7;i++){

@@ -863,7 +863,6 @@ function fillCodetexture(data){
 	
 	for(var i=0;i<data.length;i++){
 		//var qwe = data[i].wfirstchar;
-		
 		switch(data[i].codetypename)
 		{
 			case "玻璃":

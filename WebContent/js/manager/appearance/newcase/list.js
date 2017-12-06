@@ -66,8 +66,22 @@ $(document).on("click",".deletebtn",function(){
 	  $(".deleteOK").click(id,function(){
 		  debugger
 		  var url = delUrl + "?id=" + id;
-		  $.post(url);
-		  location.reload([true]);
+		  
+		  $.ajax({  
+		        type : "get",  
+		        async : false,  //同步请求  
+		        url : url,  
+//		        data : data,  
+		        timeout:1000,  
+		        success:function(data){  
+		            alert("删除成功！"); 
+		            location.reload([true]);
+		        	
+		        }, error: function() {  
+		            alert("失败，请稍后再试！");  
+		        }  
+		    }); 
+		  
 	  });
 });
 

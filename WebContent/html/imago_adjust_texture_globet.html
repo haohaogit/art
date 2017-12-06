@@ -21,11 +21,10 @@
 			float: left;
 			height: 37px;
 		}
-
 	</style>
 </head>
 <body>
-
+<script type="text/javascript" src="../js/imago.js"></script>
 <script type="text/javascript">
 		var timeid = 0;
         $(document).ready(function () {
@@ -38,22 +37,23 @@
 		  	var n2 = loc.indexOf("=");//取得=号的位置
 		  	timeid = decodeURI(loc.substr(n2+1, n1-n2));//从=号后面的内容 
 		  	var geneimg = "../image/gaojiaobeiTextureA_"+timeid+".jpg";
+		  	//var geneimg = "../image/gaojiaobei 1.jpg";
 		  	$(".picimg").attr("src",geneimg);
 		  	debugger;
-            /* $.ajax("gettexture?tname=高脚杯",
+            $.ajax("gettexture?tname=高脚杯",
             // 发送请求的URL字符串
             {
                 type: "get",      //
                 async:true,  //
                 success: function(data){
 				//alert("facade newcase goblet test length="+data.length);
-				filllunboTexture(data);
+				filllunboTextureGlobet(data);
 				//alert("successful")
                 },
                 error: function(){
-                    alert("数据发送失败denglu");
+                    alert("获取高脚杯材质示图失败！");
                 }
-            }); */
+            });
         });
 </script>
 	<!-- 	头部 -->
@@ -170,7 +170,7 @@
 	<script type="text/javascript" src="../js/lunbo.js"></script>
 	<script type="text/javascript">
 		function saveTexture(){
-			alert("高脚杯材质保存，然后调整部件");
+			//alert("高脚杯材质保存，然后调整部件");
 			window.location.href="imago_adjust_part_globet1.html?timeid="+timeid;
 		}
 
@@ -178,11 +178,27 @@
   			window.history.back(-1);
   		}
   		
-		$(".lunbo-item").click(function(){
-  			var ht = $(this).html();
-  			//$(ht).find('img').attr("src");
-  			//alert(ht);
-  			alert("图片名："+$(ht).attr('src')+",  修改该类型材质功能暂未实现！");
+		$(".lunbo-window").on("click",".TextureGlobet",function(){
+			debugger;
+			var ss = $(this).html();
+	        var src = $(ss).attr('src');
+	        //alert("src "+src);
+	        $.ajax("adjust/texture/globet/"+timeid+"?img="+src,
+	                // 发送请求的URL字符串
+	                {
+	                    type: "get",      //
+	                    async:true,  //
+	                    success: function(data){
+	    				//fillNewcaseHouseboat(data);
+	                    //debugger;
+	            		window.location.reload(); 
+	                    },
+	                    error: function(){
+	                        alert("数据发送失败denglu");
+	                    }
+	                });
+	        
+	        that.moveToCenter(index);
   		});
 
 		//圆角矩形
@@ -200,46 +216,7 @@
 		    return this;
 	}
 	</script>
-
-	<script type="text/javascript">
-
-		window.onload = function(){
-			var c=document.getElementById("myCanvas");
-			var cxt=c.getContext("2d");
-
-			var img=new Image();
-			img.src="../images/2.jpg";
-			img.onload = function(){
-				cxt.drawImage(img,10,50);
-			}
-
-		}
-	</script>
-
-	<script>
-		var c=document.getElementById("myCanvas");
-		var ctx=c.getContext("2d");
-		ctx.fillStyle="#00A5BD";
-		ctx.fillRect(0,0,150,36);
-	</script>
-	<script type="text/javascript">
 	
-		//获取Canvas对象(画布)
-		var canvas = document.getElementById("myCanvas");
-		//简单地检测当前浏览器是否支持Canvas对象，以免在一些不支持html5的浏览器中提示语法错误
-		if(canvas.getContext){  
-		    //获取对应的CanvasRenderingContext2D对象(画笔)
-		    var ctx = canvas.getContext("2d");
-		    
-		    //设置字体样式
-		    ctx.font = "18px Courier New";
-		    //设置字体填充颜色
-		    ctx.fillStyle = "white";
-		    //从坐标点(50,50)开始绘制文字
-		    ctx.fillText("材质方案预览", 20, 22);
-		}
-	</script>
-
 	<script type="text/javascript">
 	$("#geneContent").fadeOut(0);
 	$("#paramContent").fadeOut(0);

@@ -284,10 +284,16 @@ public class U_ModelSysController {
 		System.out.println("imgString "+imgString);
 		System.out.println("FabricTexturebackimg.get(timeid) "+FabricTexturebackimg.get(timeid));
 		System.out.println("adjPimg "+adjPimg);
+		String textureimg = "";
+		if(null==FabricTexturebackimg.get(timeid)){
+			textureimg = "C:/apache-tomcat-7.0.53/wtpwebapps/art0804/image/fabric (8).jpg";
+		}else{
+			textureimg = FabricTexturebackimg.get(timeid);
+		}
 		try {
             
             //设置命令行传入参数
-            String[] args = new String[] { "python", "C:\\firstDL_netEast\\scarvesColorGenColorImageMateriaFrame.py",colorgene[Nrgb],RgbNum.get(timeid),imgString,FabricTexturebackimg.get(timeid),adjPimg,timeid};
+            String[] args = new String[] { "python", "C:\\firstDL_netEast\\scarvesColorGenColorImageMateriaFrame.py",colorgene[Nrgb],RgbNum.get(timeid),imgString,textureimg,adjPimg,timeid};
             Process pr = Runtime.getRuntime().exec(args);
 
             BufferedReader in = new BufferedReader(new InputStreamReader(pr.getInputStream()));
@@ -384,19 +390,27 @@ public class U_ModelSysController {
 		//System.out.println("crgb111 "+crgb);
 		String[] s1 = img.split("/");
 		String timg = s1[s1.length-1];
+		textureimgMap.put(timeid, timg);
+		
+		System.out.println("textureimg= "+textureimgMap.get(timeid));
 		
 		//timg = "C:/firstDL_netEast/artgene/"+timg;
 		timg = "C:/apache-tomcat-7.0.53/wtpwebapps/art0804/image/"+timg;
 		backimg.put(timeid, timg);
 		System.out.println("timg "+timg);
 		
-		s1 = Rgb.split(",");
+		String rgbString ="";
+		if(null==RgbNum.get(timeid)){
+			rgbString = "15,79,149";
+		}else{
+			rgbString = RgbNum.get(timeid);
+		}
 		try {
             
             //System.out.println("start;;;" + a);
             //设置命令行传入参数
 			//System.out.println(minitemS+","+minitemK+","+minitemB+","+minitemD+","+Rgb);
-            String[] args = new String[] { "python", "C:\\firstDL_netEast\\boatAssembleMaterialTest.py",minitem.get(timeid),RgbNum.get(timeid),timg,timeid};
+            String[] args = new String[] { "python", "C:\\firstDL_netEast\\boatAssembleMaterialTest.py",minitem.get(timeid),rgbString,timg,timeid};
             //String[] args = new String[] { "python", "D:\\20170602\\PycharmProjects\\firstDL_netEast\\boatAssembleMaterialTest.py",minitem.get(timeid),RgbNum.get(timeid),timg,timeid};
             Process pr = Runtime.getRuntime().exec(args);
 
@@ -413,7 +427,60 @@ public class U_ModelSysController {
             e.printStackTrace();
         }
 		commandImg cimg = new commandImg();
-		cimg.setImg("../image/cookerTexture_"+timeid+".jpg");
+		cimg.setImg("../image/boatTexture_"+timeid+".jpg");
+		
+		//cimg.setImg1("../images/genestyle/Ccolor.png");
+		//cimg.setImg2("../images/genestyle/Ctexture1.png");
+		
+		return cimg;
+		
+	}
+	@RequestMapping("adjust/texture/globet/{timeid}")
+	@ResponseBody
+	public commandImg adjustTextureGlobet(@PathVariable String timeid,Model model,String img,String timid,HttpServletRequest request){
+		//System.out.println("crgb111 "+crgb);
+		String[] s1 = img.split("/");
+		String timg = s1[s1.length-1];
+		textureimgMap.put(timeid, timg);
+		
+		System.out.println("textureimg= "+textureimgMap.get(timeid));
+		
+		//timg = "C:/firstDL_netEast/artgene/"+timg;
+		timg = "C:/apache-tomcat-7.0.53/wtpwebapps/art0804/image/"+timg;
+		backimg.put(timeid, timg);
+		System.out.println("timg "+timg);
+		
+		String rgbString ="";
+		if(null==RgbNum.get(timeid)){
+			rgbString = "220,91,112";
+		}else{
+			rgbString = RgbNum.get(timeid);
+		}
+		String gaojiaobei = "C:/apache-tomcat-7.0.53/wtpwebapps/art0804/image/gaojiaobei_"+timeid+".jpg";
+		
+		try {
+            
+            //System.out.println("start;;;" + a);
+            //设置命令行传入参数
+			//System.out.println(minitemS+","+minitemK+","+minitemB+","+minitemD+","+Rgb);
+            String[] args = new String[] { "python", "C:\\firstDL_netEast\\GeneticAlgorithmTexture.py",gaojiaobei,rgbString,timg,timeid};
+            //String[] args = new String[] { "python", "D:\\20170602\\PycharmProjects\\firstDL_netEast\\boatAssembleMaterialTest.py",minitem.get(timeid),RgbNum.get(timeid),timg,timeid};
+            Process pr = Runtime.getRuntime().exec(args);
+
+            BufferedReader in = new BufferedReader(new InputStreamReader(pr.getInputStream()));
+            String line;
+            while ((line = in.readLine()) != null) {
+                //line = decodeUnicode(line);
+                System.out.println(line);
+            }
+            in.close();
+            //pr.waitFor();
+            System.out.println("end");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+		commandImg cimg = new commandImg();
+		cimg.setImg("../image/gaojiaobeiTexture_"+timeid+".jpg");
 		
 		//cimg.setImg1("../images/genestyle/Ccolor.png");
 		//cimg.setImg2("../images/genestyle/Ctexture1.png");
@@ -470,45 +537,7 @@ public class U_ModelSysController {
 		
 	}
 	
-	@RequestMapping("adjust/texture/globet/{timeid}")
-	@ResponseBody
-	public commandImg adjusttextureglobet(@PathVariable String timeid,Model model,String teximg,HttpServletRequest request){
-		System.out.println("globet "+teximg+"  "+timeid);
-		
-		String gaojiaobei = "C:/apache-tomcat-7.0.53/wtpwebapps/art0804/image/gaojiaobei_"+timeid+".jpg";
-		String textureimg = "C:/apache-tomcat-7.0.53/wtpwebapps/art0804/image/"+teximg;
-		System.out.println(gaojiaobei);
-		try {
-            //需传入的参数
-            
-            
-            //System.out.println("start;;;" + a);
-            //设置命令行传入参数
-            String[] args = new String[] { "python", "C:\\firstDL_netEast\\GeneticAlgorithmTexture.py",gaojiaobei,RgbNum.get(timeid),textureimg,timeid };
-            //String[] args = new String[] { "python", "D:\\20170602\\PycharmProjects\\firstDL_netEast\\boatAssembleColorTest.py",minitem.get(timeid),Rgb,timeid };
-            Process pr = Runtime.getRuntime().exec(args);
-
-            BufferedReader in = new BufferedReader(new InputStreamReader(pr.getInputStream()));
-            String line;
-            while ((line = in.readLine()) != null) {
-                //line = decodeUnicode(line);
-                System.out.println(line);
-            }
-            in.close();
-            //pr.waitFor();
-            System.out.println("end");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-		commandImg cimg = new commandImg();
-		cimg.setImg("../image/gaojiaobeiColorA_"+timeid+".jpg");
-		
-		//cimg.setImg1("../images/genestyle/Ccolor.png");
-		//cimg.setImg2("../images/genestyle/Ctexture1.png");
-		
-		return cimg;
-		
-	}
+	
 	
 	@RequestMapping("adjust/color/gascooker/{colorimg}/{timeid}")
 	@ResponseBody
@@ -549,11 +578,13 @@ public class U_ModelSysController {
 		
 	}
 	
-	@RequestMapping("adjust/color/houseboat/{timeid}")
+	@RequestMapping("adjust/color/houseboat/{colorimg}/{timeid}")
 	@ResponseBody
-	public commandImg adjustColorBoat(@PathVariable String timeid,Model model,String crgb,HttpServletRequest request){
+	public commandImg adjustColorBoat(@PathVariable String colorimg,@PathVariable String timeid,Model model,String crgb,HttpServletRequest request){
 		System.out.println("boat "+crgb);
 		System.out.println("minitem.get(timeid) "+minitem.get(timeid));
+		colorimgMap.put(timeid, colorimg);
+		System.out.println("colorimg= "+colorimgMap.get(timeid));
 		
 		try {
             //需传入的参数
@@ -624,10 +655,12 @@ public class U_ModelSysController {
 		
 	}
 	
-	@RequestMapping("adjust/color/globet/{timeid}")
+	@RequestMapping("adjust/color/globet/{colorimg}/{timeid}")
 	@ResponseBody
-	public commandImg adjustColorglobet(@PathVariable String timeid,Model model,String crgb,HttpServletRequest request){
+	public commandImg adjustColorglobet(@PathVariable String colorimg,@PathVariable String timeid,Model model,String crgb,HttpServletRequest request){
 		System.out.println("globet "+crgb+"  "+timeid);
+		colorimgMap.put(timeid, colorimg);
+		System.out.println("colorimg= "+colorimgMap.get(timeid));
 		
 		String gaojiaobei = "C:/apache-tomcat-7.0.53/wtpwebapps/art0804/image/gaojiaobei_"+timeid+".jpg";
 		System.out.println(gaojiaobei);
@@ -971,19 +1004,21 @@ public class U_ModelSysController {
 			break;
 		}
 		NewCase newCase = new NewCase();
-		
+		System.out.println("timeid "+timeid);
 		newCase.setTid(tid);
 		newCase.setNewcasename(caseName+"_"+timeid);
 		newCase.setNewcasearg(scoreNum.get(timeid));
 		
 		newCase.setNewcaseimg("cookerPartA_"+timeid+".jpg");
 		
-		newCase.setNewcasercolor("RGB值000000.jpg");
+		newCase.setNewcasercolor("R0G0B0.jpg");
 		newCase.setNewcasertexture("maskboardD2RGB229.229.229.jpg");
 		newCase.setNewcasertotal("cookerPart_"+timeid+".jpg");
 		newCase.setNewcaseroutline("cooker_"+timeid+".jpg");
-		System.out.println(colorimgMap.get(timeid));
+		
+		System.out.println("colorimg :"+colorimgMap.get(timeid));
 		System.out.println(textureimgMap.get(timeid));
+		
 		newCase.setNewcaseacolor(colorimgMap.get(timeid));
 		newCase.setNewcaseaoutline("cooker_"+timeid+".jpg");
 		newCase.setNewcaseatexture(textureimgMap.get(timeid));
@@ -1045,13 +1080,25 @@ public class U_ModelSysController {
 		newCase.setNewcaseimg("fabricPartA_"+timeid+".jpg");
 		
 		newCase.setNewcasercolor("3Colors_Template0_"+timeid+".jpg");
-		newCase.setNewcasertexture("纱布.jpg");
+		newCase.setNewcasertexture("fabric (1).jpg");
 		newCase.setNewcasertotal("fabricPart_"+timeid+".jpg");
 		newCase.setNewcaseroutline("fabric_"+timeid+".jpg");
 		
-		newCase.setNewcaseacolor(colorimgMap.get(timeid));
+		if(null==colorimgMap.get(timeid)){
+			newCase.setNewcaseacolor("3Colors_Template0_"+timeid+".jpg");
+		}else{
+			newCase.setNewcaseacolor(colorimgMap.get(timeid));
+		}
+		if(null==textureimgMap.get(timeid)){
+			newCase.setNewcaseatexture("fabric (1).jpg");
+		}else{
+			newCase.setNewcaseatexture(textureimgMap.get(timeid));
+		}
+		
+		
 		newCase.setNewcaseaoutline("fabric_"+timeid+".jpg");
-		newCase.setNewcaseatexture(textureimgMap.get(timeid));
+		
+		
 		newCase.setNewcaseatotal("fabricPartA_"+timeid+".jpg");
 		
 		int isok = newCaseService.insertSelective(newCase);
@@ -1218,8 +1265,6 @@ public class U_ModelSysController {
 			tid = typeIdName.getTid();
 			break;
 		}
-		
-		
 		String imgdata = request.getParameter("imgdata");
 		//String[] str = imgdata.split("/");
 		
@@ -1242,15 +1287,25 @@ public class U_ModelSysController {
 		
 		newCase.setNewcaseimg("cookerPartA_"+timeid+".jpg");
 		
-		newCase.setNewcasercolor("RGB值000000.jpg");
+		newCase.setNewcasercolor("R0G0B0.jpg");
 		newCase.setNewcasertexture("maskboardD2RGB229.229.229.jpg");
 		newCase.setNewcasertotal("cookerPart_"+timeid+".jpg");
 		newCase.setNewcaseroutline("cooker_"+timeid+".jpg");
 		System.out.println(colorimgMap.get(timeid));
 		System.out.println(textureimgMap.get(timeid));
-		newCase.setNewcaseacolor(colorimgMap.get(timeid));
+		if(null==colorimgMap.get(timeid)){
+			newCase.setNewcaseacolor("R0G0B0.jpg");
+		}else{
+			newCase.setNewcaseacolor(colorimgMap.get(timeid));
+		}
+		if(null==textureimgMap.get(timeid)){
+			newCase.setNewcaseatexture("maskboardD2RGB229.229.229.jpg");
+		}else{
+			newCase.setNewcaseatexture(textureimgMap.get(timeid));
+		}
+		
 		newCase.setNewcaseaoutline("cooker_"+timeid+".jpg");
-		newCase.setNewcaseatexture(textureimgMap.get(timeid));
+		
 		newCase.setNewcaseatotal("cookerPartA_"+timeid+".jpg");
 		
 		
@@ -1301,6 +1356,115 @@ public class U_ModelSysController {
         }  */
         
 		System.out.println("myname is 33333333333333333333  "+imgdata);
+		return "1";
+		//return "manager/testlogin";
+	}
+	
+	@RequestMapping("partAddBoat/{caseName}/{timeid}")
+	@ResponseBody
+	public String modelPartAdjustBost(@PathVariable String caseName,@PathVariable String timeid,Model model,String tname,HttpServletRequest request){
+		List<typeIdName> typeIdNames = typeService.selectAllByName(tname);
+		int tid = 0;
+		for (typeIdName typeIdName : typeIdNames) {
+			tid = typeIdName.getTid();
+			break;
+		}
+		String imgdata = request.getParameter("imgdata");
+		//String[] str = imgdata.split("/");
+		
+		  //输出base64 数据,截取","之后的值进行转换
+        String str = imgdata.substring(imgdata.indexOf(",")+1);
+        //System.currentTimeMillis()意思是获取当前系统的时间戳给图片命名
+        //实例化Base64转换类  调用里面的GenerateImage方法（把base64数据转为图片）
+        //第一个参数base64转图片的必须的base64数据，第二个是转换后生成的图片存放路径
+        //base64.GenerateImage(str, "D:/2017/"+System.currentTimeMillis()+".jpg");
+        base64.GenerateImage(str, "C:/apache-tomcat-7.0.53/wtpwebapps/art0804/image/boatPartA_"+timeid+".jpg");
+        
+        
+		NewCase newCase = new NewCase();
+		
+		newCase.setTid(tid);
+		newCase.setNewcasename(caseName+"_"+timeid);
+		newCase.setNewcasearg(scoreNum.get(timeid));
+		
+		newCase.setNewcaseimg("boatPartA_"+timeid+".jpg");
+		
+		newCase.setNewcasercolor("R15G79B149_1512385296750.jpg");
+		newCase.setNewcasertexture("M22.jpg");
+		
+		newCase.setNewcasertotal("boatPart_"+timeid+".jpg");
+		newCase.setNewcaseroutline("boat_"+timeid+".jpg");
+		System.out.println(colorimgMap.get(timeid));
+		System.out.println(textureimgMap.get(timeid));
+		if(null==colorimgMap.get(timeid)){
+			newCase.setNewcaseacolor("R15G79B149_1512385296750.jpg");
+		}else{
+			newCase.setNewcaseacolor(colorimgMap.get(timeid));
+		}
+		if(null==textureimgMap.get(timeid)){
+			newCase.setNewcaseatexture("M22.jpg");
+		}else{
+			newCase.setNewcaseatexture(textureimgMap.get(timeid));
+		}
+		
+		newCase.setNewcaseaoutline("boat_"+timeid+".jpg");
+		
+		newCase.setNewcaseatotal("boatPartA_"+timeid+".jpg");
+		
+		
+		int isok = newCaseService.insertSelective(newCase);
+       
+		System.out.println("myname is houseboat  "+imgdata);
+		return "1";
+		//return "manager/testlogin";
+	}
+	
+	@RequestMapping("partAddGlobet/{caseName}/{timeid}")
+	@ResponseBody
+	public String modelPartAdjustGlobet(@PathVariable String caseName,@PathVariable String timeid,Model model,String tname,HttpServletRequest request){
+		List<typeIdName> typeIdNames = typeService.selectAllByName(tname);
+		int tid = 0;
+		for (typeIdName typeIdName : typeIdNames) {
+			tid = typeIdName.getTid();
+			break;
+		}
+		String imgdata = request.getParameter("imgdata");
+		//String[] str = imgdata.split("/");
+		  //输出base64 数据,截取","之后的值进行转换
+        String str = imgdata.substring(imgdata.indexOf(",")+1);
+        base64.GenerateImage(str, "C:/apache-tomcat-7.0.53/wtpwebapps/art0804/image/gaojiaobeiPartA_"+timeid+".jpg");
+        
+        
+		NewCase newCase = new NewCase();
+		
+		newCase.setTid(tid);
+		newCase.setNewcasename(caseName+"_"+timeid);
+		newCase.setNewcasearg(scoreNum.get(timeid));
+		
+		newCase.setNewcaseimg("gaojiaobeiPartA_"+timeid+".jpg");
+		
+		newCase.setNewcasercolor("RGBd07f9cfenhongse.jpg");
+		newCase.setNewcasertexture("M21shuijingcaizhi-moren.jpg");
+		
+		newCase.setNewcasertotal("gaojiaobeiPart_"+timeid+".jpg");
+		newCase.setNewcaseroutline("boat_"+timeid+".jpg");
+		System.out.println(colorimgMap.get(timeid));
+		System.out.println(textureimgMap.get(timeid));
+		if(null==colorimgMap.get(timeid)){
+			newCase.setNewcaseacolor("RGBd07f9cfenhongse.jpg");
+		}else{
+			newCase.setNewcaseacolor(colorimgMap.get(timeid));
+		}
+		if(null==textureimgMap.get(timeid)){
+			newCase.setNewcaseatexture("M21shuijingcaizhi-moren.jpg");
+		}else{
+			newCase.setNewcaseatexture(textureimgMap.get(timeid));
+		}
+		newCase.setNewcaseaoutline("gaojiaobei_"+timeid+".jpg");
+		newCase.setNewcaseatotal("gaojiaobeiPartA_"+timeid+".jpg");
+		
+		int isok = newCaseService.insertSelective(newCase);
+		System.out.println("myname is houseboat  "+imgdata);
 		return "1";
 		//return "manager/testlogin";
 	}

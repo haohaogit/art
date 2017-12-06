@@ -24,13 +24,13 @@
       <tr>
         <td width="34%" align="right" valign="middle" class="thick"><span class="word_style2">用户名：</span></td>
         <td colspan="2" align="left" valign="middle">
-          <input  name="account" id="account"type="text" class="form-control x319 in "  value="administrator"  />
+          <input  name="account" id="account"type="text" class="form-control x319 in "  value="" placeholder="账号" />
         </td>
       </tr>
       <tr>
         <td align="right" valign="middle" class="thick"><span class="word_style2">密码：</span></td>
         <td colspan="2" align="left" valign="middle">
-          <input  name="password" id="password"   type="password" class="form-control x319 in " value="123456"  />
+          <input  name="password" id="password"   type="password" class="form-control x319 in " value=""  placeholder="密码" />
         </td>
       </tr>
       <tr>

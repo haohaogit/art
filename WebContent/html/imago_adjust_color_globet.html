@@ -213,14 +213,16 @@
 			debugger;
 			var index = parseInt($(this).attr('data-itemid'));
 	        var ss = $(this).html();
+	        var src = $(ss).attr('src');
+	        var c1 = src.split("/");
+	        var c2 = c1[2];
 	        
-	       /*  var src = $(ss).attr('src');
-	        var colorimg = src.split(".");
-	        var cimg = colorimg[0]; */
+	        var colorimg = c2;
+	        
 	        var crgb = $(ss).attr('alt');
 	        //alert("crgb "+crgb);
 	        //alert("timeid "+timeid);
-	        $.ajax("adjust/color/globet/"+timeid+"?crgb="+crgb,
+	        $.ajax("adjust/color/globet/"+colorimg+"/"+timeid+"?crgb="+crgb,
 	                // 发送请求的URL字符串
 	                {
 	                    type: "get",      //

@@ -170,13 +170,16 @@
 
 	<script type="text/javascript">
 		$(".lunbo-window").on("click",".Cboat",function(){
-			debugger;
-			//var index = parseInt($(this).attr('data-itemid'));
+			var index = parseInt($(this).attr('data-itemid'));
 	        var ss = $(this).html();
+	        var src = $(ss).attr('src');
+	        var c1 = src.split("/");
+	        var c2 = c1[2];
+	        
+	        var colorimg = c2;
+	        
 	        var crgb = $(ss).attr('alt');
-	        //alert("crgb "+crgb);
-	        //alert("timeid "+timeid);
-	        $.ajax("adjust/color/houseboat/"+timeid+"?crgb="+crgb,
+	        $.ajax("adjust/color/houseboat/"+colorimg+"/"+timeid+"?crgb="+crgb,
 	                // 发送请求的URL字符串
 	                {
 	                    type: "get",      //

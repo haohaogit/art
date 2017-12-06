@@ -25,6 +25,7 @@
 	</style>
 </head>
 <body>
+<script type="text/javascript" src="../js/imago.js"></script>
 <script type="text/javascript">
 		var timeid;
         $(document).ready(function () {
@@ -40,20 +41,20 @@
 		  	//var geneimg = "../image/cooker.jpg";
 		  	$(".picimg2").attr("src",geneimg);
 		  	debugger;
-           /*  $.ajax("getpart?tname=游艇",
+           $.ajax("getpart?tname=游艇",
             // 发送请求的URL字符串
             {
                 type: "get",      //
                 async:true,  //
                 success: function(data){
 				//alert("facade newcase goblet test length="+data.length);
-				filllunboPart(data);
+				filllunboPartBoat(data);
 				//alert("successful")
                 },
                 error: function(){
                     alert("数据发送失败denglu");
                 }
-            }); */
+            });
         });
 </script>
 	<!-- 	头部 -->
@@ -119,7 +120,7 @@
 			</div> -->
 			<div id="picGene1" style="" >
 				<div class="picfont" style="background:#00A5BD;width:145px; height:37px; ">
-					部件方案预览1
+					部件方案预览
 				</div>
 				<div>
 					<div style="margin-left: 89px;">
@@ -173,7 +174,8 @@
 			</div>
 
 			<div id="geneBottomBtn">
-				<button type="submit" id="jpegbutton" class="save" onclick="savePart1()">确定</button>
+				<!-- <button type="submit" id="jpegbutton" class="save" onclick="savePart1()">确定</button> -->
+				<button type="submit" id="save" onclick="savePart1()">确定</button>
 				<button type="submit" class="cancel">取消</button>
 				<button type="submit" class="cancel" onclick="returned()">返回上一步</button>
 			</div>
@@ -193,14 +195,15 @@
 			window.history.back(-1);
 		}
 		
-		$(".lunbo-item").click(function(){
+		$(".lunbo-window").on("click",".LPart",function(){
+			
 			var ht = $(this).html();
-			
-			$("#img0").attr("src",$(ht).attr('src'));
+			$("#img0").attr("src",$(ht).attr("src"));
 			canvas1.renderAll();
-			//alert($(ht).attr('src'));
 			
-		});
+			debugger;
+			
+		}); 
 		var canvas1;
 		var CanvasDemo = function() {
 			var YD = YAHOO.util.Dom;
@@ -225,7 +228,6 @@
 						canvas1._aImages[i].setCornersVisibility(this.cornersvisible);
 					}
 					canvas1.renderAll();
-					loadtitle();
 					
 					this.initEvents();
 				},
@@ -271,7 +273,26 @@
 				},
 				convertTo: function(format) {
 					var imgData = canvas1.canvasTo(format);
-					window.open(imgData, "_blank");
+					debugger;
+					var caseName = $("#account1").val();
+					$.ajax("partAddBoat/"+caseName+"/"+timeid+"?tname=游艇",
+			                // 发送请求的URL字符串
+			                {
+			                    type: "post",      //
+			                    async:true,  //
+			                    data: {imgdata:imgData},  
+			                    success: function(data){
+									alert("save success");
+									window.location.href = "facade_new_houseboat.html";
+									//fillNewcase(data);
+			                    }
+			                    /* error: function(XMLHttpRequest, textStatus, errorThrown){
+			                    	 alert("请求对象XMLHttpRequest: "+XMLHttpRequest);  
+			                         alert("错误类型textStatus: "+textStatus);  
+			                         alert("异常对象errorThrown: "+errorThrown);  
+			                         alert("数据发送失败denglu0000");
+			                    } */
+			                });
 				},
 				whatever: function(e, o) {
 					// console.log(e);
@@ -305,15 +326,14 @@
 		YAHOO.util.Event.on(window, 'load', CanvasDemo.init, CanvasDemo, true);
 		
 		function savePart1(){
+			debugger;
 			$("body").append("<div id='mask'></div>");
 	        $("#mask").addClass("mask").fadeIn("slow");
 	        $("#LoginBox1").fadeIn("slow");
 		}
 		
-		function savePart(){
+		/* function savePart(){
 			//alert("游艇部件保存，然后调整色彩");
-			
-			
 			var caseName = $("#account1").val();
 			//alert("newcount "+caseName);
 			$.ajax("save/houseboat/"+timeid+"/"+caseName,
@@ -322,7 +342,6 @@
                 type: "get",      //
                 async:true,  //
                 success: function(data){
-        		//window.location.reload(); 
 				alert("save success   ");
 				window.location.href = "facade_new_houseboat.html";
                 },
@@ -330,12 +349,9 @@
                     alert("数据发送失败denglu");
                 }
             });
-		}
+		} */
 		
-		var c=document.getElementById("canvid1");
-		var ctx=c.getContext("2d");
-		ctx.fillStyle="#00A5BD";
-		ctx.fillRect(0,0,150,36);
+		
 	</script>
 	
 	<script type="text/javascript">
@@ -408,12 +424,16 @@
   			
   			document.getElementById('beidu').style.backgroundColor='#00A5BD';
     		document.getElementById('beibing').style.backgroundColor='#a39f9f';
+    		
+    		$(".lunbo-window").html(boatHtml1);
+  			AddCarousel();
   		});
   		$("#beibing1").click(function(){
   			
     		document.getElementById('beibing').style.backgroundColor='#00A5BD';
     		document.getElementById('beidu').style.backgroundColor='#a39f9f';
-    		
+    		$(".lunbo-window").html(boatHtml2);
+  			AddCarousel();
   		});
   		
 	</script>
