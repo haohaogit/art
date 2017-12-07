@@ -25,16 +25,18 @@
 									<button type="button" class="btn btn-link chooseTypebtn" myid="${type.tid }" >${type.tname }</button>  
 						</c:forEach>
 				</div>
-				<div class="mydiv"  id="SurveyType">调查类型
-						<button type="button" class="btn btn-link orange choosebtn" surveytypename="wordsurvey" myname="意象词汇降维调查" >意象词汇降维调查</button>  
-						<button type="button" class="btn btn-link choosebtn" surveytypename="wordresult" myname="词汇降维调查结果" >词汇降维调查结果</button>  
-						<button type="button" class="btn btn-link choosebtn" surveytypename="connectsurvey" myname="意象造型关联" >意象造型关联</button>  
-						<button type="button" class="btn btn-link  choosebtn" surveytypename="connectresult" myname="造型关联调查结果" >造型关联调查结果</button>  
-						<button type="button" class="btn btn-link choosebtn" surveytypename="algorithms" myname="意象造型关联算法" >意象造型关联算法</button>  
-						<button type="button" class="btn btn-link choosebtn" surveytypename="ratio" myname="检查匹配率" >检查匹配率</button>  
+				<div class="mydiv mydiv1"  id="SurveyType">调查类型
+						<button type="button" class="btn btn-link orange choosebtn" surveytypename="wordsurvey" myname="意象映射造型调查问卷" >意象映射造型调查问卷</button>  
+						<button type="button" class="btn btn-link choosebtn" surveytypename="wordresult" myname="意象映射造型调查问卷原始数据" >意象映射造型调查问卷原始数据</button>  
+						<button type="button" class="btn btn-link choosebtn" surveytypename="connectsurvey" myname="意象映射造型验证调查问卷" >意象映射造型验证调查问卷</button>  
+						<button type="button" class="btn btn-link  choosebtn" surveytypename="connectresult" myname="意象映射造型验证调查问卷原始数据" >意象映射造型验证调查问卷原始数据</button>  
+						<button type="button" class="btn btn-link choosebtn" surveytypename="ratio" myname="正交分析SPSS原文件" >正交分析SPSS原文件</button> 
+						<button type="button" class="btn btn-link choosebtn" surveytypename="choosesurvey" myname="联合分析SPSS原文件" style="margin-left: 59px;">联合分析SPSS原文件</button> 
+						<button type="button" class="btn btn-link choosebtn" surveytypename="algorithms" myname="PYTHON算法程序代码" style="margin-left: 5px;">PYTHON算法程序代码</button>  
+						 
 				</div>
 				<br>
-				<div class="mydiv gray-background"  id="questionTitle">意象词汇降维调查	</div> 
+				<div class="mydiv gray-background"  id="questionTitle">意象映射造型调查问卷	</div> 
 				<div class="mydiv"  id="SurveyDetial" style=" width: initial;height: initial;" >
 						<br>
 						<form:hidden path="tid"   class="form-control " />
@@ -43,8 +45,10 @@
 						<form:hidden path="wordresult"   class="form-control " />
 						<form:hidden path="connectsurvey"   class="form-control " />
 						<form:hidden path="connectresult"   class="form-control " />
-						<form:hidden path="algorithms"   class="form-control " />
 						<form:hidden path="ratio"   class="form-control " />
+						<form:hidden path="choosesurvey"   class="form-control " />
+						<form:hidden path="algorithms"   class="form-control " />
+						
 						
 <!-- 							<div class="input-group"> -->
 <%-- 							<img src="${contextPath}/manager/yuyi/basicSemantic/delete.png" class="deleteimg" style="width: 9px;" /> --%>

@@ -4,7 +4,7 @@ var deletepng=contextPath +"/manager/yuyi/basicSemantic/delete.png";
 debugger
 $("#producttype button").first().addClass("orange");
 tid=$("#producttype button").first().attr("myid");
-$('#questionTitle').html("意象词汇降维调查");
+$('#questionTitle').html("意象词汇降维调查问卷");
 var surveytypename="wordsurvey"; 
 //动态增加input输入框
 var addHtml="";

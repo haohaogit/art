@@ -120,6 +120,15 @@ color:#000; /*无链接时颜色*/
  	padding-right:27px; 
  	line-height:42px; 
 }
+.mydiv1 {
+	border:1px;
+	border-color: #cccccc;
+	border-style:solid;
+ 	height:88px; 
+ 	padding-left:27px; 
+ 	padding-right:27px; 
+ 	line-height:42px; 
+}
 .position-for-head2 {
  	padding-left: 32px;
     padding-top: 15px;
