@@ -162,19 +162,19 @@
 			  	$("#"+txt).css("color","#00a5bd");
 			  	var tname="高脚杯";
 	        	if("newGoble"==txt){
-			  		alert("问卷调查与检验-高脚杯");
+			  		//alert("问卷调查与检验-高脚杯");
 			  		var tname="高脚杯";
 			  	}
 			  	if("newYacht"==txt){
-			  		alert("问卷调查与检验-游艇");
+			  		//alert("问卷调查与检验-游艇");
 			  		var tname="游艇";
 			  	}
 			  	if("newHanky"==txt){
-			  		alert("问卷调查与检验-织物");
+			  		//alert("问卷调查与检验-织物");
 			  		var tname="织物";
 			  	}
 			  	if("newRange"==txt){
-			  		alert("问卷调查与检验-燃气灶");
+			  		//alert("问卷调查与检验-燃气灶");
 			  		var tname="燃气灶";
 			  	}
 			  //请求物件类型
@@ -207,7 +207,7 @@
 				</a>
 				<ul id="baseContent">
 					<li><a href="javascript:void(0)" id="firstChar" class="facade1">首字母分类</a></li>
-					<li><a href="javascript:void(0)" id="vocubulary" class="facade1">词汇类型分类</a></li>
+					<!-- <li><a href="javascript:void(0)" id="vocubulary" class="facade1">词汇类型分类</a></li> -->
 				</ul>
 			</div>
 			<div class="code type2">
@@ -264,21 +264,24 @@
 						<div class="hengStep1 recom c2" onclick="window.open(this.getAttribute('data-url'))" data-url="">
 							<div><img class="imgfabric" src=""  /></div>
 							<div class="lunkuo2">
-								<div class="descri1" >意象映射造型调查问卷原始数据</div>
+								<div class="descri1" >意象映射造型调查问卷</div>
+								<div class="descri1" >原始数据</div>
 							</div>
 						</div>
 
 						<div class="hengStep1 recom c3" onclick="window.open(this.getAttribute('data-url'))" data-url="">
 							<div><img class="imgfabric" src=""  /></div>
 							<div class="lunkuo2">
-								<div class="descri1" >意象映射造型验证调查问卷</div>
+								<div class="descri1" >意象映射造型验证调查</div>
+								<div class="descri1" >问卷</div>
 							</div>
 						</div>
 
 						<div class="hengStep1 recom c4" onclick="window.open(this.getAttribute('data-url'))" data-url="">
 							<div><img class="imgfabric" src=""  /></div>
 							<div class="lunkuo2">
-								<div class="descri1" >意象映射造型验证调查问卷原始数据</div>
+								<div class="descri1" >意象映射造型验证调查</div>
+								<div class="descri1" >问卷原始数据</div>
 							</div>
 						</div>
 					</div>
@@ -362,7 +365,7 @@
 	$("#newGoblet").click(function(){
   			$(".imgicon").attr('src',"../image/golbet.png");
   			 //请求物件类型
-		  	$.ajax("corpus/question?tname=gao",
+		  	$.ajax("corpus/question?tname=高脚杯",
 	                // 发送请求的URL字符串
 	                {
 	                    type: "get",      //
@@ -379,7 +382,7 @@
 	$("#newRange").click(function(){
   			$(".imgicon").attr('src',"../image/gascooker.png");
   			 //请求物件类型
-		  	$.ajax("corpus/question?tname=ran",
+		  	$.ajax("corpus/question?tname=燃气灶",
 	                // 发送请求的URL字符串
 	                {
 	                    type: "get",      //
@@ -396,7 +399,7 @@
   		});
 	$("#newYacht").click(function(){
   			$(".imgicon").attr('src',"../image/houseboat.png");
-  			$.ajax("corpus/question?tname=you",
+  			$.ajax("corpus/question?tname=游艇",
 	                // 发送请求的URL字符串
 	                {
 	                    type: "get",      //
@@ -413,7 +416,7 @@
   		});
 	$("#newHanky").click(function(){
   			$(".imgicon").attr('src',"../image/fabric.png");
-  			$.ajax("corpus/question?tname=zhi",
+  			$.ajax("corpus/question?tname=织物",
 	                // 发送请求的URL字符串
 	                {
 	                    type: "get",      //

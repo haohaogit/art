@@ -517,8 +517,6 @@ function fillquestionHref(data){
 	$('.hengStep2').eq(1).attr('data-url',data.ratio);
 	$('.hengStep2').eq(2).attr('data-url',data.algorithms);
 	
-	
-	
 	/*
 	$('.hengStep1').eq(2).click(function(){
 		alert("data.connectsurvey");

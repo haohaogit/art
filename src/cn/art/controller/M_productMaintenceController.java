@@ -240,74 +240,141 @@ public class M_productMaintenceController {
 		List<Survey> surveys = new ArrayList<Survey>();
 		Integer tid = item.getTid();
 		if (tid != null) {
-			List<BottomCaseType> bottomCaseTypeList = bottomCaseTypeService.selectByTID(tid);
-			for (BottomCaseType BottomCaseType : bottomCaseTypeList) {
-				bottomCaseTypeService.deleteByPrimaryKey(BottomCaseType.getBctid());
-			}
-			List<OutLineType> outLineTypeList = outLineTypeService.selectByTID(tid);
-			for (OutLineType OutLineType : outLineTypeList) {
-				outLineTypeService.deleteByPrimaryKey(OutLineType.getOtid());
-			}
-			List<ColorType> colorTypeList = colorTypeService.selectByTID(tid);
-			for (ColorType ColorType : colorTypeList) {
-				colorTypeService.deleteByPrimaryKey(ColorType.getCbid());
-			}
-			List<PartType> partTypeList = partTypeService.selectByTID(tid);
-			for (PartType PartType : partTypeList) {
-				partTypeService.deleteByPrimaryKey(PartType.getPbid());
-			}
-			List<TextureType> textureTypeList = textureTypeService.selectByTID(tid);
-			for (TextureType TextureType : textureTypeList) {
-				textureTypeService.deleteByPrimaryKey(TextureType.getTtid());
-			}
-			// 现有tid才能存类型！
 			if (bottomCaseTypes != null) {
+				List<BottomCaseType> bottomCaseTypeList = bottomCaseTypeService.selectByTID(tid);
 				String[] bottomCaseTypeArray = bottomCaseTypes.split(",");
+				System.out.println("test list0 "+bottomCaseTypeList.get(0).getBctid());
+				System.out.println("test list1 "+bottomCaseTypeList.get(1).getBctid());
+				System.out.println("test list size "+bottomCaseTypeList.size());
+				int i = 0;
 				for (String Type : bottomCaseTypeArray) {
-					BottomCaseType bottomCaseType = new BottomCaseType();
-					bottomCaseType.setTid(tid);
-					bottomCaseType.setBctname(Type);
-					bottomCaseTypeService.insert(bottomCaseType);
+					//如果数据库表中已有相应的记录，则先对已有的记录更新，多于的再进行插入数据库表操作
+					if(i<bottomCaseTypeList.size()){
+						BottomCaseType bottomCaseType = new BottomCaseType();
+						bottomCaseType.setTid(tid);
+						bottomCaseType.setBctname(Type);
+						bottomCaseType.setBctid(bottomCaseTypeList.get(i).getBctid());
+						bottomCaseTypeService.updateByPrimaryKey(bottomCaseType);
+						i++;
+					}else{
+						BottomCaseType bottomCaseType = new BottomCaseType();
+						bottomCaseType.setTid(tid);
+						bottomCaseType.setBctname(Type);
+						bottomCaseTypeService.insert(bottomCaseType);
+					}
+				}
+				//如果数据表中的记录数多于新编辑的数量，则删除数据表中多于的记录
+				if(i<bottomCaseTypeList.size()){
+					for(int k = i;k<bottomCaseTypeList.size();k++){
+						bottomCaseTypeService.deleteByPrimaryKey(bottomCaseTypeList.get(k).getBctid());
+					}
 				}
 			}
+			
 			if (outLineTypes != null) {
+				List<OutLineType> outLineTypeList = outLineTypeService.selectByTID(tid);
 				String[] outLineTypeArray = outLineTypes.split(",");
+				int i = 0;
 				for (String Type : outLineTypeArray) {
-					OutLineType outLineType = new OutLineType();
-					outLineType.setTid(tid);
-					outLineType.setOname(Type);
-					outLineTypeService.insert(outLineType);
+					if(i<outLineTypeList.size()){
+						OutLineType outLineType = new OutLineType();
+						outLineType.setTid(tid);
+						outLineType.setOname(Type);
+						outLineType.setOtid(outLineTypeList.get(i).getOtid());
+						outLineTypeService.updateByPrimaryKey(outLineType);
+						i++;
+					}else{
+						OutLineType outLineType = new OutLineType();
+						outLineType.setTid(tid);
+						outLineType.setOname(Type);
+						outLineTypeService.insert(outLineType);
+					}
+				}
+				if(i<outLineTypeList.size()){
+					for(int k = i;k<outLineTypeList.size();k++){
+						outLineTypeService.deleteByPrimaryKey(outLineTypeList.get(k).getOtid());
+					}
 				}
 			}
+			
 			if (colorTypes != null) {
+				List<ColorType> colorTypeList = colorTypeService.selectByTID(tid);
 				String[] colorTypeArray = colorTypes.split(",");
+				int i = 0;
 				for (String Type : colorTypeArray) {
-					ColorType colorType = new ColorType();
-					colorType.setTid(tid);
-					colorType.setCbname(Type);
-					colorTypeService.insert(colorType);
+					if(i<colorTypeList.size()){
+						ColorType colorType = new ColorType();
+						colorType.setTid(tid);
+						colorType.setCbname(Type);
+						colorType.setCbid(colorTypeList.get(i).getCbid());
+						colorTypeService.updateByPrimaryKey(colorType);
+						i++;
+					}else{
+						ColorType colorType = new ColorType();
+						colorType.setTid(tid);
+						colorType.setCbname(Type);
+						colorTypeService.insert(colorType);
+					}
+				}
+				if(i<colorTypeList.size()){
+					for(int k = i;k<colorTypeList.size();k++){
+						colorTypeService.deleteByPrimaryKey(colorTypeList.get(k).getCbid());
+					}
 				}
 			}
+			
 			if (partTypes != null) {
+				List<PartType> partTypeList = partTypeService.selectByTID(tid);
 				String[] partTypeArray = partTypes.split(",");
+				int i = 0;
 				for (String Type : partTypeArray) {
-					PartType partType = new PartType();
-					partType.setTid(tid);
-					partType.setPbname(Type);
-					partTypeService.insert(partType);
+					if(i<partTypeList.size()){
+						PartType partType = new PartType();
+						partType.setTid(tid);
+						partType.setPbname(Type);
+						partType.setPbid(partTypeList.get(i).getPbid());
+						partTypeService.updateByPrimaryKey(partType);
+						i++;
+					}else{
+						PartType partType = new PartType();
+						partType.setTid(tid);
+						partType.setPbname(Type);
+						partTypeService.insert(partType);
+					}
+				}
+				if(i<partTypeList.size()){
+					for(int k = i;k<partTypeList.size();k++){
+						partTypeService.deleteByPrimaryKey(partTypeList.get(k).getPbid());
+					}
 				}
 			}
-
+			
 			if (textureTypes != null) {
+				List<TextureType> textureTypeList = textureTypeService.selectByTID(tid);
 				String[] textureTypeArray = textureTypes.split(",");
+				int i = 0;
 				for (String Type : textureTypeArray) {
-					TextureType textureType = new TextureType();
-					textureType.setTid(tid);
-					textureType.setTtname(Type);
-					textureTypeService.insert(textureType);
+					if(i<textureTypeList.size()){
+						TextureType textureType = new TextureType();
+						textureType.setTid(tid);
+						textureType.setTtname(Type);
+						textureType.setTtid(textureTypeList.get(i).getTtid());
+						textureTypeService.updateByPrimaryKey(textureType);
+						i++;
+					}else{
+						TextureType textureType = new TextureType();
+						textureType.setTid(tid);
+						textureType.setTtname(Type);
+						textureTypeService.insert(textureType);
+					}
+				}
+				if(i<textureTypeList.size()){
+					for(int k = i;k<textureTypeList.size();k++){
+						textureTypeService.deleteByPrimaryKey(textureTypeList.get(k).getTtid());
+					}
 				}
 			}
-
+			
 			typeService.updateByPrimaryKey(item);
 			message = "1";// 更新类型成功
 			return message;
