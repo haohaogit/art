@@ -9,7 +9,7 @@
 	<style>
 		.imgfabric{
             width: 198px;
-            /*height: 139px;*/
+            height: 290px;
             /*margin-top: 11px;*/
             /*margin-bottom: 19px;*/
             box-shadow: none;
@@ -18,6 +18,9 @@
         	display: none;
         }
         .isLoadMore1{
+        	display: none;
+        }
+        .isLoadMore2{
         	display: none;
         }
         #inputcorpus {
@@ -50,9 +53,10 @@
 		.macro{
 			display: flex;
 			flex-wrap: wrap;
+			justify-content: space-between;
 		}
 		.hengStep{
-			margin-right: 11px;
+			/* margin-right: 11px; */
 		}
 		#detailBox{
 			width: 740px;
@@ -318,6 +322,7 @@
 
 		var load1=false;
 		var load2=false;
+		var load3=false;
 		function loadmore(){
 			if(load1){
 				load1=false;
@@ -335,6 +340,15 @@
 			}else{
 				load2=true;
 				$(".isLoadMore1").css({display:'block'});
+			}
+		}
+		function loadmore2(){
+			if(load3){
+				load3=false;
+				$(".isLoadMore2").css({display:'none'});
+			}else{
+				load3=true;
+				$(".isLoadMore2").css({display:'block'});
 			}
 		}
 

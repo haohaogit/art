@@ -72,16 +72,20 @@ public class M_basicSemanticController {
 	@RequestMapping("/load/save")
 	@ResponseBody
 	public String save(Word item, String widsString, String tid,String similar,String opposite) {
+		System.out.println("widsString "+widsString);
 		item.setWsimilar(item.getWsimilar()+similar);
 		item.setWoposite(item.getWoposite()+opposite);
 		
 		String message = "0";// 失败
+		System.out.println("wword : "+item.getWword());
 		Pinyin[] hao = Pinyin.getPinyin(item.getWword());
+		System.out.println("wword : "+hao[0]+" "+hao[1]);
 		char[] firString = hao[0].toStringAsciiNoTone().toUpperCase().toCharArray();
+		System.out.println("firString : "+firString[0]);
 		
 		item.setWfirstchar(String.valueOf(firString[0]));
 		//System.out.println("item.getWsimilar() "+item.getWsimilar());
-		wordService.insertSelective(item);
+		
 		
 		
 		/*// List<Word> typesList = wordService.selectAll();
@@ -90,20 +94,20 @@ public class M_basicSemanticController {
 		if (pinyinArray != null) {
 			String pinyin = pinyinArray[0].toString().toUpperCase().substring(0, 1);
 			item.setWfirstchar(pinyin);
-		}
+		}*/
 
-		int message = 0;// 插入新类型成功
+		
 		if (item.getWid() != null) {
 			// for (Word typeIdName : typesList) {
 			// if (typeIdName.getWid().toString().equals(item.getWid().toString())) {
-			wordService.updateByPrimaryKey(item);
-			message = 1;// 更新类型成功
+			wordService.updateByPrimaryKeySelective(item);
+			message = "1";// 更新类型成功
 			return message;
 			// }
 			// }
 		} else {
-			wordService.insert(item);
-		}*/
+			wordService.insertSelective(item);
+		}
 		return message;
 	}
 

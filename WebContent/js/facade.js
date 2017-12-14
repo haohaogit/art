@@ -29,12 +29,12 @@ function fillBottomGoblet(data){
 				if(sHtml==""){
 					sHtml+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>收口型</div></div><div class='macro'>";
 				}
-				if(k<4){
+				if(s<4){
 					sHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-bcid='"+data[i].bcid+"'/></div>";
 					sHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].casename+"</div></div></div>";
 					s++;
 				}else{
-					sHtml+="<div class='hengStep isLoadMore isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-bcid='"+data[i].bcid+"'/></div>";
+					sHtml+="<div class='hengStep isLoadMore1 isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-bcid='"+data[i].bcid+"'/></div>";
 					sHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].casename+"</div></div></div>";
 					s++;
 				}
@@ -49,7 +49,7 @@ function fillBottomGoblet(data){
 					aHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].casename+"</div></div></div>";
 					a++;
 				}else{
-					aHtml+="<div class='hengStep isLoadMore isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-bcid='"+data[i].bcid+"'/></div>";
+					aHtml+="<div class='hengStep isLoadMore2 isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-bcid='"+data[i].bcid+"'/></div>";
 					aHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].casename+"</div></div></div>";
 					a++;
 				}
@@ -64,7 +64,7 @@ function fillBottomGoblet(data){
 		sHtml+="</div><div><img class='loadMore' src='../image/waiguan (18).png' onclick='loadmore1()' /></div>";
 	}
 	if(a!=0){
-		aHtml+="</div><div><img class='loadMore' src='../image/waiguan (18).png' onclick='loadmore1()' /></div>";
+		aHtml+="</div><div><img class='loadMore' src='../image/waiguan (18).png' onclick='loadmore2()' /></div>";
 	}
 	html=html+kHtml+sHtml+aHtml;
 	
@@ -124,7 +124,7 @@ function fillBottomfabric(data){
 					bHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].casename+"</div></div></div>";
 					b++;
 				}else{
-					bHtml+="<div class='hengStep isLoadMore isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-bcid='"+data[i].bcid+"'/></div>";
+					bHtml+="<div class='hengStep isLoadMore1 isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-bcid='"+data[i].bcid+"'/></div>";
 					bHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].casename+"</div></div></div>";
 					b++;
 				}
@@ -138,7 +138,7 @@ function fillBottomfabric(data){
 					  cHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].casename+"</div></div></div>";
 					  c++;
 				  }else{
-					  cHtml+="<div class='hengStep isLoadMore isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-bcid='"+data[i].bcid+"'/></div>";
+					  cHtml+="<div class='hengStep isLoadMore2 isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-bcid='"+data[i].bcid+"'/></div>";
 					  cHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].casename+"</div></div></div>";
 					  c++;
 				  }
@@ -153,7 +153,7 @@ function fillBottomfabric(data){
 					dHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].casename+"</div></div></div>";
 					d++;
 				}else{
-					dHtml+="<div class='hengStep isLoadMore isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-bcid='"+data[i].bcid+"'/></div>";
+					dHtml+="<div class='hengStep isLoadMore3 isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-bcid='"+data[i].bcid+"'/></div>";
 					dHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].casename+"</div></div></div>";
 					d++;
 				}
@@ -221,7 +221,7 @@ function fillBottomgascooker(data){
 					bHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].casename+"</div></div></div>";
 					b++;
 				}else{
-					bHtml+="<div class='hengStep isLoadMore isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-bcid='"+data[i].bcid+"'/></div>";
+					bHtml+="<div class='hengStep isLoadMore1 isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-bcid='"+data[i].bcid+"'/></div>";
 					bHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].casename+"</div></div></div>";
 					b++;
 				}
@@ -236,7 +236,7 @@ function fillBottomgascooker(data){
 					cHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].casename+"</div></div></div>";
 					c++;
 				}else{
-					cHtml+="<div class='hengStep isLoadMore isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-bcid='"+data[i].bcid+"'/></div>";
+					cHtml+="<div class='hengStep isLoadMore2 isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-bcid='"+data[i].bcid+"'/></div>";
 					cHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].casename+"</div></div></div>";
 					c++;
 				}
@@ -306,7 +306,7 @@ function fillBottomHouseboat(data){
 					bHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].casename+"</div></div></div>";
 					b++;
 				}else{
-					bHtml+="<div class='hengStep isLoadMore isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-bcid='"+data[i].bcid+"'/></div>";
+					bHtml+="<div class='hengStep isLoadMore1 isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-bcid='"+data[i].bcid+"'/></div>";
 					bHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].casename+"</div></div></div>";
 					b++;
 				}
@@ -320,7 +320,7 @@ function fillBottomHouseboat(data){
 					  cHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].casename+"</div></div></div>";
 					  c++;
 				  }else{
-					  cHtml+="<div class='hengStep isLoadMore isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-bcid='"+data[i].bcid+"'/></div>";
+					  cHtml+="<div class='hengStep isLoadMore2 isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-bcid='"+data[i].bcid+"'/></div>";
 					  cHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].casename+"</div></div></div>";
 					  c++;
 				  }
@@ -335,7 +335,7 @@ function fillBottomHouseboat(data){
 					dHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].casename+"</div></div></div>";
 					d++;
 				}else{
-					dHtml+="<div class='hengStep isLoadMore isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-bcid='"+data[i].bcid+"'/></div>";
+					dHtml+="<div class='hengStep isLoadMore3 isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-bcid='"+data[i].bcid+"'/></div>";
 					dHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].casename+"</div></div></div>";
 					d++;
 				}
@@ -865,17 +865,17 @@ function fillCodetexture(data){
 		//var qwe = data[i].wfirstchar;
 		switch(data[i].codetypename)
 		{
-			case "玻璃":
+			case "透明":
 			  if(kHtml==""){
-				  kHtml+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>玻璃材质编码</div></div><div class='texture'>";
+				  kHtml+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>透明材质编码</div></div><div class='texture'>";
 			  }
 			 
 			  kHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-texid='"+data[i].id+"'/></div>";
 			  kHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
 			  break;
-			case "磨砂":
+			case "不透明":
 				if(sHtml==""){
-					sHtml+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>磨砂材质编码</div></div><div class='texture'>";
+					sHtml+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>不透明材质编码</div></div><div class='texture'>";
 				}
 				sHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-texid='"+data[i].id+"'/></div>";
 				sHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";

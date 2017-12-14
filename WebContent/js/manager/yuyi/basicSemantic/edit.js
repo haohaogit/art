@@ -27,25 +27,28 @@ $(document).on("click",".savebtn",function(){
 		var params = form.serialize();
 	    var action = form.attr("action");
 	    var  wordList=$("input[name='checkbox']");
-	    var similar = ""+$("#similar2").val();
-	    var opposite = ""+$("#opposite2").val();
+	    var similar = "";
+	    var opposite = "";
+	    
+	    
+	    
 	    var temp = "";
 	    var temp2 = "";
-	    for(var i=3;i<=10;i++){
+	    for(var i=2;i<=10;i++){
 	    	temp = "#similar"+i;
 	    	//temp2 = $(temp).val();
 	    	if(typeof($(temp).val())=="undefined"){
 	    		break;
 	    	}
-	    	similar = similar+","+$(temp).val();
+	    	similar = similar+" "+$(temp).val();
 	    	//alert("similar "+similar);
 	    }
-	    for(var i=3;i<=10;i++){
+	    for(var i=2;i<=10;i++){
 	    	temp = "#opposite"+i;
 	    	if(typeof($(temp).val())=="undefined"){
 	    		break;
 	    	}
-	    	opposite = opposite+","+$(temp).val();
+	    	opposite = opposite+" "+$(temp).val();
 	    	//alert("opposite "+opposite);
 	    }
 		$.each(wordList,function(index,value){
