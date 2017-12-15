@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8"></meta>
+    <title></title>
+    <style>
+        .description {
+            margin-bottom: 40px;
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: space-between;
+        }
+
+        .pingfen {
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        .get-score {
+            display: flex;
+        }
+        .ciduijindu {
+            width: 600px;
+            display:flex;
+            
+        }
+        .block1{
+	        width: 5px;
+			height: 9px;
+			background-color:#00a5bd;
+        }
+        .shuzi{
+	        display: flex;	
+			justify-content: space-between;
+	    }
+
+       
+        .des_font{
+            font-size: 13px;
+        }
+        .imgfabric{
+            width: 139px;
+            height: 139px;
+            /*margin-top: 11px;*/
+            margin-bottom: 19px;
+            box-shadow: none;
+        }
+    </style>
+    <link href="../css/processBar1.css" rel="stylesheet" type="text/css"/>
+	<script type="text/javascript" src="../js/jquery-1.8.2.min.js"></script>
+	<script type="text/javascript" src="../js/processBar.js"></script>
+    
+</head>
+
+<body>
+	
+	<script type="text/javascript">
+		var colorNum = "";
+		var img = "";
+		$(document).ready(function () {
+		 
+			var loc = location.href;
+			var n1 = loc.length;//地址的总长度
+			var n2 = loc.indexOf("=");//取得=号的位置
+			img = decodeURI(loc.substr(n2+1, n1-n2));//从=号后面的内容
+			$(".imgfabric").attr("src",img);
+			var fimg = img.split("/");
+			var fNum = fimg[fimg.length-1].split("-");
+			colorNum = fNum[fNum.length-2][0];
+			
+			
+			debugger;
+		});
+	  
+	
+	
+			/* function fillwordSurveyHref(data){
+				
+				$('.href1').eq(0).attr('data-url',data.wordsurvey);
+				$('.href1').eq(1).attr('data-url',data.wordresult);
+			}
+	        $(document).ready(function () {
+
+			  //请求物件类型
+			 
+			  debugger;
+			  	$.ajax("getHref?tname=织物",
+		                // 发送请求的URL字符串
+		                {
+		                    type: "get",      //
+		                    async:true,  //
+		                    success: function(data){
+								//alert("dimension test  words");
+								fillwordSurveyHref(data);
+								
+		                    },
+		                    error: function(){
+		                        alert("数据发送失败denglu");
+		                    }
+		                });
+
+	        }); */
+	</script>
+    <div>
+		<div id="inputcorpus">
+            <div id="corpusword" style="padding-top: 5.5px;">选择轮廓类型</div>
+        </div>
+        <div>
+            <img class="imgfabric" src="../images/genestyle/flower1.jpg"></img>
+        </div>
+        <div id="inputcorpus">
+            <div id="corpusword" style="padding-top: 5.5px;">输入语义</div>
+        </div>
+
+        <div class="description">
+            <span class="des_font">1.柔和的</span>
+            <div>
+            	<div class="ciduijindu">
+	            	<div class="progress">
+				         <div class="progress_bg11">
+				             <div class="progress_bar11"></div>
+				         </div>
+				         <div class="progress_btn11"></div>
+				         <!-- <div class="text11">33%</div> -->
+				     </div>
+				    <!--  <div class="block1"></div> -->
+				     <div class="progress">
+				         <div class="progress_bg12">
+				             <div class="progress_bar12"></div>
+				         </div>
+				         <div class="progress_btn12"></div>
+				         <!-- <div class="text12">50%</div> -->
+				     </div>
+	            </div>
+	            <div class="shuzi">
+                     <span>-3</span>
+                     <span>-2</span>
+                     <span>-1</span>
+                     <span>0</span>
+                     <span>1</span>
+                     <span>2</span>
+                     <span>3</span>  
+                </div>
+            </div>
+            <span class="des_font">尖锐的</span>
+        </div>
+
+
+        <div class="description">
+            <span class="des_font">2.冰冷的</span>
+            <div>
+            	<div class="ciduijindu">
+	            	<div class="progress">
+				         <div class="progress_bg21">
+				             <div class="progress_bar21"></div>
+				         </div>
+				         <div class="progress_btn21"></div>
+				     </div>
+				    <!--  <div class="block1"></div> -->
+				     <div class="progress">
+				         <div class="progress_bg22">
+				             <div class="progress_bar22"></div>
+				         </div>
+				         <div class="progress_btn22"></div>
+				     </div>
+	            </div>
+	            <div class="shuzi">
+                     <span>-3</span>
+                     <span>-2</span>
+                     <span>-1</span>
+                     <span>0</span>
+                     <span>1</span>
+                     <span>2</span>
+                     <span>3</span>  
+                </div>
+            </div>
+            <span class="des_font">火热的</span>
+        </div>
+		
+		<div class="description">
+            <span class="des_font">3.灰暗的</span>
+            <div>
+            	<div class="ciduijindu">
+	            	<div class="progress">
+				         <div class="progress_bg31">
+				             <div class="progress_bar31"></div>
+				         </div>
+				         <div class="progress_btn31"></div>
+				     </div>
+				    <!--  <div class="block1"></div> -->
+				     <div class="progress">
+				         <div class="progress_bg32">
+				             <div class="progress_bar32"></div>
+				         </div>
+				         <div class="progress_btn32"></div>
+				     </div>
+	            </div>
+	            <div class="shuzi">
+                     <span>-3</span>
+                     <span>-2</span>
+                     <span>-1</span>
+                     <span>0</span>
+                     <span>1</span>
+                     <span>2</span>
+                     <span>3</span>  
+                </div>
+            </div>
+            <span class="des_font">鲜艳的</span>
+        </div>
+        
+        
+        
+        <!-- <button onclick="getScore()">!!获取评分数!!</button> -->
+        <div id="showicon" style="justify-content: center;">
+        	<div class="href1" onclick="window.open(this.getAttribute('data-url'))" data-url="">
+        		<img id="pic1" src="../images/vocabularys/semantic-dimension-survey/j1.png" />
+        	</div>
+        	<div class="href1" onclick="window.open(this.getAttribute('data-url'))" data-url="">
+        		<img id="pic2" src="../images/vocabularys/semantic-dimension-survey/j2.png" />
+        	</div>
+        </div>
+
+        <div id="geneBottomBtn" style="text-align: center;margin-top: 36px;">
+                <button type="submit" id="save" onclick="getScore()">确定</button>
+                <button type="submit" id="cancel">取消</button>
+        </div>
+    </div>
+   <script>
+        
+
+        function getScore() {
+        	var sc1,sc2,sc3,sc4,sc5,temp;
+        	temp = parseInt(left11-20);
+        	if(temp<300){
+        		sc1 = parseInt((temp-300)/100);
+        	}else{
+        		sc1 = parseInt(left12)/100;
+        	}
+        	
+        	temp = parseInt(left21-20);
+        	if(temp<300){
+        		sc2 = parseInt((temp-300)/100);
+        	}else{
+        		sc2 = parseInt(left22)/100;
+        	}
+        	
+        	temp = parseInt(left31-20);
+        	if(temp<300){
+        		sc3 = parseInt((temp-300)/100);
+        	}else{
+        		sc3 = parseInt(left32)/100;
+        	}
+        	
+        	/* temp = parseInt(left41);
+        	if(temp<300){
+        		sc4 = (temp-300)/100;
+        	}else{
+        		sc4 = parseInt(left42)/100;
+        	}
+        	
+        	temp = parseInt(left51);
+        	if(temp<300){
+        		sc5 = (temp-300)/100;
+        	}else{
+        		sc5 = parseInt(left52)/100;
+        	} */
+        	
+            var sc = ""+sc1+","+sc2+","+sc3+","+colorNum;
+        	//alert("sc1="+sc);
+            
+            window.location.href="imago_gene_fabric.html?sc="+sc+"&img="+img;
+
+        }
+
+       
+
+    </script>
+</body>
+
+</html>

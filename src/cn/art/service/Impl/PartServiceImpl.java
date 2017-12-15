@@ -226,14 +226,18 @@ public class PartServiceImpl implements PartService {
 		int i = 0;
 		for (Part part : parts) {
 			/*if(i>=4) break;*/
-			partB = new partB();
-			partB.setPid(part.getPid());
-			partB.setTid(part.getTid());
-			partB.setPbname(partTypeMapper.selectByPrimaryKey(part.getPbid()).getPbname());
-			partB.setPdescription(part.getPdescription());
-			partB.setPimg(part.getPimg());
+			PartType partType = partTypeMapper.selectByPrimaryKey(part.getPbid());
+			if(partType != null){
+				partB = new partB();
+				partB.setPid(part.getPid());
+				partB.setTid(part.getTid());
+				partB.setPbname(partType.getPbname());
+				partB.setPdescription(part.getPdescription());
+				partB.setPimg(part.getPimg());
+				
+				partBs.add(partB);
+			}
 			
-			partBs.add(partB);
 			i++;
 		}
 		return partBs;

@@ -129,14 +129,14 @@ $(function(){
                     }
                     
                     if (tag21) {
-                        left21 = e.pageX - ox21;
+                        left21 = e.pageX - ox21 - 7;
                         if (left21 <= 0) {
                             left21 = 5;
                         }else if (left21 > 300) {
                             left21 = 300;
                         }
                         $('.progress_btn21').css('left', left21);
-                        $('.progress_bar21').width(left21);
+                        $('.progress_bar21').width(left21+7);
                         $('.text21').html(parseInt((left21/300)*100) + '%');
                     }
                     
@@ -258,6 +258,7 @@ $(function(){
                         }else if (left11 > 300) {
                             left11 = 300;
                         }
+                        
                         $('.progress_btn11').css('left', left11);
                         $('.progress_bar11').animate({width:left11},300);
                         $('.text11').html(parseInt((left11/300)*100) + '%');
@@ -278,6 +279,7 @@ $(function(){
                        }else if (left12 > 294) {
                            left12 = 290;
                        }
+                       
                        $('.progress_btn12').css('left', left12);
                        $('.progress_bar12').animate({width:left12+6},300);
                        $('.text12').html(parseInt((left12/300)*100) + '%');
@@ -286,6 +288,7 @@ $(function(){
                
                
                $('.progress_bg21').click(function(e) {//鼠标点击
+            	   debugger;
            	    $(".progress_btn21").css({left:'300',display:'block'});
            	    $(".progress_btn22").css({left:'0',display:'none'});
            	  
@@ -294,14 +297,15 @@ $(function(){
           	        left22 = 0;
                    if (!tag21) {
                        bgleft21 = $('.progress_bg21').offset().left;
-                       left21 = e.pageX - bgleft21;
+                       left21 = e.pageX - bgleft21-7;
                        if (left21 <= 0) {
                            left21 = 5;
                        }else if (left21 > 300) {
                            left21 = 300;
                        }
+                      
                        $('.progress_btn21').css('left', left21);
-                       $('.progress_bar21').animate({width:left21},300);
+                       $('.progress_bar21').animate({width:left21+7},300);
                        $('.text21').html(parseInt((left21/300)*100) + '%');
                    }
                    

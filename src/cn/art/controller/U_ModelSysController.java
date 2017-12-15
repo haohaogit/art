@@ -204,7 +204,7 @@ public class U_ModelSysController {
 		
 		listbBs = colorService.selectByTID1(tid);
 		for (colorB colorB : listbBs) {
-			System.out.println("colorB.getCbname() "+colorB.getCbname()+" colorB.getCimg()"+colorB.getCimg());
+			System.out.println("colorB.getCdescription() "+colorB.getCdescription()+" colorB.getCimg()"+colorB.getCimg());
 		}
 		
 		return listbBs;
@@ -463,7 +463,7 @@ public class U_ModelSysController {
             //System.out.println("start;;;" + a);
             //设置命令行传入参数
 			//System.out.println(minitemS+","+minitemK+","+minitemB+","+minitemD+","+Rgb);
-            String[] args = new String[] { "python", "C:\\firstDL_netEast\\GeneticAlgorithmTexture.py",gaojiaobei,rgbString,timg,timeid};
+            String[] args = new String[] { "python", "C:\\firstDL_netEast\\GeneticAlgorithmTexture.py",gaojiaobei,rgbString,textureimgMap.get(timeid),timeid};
             //String[] args = new String[] { "python", "D:\\20170602\\PycharmProjects\\firstDL_netEast\\boatAssembleMaterialTest.py",minitem.get(timeid),RgbNum.get(timeid),timg,timeid};
             Process pr = Runtime.getRuntime().exec(args);
 
@@ -921,13 +921,20 @@ public class U_ModelSysController {
 			score +=s1;
 		}*/
 		commandImg cimg = new commandImg();
+		
+		
+		
 		try {
             //需传入的参数
             String a = sc;
             
             long current_time = new Date().getTime();
             timeid1 = current_time+"";
+            
             scoreNum.put(timeid1, sc);
+            colorimgMap.put(timeid1, "R220G91B112.jpg");
+    		textureimgMap.put(timeid1, "M21shuijingcaizhi-moren.jpg");
+    		
             System.out.println("start222" + a);
             
             String data = sc+","+timeid1;
@@ -1023,6 +1030,42 @@ public class U_ModelSysController {
 		newCase.setNewcaseaoutline("cooker_"+timeid+".jpg");
 		newCase.setNewcaseatexture(textureimgMap.get(timeid));
 		newCase.setNewcaseatotal("cookerPartA_"+timeid+".jpg");
+		
+		int isok = newCaseService.insertSelective(newCase);
+		message = isok+"";
+		return message;
+	}
+	
+	@RequestMapping("save/globet/{timeid}/{caseName}")
+	@ResponseBody
+	public String saveglobet(@PathVariable String timeid,@PathVariable String caseName,Model model,HttpServletRequest request){
+		String message = "0";
+		List<typeIdName> typeIdNames = typeService.selectAllByName("高脚杯");
+		int tid = 0;
+		for (typeIdName typeIdName : typeIdNames) {
+			tid = typeIdName.getTid();
+			break;
+		}
+		NewCase newCase = new NewCase();
+		System.out.println("timeid "+timeid);
+		newCase.setTid(tid);
+		newCase.setNewcasename(caseName+"_"+timeid);
+		newCase.setNewcasearg(scoreNum.get(timeid));
+		
+		newCase.setNewcaseimg("gaojiaobeiPartA_"+timeid+".jpg");
+		
+		newCase.setNewcasercolor("R220G91B112.jpg");
+		newCase.setNewcasertexture("M21shuijingcaizhi-moren.jpg");
+		newCase.setNewcasertotal("gaojiaobeiPart_"+timeid+".jpg");
+		newCase.setNewcaseroutline("gaojiaobei_"+timeid+".jpg");
+		
+		System.out.println("colorimg :"+colorimgMap.get(timeid));
+		System.out.println("textureimgMap :"+textureimgMap.get(timeid));
+		
+		newCase.setNewcaseacolor(colorimgMap.get(timeid));
+		newCase.setNewcaseaoutline("gaojiaobei_"+timeid+".jpg");
+		newCase.setNewcaseatexture(textureimgMap.get(timeid));
+		newCase.setNewcaseatotal("gaojiaobeiPartA_"+timeid+".jpg");
 		
 		int isok = newCaseService.insertSelective(newCase);
 		message = isok+"";

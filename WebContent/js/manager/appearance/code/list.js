@@ -115,8 +115,20 @@ $(document).on("click",".deletebtn",function(){
 	  $(".deleteOK").click(id,function(){
 		  debugger
 		  var url = contextPath + "/manager/code/load/delete"+codeType + "?id=" + id;
-		  $.post(url);
-		  location.reload([true]);
+		  //$.post(url);
+		  $.ajax({  
+		        type : "get",  
+		        async : false,  //同步请求  
+		        url : url,  
+		        timeout:1000,  
+		        success:function(data){  
+//		            alert("成功！"); 
+		        	location.reload([true]);
+		        }, error: function() {  
+		            alert("失败，请稍后再试！");  
+		        }  
+		    }); 
+		  
 	  });
 });
 

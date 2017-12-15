@@ -199,17 +199,21 @@ function filllunboPart(data){
 
 var boatHtml1="<ul>";
 var boatHtml2="<ul>";
+var boatHtml3="<ul>";
 function filllunboPartBoat(data){
 	
 	for(var i=0;i<data.length;i++){
 		//var qwe = data[i].wfirstchar;
 		switch(data[i].pbname)
 		{
-			case "天线":
+			case "通信部件":
 				boatHtml1+="<li class='lunbo-item LPart'><img src='../image/"+data[i].pimg+"' alt='"+data[i].pid+"'><span>"+data[i].pdescription+"</span></li>";
 				break;
-			case "钓鱼板":
+			case "艉部甲板":
 				boatHtml2+="<li class='lunbo-item LPart'><img src='../image/"+data[i].pimg+"' alt='"+data[i].pid+"'><span>"+data[i].pdescription+"</span></li>";
+				break;
+			case "顶棚":
+				boatHtml3+="<li class='lunbo-item LPart'><img src='../image/"+data[i].pimg+"' alt='"+data[i].pid+"'><span>"+data[i].pdescription+"</span></li>";
 				break;
 			default:
 				break;
@@ -217,6 +221,7 @@ function filllunboPartBoat(data){
 	}
 	boatHtml1+="</ul>";
 	boatHtml2+="</ul>";
+	boatHtml3+="</ul>";
 	$(".lunbo-window").html(boatHtml1);
 	
 	AddCarousel();

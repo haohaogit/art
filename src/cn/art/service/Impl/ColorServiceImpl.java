@@ -226,15 +226,19 @@ public class ColorServiceImpl implements ColorService {
 		int i = 0;
 		for (Color color : colors) {
 			//if(i>=4) break;
-			colorB = new colorB();
-			colorB.setCid(color.getCid());
-			colorB.setTid(color.getTid());
-			colorB.setCrgb(color.getCrgb());
-			colorB.setCbname(colorTypeMapper.selectByPrimaryKey(color.getCbid()).getCbname());
-			colorB.setCdescription(color.getCdescription());
-			colorB.setCimg(color.getCimg());
+			ColorType colorType = colorTypeMapper.selectByPrimaryKey(color.getCbid());
+			if(colorType != null){
+				colorB = new colorB();
+				colorB.setCid(color.getCid());
+				colorB.setTid(color.getTid());
+				colorB.setCrgb(color.getCrgb());
+				colorB.setCbname(colorType.getCbname());
+				colorB.setCdescription(color.getCdescription());
+				colorB.setCimg(color.getCimg());
+				
+				colorBs.add(colorB);
+			}
 			
-			colorBs.add(colorB);
 			i++;
 		}
 		return colorBs;

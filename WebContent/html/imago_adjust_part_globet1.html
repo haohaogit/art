@@ -37,8 +37,8 @@
 		  	var n1 = loc.length;//地址的总长度
 		  	var n2 = loc.indexOf("=");//取得=号的位置
 		  	timeid = decodeURI(loc.substr(n2+1, n1-n2));//从=号后面的内容 
-		  	var geneimg = "../image/gaojiaobeiPartA_"+timeid+".jpg";
-		  	//var geneimg = "../image/cooker.jpg";
+		  	//var geneimg = "../image/gaojiaobeiPartA_"+timeid+".jpg";
+		  	var geneimg = "../image/gaojiaobei 1.jpg";
 		  	
 		  	$(".picimg2").attr("src",geneimg);
 		  	debugger;
@@ -106,7 +106,8 @@
 		</div>
 		<div id="rightBody">
 			<div id="iconAndcorpus">
-				<div id="introicon"><img src="../image/gascooker.png" style="width: 105px;"/></div>
+				<!-- <div id="introicon"><img src="../image/golbet.png" style="width: 105px;"/></div> -->
+				<div id="introicon" style="width: 100px;"><img class="imgicon" src="../image/golbet.png"/></div>
 				<div id="introduce">
 					<lable id="corpus">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在造型调整步骤中，用户可以在操作窗口选择不同的部件，并可以移动、缩放、旋转调整部件达到你想要的效果，窗口同样可以给你提供预览。</lable>
 				</div>
@@ -120,7 +121,7 @@
 					<div style="margin-left: 89px;">
 						<canvas id="canvid1"></canvas>
 					</div>
-					<img class="img1" id="img0" src="../image/LOGO1.png" width="70px" height="90px"/>
+					<img class="img1" id="img0" src="../image/1-1_1512902296027.png" width="70px" height="90px"/>
 					<img class="picimg2" id="bg" src="../image/cooker.jpg" style ="width:600px;height:350px;margin-left: 89px;margin-top: 3px;"/>
 				</div>
 				<!-- <img class="picimg" src="" style="margin-top: 3px;"> -->
@@ -329,11 +330,11 @@
 	        $("#LoginBox1").fadeIn("slow");
 		}
 		
-		/* function savePart(){
+		function savePart(){
 			var caseName = $("#account1").val();
 			//alert("newcount "+caseName);
 			//canvas1
-			$.ajax("save/cooker/"+timeid+"/"+caseName,
+			$.ajax("save/globet/"+timeid+"/"+caseName,
             // 发送请求的URL字符串
             {
                 type: "get",      //
@@ -341,13 +342,13 @@
                 success: function(data){
         		//window.location.reload(); 
 				alert("save success   ");
-				window.location.href = "facade_new_gascooker.html";
+				window.location.href = "facade_new_golbet.html";
                 },
                 error: function(){
-                    alert("数据发送失败denglu");
+                    alert("高脚杯图案保存失败！");
                 }
             });
-		} */
+		} 
 		
 		var c=document.getElementById("canvid1");
 		var ctx=c.getContext("2d");

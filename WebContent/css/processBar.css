@@ -43,11 +43,11 @@
 	border: 1px solid #ddd;
 	border-radius: 5px; 
 	overflow: hidden;
-	background-color:#f2f2f2;
+	background-color:#c0c0c0;
 }
 .progress_bar1{
 	background: #00a5bd; 
-	width: 275px; 
+	width: 7px; 
 	height: 10px; 
 	border-radius: 5px;
 }
@@ -57,9 +57,9 @@
 	border-radius: 5px; 
 	position: absolute;
 	background:#fff; 
-	left: 275px; 
+	left: 7px; 
 	margin-left: -7px; 
-	margin-top: -11px;
+	margin-top: -10px;
 	/* top:-5px; */ 
 	cursor: pointer;
 	border:1px #ddd solid;
@@ -74,11 +74,11 @@
 	border: 1px solid #ddd;
 	border-radius: 5px; 
 	overflow: hidden;
-	background-color:#f2f2f2;
+	background-color:#c0c0c0;
 }
 .progress_bar2{
 	background: #00a5bd; 
-	width: 275px; 
+	width: 7px; 
 	height: 10px; 
 	border-radius: 5px;
 }
@@ -88,7 +88,7 @@
 	border-radius: 5px; 
 	position: absolute;
 	background:#fff; 
-	left: 275px; 
+	left: 7px; 
 	margin-left: -7px; 
 	margin-top: -11px;
 	/* top:-5px; */ 
@@ -105,11 +105,11 @@
 	border: 1px solid #ddd;
 	border-radius: 5px; 
 	overflow: hidden;
-	background-color:#f2f2f2;
+	background-color:#c0c0c0;
 }
 .progress_bar3{
 	background: #00a5bd; 
-	width: 275px; 
+	width: 7px; 
 	height: 10px; 
 	border-radius: 5px;
 }
@@ -119,7 +119,7 @@
 	border-radius: 5px; 
 	position: absolute;
 	background:#fff; 
-	left: 275px; 
+	left: 7px; 
 	margin-left: -7px; 
 	margin-top: -11px;
 	/* top:-5px; */ 
@@ -136,11 +136,11 @@
 	border: 1px solid #ddd;
 	border-radius: 5px; 
 	overflow: hidden;
-	background-color:#f2f2f2;
+	background-color:#c0c0c0;
 }
 .progress_bar4{
 	background: #00a5bd; 
-	width: 275px; 
+	width: 7px; 
 	height: 10px; 
 	border-radius: 5px;
 }
@@ -150,7 +150,7 @@
 	border-radius: 5px; 
 	position: absolute;
 	background:#fff; 
-	left: 275px; 
+	left: 7px; 
 	margin-left: -7px; 
 	margin-top: -11px;
 	/* top:-5px; */ 
@@ -167,11 +167,11 @@
 	border: 1px solid #ddd;
 	border-radius: 5px; 
 	overflow: hidden;
-	background-color:#f2f2f2;
+	background-color:#c0c0c0;
 }
 .progress_bar5{
 	background: #00a5bd; 
-	width: 275px; 
+	width: 7px; 
 	height: 10px; 
 	border-radius: 5px;
 }
@@ -181,9 +181,9 @@
 	border-radius: 5px; 
 	position: absolute;
 	background:#fff; 
-	left: 275px; 
+	left: 7px; 
 	margin-left: -7px; 
-	margin-top: -11px;
+	margin-top: -10px;
 	/* top:-5px; */ 
 	cursor: pointer;
 	border:1px #ddd solid;
@@ -198,7 +198,7 @@
 	border: 1px solid #ddd;
 	border-radius: 5px; 
 	overflow: hidden;
-	background-color:#f2f2f2;
+	background-color:#c0c0c0;
 }
 .progress_bar6{
 	background: #00a5bd; 

@@ -144,10 +144,13 @@
 
 			<div id="partStyle" style="height:37px;">
 				<div id="beidu" style="width:106px;">
-					<a href="javascript:void(0)" id="beidu1" style="color: white;">天线</a>
+					<a href="javascript:void(0)" id="beidu1" style="color: white;">通信部件</a>
 				</div>
 				<div id="beibing" style="width:106px;">
-					<a href="javascript:void(0)" id="beibing1" style="color: white;">钓鱼板</a>
+					<a href="javascript:void(0)" id="beibing1" style="color: white;">艉部甲板</a>
+				</div>
+				<div id="beibao" style="width:106px;">
+					<a href="javascript:void(0)" id="beibing2" style="color: white;">顶棚</a>
 				</div>
 			</div>
 
@@ -424,15 +427,28 @@
   			
   			document.getElementById('beidu').style.backgroundColor='#00A5BD';
     		document.getElementById('beibing').style.backgroundColor='#a39f9f';
+    		document.getElementById('beibao').style.backgroundColor='#a39f9f';
     		
     		$(".lunbo-window").html(boatHtml1);
   			AddCarousel();
   		});
+  		
   		$("#beibing1").click(function(){
   			
     		document.getElementById('beibing').style.backgroundColor='#00A5BD';
+    		
     		document.getElementById('beidu').style.backgroundColor='#a39f9f';
+    		document.getElementById('beibao').style.backgroundColor='#a39f9f';
     		$(".lunbo-window").html(boatHtml2);
+  			AddCarousel();
+  		});
+  		
+		$("#beibing2").click(function(){
+  			
+    		document.getElementById('beibao').style.backgroundColor='#00A5BD';
+    		document.getElementById('beibing').style.backgroundColor='#a39f9f';
+    		document.getElementById('beidu').style.backgroundColor='#a39f9f';
+    		$(".lunbo-window").html(boatHtml3);
   			AddCarousel();
   		});
   		

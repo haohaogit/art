@@ -224,15 +224,19 @@ public class TextureServiceImpl implements TextureService {
 		textureB textureB;
 		List<Texture> textures = textureMapper.selectByTID(tid);
 		for (Texture texture : textures) {
-			textureB = new textureB();
-			textureB.setTid(texture.getTid());
-			textureB.setTextureid(texture.getTextureid());
-			//System.out.println(texture.getTtid());
-			textureB.setTtname(textureTypeMapper.selectByPrimaryKey(texture.getTtid()).getTtname());
-			textureB.setTdescription(texture.getTdescription());
-			textureB.setTimg(texture.getTimg());
+			TextureType textureType = textureTypeMapper.selectByPrimaryKey(texture.getTtid());
+			if(textureType != null){
+				textureB = new textureB();
+				textureB.setTid(texture.getTid());
+				textureB.setTextureid(texture.getTextureid());
+				//System.out.println(texture.getTtid());
+				textureB.setTtname(textureType.getTtname());
+				textureB.setTdescription(texture.getTdescription());
+				textureB.setTimg(texture.getTimg());
+				
+				textureBs.add(textureB);
+			}
 			
-			textureBs.add(textureB);
 		}
 		return textureBs;
 	}

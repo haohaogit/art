@@ -125,7 +125,7 @@ a{
     padding-left: 18px;
     height: 35px;
     width: auto;
-    margin-bottom: 16px;
+    margin-bottom: 40px;
 }
 #introicon{
 	width: 105px;
@@ -226,7 +226,13 @@ a{
 	background-color: #a39f9f;
 	width: 72px;
 	float: left;
-	margin-left: 4px;
+	margin-left: 1px;
+}
+#beibao{
+	background-color: #a39f9f;
+	width: 72px;
+	float: left;
+	margin-left: 1px;
 }
 #lunbo{
 	
@@ -243,6 +249,14 @@ a{
 	height: 37px;
 }
 #beibing1{
+	color: white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 18px;
+	height: 37px;
+}
+#beibing2{
 	color: white;
 	display: flex;
 	justify-content: center;
@@ -488,4 +502,7 @@ a{
 .wordindex{
 	margin-top: 217px;
 	margin-left: 20px;
+}
+#showicon{
+	display:none;
 }

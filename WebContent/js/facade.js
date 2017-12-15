@@ -460,7 +460,7 @@ function fillCodeCcontent(data){
 		d1Html+="</div><div><img class='loadMore more4' src='../image/waiguan (18).png' /></div>";
 		
 	}
-	html=html+b1Html+c1Html+d1Html;
+	html=html+a1Html+b1Html+c1Html+d1Html;
 	
 	$(".codeCcontent").html(html);
 	
@@ -469,7 +469,7 @@ function fillCodeCcontent(data){
 
 
 function fillCodeoutline(data){
-	
+	var aHtml="";
 	var kHtml="";
 	var sHtml="";
 	
@@ -477,28 +477,36 @@ function fillCodeoutline(data){
 		//var qwe = data[i].wfirstchar;
 		switch(data[i].codetypename)
 		{
-			case "扩口型":
+			case "收口型":
 			  if(kHtml==""){
-				  kHtml+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>扩口型轮廓编码</div></div><div class='macro'>";
+				  kHtml+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>收口型轮廓编码</div></div><div class='macro'>";
 			  }
 			 
 			  kHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-oid='"+data[i].id+"'/></div>";
 			  kHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
 			  break;
-			case "收口型":
+			case "满口型":
 			
 				if(sHtml==""){
-					sHtml+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>收口型轮廓编码</div></div><div class='macro'>";
+					sHtml+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>满口型轮廓编码</div></div><div class='macro'>";
 				}
 				sHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-oid='"+data[i].id+"'/></div>";
 				sHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
+			    break;
+			case "收口外扩型":
+				
+				if(aHtml==""){
+					aHtml+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>收口外扩型轮廓编码</div></div><div class='macro'>";
+				}
+				aHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-oid='"+data[i].id+"'/></div>";
+				aHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
 			    break;
 			default:
 				break;
 		}
 	}
 	var html="";
-	html=html+kHtml+"</div>"+sHtml+"</div>";
+	html=html+kHtml+"</div>"+sHtml+"</div>"+aHtml+"</div>";
 	$(".outlineContent").html(html);
 	
 }
@@ -548,7 +556,7 @@ function fillCodecolorHouseboat(data){
 		//var qwe = data[i].wfirstchar;
 		switch(data[i].codetypename)
 		{
-			case "船身":
+			case "船身色彩":
 			  if(kHtml==""){
 				  kHtml+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>船身色彩编码</div></div><div class='color'>";
 			  }
@@ -618,6 +626,7 @@ function fillCodecolorGascooker(data){
 }
 
 function fillCodecolorFabric(data){
+	var aHtml="";
 	var kHtml="";
 	var sHtml="";
 	for(var i=0;i<data.length;i++){
@@ -632,19 +641,25 @@ function fillCodecolorFabric(data){
 			  kHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
 			  break;
 			case "冷色调":
-			
 				if(sHtml==""){
 					sHtml+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>冷色系编码</div></div><div class='color'>";
 				}
 				sHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-cid='"+data[i].id+"'/></div>";
 				sHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
 			    break;
+			case "全部":
+				if(aHtml==""){
+					aHtml+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>面料色彩编码</div></div><div class='color'>";
+				}
+				aHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-cid='"+data[i].id+"'/></div>";
+				aHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
+			    break;
 			default:
 				break;
 		}
 	}
 	var html="";
-	html=html+kHtml+"</div>";
+	html=html+kHtml+"</div>"+aHtml+"</div>";
 	$(".codeCfabric").html(html);
 }
 
@@ -689,14 +704,15 @@ function fillCodepartHouseboat(data){
 	var d1Html="";
 	var e1Html="";
 	var f1Html="";
+	var g1Html="";
 	
 	for(var i=0;i<data.length;i++){
 		//var qwe = data[i].wfirstchar;
 		switch(data[i].codetypename)
 		{
-			case "驾驶室":
+			case "船室":
 			  if(a1Html==""){
-				  a1Html+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>驾驶室部件编码</div></div><div class='macro'>";
+				  a1Html+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>船室部件编码</div></div><div class='macro'>";
 			  }
 			  a1Html+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-pid='"+data[i].id+"'/></div>";
 			  a1Html+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
@@ -709,36 +725,44 @@ function fillCodepartHouseboat(data){
 				b1Html+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-pid='"+data[i].id+"'/></div>";
 				b1Html+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
 			    break;
-			case "顶层":
+			case "船舱2":
 				  if(c1Html==""){
-					  c1Html+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>顶层部件编码</div></div><div class='macro'>";
+					  c1Html+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>船舱2部件编码</div></div><div class='macro'>";
 				  }
 				  c1Html+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-pid='"+data[i].id+"'/></div>";
 				  c1Html+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
 			 
 				  break;
-			case "船舱窗户":
+			case "顶棚":
 				if(d1Html==""){
-					d1Html+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>船舱窗户部件编码</div></div><div class='macro'>";
+					d1Html+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>顶棚部件编码</div></div><div class='macro'>";
 				}
 				d1Html+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-pid='"+data[i].id+"'/></div>";
 				d1Html+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
 				
 			    break;
-			case "船舱跳水板":
+			case "艉部甲板":
 				if(e1Html==""){
-					e1Html+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>船舱跳水板部件编码</div></div><div class='macro'>";
+					e1Html+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>艉部甲板部件编码</div></div><div class='macro'>";
 				}
 				e1Html+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-pid='"+data[i].id+"'/></div>";
 				e1Html+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
 				
 			    break;
-			case "通信":
+			case "通信部件":
 				if(f1Html==""){
-					f1Html+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>电子通信部件编码</div></div><div class='macro'>";
+					f1Html+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>通信部件编码</div></div><div class='macro'>";
 				}
 				f1Html+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-pid='"+data[i].id+"'/></div>";
 				f1Html+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
+				
+			    break;
+			case "舷窗":
+				if(g1Html==""){
+					g1Html+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>舷窗部件编码</div></div><div class='macro'>";
+				}
+				g1Html+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-pid='"+data[i].id+"'/></div>";
+				g1Html+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
 				
 			    break;
 			default:
@@ -747,7 +771,7 @@ function fillCodepartHouseboat(data){
 	}
 	var html="";
 	
-	html=html+a1Html+"</div>"+b1Html+"</div>"+c1Html+"</div>"+d1Html+"</div>"+e1Html+"</div>"+f1Html+"</div>";
+	html=html+a1Html+"</div>"+b1Html+"</div>"+c1Html+"</div>"+d1Html+"</div>"+e1Html+"</div>"+f1Html+"</div>"+g1Html+"</div>";
 	
 	$(".codepart").html(html);
 }
@@ -757,6 +781,7 @@ function fillCodepartGascooker(data){
 	var b1Html="";
 	var c1Html="";
 	var d1Html="";
+	var e1Html="";
 	
 	for(var i=0;i<data.length;i++){
 		//var qwe = data[i].wfirstchar;
@@ -785,12 +810,20 @@ function fillCodepartGascooker(data){
 				  c1Html+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
 			 
 				  break;
-			case "ui开关":
+			case "面板2":
 				if(d1Html==""){
-					d1Html+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>开关/调节档位UI部件编码</div></div><div class='macro'>";
+					d1Html+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>面板2部件编码</div></div><div class='macro'>";
 				}
 				d1Html+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-pid='"+data[i].id+"'/></div>";
 				d1Html+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
+				
+			    break;
+			case "Logo":
+				if(e1Html==""){
+					e1Html+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>Logo部件编码</div></div><div class='macro'>";
+				}
+				e1Html+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-pid='"+data[i].id+"'/></div>";
+				e1Html+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
 				
 			    break;
 			default:
@@ -799,7 +832,7 @@ function fillCodepartGascooker(data){
 	}
 	var html="";
 	
-	html=html+a1Html+"</div>"+b1Html+"</div>"+c1Html+"</div>"+d1Html+"</div>";
+	html=html+a1Html+"</div>"+b1Html+"</div>"+c1Html+"</div>"+d1Html+"</div>"+e1Html+"</div>";
 	
 	$(".codepart").html(html);
 }
@@ -837,9 +870,9 @@ function fillCodepartFabric(data){
 				  c1Html+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
 			 
 				  break;
-			case "ui开关":
+			case "织物边框":
 				if(d1Html==""){
-					d1Html+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>开关/调节档位UI部件编码</div></div><div class='macro'>";
+					d1Html+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>织物边框部件编码</div></div><div class='macro'>";
 				}
 				d1Html+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-pid='"+data[i].id+"'/></div>";
 				d1Html+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
@@ -879,6 +912,54 @@ function fillCodetexture(data){
 				}
 				sHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-texid='"+data[i].id+"'/></div>";
 				sHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
+			    break;
+			default:
+				break;
+		}
+	}
+	var html="";
+	html=html+kHtml+"</div>"+sHtml+"</div>";
+	$(".textureContent").html(html);
+}
+
+function fillCodetextureBoat(data){
+	var aHtml="";
+	var bHtml="";
+	var kHtml="";
+	var sHtml="";
+	
+	for(var i=0;i<data.length;i++){
+		//var qwe = data[i].wfirstchar;
+		switch(data[i].codetypename)
+		{
+			case "亮光漆":
+			  if(kHtml==""){
+				  kHtml+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>亮光漆材质编码</div></div><div class='texture'>";
+			  }
+			 
+			  kHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-texid='"+data[i].id+"'/></div>";
+			  kHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
+			  break;
+			case "珠光漆":
+				if(sHtml==""){
+					sHtml+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>珠光漆材质编码</div></div><div class='texture'>";
+				}
+				sHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-texid='"+data[i].id+"'/></div>";
+				sHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
+			    break;
+			case "磨砂漆":
+				if(aHtml==""){
+					aHtml+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>磨砂漆材质编码</div></div><div class='texture'>";
+				}
+				aHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-texid='"+data[i].id+"'/></div>";
+				aHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
+				break;
+			case "哑光漆":
+				if(bHtml==""){
+					bHtml+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>哑光漆材质编码</div></div><div class='texture'>";
+				}
+				bHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-texid='"+data[i].id+"'/></div>";
+				bHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
 			    break;
 			default:
 				break;
