@@ -26,30 +26,57 @@ function getHtmlfirstchar(data){
 				var xHtml="";
 				var yHtml="";
 				var zHtml="";
+				var similar1 = "",similar2 = "";
+				var opposite1 = "", opposite = "";
+				
 				for(var i=0;i<data.length;i++){
 					//var qwe = data[i].wfirstchar;
+					var similarList = data[i].wsimilar.split(' ');
+					var oppositeList = data[i].woposite.split(' ');
+					  
+					if(similarList[0] == "undefined" ||similarList[0] == null){
+						similar1 = "";
+					}else{
+						similar1 = similarList[0];
+					}
+					
+					if(similarList[1] == "undefined" ||similarList[1] == null){
+						similar2 = "";
+					}else{
+						similar2 = similarList[1];
+					}
+					
+					if(oppositeList[0] == "undefined" ||oppositeList[0] == null){
+						opposite1 = "";
+					}else{
+						opposite1 = oppositeList[0];
+					}
+					
+					if(oppositeList[1] == "undefined" ||oppositeList[1] == null){
+						opposite2 = "";
+					}else{
+						opposite2 = oppositeList[1];
+					}
 					switch(data[i].wfirstchar)
 					{
 						case "A":
 						  if(aHtml==""){
 							  aHtml+="<div class='char1'>A</div><div class='macro'>";
 						  }
-						  var similarList = data[i].wsimilar.split(' ');
-						  var oppositeList = data[i].woposite.split(' ');
+						 
 						  aHtml+="<div class='hengStep1 isclick'><div id='"+data[i].wid+"' class='word'>"+data[i].wword+"</div>";
-						  aHtml+="<div class='descri2'><div>近义词：<lable class='w11'>"+similarList[0]+" "+similarList[1]+"</lable></div>";
-						  aHtml+="<div>反义词：<lable class='w12'>"+oppositeList[0]+" "+oppositeList[1]+"</lable></div><div>类型：<lable class='w12'>"+data[i].wid+"</lable></div></div></div>";
+						  aHtml+="<div class='descri2'><div>近义词：<lable class='w11'>"+similar1+" "+similar2+"</lable></div>";
+						  aHtml+="<div>反义词：<lable class='w12'>"+opposite1+" "+opposite2+"</lable></div><div>类型：<lable class='w12'>"+data[i].wid+"</lable></div></div></div>";
 						   
 						  break;
 						case "B":
 							if(bHtml==""){
 								  bHtml+="<div class='char1'>B</div><div class='macro'>";
 							  }
-							  var similarList = data[i].wsimilar.split(' ');
-							  var oppositeList = data[i].woposite.split(' ');
+							  
 							  bHtml+="<div class='hengStep1 isclick'><div id='"+data[i].wid+"' class='word'>"+data[i].wword+"</div>";
-							  bHtml+="<div class='descri2'><div>近义词：<lable class='w11'>"+similarList[0]+" "+similarList[1]+"</lable></div>";
-							  bHtml+="<div>反义词：<lable class='w12'>"+oppositeList[0]+" "+oppositeList[1]+"</lable></div><div>类型：<lable class='w12'>"+data[i].wid+"</lable></div></div></div>";
+							  bHtml+="<div class='descri2'><div>近义词：<lable class='w11'>"+similar1+" "+similar2+"</lable></div>";
+							  bHtml+="<div>反义词：<lable class='w12'>"+opposite1+" "+opposite2+"</lable></div><div>类型：<lable class='w12'>"+data[i].wid+"</lable></div></div></div>";
 							   
 						  break;
 						case "C":
@@ -57,264 +84,240 @@ function getHtmlfirstchar(data){
 							if(cHtml==""){
 								  cHtml+="<div class='char1'>C</div><div class='macro'>";
 							  }
-							  var similarList = data[i].wsimilar.split(' ');
-							  var oppositeList = data[i].woposite.split(' ');
+							  
 							  cHtml+="<div class='hengStep1 isclick'><div id='"+data[i].wid+"' class='word'>"+data[i].wword+"</div>";
-							  cHtml+="<div class='descri2'><div>近义词：<lable class='w11'>"+similarList[0]+" "+similarList[1]+"</lable></div>";
-							  cHtml+="<div>反义词：<lable class='w12'>"+oppositeList[0]+" "+oppositeList[1]+"</lable></div><div>类型：<lable class='w12'>"+data[i].wid+"</lable></div></div></div>";
+							  cHtml+="<div class='descri2'><div>近义词：<lable class='w11'>"+similar1+" "+similar2+"</lable></div>";
+							  cHtml+="<div>反义词：<lable class='w12'>"+opposite1+" "+opposite2+"</lable></div><div>类型：<lable class='w12'>"+data[i].wid+"</lable></div></div></div>";
 							   
 						  break;
 					    case "D":
 					    	if(dHtml==""){
 								  dHtml+="<div class='char1'>D</div><div class='macro'>";
 							  }
-					    	  var similarList = data[i].wsimilar.split(' ');
-							  var oppositeList = data[i].woposite.split(' ');
+					    	  
 							  dHtml+="<div class='hengStep1 isclick'><div id='"+data[i].wid+"' class='word'>"+data[i].wword+"</div>";
-							  dHtml+="<div class='descri2'><div>近义词：<lable class='w11'>"+similarList[0]+" "+similarList[1]+"</lable></div>";
-							  dHtml+="<div>反义词：<lable class='w12'>"+oppositeList[0]+" "+oppositeList[1]+"</lable></div><div>类型：<lable class='w12'>"+data[i].wid+"</lable></div></div></div>";
+							  dHtml+="<div class='descri2'><div>近义词：<lable class='w11'>"+similar1+" "+similar2+"</lable></div>";
+							  dHtml+="<div>反义词：<lable class='w12'>"+opposite1+" "+opposite2+"</lable></div><div>类型：<lable class='w12'>"+data[i].wid+"</lable></div></div></div>";
 							    
 						  break;
 						case "E":
 							if(eHtml==""){
 								  eHtml+="<div class='char1'>E</div><div class='macro'>";
 							  }
-							  var similarList = data[i].wsimilar.split(' ');
-							  var oppositeList = data[i].woposite.split(' ');
+							 
 							  eHtml+="<div class='hengStep1 isclick'><div id='"+data[i].wid+"' class='word'>"+data[i].wword+"</div>";
-							  eHtml+="<div class='descri2'><div>近义词：<lable class='w11'>"+similarList[0]+" "+similarList[1]+"</lable></div>";
-							  eHtml+="<div>反义词：<lable class='w12'>"+oppositeList[0]+" "+oppositeList[1]+"</lable></div><div>类型：<lable class='w12'>"+data[i].wid+"</lable></div></div></div>";
+							  eHtml+="<div class='descri2'><div>近义词：<lable class='w11'>"+similar1+" "+similar2+"</lable></div>";
+							  eHtml+="<div>反义词：<lable class='w12'>"+opposite1+" "+opposite2+"</lable></div><div>类型：<lable class='w12'>"+data[i].wid+"</lable></div></div></div>";
 							   
 						  break;
 						case "F":
 							if(fHtml==""){
 								  fHtml+="<div class='char1'>F</div><div class='macro'>";
 							  }
-							  var similarList = data[i].wsimilar.split(' ');
-							  var oppositeList = data[i].woposite.split(' ');
+							  
 							  fHtml+="<div class='hengStep1 isclick'><div id='"+data[i].wid+"' class='word'>"+data[i].wword+"</div>";
-							  fHtml+="<div class='descri2'><div>近义词：<lable class='w11'>"+similarList[0]+" "+similarList[1]+"</lable></div>";
-							  fHtml+="<div>反义词：<lable class='w12'>"+oppositeList[0]+" "+oppositeList[1]+"</lable></div><div>类型：<lable class='w12'>"+data[i].wid+"</lable></div></div></div>";
+							  fHtml+="<div class='descri2'><div>近义词：<lable class='w11'>"+similar1+" "+similar2+"</lable></div>";
+							  fHtml+="<div>反义词：<lable class='w12'>"+opposite1+" "+opposite2+"</lable></div><div>类型：<lable class='w12'>"+data[i].wid+"</lable></div></div></div>";
 							   
 						  break;
 						case "G":
 							if(gHtml==""){
 								  gHtml+="<div class='char1'>G</div><div class='macro'>";
 							  }
-							  var similarList = data[i].wsimilar.split(' ');
-							  var oppositeList = data[i].woposite.split(' ');
+							  
 							  gHtml+="<div class='hengStep1 isclick'><div id='"+data[i].wid+"' class='word'>"+data[i].wword+"</div>";
-							  gHtml+="<div class='descri2'><div>近义词：<lable class='w11'>"+similarList[0]+" "+similarList[1]+"</lable></div>";
-							  gHtml+="<div>反义词：<lable class='w12'>"+oppositeList[0]+" "+oppositeList[1]+"</lable></div><div>类型：<lable class='w12'>"+data[i].wid+"</lable></div></div></div>";
+							  gHtml+="<div class='descri2'><div>近义词：<lable class='w11'>"+similar1+" "+similar2+"</lable></div>";
+							  gHtml+="<div>反义词：<lable class='w12'>"+opposite1+" "+opposite2+"</lable></div><div>类型：<lable class='w12'>"+data[i].wid+"</lable></div></div></div>";
 							   
 						  break;
 						case "H":
 							if(hHtml==""){
 								  hHtml+="<div class='char1'>H</div><div class='macro'>";
 							  }
-							  var similarList = data[i].wsimilar.split(' ');
-							  var oppositeList = data[i].woposite.split(' ');
+							  
 							  hHtml+="<div class='hengStep1 isclick'><div id='"+data[i].wid+"' class='word'>"+data[i].wword+"</div>";
-							  hHtml+="<div class='descri2'><div>近义词：<lable class='w11'>"+similarList[0]+" "+similarList[1]+"</lable></div>";
-							  hHtml+="<div>反义词：<lable class='w12'>"+oppositeList[0]+" "+oppositeList[1]+"</lable></div><div>类型：<lable class='w12'>"+data[i].wid+"</lable></div></div></div>";
+							  hHtml+="<div class='descri2'><div>近义词：<lable class='w11'>"+similar1+" "+similar2+"</lable></div>";
+							  hHtml+="<div>反义词：<lable class='w12'>"+opposite1+" "+opposite2+"</lable></div><div>类型：<lable class='w12'>"+data[i].wid+"</lable></div></div></div>";
 							    
 						  break;
 						case "I":
 							if(iHtml==""){
 								  iHtml+="<div class='char1'>I</div><div class='macro'>";
 							  }
-							  var similarList = data[i].wsimilar.split(' ');
-							  var oppositeList = data[i].woposite.split(' ');
+							  
 							  iHtml+="<div class='hengStep1 isclick'><div id='"+data[i].wid+"' class='word'>"+data[i].wword+"</div>";
-							  iHtml+="<div class='descri2'><div>近义词：<lable class='w11'>"+similarList[0]+" "+similarList[1]+"</lable></div>";
-							  iHtml+="<div>反义词：<lable class='w12'>"+oppositeList[0]+" "+oppositeList[1]+"</lable></div><div>类型：<lable class='w12'>"+data[i].wid+"</lable></div></div></div>";
+							  iHtml+="<div class='descri2'><div>近义词：<lable class='w11'>"+similar1+" "+similar2+"</lable></div>";
+							  iHtml+="<div>反义词：<lable class='w12'>"+opposite1+" "+opposite2+"</lable></div><div>类型：<lable class='w12'>"+data[i].wid+"</lable></div></div></div>";
 							   
 						  break;
 						case "J":
 							if(jHtml==""){
 								  jHtml+="<div class='char1'>J</div><div class='macro'>";
 							  }
-							  var similarList = data[i].wsimilar.split(' ');
-							  var oppositeList = data[i].woposite.split(' ');
+							  
 							  jHtml+="<div class='hengStep1 isclick'><div id='"+data[i].wid+"' class='word'>"+data[i].wword+"</div>";
-							  jHtml+="<div class='descri2'><div>近义词：<lable class='w11'>"+similarList[0]+" "+similarList[1]+"</lable></div>";
-							  jHtml+="<div>反义词：<lable class='w12'>"+oppositeList[0]+" "+oppositeList[1]+"</lable></div><div>类型：<lable class='w12'>"+data[i].wid+"</lable></div></div></div>";
+							  jHtml+="<div class='descri2'><div>近义词：<lable class='w11'>"+similar1+" "+similar2+"</lable></div>";
+							  jHtml+="<div>反义词：<lable class='w12'>"+opposite1+" "+opposite2+"</lable></div><div>类型：<lable class='w12'>"+data[i].wid+"</lable></div></div></div>";
 							   
 						  break;
 						case "K":
 							if(kHtml==""){
 								  kHtml+="<div class='char1'>K</div><div class='macro'>";
 							  }
-							  var similarList = data[i].wsimilar.split(' ');
-							  var oppositeList = data[i].woposite.split(' ');
+							  
 							  kHtml+="<div class='hengStep1 isclick'><div id='"+data[i].wid+"' class='word'>"+data[i].wword+"</div>";
-							  kHtml+="<div class='descri2'><div>近义词：<lable class='w11'>"+similarList[0]+" "+similarList[1]+"</lable></div>";
-							  kHtml+="<div>反义词：<lable class='w12'>"+oppositeList[0]+" "+oppositeList[1]+"</lable></div><div>类型：<lable class='w12'>"+data[i].wid+"</lable></div></div></div>";
+							  kHtml+="<div class='descri2'><div>近义词：<lable class='w11'>"+similar1+" "+similar2+"</lable></div>";
+							  kHtml+="<div>反义词：<lable class='w12'>"+opposite1+" "+opposite2+"</lable></div><div>类型：<lable class='w12'>"+data[i].wid+"</lable></div></div></div>";
 							   
 						  break;
 						case "L":
 							if(lHtml==""){
 								  lHtml+="<div class='char1'>L</div><div class='macro'>";
 							  }
-							  var similarList = data[i].wsimilar.split(' ');
-							  var oppositeList = data[i].woposite.split(' ');
+							  
 							  lHtml+="<div class='hengStep1 isclick'><div id='"+data[i].wid+"' class='word'>"+data[i].wword+"</div>";
-							  lHtml+="<div class='descri2'><div>近义词：<lable class='w11'>"+similarList[0]+" "+similarList[1]+"</lable></div>";
-							  lHtml+="<div>反义词：<lable class='w12'>"+oppositeList[0]+" "+oppositeList[1]+"</lable></div><div>类型：<lable class='w12'>"+data[i].wid+"</lable></div></div></div>";
+							  lHtml+="<div class='descri2'><div>近义词：<lable class='w11'>"+similar1+" "+similar2+"</lable></div>";
+							  lHtml+="<div>反义词：<lable class='w12'>"+opposite1+" "+opposite2+"</lable></div><div>类型：<lable class='w12'>"+data[i].wid+"</lable></div></div></div>";
 							   
 						  break;
 						case "M":
 							if(mHtml==""){
 								  mHtml+="<div class='char1'>M</div><div class='macro'>";
 							  }
-							  var similarList = data[i].wsimilar.split(' ');
-							  var oppositeList = data[i].woposite.split(' ');
+							  
 							  mHtml+="<div class='hengStep1 isclick'><div id='"+data[i].wid+"' class='word'>"+data[i].wword+"</div>";
-							  mHtml+="<div class='descri2'><div>近义词：<lable class='w11'>"+similarList[0]+" "+similarList[1]+"</lable></div>";
-							  mHtml+="<div>反义词：<lable class='w12'>"+oppositeList[0]+" "+oppositeList[1]+"</lable></div><div>类型：<lable class='w12'>"+data[i].wid+"</lable></div></div></div>";
+							  mHtml+="<div class='descri2'><div>近义词：<lable class='w11'>"+similar1+" "+similar2+"</lable></div>";
+							  mHtml+="<div>反义词：<lable class='w12'>"+opposite1+" "+opposite2+"</lable></div><div>类型：<lable class='w12'>"+data[i].wid+"</lable></div></div></div>";
 							   
 						  break;
 						case "N":
 							if(nHtml==""){
 								  nHtml+="<div class='char1'>N</div><div class='macro'>";
 							  }
-							  var similarList = data[i].wsimilar.split(' ');
-							  var oppositeList = data[i].woposite.split(' ');
+							  
 							  nHtml+="<div class='hengStep1 isclick'><div id='"+data[i].wid+"' class='word'>"+data[i].wword+"</div>";
-							  nHtml+="<div class='descri2'><div>近义词：<lable class='w11'>"+similarList[0]+" "+similarList[1]+"</lable></div>";
-							  nHtml+="<div>反义词：<lable class='w12'>"+oppositeList[0]+" "+oppositeList[1]+"</lable></div><div>类型：<lable class='w12'>"+data[i].wid+"</lable></div></div></div>";
+							  nHtml+="<div class='descri2'><div>近义词：<lable class='w11'>"+similar1+" "+similar2+"</lable></div>";
+							  nHtml+="<div>反义词：<lable class='w12'>"+opposite1+" "+opposite2+"</lable></div><div>类型：<lable class='w12'>"+data[i].wid+"</lable></div></div></div>";
 							   
 						  break;
 						case "O":
 							if(oHtml==""){
 								  oHtml+="<div class='char1'>O</div><div class='macro'>";
 							  }
-							  var similarList = data[i].wsimilar.split(' ');
-							  var oppositeList = data[i].woposite.split(' ');
+							  
 							  oHtml+="<div class='hengStep1 isclick'><div id='"+data[i].wid+"' class='word'>"+data[i].wword+"</div>";
-							  oHtml+="<div class='descri2'><div>近义词：<lable class='w11'>"+similarList[0]+" "+similarList[1]+"</lable></div>";
-							  oHtml+="<div>反义词：<lable class='w12'>"+oppositeList[0]+" "+oppositeList[1]+"</lable></div><div>类型：<lable class='w12'>"+data[i].wid+"</lable></div></div></div>";
+							  oHtml+="<div class='descri2'><div>近义词：<lable class='w11'>"+similar1+" "+similar2+"</lable></div>";
+							  oHtml+="<div>反义词：<lable class='w12'>"+opposite1+" "+opposite2+"</lable></div><div>类型：<lable class='w12'>"+data[i].wid+"</lable></div></div></div>";
 							   
 						  break;
 						case "P":
 							if(pHtml==""){
 								  pHtml+="<div class='char1'>P</div><div class='macro'>";
 							  }
-							  var similarList = data[i].wsimilar.split(' ');
-							  var oppositeList = data[i].woposite.split(' ');
+							  
 							  pHtml+="<div class='hengStep1 isclick'><div id='"+data[i].wid+"' class='word'>"+data[i].wword+"</div>";
-							  pHtml+="<div class='descri2'><div>近义词：<lable class='w11'>"+similarList[0]+" "+similarList[1]+"</lable></div>";
-							  pHtml+="<div>反义词：<lable class='w12'>"+oppositeList[0]+" "+oppositeList[1]+"</lable></div><div>类型：<lable class='w12'>"+data[i].wid+"</lable></div></div></div>";
+							  pHtml+="<div class='descri2'><div>近义词：<lable class='w11'>"+similar1+" "+similar2+"</lable></div>";
+							  pHtml+="<div>反义词：<lable class='w12'>"+opposite1+" "+opposite2+"</lable></div><div>类型：<lable class='w12'>"+data[i].wid+"</lable></div></div></div>";
 							   
 						  break;
 						case "Q":
 							if(qHtml==""){
 								  qHtml+="<div class='char1'>Q</div><div class='macro'>";
 							  }
-							  var similarList = data[i].wsimilar.split(' ');
-							  var oppositeList = data[i].woposite.split(' ');
+							  
 							  qHtml+="<div class='hengStep1 isclick'><div id='"+data[i].wid+"' class='word'>"+data[i].wword+"</div>";
-							  qHtml+="<div class='descri2'><div>近义词：<lable class='w11'>"+similarList[0]+" "+similarList[1]+"</lable></div>";
-							  qHtml+="<div>反义词：<lable class='w12'>"+oppositeList[0]+" "+oppositeList[1]+"</lable></div><div>类型：<lable class='w12'>"+data[i].wid+"</lable></div></div></div>";
+							  qHtml+="<div class='descri2'><div>近义词：<lable class='w11'>"+similar1+" "+similar2+"</lable></div>";
+							  qHtml+="<div>反义词：<lable class='w12'>"+opposite1+" "+opposite2+"</lable></div><div>类型：<lable class='w12'>"+data[i].wid+"</lable></div></div></div>";
 							   
 						  break;
 						case "R":
 							if(rHtml==""){
 								  rHtml+="<div class='char1'>R</div><div class='macro'>";
 							  }
-							  var similarList = data[i].wsimilar.split(' ');
-							  var oppositeList = data[i].woposite.split(' ');
+							  
 							  rHtml+="<div class='hengStep1 isclick'><div id='"+data[i].wid+"' class='word'>"+data[i].wword+"</div>";
-							  rHtml+="<div class='descri2'><div>近义词：<lable class='w11'>"+similarList[0]+" "+similarList[1]+"</lable></div>";
-							  rHtml+="<div>反义词：<lable class='w12'>"+oppositeList[0]+" "+oppositeList[1]+"</lable></div><div>类型：<lable class='w12'>"+data[i].wid+"</lable></div></div></div>";
+							  rHtml+="<div class='descri2'><div>近义词：<lable class='w11'>"+similar1+" "+similar2+"</lable></div>";
+							  rHtml+="<div>反义词：<lable class='w12'>"+opposite1+" "+opposite2+"</lable></div><div>类型：<lable class='w12'>"+data[i].wid+"</lable></div></div></div>";
 							   
 						  break;
 						case "S":
 							if(sHtml==""){
 								  sHtml+="<div class='char1'>S</div><div class='macro'>";
 							  }
-							  var similarList = data[i].wsimilar.split(' ');
-							  var oppositeList = data[i].woposite.split(' ');
+							  
 							  sHtml+="<div class='hengStep1 isclick'><div id='"+data[i].wid+"' class='word'>"+data[i].wword+"</div>";
-							  sHtml+="<div class='descri2'><div>近义词：<lable class='w11'>"+similarList[0]+" "+similarList[1]+"</lable></div>";
-							  sHtml+="<div>反义词：<lable class='w12'>"+oppositeList[0]+" "+oppositeList[1]+"</lable></div><div>类型：<lable class='w12'>"+data[i].wid+"</lable></div></div></div>";
+							  sHtml+="<div class='descri2'><div>近义词：<lable class='w11'>"+similar1+" "+similar2+"</lable></div>";
+							  sHtml+="<div>反义词：<lable class='w12'>"+opposite1+" "+opposite2+"</lable></div><div>类型：<lable class='w12'>"+data[i].wid+"</lable></div></div></div>";
 							   
 						  break;
 						case "T":
 							if(tHtml==""){
 								  tHtml+="<div class='char1'>T</div><div class='macro'>";
 							  }
-							  var similarList = data[i].wsimilar.split(' ');
-							  var oppositeList = data[i].woposite.split(' ');
+							  
 							  tHtml+="<div class='hengStep1 isclick'><div id='"+data[i].wid+"' class='word'>"+data[i].wword+"</div>";
-							  tHtml+="<div class='descri2'><div>近义词：<lable class='w11'>"+similarList[0]+" "+similarList[1]+"</lable></div>";
-							  tHtml+="<div>反义词：<lable class='w12'>"+oppositeList[0]+" "+oppositeList[1]+"</lable></div><div>类型：<lable class='w12'>"+data[i].wid+"</lable></div></div></div>";
+							  tHtml+="<div class='descri2'><div>近义词：<lable class='w11'>"+similar1+" "+similar2+"</lable></div>";
+							  tHtml+="<div>反义词：<lable class='w12'>"+opposite1+" "+opposite2+"</lable></div><div>类型：<lable class='w12'>"+data[i].wid+"</lable></div></div></div>";
 							   
 						  break;
 						case "U":
 							if(uHtml==""){
 								  uHtml+="<div class='char1'>U</div><div class='macro'>";
 							  }
-							  var similarList = data[i].wsimilar.split(' ');
-							  var oppositeList = data[i].woposite.split(' ');
+							  
 							  uHtml+="<div class='hengStep1 isclick'><div id='"+data[i].wid+"' class='word'>"+data[i].wword+"</div>";
-							  uHtml+="<div class='descri2'><div>近义词：<lable class='w11'>"+similarList[0]+" "+similarList[1]+"</lable></div>";
-							  uHtml+="<div>反义词：<lable class='w12'>"+oppositeList[0]+" "+oppositeList[1]+"</lable></div><div>类型：<lable class='w12'>"+data[i].wid+"</lable></div></div></div>";
+							  uHtml+="<div class='descri2'><div>近义词：<lable class='w11'>"+similar1+" "+similar2+"</lable></div>";
+							  uHtml+="<div>反义词：<lable class='w12'>"+opposite1+" "+opposite2+"</lable></div><div>类型：<lable class='w12'>"+data[i].wid+"</lable></div></div></div>";
 							   
 						  break;
 						case "V":
 							if(vHtml==""){
 								  vHtml+="<div class='char1'>V</div><div class='macro'>";
 							  }
-							  var similarList = data[i].wsimilar.split(' ');
-							  var oppositeList = data[i].woposite.split(' ');
+							  
 							  vHtml+="<div class='hengStep1 isclick'><div id='"+data[i].wid+"' class='word'>"+data[i].wword+"</div>";
-							  vHtml+="<div class='descri2'><div>近义词：<lable class='w11'>"+similarList[0]+" "+similarList[1]+"</lable></div>";
-							  vHtml+="<div>反义词：<lable class='w12'>"+oppositeList[0]+" "+oppositeList[1]+"</lable></div><div>类型：<lable class='w12'>"+data[i].wid+"</lable></div></div></div>";
+							  vHtml+="<div class='descri2'><div>近义词：<lable class='w11'>"+similar1+" "+similar2+"</lable></div>";
+							  vHtml+="<div>反义词：<lable class='w12'>"+opposite1+" "+opposite2+"</lable></div><div>类型：<lable class='w12'>"+data[i].wid+"</lable></div></div></div>";
 							   
 						  break;
 						case "W":
 							if(wHtml==""){
 								  wHtml+="<div class='char1'>W</div><div class='macro'>";
 							  }
-							  var similarList = data[i].wsimilar.split(' ');
-							  var oppositeList = data[i].woposite.split(' ');
+							  
 							  wHtml+="<div class='hengStep1 isclick'><div id='"+data[i].wid+"' class='word'>"+data[i].wword+"</div>";
-							  wHtml+="<div class='descri2'><div>近义词：<lable class='w11'>"+similarList[0]+" "+similarList[1]+"</lable></div>";
-							  wHtml+="<div>反义词：<lable class='w12'>"+oppositeList[0]+" "+oppositeList[1]+"</lable></div><div>类型：<lable class='w12'>"+data[i].wid+"</lable></div></div></div>";
+							  wHtml+="<div class='descri2'><div>近义词：<lable class='w11'>"+similar1+" "+similar2+"</lable></div>";
+							  wHtml+="<div>反义词：<lable class='w12'>"+opposite1+" "+opposite2+"</lable></div><div>类型：<lable class='w12'>"+data[i].wid+"</lable></div></div></div>";
 							   
 						  break;
 						case "X":
 							if(xHtml==""){
 								  xHtml+="<div class='char1'>X</div><div class='macro'>";
 							  }
-							  var similarList = data[i].wsimilar.split(' ');
-							  var oppositeList = data[i].woposite.split(' ');
+							  
 							  xHtml+="<div class='hengStep1 isclick'><div id='"+data[i].wid+"' class='word'>"+data[i].wword+"</div>";
-							  xHtml+="<div class='descri2'><div>近义词：<lable class='w11'>"+similarList[0]+" "+similarList[1]+"</lable></div>";
-							  xHtml+="<div>反义词：<lable class='w12'>"+oppositeList[0]+" "+oppositeList[1]+"</lable></div><div>类型：<lable class='w12'>"+data[i].wid+"</lable></div></div></div>";
+							  xHtml+="<div class='descri2'><div>近义词：<lable class='w11'>"+similar1+" "+similar2+"</lable></div>";
+							  xHtml+="<div>反义词：<lable class='w12'>"+opposite1+" "+opposite2+"</lable></div><div>类型：<lable class='w12'>"+data[i].wid+"</lable></div></div></div>";
 							   
 						  break;
 						case "Y":
 							if(yHtml==""){
 								  yHtml+="<div class='char1'>Y</div><div class='macro'>";
 							  }
-							  var similarList = data[i].wsimilar.split(' ');
-							  var oppositeList = data[i].woposite.split(' ');
+							  
 							  yHtml+="<div class='hengStep1 isclick'><div id='"+data[i].wid+"' class='word'>"+data[i].wword+"</div>";
-							  yHtml+="<div class='descri2'><div>近义词：<lable class='w11'>"+similarList[0]+" "+similarList[1]+"</lable></div>";
-							  yHtml+="<div>反义词：<lable class='w12'>"+oppositeList[0]+" "+oppositeList[1]+"</lable></div><div>类型：<lable class='w12'>"+data[i].wid+"</lable></div></div></div>";
+							  yHtml+="<div class='descri2'><div>近义词：<lable class='w11'>"+similar1+" "+similar2+"</lable></div>";
+							  yHtml+="<div>反义词：<lable class='w12'>"+opposite1+" "+opposite2+"</lable></div><div>类型：<lable class='w12'>"+data[i].wid+"</lable></div></div></div>";
 							   
 						  break;
 						case "Z":
 							if(zHtml==""){
 								  zHtml+="<div class='char1'>Z</div><div class='macro'>";
 							  }
-							  var similarList = data[i].wsimilar.split(' ');
-							  var oppositeList = data[i].woposite.split(' ');
+							  
 							  zHtml+="<div class='hengStep1 isclick'><div id='"+data[i].wid+"' class='word'>"+data[i].wword+"</div>";
-							  zHtml+="<div class='descri2'><div>近义词：<lable class='w11'>"+similarList[0]+" "+similarList[1]+"</lable></div>";
-							  zHtml+="<div>反义词：<lable class='w12'>"+oppositeList[0]+" "+oppositeList[1]+"</lable></div><div>类型：<lable class='w12'>"+data[i].wid+"</lable></div></div></div>";
+							  zHtml+="<div class='descri2'><div>近义词：<lable class='w11'>"+similar1+" "+similar2+"</lable></div>";
+							  zHtml+="<div>反义词：<lable class='w12'>"+opposite1+" "+opposite2+"</lable></div><div>类型：<lable class='w12'>"+data[i].wid+"</lable></div></div></div>";
 							   
 						  break;  
 						default:
@@ -371,8 +374,8 @@ function getHtmlvocabularyType(data){
 			  var similarList = data[i].wsimilar.split(' ');
 			  var oppositeList = data[i].woposite.split(' ');
 			  aHtml+="<div class='hengStep1 isclick'><div id='"+data[i].wid+"' class='word'>"+data[i].wword+"</div>";
-			  aHtml+="<div class='descri2'><div>近义词：<lable class='w11'>"+similarList[0]+" "+similarList[1]+"</lable></div>";
-			  aHtml+="<div>反义词：<lable class='w12'>"+oppositeList[0]+" "+oppositeList[1]+"</lable></div><div>类型：<lable class='w12'>"+data[i].wid+"</lable></div></div></div>";
+			  aHtml+="<div class='descri2'><div>近义词：<lable class='w11'>"+similar1+" "+similar2+"</lable></div>";
+			  aHtml+="<div>反义词：<lable class='w12'>"+opposite1+" "+opposite2+"</lable></div><div>类型：<lable class='w12'>"+data[i].wid+"</lable></div></div></div>";
 			   
 			  break;
 			case "优雅":
@@ -382,8 +385,8 @@ function getHtmlvocabularyType(data){
 				  var similarList = data[i].wsimilar.split(' ');
 				  var oppositeList = data[i].woposite.split(' ');
 				  bHtml+="<div class='hengStep1 isclick'><div id='"+data[i].wid+"' class='word'>"+data[i].wword+"</div>";
-				  bHtml+="<div class='descri2'><div>近义词：<lable class='w11'>"+similarList[0]+" "+similarList[1]+"</lable></div>";
-				  bHtml+="<div>反义词：<lable class='w12'>"+oppositeList[0]+" "+oppositeList[1]+"</lable></div><div>类型：<lable class='w12'>"+data[i].wid+"</lable></div></div></div>";
+				  bHtml+="<div class='descri2'><div>近义词：<lable class='w11'>"+similar1+" "+similar2+"</lable></div>";
+				  bHtml+="<div>反义词：<lable class='w12'>"+opposite1+" "+opposite2+"</lable></div><div>类型：<lable class='w12'>"+data[i].wid+"</lable></div></div></div>";
 				   
 			  break;
 			case "C":
@@ -394,8 +397,8 @@ function getHtmlvocabularyType(data){
 				  var similarList = data[i].wsimilar.split(' ');
 				  var oppositeList = data[i].woposite.split(' ');
 				  cHtml+="<div class='hengStep1 isclick'><div id='"+data[i].wid+"' class='word'>"+data[i].wword+"</div>";
-				  cHtml+="<div class='descri2'><div>近义词：<lable class='w11'>"+similarList[0]+" "+similarList[1]+"</lable></div>";
-				  cHtml+="<div>反义词：<lable class='w12'>"+oppositeList[0]+" "+oppositeList[1]+"</lable></div><div>类型：<lable class='w12'>"+data[i].wid+"</lable></div></div></div>";
+				  cHtml+="<div class='descri2'><div>近义词：<lable class='w11'>"+similar1+" "+similar2+"</lable></div>";
+				  cHtml+="<div>反义词：<lable class='w12'>"+opposite1+" "+opposite2+"</lable></div><div>类型：<lable class='w12'>"+data[i].wid+"</lable></div></div></div>";
 				   
 			  break;
 		    case "D":
@@ -405,8 +408,8 @@ function getHtmlvocabularyType(data){
 		    	  var similarList = data[i].wsimilar.split(' ');
 				  var oppositeList = data[i].woposite.split(' ');
 				  dHtml+="<div class='hengStep1 isclick'><div id='"+data[i].wid+"' class='word'>"+data[i].wword+"</div>";
-				  dHtml+="<div class='descri2'><div>近义词：<lable class='w11'>"+similarList[0]+" "+similarList[1]+"</lable></div>";
-				  dHtml+="<div>反义词：<lable class='w12'>"+oppositeList[0]+" "+oppositeList[1]+"</lable></div><div>类型：<lable class='w12'>"+data[i].wid+"</lable></div></div></div>";
+				  dHtml+="<div class='descri2'><div>近义词：<lable class='w11'>"+similar1+" "+similar2+"</lable></div>";
+				  dHtml+="<div>反义词：<lable class='w12'>"+opposite1+" "+opposite2+"</lable></div><div>类型：<lable class='w12'>"+data[i].wid+"</lable></div></div></div>";
 				    
 			  break;
 			case "E":
@@ -416,8 +419,8 @@ function getHtmlvocabularyType(data){
 				  var similarList = data[i].wsimilar.split(' ');
 				  var oppositeList = data[i].woposite.split(' ');
 				  eHtml+="<div class='hengStep1 isclick'><div id='"+data[i].wid+"' class='word'>"+data[i].wword+"</div>";
-				  eHtml+="<div class='descri2'><div>近义词：<lable class='w11'>"+similarList[0]+" "+similarList[1]+"</lable></div>";
-				  eHtml+="<div>反义词：<lable class='w12'>"+oppositeList[0]+" "+oppositeList[1]+"</lable></div><div>类型：<lable class='w12'>"+data[i].wid+"</lable></div></div></div>";
+				  eHtml+="<div class='descri2'><div>近义词：<lable class='w11'>"+similar1+" "+similar2+"</lable></div>";
+				  eHtml+="<div>反义词：<lable class='w12'>"+opposite1+" "+opposite2+"</lable></div><div>类型：<lable class='w12'>"+data[i].wid+"</lable></div></div></div>";
 				   
 			  break;
 			case "F":
@@ -427,8 +430,8 @@ function getHtmlvocabularyType(data){
 				  var similarList = data[i].wsimilar.split(' ');
 				  var oppositeList = data[i].woposite.split(' ');
 				  fHtml+="<div class='hengStep1 isclick'><div id='"+data[i].wid+"' class='word'>"+data[i].wword+"</div>";
-				  fHtml+="<div class='descri2'><div>近义词：<lable class='w11'>"+similarList[0]+" "+similarList[1]+"</lable></div>";
-				  fHtml+="<div>反义词：<lable class='w12'>"+oppositeList[0]+" "+oppositeList[1]+"</lable></div><div>类型：<lable class='w12'>"+data[i].wid+"</lable></div></div></div>";
+				  fHtml+="<div class='descri2'><div>近义词：<lable class='w11'>"+similar1+" "+similar2+"</lable></div>";
+				  fHtml+="<div>反义词：<lable class='w12'>"+opposite1+" "+opposite2+"</lable></div><div>类型：<lable class='w12'>"+data[i].wid+"</lable></div></div></div>";
 				   
 			  break;
 			case "G":
@@ -438,8 +441,8 @@ function getHtmlvocabularyType(data){
 				  var similarList = data[i].wsimilar.split(' ');
 				  var oppositeList = data[i].woposite.split(' ');
 				  gHtml+="<div class='hengStep1 isclick'><div id='"+data[i].wid+"' class='word'>"+data[i].wword+"</div>";
-				  gHtml+="<div class='descri2'><div>近义词：<lable class='w11'>"+similarList[0]+" "+similarList[1]+"</lable></div>";
-				  gHtml+="<div>反义词：<lable class='w12'>"+oppositeList[0]+" "+oppositeList[1]+"</lable></div><div>类型：<lable class='w12'>"+data[i].wid+"</lable></div></div></div>";
+				  gHtml+="<div class='descri2'><div>近义词：<lable class='w11'>"+similar1+" "+similar2+"</lable></div>";
+				  gHtml+="<div>反义词：<lable class='w12'>"+opposite1+" "+opposite2+"</lable></div><div>类型：<lable class='w12'>"+data[i].wid+"</lable></div></div></div>";
 				   
 			  break;
 			
@@ -490,12 +493,41 @@ function GetRequest(loc) {
 
 function filldimensionContent(data){
 	var html="";
+	var similar1 = "",similar2 = "";
+	var opposite1 = "", opposite = "";
+	var similarList = "";
+	var oppositeList = "";
 	for(var i=0;i<data.length;i++){
-		var similarList = data[i].wsimilar.split(' ');
-		var oppositeList = data[i].woposite.split(' ');
+		similarList = data[i].wsimilar.split(' ');
+		oppositeList = data[i].woposite.split(' ');
+		  
+		if(similarList[0] == "undefined" ||similarList[0] == null){
+			similar1 = "";
+		}else{
+			similar1 = similarList[0];
+		}
+		
+		if(similarList[1] == "undefined" ||similarList[1] == null){
+			similar2 = "";
+		}else{
+			similar2 = similarList[1];
+		}
+		
+		if(oppositeList[0] == "undefined" ||oppositeList[0] == null){
+			opposite1 = "";
+		}else{
+			opposite1 = oppositeList[0];
+		}
+		
+		if(oppositeList[1] == "undefined" ||oppositeList[1] == null){
+			opposite2 = "";
+		}else{
+			opposite2 = oppositeList[1];
+		}
+		
 		html+="<div class='hengStep1 isclick'><div id='"+data[i].wid+"' class='word'>"+data[i].wword+"</div>";
-		html+="<div class='descri2'><div>近义词：<lable class='w11'>"+similarList[0]+" "+similarList[1]+"</lable></div>";
-		html+="<div>反义词：<lable class='w12'>"+oppositeList[0]+" "+oppositeList[1]+"</lable></div><div>类型：<lable class='w12'>"+data[i].wid+"</lable></div></div></div>";
+		html+="<div class='descri2'><div>近义词：<lable class='w11'>"+similar1+" "+similar2+"</lable></div>";
+		html+="<div>反义词：<lable class='w12'>"+opposite1+" "+opposite2+"</lable></div><div>类型：<lable class='w12'>"+data[i].wid+"</lable></div></div></div>";
 	}
 	$(".macro").html(html);
 }
