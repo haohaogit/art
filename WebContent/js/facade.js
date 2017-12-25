@@ -493,6 +493,14 @@ function fillCodeoutline(data){
 				sHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-oid='"+data[i].id+"'/></div>";
 				sHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
 			    break;
+			case "外扩型":
+				
+				if(sHtml==""){
+					sHtml+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>满口型轮廓编码</div></div><div class='macro'>";
+				}
+				sHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-oid='"+data[i].id+"'/></div>";
+				sHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
+			    break;
 			case "收口外扩型":
 				
 				if(aHtml==""){
@@ -854,17 +862,17 @@ function fillCodepartFabric(data){
 			  a1Html+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-pid='"+data[i].id+"'/></div>";
 			  a1Html+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
 			  break;
-			case "主图":
+			case "织物主图":
 				
 				if(b1Html==""){
-					b1Html+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>主图部件编码</div></div><div class='macro'>";
+					b1Html+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>织物主图部件编码</div></div><div class='macro'>";
 				}
 				b1Html+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-pid='"+data[i].id+"'/></div>";
 				b1Html+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
 			    break;
-			case "辅图":
+			case "织物辅图":
 				  if(c1Html==""){
-					  c1Html+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>辅图部件编码</div></div><div class='macro'>";
+					  c1Html+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>织物辅图部件编码</div></div><div class='macro'>";
 				  }
 				  c1Html+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-pid='"+data[i].id+"'/></div>";
 				  c1Html+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
@@ -884,7 +892,7 @@ function fillCodepartFabric(data){
 	}
 	var html="";
 	
-	html=html+a1Html+"</div>"+b1Html+"</div>"+c1Html+"</div>"+d1Html+"</div>";
+	html=html+a1Html+"</div>"+d1Html+"</div>"+b1Html+"</div>"+c1Html+"</div>";
 	
 	$(".codepart").html(html);
 }
@@ -1409,7 +1417,7 @@ function fillCodeoutlineFabric(data){
 		//var qwe = data[i].wfirstchar;
 		switch(data[i].codetypename)
 		{
-			case "兽纹图案":
+			case "兽纹":
 			  if(aHtml==""){
 				  aHtml+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>兽纹图案轮廓编码</div></div><div class='macro'>";
 			  }
@@ -1417,7 +1425,7 @@ function fillCodeoutlineFabric(data){
 			  aHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-oid='"+data[i].id+"'/></div>";
 			  aHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
 			  break;
-			case "鸟纹图案":
+			case "鸟纹":
 			
 				if(bHtml==""){
 					bHtml+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>鸟纹图案轮廓编码</div></div><div class='macro'>";
@@ -1425,18 +1433,18 @@ function fillCodeoutlineFabric(data){
 				bHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-oid='"+data[i].id+"'/></div>";
 				bHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
 			    break;
-			case "几何图案":
+			case "几何纹":
 			  if(kHtml==""){
-				  kHtml+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>几何图案轮廓编码</div></div><div class='macro'>";
+				  kHtml+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>几何纹图案轮廓编码</div></div><div class='macro'>";
 			  }
 			 
 			  kHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-oid='"+data[i].id+"'/></div>";
 			  kHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";
 			  break;
-			case "花草图案":
+			case "花草纹":
 			
 				if(sHtml==""){
-					sHtml+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>花草图案轮廓编码</div></div><div class='macro'>";
+					sHtml+="<div><div id='inputcorpus' id='style1' style='padding-top: 5.5px;'>花草纹图案轮廓编码</div></div><div class='macro'>";
 				}
 				sHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].caseimg+"' data-oid='"+data[i].id+"'/></div>";
 				sHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].codename+"</div></div></div>";

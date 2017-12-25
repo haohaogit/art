@@ -215,14 +215,22 @@ public class BottomCaseServiceImpl implements BottomCaseService {
 		List<bottomCaseB> bottomCaseBs = new LinkedList<bottomCaseB>();
 		bottomCaseB bottomCaseB;
 		for (BottomCase bottomCase : bottomCases) {
-			bottomCaseB = new bottomCaseB();
-			bottomCaseB.setBcid(bottomCase.getBcid());
-			bottomCaseB.setTid(bottomCase.getTid());
-			bottomCaseB.setBctname(bottomCaseTypeMapper.selectByPrimaryKey(bottomCase.getBctid()).getBctname());
-			bottomCaseB.setCasename(bottomCase.getCasename());
-			bottomCaseB.setCaseimg(bottomCase.getCaseimg());
 			
-			bottomCaseBs.add(bottomCaseB);
+			BottomCaseType bottomCaseType = bottomCaseTypeMapper.selectByPrimaryKey(bottomCase.getBctid());
+			if(bottomCaseType != null){
+				bottomCaseB = new bottomCaseB();
+				bottomCaseB.setBcid(bottomCase.getBcid());
+				bottomCaseB.setTid(bottomCase.getTid());
+				
+				bottomCaseB.setBctname(bottomCaseType.getBctname());
+				bottomCaseB.setCasename(bottomCase.getCasename());
+				bottomCaseB.setCaseimg(bottomCase.getCaseimg());
+				
+				bottomCaseBs.add(bottomCaseB);
+			}
+			
+			
+			
 		}
 		return bottomCaseBs;
 		

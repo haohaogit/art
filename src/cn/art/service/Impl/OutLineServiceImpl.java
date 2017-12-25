@@ -251,15 +251,20 @@ public class OutLineServiceImpl implements OutLineService {
 		outlineB outlineB;
 		for (OutLine outLine : outLines) {
 			
-			outlineB = new outlineB();
 			OutLineType outLineType = outLineTypeMapper.selectByPrimaryKey(outLine.getOtid());
-			outlineB.setOdescription(outLine.getOdescription());
-			outlineB.setOid(outLine.getOid());
-			outlineB.setTid(outLine.getTid());
-			outlineB.setOimg(outLine.getOimg());
-			outlineB.setOname(outLineType.getOname());
-
-			outlineBs.add(outlineB);
+			if(outLineType != null){
+				outlineB = new outlineB();
+				
+				outlineB.setOdescription(outLine.getOdescription());
+				outlineB.setOid(outLine.getOid());
+				outlineB.setTid(outLine.getTid());
+				outlineB.setOimg(outLine.getOimg());
+				outlineB.setOname(outLineType.getOname());
+				
+				outlineBs.add(outlineB);
+			}
+			
+			
 		}
 		return outlineBs;
 	}

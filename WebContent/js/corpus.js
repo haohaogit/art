@@ -545,9 +545,9 @@ function fillquestionHref(data){
 	$('.hengStep1').eq(1).attr('data-url',data.wordresult);
 	$('.hengStep1').eq(2).attr('data-url',data.connectsurvey);
 	$('.hengStep1').eq(3).attr('data-url',data.connectresult);
-	$('.hengStep2').eq(0).attr('data-url',data.choosesurvey);
-	$('.hengStep2').eq(1).attr('data-url',data.ratio);
-	$('.hengStep2').eq(2).attr('data-url',data.algorithms);
+	$('.hengStep1').eq(4).attr('data-url',data.choosesurvey);
+	$('.hengStep1').eq(5).attr('data-url',data.ratio);
+	$('.hengStep1').eq(6).attr('data-url',data.algorithms);
 	
 	/*
 	$('.hengStep1').eq(2).click(function(){

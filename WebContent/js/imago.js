@@ -9,7 +9,7 @@ function fillModelFabric(data){
 		//var qwe = data[i].wfirstchar;
 		switch(data[i].oname)
 		{
-			case "兽纹图案":
+			case "兽纹":
 			  if(aHtml==""){
 				  aHtml+="<div class='lunkuo'><div class='descri' >兽纹图案轮廓</div></div><div class='macro'>";
 			  }
@@ -17,26 +17,26 @@ function fillModelFabric(data){
 			  aHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].oname+"</div></div></div>";
 			 
 			  break;
-			case "花草图案":
+			case "花草纹":
 			
 				if(bHtml==""){
-					bHtml+="<div class='lunkuo'><div class='descri' >花草图案轮廓</div></div><div class='macro'>";
+					bHtml+="<div class='lunkuo'><div class='descri' >花草纹图案轮廓</div></div><div class='macro'>";
 				}
 				
 				bHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].oimg+"' data-oid='"+data[i].oid+"'/></div>";
 				bHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].oname+"</div></div></div>";
 			
 			    break;
-			case "几何图案":
+			case "几何纹":
 				  if(cHtml==""){
-					  cHtml+="<div class='lunkuo'><div class='descri' >几何图案轮廓</div></div><div class='macro'>";
+					  cHtml+="<div class='lunkuo'><div class='descri' >几何纹图案轮廓</div></div><div class='macro'>";
 				  }
 				
 				  cHtml+="<div class='hengStep isclick'><div><img class='imgfabric' src='../image/"+data[i].oimg+"' data-oid='"+data[i].oid+"'/></div>";
 				  cHtml+="<div class='lunkuo1'><div class='descri1' >"+data[i].oname+"</div></div></div>";
 				 
 				  break;
-			case "鸟纹图案":
+			case "鸟纹":
 			
 				if(dHtml==""){
 					dHtml+="<div class='lunkuo'><div class='descri' >鸟纹图案轮廓</div></div><div class='macro'>";
