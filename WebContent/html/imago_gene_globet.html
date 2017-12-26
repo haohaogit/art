@@ -4,12 +4,21 @@
 <head>
 <meta charset="UTF-8">
 <link href="../css/imago.css" rel="stylesheet" type="text/css"/>
+<link href="../css/jindutiao.css" rel="stylesheet" type="text/css"/>
+<link rel="stylesheet" href="../css/bootstrap.min1.css">
 <link href="../css/loginDialog.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../js/jquery-1.8.2.min.js"></script>
 <title>意象映射-意象映射系统</title>
 </head>
 <body>
 <script type="text/javascript">
+		/* function adjustHtml(){
+		
+			$(".progress-bar-info").css({'width':a+"%"});
+			$(".progress-value").html(a+"%");
+		} */
+		
+		var shijian ;
         var timeid ;
         $(document).ready(function () {
 //  			alert(11);
@@ -21,6 +30,11 @@
 		  	var n2 = loc.indexOf("=");//取得=号的位置
 		  	var sc = decodeURI(loc.substr(n2+1, n1-n2));//从=号后面的内容
 		  	
+		  	shijian = window.setInterval(function(){haha();},100); 
+			
+			window.onload = function(){  
+			   shijian;  
+			}  
 		  	//alert("sc = "+sc);
 		  	$.ajax("setparam/globet?sc="+sc,
 		            // 发送请求的URL字符串
@@ -30,8 +44,13 @@
 		                success: function(data){
 						//alert("facade newcase goblet test length");
 						//fillNewcaseHouseboat(data);
-						
+						$(".demo").css({'display':'none'});
 						$(".i1").attr('src',data.img);
+						
+						$(".i2").attr('src',"../image/R220G91B112.jpg");
+						$(".i3").attr('src',"../image/M21shuijingcaizhi-moren.jpg");
+						
+						
 						/* var sword = data.wordIndex.split(",");
 						$(".lable1").html(sword[0]);
 						$(".lable2").html(sword[1]);
@@ -45,6 +64,15 @@
 		                }
 		            });
         });
+        function haha(){  
+    		
+  		  var jindutiao = document.getElementById("progressbar");  
+  		  jindutiao.style.width = parseInt(jindutiao.style.width) + 1 + "%";
+  		  jindutiao.innerHTML = jindutiao.style.width;  
+  		  if(jindutiao.style.width == "98%"){  
+  		     window.clearInterval(shijian);  
+  		  }  
+  		}  
 </script>
 	<!-- 	头部 -->
 	<div class="configHead"></div>
@@ -123,15 +151,34 @@
 					<lable class="lable4"></lable>
 				</div>
 			</div>
+			
+			<div class="demo" style="display:block;">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-offset-3 col-md-6">
+							<div class="progress">
+								<div id="progressbar" class="progress-bar progress-bar-info progress-bar-striped active" style="width: 0%;">
+									<div class="progress-value">0%</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div style="text-align:center;clear:both;">
+			<!-- <script src="/gg_bd_ad_720x90.js" type="text/javascript"></script>
+			<script src="/follow.js" type="text/javascript"></script> -->
+			
+			</div>
 
 			<div id="showCommander">
 				<div id="pic1" style="float: left;">
-					<img src="../image/R220G91B112.jpg" style=" width: 130px;height: 130px;"/>
-					<p class="p1">色彩推荐</p>
+					<img  class = "i23 i2" src="" />
+					<p class="p1" style="width: 130px;">色彩推荐</p>
 				</div>
            		<div id="pic3" style="float: left;">
-           			<img src="../image/M21shuijingcaizhi-moren.jpg" style=" width: 130px;height: 130px;"/>
-           			<p class="p1">材质推荐</p>
+           			<img class = "i23 i3" src=""/>
+           			<p class="p1" style="width: 130px;">材质推荐</p>
            		</div>
 			</div>
 
@@ -149,6 +196,7 @@
 		function saveGene(){
 			//alert("高脚杯推荐方案保存，然后调整色彩");
 			window.location.href="imago_adjust_color_globet.html?timeid="+timeid;
+			
 		}
 
 
