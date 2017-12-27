@@ -37,8 +37,8 @@
 		  	var n1 = loc.length;//地址的总长度
 		  	var n2 = loc.indexOf("=");//取得=号的位置
 		  	timeid = decodeURI(loc.substr(n2+1, n1-n2));//从=号后面的内容 
-		  	//var geneimg = "../image/gaojiaobeiPartA_"+timeid+".jpg";
-		  	var geneimg = "../image/gaojiaobei 1.jpg";
+		  	var geneimg = "../image/gaojiaobeiPartA_"+timeid+".jpg";
+		  	//var geneimg = "../image/gaojiaobei 1.jpg";
 		  	
 		  	$(".picimg2").attr("src",geneimg);
 		  	debugger;
@@ -288,6 +288,15 @@
 					canvas1.renderAll();
 				},
 				convertTo: function(format) {
+					//保存图前  去掉边角方框
+					this.cornersvisible = false;
+					for (var i = 0, l = canvas1._aImages.length; i < l; i += 1) {
+						canvas1._aImages[i].setCornersVisibility(this.cornersvisible);
+					}
+					canvas1.renderAll();
+					
+					
+					
 					var imgData = canvas1.canvasTo(format);
 					var caseName = $("#account1").val();
 					$.ajax("partAddGlobet/"+caseName+"/"+timeid+"?tname=高脚杯",

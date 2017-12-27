@@ -22,6 +22,7 @@
 		.fieldset { width: 200px; float: left; }
 		#ft 	{ background-color: #eee; height: 70px; width: 99%; border-top: 1px solid #ccc; padding: 5px; position: absolute; top: 0; left: 0; }
 		#ft span { width: 100%; }
+		
 	</style>
 </head>
 <body>
@@ -38,7 +39,7 @@
 		  	var n2 = loc.indexOf("=");//取得=号的位置
 		  	timeid = decodeURI(loc.substr(n2+1, n1-n2));//从=号后面的内容 
 		  	var geneimg = "../image/cookerPartA_"+timeid+".jpg";
-		  	//var geneimg = "../image/cooker.jpg";
+		  	//var geneimg = "../image/bg.jpg";
 		  	
 		  	$(".picimg2").attr("src",geneimg);
 		  	debugger;
@@ -119,7 +120,7 @@
 				<div>
 					<div style="margin-left: 89px;">
 						<canvas id="canvid1"></canvas>
-						<img class="img1" id="img0" src="../image/LOGO1.png" width="70px" height="90px"/>
+						<img class="img1 imglogo" id="img0" src="../image/LOGO1.png" width="70px" height="90px"/>
 						<img class="picimg2" id="bg" src="" style ="dispaly:none;width:600px;height:350px;margin-left: 0px;margin-top: 3px;border-radius: 8px;"/>
 					</div>
 					
@@ -134,7 +135,7 @@
 				<img class="img1" id="img0" src="../image/4.jpg" width="100px" height="134px" />
 				<img class="picimg" id="bg" src="../image/cooker.jpg" style ="width:800px;height:481px;margin-top: 11px;margin-left: -1.5px;"/>
 			</div> -->
-
+			<!-- <span><input type="checkbox" name="some_name" value="" id="showcorners" /> 显示角落<span> -->
 			<div id="partStyle" style="height:37px;">
 				<div id="beidu" style="width:106px;">
 					<a href="javascript:void(0)" id="beidu1" >logo添加</a>
@@ -215,10 +216,11 @@
 					canvas1.addImage(img[1]);
 					//canvas1.addImage(img[4]);
 					//canvas1.addImage(img[5]);
-					this.cornersvisible = true;
-					for (var i = 0, l = canvas1._aImages.length; i < l; i += 1) {
+					
+					//this.cornersvisible = true;
+					/* for (var i = 0, l = canvas1._aImages.length; i < l; i += 1) {
 						canvas1._aImages[i].setCornersVisibility(this.cornersvisible);
-					}
+					} */
 					canvas1.renderAll();
 					$(".picimg2").css({'display':'none'});
 					loadtitle();
@@ -266,6 +268,15 @@
 					canvas1.renderAll();
 				},
 				convertTo: function(format) {
+					
+					//保存图前  去掉边角方框
+					this.cornersvisible = false;
+					for (var i = 0, l = canvas1._aImages.length; i < l; i += 1) {
+						canvas1._aImages[i].setCornersVisibility(this.cornersvisible);
+					}
+					canvas1.renderAll();
+					
+					
 					var imgData = canvas1.canvasTo(format);
 					var caseName = $("#account1").val();
 					$.ajax("partAdd/"+caseName+"/"+timeid+"?tname=燃气灶",

@@ -104,7 +104,7 @@ var Canvas = window.Canvas || {};
 	
 	Canvas.Img.prototype.selected = false;
 	Canvas.Img.prototype.bordervisibility = false;
-	Canvas.Img.prototype.cornervisibility = false;
+	Canvas.Img.prototype.cornervisibility = true;
 	
 	/**
 	 * The Image class's initialization method. This method is automatically 

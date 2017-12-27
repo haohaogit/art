@@ -125,7 +125,7 @@
 				<div>
 					<div style="margin-left: 89px;">
 						<canvas id="canvid1"></canvas>
-						<img class="img1" id="img0" src="../image/LOGO1.png" width="70px" height="90px"/>
+						<img class="img1" id="img0" src="../image/tongxinbujian-2_1514118774131.png" width="70px" height="90px"/>
 						<img class="picimg2" id="bg" src="" style ="dispaly:none;width:600px;height:350px;margin-left: 0px;margin-top: 3px;border-radius: 8px;"/>
 					</div>
 					
@@ -275,6 +275,14 @@
 					canvas1.renderAll();
 				},
 				convertTo: function(format) {
+					//保存图前  去掉边角方框
+					this.cornersvisible = false;
+					for (var i = 0, l = canvas1._aImages.length; i < l; i += 1) {
+						canvas1._aImages[i].setCornersVisibility(this.cornersvisible);
+					}
+					canvas1.renderAll();
+					
+					
 					var imgData = canvas1.canvasTo(format);
 					debugger;
 					var caseName = $("#account1").val();
