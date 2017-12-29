@@ -22,9 +22,9 @@
 			height: 26px;
 		}
 		.cimg{
-			width: 500px;
+			/* width: 500px; */
 			height: 360px;
-			margin-left: 150px;
+			margin-left: 70px;
 			margin-top:0px;
 		}
 
@@ -44,7 +44,7 @@
 		  	var n2 = loc.indexOf("=");//取得=号的位置
 		  	timeid = decodeURI(loc.substr(n2+1, n1-n2));//从=号后面的内容 
 		  	var geneimg = "../image/boatColorA_"+timeid+".jpg";
-		  	$(".picimg").attr("src",geneimg);
+		  	$(".cimg").attr("src",geneimg);
 		  	debugger;
 		  	$.ajax("getcolor?tname=游艇",
 	                // 发送请求的URL字符串
@@ -123,7 +123,7 @@
 				<div class="picfont" style="background:#00A5BD;width:145px; height:37px; ">
 					色彩方案预览
 				</div>
-				<img class="picimg cimg" src="" >
+				<img class="cimg" src="" >
 			</div>
 
 			<div id="partStyle" style="height:37px;">
