@@ -164,15 +164,32 @@ function filllunboTextureGlobet(data){
 	AddCarousel();
 }
 
-
+var fabricHtml1="<ul>";
+var fabricHtml2="<ul>";
+var fabricHtml3="<ul>";
 function filllunbopartFabric(data){
-	var aHtml="<ul>";
+	
 	for(var i=0;i<data.length;i++){
-		aHtml+="<li class='lunbo-item PartFabric'><img src='../image/"+data[i].pimg+"' alt='"+data[i].pid+"'><span>"+data[i].pdescription+"</span></li>";
+		//var qwe = data[i].wfirstchar;
+		switch(data[i].pbname)
+		{
+			case "织物边框":
+				fabricHtml1+="<li class='lunbo-item LPart'><img src='../image/"+data[i].pimg+"' alt='"+data[i].pid+"'><span>"+data[i].pdescription+"</span></li>";
+				break;
+			case "织物主图":
+				fabricHtml2+="<li class='lunbo-item LPart'><img src='../image/"+data[i].pimg+"' alt='"+data[i].pid+"'><span>"+data[i].pdescription+"</span></li>";
+				break;
+			case "织物辅图":
+				fabricHtml3+="<li class='lunbo-item LPart'><img src='../image/"+data[i].pimg+"' alt='"+data[i].pid+"'><span>"+data[i].pdescription+"</span></li>";
+				break;
+			default:
+				break;
+		}
 	}
-	aHtml+="</ul>";
-	$(".lunbo-window").html(aHtml);
-	AddCarousel();
+	fabricHtml1+="</ul>";
+	fabricHtml2+="</ul>";
+	fabricHtml3+="</ul>";
+	$(".lunbo-window").html(fabricHtml1);
 }
 
 function filllunboPart(data){

@@ -39,7 +39,7 @@
 		  	var n2 = loc.indexOf("=");//取得=号的位置
 		  	img_timeid = decodeURI(loc.substr(n2+1, n1-n2));//从=号后面的内容 
 		  	img_timeid = img_timeid.split("_");
-		  	timeid = img_timeid[1];
+		  	timeid = img_timeid[2];
 		  	var geneimg = "../image/fabricTextureA_"+timeid+".jpg";
 		  	$(".picimg1").attr("src",geneimg);
 		  	

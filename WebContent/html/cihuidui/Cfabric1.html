@@ -66,9 +66,11 @@
 			img = decodeURI(loc.substr(n2+1, n1-n2));//从=号后面的内容
 			$(".imgfabric").attr("src",img);
 			var fimg = img.split("/");
-			var fNum = fimg[fimg.length-1].split("-");
-			colorNum = fNum[fNum.length-2][0];
-			
+			var fNum = fimg[fimg.length-1];
+			var imgname = fNum.split("_");
+			//alert("imgname "+imgname[0][0]);
+			colorNum = imgname[0][0];
+			//alert("colorNum"+colorNum);
 			
 			debugger;
 		});
@@ -232,24 +234,29 @@
         function getScore() {
         	var sc1,sc2,sc3,sc4,sc5,temp;
         	temp = parseInt(left11-20);
-        	if(temp<300){
+        	if(temp<280){
         		sc1 = parseInt((temp-300)/100);
         	}else{
-        		sc1 = parseInt(left12)/100;
+        		sc1 = parseInt(left12/100);
         	}
+        	/* if(sc1 == 0){
+        		sc1 = -1;
+        	} */
         	
         	temp = parseInt(left21-20);
-        	if(temp<300){
+        	if(temp<280){
         		sc2 = parseInt((temp-300)/100);
         	}else{
-        		sc2 = parseInt(left22)/100;
+        		sc2 = parseInt(left22/100);
         	}
         	
         	temp = parseInt(left31-20);
-        	if(temp<300){
+        	//alert("temp "+temp);
+        	if(temp<280){
         		sc3 = parseInt((temp-300)/100);
         	}else{
-        		sc3 = parseInt(left32)/100;
+        		
+        		sc3 = parseInt(left32/100);
         	}
         	
         	/* temp = parseInt(left41);

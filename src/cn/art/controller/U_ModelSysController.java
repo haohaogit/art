@@ -756,7 +756,9 @@ public class U_ModelSysController {
 		String[] s = sc.split(",");
 		int colorNum = Integer.parseInt(s[s.length-1]);
 		System.out.println("colorNum "+colorNum);
+		
 		commandImg cimg = new commandImg();
+		cimg.setImg1("notSuccess");
 		
 		
 		String bgimg = img;
@@ -764,7 +766,7 @@ public class U_ModelSysController {
 		String basePath = request.getSession().getServletContext().getRealPath("/");
 		String path = basePath.replace('\\', '/');
 		System.out.println("basePath "+basePath);
-		bgimg = basePath+"image/"+img+".jpg";
+		bgimg = basePath+"image\\"+img+".bmp";
 		
 		System.out.println("bgimg "+bgimg);
 		
@@ -788,6 +790,7 @@ public class U_ModelSysController {
             int i = 0;
             int k = 0;
             String templatRGB="";
+            System.out.println("start");
             colorgene = new String[7];
             while ((line = in.readLine()) != null) {
                 //line = decodeUnicode(line);
@@ -802,13 +805,18 @@ public class U_ModelSysController {
                 }
                 i++;
             }
+            
             System.out.println("i "+i);
+            System.out.println("start1");
             for (int j = 0; j < i/colorNum; j++) {
 				System.out.println(colorgene[j]);
 				
 			}
             colorBlock.put(timeid1, colorgene);
             in.close();
+            System.out.println("colorgene[0] "+colorgene[0]);
+            System.out.println("RgbNum.get(timeid1) "+RgbNum.get(timeid1));
+            System.out.println("backimg.get(timeid1) "+backimg.get(timeid1));
             
             //生成推荐的图片  参数1：第一个色彩块RGB值，参数2：每个色彩快中RGB的组数，参数3：所选图片底图，参数4：当前时间戳
             System.out.println("image  11111111111");
@@ -819,10 +827,11 @@ public class U_ModelSysController {
             
             while ((line = in.readLine()) != null) {
                 //line = decodeUnicode(line);
-            	System.out.println("image  11111111111");
+            	System.out.println("image1  11111111111");
                 System.out.println(line);
                 cimg.setWordIndex(line);
-               
+                cimg.setImg1("Success");
+                
             }
             in.close();
             
@@ -837,6 +846,7 @@ public class U_ModelSysController {
             while ((line = in.readLine()) != null) {
                 //line = decodeUnicode(line);
                 System.out.println(line);
+                
             }
             in.close();
             
@@ -845,7 +855,6 @@ public class U_ModelSysController {
             cimg.setImg("../image/fabric"+"_"+timeid1+".jpg");
             cimg.setTimeid(timeid1);
             
-    		cimg.setImg1("../images/genestyle/Ccolor.png");
     		cimg.setImg2("../images/genestyle/Ctexture1.png");
             System.out.println("end111");
         } catch (Exception e) {
@@ -922,8 +931,6 @@ public class U_ModelSysController {
 		}*/
 		commandImg cimg = new commandImg();
 		
-		
-		
 		try {
             //需传入的参数
             String a = sc;
@@ -990,6 +997,79 @@ public class U_ModelSysController {
             //pr.waitFor();
             cimg.setImg("../image/gaojiaobei_"+timeid1+".jpg");
             cimg.setTimeid(timeid1);
+    		cimg.setImg1("../images/genestyle/Ccolor.png");
+    		cimg.setImg2("../images/genestyle/Ctexture1.png");
+            System.out.println("end");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+		return cimg;
+		
+	}
+	
+	@RequestMapping("setparam/globet/moreOutline/{index}/{timeid}")
+	@ResponseBody
+	public commandImg setparamGlobet(@PathVariable String index,@PathVariable String timeid,Model model,String sc,HttpServletRequest request){
+		
+		commandImg cimg = new commandImg();
+		System.out.println("index "+index);
+		System.out.println("timeid "+timeid);
+		try {
+            //需传入的参数
+            
+            String data = ""+index+","+timeid;
+            
+            /*FileWriter out = new FileWriter("C:\\apache-tomcat-7.0.53\\wtpwebapps\\art0804\\image\\globet_appendfile.txt", false); 
+            //往文件写入
+            out.write(data);
+            //换行
+            
+            //刷新IO内存流
+            out.flush();
+            //关闭
+            out.close();
+
+            System.out.println("Done");*/
+            
+            
+            Runtime mt =Runtime.getRuntime();
+            //找到相对应的绝对路径。启动记事本文件
+           
+            
+            //File  myfile =new File("C:\\apache-tomcat-7.0.53\\wtpwebapps\\art0804\\image","GeneticAlgorithm.exe");
+            
+            System.out.println("data "+data);
+            Process p = mt.exec("C:\\apache-tomcat-7.0.53\\wtpwebapps\\art0804\\image\\GeneticAlgorithmMore.exe "+data);
+            
+            p.waitFor(); 
+            System.out.println("test globet by .exe");
+            //创建新的文件路径,启动ie浏览器
+            //myfile = new File("c:\\program Files\\Internet Explorer","IEXPLORE.www.sohu.com");
+            //mt.exec(myfile.getAbsolutePath());
+            //设置命令行传入参数
+           /* //String[] args1 = new String[] { "python", "C:\\firstDL_netEast\\boatAssembleTest.py", a,timeid1};
+            String[] args1 = new String[] { "python", "D:\\20170602\\PycharmProjects\\firstDL_netEast\\globet.py", a,timeid1};
+            Process pr = Runtime.getRuntime().exec(args1);
+
+            BufferedReader in = new BufferedReader(new InputStreamReader(pr.getInputStream()));
+            String line;
+            while ((line = in.readLine()) != null) {
+                //line = decodeUnicode(line);
+                System.out.println(line);
+                minitem.put(timeid1, line);
+            }
+           
+            in.close();*/
+            try   
+            {   
+            	Thread.currentThread().sleep(1000);//毫秒   
+            }   catch(Exception e){} 
+            
+            Rgb = "30,35,57";
+            //backimg.put(timeid1, "C:/firstDL_netEast/artgene/M22.jpg");
+            //pr.waitFor();
+            cimg.setImg("../image/gaojiaobei_"+timeid+"_"+index+".jpg");
+            cimg.setTimeid(timeid);
     		cimg.setImg1("../images/genestyle/Ccolor.png");
     		cimg.setImg2("../images/genestyle/Ctexture1.png");
             System.out.println("end");

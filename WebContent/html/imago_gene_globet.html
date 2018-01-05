@@ -45,6 +45,7 @@
 						//alert("facade newcase goblet test length");
 						//fillNewcaseHouseboat(data);
 						$(".demo").css({'display':'none'});
+						
 						$(".i1").attr('src',data.img);
 						
 						$(".i2").attr('src',"../image/R220G91B112.jpg");
@@ -64,9 +65,10 @@
 		                }
 		            });
         });
+        var jindutiao;
         function haha(){  
     		
-  		  var jindutiao = document.getElementById("progressbar");  
+  		  jindutiao = document.getElementById("progressbar");  
   		  jindutiao.style.width = parseInt(jindutiao.style.width) + 1 + "%";
   		  jindutiao.innerHTML = jindutiao.style.width;  
   		  if(jindutiao.style.width == "98%"){  
@@ -185,7 +187,8 @@
 
 			<div id="geneBottomBtn"  style="margin-top: 227px;">
 				<button type="submit" id="save" onclick="saveGene()">确定</button>
-				<button type="submit" id="cancel">取消</button>
+				<button type="submit" id="cancel" onclick="cancelMore()">取消</button>
+				<button type="submit" id="cancel" class="moreOutline" onclick="moreOutline()">更多图案</button>
 				<button type="submit" id="cancel" onclick="returned()">返回上一步</button>
 			</div>
 		</div>
@@ -199,6 +202,110 @@
 			window.location.href="imago_adjust_color_globet.html?timeid="+timeid;
 			
 		}
+		var index = 1;
+		function moreOutline(){
+			if(index<=5){
+				
+				
+				$(".demo").css({'display':'block'});
+				
+				//process bar
+			  	shijian = window.setInterval(function(){haha();},100); 
+				window.onload = function(){  
+				   shijian;  
+				}  
+				jindutiao.style.width = 0;
+				$(".i1").attr('src',"");
+				$(".i2").attr('src',"");
+				$(".i3").attr('src',"");
+				
+				//alert("index "+index);
+				$.ajax("setparam/globet/moreOutline/"+index+"/"+timeid,
+			            // 发送请求的URL字符串
+			            {
+			                type: "get",      //
+			                async:true,  //
+			                success: function(data){
+							//alert("facade newcase goblet test length");
+							//fillNewcaseHouseboat(data);
+							$(".demo").css({'display':'none'});
+							
+							$(".i1").attr('src',data.img);
+							
+							$(".i2").attr('src',"../image/R220G91B112.jpg");
+							$(".i3").attr('src',"../image/60_1513144532824.jpg");
+							
+							
+							/* var sword = data.wordIndex.split(",");
+							$(".lable1").html(sword[0]);
+							$(".lable2").html(sword[1]);
+							$(".lable3").html(sword[2]);
+							$(".lable4").html(sword[3]); */
+							timeid = data.timeid;
+							//alert(data.img);
+			                },
+			                error: function(){
+			                    alert("图像生成失败！");
+			                }
+			            });
+	      			index = index + 1;
+			}else{
+				$(".moreOutline").html("无法生成更多图案");
+			}
+			
+  		}
+		function cancelMore(){
+			index = index - 1;
+			if(index>=0){
+				
+				
+				$(".demo").css({'display':'block'});
+				
+				//process bar
+			  	shijian = window.setInterval(function(){haha();},100); 
+				window.onload = function(){  
+				   shijian;  
+				}  
+				jindutiao.style.width = 0;
+				$(".i1").attr('src',"");
+				$(".i2").attr('src',"");
+				$(".i3").attr('src',"");
+				
+				alert("index "+index);
+				$.ajax("setparam/globet/moreOutline/"+index+"/"+timeid,
+			            // 发送请求的URL字符串
+			            {
+			                type: "get",      //
+			                async:true,  //
+			                success: function(data){
+							//alert("facade newcase goblet test length");
+							//fillNewcaseHouseboat(data);
+							$(".demo").css({'display':'none'});
+							
+							$(".i1").attr('src',data.img);
+							
+							$(".i2").attr('src',"../image/R220G91B112.jpg");
+							$(".i3").attr('src',"../image/60_1513144532824.jpg");
+							
+							
+							/* var sword = data.wordIndex.split(",");
+							$(".lable1").html(sword[0]);
+							$(".lable2").html(sword[1]);
+							$(".lable3").html(sword[2]);
+							$(".lable4").html(sword[3]); */
+							timeid = data.timeid;
+							//alert(data.img);
+			                },
+			                error: function(){
+			                    alert("图像生成失败！");
+			                }
+			            });
+	      			
+			}else{
+				$(".moreOutline").html("无法生成更多图案");
+			}
+			
+  		}
 
 
 		function returned(){

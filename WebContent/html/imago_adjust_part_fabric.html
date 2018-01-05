@@ -136,13 +136,25 @@
 				<img class="picimg1" src="" style="margin-top: 0px;">
 			</div>
 
-			<div id="partStyle" style="height:37px;">
+			<!-- <div id="partStyle" style="height:37px;">
 				<div id="beidu">
 					<a href="javascript:void(0)" id="beidu1" style="color: white;padding-left: 4px;">部件方案</a>
 				</div>
-				<!-- <div id="beibing">
+				<div id="beibing">
 					<a href="javascript:void(0)" id="beibing1" style="color: white;padding-left: 4px;">钓鱼板</a>
-				</div> -->
+				</div>
+			</div> -->
+			
+			<div id="partStyle" style="height:37px;">
+				<div id="beidu" style="width:106px;">
+					<a href="javascript:void(0)" id="beidu1" style="color: white;">织物边框</a>
+				</div>
+				<div id="beibing" style="width:106px;">
+					<a href="javascript:void(0)" id="beibing1" style="color: white;">织物主图</a>
+				</div>
+				<div id="beibao" style="width:106px;">
+					<a href="javascript:void(0)" id="beibing2" style="color: white;">织物辅图</a>
+				</div>
 			</div>
 
 			<div id="lunbo">
@@ -418,16 +430,33 @@
 
 
 
-  		$("#beidu1").click(function(){
+		$("#beidu1").click(function(){
   			
   			document.getElementById('beidu').style.backgroundColor='#00A5BD';
     		document.getElementById('beibing').style.backgroundColor='#a39f9f';
+    		document.getElementById('beibao').style.backgroundColor='#a39f9f';
+    		
+    		$(".lunbo-window").html(fabricHtml1);
+  			AddCarousel();
   		});
+  		
   		$("#beibing1").click(function(){
   			
     		document.getElementById('beibing').style.backgroundColor='#00A5BD';
-    		document.getElementById('beidu').style.backgroundColor='#a39f9f';
     		
+    		document.getElementById('beidu').style.backgroundColor='#a39f9f';
+    		document.getElementById('beibao').style.backgroundColor='#a39f9f';
+    		$(".lunbo-window").html(fabricHtml2);
+  			AddCarousel();
+  		});
+  		
+		$("#beibing2").click(function(){
+  			
+    		document.getElementById('beibao').style.backgroundColor='#00A5BD';
+    		document.getElementById('beibing').style.backgroundColor='#a39f9f';
+    		document.getElementById('beidu').style.backgroundColor='#a39f9f';
+    		$(".lunbo-window").html(fabricHtml3);
+  			AddCarousel();
   		});
   		
 	</script>

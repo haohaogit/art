@@ -5,6 +5,9 @@
 <link href="../css/imago.css" rel="stylesheet" type="text/css"/>
 <link href="../css/loginDialog.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../js/jquery-1.8.2.min.js"></script>
+<link href="../css/jindutiao.css" rel="stylesheet" type="text/css"/>
+<link rel="stylesheet" href="../css/bootstrap.min1.css">
+
 <title>意象映射-意象映射系统</title>
 </head>
 <body>
@@ -15,6 +18,12 @@
 //  			alert(11);
             $('.configHead').load('conheader_yixiang.html');
             $('.configFoot').load('confooter.html');
+            
+            //process bar
+		  	shijian = window.setInterval(function(){haha();},100); 
+			window.onload = function(){  
+			   shijian;  
+			}  
             
             var loc = location.search;	
            
@@ -35,14 +44,24 @@
                 type: "get",      //
                 async:true,  //
                 success: function(data){
-				//alert("facade newcase goblet test length");
-				//fillNewcaseHouseboat(data);
-				timeid = data.timeid;
-				img_timeid = img_timeid + data.timeid;
-				$(".i1").attr('src',data.img);
-				$(".comdcimg").attr('src',"../image/3Colors_Template0_"+timeid+".jpg");
-				
-				geneimg = data.img;
+					//alert("facade newcase goblet test length");
+					//fillNewcaseHouseboat(data);
+					//alert("data.img1 "+data.img1);
+					if("Success" == data.img1){
+						//alert("222222222");
+						timeid = data.timeid;
+						img_timeid = img_timeid + data.timeid;
+						$(".i1").attr('src',data.img);
+						$(".comdcimg").attr('src',"../image/3Colors_Template0_"+timeid+".jpg");
+						$(".i3").attr('src',"../image/fabric (1).jpg");
+						$(".demo").css({'display':'none'});
+						
+						geneimg = data.img;
+					}else{
+						$(".demo").css({'display':'none'});
+						alert("无法调用织物生成函数，或许是图片的命名方式错误！");
+					}
+					
 				//alert(data.img);
                 },
                 error: function(){
@@ -50,6 +69,15 @@
                 }
             });
         });
+        function haha(){  
+    		
+    		  var jindutiao = document.getElementById("progressbar");  
+    		  jindutiao.style.width = parseInt(jindutiao.style.width) + 1 + "%";
+    		  jindutiao.innerHTML = jindutiao.style.width;  
+    		  if(jindutiao.style.width == "98%"){  
+    		     window.clearInterval(shijian);  
+    		  }  
+    		}  
 </script>
 	<!-- 	头部 -->
 	<div class="configHead"></div>
@@ -118,15 +146,31 @@
 					<lable class="lable4"></lable>
 				</div>
 			</div>
+			
+			
+			
+			<div class="demo" style="display:block;margin-top:20px;margin-left:-36px;">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-offset-3 col-md-6">
+							<div class="progress">
+								<div id="progressbar" class="progress-bar progress-bar-info progress-bar-striped active" style="width: 0%;">
+									<div class="progress-value">0%</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 
-			<div id="showCommander" style="margin-top:14px;">
+			<div id="showCommander" style="margin-top:14px;margin-left: -39px;">
 				<div id="pic1" style="float: left;">
-					<img class="comdcimg" src="../../images/3Colors_Template1_.jpg" style=" width: 130px;height: 130px;"/>
-					<p class="p1">色彩推荐</p>
+					<img class="comdcimg i2 i23" src="" style=" width: 130px;height: 130px;"/>
+					<p class="p1" style="width: 130px;">色彩推荐</p>
 				</div>
            		<div id="pic3" style="float: left;">
-           			<img src="../image/fabric (1).jpg" style=" width: 130px;height: 130px;"/>
-           			<p class="p1">材质推荐</p>
+           			<img class="i23 i3" src="" style=" width: 130px;height: 130px;"/>
+           			<p class="p1" style="width: 130px;">材质推荐</p>
            		</div>
            		
 			</div>

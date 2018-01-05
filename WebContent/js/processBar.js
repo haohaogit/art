@@ -129,14 +129,14 @@ $(function(){
                     }
                     
                     if (tag21) {
-                        left21 = e.pageX - ox21 - 7;
+                        left21 = e.pageX - ox21;
                         if (left21 <= 0) {
                             left21 = 5;
                         }else if (left21 > 300) {
                             left21 = 300;
                         }
-                        $('.progress_btn21').css('left', left21);
-                        $('.progress_bar21').width(left21+7);
+                        $('.progress_btn21').css('left', left21+4);
+                        $('.progress_bar21').width(left21);
                         $('.text21').html(parseInt((left21/300)*100) + '%');
                     }
                     
@@ -297,7 +297,7 @@ $(function(){
           	        left22 = 0;
                    if (!tag21) {
                        bgleft21 = $('.progress_bg21').offset().left;
-                       left21 = e.pageX - bgleft21-7;
+                       left21 = e.pageX - bgleft21;
                        if (left21 <= 0) {
                            left21 = 5;
                        }else if (left21 > 300) {
@@ -305,7 +305,7 @@ $(function(){
                        }
                       
                        $('.progress_btn21').css('left', left21);
-                       $('.progress_bar21').animate({width:left21+7},300);
+                       $('.progress_bar21').animate({width:left21},300);
                        $('.text21').html(parseInt((left21/300)*100) + '%');
                    }
                    
