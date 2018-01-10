@@ -1103,19 +1103,89 @@ function fillNewcaseGoblet(data) {
     var score3 = 1;
     var score4 = 1;
     var score5 = 1;
-    var score6 = 1;
+    
     score1 = result[0];
     score2 = result[1];
     score3 = result[2];
     score4 = result[3];
     score5 = result[4];
-    score6 = result[5];
-    $('.score1').width(score1*90-90);
+    //alert("score1 = "+score1+"score2 = "+score2+"score3 = "+score3+"score4 = "+score4+"score5 = "+score5);
+    
+    /*$('.score1').width(score1*90-90);
     $('.score2').width(score2*90-90);
     $('.score3').width(score3*90-90);
     $('.score4').width(score4*90-90);
     $('.score5').width(score5*90-90);
-    $('.score6').width(score6*90-90);
+    $('.score6').width(score6*90-90);*/
+    
+    if(score1>=4){
+    	//alert("11111111111111111111");
+    	document.getElementById("score11").style.width=270+'px';
+    	$(".point12").css("display","block");
+        $(".point11").css("display","none");
+        $('#score12').width((score1-4)*90);
+    }else{
+    	document.getElementById("score12").style.width=0;
+    	$(".point11").css("display","block");
+        $(".point12").css("display","none");
+        $('#score11').width(270-Math.abs(score1-4)*90);
+        //$('#score11').csscss({"width":90px;});
+    }
+
+    if(score2>=4){
+    	//alert("11111111111111111111");
+    	
+    	document.getElementById("score21").style.width=270+'px';
+    	$(".point22").css("display","block");
+        $(".point21").css("display","none");
+        $('#score22').width((score2-4)*90);
+    }else{
+    	document.getElementById("score22").style.width=0;
+    	$(".point21").css("display","block");
+        $(".point22").css("display","none");
+        
+        $('#score21').width(270-Math.abs(score2-4-0.00001)*90);
+        //$('#score11').csscss({"width":90px;});
+    }
+
+    if(score3>=4){
+    	//alert("11111111111111111111");
+    	document.getElementById("score31").style.width=270+'px';
+    	$(".point32").css("display","block");
+        $(".point31").css("display","none");
+        $('#score32').width((score3-4)*90);
+    }else{
+    	document.getElementById("score32").style.width=0;
+    	$(".point31").css("display","block");
+        $(".point32").css("display","none");
+        $('#score31').width(270-Math.abs(score3-4-0.00001)*90);
+        //$('#score11').csscss({"width":90px;});
+    }
+
+    if(score4>=4){
+    	document.getElementById("score41").style.width=270+'px';
+    	$(".point42").css("display","block");
+        $(".point41").css("display","none");
+        $('#score42').width((score4-4)*90);
+    }else{
+    	document.getElementById("score42").style.width=0;
+    	$(".point41").css("display","block");
+        $(".point42").css("display","none");
+        $('#score41').width(270-Math.abs(score4-4-0.00001)*90);
+    }
+
+    if(score5>=4){
+    	document.getElementById("score51").style.width=270+'px';
+    	$(".point52").css("display","block");
+        $(".point51").css("display","none");
+        $('#score52').width((score5-4)*90);
+    }else{
+    	document.getElementById("score52").style.width=0;
+    	$(".point51").css("display","block");
+        $(".point52").css("display","none");
+        $('#score51').width(270-Math.abs(score5-4-0.00001)*90);
+    }
+
 }
 
 function fillNewcaseHouseboat(data) {
