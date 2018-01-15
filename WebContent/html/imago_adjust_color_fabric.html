@@ -45,10 +45,12 @@
 		  	
 		  	img_timeid = img_timeid.split("_");
 		  	timeid = img_timeid[2];
+		  	var iNum = img_timeid[0];
+		  	//alert(" inum "+iNum[0]);
 		  	var geneimg = "../image/fabricColorA_"+timeid+".jpg";
 		  	$(".picimg1").attr("src",geneimg);
 		  	//AddCarousel();
-		  	filllunboFabric(timeid);
+		  	filllunboFabric(timeid,iNum[0]);
 		  	
             
         });

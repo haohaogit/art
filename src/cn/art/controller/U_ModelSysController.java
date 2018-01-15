@@ -837,7 +837,7 @@ public class U_ModelSysController {
             
             
             //生成色彩调整是 轮播组件的7张图片 参数1：色彩块RGB值，参数2：每个色彩快中RGB的组数，参数3：底图，参数4：当前时间戳
-            String lunboColorBlock = "C:/firstDL_netEast/artgene/3Colors.jpg";
+            String lunboColorBlock = "C:/firstDL_netEast/artgene/"+colorNum+"Colors.jpg";
             System.out.println("templatRGB "+templatRGB);
             
             args = new String[] { "python", "C:\\firstDL_netEast\\scarvesColorGenColorImageTemplate.py",templatRGB,colorNum+"", lunboColorBlock,timeid1};
@@ -1579,7 +1579,7 @@ public class U_ModelSysController {
 			newCase.setNewcaseacolor(colorimgMap.get(timeid));
 		}
 		if(null==textureimgMap.get(timeid)){
-			newCase.setNewcaseatexture("M21shuijingcaizhi-moren.jpg");
+			newCase.setNewcaseatexture("M21shuijingcaizhi-moren.png");
 		}else{
 			newCase.setNewcaseatexture(textureimgMap.get(timeid));
 		}

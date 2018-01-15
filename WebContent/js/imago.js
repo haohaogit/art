@@ -217,6 +217,7 @@ function filllunboPart(data){
 var boatHtml1="<ul>";
 var boatHtml2="<ul>";
 var boatHtml3="<ul>";
+var boatHtml4="<ul>";
 function filllunboPartBoat(data){
 	
 	for(var i=0;i<data.length;i++){
@@ -232,6 +233,9 @@ function filllunboPartBoat(data){
 			case "顶棚":
 				boatHtml3+="<li class='lunbo-item LPart'><img src='../image/"+data[i].pimg+"' alt='"+data[i].pid+"'><span>"+data[i].pdescription+"</span></li>";
 				break;
+			case "舷窗":
+				boatHtml4+="<li class='lunbo-item LPart'><img src='../image/"+data[i].pimg+"' alt='"+data[i].pid+"'><span>"+data[i].pdescription+"</span></li>";
+				break;
 			default:
 				break;
 		}
@@ -239,6 +243,7 @@ function filllunboPartBoat(data){
 	boatHtml1+="</ul>";
 	boatHtml2+="</ul>";
 	boatHtml3+="</ul>";
+	boatHtml4+="</ul>";
 	$(".lunbo-window").html(boatHtml1);
 	
 	AddCarousel();
@@ -269,10 +274,11 @@ function filllunboPartGlobet(data){
 	AddCarousel();
 }
 
-function filllunboFabric(timeid){
+function filllunboFabric(timeid,inum){
+	alert("inum "+inum);
 	var aHtml="<ul>";
 	for(var i=0;i<7;i++){
-		aHtml+="<li class='lunbo-item CFabric'><img src='../image/3Colors_Template"+i+"_"+timeid+".jpg' alt='"+i+"'><span>色块"+(i+1)+"</span></li>";
+		aHtml+="<li class='lunbo-item CFabric'><img src='../image/"+inum+"Colors_Template"+i+"_"+timeid+".jpg' alt='"+i+"'><span>色块"+((i+3)%7+1)+"</span></li>";
 	}
 	aHtml+="</ul>";
 	$(".lunbo-window").html(aHtml);

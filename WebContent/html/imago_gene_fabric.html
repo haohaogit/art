@@ -29,6 +29,8 @@
            
             var sc = GetRequest(loc)["sc"];
             var img = GetRequest(loc)["img"];
+            var iNum = sc.split(",");
+            //alert("iNum "+iNum[3]);
             
 		  	img = img.split("/");
 		  	var lastNimg = img[img.length-1];
@@ -36,7 +38,8 @@
 		  	
 		  	//alert("lastNimg "+lastNimg[0]);
 		  	img_timeid = img_timeid+lastNimg[0]+"_";
-		  	//alert("sc = "+sc+" img = "+img); 
+		  	alert("sc = "+sc+" img = "+img+" lastNimg[0] "+lastNimg[0]); 
+		  	
 		  	$.ajax("setparam/fabric/"+lastNimg[0]+"?sc="+sc,
 		  	//$.ajax("adjust/color/gk/"+timeid+"?crgb="+crgb,
             // 发送请求的URL字符串
@@ -52,7 +55,7 @@
 						timeid = data.timeid;
 						img_timeid = img_timeid + data.timeid;
 						$(".i1").attr('src',data.img);
-						$(".comdcimg").attr('src',"../image/3Colors_Template0_"+timeid+".jpg");
+						$(".comdcimg").attr('src',"../image/"+iNum[3]+"Colors_Template0_"+timeid+".jpg");
 						$(".i3").attr('src',"../image/fabric (1).jpg");
 						$(".demo").css({'display':'none'});
 						
