@@ -59,6 +59,7 @@ public class U_ModelSysController {
 	private Map<String , String > backimg = new HashMap<String, String>();
 	private Map<String , String > FabricTexturebackimg = new HashMap<String, String>();
 	private Map<String , String > RgbNum = new HashMap<String, String>();
+	private Map<String , String > colorNum = new HashMap<String, String>();
 	private Map<String , String > scoreNum = new HashMap<String, String>();
 	
 	private Map<String , String > colorimgMap = new HashMap<String, String>();
@@ -293,7 +294,7 @@ public class U_ModelSysController {
 		try {
             
             //设置命令行传入参数
-            String[] args = new String[] { "python", "C:\\firstDL_netEast\\scarvesColorGenColorImageMateriaFrame.py",colorgene[Nrgb],RgbNum.get(timeid),imgString,textureimg,adjPimg,timeid};
+            String[] args = new String[] { "python", "C:\\firstDL_netEast\\scarvesColorGenColorImageMateriaFrame.py",colorgene[Nrgb],colorNum.get(timeid),imgString,textureimg,adjPimg,timeid};
             Process pr = Runtime.getRuntime().exec(args);
 
             BufferedReader in = new BufferedReader(new InputStreamReader(pr.getInputStream()));
@@ -504,6 +505,7 @@ public class U_ModelSysController {
 		FabricTexturebackimg.put(timeid, timg);
 		
 		int Nrgb = Integer.parseInt(RgbNum.get(timeid));
+		System.out.println("Nrgb "+Nrgb);
 		String imgString = "C:/apache-tomcat-7.0.53/wtpwebapps/art0804/image/fabric_"+timeid+".jpg";
 		try {
             
@@ -511,7 +513,11 @@ public class U_ModelSysController {
             //设置命令行传入参数
 			//System.out.println(minitemS+","+minitemK+","+minitemB+","+minitemD+","+Rgb);
             //String[] args = new String[] { "python", "D:\\20170602\\PycharmProjects\\firstDL_netEast\\scarvesColorGenColorImageMateria.py",colorgene[Nrgb],RgbNum.get(timeid),imgString,timg,timeid};
-            String[] args = new String[] { "python", "C:\\firstDL_netEast\\scarvesColorGenColorImageMateria.py",colorgene[Nrgb],RgbNum.get(timeid),imgString,timg,timeid};
+			System.out.println("11111111111111111111    colorgene[Nrgb] "+colorgene[Nrgb]);
+			System.out.println("RgbNum.get(timeid) "+RgbNum.get(timeid));
+			System.out.println("imgString "+imgString);
+			System.out.println("timg "+timg+" timeid "+timeid);
+            String[] args = new String[] { "python", "C:\\firstDL_netEast\\scarvesColorGenColorImageMateria.py",colorgene[Nrgb],colorNum.get(timeid),imgString,timg,timeid};
             Process pr = Runtime.getRuntime().exec(args);
 
             BufferedReader in = new BufferedReader(new InputStreamReader(pr.getInputStream()));
@@ -623,13 +629,16 @@ public class U_ModelSysController {
 	public commandImg adjustColorFabric(@PathVariable String timeid,Model model,String cnum,HttpServletRequest request){
 		//System.out.println("crgb111 "+crgb);
 		colorimgMap.put(timeid, "3Colors_Template"+cnum+"_"+timeid+".jpg");
-		
+		System.out.println("adjust/color/fabric/{timeid}        cnum "+cnum);
+		//int int_cnum = Integer.parseInt(cnum) - 1;
+		RgbNum.put(timeid, cnum);
+		System.out.println("RgbNum "+RgbNum.get(timeid));
 		try {
             //需传入的参数
             //Rgb = crgb;
             //设置命令行传入参数
 			//调整织物的图片  参数1：第cnum个色彩块RGB值，参数2：每个色彩快中RGB的组数，参数3：所选图片底图，参数4：当前时间戳
-			String[] args = new String[] { "python", "C:\\firstDL_netEast\\scarvesColorGenColorImage1.py",colorgene[Integer.parseInt(cnum)],RgbNum.get(timeid), backimg.get(timeid),timeid};
+			String[] args = new String[] { "python", "C:\\firstDL_netEast\\scarvesColorGenColorImage1.py",colorgene[Integer.parseInt(cnum)],colorNum.get(timeid), backimg.get(timeid),timeid};
 			Process pr = Runtime.getRuntime().exec(args);
 
 			BufferedReader in = new BufferedReader(new InputStreamReader(pr.getInputStream()));
@@ -754,8 +763,8 @@ public class U_ModelSysController {
 	@ResponseBody
 	public commandImg setparamfabric(@PathVariable String img,Model model,String sc,HttpServletRequest request){
 		String[] s = sc.split(",");
-		int colorNum = Integer.parseInt(s[s.length-1]);
-		System.out.println("colorNum "+colorNum);
+		int colornum = Integer.parseInt(s[s.length-1]);
+		System.out.println("colorNum "+colornum);
 		
 		commandImg cimg = new commandImg();
 		cimg.setImg1("notSuccess");
@@ -778,8 +787,10 @@ public class U_ModelSysController {
             long current_time = new Date().getTime();
             timeid1 = current_time+"";
             scoreNum.put(timeid1, sc);
-            RgbNum.put(timeid1, colorNum+"");
+            //色阶的套数默认为第0套
+            RgbNum.put(timeid1, 0+"");
             backimg.put(timeid1, bgimg);
+            colorNum.put(timeid1,colornum+"");
             
             //生成色彩快RGB值   参数1：3个意象词汇参数和一个图片RGB色彩的组数 拼接而成
             String[] args = new String[] { "python", "C:\\firstDL_netEast\\scarvesColorGen.py",a};
@@ -797,8 +808,8 @@ public class U_ModelSysController {
                 System.out.println(line);
                 if(i != 0) templatRGB = templatRGB+",";
                 templatRGB = templatRGB+line;
-                k = i/colorNum;
-                if(i%colorNum==0){
+                k = i/colornum;
+                if(i%colornum==0){
                 	colorgene[k] = line;
                 }else{
                 	colorgene[k] = colorgene[k]+","+line;
@@ -808,8 +819,8 @@ public class U_ModelSysController {
             
             System.out.println("i "+i);
             System.out.println("start1");
-            for (int j = 0; j < i/colorNum; j++) {
-				System.out.println(colorgene[j]);
+            for (int j = 0; j < i/colornum; j++) {
+				System.out.println("colorgene "+j+" "+colorgene[j]);
 				
 			}
             colorBlock.put(timeid1, colorgene);
@@ -820,7 +831,7 @@ public class U_ModelSysController {
             
             //生成推荐的图片  参数1：第一个色彩块RGB值，参数2：每个色彩快中RGB的组数，参数3：所选图片底图，参数4：当前时间戳
             System.out.println("image  11111111111");
-            args = new String[] { "python", "C:\\firstDL_netEast\\scarvesColorGenColorImage.py",colorgene[0],RgbNum.get(timeid1), backimg.get(timeid1),timeid1};
+            args = new String[] { "python", "C:\\firstDL_netEast\\scarvesColorGenColorImage.py",colorgene[0],colorNum.get(timeid1), backimg.get(timeid1),timeid1};
             pr = Runtime.getRuntime().exec(args);
 
             in = new BufferedReader(new InputStreamReader(pr.getInputStream()));
@@ -837,10 +848,10 @@ public class U_ModelSysController {
             
             
             //生成色彩调整是 轮播组件的7张图片 参数1：色彩块RGB值，参数2：每个色彩快中RGB的组数，参数3：底图，参数4：当前时间戳
-            String lunboColorBlock = "C:/firstDL_netEast/artgene/"+colorNum+"Colors.jpg";
+            String lunboColorBlock = "C:/firstDL_netEast/artgene/"+colornum+"Colors.bmp";
             System.out.println("templatRGB "+templatRGB);
             
-            args = new String[] { "python", "C:\\firstDL_netEast\\scarvesColorGenColorImageTemplate.py",templatRGB,colorNum+"", lunboColorBlock,timeid1};
+            args = new String[] { "python", "C:\\firstDL_netEast\\scarvesColorGenColorImageTemplate.py",templatRGB,colornum+"", lunboColorBlock,timeid1};
             pr = Runtime.getRuntime().exec(args);
             in = new BufferedReader(new InputStreamReader(pr.getInputStream()));
             while ((line = in.readLine()) != null) {

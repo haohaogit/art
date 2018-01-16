@@ -275,7 +275,7 @@ function filllunboPartGlobet(data){
 }
 
 function filllunboFabric(timeid,inum){
-	alert("inum "+inum);
+	/*alert("inum "+inum);*/
 	var aHtml="<ul>";
 	for(var i=0;i<7;i++){
 		aHtml+="<li class='lunbo-item CFabric'><img src='../image/"+inum+"Colors_Template"+i+"_"+timeid+".jpg' alt='"+i+"'><span>色块"+((i+3)%7+1)+"</span></li>";

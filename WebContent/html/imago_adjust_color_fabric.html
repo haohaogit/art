@@ -50,7 +50,11 @@
 		  	var geneimg = "../image/fabricColorA_"+timeid+".jpg";
 		  	$(".picimg1").attr("src",geneimg);
 		  	//AddCarousel();
-		  	filllunboFabric(timeid,iNum[0]);
+		  	var colornum = iNum[0];
+		  	if(1 == colornum){
+		  		colornum = 10;
+		  	}
+		  	filllunboFabric(timeid,colornum);
 		  	
             
         });
@@ -194,6 +198,7 @@
 			debugger;
 			var dimg = $(this).html();
 			var cnum = $(dimg).attr("alt");
+			//alert("cnum "+cnum);
 			$.ajax("adjust/color/fabric/"+timeid+"?cnum="+cnum,
 	                // 发送请求的URL字符串
 	                {
