@@ -13,7 +13,7 @@
 <form  id="login_form" action="${contextPath}/managerLogin"  method="post"  >
 <table width="80%" align="center">
   <tr>
-    <td width="35%" align="right" valign="middle" class="main_title">意象映射平台</td>
+    <td width="40%" align="right" valign="middle" class="main_title">产品意向映射造型系统软件 v1.0</td>
     <td width="50%" height="500"><table width="74%">
       <tr>
         <td height="5%" colspan="3" align="center" valign="middle" class="leftblank"><span class="word_style">后台管理登录</span></td>
